@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import mtrLogo from '../assets/mtr.svg';
-import crossPlatform from '../assets/crossplatform.webp';
-import railProperty from '../assets/railproperty.jpg';
+import mtrLogo from '../../assets/mtr/mtr.svg';
+import crossPlatform from '../../assets/mtr/article/crossplatform.webp';
+import railProperty from '../../assets/mtr/article/railproperty.jpg';
 
-import propertiesData from '../assets/data/properties.json';
+import propertiesData from '../../assets/mtr/article/properties.json';
 
 function Link({ href, children }: { href: string, children: React.ReactNode }) {
     return (
@@ -14,7 +14,7 @@ function Link({ href, children }: { href: string, children: React.ReactNode }) {
     );
 }
 
-export default function Article() {
+export default function Mtr() {
     useEffect(() => {
         document.body.style.overflow = 'auto';
     }, []);
@@ -23,7 +23,7 @@ export default function Article() {
         <div className="max-w-dvw min-h-dvh flex flex-col">
             <header>
                 <nav className="py-4 px-3" aria-label="Article navigation">
-                    <RouterLink to="/" className="nav-btn py-1.5!">
+                    <RouterLink to="/mtr" className="nav-btn py-1.5!">
                         Return to Map
                     </RouterLink>
                 </nav>
