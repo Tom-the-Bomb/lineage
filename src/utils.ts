@@ -1,4 +1,3 @@
-
 import { type State } from './schemas';
 
 // Max date object Javascript can handle:
@@ -10,7 +9,7 @@ export function playPause(
     time: number,
     setTime: (time: number) => void,
     minDate: Date,
-    maxDate: Date
+    maxDate: Date,
 ): void {
     setPlaying(playing => {
         const next = !playing;
@@ -18,7 +17,7 @@ export function playPause(
             setTime(minDate.getTime());
         }
         return next;
-    })
+    });
 }
 
 export function formatDate(date: Date, end: number = 10): string {
@@ -33,20 +32,19 @@ export function parseLabelDates(label: string): State[] {
         const interval = rawInterval.split('-');
 
         const appear = new Date(interval[0].replace(/_/g, '-'));
-        const removed = interval[1]
-            ? new Date(interval[1].replace(/_/g, '-'))
-            : END_OF_TIME;
+        const removed = interval[1] ? new Date(interval[1].replace(/_/g, '-')) : END_OF_TIME;
 
         return {
             name: name.replace(/_/g, ' '),
-            dateRange: { appear, removed }
+            dateRange: { appear, removed },
         };
     });
 }
 
 export function findName(states: State[], time: number): string | null {
-    return states
-        .find(({ dateRange: { appear, removed } }) => {
+    return (
+        states.find(({ dateRange: { appear, removed } }) => {
             return appear.getTime() <= time && time < removed.getTime();
-        })?.name || null;
+        })?.name || null
+    );
 }

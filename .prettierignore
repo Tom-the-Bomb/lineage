@@ -1,0 +1,7 @@
+dist
+node_modules
+package-lock.json
+
+# map and timeline data: keep as authored
+src/assets
+public

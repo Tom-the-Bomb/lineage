@@ -1,41 +1,41 @@
 export interface DateInterval {
-    appear: Date
-    removed: Date
+    appear: Date;
+    removed: Date;
 }
 
 export interface LegendWrapper {
-    color: string
-    states: State[]
+    color: string;
+    states: State[];
 }
 
 export interface LineWrapper {
-    el: SVGPathElement
-    states: State[]
-    length: number
-    dashArray: string
+    el: SVGPathElement;
+    states: State[];
+    length: number;
+    dashArray: string;
 }
 
 export interface State {
-    name: string
-    dateRange: DateInterval
+    name: string;
+    dateRange: DateInterval;
 }
 
 export const Status = {
-    PrimaryOnly: 0,     // no prefix, e.g. MTR only, Shanghai Metro only
-    SecondaryOnly: 1,   // ^, e.g. KCR only, Shanghai Suburban Railway only
-    Both: 2,            // !, e.g. MTR + KCR, Shanghai Metro + Suburban Railway
+    PrimaryOnly: 0, // no prefix, e.g. MTR only, Shanghai Metro only
+    SecondaryOnly: 1, // ^, e.g. KCR only, Shanghai Suburban Railway only
+    Both: 2, // !, e.g. MTR + KCR, Shanghai Metro + Suburban Railway
 } as const;
 
-export type Status = typeof Status[keyof typeof Status];
+export type Status = (typeof Status)[keyof typeof Status];
 
 export interface StationWrapper {
-    el: SVGElement
-    status: Status
-    states: State[]
+    el: SVGElement;
+    status: Status;
+    states: State[];
 }
 
 export interface RawTooltipData {
-    x: number
-    y: number
-    station: StationWrapper
+    x: number;
+    y: number;
+    station: StationWrapper;
 }

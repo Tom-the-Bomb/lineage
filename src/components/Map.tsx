@@ -1,44 +1,23 @@
+import * as d3 from 'd3';
+import { useEffect, useCallback, useState, useMemo, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
-import * as d3 from 'd3'
-import {
-    useEffect,
-    useCallback,
-    useState,
-    useMemo,
-    useRef,
-} from 'react'
-import { Link } from 'react-router-dom'
+import { type LineWrapper, type StationWrapper, type RawTooltipData, Status } from '../schemas';
 
-import {
-    type LineWrapper,
-    type StationWrapper,
-    type RawTooltipData,
-    Status,
-} from '../schemas'
+import { findName, formatDate, parseLabelDates, playPause } from '../utils';
 
-import {
-    findName,
-    formatDate,
-    parseLabelDates,
-    playPause,
-} from '../utils'
+import { update, setupHoverEffect } from '../utils_d3';
 
-import {
-    update,
-    setupHoverEffect,
-} from '../utils_d3'
-
-import { systems, type SystemKey, type SystemConfig } from '../systems'
-import pause from '../assets/pause.svg'
-import play from '../assets/play.svg'
-import plus from '../assets/plus.svg'
-import minus from '../assets/minus.svg'
-
+import { systems, type SystemKey, type SystemConfig } from '../systems';
+import pause from '../assets/pause.svg';
+import play from '../assets/play.svg';
+import plus from '../assets/plus.svg';
+import minus from '../assets/minus.svg';
 
 function renderTooltip(
     tooltip: RawTooltipData | null,
     time: number,
-    config: SystemConfig
+    config: SystemConfig,
 ): React.ReactElement | null {
     if (!tooltip) {
         return null;
@@ -50,14 +29,12 @@ function renderTooltip(
     if (name) {
         return (
             <div
-                className={
-                    `absolute px-3 py-2 bg-gray-900/90 text-white text-sm rounded-md
-                    shadow-lg pointer-events-none z-50 whitespace-nowrap backdrop-blur-sm`
-                }
+                className={`absolute px-3 py-2 bg-gray-900/90 text-white text-sm rounded-md
+                    shadow-lg pointer-events-none z-50 whitespace-nowrap backdrop-blur-sm`}
                 style={{
                     left: `${tooltip.x + 10}px`,
                     top: `${tooltip.y + 10}px`,
-                    transform: 'translate(0, -50%)'
+                    transform: 'translate(0, -50%)',
                 }}
             >
                 <div className="flex gap-2 items-center">
@@ -68,7 +45,7 @@ function renderTooltip(
                 </div>
                 <div className="absolute w-2 h-2 bg-gray-900/90 rotate-45 -left-1 top-1/2 -translate-y-1/2"></div>
             </div>
-        )
+        );
     }
     return null;
 }
@@ -98,18 +75,21 @@ export default function Map({ system }: { system: SystemKey }) {
         timeRef.current = time;
     }, [time]);
 
-    const keyDownHandler = useCallback((e: KeyboardEvent) => {
-        if (e.code === 'Space') {
-            e.preventDefault();
-            playPause(setPlaying, timeRef.current, setTime, minDate, maxDate);
-        }
-    }, [minDate, maxDate]);
+    const keyDownHandler = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                playPause(setPlaying, timeRef.current, setTime, minDate, maxDate);
+            }
+        },
+        [minDate, maxDate],
+    );
 
     const ticks = useMemo(() => {
         const startYear = minDate.getUTCFullYear();
         const endYear = maxDate.getUTCFullYear();
         const tickDates = [];
-        for (let year = Math.ceil(startYear/ 5) * 5; year < endYear; year += 5) {
+        for (let year = Math.ceil(startYear / 5) * 5; year < endYear; year += 5) {
             tickDates.push(new Date(Date.UTC(year, 0, 1)));
         }
         return tickDates;
@@ -129,11 +109,12 @@ export default function Map({ system }: { system: SystemKey }) {
         return () => document.removeEventListener('keydown', keyDownHandler);
     }, [keyDownHandler]);
 
-    const legend = useMemo(() =>
-        config.lines.map(line => ({
-            color: line.color,
-            states: parseLabelDates(line.label),
-        })),
+    const legend = useMemo(
+        () =>
+            config.lines.map(line => ({
+                color: line.color,
+                states: parseLabelDates(line.label),
+            })),
         [config.lines],
     );
 
@@ -145,64 +126,68 @@ export default function Map({ system }: { system: SystemKey }) {
         const lines = svgDoc.querySelector('g#lines')!;
         const stations = svgDoc.querySelector('g#stations')!;
 
-        linesRef.current = Array.from(lines.querySelectorAll('path'))
-            .map(el => {
-                const length = el.getTotalLength();
-                const dashArray = svgDoc.defaultView!.getComputedStyle(el).strokeDasharray;
+        linesRef.current = Array.from(lines.querySelectorAll('path')).map(el => {
+            const length = el.getTotalLength();
+            const dashArray = svgDoc.defaultView!.getComputedStyle(el).strokeDasharray;
 
-                el.style.strokeDashoffset = String(length);
-                el.style.strokeDasharray = String(length);
-                el.dataset.hidden = 'true';
+            el.style.strokeDashoffset = String(length);
+            el.style.strokeDasharray = String(length);
+            el.dataset.hidden = 'true';
 
-                return {
-                    el,
-                    states: parseLabelDates(el.getAttribute('inkscape:label')!),
-                    length,
-                    dashArray,
-                };
-            });
+            return {
+                el,
+                states: parseLabelDates(el.getAttribute('inkscape:label')!),
+                length,
+                dashArray,
+            };
+        });
 
-        stationsRef.current = Array.from(stations.querySelectorAll<SVGElement>('path, circle, rect'))
-            .map(el => {
-                el.style.opacity = '0';
+        stationsRef.current = Array.from(
+            stations.querySelectorAll<SVGElement>('path, circle, rect'),
+        ).map(el => {
+            el.style.opacity = '0';
 
-                setupHoverEffect(el);
-                let label = el.getAttribute('inkscape:label')!;
+            setupHoverEffect(el);
+            let label = el.getAttribute('inkscape:label')!;
 
-                const status = label.startsWith('^')
-                    ? Status.SecondaryOnly
-                    : label.startsWith('!')
-                        ? Status.Both
-                        : Status.PrimaryOnly;
-                label = label.replace(/^[!^]/, '');
+            const status = label.startsWith('^')
+                ? Status.SecondaryOnly
+                : label.startsWith('!')
+                  ? Status.Both
+                  : Status.PrimaryOnly;
+            label = label.replace(/^[!^]/, '');
 
-                const station = {
-                    el,
-                    status,
-                    states: parseLabelDates(label),
-                };
+            const station = {
+                el,
+                status,
+                states: parseLabelDates(label),
+            };
 
-                if (el.localName !== 'path') {
-                    el.addEventListener('mouseenter', (e) => {
-                        const rect = svgRef.current!.getBoundingClientRect();
-                        setTooltip({
-                            x: e.clientX - rect.left,
-                            y: e.clientY - rect.top,
-                            station,
-                        });
+            if (el.localName !== 'path') {
+                el.addEventListener('mouseenter', e => {
+                    const rect = svgRef.current!.getBoundingClientRect();
+                    setTooltip({
+                        x: e.clientX - rect.left,
+                        y: e.clientY - rect.top,
+                        station,
                     });
-                    el.addEventListener('mousemove', (e) => {
-                        const rect = svgRef.current!.getBoundingClientRect();
-                        setTooltip(prev => prev ? {
-                            ...prev,
-                            x: e.clientX - rect.left,
-                            y: e.clientY - rect.top
-                        } : null);
-                    });
-                    el.addEventListener('mouseleave', () => setTooltip(null));
-                }
-                return station;
-            });
+                });
+                el.addEventListener('mousemove', e => {
+                    const rect = svgRef.current!.getBoundingClientRect();
+                    setTooltip(prev =>
+                        prev
+                            ? {
+                                  ...prev,
+                                  x: e.clientX - rect.left,
+                                  y: e.clientY - rect.top,
+                              }
+                            : null,
+                    );
+                });
+                el.addEventListener('mouseleave', () => setTooltip(null));
+            }
+            return station;
+        });
 
         update(timeRef.current, linesRef.current, stationsRef.current, legend);
 
@@ -230,56 +215,69 @@ export default function Map({ system }: { system: SystemKey }) {
                 [viewBox.width, viewBox.height],
             ])
             .on('zoom', (event: d3.D3ZoomEvent<SVGSVGElement, unknown>) => {
-                zoomLayer.attr('transform', event.transform.toString())
+                zoomLayer.attr('transform', event.transform.toString());
             });
 
-        svgEl.addEventListener('touchmove', (e) => {
-            e.preventDefault();
-        }, { passive: false });
+        svgEl.addEventListener(
+            'touchmove',
+            e => {
+                e.preventDefault();
+            },
+            { passive: false },
+        );
 
         let lastDistance = 0;
 
-        svgEl.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 2) {
-                const touch1 = e.touches[0];
-                const touch2 = e.touches[1];
-                lastDistance = Math.hypot(
-                    touch2.clientX - touch1.clientX,
-                    touch2.clientY - touch1.clientY
-                );
-            }
-        }, { passive: true });
-
-        svgEl.addEventListener('touchmove', (e) => {
-            if (e.touches.length === 2) {
-                const touch1 = e.touches[0];
-                const touch2 = e.touches[1];
-
-                const distance = Math.hypot(
-                    touch2.clientX - touch1.clientX,
-                    touch2.clientY - touch1.clientY
-                );
-
-                if (lastDistance > 0) {
-                    const scale = distance / lastDistance;
-                    svgD3Ref.current?.call(
-                        zoomRef.current!.scaleBy,
-                        scale,
+        svgEl.addEventListener(
+            'touchstart',
+            e => {
+                if (e.touches.length === 2) {
+                    const touch1 = e.touches[0];
+                    const touch2 = e.touches[1];
+                    lastDistance = Math.hypot(
+                        touch2.clientX - touch1.clientX,
+                        touch2.clientY - touch1.clientY,
                     );
-                    lastDistance = distance;
                 }
-            }
-        }, { passive: false });
+            },
+            { passive: true },
+        );
 
-        svgEl.addEventListener('touchend', () => {
-            lastDistance = 0;
-        }, { passive: true });
+        svgEl.addEventListener(
+            'touchmove',
+            e => {
+                if (e.touches.length === 2) {
+                    const touch1 = e.touches[0];
+                    const touch2 = e.touches[1];
+
+                    const distance = Math.hypot(
+                        touch2.clientX - touch1.clientX,
+                        touch2.clientY - touch1.clientY,
+                    );
+
+                    if (lastDistance > 0) {
+                        const scale = distance / lastDistance;
+                        svgD3Ref.current?.call(zoomRef.current!.scaleBy, scale);
+                        lastDistance = distance;
+                    }
+                }
+            },
+            { passive: false },
+        );
+
+        svgEl.addEventListener(
+            'touchend',
+            () => {
+                lastDistance = 0;
+            },
+            { passive: true },
+        );
 
         svgd3
             .call(zoom)
-            .call(zoom.transform, d3.zoomIdentity
-                .translate(initialTranslateX, initialTranslateY)
-                .scale(initialScale)
+            .call(
+                zoom.transform,
+                d3.zoomIdentity.translate(initialTranslateX, initialTranslateY).scale(initialScale),
             );
 
         zoomRef.current = zoom;
@@ -321,21 +319,24 @@ export default function Map({ system }: { system: SystemKey }) {
             className="w-dvw h-dvh flex justify-center items-center touch-none"
             style={{ '--slider-thumb': `url(${config.logo})` } as React.CSSProperties}
         >
-            <header className={
-                `absolute top-0 left-0 w-dvw pt-15 flex flex-col justify-center items-center gap-3 text-center pointer-events-none z-10`
-            }>
+            <header
+                className={`absolute top-0 left-0 w-dvw pt-15 flex flex-col justify-center items-center gap-3 text-center pointer-events-none z-10`}
+            >
                 <div>
                     <h1 className="text-5xl font-bold font-serif text-shadow-xl">{config.title}</h1>
-                    <h2 className="text-2xl font-zh" lang="zh-Hans">{config.chineseTitle}</h2>
+                    <h2 className="text-2xl font-zh" lang="zh-Hans">
+                        {config.chineseTitle}
+                    </h2>
                 </div>
                 <div className="flex flex-col gap-5 justify-center items-center">
-                    <h3 className="text-sm font-normal text-shadow-xl opacity-70">{config.description}</h3>
-                    {config.article && <Link
-                        to={config.article}
-                        className="pointer-events-auto nav-btn"
-                    >
-                        Read more
-                    </Link>}
+                    <h3 className="text-sm font-normal text-shadow-xl opacity-70">
+                        {config.description}
+                    </h3>
+                    {config.article && (
+                        <Link to={config.article} className="pointer-events-auto nav-btn">
+                            Read more
+                        </Link>
+                    )}
                 </div>
             </header>
             <main className="w-dvw h-dvh touch-none">
@@ -363,7 +364,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     className="zoom-btn"
                     aria-label="Zoom in"
                 >
-                    <img src={plus} alt="Zoom in" className="h-6 w-6"/>
+                    <img src={plus} alt="Zoom in" className="h-6 w-6" />
                 </button>
                 <button
                     type="button"
@@ -378,46 +379,49 @@ export default function Map({ system }: { system: SystemKey }) {
                     className="zoom-btn"
                     aria-label="Zoom out"
                 >
-                    <img src={minus} alt="Zoom out" className="h-6 w-6"/>
+                    <img src={minus} alt="Zoom out" className="h-6 w-6" />
                 </button>
             </div>
             <div className="absolute bottom-29 flex flex-wrap justify-center w-2/3 lg:w-1/2 items-center gap-1 pointer-events-none">
-                {
-                    legend.map((line) => {
-                        const name = findName(line.states, time);
+                {legend.map(line => {
+                    const name = findName(line.states, time);
 
-                        if (name) {
-                            return (
-                                <div key={line.color} className={
-                                    `p-1 rounded-md
+                    if (name) {
+                        return (
+                            <div
+                                key={line.color}
+                                className={`p-1 rounded-md
                                     flex items-center gap-2 text-[7px] md:text-[10px] pointer-events-none
-                                    bg-gray-400/10 text-gray-600`
-                                }>
-                                    <div className="w-3 md:w-4 h-1 md:h-2 rounded-sm" style={{ backgroundColor: line.color }}></div>
-                                    {name}
-                                </div>
-                            )
-                        }
-                        return null;
-                    })
-                }
+                                    bg-gray-400/10 text-gray-600`}
+                            >
+                                <div
+                                    className="w-3 md:w-4 h-1 md:h-2 rounded-sm"
+                                    style={{ backgroundColor: line.color }}
+                                ></div>
+                                {name}
+                            </div>
+                        );
+                    }
+                    return null;
+                })}
             </div>
-            <footer className={
-                `absolute bottom-0 left-0 w-dvw p-4 pt-2 flex flex-col justify-center items-center gap-2
-                bg-gray-400/50 pointer-events-none`
-            }>
+            <footer
+                className={`absolute bottom-0 left-0 w-dvw p-4 pt-2 flex flex-col justify-center items-center gap-2
+                bg-gray-400/50 pointer-events-none`}
+            >
                 <button
                     type="button"
                     onClick={() => playPause(setPlaying, time, setTime, minDate, maxDate)}
                     className="absolute left-5 top-4 h-10 flex justify-center items-center pointer-events-auto"
                     aria-label={playing ? 'Pause timeline' : 'Play timeline'}
                 >
-                    <img src={playing ? pause : play} alt={playing ? 'Pause' : 'Play'} className="h-full"/>
+                    <img
+                        src={playing ? pause : play}
+                        alt={playing ? 'Pause' : 'Play'}
+                        className="h-full"
+                    />
                 </button>
-                <label
-                    htmlFor="date-slider"
-                    className="inline-block text-lg font-medium"
-                >
+                <label htmlFor="date-slider" className="inline-block text-lg font-medium">
                     {formatDate(new Date(time))}
                 </label>
                 <div className="relative w-full h-12 flex items-center px-4 pointer-events-auto">
@@ -427,33 +431,32 @@ export default function Map({ system }: { system: SystemKey }) {
                         min={minDate.getTime()}
                         max={maxDate.getTime()}
                         value={time}
-                        onChange={(e) => setTime(Number(e.target.value))}
+                        onChange={e => setTime(Number(e.target.value))}
                         className="absolute left-4 right-4 top-1/2 -translate-y-1/2 z-10 opacity-80 cursor-pointer"
                     />
                     <div className="absolute top-1/2 left-4 right-4 h-full -translate-y-1/2 pointer-events-none">
-                        {
-                            ticks.map(date => {
-                                const min_time = minDate.getTime();
-                                const pct = (
-                                    (date.getTime() - min_time)
-                                    / (maxDate.getTime() - min_time)
-                                ) * 100;
+                        {ticks.map(date => {
+                            const min_time = minDate.getTime();
+                            const pct =
+                                ((date.getTime() - min_time) / (maxDate.getTime() - min_time)) *
+                                100;
 
-                                return (
-                                    <div
-                                        key={date.getTime()}
-                                        className="absolute top-1/2 flex flex-col items-center"
-                                        style={{ left: `${pct}%`, transform: `translate(-50%, -50%)` }}
-                                    >
-                                        <div className="h-3 w-0.5 bg-gray-800/50 mt-6"></div>
-                                        <span className="text-[10px] font-medium text-gray-800 mt-0.5">{date.getUTCFullYear()}</span>
-                                    </div>
-                                )
-                            })
-                        }
+                            return (
+                                <div
+                                    key={date.getTime()}
+                                    className="absolute top-1/2 flex flex-col items-center"
+                                    style={{ left: `${pct}%`, transform: `translate(-50%, -50%)` }}
+                                >
+                                    <div className="h-3 w-0.5 bg-gray-800/50 mt-6"></div>
+                                    <span className="text-[10px] font-medium text-gray-800 mt-0.5">
+                                        {date.getUTCFullYear()}
+                                    </span>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </footer>
         </div>
-    )
+    );
 }

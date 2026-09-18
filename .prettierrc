@@ -1,0 +1,13 @@
+{
+    "tabWidth": 4,
+    "printWidth": 100,
+    "singleQuote": true,
+    "semi": true,
+    "arrowParens": "avoid",
+    "overrides": [
+        {
+            "files": ["*.json", "*.jsonc", "*.md"],
+            "options": { "tabWidth": 2 }
+        }
+    ]
+}
