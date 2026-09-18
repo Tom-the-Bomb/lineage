@@ -7,6 +7,9 @@ import shMap from './assets/sh/map.svg';
 import shMetroLogo from './assets/sh/metro.svg';
 import shSuburbanLogo from './assets/sh/suburban.svg';
 import shLines from './assets/sh/data/lines.json';
+import tpMap from './assets/tp/map.svg';
+import tpLogo from './assets/tp/metro.svg';
+import tpLines from './assets/tp/data/lines.json';
 
 const KCR_MERGER_DATE = Date.UTC(2007, 11, 2);
 
@@ -64,6 +67,20 @@ export const systems = {
                     ? [{ src: shSuburbanLogo, alt: 'Shanghai Suburban Railway' }]
                     : []),
             ];
+        },
+    },
+    tp: {
+        title: 'Taipei Metro History',
+        chineseTitle: '臺北捷運歷史',
+        description: "Explore how Taipei's metro network was built",
+        map: tpMap,
+        logo: tpLogo,
+        minDate: new Date(Date.UTC(1996, 0, 1)),
+        maxDate: new Date(Date.UTC(2025, 11, 31)),
+        lines: tpLines.lines,
+        initialView: { center: [1528, 1907], zoom: 1 }, // Taipei Main Station
+        tooltipLogos() {
+            return [{ src: tpLogo, alt: 'Taipei Metro' }];
         },
     },
 } satisfies Record<string, SystemConfig>;

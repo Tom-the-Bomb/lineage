@@ -52,7 +52,7 @@ body {
 #date-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
+    width: 24px;
     height: 16px;
     border: 0;
     background: var(--slider-thumb) center / contain no-repeat transparent;
@@ -66,7 +66,7 @@ body {
 }
 
 #date-slider::-moz-range-thumb {
-    width: 20px;
+    width: 24px;
     height: 16px;
     border: 0;
     background: var(--slider-thumb) center / contain no-repeat transparent;
