@@ -4,6 +4,8 @@ import { type LegendWrapper, type LineWrapper, type StationWrapper } from './sch
 
 import { findName } from './utils';
 
+export const MAP_TRANSITION_MS = 650;
+
 export function update(
     dateNum: number,
     lines: LineWrapper[],
@@ -32,7 +34,7 @@ export function update(
 
                 selection
                     .transition()
-                    .duration(500)
+                    .duration(MAP_TRANSITION_MS)
                     .ease(d3.easeLinear)
                     .style('stroke-dashoffset', '0');
             }
@@ -41,7 +43,7 @@ export function update(
 
             d3.select(el)
                 .transition()
-                .duration(500)
+                .duration(MAP_TRANSITION_MS)
                 .ease(d3.easeLinear)
                 .style('stroke-dashoffset', String(length))
                 .style('stroke-dasharray', String(length));
@@ -54,7 +56,7 @@ export function update(
             if (el.style.opacity !== '1') {
                 d3.select(el)
                     .transition('appear')
-                    .duration(500)
+                    .duration(MAP_TRANSITION_MS)
                     .ease(d3.easeLinear)
                     .style('opacity', '1');
             }
@@ -63,7 +65,7 @@ export function update(
             if (el.style.opacity !== '0') {
                 d3.select(el)
                     .transition('disappear')
-                    .duration(500)
+                    .duration(MAP_TRANSITION_MS)
                     .ease(d3.easeLinear)
                     .style('opacity', '0');
             }

@@ -6,7 +6,7 @@ import { type LineWrapper, type StationWrapper, type RawTooltipData, Status } fr
 
 import { findName, formatDate, parseLabelDates, playPause } from '../utils';
 
-import { update, setupHoverEffect } from '../utils_d3';
+import { MAP_TRANSITION_MS, update, setupHoverEffect } from '../utils_d3';
 
 import { systems, type SystemKey, type SystemConfig } from '../systems';
 import pause from '../assets/pause.svg';
@@ -62,6 +62,7 @@ export default function Map({ system }: { system: SystemKey }) {
     const svgRef = useRef<HTMLObjectElement | null>(null);
     const linesRef = useRef<LineWrapper[]>([]);
     const stationsRef = useRef<StationWrapper[]>([]);
+    const eventDatesRef = useRef<number[]>([]);
     const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
     const svgD3Ref = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined> | null>(null);
 
@@ -189,6 +190,17 @@ export default function Map({ system }: { system: SystemKey }) {
             return station;
         });
 
+        const eventDates = new Set<number>();
+        for (const { states } of [...legend, ...linesRef.current, ...stationsRef.current]) {
+            for (const { dateRange } of states) {
+                eventDates.add(dateRange.appear.getTime());
+                eventDates.add(dateRange.removed.getTime());
+            }
+        }
+        eventDatesRef.current = [...eventDates]
+            .filter(date => minDate.getTime() <= date && date <= maxDate.getTime())
+            .sort((a, b) => a - b);
+
         update(timeRef.current, linesRef.current, stationsRef.current, legend);
 
         const svgd3 = d3.select(svgDoc).select<SVGSVGElement>('svg');
@@ -288,21 +300,27 @@ export default function Map({ system }: { system: SystemKey }) {
         svgEl.style.height = '100%';
 
         return () => svgDoc.removeEventListener('keydown', keyDownHandler);
-    }, [svgDoc, legend, keyDownHandler]);
+    }, [svgDoc, legend, keyDownHandler, minDate, maxDate]);
 
     useEffect(() => {
         update(time, linesRef.current, stationsRef.current, legend);
     }, [time, legend]);
 
     useEffect(() => {
-        if (!playing) {
+        if (!playing || !svgDoc) {
             return;
         }
 
+        const eventDates = eventDatesRef.current;
+        const delay = eventDates.includes(time) ? MAP_TRANSITION_MS + 100 : 40;
+
         const timer = d3.interval(() => {
             setTime(prev => {
-                const nextDate = d3.utcMonth.offset(new Date(prev), 1);
-                const nextMs = nextDate.getTime();
+                const nextDate = d3.utcMonth.offset(d3.utcMonth.floor(new Date(prev)), 1);
+                const nextMs = Math.min(
+                    nextDate.getTime(),
+                    eventDates.find(date => date > prev) ?? maxDate.getTime(),
+                );
 
                 if (nextMs >= maxDate.getTime()) {
                     setPlaying(false);
@@ -310,9 +328,9 @@ export default function Map({ system }: { system: SystemKey }) {
                 }
                 return nextMs;
             });
-        }, 40);
+        }, delay);
         return () => timer.stop();
-    }, [playing, maxDate]);
+    }, [playing, time, svgDoc, maxDate]);
 
     return (
         <div
