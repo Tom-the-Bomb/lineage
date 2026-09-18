@@ -150,6 +150,10 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 - A track is one `<path>` per **line segment with its own dates**: split a line wherever a stretch
   opens, closes, is rerouted or changes name on a different date from its neighbours. Each segment
   runs station-centre to station-centre along the drawn route.
+- MUST: a track has fewer than 256 straight segments (`L` commands). WebKit restarts the dash
+  pattern every 256 line segments, so a longer polyline draws in as several pieces at once in Safari.
+  Simplify dense polylines by dropping vertices (Douglas–Peucker at ~0.05 `W`, endpoints kept);
+  Bézier curves don't count.
 - MUST: a terminus segment ends exactly at the terminus marker's centre. It must not stick out beyond it.
 - A segment that existed only for a period (e.g. an old alignment) gets its own path with an end
   date. Its replacement is a separate path that starts on the day the old one ends.
@@ -474,7 +478,7 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
    If you traced centrelines from filled outlines, look for zig-zags. Railway-style lines drawn with an
    offset box at each station leave a jog at every station, like the Jinshan Railway did. Delete the jog
    vertices: two opposite turns over a short segment, within a few units of the straight line. Then
-   re-snap the stations.
+   re-snap the stations. Simplify every track to fewer than 256 straight segments (§4).
 6. **Resize markers** to the formulas in §5 for the chosen `W`, and snap every circle centre onto its track.
 7. **Label everything** per §2 and §7, then build `lines.json` and `events.json`.
 8. Round coordinates to 3 decimals, and check that every `id` is unique.
@@ -505,8 +509,8 @@ MTR predates this spec. Don't copy these patterns into new systems:
 ## Appendix: `check_map.py`
 
 Save it anywhere and run it from the repository root: `python3 check_map.py sh`. It checks
-structure, labels and legend coverage, and compares change dates with `events.json`. It doesn't
-check geometry; §11 step 6 covers that.
+structure, labels, legend coverage and the segment limit of §4, and compares change dates with
+`events.json`. It doesn't check geometry otherwise; §11 step 6 covers that.
 
 ```python
 # python3 check_map.py <system-key>   (run from the repo root)
@@ -573,6 +577,9 @@ for tag, attrs in children('lines'):
         errors.append(f'track {label.group(1)!r}: prefixes belong on station markers only')
     st = check_label('track', label.group(1))
     record('track', st)
+    d = re.search(r'\bd="([^"]*)"', attrs)
+    if d and len(re.findall(r'[Ll]', d.group(1))) >= 256:
+        errors.append(f'track {label.group(1)!r} has 256+ straight segments: Safari draws it in pieces (§4)')
     own_colour = bool(re.search(r'\bstroke="|stroke:|class="', attrs))
     track_names += [(name, start, end, own_colour) for name, start, end in st]
 for tag, attrs in children('stations'):
