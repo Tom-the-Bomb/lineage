@@ -8,15 +8,9 @@
     ]
   },
   {
-    "date": "1994-12-12",
-    "descriptions": [
-      "Line 1: Xujiahui - Shanghai Railway Station opens"
-    ]
-  },
-  {
     "date": "1995-04-10",
     "descriptions": [
-      "Line 1 begins regular trial passenger service over the full Shanghai Railway Station-Jinjiang Park route."
+      "Line 1: Xujiahui - Shanghai Railway Station opens"
     ]
   },
   {
@@ -42,7 +36,7 @@
   {
     "date": "1999-12-28",
     "descriptions": [
-      "Xinlonghua → Shanghai South Railway Station, on the opening of the temporary Shanghai South railway station"
+      "Xinlonghua → Shanghai South Railway Station"
     ]
   },
   {
@@ -55,7 +49,7 @@
     "date": "2000-08-10",
     "descriptions": [
       "People's Park → People's Square",
-      "People's Square: internal interchange opens"
+      "People's Square: in-station interchange opens"
     ]
   },
   {
@@ -63,7 +57,9 @@
     "descriptions": [
       "Line 2: Longyang Road - Zhangjiang High-Tech Park (elevated station) opens",
       "Pearl Line: Shanghai South Railway Station (old surface station) - Shilong Road opens",
-      "Pearl Line: Shilong Road - Jiangwan Town opens"
+      "Pearl Line: Shilong Road - Jiangwan Town opens",
+      "Shanghai South Railway Station: out-of-station interchange opens",
+      "Zhongshan Park: out-of-station interchange opens"
     ]
   },
   {
@@ -85,39 +81,22 @@
     ]
   },
   {
-    "date": "2002-12-31",
+    "date": "2003-10-11",
     "descriptions": [
       "Maglev: Longyang Road - Pudong International Airport opens"
     ]
   },
   {
-    "date": "2003-01-14",
-    "descriptions": [
-      "Numbered Rail Transit Line names announced as the common naming scheme; R/M/L codes remain planning history."
-    ]
-  },
-  {
     "date": "2003-11-25",
     "descriptions": [
-      "Line 5: Xinzhuang - Minhang Development Zone opens"
+      "Line 5: Xinzhuang - Minhang Development Zone opens",
+      "Xinzhuang: out-of-station interchange opens"
     ]
   },
   {
     "date": "2004-01-01",
     "descriptions": [
       "Line 3: Shanghai South Railway Station (old surface station) - Shilong Road closes"
-    ]
-  },
-  {
-    "date": "2004-06-10",
-    "descriptions": [
-      "Line 3: Yishan Road - Shilong Road suspended after viaduct subsidence"
-    ]
-  },
-  {
-    "date": "2004-07-24",
-    "descriptions": [
-      "Line 3: Yishan Road - Shilong Road resumes"
     ]
   },
   {
@@ -142,28 +121,29 @@
   {
     "date": "2005-10-15",
     "descriptions": [
-      "Line 3: Shanghai South Railway Station - Shilong Road opens"
+      "Line 3: Shanghai South Railway Station - Shilong Road opens",
+      "Shanghai South Railway Station: out-of-station interchange opens"
     ]
   },
   {
     "date": "2005-10-22",
     "descriptions": [
-      "Dongfang Road closes to be rebuilt as the four-line Century Avenue interchange"
+      "Line 2: Dongfang Road closes for rebuilding as Century Avenue"
     ]
   },
   {
     "date": "2005-12-25",
     "descriptions": [
-      "Xinzhuang: internal interchange opens",
-      "Zhongshan Park: internal interchange opens"
+      "Shanghai South Railway Station: in-station interchange opens",
+      "Xinzhuang: in-station interchange opens",
+      "Zhongshan Park: in-station interchange opens"
     ]
   },
   {
     "date": "2005-12-31",
     "descriptions": [
-      "Line 4: Damuqiao Road - Yishan Road opens",
-      "Line 4: Yishan Road - Lancun Road opens",
-      "Zhongshan Park: internal interchange opens"
+      "Line 4: Lancun Road - Damuqiao Road opens, sharing Line 3 between Baoshan Road and Hongqiao Road",
+      "Yishan Road: out-of-station interchange opens"
     ]
   },
   {
@@ -196,38 +176,25 @@
   {
     "date": "2007-12-29",
     "descriptions": [
+      "Hongkou Football Stadium: out-of-station interchange opens",
       "Line 1: Gongfu Xincun - Fujin Road opens",
       "Line 4: Lancun Road - Damuqiao Road opens",
       "Line 6: Gangcheng Road - South Lingyan Road opens",
       "Line 8: Shiguang Road - Yaohua Road opens",
-      "Line 9: Songjiang Xincheng - Guilin Road opens",
-      "People's Square: internal interchange opens"
-    ]
-  },
-  {
-    "date": "2008-01-22",
-    "descriptions": [
-      "Line 8: South Xizang Road - Yaohua Road suspended while a road tunnel is bored beneath it"
-    ]
-  },
-  {
-    "date": "2008-02-01",
-    "descriptions": [
-      "Line 8: South Xizang Road - Yaohua Road resumes"
+      "Line 9: Songjiang Xincheng - Guilin Road opens"
     ]
   },
   {
     "date": "2008-06-01",
     "descriptions": [
-      "Shanghai Railway Station: walking connection opens",
-      "Virtual transfers begin at Shanghai Railway Station, Hongkou Football Stadium and Yishan Road."
+      "Shanghai Railway Station: out-of-station interchange opens"
     ]
   },
   {
     "date": "2008-12-28",
     "descriptions": [
       "Line 9: Guilin Road - Yishan Road opens",
-      "Yishan Road: internal interchange opens"
+      "Yishan Road: in-station interchange opens between Line 3 and Line 9"
     ]
   },
   {
@@ -245,34 +212,16 @@
   {
     "date": "2009-12-31",
     "descriptions": [
+      "Line 9: Yishan Road - Century Avenue opens",
       "Line 11: North Jiading - Jiangsu Road opens",
-      "Line 9: Yishan Road - Century Avenue opens"
-    ]
-  },
-  {
-    "date": "2010-01-29",
-    "descriptions": [
-      "The planned Line 11 south section is designated Line 21."
-    ]
-  },
-  {
-    "date": "2010-02-14",
-    "descriptions": [
-      "Line 2: Longyang Road - Zhangjiang High-Tech Park (elevated station) closes"
+      "Xujiahui: out-of-station interchange opens"
     ]
   },
   {
     "date": "2010-02-24",
     "descriptions": [
-      "Line 2: Longyang Road - Zhangjiang High-Tech Park opens",
-      "Line 2: Zhangjiang High-Tech Park - Guanglan Road opens",
-      "Line 2: Zhangjiang High-Tech Park opens"
-    ]
-  },
-  {
-    "date": "2010-03-01",
-    "descriptions": [
-      "The planned Line 21 is designated Line 16; it does not open until 2013."
+      "Line 2: Longyang Road - Guanglan Road opens, with Zhangjiang High-Tech Park rebuilt underground",
+      "Line 2: Longyang Road - Zhangjiang High-Tech Park (elevated station) closes"
     ]
   },
   {
@@ -291,7 +240,7 @@
     "date": "2010-04-07",
     "descriptions": [
       "Line 9: Century Avenue - Middle Yanggao Road opens",
-      "Xujiahui: in-station interchange hall opens, ending the Line 1 / Line 9 virtual transfer"
+      "Xujiahui: in-station interchange opens"
     ]
   },
   {
@@ -304,7 +253,8 @@
     "date": "2010-04-10",
     "descriptions": [
       "Line 10: Longxi Road - Hangzhong Road opens",
-      "Line 10: Longxi Road - Xinjiangwancheng opens"
+      "Line 10: Longxi Road - Xinjiangwancheng opens",
+      "South Shaanxi Road: out-of-station interchange opens"
     ]
   },
   {
@@ -329,6 +279,7 @@
   {
     "date": "2010-11-30",
     "descriptions": [
+      "Hongqiao Airport Terminal 2: out-of-station interchange opens",
       "Line 10: Hongqiao Railway Station - Longxi Road opens"
     ]
   },
@@ -336,7 +287,7 @@
     "date": "2010-12-28",
     "descriptions": [
       "Line 7: Meilan Lake - Shanghai University opens",
-      "Yishan Road: internal interchange opens"
+      "Yishan Road: in-station interchange opens"
     ]
   },
   {
@@ -366,12 +317,6 @@
     ]
   },
   {
-    "date": "2011-09-27",
-    "descriptions": [
-      "Line 10: Hongqiao Road - Tiantong Road closed after a rear-end collision"
-    ]
-  },
-  {
     "date": "2012-06-06",
     "descriptions": [
       "Chuanchang Road → Middle Longhua Road"
@@ -387,15 +332,15 @@
   {
     "date": "2012-10-21",
     "descriptions": [
-      "Hongkou Football Stadium: internal interchange opens"
+      "Hongkou Football Stadium: in-station interchange opens"
     ]
   },
   {
     "date": "2012-12-30",
     "descriptions": [
       "Expo Line → Line 13",
-      "Line 13: Jinyun Road - Jinshajiang Road opens",
-      "Line 9: Songjiang South Railway Station - Songjiang Xincheng opens"
+      "Line 9: Songjiang South Railway Station - Songjiang Xincheng opens",
+      "Line 13: Jinyun Road - Jinshajiang Road opens"
     ]
   },
   {
@@ -455,9 +400,10 @@
       "Line 11: Luoshan Road - Kangxin Highway opens",
       "Line 12: Qixin Road - Qufu Road opens",
       "Line 13: Changshou Road - Shibo Avenue opens",
+      "Longhua: out-of-station interchange opens",
       "Lupu Bridge → World Expo Museum",
-      "South Shaanxi Road: internal interchange opens",
-      "West Nanjing Road: walking connection opens"
+      "South Shaanxi Road: in-station interchange opens",
+      "West Nanjing Road: out-of-station interchange opens"
     ]
   },
   {
@@ -467,22 +413,11 @@
     ]
   },
   {
-    "date": "2017-01-17",
-    "descriptions": [
-      "People’s Square closes for rebuilding; trains run through without stopping"
-    ]
-  },
-  {
-    "date": "2017-02-10",
-    "descriptions": [
-      "People’s Square reopens after rebuilding"
-    ]
-  },
-  {
     "date": "2017-12-30",
     "descriptions": [
-      "Line 17: Hongqiao Railway Station - Oriental Land opens",
-      "Line 9: Middle Yanggao Road - Caolu opens"
+      "Hongqiao Airport Terminal 2: in-station interchange opens",
+      "Line 9: Middle Yanggao Road - Caolu opens",
+      "Line 17: Hongqiao Railway Station - Oriental Land opens"
     ]
   },
   {
@@ -494,40 +429,30 @@
   {
     "date": "2018-12-26",
     "descriptions": [
-      "Songjiang Tram: Line 2 opens between Canghua Road and Zhongchen Road"
+      "Songjiang Tram 2: Canghua Road - Zhongchen Road opens"
     ]
   },
   {
     "date": "2018-12-30",
     "descriptions": [
-      "Changqing Road: walking connection opens",
+      "Changqing Road: out-of-station interchange opens",
+      "Line 5: Dongchuan Road - Fengxian Xincheng opens",
       "Line 13: Shibo Avenue - Zhangjiang Road opens",
-      "Line 5: Dongchuan Road - Fengxian Xincheng opens"
+      "Longhua: in-station interchange opens"
     ]
   },
   {
     "date": "2019-08-10",
     "descriptions": [
-      "Songjiang Tram: Line 1 opens between Canghua Road and Xinmiaosan Road",
-      "Songjiang Tram: Line 2 closes its loop between Zhongchen Road and Jinxi Road; Line 2 stops serving Canghua Road"
+      "Songjiang Tram 1: Canghua Road - Xinmiaosan Road opens",
+      "Songjiang Tram 2: Zhongchen Road - Jinxi Road opens, closing the loop",
+      "Songjiang Tram 2: stops serving Canghua Road"
     ]
   },
   {
     "date": "2019-12-30",
     "descriptions": [
-      "Songjiang Tram: Line 1 extends from Xinmiaosan Road to Xinqiao Railway Station"
-    ]
-  },
-  {
-    "date": "2020-01-23",
-    "descriptions": [
-      "Line 2: East Xujing - Songhong Road suspended for tunnel repairs"
-    ]
-  },
-  {
-    "date": "2020-02-02",
-    "descriptions": [
-      "Line 2: East Xujing - Songhong Road resumes"
+      "Songjiang Tram 1: Xinmiaosan Road - Xinqiao Railway Station opens"
     ]
   },
   {
@@ -547,7 +472,7 @@
     "date": "2021-01-23",
     "descriptions": [
       "Line 15: Gucun Park - Zizhu Hi-tech Park opens",
-      "Loushanguan Road: walking connection opens",
+      "Loushanguan Road: out-of-station interchange opens",
       "West Shanghai Railway Station → Shanghai West Railway Station (English name only; Chinese unchanged)"
     ]
   },
@@ -567,45 +492,9 @@
   {
     "date": "2021-12-30",
     "descriptions": [
-      "Caoyang Road: walking connection opens",
+      "Caoyang Road: out-of-station interchange opens",
       "Line 14: Fengbang - Guiqiao Road opens",
       "Line 18: South Changjiang Road - Yuqiao opens"
-    ]
-  },
-  {
-    "date": "2022-03-28",
-    "descriptions": [
-      "COVID-19: stations east and south of the Huangpu River suspended"
-    ]
-  },
-  {
-    "date": "2022-05-10",
-    "descriptions": [
-      "COVID-19: the entire network shuts down, the only complete closure in its history"
-    ]
-  },
-  {
-    "date": "2022-05-22",
-    "descriptions": [
-      "COVID-19: Lines 3, 6, 10 and 16 resume"
-    ]
-  },
-  {
-    "date": "2022-06-01",
-    "descriptions": [
-      "COVID-19: all twenty lines resume basic operation"
-    ]
-  },
-  {
-    "date": "2022-12-12",
-    "descriptions": [
-      "COVID-19: Shanghai Circuit reopens, the last station to return to service"
-    ]
-  },
-  {
-    "date": "2023-06-24",
-    "descriptions": [
-      "Huaqiao: app-based interchange with Suzhou Metro Line 11 begins"
     ]
   },
   {
@@ -613,11 +502,11 @@
     "descriptions": [
       "Dongchang Road → South Pudong Road",
       "East Xujing → National Exhibition and Convention Center",
-      "National Exhibition and Convention Center: walking connection opens",
+      "National Exhibition and Convention Center: out-of-station interchange opens",
       "Pudian Road → Xiangcheng Road",
       "Pudong International Airport → Pudong Airport Terminal 1 and 2",
       "Songjiang South Railway Station → Shanghai Songjiang Railway Station",
-      "South Pudong Road: walking connection opens",
+      "South Pudong Road: out-of-station interchange opens",
       "West Huajing → Jinghong Road",
       "Yuanshen Stadium → Yuanshen Sports Center",
       "Zhuguang Road → National Exhibition and Convention Center"
@@ -638,13 +527,16 @@
   {
     "date": "2024-12-27",
     "descriptions": [
-      "Airport Link Line: Hongqiao Airport Terminal 2 - Pudong Airport Terminal 1 and 2 opens"
+      "Airport Link Line: Hongqiao Airport Terminal 2 - Pudong Airport Terminal 1 and 2 opens",
+      "Hongqiao Airport Terminal 2: out-of-station interchange opens with the Airport Link Line",
+      "Jinghong Road: out-of-station interchange opens",
+      "Pudong Airport Terminal 1 and 2: out-of-station interchange opens with the Airport Link Line"
     ]
   },
   {
     "date": "2024-12-31",
     "descriptions": [
-      "Loushanguan Road: paid-area interchange passage opens between Line 2 and Line 15"
+      "Loushanguan Road: in-station interchange opens"
     ]
   },
   {
@@ -656,7 +548,7 @@
   {
     "date": "2025-07-05",
     "descriptions": [
-      "Jinghong Road: paid-area interchange opens between the Airport Link Line and Line 15"
+      "Jinghong Road: in-station interchange opens"
     ]
   },
   {
@@ -668,7 +560,7 @@
   {
     "date": "2025-12-27",
     "descriptions": [
-      "Hulan Road: internal connection opens",
+      "Hulan Road: in-station interchange opens",
       "Line 18: Kangwen Road - South Changjiang Road opens"
     ]
   }
