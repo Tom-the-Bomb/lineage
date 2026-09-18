@@ -24,6 +24,10 @@ export function formatDate(date: Date, end: number = 10): string {
     return date.toISOString().slice(0, end).replace(/-/g, '/');
 }
 
+export function clamp(value: number, min: number, max: number): number {
+    return Math.min(Math.max(value, min), max);
+}
+
 export function parseLabelDates(label: string): State[] {
     const parts = label.split(',');
 
