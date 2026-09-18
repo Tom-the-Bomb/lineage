@@ -113,6 +113,7 @@ export default function Map({ system }: { system: SystemKey }) {
     const legend = useMemo(
         () =>
             config.lines.map(line => ({
+                label: line.label,
                 color: line.color,
                 states: parseLabelDates(line.label),
             })),
@@ -350,7 +351,7 @@ export default function Map({ system }: { system: SystemKey }) {
     return (
         <div
             className="w-dvw h-dvh flex justify-center items-center touch-none"
-            style={{ '--slider-thumb': `url(${config.logo})` } as React.CSSProperties}
+            style={{ '--slider-thumb': `url("${config.logo}")` } as React.CSSProperties}
         >
             <header
                 className={`absolute top-0 left-0 w-dvw pt-15 flex flex-col justify-center items-center gap-3 text-center pointer-events-none z-10`}
@@ -422,7 +423,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     if (name) {
                         return (
                             <div
-                                key={line.color}
+                                key={line.label}
                                 className={`p-1 rounded-md
                                     flex items-center gap-2 text-[7px] md:text-[10px] pointer-events-none
                                     bg-gray-400/10 text-gray-600`}

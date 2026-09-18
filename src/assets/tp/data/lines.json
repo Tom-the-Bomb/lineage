@@ -1,0 +1,44 @@
+{
+    "lines": [
+        {
+            "label": "Muzha_Line=1996_03_28-2009_07_04,Muzha–Neihu_Line=2009_07_04-2009_10_08,Wenhu_Line=2009_10_08",
+            "color": "rgb(158,101,46)"
+        },
+        {
+            "label": "Tamsui_Line=1997_03_28-2013_11_24,Tamsui–Xinyi_Line=2013_11_24",
+            "color": "rgb(203,44,48)"
+        },
+        {
+            "label": "Xinbeitou_Branch_Line=1997_03_28",
+            "color": "rgb(248,144,165)"
+        },
+        {
+            "label": "Xindian_Line=1998_12_24-2014_11_15,Songshan–Xindian_Line=2014_11_15",
+            "color": "rgb(0,119,73)"
+        },
+        {
+            "label": "Xiaonanmen_Line=2000_08_31-2014_11_15",
+            "color": "rgb(0,119,73)"
+        },
+        {
+            "label": "Xiaobitan_Branch_Line=2004_09_29",
+            "color": "rgb(206,220,0)"
+        },
+        {
+            "label": "Zhonghe_Line=1998_12_24-2012_09_30,Zhonghe–Xinlu_Line=2012_09_30",
+            "color": "rgb(255,163,0)"
+        },
+        {
+            "label": "Xinzhuang–Luzhou_Line=2010_11_03-2012_09_30",
+            "color": "rgb(255,163,0)"
+        },
+        {
+            "label": "Nangang–Banqiao_Line=1999_12_24-2006_05_31,Bannan_Line=2006_05_31",
+            "color": "rgb(0,94,184)"
+        },
+        {
+            "label": "Circular_Line=2020_01_31",
+            "color": "rgb(240,217,67)"
+        }
+    ]
+}
