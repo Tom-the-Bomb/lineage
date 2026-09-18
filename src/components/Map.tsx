@@ -2,6 +2,7 @@
 import * as d3 from 'd3'
 import {
     useEffect,
+    useCallback,
     useState,
     useMemo,
     useRef,
@@ -12,54 +13,39 @@ import {
     type LineWrapper,
     type StationWrapper,
     type RawTooltipData,
+    Status,
 } from '../schemas'
 
 import {
-    MAX_DATE,
-    MIN_DATE,
     findName,
     formatDate,
     parseLabelDates,
     playPause,
-    KCR_MERGER_DATE,
 } from '../utils'
 
 import {
     update,
     setupHoverEffect,
-    hoverMouseEnter,
-    hoverMouseLeave,
 } from '../utils_d3'
 
-import kcrLogo from '../assets/kcr.svg'
-import mtrLogo from '../assets/mtr.svg'
-import mapSvg from '../assets/map.svg'
+import { systems, type SystemKey, type SystemConfig } from '../systems'
 import pause from '../assets/pause.svg'
 import play from '../assets/play.svg'
 import plus from '../assets/plus.svg'
 import minus from '../assets/minus.svg'
 
-import linesData from '../assets/data/lines.json'
 
 function renderTooltip(
-    stations: StationWrapper[],
     tooltip: RawTooltipData | null,
-    time: number
+    time: number,
+    config: SystemConfig
 ): React.ReactElement | null {
     if (!tooltip) {
         return null;
     }
 
-    let name = findName(tooltip.station.states, time);
-    let status = tooltip.station.status;
-
-    if (!name && tooltip.station.isRedundant) {
-        const idx = stations.findIndex(station => station === tooltip.station);
-
-        const interchange = stations[idx - 1];
-        name = findName(stations[idx - 1].states, time);
-        status = interchange.status;
-    }
+    const name = findName(tooltip.station.states, time);
+    const status = tooltip.station.status;
 
     if (name) {
         return (
@@ -75,12 +61,9 @@ function renderTooltip(
                 }}
             >
                 <div className="flex gap-2 items-center">
-                    {
-                        (status !== 0 && time < KCR_MERGER_DATE) && <img src={kcrLogo} className="h-4"/>
-                    }
-                    {
-                        (status !== 1 || time >= KCR_MERGER_DATE) && <img src={mtrLogo} className="h-4"/>
-                    }
+                    {config.tooltipLogos?.(status, time).map(logo => (
+                        <img key={logo.alt} src={logo.src} alt={logo.alt} className="h-4" />
+                    ))}
                     {name}
                 </div>
                 <div className="absolute w-2 h-2 bg-gray-900/90 rotate-45 -left-1 top-1/2 -translate-y-1/2"></div>
@@ -90,20 +73,23 @@ function renderTooltip(
     return null;
 }
 
-export default function Map() {
+export default function Map({ system }: { system: SystemKey }) {
+    const config: SystemConfig = systems[system];
+    const { minDate, maxDate } = config;
+
     useEffect(() => {
         document.body.style.overflow = 'hidden';
-    }, []);
+        document.title = config.title;
+    }, [config.title]);
 
     const svgRef = useRef<HTMLObjectElement | null>(null);
     const linesRef = useRef<LineWrapper[]>([]);
     const stationsRef = useRef<StationWrapper[]>([]);
-    const [stations, setStations] = useState<StationWrapper[]>([]);
     const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
     const svgD3Ref = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined> | null>(null);
 
-    const [svgLoaded, setSvgLoaded] = useState(false);
-    const [time, setTime] = useState<number>(MIN_DATE.getTime());
+    const [svgDoc, setSvgDoc] = useState<Document | null>(null);
+    const [time, setTime] = useState<number>(minDate.getTime());
     const [playing, setPlaying] = useState(false);
     const [tooltip, setTooltip] = useState<RawTooltipData | null>(null);
     const timeRef = useRef(time);
@@ -112,22 +98,22 @@ export default function Map() {
         timeRef.current = time;
     }, [time]);
 
-    function keyDownHandler(e: KeyboardEvent) {
+    const keyDownHandler = useCallback((e: KeyboardEvent) => {
         if (e.code === 'Space') {
             e.preventDefault();
-            playPause(setPlaying, timeRef.current, setTime);
+            playPause(setPlaying, timeRef.current, setTime, minDate, maxDate);
         }
-    }
+    }, [minDate, maxDate]);
 
     const ticks = useMemo(() => {
-        const startYear = MIN_DATE.getFullYear();
-        const endYear = MAX_DATE.getFullYear();
+        const startYear = minDate.getUTCFullYear();
+        const endYear = maxDate.getUTCFullYear();
         const tickDates = [];
         for (let year = Math.ceil(startYear/ 5) * 5; year < endYear; year += 5) {
-            tickDates.push(new Date(year, 0, 1));
+            tickDates.push(new Date(Date.UTC(year, 0, 1)));
         }
         return tickDates;
-    }, []);
+    }, [minDate, maxDate]);
 
     useEffect(() => {
         function handler() {
@@ -141,66 +127,63 @@ export default function Map() {
     useEffect(() => {
         document.addEventListener('keydown', keyDownHandler);
         return () => document.removeEventListener('keydown', keyDownHandler);
-    }, []);
+    }, [keyDownHandler]);
 
     const legend = useMemo(() =>
-        linesData.lines.map(line => ({
+        config.lines.map(line => ({
             color: line.color,
             states: parseLabelDates(line.label),
         })),
-        [],
+        [config.lines],
     );
 
     useEffect(() => {
-        if (!(svgLoaded && svgRef.current)) return;
-
-        const svgDoc = svgRef.current.contentDocument!;
+        if (!svgDoc) return;
 
         svgDoc.addEventListener('keydown', keyDownHandler);
 
-        const lines = svgDoc.querySelector('g#layer4')!;
-        const stations = svgDoc.querySelector('g#layer3')!;
+        const lines = svgDoc.querySelector('g#lines')!;
+        const stations = svgDoc.querySelector('g#stations')!;
 
         linesRef.current = Array.from(lines.querySelectorAll('path'))
             .map(el => {
                 const length = el.getTotalLength();
+                const dashArray = svgDoc.defaultView!.getComputedStyle(el).strokeDasharray;
 
                 el.style.strokeDashoffset = String(length);
                 el.style.strokeDasharray = String(length);
+                el.dataset.hidden = 'true';
 
                 return {
                     el,
-                    dateRange: parseLabelDates(
-                        el.getAttribute('inkscape:label')!
-                    )[0].dateRange
+                    states: parseLabelDates(el.getAttribute('inkscape:label')!),
+                    length,
+                    dashArray,
                 };
             });
 
-        stationsRef.current = Array.from(stations.querySelectorAll<HTMLElement>('use, path'))
+        stationsRef.current = Array.from(stations.querySelectorAll<SVGElement>('path, circle, rect'))
             .map(el => {
                 el.style.opacity = '0';
 
-                const wrappedEl = setupHoverEffect(svgDoc, el);
+                setupHoverEffect(el);
                 let label = el.getAttribute('inkscape:label')!;
 
                 const status = label.startsWith('^')
-                    ? 1
+                    ? Status.SecondaryOnly
                     : label.startsWith('!')
-                        ? 2
-                        : 0;
+                        ? Status.Both
+                        : Status.PrimaryOnly;
                 label = label.replace(/^[!^]/, '');
-                const isRedundant = label.startsWith('*');
-                label = label.replace(/^\*/, '');
 
                 const station = {
-                    el: wrappedEl,
-                    isRedundant,
+                    el,
                     status,
                     states: parseLabelDates(label),
                 };
 
-                if (el.localName === 'use') {
-                    wrappedEl.addEventListener('mouseenter', (e) => {
+                if (el.localName !== 'path') {
+                    el.addEventListener('mouseenter', (e) => {
                         const rect = svgRef.current!.getBoundingClientRect();
                         setTooltip({
                             x: e.clientX - rect.left,
@@ -208,7 +191,7 @@ export default function Map() {
                             station,
                         });
                     });
-                    wrappedEl.addEventListener('mousemove', (e) => {
+                    el.addEventListener('mousemove', (e) => {
                         const rect = svgRef.current!.getBoundingClientRect();
                         setTooltip(prev => prev ? {
                             ...prev,
@@ -216,35 +199,12 @@ export default function Map() {
                             y: e.clientY - rect.top
                         } : null);
                     });
-                    wrappedEl.addEventListener('mouseleave', () => setTooltip(null));
+                    el.addEventListener('mouseleave', () => setTooltip(null));
                 }
                 return station;
             });
 
-        setStations(stationsRef.current);
-
-        for (const station of stationsRef.current) {
-            if (station.isRedundant) {
-                const idx = stationsRef.current.findIndex(st => st === station);
-                const interchange = stationsRef.current[idx - 1];
-
-                const x = parseFloat(interchange.el.getAttribute('x') || '0');
-                const y = parseFloat(interchange.el.getAttribute('y') || '0');
-                const width = parseFloat(interchange.el.getAttribute('width') || '0');
-                const height = parseFloat(interchange.el.getAttribute('height') || '0');
-                const rx = parseFloat(interchange.el.getAttribute('rx') || '0');
-
-                d3.select(station.el)
-                    .on('mouseenter.b', () => {
-                        hoverMouseEnter(interchange.el, x, y, width, height, rx, 5 / 3);
-                    })
-                    .on('mouseleave.b', () => {
-                        hoverMouseLeave(interchange.el, x, y, width, height, rx);
-                    });
-            }
-        }
-
-        update(MIN_DATE.getTime(), linesRef.current, stationsRef.current);
+        update(timeRef.current, linesRef.current, stationsRef.current, legend);
 
         const svgd3 = d3.select(svgDoc).select<SVGSVGElement>('svg');
         const zoomLayer = d3.select(svgDoc).select<SVGGElement>('#zoom-layer');
@@ -257,9 +217,7 @@ export default function Map() {
         const scaleWidth = viewportWidth / viewBox.width;
         const scaleHeight = viewportHeight / viewBox.height;
 
-        const initialScale = viewportWidth < viewportHeight
-            ? Math.max(scaleWidth, scaleHeight)
-            : scaleWidth;
+        const initialScale = Math.max(scaleWidth, scaleHeight);
 
         const initialTranslateY = viewportHeight - viewBox.height * initialScale;
         const initialTranslateX = (viewportWidth - viewBox.width * initialScale) / 2;
@@ -332,11 +290,11 @@ export default function Map() {
         svgEl.style.height = '100%';
 
         return () => svgDoc.removeEventListener('keydown', keyDownHandler);
-    }, [svgLoaded]);
+    }, [svgDoc, legend, keyDownHandler]);
 
     useEffect(() => {
-        update(time, linesRef.current, stationsRef.current);
-    }, [time]);
+        update(time, linesRef.current, stationsRef.current, legend);
+    }, [time, legend]);
 
     useEffect(() => {
         if (!playing) {
@@ -345,48 +303,51 @@ export default function Map() {
 
         const timer = d3.interval(() => {
             setTime(prev => {
-                const nextDate = d3.timeMonth.offset(new Date(prev), 1);
+                const nextDate = d3.utcMonth.offset(new Date(prev), 1);
                 const nextMs = nextDate.getTime();
 
-                if (nextMs >= MAX_DATE.getTime()) {
+                if (nextMs >= maxDate.getTime()) {
                     setPlaying(false);
-                    return MAX_DATE.getTime();
+                    return maxDate.getTime();
                 }
                 return nextMs;
             });
         }, 40);
         return () => timer.stop();
-    }, [playing]);
+    }, [playing, maxDate]);
 
     return (
-        <div className="w-dvw h-dvh flex justify-center items-center touch-none">
+        <div
+            className="w-dvw h-dvh flex justify-center items-center touch-none"
+            style={{ '--slider-thumb': `url(${config.logo})` } as React.CSSProperties}
+        >
             <header className={
                 `absolute top-0 left-0 w-dvw pt-15 flex flex-col justify-center items-center gap-3 text-center pointer-events-none z-10`
             }>
                 <div>
-                    <h1 className="text-5xl font-bold font-serif text-shadow-xl">MTR History</h1>
-                    <h2 className="text-2xl font-zh" lang="zh-Hans">港铁历史</h2>
+                    <h1 className="text-5xl font-bold font-serif text-shadow-xl">{config.title}</h1>
+                    <h2 className="text-2xl font-zh" lang="zh-Hans">{config.chineseTitle}</h2>
                 </div>
                 <div className="flex flex-col gap-5 justify-center items-center">
-                    <h3 className="text-sm font-normal text-shadow-xl opacity-70">Explore the historical development of Hong Kong's MTR system</h3>
-                    <Link
-                        to="/article"
+                    <h3 className="text-sm font-normal text-shadow-xl opacity-70">{config.description}</h3>
+                    {config.article && <Link
+                        to={config.article}
                         className="pointer-events-auto nav-btn"
                     >
                         Read more
-                    </Link>
+                    </Link>}
                 </div>
             </header>
             <main className="w-dvw h-dvh touch-none">
                 <object
                     ref={svgRef}
-                    data={mapSvg}
-                    onLoad={() => setSvgLoaded(true)}
+                    data={config.map}
+                    onLoad={() => setSvgDoc(svgRef.current!.contentDocument)}
                     type="image/svg+xml"
-                    aria-label="Interactive map of Hong Kong's MTR railway network showing historical development from 1972 to 2023"
+                    aria-label={`Interactive ${config.title} map, ${minDate.getUTCFullYear()}-${maxDate.getUTCFullYear()}`}
                     className="absolute top-0 left-0 w-full h-full touch-none"
                 />
-                {svgLoaded && renderTooltip(stations, tooltip, time)}
+                {svgDoc && renderTooltip(tooltip, time, config)}
             </main>
             <div className="absolute bottom-31 left-4 flex flex-col gap-2 pointer-events-auto">
                 <button
@@ -447,7 +408,7 @@ export default function Map() {
             }>
                 <button
                     type="button"
-                    onClick={() => playPause(setPlaying, time, setTime)}
+                    onClick={() => playPause(setPlaying, time, setTime, minDate, maxDate)}
                     className="absolute left-5 top-4 h-10 flex justify-center items-center pointer-events-auto"
                     aria-label={playing ? 'Pause timeline' : 'Play timeline'}
                 >
@@ -463,8 +424,8 @@ export default function Map() {
                     <input
                         id="date-slider"
                         type="range"
-                        min={MIN_DATE.getTime()}
-                        max={MAX_DATE.getTime()}
+                        min={minDate.getTime()}
+                        max={maxDate.getTime()}
                         value={time}
                         onChange={(e) => setTime(Number(e.target.value))}
                         className="absolute left-4 right-4 top-1/2 -translate-y-1/2 z-10 opacity-80 cursor-pointer"
@@ -472,10 +433,10 @@ export default function Map() {
                     <div className="absolute top-1/2 left-4 right-4 h-full -translate-y-1/2 pointer-events-none">
                         {
                             ticks.map(date => {
-                                const min_time = MIN_DATE.getTime();
+                                const min_time = minDate.getTime();
                                 const pct = (
                                     (date.getTime() - min_time)
-                                    / (MAX_DATE.getTime() - min_time)
+                                    / (maxDate.getTime() - min_time)
                                 ) * 100;
 
                                 return (
@@ -485,7 +446,7 @@ export default function Map() {
                                         style={{ left: `${pct}%`, transform: `translate(-50%, -50%)` }}
                                     >
                                         <div className="h-3 w-0.5 bg-gray-800/50 mt-6"></div>
-                                        <span className="text-[10px] font-medium text-gray-800 mt-0.5">{date.getFullYear()}</span>
+                                        <span className="text-[10px] font-medium text-gray-800 mt-0.5">{date.getUTCFullYear()}</span>
                                     </div>
                                 )
                             })

@@ -1,29 +1,39 @@
 import * as d3 from 'd3';
 
 import {
+    type LegendWrapper,
     type LineWrapper,
     type StationWrapper,
 } from './schemas';
 
 import {
     findName,
-    TUEN_MA_OPENING_DATE,
 } from './utils';
 
-export function update(dateNum: number, lines: LineWrapper[], stations: StationWrapper[]): void {
-    for (const { el, dateRange: { appear, removed } } of lines) {
-        if (appear.getTime() <= dateNum && dateNum <= removed.getTime()) {
-            if (el.id.startsWith('west_rail_')) {
-                el.style.stroke = dateNum > TUEN_MA_OPENING_DATE
-                    ? 'rgb(146,48,17)'
-                    : 'rgb(163,35,143)';
+export function update(
+    dateNum: number,
+    lines: LineWrapper[],
+    stations: StationWrapper[],
+    legend: LegendWrapper[],
+): void {
+    const colors = new Map(legend.map(({ color, states }) => [findName(states, dateNum), color]));
+
+    for (const { el, states, length, dashArray } of lines) {
+        const name = findName(states, dateNum);
+
+        if (name !== null) {
+            const color = colors.get(name);
+            if (color) {
+                el.style.stroke = color;
             }
 
             if (el.style.strokeDashoffset !== '0') {
+                el.dataset.hidden = 'false';
+
                 const selection = d3.select(el);
 
-                if (el.id === 'airportexpress_shared_section') {
-                    selection.style('stroke-dasharray', '6, 6');
+                if (dashArray !== 'none') {
+                    selection.style('stroke-dasharray', dashArray);
                 }
 
                 selection
@@ -31,31 +41,22 @@ export function update(dateNum: number, lines: LineWrapper[], stations: StationW
                     .duration(500)
                     .ease(d3.easeLinear)
                     .style('stroke-dashoffset', '0');
-
-                el.dataset.shrinking = 'false';
             }
-        } else {
-            const length = el.getTotalLength().toString();
+        } else if (el.dataset.hidden !== 'true') {
+            el.dataset.hidden = 'true';
 
-            if (el.style.strokeDashoffset !== length || el.style.strokeDasharray !== length) {
-                if (el.dataset.shrinking !== 'true') {
-                    el.dataset.shrinking = 'true';
-                    d3.select(el)
-                        .transition()
-                        .duration(500)
-                        .ease(d3.easeLinear)
-                        .style('stroke-dashoffset', length)
-                        .style('stroke-dasharray', length)
-                        .on('end', () => {
-                            el.dataset.shrinking = 'false';
-                        });
-                }
-            }
+            d3.select(el)
+                .transition()
+                .duration(500)
+                .ease(d3.easeLinear)
+                .style('stroke-dashoffset', String(length))
+                .style('stroke-dasharray', String(length));
         }
     }
 
     for (const { el, states } of stations) {
         if (findName(states, dateNum) !== null) {
+            el.style.pointerEvents = '';
             if (el.style.opacity !== '1') {
                 d3.select(el)
                     .transition('appear')
@@ -64,6 +65,7 @@ export function update(dateNum: number, lines: LineWrapper[], stations: StationW
                     .style('opacity', '1')
             }
         } else {
+            el.style.pointerEvents = 'none';
             if (el.style.opacity !== '0') {
                 d3.select(el)
                     .transition('disappear')
@@ -75,7 +77,7 @@ export function update(dateNum: number, lines: LineWrapper[], stations: StationW
     }
 }
 
-export function hoverMouseEnter(
+function hoverMouseEnter(
     rect: Element,
     currentX: number, currentY: number,
     width: number, height: number,
@@ -91,7 +93,7 @@ export function hoverMouseEnter(
         .attr('rx', String(rx * scaleFactor));
 }
 
-export function hoverMouseLeave(rect: Element,
+function hoverMouseLeave(rect: Element,
     currentX: number, currentY: number,
     width: number, height: number,
     rx: number
@@ -106,83 +108,34 @@ export function hoverMouseLeave(rect: Element,
         .attr('rx', String(rx));
 }
 
-export function setupHoverEffect(svgDoc: Document, el: HTMLElement): HTMLElement {
-    const href = el.getAttribute('xlink:href');
+export function setupHoverEffect(el: SVGElement): void {
+    const SCALE_FACTOR = 5 / 3;
 
-    if (el.localName === 'use' && href === '#station') {
-        const circle = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    if (el.localName === 'circle') {
+        const r = parseFloat(el.getAttribute('r')!);
 
-        circle.setAttribute('cx', el.getAttribute('x')!);
-        circle.setAttribute('cy', el.getAttribute('y')!);
-        circle.setAttribute('r', '3');
-
-        for (const attr of el.attributes) {
-            if (!['x', 'y', 'xlink:href', 'href'].includes(attr.name)) {
-                circle.setAttribute(attr.name, attr.value);
-            }
-        }
-        circle.style.fill = '#fff';
-        circle.style.stroke = '#000';
-        circle.style.strokeWidth = '1';
-
-        el.parentNode!.replaceChild(circle, el);
-
-        d3.select(circle)
-            .on('mouseenter.a', () => {
-                d3.select(circle)
+        d3.select(el)
+            .on('mouseenter', () => {
+                d3.select(el)
                     .transition('hoverEffect')
                     .duration(300)
-                    .attr('r', '5');
+                    .attr('r', String(r * SCALE_FACTOR));
             })
-            .on('mouseleave.a', () => {
-                d3.select(circle)
+            .on('mouseleave', () => {
+                d3.select(el)
                     .transition('hoverEffect')
                     .duration(300)
-                    .attr('r', '3');
+                    .attr('r', String(r));
             });
+    } else if (el.localName === 'rect') {
+        const x = parseFloat(el.getAttribute('x') || '0');
+        const y = parseFloat(el.getAttribute('y') || '0');
+        const width = parseFloat(el.getAttribute('width') || '0');
+        const height = parseFloat(el.getAttribute('height') || '0');
+        const rx = parseFloat(el.getAttribute('rx') || '0');
 
-        return circle as unknown as HTMLElement;
+        d3.select(el)
+            .on('mouseenter', () => hoverMouseEnter(el, x, y, width, height, rx, SCALE_FACTOR))
+            .on('mouseleave', () => hoverMouseLeave(el, x, y, width, height, rx));
     }
-
-    if (el.localName === 'use' && href === '#interchange') {
-        const rect = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'rect');
-
-        const useX = parseFloat(el.getAttribute('x') || '0');
-        const useY = parseFloat(el.getAttribute('y') || '0');
-
-        const width = 6;
-        const height = 10;
-        const rx = 3.5;
-        const defX = -3;
-        const defY = -5;
-
-        const currentX = useX + defX;
-        const currentY = useY + defY;
-
-        rect.setAttribute('x', String(currentX));
-        rect.setAttribute('y', String(currentY));
-        rect.setAttribute('width', String(width));
-        rect.setAttribute('height', String(height));
-        rect.setAttribute('rx', String(rx));
-
-        for (const attr of el.attributes) {
-            if (!['x', 'y', 'xlink:href', 'href'].includes(attr.name)) {
-                rect.setAttribute(attr.name, attr.value);
-            }
-        }
-        rect.style.fill = '#fff';
-        rect.style.stroke = '#000';
-        rect.style.strokeWidth = '1';
-
-        el.parentNode!.replaceChild(rect, el);
-
-        const scaleFactor = 5 / 3;
-
-        d3.select(rect)
-            .on('mouseenter', () => hoverMouseEnter(rect as Element, currentX, currentY, width, height, rx, scaleFactor))
-            .on('mouseleave', () => hoverMouseLeave(rect as Element, currentX, currentY, width, height, rx));
-
-        return rect as unknown as HTMLElement;
-    }
-    return el;
 }

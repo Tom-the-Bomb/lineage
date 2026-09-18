@@ -1,21 +1,21 @@
 
 import { type State } from './schemas';
 
-export const MIN_DATE = new Date('1972-01-01');
-export const MAX_DATE = new Date('2023-01-01');
-
-export const TUEN_MA_OPENING_DATE = new Date('2021-06-27').getTime();
-export const KCR_MERGER_DATE = new Date('2007-12-02').getTime();
+// Max date object Javascript can handle:
+// September 13, 275760
+const END_OF_TIME = new Date(8.64e15);
 
 export function playPause(
     setPlaying: (f: (playing: boolean) => boolean) => void,
     time: number,
-    setTime: (time: number) => void
+    setTime: (time: number) => void,
+    minDate: Date,
+    maxDate: Date
 ): void {
     setPlaying(playing => {
         const next = !playing;
-        if (next && time >= MAX_DATE.getTime()) {
-            setTime(MIN_DATE.getTime());
+        if (next && time >= maxDate.getTime()) {
+            setTime(minDate.getTime());
         }
         return next;
     })
@@ -35,13 +35,10 @@ export function parseLabelDates(label: string): State[] {
         const appear = new Date(interval[0].replace(/_/g, '-'));
         const removed = interval[1]
             ? new Date(interval[1].replace(/_/g, '-'))
-            : MAX_DATE;
+            : END_OF_TIME;
 
         return {
-            name: name
-                .split('_')
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(' '),
+            name: name.replace(/_/g, ' '),
             dateRange: { appear, removed }
         };
     });
@@ -50,6 +47,6 @@ export function parseLabelDates(label: string): State[] {
 export function findName(states: State[], time: number): string | null {
     return states
         .find(({ dateRange: { appear, removed } }) => {
-            return appear.getTime() <= time && time <= removed.getTime();
+            return appear.getTime() <= time && time < removed.getTime();
         })?.name || null;
 }
