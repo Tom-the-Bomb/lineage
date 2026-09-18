@@ -13,6 +13,8 @@ import pause from '../assets/pause.svg';
 import play from '../assets/play.svg';
 import plus from '../assets/plus.svg';
 import minus from '../assets/minus.svg';
+import chevronLeft from '../assets/chevron-left.svg';
+import chevronRight from '../assets/chevron-right.svg';
 
 function renderTooltip(
     tooltip: RawTooltipData | null,
@@ -322,6 +324,22 @@ export default function Map({ system }: { system: SystemKey }) {
         update(time, linesRef.current, stationsRef.current, legend);
     }, [time, legend]);
 
+    const findPreviousEventDate = useCallback(
+        (currentTime: number): number => {
+            const eventDates = eventDatesRef.current;
+            return eventDates.findLast(date => date < currentTime) ?? minDate.getTime();
+        },
+        [minDate],
+    );
+
+    const findNextEventDate = useCallback(
+        (currentTime: number): number => {
+            const eventDates = eventDatesRef.current;
+            return eventDates.find(date => date > currentTime) ?? maxDate.getTime();
+        },
+        [maxDate],
+    );
+
     useEffect(() => {
         if (!playing || !svgDoc) {
             return;
@@ -333,10 +351,7 @@ export default function Map({ system }: { system: SystemKey }) {
         const timer = d3.interval(() => {
             setTime(prev => {
                 const nextDate = d3.utcMonth.offset(d3.utcMonth.floor(new Date(prev)), 1);
-                const nextMs = Math.min(
-                    nextDate.getTime(),
-                    eventDates.find(date => date > prev) ?? maxDate.getTime(),
-                );
+                const nextMs = Math.min(nextDate.getTime(), findNextEventDate(prev));
 
                 if (nextMs >= maxDate.getTime()) {
                     setPlaying(false);
@@ -346,7 +361,7 @@ export default function Map({ system }: { system: SystemKey }) {
             });
         }, delay);
         return () => timer.stop();
-    }, [playing, time, svgDoc, maxDate]);
+    }, [playing, time, svgDoc, maxDate, findNextEventDate]);
 
     return (
         <div
@@ -455,9 +470,32 @@ export default function Map({ system }: { system: SystemKey }) {
                         className="h-full"
                     />
                 </button>
-                <label htmlFor="date-slider" className="inline-block text-lg font-medium">
-                    {formatDate(new Date(time))}
-                </label>
+                <div className="flex gap-3 items-center *:pointer-events-auto">
+                    <img
+                        src={chevronLeft}
+                        alt="Previous"
+                        className="h-3 w-3 hover:opacity-50"
+                        onClick={e => {
+                            e.preventDefault();
+                            setTime(prev => findPreviousEventDate(prev));
+                        }}
+                    />
+                    <label
+                        htmlFor="date-slider"
+                        className="inline-block text-lg font-medium align-middle"
+                    >
+                        {formatDate(new Date(time))}
+                    </label>
+                    <img
+                        src={chevronRight}
+                        alt="Next"
+                        className="h-3 w-3 hover:opacity-50"
+                        onClick={e => {
+                            e.preventDefault();
+                            setTime(prev => findNextEventDate(prev));
+                        }}
+                    />
+                </div>
                 <div className="relative w-full h-12 flex items-center px-4 pointer-events-auto">
                     <input
                         id="date-slider"
