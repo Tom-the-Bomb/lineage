@@ -21,6 +21,7 @@ export interface SystemConfig {
     lines: { label: string; color: string }[];
     article?: string;
     tooltipLogos?: (status: Status, time: number) => { src: string; alt: string }[];
+    initialView?: { center: [number, number]; zoom: number };
 }
 
 export const systems = {
@@ -53,6 +54,7 @@ export const systems = {
         minDate: new Date(Date.UTC(1993, 0, 1)),
         maxDate: new Date(Date.UTC(2025, 11, 31)),
         lines: shLines.lines,
+        initialView: { center: [2412, 1089], zoom: 1 },
         tooltipLogos(status) {
             return [
                 ...(status !== Status.SecondaryOnly

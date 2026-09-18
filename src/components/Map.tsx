@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { type LineWrapper, type StationWrapper, type RawTooltipData, Status } from '../schemas';
 
-import { findName, formatDate, parseLabelDates, playPause } from '../utils';
+import { clamp, findName, formatDate, parseLabelDates, playPause } from '../utils';
 
 import { MAP_TRANSITION_MS, update, setupHoverEffect } from '../utils_d3';
 
@@ -216,8 +216,23 @@ export default function Map({ system }: { system: SystemKey }) {
 
         const initialScale = Math.max(scaleWidth, scaleHeight);
 
-        const initialTranslateY = viewportHeight - viewBox.height * initialScale;
-        const initialTranslateX = (viewportWidth - viewBox.width * initialScale) / 2;
+        const view = config.initialView;
+        const viewZoom = initialScale * (view?.zoom ?? 1);
+
+        const initialTranslateX = view
+            ? clamp(
+                  viewportWidth / 2 - view.center[0] * viewZoom,
+                  viewportWidth - viewBox.width * viewZoom,
+                  0,
+              )
+            : (viewportWidth - viewBox.width * initialScale) / 2;
+        const initialTranslateY = view
+            ? clamp(
+                  viewportHeight / 2 - view.center[1] * viewZoom,
+                  viewportHeight - viewBox.height * viewZoom,
+                  0,
+              )
+            : viewportHeight - viewBox.height * initialScale;
 
         const zoom = d3
             .zoom<SVGSVGElement, unknown>()
@@ -289,7 +304,7 @@ export default function Map({ system }: { system: SystemKey }) {
             .call(zoom)
             .call(
                 zoom.transform,
-                d3.zoomIdentity.translate(initialTranslateX, initialTranslateY).scale(initialScale),
+                d3.zoomIdentity.translate(initialTranslateX, initialTranslateY).scale(viewZoom),
             );
 
         zoomRef.current = zoom;
@@ -300,7 +315,7 @@ export default function Map({ system }: { system: SystemKey }) {
         svgEl.style.height = '100%';
 
         return () => svgDoc.removeEventListener('keydown', keyDownHandler);
-    }, [svgDoc, legend, keyDownHandler, minDate, maxDate]);
+    }, [svgDoc, legend, keyDownHandler, minDate, maxDate, config.initialView]);
 
     useEffect(() => {
         update(time, linesRef.current, stationsRef.current, legend);
