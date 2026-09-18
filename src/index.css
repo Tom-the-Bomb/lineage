@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=ZCOOL+XiaoWei&display=swap');
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-   --font-serif: 'Source Serif 4', serif;
-   --font-sans: 'Plus Jakarta Sans', sans-serif;
-   --font-zh: 'ZCOOL XiaoWei', sans-serif;
-   --font-mono: 'JetBrains Mono', monospace;
+    --font-serif: 'Source Serif 4', serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-zh: 'ZCOOL XiaoWei', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
 *:focus {
     outline: none;
 }
 
-html, body {
+html,
+body {
     @apply bg-white;
 }
 

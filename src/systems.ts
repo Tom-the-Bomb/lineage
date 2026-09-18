@@ -11,16 +11,16 @@ import shLines from './assets/sh/data/lines.json';
 const KCR_MERGER_DATE = Date.UTC(2007, 11, 2);
 
 export interface SystemConfig {
-    title: string
-    chineseTitle: string
-    description: string
-    map: string
-    logo: string
-    minDate: Date
-    maxDate: Date
-    lines: { label: string; color: string }[]
-    article?: string
-    tooltipLogos?: (status: Status, time: number) => { src: string; alt: string }[]
+    title: string;
+    chineseTitle: string;
+    description: string;
+    map: string;
+    logo: string;
+    minDate: Date;
+    maxDate: Date;
+    lines: { label: string; color: string }[];
+    article?: string;
+    tooltipLogos?: (status: Status, time: number) => { src: string; alt: string }[];
 }
 
 export const systems = {
@@ -38,7 +38,9 @@ export const systems = {
             const merged = time >= KCR_MERGER_DATE;
             return [
                 ...(!merged && status !== Status.PrimaryOnly ? [{ src: kcrLogo, alt: 'KCR' }] : []),
-                ...(merged || status !== Status.SecondaryOnly ? [{ src: mtrLogo, alt: 'MTR' }] : []),
+                ...(merged || status !== Status.SecondaryOnly
+                    ? [{ src: mtrLogo, alt: 'MTR' }]
+                    : []),
             ];
         },
     },
@@ -53,8 +55,12 @@ export const systems = {
         lines: shLines.lines,
         tooltipLogos(status) {
             return [
-                ...(status !== Status.SecondaryOnly ? [{ src: shMetroLogo, alt: 'Shanghai Metro' }] : []),
-                ...(status !== Status.PrimaryOnly ? [{ src: shSuburbanLogo, alt: 'Shanghai Suburban Railway' }] : []),
+                ...(status !== Status.SecondaryOnly
+                    ? [{ src: shMetroLogo, alt: 'Shanghai Metro' }]
+                    : []),
+                ...(status !== Status.PrimaryOnly
+                    ? [{ src: shSuburbanLogo, alt: 'Shanghai Suburban Railway' }]
+                    : []),
             ];
         },
     },

@@ -1,14 +1,8 @@
 import * as d3 from 'd3';
 
-import {
-    type LegendWrapper,
-    type LineWrapper,
-    type StationWrapper,
-} from './schemas';
+import { type LegendWrapper, type LineWrapper, type StationWrapper } from './schemas';
 
-import {
-    findName,
-} from './utils';
+import { findName } from './utils';
 
 export function update(
     dateNum: number,
@@ -62,7 +56,7 @@ export function update(
                     .transition('appear')
                     .duration(500)
                     .ease(d3.easeLinear)
-                    .style('opacity', '1')
+                    .style('opacity', '1');
             }
         } else {
             el.style.pointerEvents = 'none';
@@ -71,7 +65,7 @@ export function update(
                     .transition('disappear')
                     .duration(500)
                     .ease(d3.easeLinear)
-                    .style('opacity', '0')
+                    .style('opacity', '0');
             }
         }
     }
@@ -79,9 +73,12 @@ export function update(
 
 function hoverMouseEnter(
     rect: Element,
-    currentX: number, currentY: number,
-    width: number, height: number,
-    rx: number, scaleFactor: number,
+    currentX: number,
+    currentY: number,
+    width: number,
+    height: number,
+    rx: number,
+    scaleFactor: number,
 ): void {
     d3.select(rect)
         .transition('hoverEffect')
@@ -93,10 +90,13 @@ function hoverMouseEnter(
         .attr('rx', String(rx * scaleFactor));
 }
 
-function hoverMouseLeave(rect: Element,
-    currentX: number, currentY: number,
-    width: number, height: number,
-    rx: number
+function hoverMouseLeave(
+    rect: Element,
+    currentX: number,
+    currentY: number,
+    width: number,
+    height: number,
+    rx: number,
 ): void {
     d3.select(rect)
         .transition('hoverEffect')
@@ -122,10 +122,7 @@ export function setupHoverEffect(el: SVGElement): void {
                     .attr('r', String(r * SCALE_FACTOR));
             })
             .on('mouseleave', () => {
-                d3.select(el)
-                    .transition('hoverEffect')
-                    .duration(300)
-                    .attr('r', String(r));
+                d3.select(el).transition('hoverEffect').duration(300).attr('r', String(r));
             });
     } else if (el.localName === 'rect') {
         const x = parseFloat(el.getAttribute('x') || '0');
