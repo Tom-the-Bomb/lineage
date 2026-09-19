@@ -2,9 +2,15 @@ import * as d3 from 'd3';
 import { useEffect, useCallback, useState, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import { type LineWrapper, type StationWrapper, type RawTooltipData, Status } from '../schemas';
+import {
+    type LineStats,
+    type LineWrapper,
+    type StationWrapper,
+    type RawTooltipData,
+    Status,
+} from '../schemas';
 
-import { clamp, findName, formatDate, parseLabelDates, playPause } from '../utils';
+import { clamp, findName, formatDate, lineStats, parseLabelDates, playPause } from '../utils';
 
 import { MAP_TRANSITION_MS, update, setupHoverEffect } from '../utils_d3';
 
@@ -16,6 +22,8 @@ import minus from '../assets/minus.svg';
 import chevronLeft from '../assets/chevron-left.svg';
 import chevronRight from '../assets/chevron-right.svg';
 import Tooltip from './Tooltip';
+import cross from '../assets/cross.svg';
+import { BigTooltip } from './BigTooltip';
 
 export default function Map({ system }: { system: SystemKey }) {
     const config: SystemConfig = systems[system];
@@ -38,6 +46,7 @@ export default function Map({ system }: { system: SystemKey }) {
     const [playing, setPlaying] = useState(false);
     const [tooltip, setTooltip] = useState<RawTooltipData | null>(null);
     const [highlight, setHighlight] = useState<string[]>([]);
+    const [hoveredLine, setHoveredLine] = useState<string | null>(null);
     const timeRef = useRef(time);
 
     useEffect(() => {
@@ -49,8 +58,6 @@ export default function Map({ system }: { system: SystemKey }) {
             if (e.code === 'Space') {
                 e.preventDefault();
                 playPause(setPlaying, timeRef.current, setTime, minDate, maxDate);
-            } else if (e.code === 'Escape') {
-                setHighlight([]);
             }
         },
         [minDate, maxDate],
@@ -112,6 +119,7 @@ export default function Map({ system }: { system: SystemKey }) {
                 states: parseLabelDates(el.getAttribute('inkscape:label')!),
                 length,
                 dashArray,
+                km: parseFloat(el.dataset.km!),
             };
         });
 
@@ -294,6 +302,14 @@ export default function Map({ system }: { system: SystemKey }) {
         update(time, linesRef.current, stationsRef.current, legend, highlight);
     }, [time, legend, highlight]);
 
+    const [stats, setStats] = useState<LineStats | null>(null);
+    useEffect(() => {
+        const entry = legend.find(line => line.id === hoveredLine);
+        setStats(
+            entry && svgDoc ? lineStats(entry, time, linesRef.current, stationsRef.current) : null,
+        );
+    }, [hoveredLine, time, legend, svgDoc]);
+
     const findPreviousEventDate = useCallback(
         (currentTime: number): number => {
             const eventDates = eventDatesRef.current;
@@ -339,7 +355,7 @@ export default function Map({ system }: { system: SystemKey }) {
             style={{ '--slider-thumb': `url("${config.logo}")` } as React.CSSProperties}
         >
             <header
-                className={`absolute top-0 left-0 w-dvw pt-15 flex flex-col justify-center items-center gap-3 text-center pointer-events-none z-10`}
+                className={`absolute top-0 left-0 w-dvw pl-5 pt-5 flex flex-col gap-5 pointer-events-none z-10`}
             >
                 <div>
                     <h1 className="text-5xl font-bold font-serif text-shadow-xl">{config.title}</h1>
@@ -420,8 +436,10 @@ export default function Map({ system }: { system: SystemKey }) {
                                             : [...highlight, line.id],
                                     )
                                 }
+                                onMouseEnter={() => setHoveredLine(line.id)}
+                                onMouseLeave={() => setHoveredLine(null)}
                                 aria-pressed={selected}
-                                className={`p-1 rounded-md
+                                className={`relative p-1 rounded-md
                                     flex items-center gap-2 text-[7px] md:text-[10px] pointer-events-auto cursor-pointer
                                     ${selected ? 'bg-gray-400/40 text-gray-900 ring-1 ring-gray-500' : 'bg-gray-400/10 text-gray-600'}`}
                             >
@@ -430,11 +448,24 @@ export default function Map({ system }: { system: SystemKey }) {
                                     style={{ backgroundColor: line.color }}
                                 ></div>
                                 {name}
+                                {stats && line.id === hoveredLine && <BigTooltip stats={stats} />}
                             </button>
                         );
                     }
                     return null;
                 })}
+                {legend.some(
+                    line => highlight.includes(line.id) && findName(line.states, time) !== null,
+                ) && (
+                    <button
+                        type="button"
+                        onClick={() => setHighlight([])}
+                        className={`p-1 rounded-md text-[7px] md:text-[10px] pointer-events-auto cursor-pointer
+                            bg-gray-400/10 text-gray-600`}
+                    >
+                        <img src={cross} alt="Clear" className="h-3 md:h-4" />
+                    </button>
+                )}
             </div>
             <footer
                 className={`absolute bottom-0 left-0 w-dvw p-4 pt-2 flex flex-col justify-center items-center gap-2

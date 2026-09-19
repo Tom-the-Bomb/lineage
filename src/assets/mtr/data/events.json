@@ -1,0 +1,382 @@
+[
+  {
+    "date": "1910-10-01",
+    "descriptions": [
+      "KCR British Section: Kowloon - Lo Wu opens"
+    ]
+  },
+  {
+    "date": "1911-10-05",
+    "descriptions": [
+      "KCR British Section: Lo Wu (temporary station) closes"
+    ]
+  },
+  {
+    "date": "1921-06-13",
+    "descriptions": [
+      "KCR British Section: Hung Hom (temporary station) closes"
+    ]
+  },
+  {
+    "date": "1930-05-16",
+    "descriptions": [
+      "KCR British Section: Sheung Shui opens"
+    ]
+  },
+  {
+    "date": "1949-10-14",
+    "descriptions": [
+      "KCR British Section: Lo Wu opens"
+    ]
+  },
+  {
+    "date": "1950-09-11",
+    "descriptions": [
+      "KCR British Section: Fanling - Wo Hop Shek opens"
+    ]
+  },
+  {
+    "date": "1956-09-24",
+    "descriptions": [
+      "KCR British Section: Ma Liu Shui opens"
+    ]
+  },
+  {
+    "date": "1965-01-01",
+    "descriptions": [
+      "Tai Po → Tai Po Kau"
+    ]
+  },
+  {
+    "date": "1967-01-01",
+    "descriptions": [
+      "Ma Liu Shui → University"
+    ]
+  },
+  {
+    "date": "1969-01-01",
+    "descriptions": [
+      "Yaumati → Mong Kok"
+    ]
+  },
+  {
+    "date": "1975-11-30",
+    "descriptions": [
+      "KCR British Section: Kowloon (Hung Hom) opens",
+      "KCR British Section: Kowloon (Tsim Sha Tsui terminus) closes"
+    ]
+  },
+  {
+    "date": "1978-10-07",
+    "descriptions": [
+      "KCR British Section: Racecourse opens"
+    ]
+  },
+  {
+    "date": "1979-10-01",
+    "descriptions": [
+      "Modified Initial System: Shek Kip Mei - Kwun Tong opens"
+    ]
+  },
+  {
+    "date": "1979-12-16",
+    "descriptions": [
+      "Modified Initial System: Shek Kip Mei - Tsim Sha Tsui opens"
+    ]
+  },
+  {
+    "date": "1979-12-22",
+    "descriptions": [
+      "Modified Initial System: Waterloo opens"
+    ]
+  },
+  {
+    "date": "1979-12-31",
+    "descriptions": [
+      "Modified Initial System: Argyle opens"
+    ]
+  },
+  {
+    "date": "1980-02-12",
+    "descriptions": [
+      "Modified Initial System: Tsim Sha Tsui - Chater opens"
+    ]
+  },
+  {
+    "date": "1982-04-26",
+    "descriptions": [
+      "Modified Initial System → Kwun Tong Line",
+      "Tsuen Wan Line: Chater - Argyle opens, taken over from the Modified Initial System"
+    ]
+  },
+  {
+    "date": "1982-05-04",
+    "descriptions": [
+      "KCR British Section: Kowloon Tong opens"
+    ]
+  },
+  {
+    "date": "1982-05-10",
+    "descriptions": [
+      "Tsuen Wan Line: Argyle - Tsuen Wan opens"
+    ]
+  },
+  {
+    "date": "1982-05-17",
+    "descriptions": [
+      "Tsuen Wan Line: Cheung Sha Wan opens",
+      "Tsuen Wan Line: Lai Chi Kok opens",
+      "Tsuen Wan Line: Lai Wan opens",
+      "Tsuen Wan Line: Sham Shui Po opens"
+    ]
+  },
+  {
+    "date": "1983-04-07",
+    "descriptions": [
+      "KCR British Section: Tai Po Market (old station) closes",
+      "KCR British Section: Tai Po Market opens"
+    ]
+  },
+  {
+    "date": "1983-04-10",
+    "descriptions": [
+      "KCR British Section: Fanling - Wo Hop Shek closes"
+    ]
+  },
+  {
+    "date": "1983-05-02",
+    "descriptions": [
+      "KCR British Section: Tai Po Kau closes"
+    ]
+  },
+  {
+    "date": "1983-08-15",
+    "descriptions": [
+      "KCR British Section: Tai Wai (temporary station) opens"
+    ]
+  },
+  {
+    "date": "1985-02-15",
+    "descriptions": [
+      "KCR British Section: Fo Tan opens"
+    ]
+  },
+  {
+    "date": "1985-05-31",
+    "descriptions": [
+      "Argyle → Mong Kok",
+      "Chater → Central",
+      "Island Line: Admiralty - Chai Wan opens",
+      "Lai Wan → Mei Foo",
+      "Waterloo → Yau Ma Tei"
+    ]
+  },
+  {
+    "date": "1986-04-23",
+    "descriptions": [
+      "KCR British Section: Tai Wai (temporary station) closes",
+      "KCR British Section: Tai Wai opens"
+    ]
+  },
+  {
+    "date": "1986-05-23",
+    "descriptions": [
+      "Island Line: Admiralty - Sheung Wan opens"
+    ]
+  },
+  {
+    "date": "1988-09-18",
+    "descriptions": [
+      "KCR Light Rail: Tuen Mun - Yuen Long opens"
+    ]
+  },
+  {
+    "date": "1989-05-09",
+    "descriptions": [
+      "KCR British Section: Tai Wo opens"
+    ]
+  },
+  {
+    "date": "1989-08-06",
+    "descriptions": [
+      "Kwun Tong Line: Kwun Tong - Quarry Bay opens"
+    ]
+  },
+  {
+    "date": "1989-10-01",
+    "descriptions": [
+      "Kwun Tong Line: Lam Tin opens"
+    ]
+  },
+  {
+    "date": "1993-01-10",
+    "descriptions": [
+      "KCR Light Rail: Tin Shui Wai branch opens"
+    ]
+  },
+  {
+    "date": "1996-02-01",
+    "descriptions": [
+      "KCR British Section → KCR East Rail",
+      "Kowloon → Hung Hom"
+    ]
+  },
+  {
+    "date": "1998-06-22",
+    "descriptions": [
+      "Hong Kong - Central: out-of-station interchange opens",
+      "Tung Chung Line: Hong Kong - Tung Chung opens"
+    ]
+  },
+  {
+    "date": "1998-07-06",
+    "descriptions": [
+      "Airport Express: Hong Kong - Airport opens"
+    ]
+  },
+  {
+    "date": "2001-09-27",
+    "descriptions": [
+      "Kwun Tong Line: Quarry Bay - North Point opens"
+    ]
+  },
+  {
+    "date": "2002-08-04",
+    "descriptions": [
+      "Kwun Tong Line: Lam Tin - Yau Tong opens",
+      "Kwun Tong Line: stops serving North Point",
+      "Kwun Tong Line: stops serving Quarry Bay",
+      "Tseung Kwan O Line: North Point - Yau Tong opens, taking over the Eastern Harbour Crossing from the Kwun Tong Line"
+    ]
+  },
+  {
+    "date": "2002-08-18",
+    "descriptions": [
+      "Kwun Tong Line: Yau Tong - Tiu Keng Leng opens",
+      "Tseung Kwan O Line: Yau Tong - Po Lam opens"
+    ]
+  },
+  {
+    "date": "2003-12-16",
+    "descriptions": [
+      "Tung Chung Line: Nam Cheong opens"
+    ]
+  },
+  {
+    "date": "2003-12-20",
+    "descriptions": [
+      "KCR West Rail: Nam Cheong - Tuen Mun opens"
+    ]
+  },
+  {
+    "date": "2004-10-24",
+    "descriptions": [
+      "East Tsim Sha Tsui - Tsim Sha Tsui: out-of-station interchange opens",
+      "KCR East Rail: Hung Hom - East Tsim Sha Tsui opens"
+    ]
+  },
+  {
+    "date": "2004-12-21",
+    "descriptions": [
+      "Ma On Shan Rail: Tai Wai - Wu Kai Sha opens"
+    ]
+  },
+  {
+    "date": "2005-06-01",
+    "descriptions": [
+      "Tung Chung Line: Sunny Bay opens"
+    ]
+  },
+  {
+    "date": "2005-08-01",
+    "descriptions": [
+      "Disneyland Resort Line: Sunny Bay - Disneyland Resort opens"
+    ]
+  },
+  {
+    "date": "2005-12-20",
+    "descriptions": [
+      "Airport Express: Airport - AsiaWorld-Expo opens"
+    ]
+  },
+  {
+    "date": "2006-09-18",
+    "descriptions": [
+      "Ngong Ping 360: Tung Chung - Ngong Ping opens"
+    ]
+  },
+  {
+    "date": "2007-08-15",
+    "descriptions": [
+      "KCR East Rail: Sheung Shui - Lok Ma Chau opens"
+    ]
+  },
+  {
+    "date": "2007-12-02",
+    "descriptions": [
+      "KCR East Rail → East Rail Line",
+      "KCR Light Rail → Light Rail",
+      "KCR West Rail → West Rail Line",
+      "Ma On Shan Rail → Ma On Shan Line",
+      "Mong Kok → Mong Kok East"
+    ]
+  },
+  {
+    "date": "2009-07-26",
+    "descriptions": [
+      "Tseung Kwan O Line: Tseung Kwan O - LOHAS Park opens"
+    ]
+  },
+  {
+    "date": "2009-08-16",
+    "descriptions": [
+      "East Rail Line: stops serving East Tsim Sha Tsui",
+      "West Rail Line: Nam Cheong - Hung Hom opens"
+    ]
+  },
+  {
+    "date": "2014-12-28",
+    "descriptions": [
+      "Island Line: Sheung Wan - Kennedy Town opens"
+    ]
+  },
+  {
+    "date": "2015-03-29",
+    "descriptions": [
+      "Island Line: Sai Ying Pun opens"
+    ]
+  },
+  {
+    "date": "2016-10-23",
+    "descriptions": [
+      "Kwun Tong Line: Yau Ma Tei - Whampoa opens"
+    ]
+  },
+  {
+    "date": "2016-12-28",
+    "descriptions": [
+      "South Island Line: Admiralty - South Horizons opens"
+    ]
+  },
+  {
+    "date": "2020-02-14",
+    "descriptions": [
+      "Ma On Shan Line → Tuen Ma Line Phase 1",
+      "Tuen Ma Line Phase 1: Tai Wai - Kai Tak opens"
+    ]
+  },
+  {
+    "date": "2021-06-27",
+    "descriptions": [
+      "Tuen Ma Line Phase 1 → Tuen Ma Line",
+      "Tuen Ma Line: Kai Tak - Hung Hom opens",
+      "West Rail Line → Tuen Ma Line"
+    ]
+  },
+  {
+    "date": "2022-05-15",
+    "descriptions": [
+      "East Rail Line: Hung Hom - Admiralty opens"
+    ]
+  }
+]

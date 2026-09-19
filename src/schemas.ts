@@ -14,6 +14,12 @@ export interface LineWrapper {
     states: State[];
     length: number;
     dashArray: string;
+    km: number;
+}
+
+export interface LineStats {
+    km: number;
+    stations: number;
 }
 
 export interface State {
