@@ -1,54 +1,67 @@
 {
     "lines": [
         {
+            "id": "erl",
             "label": "KCR_British_Section=1910_10_01-1996_02_01,KCR_East_Rail=1996_02_01-2007_12_02,East_Rail_Line=2007_12_02",
             "color": "rgb(83,183,232)"
         },
         {
+            "id": "ktl",
             "label": "Modified_Initial_System=1979_10_01-1982_04_26,Kwun_Tong_Line=1982_04_26",
             "color": "rgb(0,171,78)"
         },
         {
+            "id": "twl",
             "label": "Tsuen_Wan_Line=1982_04_26",
             "color": "rgb(237,29,36)"
         },
         {
+            "id": "isl",
             "label": "Island_Line=1985_05_31",
             "color": "rgb(0,125,197)"
         },
         {
+            "id": "lr",
             "label": "KCR_Light_Rail=1988_09_18-2007_12_02,Light_Rail=2007_12_02",
             "color": "rgb(211,168,9)"
         },
         {
+            "id": "tcl",
             "label": "Tung_Chung_Line=1998_06_22",
             "color": "rgb(247,148,62)"
         },
         {
+            "id": "ael",
             "label": "Airport_Express=1998_07_06",
             "color": "rgb(0,136,138)"
         },
         {
+            "id": "tko",
             "label": "Tseung_Kwan_O_Line=2002_08_04",
             "color": "rgb(125,73,157)"
         },
         {
+            "id": "wrl",
             "label": "KCR_West_Rail=2003_12_20-2007_12_02,West_Rail_Line=2007_12_02-2021_06_27",
             "color": "rgb(163,35,143)"
         },
         {
+            "id": "tml",
             "label": "Ma_On_Shan_Rail=2004_12_21-2007_12_02,Ma_On_Shan_Line=2007_12_02-2020_02_14,Tuen_Ma_Line_Phase_1=2020_02_14-2021_06_27,Tuen_Ma_Line=2021_06_27",
             "color": "rgb(146,48,17)"
         },
         {
+            "id": "drl",
             "label": "Disneyland_Resort_Line=2005_08_01",
             "color": "rgb(241,115,172)"
         },
         {
+            "id": "np360",
             "label": "Ngong_Ping_360=2006_09_18",
             "color": "rgb(148,152,154)"
         },
         {
+            "id": "sil",
             "label": "South_Island_Line=2016_12_28",
             "color": "rgb(186,196,41)"
         }

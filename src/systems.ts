@@ -21,7 +21,7 @@ export interface SystemConfig {
     logo: string;
     minDate: Date;
     maxDate: Date;
-    lines: { label: string; color: string }[];
+    lines: { id: string; label: string; color: string }[];
     article?: string;
     tooltipLogos?: (status: Status, time: number) => { src: string; alt: string }[];
     initialView?: { center: [number, number]; zoom: number };
