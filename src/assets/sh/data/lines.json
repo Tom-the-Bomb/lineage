@@ -1,98 +1,122 @@
 {
     "lines": [
         {
+            "id": "1",
             "label": "Line_1=1993_05_28",
             "color": "rgb(227,0,43)"
         },
         {
+            "id": "2",
             "label": "Line_2=1999_09_20",
             "color": "rgb(130,191,37)"
         },
         {
+            "id": "3",
             "label": "Pearl_Line=2000_12_26-2002_08_08,Line_3=2002_08_08",
             "color": "rgb(252,214,0)"
         },
         {
+            "id": "4",
             "label": "Line_4=2005_12_31",
             "color": "rgb(70,29,132)"
         },
         {
+            "id": "5",
             "label": "Line_5=2003_11_25",
             "color": "rgb(150,77,154)"
         },
         {
+            "id": "6",
             "label": "Line_6=2007_12_29",
             "color": "rgb(212,0,104)"
         },
         {
+            "id": "7",
             "label": "Line_7=2009_12_05",
             "color": "rgb(237,111,0)"
         },
         {
+            "id": "8",
             "label": "Line_8=2007_12_29",
             "color": "rgb(0,148,216)"
         },
         {
+            "id": "9",
             "label": "Line_9=2007_12_29",
             "color": "rgb(135,202,237)"
         },
         {
+            "id": "10",
             "label": "Line_10=2010_04_10",
             "color": "rgb(198,175,212)"
         },
         {
+            "id": "11",
             "label": "Line_11=2009_12_31",
             "color": "rgb(135,28,43)"
         },
         {
+            "id": "12",
             "label": "Line_12=2013_12_29",
             "color": "rgb(0,122,96)"
         },
         {
+            "id": "13",
             "label": "Expo_Line=2010_04_20-2010_11_02,Line_13=2012_12_30",
             "color": "rgb(233,153,192)"
         },
         {
+            "id": "14",
             "label": "Line_14=2021_12_30",
             "color": "rgb(98,96,32)"
         },
         {
+            "id": "15",
             "label": "Line_15=2021_01_23",
             "color": "rgb(188,168,134)"
         },
         {
+            "id": "16",
             "label": "Line_16=2013_12_29",
             "color": "rgb(152,209,192)"
         },
         {
+            "id": "17",
             "label": "Line_17=2017_12_30",
             "color": "rgb(188,121,111)"
         },
         {
+            "id": "18",
             "label": "Line_18=2020_12_26",
             "color": "rgb(196,152,79)"
         },
         {
+            "id": "pujiang",
             "label": "Pujiang=2018_03_31",
             "color": "rgb(181,181,182)"
         },
         {
+            "id": "maglev",
             "label": "Maglev=2003_10_11",
             "color": "rgb(0,139,154)"
         },
         {
+            "id": "jinshan",
             "label": "Jinshan_Railway=2012_09_28",
             "color": "rgb(102,102,102)"
         },
         {
+            "id": "airportlink",
             "label": "Airport_Link_Line=2024_12_27",
             "color": "rgb(61,104,138)"
         },
         {
+            "id": "tram1",
             "label": "Songjiang_Tram_1=2019_08_10",
             "color": "rgb(218,44,67)"
         },
         {
+            "id": "tram2",
             "label": "Songjiang_Tram_2=2018_12_26",
             "color": "rgb(1,163,104)"
         }

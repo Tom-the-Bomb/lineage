@@ -2,9 +2,15 @@ import * as d3 from 'd3';
 import { useEffect, useCallback, useState, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import { type LineWrapper, type StationWrapper, type RawTooltipData, Status } from '../schemas';
+import {
+    type LegendWrapper,
+    type LineWrapper,
+    type StationWrapper,
+    type RawTooltipData,
+    Status,
+} from '../schemas';
 
-import { clamp, findName, formatDate, parseLabelDates, playPause } from '../utils';
+import { clamp, findName, formatDate, isActive, parseLabelDates, playPause } from '../utils';
 
 import { MAP_TRANSITION_MS, update, setupHoverEffect } from '../utils_d3';
 
@@ -20,6 +26,7 @@ function renderTooltip(
     tooltip: RawTooltipData | null,
     time: number,
     config: SystemConfig,
+    legend: LegendWrapper[],
 ): React.ReactElement | null {
     if (!tooltip) {
         return null;
@@ -27,6 +34,14 @@ function renderTooltip(
 
     const name = findName(tooltip.station.states, time);
     const status = tooltip.station.status;
+
+    const lines = legend.flatMap(entry => {
+        const calling = tooltip.station.lines.some(
+            ({ name: id, dateRange }) => id === entry.id && isActive(dateRange, time),
+        );
+        const lineName = calling && findName(entry.states, time);
+        return lineName ? [{ id: entry.id, name: lineName, color: entry.color }] : [];
+    });
 
     if (name) {
         return (
@@ -45,6 +60,19 @@ function renderTooltip(
                     ))}
                     {name}
                 </div>
+                {lines.length > 0 && (
+                    <div className="flex gap-x-2 mt-1 text-xs text-gray-300">
+                        {lines.map(line => (
+                            <span key={line.id} className="flex items-center gap-1">
+                                <span
+                                    className="w-2 h-2 rounded-full"
+                                    style={{ backgroundColor: line.color }}
+                                ></span>
+                                {line.name}
+                            </span>
+                        ))}
+                    </div>
+                )}
                 <div className="absolute w-2 h-2 bg-gray-900/90 rotate-45 -left-1 top-1/2 -translate-y-1/2"></div>
             </div>
         );
@@ -72,6 +100,7 @@ export default function Map({ system }: { system: SystemKey }) {
     const [time, setTime] = useState<number>(minDate.getTime());
     const [playing, setPlaying] = useState(false);
     const [tooltip, setTooltip] = useState<RawTooltipData | null>(null);
+    const [highlight, setHighlight] = useState<string[]>([]);
     const timeRef = useRef(time);
 
     useEffect(() => {
@@ -83,6 +112,8 @@ export default function Map({ system }: { system: SystemKey }) {
             if (e.code === 'Space') {
                 e.preventDefault();
                 playPause(setPlaying, timeRef.current, setTime, minDate, maxDate);
+            } else if (e.code === 'Escape') {
+                setHighlight([]);
             }
         },
         [minDate, maxDate],
@@ -115,6 +146,7 @@ export default function Map({ system }: { system: SystemKey }) {
     const legend = useMemo(
         () =>
             config.lines.map(line => ({
+                id: line.id,
                 label: line.label,
                 color: line.color,
                 states: parseLabelDates(line.label),
@@ -165,6 +197,7 @@ export default function Map({ system }: { system: SystemKey }) {
                 el,
                 status,
                 states: parseLabelDates(label),
+                lines: el.dataset.lines ? parseLabelDates(el.dataset.lines) : [],
             };
 
             if (el.localName !== 'path') {
@@ -321,8 +354,8 @@ export default function Map({ system }: { system: SystemKey }) {
     }, [svgDoc, legend, keyDownHandler, minDate, maxDate, config.initialView]);
 
     useEffect(() => {
-        update(time, linesRef.current, stationsRef.current, legend);
-    }, [time, legend]);
+        update(time, linesRef.current, stationsRef.current, legend, highlight);
+    }, [time, legend, highlight]);
 
     const findPreviousEventDate = useCallback(
         (currentTime: number): number => {
@@ -397,7 +430,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     aria-label={`Interactive ${config.title} map, ${minDate.getUTCFullYear()}-${maxDate.getUTCFullYear()}`}
                     className="absolute top-0 left-0 w-full h-full touch-none"
                 />
-                {svgDoc && renderTooltip(tooltip, time, config)}
+                {svgDoc && renderTooltip(tooltip, time, config, legend)}
             </main>
             <div className="absolute bottom-31 left-4 flex flex-col gap-2 pointer-events-auto">
                 <button
@@ -434,21 +467,31 @@ export default function Map({ system }: { system: SystemKey }) {
             <div className="absolute bottom-29 flex flex-wrap justify-center w-2/3 lg:w-1/2 items-center gap-1 pointer-events-none">
                 {legend.map(line => {
                     const name = findName(line.states, time);
+                    const selected = highlight.includes(line.id);
 
                     if (name) {
                         return (
-                            <div
+                            <button
+                                type="button"
                                 key={line.label}
+                                onClick={() =>
+                                    setHighlight(
+                                        selected
+                                            ? highlight.filter(id => id !== line.id)
+                                            : [...highlight, line.id],
+                                    )
+                                }
+                                aria-pressed={selected}
                                 className={`p-1 rounded-md
-                                    flex items-center gap-2 text-[7px] md:text-[10px] pointer-events-none
-                                    bg-gray-400/10 text-gray-600`}
+                                    flex items-center gap-2 text-[7px] md:text-[10px] pointer-events-auto cursor-pointer
+                                    ${selected ? 'bg-gray-400/40 text-gray-900 ring-1 ring-gray-500' : 'bg-gray-400/10 text-gray-600'}`}
                             >
                                 <div
                                     className="w-3 md:w-4 h-1 md:h-2 rounded-sm"
                                     style={{ backgroundColor: line.color }}
                                 ></div>
                                 {name}
-                            </div>
+                            </button>
                         );
                     }
                     return null;

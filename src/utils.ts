@@ -1,4 +1,4 @@
-import { type State } from './schemas';
+import { type DateInterval, type State } from './schemas';
 
 // Max date object Javascript can handle:
 // September 13, 275760
@@ -45,10 +45,10 @@ export function parseLabelDates(label: string): State[] {
     });
 }
 
+export function isActive({ appear, removed }: DateInterval, time: number): boolean {
+    return appear.getTime() <= time && time < removed.getTime();
+}
+
 export function findName(states: State[], time: number): string | null {
-    return (
-        states.find(({ dateRange: { appear, removed } }) => {
-            return appear.getTime() <= time && time < removed.getTime();
-        })?.name || null
-    );
+    return states.find(({ dateRange }) => isActive(dateRange, time))?.name || null;
 }

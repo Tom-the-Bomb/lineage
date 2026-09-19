@@ -229,6 +229,27 @@ transform = "translate(cx,cy) rotate(θ)"
 - Its label has the station name (or both names joined, e.g. `East_Tsim_Sha_Tsui_Tsim_Sha_Tsui`) and
   exactly the period the out-of-station transfer existed. Connectors don't get tooltips.
 
+**Lines served: `data-lines`**
+
+Every `<circle>` and `<rect>` marker MUST carry `data-lines`: the lines that call at that marker,
+written like a label but with the legend entry's `id` (§9) in place of the name:
+
+```xml
+<rect id="station-minquan-west-road-93" data-lines="r=1997_03_28,xinlu=2010_11_03-2012_09_30,o=2012_09_30" … />
+```
+
+- MUST: every `id` exists in `lines.json`, every interval lies within the marker's own dates, and the
+  legend entry is active for the whole interval.
+- `start` is the day that line began calling at the station, so a line that arrived later carries a
+  later date. A line that stopped calling gets an `end`. A line that joins a station's capsule from a
+  separate marker (§6) starts on the day of that change.
+- Each marker lists only what applies while it is on the map: a station's circle form lists the line
+  it had, and the capsule that replaces it lists its lines from the day the capsule appears. Separate
+  markers are separate stations even when they share a name, so each marker of a connector pair lists
+  only its own lines (West Nanjing Road's three markers list one line each).
+- The tooltip shows the active entries under the legend's current names, and the legend highlight
+  uses them to light the stations of the chosen lines.
+
 **Placement rules (geometry)**
 
 - MUST NOT place a marker on the track of a line that doesn't stop there. Every other visible line's
@@ -366,17 +387,26 @@ Exclude:
 ```json
 {
   "lines": [
-    { "label": "Line_1=1993_05_28", "color": "rgb(227,0,43)" },
-    { "label": "Pearl_Line=2000_12_26-2002_08_08,Line_3=2002_08_08", "color": "rgb(255,212,0)" }
+    { "id": "1", "label": "Line_1=1993_05_28", "color": "rgb(227,0,43)" },
+    {
+      "id": "3",
+      "label": "Pearl_Line=2000_12_26-2002_08_08,Line_3=2002_08_08",
+      "color": "rgb(255,212,0)"
+    }
   ]
 }
 ```
 
-- MUST: `lines` is an array of `{ "label", "color" }`. Labels follow §2 without a prefix. `color` is any
-  CSS colour. Shanghai uses `rgb(r,g,b)`, and `#rrggbb` also works.
+- MUST: `lines` is an array of `{ "id", "label", "color" }`. Labels follow §2 without a prefix. `color`
+  is any CSS colour. Shanghai uses `rgb(r,g,b)`, and `#rrggbb` also works.
+- MUST: `id` is a short stable code of lowercase letters and digits (`erl`, `2`, `xinlu`), unique
+  within the system. Station markers reference it in `data-lines` (§5). It never appears in labels.
 - MUST: at every moment, each visible track's name equals the name of a legend state active at that
-  moment. That is how a track gets its colour. A line rename therefore changes the legend label and
-  the track labels on the same date.
+  moment. That is how a track gets its colour, and how the legend highlight finds a line's tracks: a
+  track whose name is not the legend's current name stays dimmed. A line rename therefore changes the
+  legend label and every track label of that line on the same date, and a track that predates a
+  rename carries the full name history clipped to its own dates
+  (`KCR_British_Section=1910_10_01-1996_02_01,KCR_East_Rail=1996_02_01-2007_12_02,East_Rail_Line=2007_12_02`).
 - Legend entries appear in the on-screen legend while they are active, in array order. Order them
   the way the operator does (usually by line number, then other modes).
 - One entry per line with its official colour. If a line changed colour, split it into two entries
@@ -492,6 +522,7 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
 - [ ] Interchanges follow the operator's dated classification (§6), with connectors for out-of-station periods.
 - [ ] Openings are first public days, suspensions are omitted, and switchover gaps under a month are collapsed (§7).
 - [ ] Every track's name matches a legend entry at every moment (§9).
+- [ ] Every marker has `data-lines` with legend ids, inside its own dates (§5).
 - [ ] `events.json` has one entry per change date and none otherwise, using the §10 templates.
 - [ ] `check_map.py` prints `OK`. The rendered checks (§11 step 6) look right. `npm run lint` and `npm run build` pass.
 
@@ -499,9 +530,7 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
 
 MTR predates this spec. Don't copy these patterns into new systems:
 
-- Tracks use one modern name for all time (e.g. `East_Rail_Line=1910_10_01`) while the legend
-  renames (`KCR_East_Rail` → `East_Rail_Line`). Their colour falls back to the per-path CSS class
-  (`.er`, `.kt`, …). `check_map.py` reports these as warnings.
+- Track colours are also set by per-path CSS classes (`.er`, `.kt`, …), which the legend colour overrides.
 - Track width is set inline per path (`stroke-width:1.5`) instead of on the `lines` group. Caps are round.
 - The geography group is `g1` (`inkscape:label="land"`).
 - There is no `events.json` yet.
@@ -509,8 +538,8 @@ MTR predates this spec. Don't copy these patterns into new systems:
 ## Appendix: `check_map.py`
 
 Save it anywhere and run it from the repository root: `python3 check_map.py sh`. It checks
-structure, labels, legend coverage and the segment limit of §4, and compares change dates with
-`events.json`. It doesn't check geometry otherwise; §11 step 6 covers that.
+structure, labels, legend coverage, `data-lines` and the segment limit of §4, and compares change dates
+with `events.json`. It doesn't check geometry otherwise; §11 step 6 covers that.
 
 ```python
 # python3 check_map.py <system-key>   (run from the repo root)
@@ -528,7 +557,8 @@ except FileNotFoundError:
 DATE = r'\d{4}_\d{2}_\d{2}'
 STATE = rf'[^=,_\s][^=,\s]*={DATE}(?:-{DATE})?'
 LABEL = re.compile(rf'^[!^]?{STATE}(?:,{STATE})*$')
-errors, warnings = [], []
+LINES = re.compile(rf'^[a-z0-9]+={DATE}(?:-{DATE})?(?:,[a-z0-9]+={DATE}(?:-{DATE})?)*$')
+errors = []
 
 def states(label):
     out = []
@@ -567,7 +597,7 @@ def record(kind, st):
 
 if not re.search(r'<g\b[^>]*\bid="zoom-layer"', svg):
     errors.append('missing <g id="zoom-layer">')
-track_names = []  # (name, start, end, has its own stroke colour)
+track_names = []  # (name, start, end)
 for tag, attrs in children('lines'):
     label = re.search(r'inkscape:label="([^"]*)"', attrs)
     if tag != 'path' or not label:
@@ -580,8 +610,8 @@ for tag, attrs in children('lines'):
     d = re.search(r'\bd="([^"]*)"', attrs)
     if d and len(re.findall(r'[Ll]', d.group(1))) >= 256:
         errors.append(f'track {label.group(1)!r} has 256+ straight segments: Safari draws it in pieces (§4)')
-    own_colour = bool(re.search(r'\bstroke="|stroke:|class="', attrs))
-    track_names += [(name, start, end, own_colour) for name, start, end in st]
+    track_names += st
+markers = []  # (label, states, data-lines match)
 for tag, attrs in children('stations'):
     label = re.search(r'inkscape:label="([^"]*)"', attrs)
     if tag not in ('circle', 'rect', 'path') or not label:
@@ -592,24 +622,52 @@ for tag, attrs in children('stations'):
     transform = re.search(r'transform="([^"]*)"', attrs)
     if tag == 'rect' and not (transform and re.fullmatch(r'translate\([-\d.]+,[-\d.]+\) rotate\([-\d.]+\)', transform.group(1))):
         errors.append(f'capsule {label.group(1)!r}: transform must be exactly "translate(x,y) rotate(deg)"')
-    record({'circle': 'station', 'rect': 'interchange', 'path': 'connector'}[tag], check_label(tag, label.group(1)))
+    st = check_label(tag, label.group(1))
+    record({'circle': 'station', 'rect': 'interchange', 'path': 'connector'}[tag], st)
+    if tag != 'path':
+        markers.append((label.group(1), st, re.search(r'data-lines="([^"]*)"', attrs)))
 
-legend_states = []
+legend_states, legend_ids = [], {}
 for entry in legend:
     if entry['label'][0] in '!^':
         errors.append(f'legend {entry["label"]!r}: no prefixes in lines.json')
+    if not re.fullmatch(r'[a-z0-9]+', str(entry.get('id', ''))) or entry['id'] in legend_ids:
+        errors.append(f'legend {entry["label"]!r}: needs a unique lowercase id (§9)')
     st = check_label('legend', entry['label'])
     record('legend', st)
     legend_states += st
-# a track is coloured by the legend entry whose name matches the track's name at that moment
+    legend_ids[entry['id']] = st
+# a track is coloured and highlighted by the legend entry whose name matches its name at that moment
 boundaries = sorted({d for _, s, e in legend_states for d in (s, e) if d})
-for name, start, end, own_colour in track_names:
+for name, start, end in track_names:
     moments = [start] + [d for d in boundaries if start < d and (end is None or d < end)]
     uncovered = [t for t in moments if not any(n == name and s <= t and (e is None or t < e) for n, s, e in legend_states)]
     if uncovered:
-        (warnings if own_colour else errors).append(
-            f'track {name!r} ({start}..{end or "now"}) has no legend entry of that name from {uncovered[0]}'
-            + (': falls back to its own stroke colour' if own_colour else ': it will be drawn without a colour'))
+        errors.append(f'track {name!r} ({start}..{end or "now"}) has no legend entry of that name from {uncovered[0]}: '
+                      'it gets no colour and never highlights (§9)')
+# every marker lists the lines that call there, within its own dates, with the legend entry active throughout
+def within(start, end, spans):
+    return any(s <= start and (e is None or (end is not None and end <= e)) for s, e in spans)
+def spans(st):  # an element's states, with renames (end == next start) merged into one span
+    out = []
+    for _, s, e in st:
+        if out and out[-1][1] == s:
+            out[-1][1] = e
+        else:
+            out.append([s, e])
+    return out
+for label, st, data_lines in markers:
+    if not data_lines or not LINES.match(data_lines.group(1)):
+        errors.append(f'marker {label!r}: missing or malformed data-lines (§5)')
+        continue
+    presence = spans(st)
+    for lid, start, end in states(data_lines.group(1)):
+        if lid not in legend_ids:
+            errors.append(f'marker {label!r}: data-lines id {lid!r} is not in lines.json')
+        elif not within(start, end, spans(legend_ids[lid])):
+            errors.append(f'marker {label!r}: line {lid!r} is not on the legend for all of {start}..{end or "now"}')
+        if not within(start, end, presence):
+            errors.append(f'marker {label!r}: line {lid!r} {start}..{end or "now"} is outside the marker\'s own dates')
 
 if events is not None:
     dates = [e['date'] for e in events]
@@ -623,7 +681,6 @@ if events is not None:
     for d in sorted(set(dates) - set(log)):
         errors.append(f'events.json has {d} but nothing changes on the map that day')
 
-print('\n'.join(f'warning: {w}' for w in sorted(set(warnings))))
 print('\n'.join(errors) or f'{key}: OK ({len(log)} change dates)')
 sys.exit(1 if errors else 0)
 ```

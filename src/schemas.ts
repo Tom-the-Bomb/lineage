@@ -4,6 +4,7 @@ export interface DateInterval {
 }
 
 export interface LegendWrapper {
+    id: string;
     color: string;
     states: State[];
 }
@@ -32,6 +33,7 @@ export interface StationWrapper {
     el: SVGElement;
     status: Status;
     states: State[];
+    lines: State[];
 }
 
 export interface RawTooltipData {

@@ -2,26 +2,70 @@ import * as d3 from 'd3';
 
 import { type LegendWrapper, type LineWrapper, type StationWrapper } from './schemas';
 
-import { findName } from './utils';
+import { findName, isActive } from './utils';
 
 export const MAP_TRANSITION_MS = 650;
+
+const DIM_SATURATION = 0.2;
+const DIM_OPACITY = '0.25';
+const DIM_TRANSITION = 'stroke 0.2s, stroke-opacity 0.2s, fill-opacity 0.2s';
+
+// cache for desaturated colors to avoid recalculating them every time
+const dimColors = new Map<string, string>();
+
+function desaturate(color: string): string {
+    let dimColor = dimColors.get(color);
+    if (!dimColor) {
+        const { r, g, b } = d3.rgb(color);
+        // simulate saturate(0.2) by mixing with the perceived grey value of the color
+        // which is a weighted average of the RGB channels
+        const grey = 0.213 * r + 0.715 * g + 0.072 * b;
+        const mix = (c: number) => grey + DIM_SATURATION * (c - grey);
+
+        dimColor = d3.rgb(mix(r), mix(g), mix(b)).formatRgb();
+        dimColors.set(color, dimColor);
+    }
+    return dimColor;
+}
+
+function setDimmed(el: SVGElement, dimmed: boolean, fade: boolean): void {
+    const opacity = dimmed ? DIM_OPACITY : '';
+    if (el.style.strokeOpacity === opacity) return;
+
+    el.style.transition = fade ? DIM_TRANSITION : '';
+    if (fade) {
+        el.addEventListener('transitionend', () => (el.style.transition = ''), { once: true });
+    }
+    el.style.strokeOpacity = el.style.fillOpacity = opacity;
+}
 
 export function update(
     dateNum: number,
     lines: LineWrapper[],
     stations: StationWrapper[],
     legend: LegendWrapper[],
+    highlight: string[] = [],
 ): void {
     const colors = new Map(legend.map(({ color, states }) => [findName(states, dateNum), color]));
+
+    const lit = new Set(
+        legend
+            .filter(({ id }) => highlight.includes(id))
+            .map(({ states }) => findName(states, dateNum))
+            .filter(name => name !== null),
+    );
 
     for (const { el, states, length, dashArray } of lines) {
         const name = findName(states, dateNum);
 
         if (name !== null) {
+            const dimmed = lit.size > 0 && !lit.has(name);
+
             const color = colors.get(name);
             if (color) {
-                el.style.stroke = color;
+                el.style.stroke = dimmed ? desaturate(color) : color;
             }
+            setDimmed(el, dimmed, el.dataset.hidden === 'false');
 
             if (el.style.strokeDashoffset !== '0') {
                 el.dataset.hidden = 'false';
@@ -50,8 +94,16 @@ export function update(
         }
     }
 
-    for (const { el, states } of stations) {
+    for (const { el, states, lines } of stations) {
         if (findName(states, dateNum) !== null) {
+            const dimmed =
+                lit.size > 0 &&
+                !lines.some(
+                    ({ name: id, dateRange }) =>
+                        highlight.includes(id) && isActive(dateRange, dateNum),
+                );
+            setDimmed(el, dimmed, el.style.opacity === '1');
+
             el.style.pointerEvents = '';
             if (el.style.opacity !== '1') {
                 d3.select(el)
