@@ -100,11 +100,11 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-     viewBox="0 0 4600.74 2843.75" width="1600" height="989" version="1.1" style="background:white">
+     viewBox="0 0 4600.74 2843.75" width="1600" height="989" version="1.1" style="background:#f6f6f3">
   <g id="zoom-layer" inkscape:label="zoom-layer">
     <g id="geography" pointer-events="none">            <!-- optional; water and outside land -->
-      <path d="…" fill="#eee" />                          <!-- land beyond the operator's territory -->
-      <path d="…" fill="#d3e5ed" />                       <!-- water -->
+      <path d="…" fill="#eceeef" />                                                    <!-- land beyond the operator's territory -->
+      <path d="…" fill="#dde6ed" stroke="#c0cfd9" stroke-width="1" vector-effect="non-scaling-stroke" />   <!-- water -->
     </g>
     <g id="lines" fill="none" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"
        inkscape:groupmode="layer" inkscape:label="lines">
@@ -134,10 +134,13 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   not on each element. The app scales markers on hover, so per-element sizes must stay as specified.
 - SHOULD: draw order is geography → lines → stations; inside `stations`, connectors first so markers sit
   on top of them.
-- MUST: geography uses one palette across systems: the operator's own land is the white page background
-  (`style="background:white"` on the root, no fill drawn), water is `#d3e5ed`, and land beyond the
-  operator's territory is `#eee` (Shanghai's neighbouring provinces, Shenzhen). No strokes. A source that
-  only outlines the land (MTR) gets a full-`viewBox` water path first and its land filled `#fff` on top.
+- MUST: geography uses one palette across systems: the operator's own land is the off-white page
+  background `#f6f6f3` (`style="background:#f6f6f3"` on the root, no fill drawn; the app's `--color-paper`
+  token is the same value), water is `#dde6ed`, and land beyond the operator's territory is `#eceeef`
+  (Shanghai's neighbouring provinces, Shenzhen). Water shapes carry a one-pixel coastline,
+  `stroke="#c0cfd9" stroke-width="1" vector-effect="non-scaling-stroke"`, which stays hairline at every
+  zoom. A source that only outlines the land (MTR) gets a full-`viewBox` water path first (no stroke) and
+  its land filled `#f6f6f3` on top, with the coastline on the land shapes instead.
 - MUST NOT: `<title>` or `<desc>` anywhere, because browsers show them as tooltips on top of the app's.
   Also no `<text>` labels (names come from labels and tooltips), no `<defs>`/`<use>`/`<symbol>`, no
   `<image>`, no filters, masks or clip paths, no `scale()`/`matrix()` transforms.

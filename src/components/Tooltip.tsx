@@ -33,8 +33,8 @@ export default function Tooltip({
     if (name) {
         return (
             <div
-                className={`absolute px-3 py-2 bg-gray-900/90 text-white text-sm rounded-md
-                    shadow-lg pointer-events-none z-50 whitespace-nowrap backdrop-blur-sm`}
+                className={`absolute px-3 py-2 bg-white/95 text-neutral-900 text-sm rounded-lg border border-neutral-200
+                    shadow-lg shadow-neutral-900/10 pointer-events-none z-50 whitespace-nowrap backdrop-blur-sm`}
                 style={{
                     left: `${tooltip.x + 10}px`,
                     top: `${tooltip.y + 10}px`,
@@ -48,7 +48,7 @@ export default function Tooltip({
                     {name}
                 </div>
                 {lines.length > 0 && (
-                    <div className="flex gap-x-2 mt-1 text-xs text-gray-300">
+                    <div className="flex gap-x-2 mt-1 text-xs text-neutral-500">
                         {lines.map(line => (
                             <span key={line.id} className="flex items-center gap-1">
                                 <span
@@ -60,7 +60,7 @@ export default function Tooltip({
                         ))}
                     </div>
                 )}
-                <div className="absolute w-2 h-2 bg-gray-900/90 rotate-45 -left-1 top-1/2 -translate-y-1/2"></div>
+                <div className="absolute w-2 h-2 bg-white border-l border-b border-neutral-200 rotate-45 -left-1 top-1/2 -translate-y-1/2"></div>
             </div>
         );
     }

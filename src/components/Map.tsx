@@ -354,24 +354,36 @@ export default function Map({ system }: { system: SystemKey }) {
             className="w-dvw h-dvh flex justify-center items-center touch-none"
             style={{ '--slider-thumb': `url("${config.logo}")` } as React.CSSProperties}
         >
-            <header
-                className={`absolute top-0 left-0 w-dvw pl-5 pt-5 flex flex-col gap-5 pointer-events-none z-10`}
-            >
-                <div>
-                    <h1 className="text-5xl font-bold font-serif text-shadow-xl">{config.title}</h1>
-                    <h2 className="text-2xl font-zh" lang="zh-Hans">
-                        {config.chineseTitle}
+            <header className="absolute top-4 left-4 z-10 pointer-events-none">
+                <div className="panel max-w-xs px-4 py-3 flex flex-col gap-1.5">
+                    <div className="flex items-center gap-2 font-mono text-[11px] tracking-wide">
+                        <img src={config.logo} alt="" className="h-4 w-4 object-contain" />
+                        <span className="text-neutral-500">system:</span>
+                        <h1 className="font-medium text-neutral-900">{config.title}</h1>
+                    </div>
+                    <h2 className="flex items-baseline gap-2 leading-none">
+                        <span className="font-mono text-sm text-neutral-400">//</span>
+                        <span
+                            className="font-zh text-xl font-medium tracking-[0.12em] text-neutral-800"
+                            lang="zh-Hans"
+                        >
+                            {config.chineseTitle}
+                        </span>
                     </h2>
-                </div>
-                <div className="flex flex-col gap-5 justify-center items-center">
-                    <h3 className="text-sm font-normal text-shadow-xl opacity-70">
-                        {config.description}
-                    </h3>
-                    {config.article && (
-                        <Link to={config.article} className="pointer-events-auto nav-btn">
-                            Read more
-                        </Link>
-                    )}
+                    <p className="text-xs text-neutral-600">{config.description}</p>
+                    <div className="flex items-center gap-3 pt-1 font-mono text-[10px] text-neutral-500">
+                        <span>
+                            {minDate.getUTCFullYear()} → {maxDate.getUTCFullYear()}
+                        </span>
+                        {config.article && (
+                            <Link
+                                to={config.article}
+                                className="pointer-events-auto text-neutral-500 underline decoration-neutral-300 underline-offset-4 hover:text-neutral-900"
+                            >
+                                read more →
+                            </Link>
+                        )}
+                    </div>
                 </div>
             </header>
             <main className="w-dvw h-dvh touch-none">
@@ -419,7 +431,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     <img src={minus} alt="Zoom out" className="h-6 w-6" />
                 </button>
             </div>
-            <div className="absolute bottom-29 flex flex-wrap justify-center w-2/3 lg:w-1/2 items-center gap-1 pointer-events-none">
+            <div className="absolute bottom-29 flex flex-wrap justify-center w-2/3 lg:w-1/2 items-center gap-1.5 pointer-events-none">
                 {legend.map(line => {
                     const name = findName(line.states, time);
                     const selected = highlight.includes(line.id);
@@ -439,12 +451,12 @@ export default function Map({ system }: { system: SystemKey }) {
                                 onMouseEnter={() => setHoveredLine(line.id)}
                                 onMouseLeave={() => setHoveredLine(null)}
                                 aria-pressed={selected}
-                                className={`relative p-1 rounded-md
-                                    flex items-center gap-2 text-[7px] md:text-[10px] pointer-events-auto cursor-pointer
-                                    ${selected ? 'bg-gray-400/40 text-gray-900 ring-1 ring-gray-500' : 'bg-gray-400/10 text-gray-600'}`}
+                                className={`relative px-2 py-0.5 rounded-full border
+                                    flex items-center gap-1.5 text-[9px] md:text-[11px] pointer-events-auto cursor-pointer transition-colors
+                                    ${selected ? 'bg-neutral-900 border-neutral-900 text-white' : 'bg-white/85 border-neutral-300 text-neutral-700 hover:border-neutral-500 hover:text-neutral-900'}`}
                             >
                                 <div
-                                    className="w-3 md:w-4 h-1 md:h-2 rounded-sm"
+                                    className="w-2 h-2 rounded-full"
                                     style={{ backgroundColor: line.color }}
                                 ></div>
                                 {name}
@@ -460,8 +472,9 @@ export default function Map({ system }: { system: SystemKey }) {
                     <button
                         type="button"
                         onClick={() => setHighlight([])}
-                        className={`p-1 rounded-md text-[7px] md:text-[10px] pointer-events-auto cursor-pointer
-                            bg-gray-400/10 text-gray-600`}
+                        className={`px-2 py-0.5 rounded-full border border-neutral-300 bg-white/85
+                            text-neutral-600 pointer-events-auto cursor-pointer hover:border-neutral-400`}
+                        aria-label="Clear highlight"
                     >
                         <img src={cross} alt="Clear" className="h-3 md:h-4" />
                     </button>
@@ -469,12 +482,12 @@ export default function Map({ system }: { system: SystemKey }) {
             </div>
             <footer
                 className={`absolute bottom-0 left-0 w-dvw p-4 pt-2 flex flex-col justify-center items-center gap-2
-                bg-gray-400/50 pointer-events-none`}
+                bg-white/80 border-t border-neutral-300 pointer-events-none`}
             >
                 <button
                     type="button"
                     onClick={() => playPause(setPlaying, time, setTime, minDate, maxDate)}
-                    className="absolute left-5 top-4 h-10 flex justify-center items-center pointer-events-auto"
+                    className="translate-x-2 absolute left-5 top-4 h-6 flex justify-center items-center pointer-events-auto"
                     aria-label={playing ? 'Pause timeline' : 'Play timeline'}
                 >
                     <img
@@ -487,7 +500,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     <img
                         src={chevronLeft}
                         alt="Previous"
-                        className="h-3 w-3 hover:opacity-50"
+                        className="h-3 w-3 opacity-50 hover:opacity-100 cursor-pointer"
                         onClick={e => {
                             e.preventDefault();
                             setTime(prev => findPreviousEventDate(prev));
@@ -495,14 +508,14 @@ export default function Map({ system }: { system: SystemKey }) {
                     />
                     <label
                         htmlFor="date-slider"
-                        className="inline-block text-lg font-medium align-middle"
+                        className="inline-block font-mono text-sm tracking-wider tabular-nums text-neutral-900 align-middle"
                     >
                         {formatDate(new Date(time))}
                     </label>
                     <img
                         src={chevronRight}
                         alt="Next"
-                        className="h-3 w-3 hover:opacity-50"
+                        className="h-3 w-3 opacity-50 hover:opacity-100 cursor-pointer"
                         onClick={e => {
                             e.preventDefault();
                             setTime(prev => findNextEventDate(prev));
@@ -517,7 +530,7 @@ export default function Map({ system }: { system: SystemKey }) {
                         max={maxDate.getTime()}
                         value={time}
                         onChange={e => setTime(Number(e.target.value))}
-                        className="absolute left-4 right-4 top-1/2 -translate-y-1/2 z-10 opacity-80 cursor-pointer"
+                        className="absolute left-4 right-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer"
                     />
                     <div className="absolute top-1/2 left-4 right-4 h-full -translate-y-1/2 pointer-events-none">
                         {ticks.map(date => {
@@ -532,8 +545,8 @@ export default function Map({ system }: { system: SystemKey }) {
                                     className="absolute top-1/2 flex flex-col items-center"
                                     style={{ left: `${pct}%`, transform: `translate(-50%, -50%)` }}
                                 >
-                                    <div className="h-3 w-0.5 bg-gray-800/50 mt-6"></div>
-                                    <span className="text-[10px] font-medium text-gray-800 mt-0.5">
+                                    <div className="h-2 w-px bg-neutral-400 mt-6"></div>
+                                    <span className="font-mono text-[10px] text-neutral-600 mt-1">
                                         {date.getUTCFullYear()}
                                     </span>
                                 </div>

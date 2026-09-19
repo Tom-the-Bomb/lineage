@@ -10,6 +10,9 @@ import shLines from './assets/sh/data/lines.json';
 import tpMap from './assets/tp/map.svg';
 import tpLogo from './assets/tp/metro.svg';
 import tpLines from './assets/tp/data/lines.json';
+import sgMap from './assets/sg/map.svg';
+import sgLogo from './assets/sg/metro.svg';
+import sgLines from './assets/sg/data/lines.json';
 
 const KCR_MERGER_DATE = Date.UTC(2007, 11, 2);
 
@@ -81,6 +84,20 @@ export const systems = {
         initialView: { center: [1528, 1907], zoom: 1 }, // Taipei Main Station
         tooltipLogos() {
             return [{ src: tpLogo, alt: 'Taipei Metro' }];
+        },
+    },
+    sg: {
+        title: 'Singapore MRT History',
+        chineseTitle: '新加坡地铁历史',
+        description: "Explore how Singapore's MRT and LRT network was built",
+        map: sgMap,
+        logo: sgLogo,
+        minDate: new Date(Date.UTC(1987, 0, 1)),
+        maxDate: new Date(Date.UTC(2026, 11, 31)),
+        lines: sgLines.lines,
+        initialView: { center: [5831, 4383], zoom: 1 }, // City Hall
+        tooltipLogos() {
+            return [{ src: sgLogo, alt: 'MRT' }];
         },
     },
 } satisfies Record<string, SystemConfig>;
