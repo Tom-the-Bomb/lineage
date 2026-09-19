@@ -102,9 +102,9 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
      viewBox="0 0 4600.74 2843.75" width="1600" height="989" version="1.1" style="background:white">
   <g id="zoom-layer" inkscape:label="zoom-layer">
-    <g id="geography" pointer-events="none">            <!-- optional; land and water fills -->
-      <path d="…" fill="#eee" />
-      <path d="…" fill="#d3e5ed" />
+    <g id="geography" pointer-events="none">            <!-- optional; water and outside land -->
+      <path d="…" fill="#eee" />                          <!-- land beyond the operator's territory -->
+      <path d="…" fill="#d3e5ed" />                       <!-- water -->
     </g>
     <g id="lines" fill="none" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"
        inkscape:groupmode="layer" inkscape:label="lines">
@@ -134,6 +134,10 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   not on each element. The app scales markers on hover, so per-element sizes must stay as specified.
 - SHOULD: draw order is geography → lines → stations; inside `stations`, connectors first so markers sit
   on top of them.
+- MUST: geography uses one palette across systems: the operator's own land is the white page background
+  (`style="background:white"` on the root, no fill drawn), water is `#d3e5ed`, and land beyond the
+  operator's territory is `#eee` (Shanghai's neighbouring provinces, Shenzhen). No strokes. A source that
+  only outlines the land (MTR) gets a full-`viewBox` water path first and its land filled `#fff` on top.
 - MUST NOT: `<title>` or `<desc>` anywhere, because browsers show them as tooltips on top of the app's.
   Also no `<text>` labels (names come from labels and tooltips), no `<defs>`/`<use>`/`<symbol>`, no
   `<image>`, no filters, masks or clip paths, no `scale()`/`matrix()` transforms.
@@ -168,6 +172,17 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   and it makes the file readable in an editor.
 - Dashes: set `stroke-dasharray` on the path itself (e.g. MTR's shared Airport Express section).
   The app reads it at load and restores it after the draw-in animation.
+- MUST: every track carries `data-km`, its route length in kilometres to one decimal
+  (`data-km="4.7"`). A line's length at any date is the sum over its tracks visible then, so the
+  values of a line's tracks visible at `maxDate` MUST add up to the operator's published route
+  length for that line. A branch with its own legend entry counts separately, and a track's value
+  never changes when the line is renamed.
+  - Use the published length of a section where the operator gave one (opening notices, line pages).
+  - Otherwise derive it from the drawn length, scaled so the line's present-day total matches the
+    published figure. Today's figure is then exact and historical figures are within a few percent,
+    because a map's scale is consistent within a line (Shanghai and Taipei within 3%, MTR within 7%).
+  - A line the map deliberately simplifies (MTR Light Rail, drawn without most of its stops) keeps
+    derived values and won't match the published network length. Say so in the commit.
 - Path data: any valid `d` works because the app uses `getTotalLength()`. Shanghai uses absolute
   `M x,y L x,y …` with 3 decimals.
 
@@ -523,6 +538,7 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
 - [ ] Openings are first public days, suspensions are omitted, and switchover gaps under a month are collapsed (§7).
 - [ ] Every track's name matches a legend entry at every moment (§9).
 - [ ] Every marker has `data-lines` with legend ids, inside its own dates (§5).
+- [ ] Every track has `data-km`, and each line's present-day sum equals its published length (§4).
 - [ ] `events.json` has one entry per change date and none otherwise, using the §10 templates.
 - [ ] `check_map.py` prints `OK`. The rendered checks (§11 step 6) look right. `npm run lint` and `npm run build` pass.
 
@@ -532,14 +548,15 @@ MTR predates this spec. Don't copy these patterns into new systems:
 
 - Track colours are also set by per-path CSS classes (`.er`, `.kt`, …), which the legend colour overrides.
 - Track width is set inline per path (`stroke-width:1.5`) instead of on the `lines` group. Caps are round.
-- The geography group is `g1` (`inkscape:label="land"`).
-- There is no `events.json` yet.
+- Light Rail is drawn as a simplified network: only its four interchange stops are markers, the 1988
+  trunk and the 1993 Tin Shui Wai branch are dated, and later extensions are not.
 
 ## Appendix: `check_map.py`
 
 Save it anywhere and run it from the repository root: `python3 check_map.py sh`. It checks
-structure, labels, legend coverage, `data-lines` and the segment limit of §4, and compares change dates
-with `events.json`. It doesn't check geometry otherwise; §11 step 6 covers that.
+structure, labels, legend coverage, `data-lines`, `data-km` and the segment limit of §4, and compares
+change dates with `events.json`. It also prints each line's present-day length to compare with the
+operator's figure. It doesn't check geometry otherwise; §11 step 6 covers that.
 
 ```python
 # python3 check_map.py <system-key>   (run from the repo root)
@@ -598,6 +615,7 @@ def record(kind, st):
 if not re.search(r'<g\b[^>]*\bid="zoom-layer"', svg):
     errors.append('missing <g id="zoom-layer">')
 track_names = []  # (name, start, end)
+track_km = []     # (states, km)
 for tag, attrs in children('lines'):
     label = re.search(r'inkscape:label="([^"]*)"', attrs)
     if tag != 'path' or not label:
@@ -610,6 +628,11 @@ for tag, attrs in children('lines'):
     d = re.search(r'\bd="([^"]*)"', attrs)
     if d and len(re.findall(r'[Ll]', d.group(1))) >= 256:
         errors.append(f'track {label.group(1)!r} has 256+ straight segments: Safari draws it in pieces (§4)')
+    km = re.search(r'data-km="([^"]*)"', attrs)
+    if not km or not re.fullmatch(r'\d+\.\d', km.group(1)) or float(km.group(1)) <= 0:
+        errors.append(f'track {label.group(1)!r}: missing or malformed data-km (§4)')
+    else:
+        track_km.append((st, float(km.group(1))))
     track_names += st
 markers = []  # (label, states, data-lines match)
 for tag, attrs in children('stations'):
@@ -681,6 +704,12 @@ if events is not None:
     for d in sorted(set(dates) - set(log)):
         errors.append(f'events.json has {d} but nothing changes on the map that day')
 
+if not errors:  # each line's length on the last change date, to compare with the operator's figure
+    today = max(log)
+    for name, start, end in legend_states:
+        if start <= today and (end is None or today < end):
+            total = sum(km for st, km in track_km if any(n == name and s <= today and (e is None or today < e) for n, s, e in st))
+            print(f'  {name}: {total:.1f} km')
 print('\n'.join(errors) or f'{key}: OK ({len(log)} change dates)')
 sys.exit(1 if errors else 0)
 ```
