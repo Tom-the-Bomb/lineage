@@ -6,8 +6,43 @@ import { findName, isActive } from './utils';
 
 export const MAP_TRANSITION_MS = 650;
 
+const MAP_PALETTE: Record<string, string> = {
+    '#f6f6f3': '--map-land',
+    '#eceeef': '--map-foreign',
+    '#dde6ed': '--map-water',
+    '#c0cfd9': '--map-coast',
+};
+
+function pageToken(name: string) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+export function applyMapTheme(svgDoc: Document): void {
+    svgDoc.documentElement.style.background = pageToken('--map-land');
+
+    for (const el of [
+        svgDoc.querySelector<SVGElement>('#geography'),
+        ...svgDoc.querySelectorAll<SVGElement>('#geography *'),
+    ]) {
+        if (!el) {
+            continue;
+        }
+        for (const prop of ['fill', 'stroke'] as const) {
+            const painted = el.getAttribute(prop) ?? el.style.getPropertyValue(prop);
+            const name = MAP_PALETTE[painted.trim().toLowerCase()];
+            if (name) {
+                el.style[prop] = pageToken(name);
+            }
+        }
+    }
+    const stations = svgDoc.querySelector<SVGElement>('#stations');
+    if (stations) {
+        stations.style.fill = pageToken('--map-marker');
+        stations.style.stroke = pageToken('--map-marker-rim');
+    }
+}
+
 const DIM_SATURATION = 0.2;
-const DIM_OPACITY = '0.25';
 const DIM_TRANSITION = 'stroke 0.2s, stroke-opacity 0.2s, fill-opacity 0.2s';
 
 const dimColorsCache = new Map<string, string>();
@@ -27,9 +62,12 @@ function desaturate(color: string): string {
     return dimColor;
 }
 
-function setDimmed(el: SVGElement, dimmed: boolean, fade: boolean): void {
-    const opacity = dimmed ? DIM_OPACITY : '';
-    if (el.style.strokeOpacity === opacity) return;
+function setDimmed(el: SVGElement, dimmed: boolean, fade: boolean, dimOpacity: string): void {
+    const opacity = dimmed ? dimOpacity : '';
+
+    if (el.style.strokeOpacity === opacity) {
+        return;
+    }
 
     el.style.transition = fade ? DIM_TRANSITION : '';
     if (fade) {
@@ -53,6 +91,7 @@ export function update(
             .map(({ states }) => findName(states, dateNum))
             .filter(name => name !== null),
     );
+    const dimOpacity = pageToken('--dim-opacity');
 
     for (const { el, states, length, dashArray } of lines) {
         const name = findName(states, dateNum);
@@ -64,7 +103,7 @@ export function update(
             if (color) {
                 el.style.stroke = dimmed ? desaturate(color) : color;
             }
-            setDimmed(el, dimmed, el.dataset.hidden === 'false');
+            setDimmed(el, dimmed, el.dataset.hidden === 'false', dimOpacity);
 
             if (el.style.strokeDashoffset !== '0') {
                 el.dataset.hidden = 'false';
@@ -101,7 +140,7 @@ export function update(
                     ({ name: id, dateRange }) =>
                         highlight.includes(id) && isActive(dateRange, dateNum),
                 );
-            setDimmed(el, dimmed, el.style.opacity === '1');
+            setDimmed(el, dimmed, el.style.opacity === '1', dimOpacity);
 
             el.style.pointerEvents = '';
             if (el.style.opacity !== '1') {

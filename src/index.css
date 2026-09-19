@@ -1,57 +1,141 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=ZCOOL+XiaoWei&family=Noto+Sans+TC:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Noto+Sans+TC:wght@400;500;600&display=swap');
 
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-    --font-serif: 'Source Serif 4', serif;
     --font-sans: 'Plus Jakarta Sans', sans-serif;
-    --font-zh: 'Noto Sans TC', 'Noto Sans SC', sans-serif;
-    --color-paper: #f6f6f3;
     --font-mono: 'JetBrains Mono', monospace;
+    --font-serif: 'Source Serif 4', serif;
+    --font-zh: 'Noto Sans TC', 'Noto Sans SC', sans-serif;
+
+    --text-2xs: 0.6875rem;
+    --text-3xs: 0.625rem;
+
+    --color-paper: #f6f6f3; /* page bg, the system's land in every map */
+    --color-surface: #ffffff; /* floating panels, pills and tooltips, @ /85 or /95 */
+    --color-ink: #171717; /* primary text, a selected pill */
+    --color-ink-muted: #525252; /* secondary text: descriptions, pill labels */
+    --color-ink-faint: #737373; /* captions and meta: years, "system:", statistics units */
+    --color-rule: #d4d4d4; /* borders of panels, pills and tooltips */
+    --color-rule-strong: #a3a3a3; /* hovered borders, the slider track and its ticks */
+    --color-accent: #2563eb; /* links in article */
 }
 
-*:focus {
-    outline: none;
+:root {
+    color-scheme: light;
+
+    --map-land: #f6f6f3;
+    --map-foreign: #eceeef;
+    --map-water: #dde6ed;
+    --map-coast: #c0cfd9;
+    --map-marker: #ffffff;
+    --map-marker-rim: #000000;
+    --dim-opacity: 0.25;
+
+    --shadow-panel: 0 1px 2px 0 rgb(23 23 23 / 0.05);
+    --shadow-pop: 0 10px 15px -3px rgb(23 23 23 / 0.1), 0 4px 6px -4px rgb(23 23 23 / 0.1);
 }
 
-html,
-body {
-    @apply bg-paper;
+.dark {
+    color-scheme: dark;
+
+    --color-paper: #121315;
+    --color-surface: #1b1d21;
+    --color-ink: #ececea;
+    --color-ink-muted: #b0b3b8;
+    --color-ink-faint: #858a92;
+    --color-rule: #34383e;
+    --color-rule-strong: #565b63;
+    --color-accent: #7aa7ff;
+
+    --shadow-panel: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+    --shadow-pop: 0 10px 15px -3px rgb(0 0 0 / 0.55), 0 4px 6px -4px rgb(0 0 0 / 0.55);
+
+    --map-land: #22252a;
+    --map-foreign: #1a1c20;
+    --map-water: #0e1116;
+    --map-coast: #3a4048;
+    --map-marker: #f1f1ee;
+    --map-marker-rim: #0e1116;
+    --dim-opacity: 0.45;
 }
 
-.nav-btn {
-    @apply font-medium outline rounded outline-gray-400 py-1 px-2 hover:outline-2;
+@layer base {
+    *:focus {
+        outline: none;
+    }
+
+    html,
+    body {
+        @apply bg-paper text-ink;
+    }
 }
 
-.effect-underline {
-    @apply relative inline-block;
-}
+@layer components {
+    .panel {
+        @apply rounded-lg border border-rule bg-surface/85;
+        box-shadow: var(--shadow-panel);
+    }
 
-.effect-underline:after {
-    @apply content-[''] absolute left-0 inline-block
-    h-4 w-full border-b border-current mt-2 opacity-0 transition-all duration-350 transform
-    scale-x-0 scale-y-100;
-}
+    .zoom-btn {
+        @apply flex h-9 w-9 items-center justify-center rounded-md border border-rule bg-surface/85
+        transition-colors hover:border-rule-strong hover:bg-surface;
+        box-shadow: var(--shadow-panel);
+    }
 
-.effect-underline:hover:after {
-    @apply opacity-100 scale-100;
-}
+    .icon {
+        @apply dark:invert;
+    }
 
-.panel {
-    @apply rounded-lg border border-neutral-300 bg-white/85 shadow-sm shadow-neutral-900/5;
-}
+    .icon-btn {
+        @apply h-3 w-3 cursor-pointer opacity-50 hover:opacity-100 dark:invert;
+    }
 
-.zoom-btn {
-    @apply w-9 h-9 bg-white/85 hover:bg-white border border-neutral-300 hover:border-neutral-500
-    rounded-md shadow-sm shadow-neutral-900/5 flex items-center justify-center transition-colors;
+    .pill {
+        @apply pointer-events-auto relative flex cursor-pointer items-center gap-1.5 rounded-full border border-rule
+        bg-surface/85 px-2 py-0.5 text-3xs text-ink-muted transition-colors hover:border-rule-strong hover:text-ink md:text-2xs;
+    }
+
+    .pill[aria-pressed='true'] {
+        @apply border-ink bg-ink text-surface;
+    }
+
+    .tooltip {
+        @apply pointer-events-none absolute z-50 rounded-lg border border-rule bg-surface/95 text-ink whitespace-nowrap
+        backdrop-blur-sm;
+        box-shadow: var(--shadow-pop);
+    }
+
+    .tooltip-arrow {
+        @apply absolute h-2 w-2 rotate-45 border-rule bg-surface;
+    }
+
+    .meta {
+        @apply font-mono text-3xs text-ink-faint;
+    }
+
+    .nav-btn {
+        @apply rounded px-2 py-1 font-medium outline outline-rule-strong hover:outline-2;
+    }
+
+    .effect-underline {
+        @apply relative inline-block;
+    }
+
+    .effect-underline:after {
+        @apply absolute left-0 mt-2 inline-block h-4 w-full scale-x-0 scale-y-100 transform border-b border-current
+        opacity-0 transition-all duration-350 content-[''];
+    }
+
+    .effect-underline:hover:after {
+        @apply scale-100 opacity-100;
+    }
 }
 
 #date-slider {
-    @apply appearance-none h-1.5 bg-neutral-400/50 rounded-full;
-}
-
-#date-slider:hover {
-    opacity: 1;
+    @apply h-1.5 appearance-none rounded-full bg-rule-strong/50;
 }
 
 #date-slider::-webkit-slider-thumb {

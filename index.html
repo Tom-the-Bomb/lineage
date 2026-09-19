@@ -3,6 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script>
+            if (localStorage.getItem('metroHistoryDarkMode') === 'true') {
+                document.documentElement.classList.add('dark');
+            }
+        </script>
 
         <title>MTR History - Interactive Map & Timeline of Hong Kong's Mass Transit Railway</title>
         <meta

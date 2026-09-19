@@ -81,7 +81,7 @@ export const systems = {
         minDate: new Date(Date.UTC(1996, 0, 1)),
         maxDate: new Date(Date.UTC(2025, 11, 31)),
         lines: tpLines.lines,
-        initialView: { center: [1528, 1907], zoom: 1 }, // Taipei Main Station
+        initialView: { center: [1528, 1907], zoom: 1 },
         tooltipLogos() {
             return [{ src: tpLogo, alt: 'Taipei Metro' }];
         },
@@ -95,7 +95,7 @@ export const systems = {
         minDate: new Date(Date.UTC(1987, 0, 1)),
         maxDate: new Date(Date.UTC(2026, 11, 31)),
         lines: sgLines.lines,
-        initialView: { center: [5831, 4383], zoom: 1 }, // City Hall
+        initialView: { center: [5831, 4383], zoom: 1 },
         tooltipLogos() {
             return [{ src: sgLogo, alt: 'MRT' }];
         },

@@ -10,7 +10,7 @@ function Link({ href, children }: { href: string; children: React.ReactNode }) {
     return (
         <a
             href={href}
-            className="effect-underline text-blue-600"
+            className="effect-underline text-accent"
             target="_blank"
             rel="noopener noreferrer"
         >
@@ -146,7 +146,7 @@ export default function Mtr() {
                                                 <li key={station.name}>
                                                     <a
                                                         href={station.href}
-                                                        className="font-bold effect-underline text-blue-600"
+                                                        className="font-bold effect-underline text-accent"
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >
@@ -368,11 +368,11 @@ export default function Mtr() {
                     </div>
                 </article>
             </main>
-            <footer className="flex justify-center items-center p-6 font-mono text-gray-500">
+            <footer className="flex justify-center items-center p-6 font-mono text-ink-faint">
                 Made by&nbsp;
                 <a
                     href="https://github.com/Tom-the-Bomb"
-                    className="effect-underline text-gray-800"
+                    className="effect-underline text-ink"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

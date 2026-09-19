@@ -1,6 +1,5 @@
 import * as d3 from 'd3';
 import { useEffect, useCallback, useState, useMemo, useRef } from 'react';
-import { Link } from 'react-router-dom';
 
 import {
     type LineStats,
@@ -12,7 +11,7 @@ import {
 
 import { clamp, findName, formatDate, lineStats, parseLabelDates, playPause } from '../utils';
 
-import { MAP_TRANSITION_MS, update, setupHoverEffect } from '../utils_d3';
+import { MAP_TRANSITION_MS, update, setupHoverEffect, applyMapTheme } from '../utils_d3';
 
 import { systems, type SystemKey, type SystemConfig } from '../systems';
 import pause from '../assets/pause.svg';
@@ -24,6 +23,8 @@ import chevronRight from '../assets/chevron-right.svg';
 import Tooltip from './Tooltip';
 import cross from '../assets/cross.svg';
 import { BigTooltip } from './BigTooltip';
+import HeaderCard from './HeaderCard';
+import Theme from './Theme';
 
 export default function Map({ system }: { system: SystemKey }) {
     const config: SystemConfig = systems[system];
@@ -99,7 +100,9 @@ export default function Map({ system }: { system: SystemKey }) {
     );
 
     useEffect(() => {
-        if (!svgDoc) return;
+        if (!svgDoc) {
+            return;
+        }
 
         svgDoc.addEventListener('keydown', keyDownHandler);
 
@@ -302,6 +305,22 @@ export default function Map({ system }: { system: SystemKey }) {
         update(time, linesRef.current, stationsRef.current, legend, highlight);
     }, [time, legend, highlight]);
 
+    useEffect(() => {
+        if (!svgDoc) {
+            return;
+        }
+        applyMapTheme(svgDoc);
+        const observer = new MutationObserver(() => {
+            applyMapTheme(svgDoc);
+            update(timeRef.current, linesRef.current, stationsRef.current, legend, highlight);
+        });
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class'],
+        });
+        return () => observer.disconnect();
+    }, [svgDoc, legend, highlight]);
+
     const [stats, setStats] = useState<LineStats | null>(null);
     useEffect(() => {
         const entry = legend.find(line => line.id === hoveredLine);
@@ -355,37 +374,9 @@ export default function Map({ system }: { system: SystemKey }) {
             style={{ '--slider-thumb': `url("${config.logo}")` } as React.CSSProperties}
         >
             <header className="absolute top-4 left-4 z-10 pointer-events-none">
-                <div className="panel max-w-xs px-4 py-3 flex flex-col gap-1.5">
-                    <div className="flex items-center gap-2 font-mono text-[11px] tracking-wide">
-                        <img src={config.logo} alt="" className="h-4 w-4 object-contain" />
-                        <span className="text-neutral-500">system:</span>
-                        <h1 className="font-medium text-neutral-900">{config.title}</h1>
-                    </div>
-                    <h2 className="flex items-baseline gap-2 leading-none">
-                        <span className="font-mono text-sm text-neutral-400">//</span>
-                        <span
-                            className="font-zh text-xl font-medium tracking-[0.12em] text-neutral-800"
-                            lang="zh-Hans"
-                        >
-                            {config.chineseTitle}
-                        </span>
-                    </h2>
-                    <p className="text-xs text-neutral-600">{config.description}</p>
-                    <div className="flex items-center gap-3 pt-1 font-mono text-[10px] text-neutral-500">
-                        <span>
-                            {minDate.getUTCFullYear()} → {maxDate.getUTCFullYear()}
-                        </span>
-                        {config.article && (
-                            <Link
-                                to={config.article}
-                                className="pointer-events-auto text-neutral-500 underline decoration-neutral-300 underline-offset-4 hover:text-neutral-900"
-                            >
-                                read more →
-                            </Link>
-                        )}
-                    </div>
-                </div>
+                <HeaderCard config={config} />
             </header>
+            <Theme className="absolute top-4 right-4 z-10" />
             <main className="w-dvw h-dvh touch-none">
                 <object
                     ref={svgRef}
@@ -413,7 +404,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     className="zoom-btn"
                     aria-label="Zoom in"
                 >
-                    <img src={plus} alt="Zoom in" className="h-6 w-6" />
+                    <img src={plus} alt="Zoom in" className="icon h-6 w-6" />
                 </button>
                 <button
                     type="button"
@@ -428,7 +419,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     className="zoom-btn"
                     aria-label="Zoom out"
                 >
-                    <img src={minus} alt="Zoom out" className="h-6 w-6" />
+                    <img src={minus} alt="Zoom out" className="icon h-6 w-6" />
                 </button>
             </div>
             <div className="absolute bottom-29 flex flex-wrap justify-center w-2/3 lg:w-1/2 items-center gap-1.5 pointer-events-none">
@@ -451,9 +442,7 @@ export default function Map({ system }: { system: SystemKey }) {
                                 onMouseEnter={() => setHoveredLine(line.id)}
                                 onMouseLeave={() => setHoveredLine(null)}
                                 aria-pressed={selected}
-                                className={`relative px-2 py-0.5 rounded-full border
-                                    flex items-center gap-1.5 text-[9px] md:text-[11px] pointer-events-auto cursor-pointer transition-colors
-                                    ${selected ? 'bg-neutral-900 border-neutral-900 text-white' : 'bg-white/85 border-neutral-300 text-neutral-700 hover:border-neutral-500 hover:text-neutral-900'}`}
+                                className="pill"
                             >
                                 <div
                                     className="w-2 h-2 rounded-full"
@@ -472,35 +461,34 @@ export default function Map({ system }: { system: SystemKey }) {
                     <button
                         type="button"
                         onClick={() => setHighlight([])}
-                        className={`px-2 py-0.5 rounded-full border border-neutral-300 bg-white/85
-                            text-neutral-600 pointer-events-auto cursor-pointer hover:border-neutral-400`}
+                        className="pill"
                         aria-label="Clear highlight"
                     >
-                        <img src={cross} alt="Clear" className="h-3 md:h-4" />
+                        <img src={cross} alt="Clear" className="icon h-3 md:h-4" />
                     </button>
                 )}
             </div>
             <footer
                 className={`absolute bottom-0 left-0 w-dvw p-4 pt-2 flex flex-col justify-center items-center gap-2
-                bg-white/80 border-t border-neutral-300 pointer-events-none`}
+                bg-surface/85 border-t border-rule pointer-events-none`}
             >
                 <button
                     type="button"
                     onClick={() => playPause(setPlaying, time, setTime, minDate, maxDate)}
-                    className="translate-x-2 absolute left-5 top-4 h-6 flex justify-center items-center pointer-events-auto"
+                    className="absolute left-7 top-4 h-6 flex justify-center items-center pointer-events-auto"
                     aria-label={playing ? 'Pause timeline' : 'Play timeline'}
                 >
                     <img
                         src={playing ? pause : play}
                         alt={playing ? 'Pause' : 'Play'}
-                        className="h-full"
+                        className="icon h-full"
                     />
                 </button>
                 <div className="flex gap-3 items-center *:pointer-events-auto">
                     <img
                         src={chevronLeft}
                         alt="Previous"
-                        className="h-3 w-3 opacity-50 hover:opacity-100 cursor-pointer"
+                        className="icon-btn"
                         onClick={e => {
                             e.preventDefault();
                             setTime(prev => findPreviousEventDate(prev));
@@ -508,14 +496,14 @@ export default function Map({ system }: { system: SystemKey }) {
                     />
                     <label
                         htmlFor="date-slider"
-                        className="inline-block font-mono text-sm tracking-wider tabular-nums text-neutral-900 align-middle"
+                        className="font-mono text-sm tracking-wider tabular-nums text-ink"
                     >
                         {formatDate(new Date(time))}
                     </label>
                     <img
                         src={chevronRight}
                         alt="Next"
-                        className="h-3 w-3 opacity-50 hover:opacity-100 cursor-pointer"
+                        className="icon-btn"
                         onClick={e => {
                             e.preventDefault();
                             setTime(prev => findNextEventDate(prev));
@@ -545,10 +533,8 @@ export default function Map({ system }: { system: SystemKey }) {
                                     className="absolute top-1/2 flex flex-col items-center"
                                     style={{ left: `${pct}%`, transform: `translate(-50%, -50%)` }}
                                 >
-                                    <div className="h-2 w-px bg-neutral-400 mt-6"></div>
-                                    <span className="font-mono text-[10px] text-neutral-600 mt-1">
-                                        {date.getUTCFullYear()}
-                                    </span>
+                                    <div className="h-2 w-px bg-rule-strong mt-6"></div>
+                                    <span className="meta mt-1">{date.getUTCFullYear()}</span>
                                 </div>
                             );
                         })}
