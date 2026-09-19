@@ -10,20 +10,19 @@ const DIM_SATURATION = 0.2;
 const DIM_OPACITY = '0.25';
 const DIM_TRANSITION = 'stroke 0.2s, stroke-opacity 0.2s, fill-opacity 0.2s';
 
-// cache for desaturated colors to avoid recalculating them every time
-const dimColors = new Map<string, string>();
+const dimColorsCache = new Map<string, string>();
 
 function desaturate(color: string): string {
-    let dimColor = dimColors.get(color);
+    let dimColor = dimColorsCache.get(color);
     if (!dimColor) {
         const { r, g, b } = d3.rgb(color);
-        // simulate saturate(0.2) by mixing with the perceived grey value of the color
-        // which is a weighted average of the RGB channels
+
+        // weighted avg for grayscale from CSS spec
         const grey = 0.213 * r + 0.715 * g + 0.072 * b;
         const mix = (c: number) => grey + DIM_SATURATION * (c - grey);
 
         dimColor = d3.rgb(mix(r), mix(g), mix(b)).formatRgb();
-        dimColors.set(color, dimColor);
+        dimColorsCache.set(color, dimColor);
     }
     return dimColor;
 }
