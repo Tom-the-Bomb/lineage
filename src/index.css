@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=ZCOOL+XiaoWei&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=ZCOOL+XiaoWei&family=Noto+Sans+TC:wght@400;500;600&display=swap');
 
 @import 'tailwindcss';
 
 @theme {
     --font-serif: 'Source Serif 4', serif;
     --font-sans: 'Plus Jakarta Sans', sans-serif;
-    --font-zh: 'ZCOOL XiaoWei', sans-serif;
+    --font-zh: 'Noto Sans TC', 'Noto Sans SC', sans-serif;
+    --color-paper: #f6f6f3;
     --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -15,7 +16,7 @@
 
 html,
 body {
-    @apply bg-white;
+    @apply bg-paper;
 }
 
 .nav-btn {
@@ -36,13 +37,17 @@ body {
     @apply opacity-100 scale-100;
 }
 
+.panel {
+    @apply rounded-lg border border-neutral-300 bg-white/85 shadow-sm shadow-neutral-900/5;
+}
+
 .zoom-btn {
-    @apply w-10 h-10 bg-gray-400/50 hover:bg-gray-400/70 backdrop-blur-sm
-    rounded flex items-center justify-center text-2xl font-bold transition-colors;
+    @apply w-9 h-9 bg-white/85 hover:bg-white border border-neutral-300 hover:border-neutral-500
+    rounded-md shadow-sm shadow-neutral-900/5 flex items-center justify-center transition-colors;
 }
 
 #date-slider {
-    @apply appearance-none h-2 bg-gray-50/80 rounded-full;
+    @apply appearance-none h-1.5 bg-neutral-400/50 rounded-full;
 }
 
 #date-slider:hover {

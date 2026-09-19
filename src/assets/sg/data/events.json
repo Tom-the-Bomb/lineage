@@ -1,0 +1,236 @@
+[
+  {
+    "date": "1987-11-07",
+    "descriptions": [
+      "North-South Line: Yio Chu Kang - Toa Payoh opens"
+    ]
+  },
+  {
+    "date": "1987-12-12",
+    "descriptions": [
+      "East-West Line: City Hall - Outram Park opens",
+      "North-South Line: Toa Payoh - Raffles Place opens"
+    ]
+  },
+  {
+    "date": "1988-03-12",
+    "descriptions": [
+      "East-West Line: Outram Park - Clementi opens"
+    ]
+  },
+  {
+    "date": "1988-11-05",
+    "descriptions": [
+      "East-West Line: Clementi - Lakeside opens"
+    ]
+  },
+  {
+    "date": "1988-12-20",
+    "descriptions": [
+      "North-South Line: Yishun - Yio Chu Kang opens"
+    ]
+  },
+  {
+    "date": "1989-11-04",
+    "descriptions": [
+      "East-West Line: Tanah Merah - City Hall opens",
+      "North-South Line: Raffles Place - Marina Bay opens"
+    ]
+  },
+  {
+    "date": "1989-12-16",
+    "descriptions": [
+      "East-West Line: Pasir Ris - Tanah Merah opens"
+    ]
+  },
+  {
+    "date": "1990-03-10",
+    "descriptions": [
+      "Branch Line: Jurong East - Choa Chu Kang opens"
+    ]
+  },
+  {
+    "date": "1990-07-06",
+    "descriptions": [
+      "East-West Line: Lakeside - Boon Lay opens"
+    ]
+  },
+  {
+    "date": "1996-02-10",
+    "descriptions": [
+      "Branch Line → North-South Line",
+      "North-South Line: Choa Chu Kang - Yishun opens"
+    ]
+  },
+  {
+    "date": "1999-11-06",
+    "descriptions": [
+      "Bukit Panjang LRT: Choa Chu Kang - Bukit Panjang and the Bukit Panjang loop open"
+    ]
+  },
+  {
+    "date": "2001-01-10",
+    "descriptions": [
+      "East-West Line: Tanah Merah - Expo opens"
+    ]
+  },
+  {
+    "date": "2001-10-18",
+    "descriptions": [
+      "East-West Line: Dover opens"
+    ]
+  },
+  {
+    "date": "2002-02-08",
+    "descriptions": [
+      "East-West Line: Expo - Changi Airport opens"
+    ]
+  },
+  {
+    "date": "2003-01-18",
+    "descriptions": [
+      "Sengkang LRT: East Loop opens"
+    ]
+  },
+  {
+    "date": "2003-06-20",
+    "descriptions": [
+      "North East Line: HarbourFront - Punggol opens"
+    ]
+  },
+  {
+    "date": "2005-01-29",
+    "descriptions": [
+      "Punggol LRT: East Loop opens",
+      "Sengkang LRT: West Loop opens"
+    ]
+  },
+  {
+    "date": "2006-01-15",
+    "descriptions": [
+      "North East Line: Buangkok opens"
+    ]
+  },
+  {
+    "date": "2009-02-28",
+    "descriptions": [
+      "East-West Line: Boon Lay - Joo Koon opens"
+    ]
+  },
+  {
+    "date": "2009-05-28",
+    "descriptions": [
+      "Circle Line: Bartley - Marymount opens"
+    ]
+  },
+  {
+    "date": "2010-04-17",
+    "descriptions": [
+      "Circle Line: Dhoby Ghaut - Tai Seng opens"
+    ]
+  },
+  {
+    "date": "2011-06-20",
+    "descriptions": [
+      "North East Line: Woodleigh opens"
+    ]
+  },
+  {
+    "date": "2011-10-08",
+    "descriptions": [
+      "Circle Line: Caldecott - HarbourFront opens"
+    ]
+  },
+  {
+    "date": "2012-01-14",
+    "descriptions": [
+      "Circle Line: Marina Bay - Bayfront opens"
+    ]
+  },
+  {
+    "date": "2013-12-22",
+    "descriptions": [
+      "Downtown Line: Bugis - Chinatown opens"
+    ]
+  },
+  {
+    "date": "2014-06-29",
+    "descriptions": [
+      "Punggol LRT: West Loop opens"
+    ]
+  },
+  {
+    "date": "2014-11-23",
+    "descriptions": [
+      "North-South Line: Marina Bay - Marina South Pier opens"
+    ]
+  },
+  {
+    "date": "2015-12-27",
+    "descriptions": [
+      "Downtown Line: Bukit Panjang - Rochor opens",
+      "Newton: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "2017-06-18",
+    "descriptions": [
+      "East-West Line: Joo Koon - Tuas Link opens"
+    ]
+  },
+  {
+    "date": "2017-10-21",
+    "descriptions": [
+      "Downtown Line: Fort Canning - Expo opens",
+      "Tampines: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "2019-11-02",
+    "descriptions": [
+      "North-South Line: Canberra opens"
+    ]
+  },
+  {
+    "date": "2020-01-31",
+    "descriptions": [
+      "Thomson-East Coast Line: Woodlands North - Woodlands South opens"
+    ]
+  },
+  {
+    "date": "2021-08-28",
+    "descriptions": [
+      "Thomson-East Coast Line: Springleaf - Caldecott opens"
+    ]
+  },
+  {
+    "date": "2022-11-13",
+    "descriptions": [
+      "Thomson-East Coast Line: Stevens - Gardens by the Bay opens"
+    ]
+  },
+  {
+    "date": "2024-06-23",
+    "descriptions": [
+      "Thomson-East Coast Line: Tanjong Rhu - Bayshore opens"
+    ]
+  },
+  {
+    "date": "2024-12-10",
+    "descriptions": [
+      "North East Line: Punggol Coast opens"
+    ]
+  },
+  {
+    "date": "2025-02-28",
+    "descriptions": [
+      "Downtown Line: Hume opens"
+    ]
+  },
+  {
+    "date": "2026-07-12",
+    "descriptions": [
+      "Circle Line: Keppel - Prince Edward Road opens"
+    ]
+  }
+]

@@ -1,0 +1,54 @@
+{
+    "lines": [
+        {
+            "id": "ns",
+            "label": "North-South_Line=1987_11_07",
+            "color": "rgb(239,28,42)"
+        },
+        {
+            "id": "branch",
+            "label": "Branch_Line=1990_03_10-1996_02_10",
+            "color": "rgb(239,28,42)"
+        },
+        {
+            "id": "ew",
+            "label": "East-West_Line=1987_12_12",
+            "color": "rgb(0,158,82)"
+        },
+        {
+            "id": "ne",
+            "label": "North_East_Line=2003_06_20",
+            "color": "rgb(107,51,148)"
+        },
+        {
+            "id": "cc",
+            "label": "Circle_Line=2009_05_28",
+            "color": "rgb(252,176,42)"
+        },
+        {
+            "id": "dt",
+            "label": "Downtown_Line=2013_12_22",
+            "color": "rgb(0,80,159)"
+        },
+        {
+            "id": "te",
+            "label": "Thomson-East_Coast_Line=2020_01_31",
+            "color": "rgb(157,91,37)"
+        },
+        {
+            "id": "bplrt",
+            "label": "Bukit_Panjang_LRT=1999_11_06",
+            "color": "rgb(116,132,119)"
+        },
+        {
+            "id": "sklrt",
+            "label": "Sengkang_LRT=2003_01_18",
+            "color": "rgb(116,132,119)"
+        },
+        {
+            "id": "pglrt",
+            "label": "Punggol_LRT=2005_01_29",
+            "color": "rgb(116,132,119)"
+        }
+    ]
+}

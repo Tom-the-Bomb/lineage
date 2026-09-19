@@ -6,6 +6,7 @@ export default function Home() {
             <Link to="/sh">Shanghai Metro</Link>
             <Link to="/mtr">MTR</Link>
             <Link to="/tp">Taipei Metro</Link>
+            <Link to="/sg">Singapore MRT</Link>
         </div>
     );
 }
