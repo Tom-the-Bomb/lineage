@@ -25,7 +25,8 @@ export default function HeaderCard({ config }: { config: SystemConfig }) {
                 </span>
                 <Link
                     to={'/'}
-                    className="decoration-rule hover:text-ink pointer-events-auto underline-offset-4"
+                    className="decoration-rule hover:text-ink pointer-events-auto
+                        underline-offset-4"
                 >
                     view more →
                 </Link>

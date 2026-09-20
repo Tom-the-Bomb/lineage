@@ -89,7 +89,8 @@
     }
 
     .zoom-btn {
-        @apply border-rule bg-surface/85 hover:border-rule-strong hover:bg-surface flex h-9 w-9 items-center justify-center rounded-md border transition-colors;
+        @apply border-rule bg-surface/85 hover:border-rule-strong hover:bg-surface flex h-9 w-9
+            items-center justify-center rounded-md border transition-colors;
         box-shadow: var(--shadow-panel);
     }
 
@@ -102,7 +103,9 @@
     }
 
     .pill {
-        @apply border-rule bg-surface/85 text-3xs text-ink-muted hover:border-rule-strong hover:text-ink md:text-2xs pointer-events-auto relative flex cursor-pointer items-center gap-1.5 rounded-full border px-2 py-0.5 transition-colors;
+        @apply border-rule bg-surface/85 text-3xs text-ink-muted hover:border-rule-strong
+            hover:text-ink md:text-2xs pointer-events-auto relative flex cursor-pointer items-center
+            gap-1.5 rounded-full border px-2 py-0.5 transition-colors;
     }
 
     .pill[aria-pressed='true'] {
@@ -110,7 +113,8 @@
     }
 
     .tooltip {
-        @apply border-rule bg-surface/95 text-ink pointer-events-none absolute z-50 rounded-lg border whitespace-nowrap backdrop-blur-sm;
+        @apply border-rule bg-surface/95 text-ink pointer-events-none absolute z-50 rounded-lg
+            border whitespace-nowrap backdrop-blur-sm;
         box-shadow: var(--shadow-pop);
     }
 
@@ -123,7 +127,8 @@
     }
 
     .mini-btn {
-        @apply border-rule bg-surface inline-flex h-4 w-4 items-center justify-center rounded-sm border align-text-bottom;
+        @apply border-rule bg-surface inline-flex h-4 w-4 items-center justify-center rounded-sm
+            border align-text-bottom;
     }
 
     .range {
@@ -131,12 +136,14 @@
     }
 
     .range-tip {
-        @apply text-3xs bottom-full mb-2 w-max max-w-40 -translate-x-1/2 px-2 py-1 text-center whitespace-normal opacity-0 transition-opacity;
+        @apply text-3xs bottom-full mb-2 w-max max-w-40 -translate-x-1/2 px-2 py-1 text-center
+            whitespace-normal opacity-0 transition-opacity;
         left: calc(var(--range-thumb) / 2 + (100% - var(--range-thumb)) * var(--at));
     }
 
     .kbd {
-        @apply border-rule bg-paper text-3xs text-ink-muted min-w-5 rounded border px-1 text-center font-mono;
+        @apply border-rule bg-paper text-3xs text-ink-muted min-w-5 rounded border px-1 text-center
+            font-mono;
     }
 
     .scroll-hidden {
@@ -164,7 +171,8 @@
     }
 
     .effect-underline:after {
-        @apply absolute left-0 mt-2 inline-block h-4 w-full scale-x-0 scale-y-100 transform border-b border-current opacity-0 transition-all duration-350 content-[''];
+        @apply absolute left-0 mt-2 inline-block h-4 w-full scale-x-0 scale-y-100 transform border-b
+            border-current opacity-0 transition-all duration-350 content-[''];
     }
 
     .effect-underline:hover:after {

@@ -81,7 +81,8 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
                 <img
                     src={chevronDown}
                     alt={open ? 'v' : '^'}
-                    className={`icon-btn transition-transform duration-300 ${open ? '' : 'rotate-180'}`}
+                    className={`icon-btn transition-transform duration-300
+                        ${open ? '' : 'rotate-180'}`}
                 />
             </button>
             {open && lines.length > 0 && (
@@ -98,19 +99,24 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
                                 return (
                                     <div
                                         key={line.id}
-                                        className="absolute inset-x-0 flex items-center gap-2 transition-[transform,opacity] duration-500 ease-out"
+                                        className="absolute inset-x-0 flex items-center gap-2
+                                            transition-[transform,opacity] duration-500 ease-out"
                                         style={{
                                             height: ROW_HEIGHT,
                                             transform: `translateY(${(rank.get(line.id) ?? 0) * ROW_HEIGHT}px)`,
                                             opacity: dimmed ? 0.35 : 1,
                                         }}
                                     >
-                                        <span className="text-3xs text-ink-muted w-28 shrink-0 truncate">
+                                        <span
+                                            className="text-3xs text-ink-muted w-28 shrink-0
+                                                truncate"
+                                        >
                                             {line.name}
                                         </span>
                                         <span className="bg-rule/50 h-1.5 flex-1 rounded-full">
                                             <span
-                                                className="block h-full rounded-full transition-[width] duration-500 ease-out"
+                                                className="block h-full rounded-full
+                                                    transition-[width] duration-500 ease-out"
                                                 style={{
                                                     width: `${(line.km / maxKm) * 100}%`,
                                                     backgroundColor: line.color,
