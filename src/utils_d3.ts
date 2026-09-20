@@ -48,8 +48,8 @@ export const DEFAULT_SETTINGS: PlaybackSettings = {
         count: 1,
         unit: 'month',
     },
-    transitionMs: 1800,
-    pauseMs: 2200,
+    transitionMs: 1600,
+    pauseMs: 2000,
 };
 
 export const RANGES = {
