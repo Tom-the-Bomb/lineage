@@ -23,14 +23,12 @@ export default function HeaderCard({ config }: { config: SystemConfig }) {
                 <span>
                     {config.minDate.getUTCFullYear()} → {config.maxDate.getUTCFullYear()}
                 </span>
-                {config.article && (
-                    <Link
-                        to={config.article}
-                        className="pointer-events-auto underline decoration-rule underline-offset-4 hover:text-ink"
-                    >
-                        read more →
-                    </Link>
-                )}
+                <Link
+                    to={'/'}
+                    className="pointer-events-auto decoration-rule underline-offset-4 hover:text-ink"
+                >
+                    view more →
+                </Link>
             </div>
         </div>
     );

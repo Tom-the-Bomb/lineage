@@ -2,9 +2,7 @@
   {
     "date": "1993-05-28",
     "descriptions": [
-      "Line 1: Caobao Road - Xujiahui opens",
-      "Line 1: Jinjiang Park (original station) - Xinlonghua (old surface station) opens",
-      "Line 1: Xinlonghua (old surface station) - Caobao Road opens"
+      "Line 1: Xujiahui - Jinjiang Park opens"
     ]
   },
   {
@@ -56,8 +54,7 @@
     "date": "2000-12-26",
     "descriptions": [
       "Line 2: Longyang Road - Zhangjiang High-Tech Park (elevated station) opens",
-      "Pearl Line: Shanghai South Railway Station (old surface station) - Shilong Road opens",
-      "Pearl Line: Shilong Road - Jiangwan Town opens",
+      "Pearl Line: Shanghai South Railway Station - Jiangwan Town opens",
       "Shanghai South Railway Station: out-of-station interchange opens",
       "Zhongshan Park: out-of-station interchange opens"
     ]
@@ -108,8 +105,7 @@
   {
     "date": "2004-12-04",
     "descriptions": [
-      "Line 1: Jinjiang Park - Shanghai South Railway Station (old surface station) closes",
-      "Line 1: Shanghai South Railway Station (old surface station) - Caobao Road closes"
+      "Line 1: Jinjiang Park - Caobao Road closes, the old surface alignment via Shanghai South Railway Station"
     ]
   },
   {
@@ -252,8 +248,7 @@
   {
     "date": "2010-04-10",
     "descriptions": [
-      "Line 10: Longxi Road - Hangzhong Road opens",
-      "Line 10: Longxi Road - Xinjiangwancheng opens",
+      "Line 10: Xinjiangwancheng - Hangzhong Road opens",
       "South Shaanxi Road: out-of-station interchange opens"
     ]
   },
@@ -325,7 +320,7 @@
   {
     "date": "2012-09-28",
     "descriptions": [
-      "Jinshan Railway: Shanghai South - Jinshanwei opens",
+      "Jinshan Railway: Shanghai South Railway Station - Jinshanwei opens",
       "Line 8: China Art Museum opens"
     ]
   },
@@ -338,7 +333,6 @@
   {
     "date": "2012-12-30",
     "descriptions": [
-      "Expo Line → Line 13",
       "Line 9: Songjiang South Railway Station - Songjiang Xincheng opens",
       "Line 13: Jinyun Road - Jinshajiang Road opens"
     ]
@@ -399,7 +393,7 @@
     "descriptions": [
       "Line 11: Luoshan Road - Kangxin Highway opens",
       "Line 12: Qixin Road - Qufu Road opens",
-      "Line 13: Changshou Road - Shibo Avenue opens",
+      "Line 13: Changshou Road - Shibo Avenue opens, reusing the Expo Line section",
       "Longhua: out-of-station interchange opens",
       "Lupu Bridge → World Expo Museum",
       "South Shaanxi Road: in-station interchange opens",
@@ -452,7 +446,7 @@
   {
     "date": "2019-12-30",
     "descriptions": [
-      "Songjiang Tram 1: Xinmiaosan Road - Xinqiao Railway Station opens"
+      "Songjiang Tram 1: Xinmiaosan Road - Xinqiao opens"
     ]
   },
   {

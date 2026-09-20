@@ -23,7 +23,8 @@
         {
             "id": "lr",
             "label": "KCR_Light_Rail=1988_09_18-2007_12_02,Light_Rail=2007_12_02",
-            "color": "rgb(211,168,9)"
+            "color": "rgb(211,168,9)",
+            "simplified": true
         },
         {
             "id": "tcl",

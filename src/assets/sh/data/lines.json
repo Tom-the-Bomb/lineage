@@ -113,12 +113,14 @@
         {
             "id": "tram1",
             "label": "Songjiang_Tram_1=2019_08_10",
-            "color": "rgb(218,44,67)"
+            "color": "rgb(218,44,67)",
+            "simplified": true
         },
         {
             "id": "tram2",
             "label": "Songjiang_Tram_2=2018_12_26",
-            "color": "rgb(1,163,104)"
+            "color": "rgb(1,163,104)",
+            "simplified": true
         }
     ]
 }

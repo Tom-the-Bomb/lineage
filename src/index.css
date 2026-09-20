@@ -13,6 +13,14 @@
     --text-2xs: 0.6875rem;
     --text-3xs: 0.625rem;
 
+    --animate-log-in: log-in 0.7s ease-out;
+    @keyframes log-in {
+        from {
+            opacity: 0;
+            transform: translateY(-6px);
+        }
+    }
+
     --color-paper: #f6f6f3; /* page bg, the system's land in every map */
     --color-surface: #ffffff; /* floating panels, pills and tooltips, @ /85 or /95 */
     --color-ink: #171717; /* primary text, a selected pill */
@@ -34,6 +42,7 @@
     --map-marker-rim: #000000;
     --dim-opacity: 0.25;
 
+    --range-thumb: 12px;
     --shadow-panel: 0 1px 2px 0 rgb(23 23 23 / 0.05);
     --shadow-pop: 0 10px 15px -3px rgb(23 23 23 / 0.1), 0 4px 6px -4px rgb(23 23 23 / 0.1);
 }
@@ -116,6 +125,40 @@
         @apply font-mono text-3xs text-ink-faint;
     }
 
+    .mini-btn {
+        @apply inline-flex h-4 w-4 items-center justify-center rounded-sm border border-rule bg-surface align-text-bottom;
+    }
+
+    .range {
+        @apply h-1 cursor-pointer appearance-none rounded-full bg-rule-strong/50;
+    }
+
+    .range-tip {
+        @apply bottom-full mb-2 w-max max-w-40 -translate-x-1/2 px-2 py-1 text-center text-3xs whitespace-normal
+        opacity-0 transition-opacity;
+        left: calc(var(--range-thumb) / 2 + (100% - var(--range-thumb)) * var(--at));
+    }
+
+    .kbd {
+        @apply min-w-5 rounded border border-rule bg-paper px-1 text-center font-mono text-3xs text-ink-muted;
+    }
+
+    .scroll-hidden {
+        scrollbar-width: none;
+    }
+
+    .scroll-hidden::-webkit-scrollbar {
+        display: none;
+    }
+
+    .log {
+        mask-image: linear-gradient(to bottom, black calc(100% - 3rem), transparent);
+    }
+
+    .log::after {
+        @apply block h-12 content-[''];
+    }
+
     .nav-btn {
         @apply rounded px-2 py-1 font-medium outline outline-rule-strong hover:outline-2;
     }
@@ -131,6 +174,10 @@
 
     .effect-underline:hover:after {
         @apply scale-100 opacity-100;
+    }
+
+    .slide-out-settings {
+        @apply transition-transform duration-500 ease-in-out;
     }
 }
 
@@ -161,4 +208,22 @@
     background: var(--slider-thumb) center / contain no-repeat transparent;
     box-shadow: none;
     cursor: pointer;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: var(--range-thumb);
+    height: var(--range-thumb);
+    border: 0;
+    border-radius: 100%;
+    background: var(--color-accent);
+}
+
+.range::-moz-range-thumb {
+    width: var(--range-thumb);
+    height: var(--range-thumb);
+    border: 0;
+    border-radius: 100%;
+    background: var(--color-accent);
 }

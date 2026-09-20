@@ -1,18 +1,22 @@
-import { Status } from './schemas';
+import { Status, type ChangelogEvent } from './schemas';
 import mtrMap from './assets/mtr/map.svg';
 import mtrLogo from './assets/mtr/mtr.svg';
 import kcrLogo from './assets/mtr/kcr.svg';
 import mtrLines from './assets/mtr/data/lines.json';
+import mtrEvents from './assets/mtr/data/events.json';
 import shMap from './assets/sh/map.svg';
 import shMetroLogo from './assets/sh/metro.svg';
 import shSuburbanLogo from './assets/sh/suburban.svg';
 import shLines from './assets/sh/data/lines.json';
+import shEvents from './assets/sh/data/events.json';
 import tpMap from './assets/tp/map.svg';
 import tpLogo from './assets/tp/metro.svg';
 import tpLines from './assets/tp/data/lines.json';
+import tpEvents from './assets/tp/data/events.json';
 import sgMap from './assets/sg/map.svg';
 import sgLogo from './assets/sg/metro.svg';
 import sgLines from './assets/sg/data/lines.json';
+import sgEvents from './assets/sg/data/events.json';
 
 const KCR_MERGER_DATE = Date.UTC(2007, 11, 2);
 
@@ -25,6 +29,7 @@ export interface SystemConfig {
     minDate: Date;
     maxDate: Date;
     lines: { id: string; label: string; color: string }[];
+    events: ChangelogEvent[];
     article?: string;
     tooltipLogos?: (status: Status, time: number) => { src: string; alt: string }[];
     initialView?: { center: [number, number]; zoom: number };
@@ -40,6 +45,7 @@ export const systems = {
         minDate: new Date(Date.UTC(1972, 0, 1)),
         maxDate: new Date(Date.UTC(2023, 0, 1)),
         lines: mtrLines.lines,
+        events: mtrEvents,
         article: '/mtr/article',
         tooltipLogos(status, time) {
             const merged = time >= KCR_MERGER_DATE;
@@ -60,6 +66,7 @@ export const systems = {
         minDate: new Date(Date.UTC(1993, 0, 1)),
         maxDate: new Date(Date.UTC(2025, 11, 31)),
         lines: shLines.lines,
+        events: shEvents,
         initialView: { center: [2412, 1089], zoom: 1 },
         tooltipLogos(status) {
             return [
@@ -81,6 +88,7 @@ export const systems = {
         minDate: new Date(Date.UTC(1996, 0, 1)),
         maxDate: new Date(Date.UTC(2025, 11, 31)),
         lines: tpLines.lines,
+        events: tpEvents,
         initialView: { center: [1528, 1907], zoom: 1 },
         tooltipLogos() {
             return [{ src: tpLogo, alt: 'Taipei Metro' }];
@@ -95,6 +103,7 @@ export const systems = {
         minDate: new Date(Date.UTC(1987, 0, 1)),
         maxDate: new Date(Date.UTC(2026, 11, 31)),
         lines: sgLines.lines,
+        events: sgEvents,
         initialView: { center: [5831, 4383], zoom: 1 },
         tooltipLogos() {
             return [{ src: sgLogo, alt: 'MRT' }];

@@ -6,17 +6,27 @@ import {
     type LineWrapper,
     type StationWrapper,
     type RawTooltipData,
+    type UpdateResult,
     Status,
 } from '../schemas';
 
 import { clamp, findName, formatDate, lineStats, parseLabelDates, playPause } from '../utils';
 
-import { MAP_TRANSITION_MS, update, setupHoverEffect, applyMapTheme } from '../utils_d3';
+import {
+    DEFAULT_SETTINGS,
+    STEP_UNITS,
+    type PlaybackSettings,
+    update,
+    setupHoverEffect,
+    applyMapTheme,
+} from '../utils_d3';
 
 import { systems, type SystemKey, type SystemConfig } from '../systems';
 import pause from '../assets/pause.svg';
 import play from '../assets/play.svg';
 import plus from '../assets/plus.svg';
+import expand from '../assets/expand.svg';
+import shrink from '../assets/shrink.svg';
 import minus from '../assets/minus.svg';
 import chevronLeft from '../assets/chevron-left.svg';
 import chevronRight from '../assets/chevron-right.svg';
@@ -24,7 +34,19 @@ import Tooltip from './Tooltip';
 import cross from '../assets/cross.svg';
 import { BigTooltip } from './BigTooltip';
 import HeaderCard from './HeaderCard';
+import Stats from './Stats';
+import Changelog from './Changelog';
 import Theme from './Theme';
+import Info from './Info';
+
+function sameNetwork(a: UpdateResult, b: UpdateResult): boolean {
+    return (
+        a.stationCount === b.stationCount &&
+        a.km === b.km &&
+        Object.keys(a.lineKm).length === Object.keys(b.lineKm).length &&
+        Object.entries(b.lineKm).every(([id, km]) => a.lineKm[id] === km)
+    );
+}
 
 export default function Map({ system }: { system: SystemKey }) {
     const config: SystemConfig = systems[system];
@@ -44,15 +66,24 @@ export default function Map({ system }: { system: SystemKey }) {
 
     const [svgDoc, setSvgDoc] = useState<Document | null>(null);
     const [time, setTime] = useState<number>(minDate.getTime());
-    const [playing, setPlaying] = useState(false);
+    const [playing, setPlaying] = useState<boolean>(true);
     const [tooltip, setTooltip] = useState<RawTooltipData | null>(null);
     const [highlight, setHighlight] = useState<string[]>([]);
     const [hoveredLine, setHoveredLine] = useState<string | null>(null);
+    const [network, setNetwork] = useState<UpdateResult>({ stationCount: 0, km: 0, lineKm: {} });
+    const [expanded, setExpanded] = useState<boolean>(false);
+    const [settings, setSettings] = useState<PlaybackSettings>(DEFAULT_SETTINGS);
+
     const timeRef = useRef(time);
+    const settingsRef = useRef(settings);
 
     useEffect(() => {
         timeRef.current = time;
     }, [time]);
+
+    useEffect(() => {
+        settingsRef.current = settings;
+    }, [settings]);
 
     const keyDownHandler = useCallback(
         (e: KeyboardEvent) => {
@@ -130,6 +161,7 @@ export default function Map({ system }: { system: SystemKey }) {
             stations.querySelectorAll<SVGElement>('path, circle, rect'),
         ).map(el => {
             el.style.opacity = '0';
+            el.dataset.hidden = 'true';
 
             setupHoverEffect(el);
             let label = el.getAttribute('inkscape:label')!;
@@ -185,7 +217,15 @@ export default function Map({ system }: { system: SystemKey }) {
             .filter(date => minDate.getTime() <= date && date <= maxDate.getTime())
             .sort((a, b) => a - b);
 
-        update(timeRef.current, linesRef.current, stationsRef.current, legend);
+        setNetwork(
+            update(
+                timeRef.current,
+                linesRef.current,
+                stationsRef.current,
+                legend,
+                settingsRef.current.transitionMs,
+            ),
+        );
 
         const svgd3 = d3.select(svgDoc).select<SVGSVGElement>('svg');
         const zoomLayer = d3.select(svgDoc).select<SVGGElement>('#zoom-layer');
@@ -302,8 +342,16 @@ export default function Map({ system }: { system: SystemKey }) {
     }, [svgDoc, legend, keyDownHandler, minDate, maxDate, config.initialView]);
 
     useEffect(() => {
-        update(time, linesRef.current, stationsRef.current, legend, highlight);
-    }, [time, legend, highlight]);
+        const next = update(
+            time,
+            linesRef.current,
+            stationsRef.current,
+            legend,
+            settings.transitionMs,
+            highlight,
+        );
+        setNetwork(prev => (sameNetwork(prev, next) ? prev : next));
+    }, [time, legend, highlight, settings.transitionMs]);
 
     useEffect(() => {
         if (!svgDoc) {
@@ -312,14 +360,21 @@ export default function Map({ system }: { system: SystemKey }) {
         applyMapTheme(svgDoc);
         const observer = new MutationObserver(() => {
             applyMapTheme(svgDoc);
-            update(timeRef.current, linesRef.current, stationsRef.current, legend, highlight);
+            update(
+                timeRef.current,
+                linesRef.current,
+                stationsRef.current,
+                legend,
+                settings.transitionMs,
+                highlight,
+            );
         });
         observer.observe(document.documentElement, {
             attributes: true,
             attributeFilter: ['class'],
         });
         return () => observer.disconnect();
-    }, [svgDoc, legend, highlight]);
+    }, [svgDoc, legend, highlight, settings.transitionMs]);
 
     const [stats, setStats] = useState<LineStats | null>(null);
     useEffect(() => {
@@ -350,12 +405,13 @@ export default function Map({ system }: { system: SystemKey }) {
             return;
         }
 
-        const eventDates = eventDatesRef.current;
-        const delay = eventDates.includes(time) ? MAP_TRANSITION_MS + 100 : 40;
+        const { tickMs, step, pauseMs } = settings;
+        const delay = eventDatesRef.current.includes(time) ? pauseMs : tickMs;
+        const { interval } = STEP_UNITS[step.unit];
 
         const timer = d3.interval(() => {
             setTime(prev => {
-                const nextDate = d3.utcMonth.offset(d3.utcMonth.floor(new Date(prev)), 1);
+                const nextDate = interval.offset(interval.floor(new Date(prev)), step.count);
                 const nextMs = Math.min(nextDate.getTime(), findNextEventDate(prev));
 
                 if (nextMs >= maxDate.getTime()) {
@@ -366,17 +422,44 @@ export default function Map({ system }: { system: SystemKey }) {
             });
         }, delay);
         return () => timer.stop();
-    }, [playing, time, svgDoc, maxDate, findNextEventDate]);
+    }, [playing, time, svgDoc, maxDate, findNextEventDate, settings]);
+
+    const presentLines = legend.flatMap(line => {
+        const name = findName(line.states, time);
+        return name === null ? [] : [{ line, name }];
+    });
+
+    const activeLines = presentLines.filter(({ line }) => highlight.includes(line.id));
 
     return (
         <div
             className="w-dvw h-dvh flex justify-center items-center touch-none"
             style={{ '--slider-thumb': `url("${config.logo}")` } as React.CSSProperties}
         >
-            <header className="absolute top-4 left-4 z-10 pointer-events-none">
+            <header
+                className={`absolute top-4 left-4 z-10 flex max-h-[calc(100dvh-17.5rem)] flex-col pointer-events-none
+                ${expanded ? '-translate-x-100' : ''} slide-out-settings`}
+            >
                 <HeaderCard config={config} />
+                <Stats
+                    stations={network.stationCount}
+                    km={network.km}
+                    lines={presentLines.map(({ line, name }) => ({
+                        id: line.id,
+                        name,
+                        color: line.color,
+                        km: network.lineKm[line.id] ?? 0,
+                    }))}
+                    highlight={highlight}
+                />
             </header>
-            <Theme className="absolute top-4 right-4 z-10" />
+            <div className="absolute top-4 right-4 z-20 flex gap-2">
+                <Theme />
+                <Info
+                    settings={settings}
+                    onSettings={patch => setSettings(current => ({ ...current, ...patch }))}
+                />
+            </div>
             <main className="w-dvw h-dvh touch-none">
                 <object
                     ref={svgRef}
@@ -390,7 +473,10 @@ export default function Map({ system }: { system: SystemKey }) {
                     <Tooltip tooltip={tooltip} time={time} config={config} legend={legend} />
                 )}
             </main>
-            <div className="absolute bottom-31 left-4 flex flex-col gap-2 pointer-events-auto">
+            <div
+                className={`absolute bottom-31 left-4 flex flex-col gap-2 pointer-events-auto
+                ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
+            >
                 <button
                     type="button"
                     onClick={() => {
@@ -421,43 +507,58 @@ export default function Map({ system }: { system: SystemKey }) {
                 >
                     <img src={minus} alt="Zoom out" className="icon h-6 w-6" />
                 </button>
+                <button
+                    type="button"
+                    className="zoom-btn"
+                    aria-label="full view"
+                    onClick={() => setExpanded(e => !e)}
+                >
+                    <img
+                        src={expanded ? shrink : expand}
+                        alt="Full view"
+                        className="icon h-6 w-6"
+                    />
+                </button>
             </div>
-            <div className="absolute bottom-29 flex flex-wrap justify-center w-2/3 lg:w-1/2 items-center gap-1.5 pointer-events-none">
-                {legend.map(line => {
-                    const name = findName(line.states, time);
+            <Changelog
+                className={`${expanded ? 'translate-x-100' : ''} slide-out-settings`}
+                events={config.events}
+                time={time}
+                legend={legend}
+            />
+            <div
+                className={`absolute bottom-29 flex flex-wrap justify-center w-2/3 lg:w-1/2 items-center gap-1.5 pointer-events-none
+                ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
+            >
+                {presentLines.map(({ line, name }) => {
                     const selected = highlight.includes(line.id);
 
-                    if (name) {
-                        return (
-                            <button
-                                type="button"
-                                key={line.label}
-                                onClick={() =>
-                                    setHighlight(
-                                        selected
-                                            ? highlight.filter(id => id !== line.id)
-                                            : [...highlight, line.id],
-                                    )
-                                }
-                                onMouseEnter={() => setHoveredLine(line.id)}
-                                onMouseLeave={() => setHoveredLine(null)}
-                                aria-pressed={selected}
-                                className="pill"
-                            >
-                                <div
-                                    className="w-2 h-2 rounded-full"
-                                    style={{ backgroundColor: line.color }}
-                                ></div>
-                                {name}
-                                {stats && line.id === hoveredLine && <BigTooltip stats={stats} />}
-                            </button>
-                        );
-                    }
-                    return null;
+                    return (
+                        <button
+                            type="button"
+                            key={line.label}
+                            onClick={() =>
+                                setHighlight(
+                                    selected
+                                        ? highlight.filter(id => id !== line.id)
+                                        : [...highlight, line.id],
+                                )
+                            }
+                            onMouseEnter={() => setHoveredLine(line.id)}
+                            onMouseLeave={() => setHoveredLine(null)}
+                            aria-pressed={selected}
+                            className="pill"
+                        >
+                            <div
+                                className="w-2 h-2 rounded-full"
+                                style={{ backgroundColor: line.color }}
+                            ></div>
+                            {name}
+                            {stats && line.id === hoveredLine && <BigTooltip stats={stats} />}
+                        </button>
+                    );
                 })}
-                {legend.some(
-                    line => highlight.includes(line.id) && findName(line.states, time) !== null,
-                ) && (
+                {activeLines.length > 0 && (
                     <button
                         type="button"
                         onClick={() => setHighlight([])}
@@ -470,7 +571,8 @@ export default function Map({ system }: { system: SystemKey }) {
             </div>
             <footer
                 className={`absolute bottom-0 left-0 w-dvw p-4 pt-2 flex flex-col justify-center items-center gap-2
-                bg-surface/85 border-t border-rule pointer-events-none`}
+                    bg-surface/85 border-t border-rule pointer-events-none
+                    ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
             >
                 <button
                     type="button"
@@ -531,7 +633,10 @@ export default function Map({ system }: { system: SystemKey }) {
                                 <div
                                     key={date.getTime()}
                                     className="absolute top-1/2 flex flex-col items-center"
-                                    style={{ left: `${pct}%`, transform: `translate(-50%, -50%)` }}
+                                    style={{
+                                        left: `${pct}%`,
+                                        transform: `translate(-50%, -50%)`,
+                                    }}
                                 >
                                     <div className="h-2 w-px bg-rule-strong mt-6"></div>
                                     <span className="meta mt-1">{date.getUTCFullYear()}</span>

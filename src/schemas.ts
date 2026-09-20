@@ -17,6 +17,17 @@ export interface LineWrapper {
     km: number;
 }
 
+export interface ChangelogEvent {
+    date: string;
+    descriptions: string[];
+}
+
+export interface UpdateResult {
+    stationCount: number;
+    km: number;
+    lineKm: Record<string, number>;
+}
+
 export interface LineStats {
     km: number;
     stations: number;
