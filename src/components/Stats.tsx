@@ -59,7 +59,7 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
     );
 
     return (
-        <section className="panel pointer-events-auto relative mt-2 flex min-h-0 w-80 flex-col px-4 py-3">
+        <section className="pointer-events-auto relative mt-2 flex min-h-0 w-80 flex-col px-4 py-3">
             {open ? (
                 <div className="flex gap-6">
                     <Figure value={stations} label={stations === 1 ? 'station' : 'stations'} />
