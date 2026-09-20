@@ -2,7 +2,7 @@ import useDarkMode from '../hooks/useDarkMode';
 import darkModeIcon from '../assets/dark.svg';
 import lightModeIcon from '../assets/light.svg';
 
-export default function Theme({ className = '' }: { className?: string }) {
+export default function Theme() {
     const [isDarkMode, toggleDarkMode] = useDarkMode();
 
     return (
@@ -10,7 +10,7 @@ export default function Theme({ className = '' }: { className?: string }) {
             type="button"
             aria-label="Toggle dark mode"
             onClick={toggleDarkMode}
-            className={`zoom-btn rounded-full pointer-events-auto cursor-pointer ${className}`}
+            className="zoom-btn rounded-full pointer-events-auto cursor-pointer"
         >
             {isDarkMode ? (
                 <img src={lightModeIcon} alt="Light mode" className="icon h-4 w-4" />

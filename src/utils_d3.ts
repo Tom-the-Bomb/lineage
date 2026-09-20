@@ -1,10 +1,74 @@
 import * as d3 from 'd3';
 
-import { type LegendWrapper, type LineWrapper, type StationWrapper } from './schemas';
+import {
+    type LegendWrapper,
+    type LineWrapper,
+    type StationWrapper,
+    type UpdateResult,
+} from './schemas';
 
 import { findName, isActive } from './utils';
 
-export const MAP_TRANSITION_MS = 650;
+export const STEP_UNITS = {
+    day: {
+        interval: d3.utcDay,
+        max: 30,
+    },
+    week: {
+        interval: d3.utcWeek,
+        max: 12,
+    },
+    month: {
+        interval: d3.utcMonth,
+        max: 12,
+    },
+    year: {
+        interval: d3.utcYear,
+        max: 10,
+    },
+} as const;
+
+export type StepUnit = keyof typeof STEP_UNITS;
+
+export interface Step {
+    count: number;
+    unit: StepUnit;
+}
+
+export interface PlaybackSettings {
+    tickMs: number;
+    step: Step;
+    transitionMs: number;
+    pauseMs: number;
+}
+
+export const DEFAULT_SETTINGS: PlaybackSettings = {
+    tickMs: 40,
+    step: {
+        count: 1,
+        unit: 'month',
+    },
+    transitionMs: 1800,
+    pauseMs: 2200,
+};
+
+export const RANGES = {
+    tickMs: {
+        min: 10,
+        max: 200,
+        step: 10,
+    },
+    transitionMs: {
+        min: 0,
+        max: 5000,
+        step: 100,
+    },
+    pauseMs: {
+        min: 0,
+        max: 5000,
+        step: 100,
+    },
+} as const;
 
 const MAP_PALETTE: Record<string, string> = {
     '#f6f6f3': '--map-land',
@@ -45,6 +109,8 @@ export function applyMapTheme(svgDoc: Document): void {
 const DIM_SATURATION = 0.2;
 const DIM_TRANSITION = 'stroke 0.2s, stroke-opacity 0.2s, fill-opacity 0.2s';
 
+const EASE = d3.easeCubicOut;
+
 const dimColorsCache = new Map<string, string>();
 
 function desaturate(color: string): string {
@@ -81,9 +147,10 @@ export function update(
     lines: LineWrapper[],
     stations: StationWrapper[],
     legend: LegendWrapper[],
+    transitionMs: number,
     highlight: string[] = [],
-): void {
-    const colors = new Map(legend.map(({ color, states }) => [findName(states, dateNum), color]));
+): UpdateResult {
+    const entries = new Map(legend.map(entry => [findName(entry.states, dateNum), entry]));
 
     const lit = new Set(
         legend
@@ -91,21 +158,29 @@ export function update(
             .map(({ states }) => findName(states, dateNum))
             .filter(name => name !== null),
     );
-    const dimOpacity = pageToken('--dim-opacity');
 
-    for (const { el, states, length, dashArray } of lines) {
+    const dimOpacity = String(Number(pageToken('--dim-opacity')));
+
+    let km = 0;
+    const lineKm: Record<string, number> = {};
+
+    for (const { el, states, length, dashArray, km: trackKm } of lines) {
         const name = findName(states, dateNum);
 
         if (name !== null) {
             const dimmed = lit.size > 0 && !lit.has(name);
+            const entry = entries.get(name);
 
-            const color = colors.get(name);
-            if (color) {
-                el.style.stroke = dimmed ? desaturate(color) : color;
+            if (!dimmed) {
+                km += trackKm;
+            }
+            if (entry) {
+                lineKm[entry.id] = (lineKm[entry.id] ?? 0) + trackKm;
+                el.style.stroke = dimmed ? desaturate(entry.color) : entry.color;
             }
             setDimmed(el, dimmed, el.dataset.hidden === 'false', dimOpacity);
 
-            if (el.style.strokeDashoffset !== '0') {
+            if (el.dataset.hidden !== 'false') {
                 el.dataset.hidden = 'false';
 
                 const selection = d3.select(el);
@@ -115,22 +190,26 @@ export function update(
                 }
 
                 selection
-                    .transition()
-                    .duration(MAP_TRANSITION_MS)
-                    .ease(d3.easeLinear)
+                    .interrupt('shrink')
+                    .transition('grow')
+                    .duration(transitionMs)
+                    .ease(EASE)
                     .style('stroke-dashoffset', '0');
             }
         } else if (el.dataset.hidden !== 'true') {
             el.dataset.hidden = 'true';
 
             d3.select(el)
-                .transition()
-                .duration(MAP_TRANSITION_MS)
-                .ease(d3.easeLinear)
+                .interrupt('grow')
+                .transition('shrink')
+                .duration(transitionMs)
+                .ease(EASE)
                 .style('stroke-dashoffset', String(length))
                 .style('stroke-dasharray', String(length));
         }
     }
+
+    let stationCount = 0;
 
     for (const { el, states, lines } of stations) {
         if (findName(states, dateNum) !== null) {
@@ -140,27 +219,37 @@ export function update(
                     ({ name: id, dateRange }) =>
                         highlight.includes(id) && isActive(dateRange, dateNum),
                 );
-            setDimmed(el, dimmed, el.style.opacity === '1', dimOpacity);
+            if (!dimmed && lines.length > 0) {
+                stationCount++;
+            }
+            setDimmed(el, dimmed, el.dataset.hidden === 'false', dimOpacity);
 
             el.style.pointerEvents = '';
-            if (el.style.opacity !== '1') {
+            if (el.dataset.hidden !== 'false') {
+                el.dataset.hidden = 'false';
+
                 d3.select(el)
+                    .interrupt('disappear')
                     .transition('appear')
-                    .duration(MAP_TRANSITION_MS)
-                    .ease(d3.easeLinear)
+                    .duration(transitionMs)
+                    .ease(EASE)
                     .style('opacity', '1');
             }
         } else {
             el.style.pointerEvents = 'none';
-            if (el.style.opacity !== '0') {
+            if (el.dataset.hidden !== 'true') {
+                el.dataset.hidden = 'true';
+
                 d3.select(el)
+                    .interrupt('appear')
                     .transition('disappear')
-                    .duration(MAP_TRANSITION_MS)
-                    .ease(d3.easeLinear)
+                    .duration(transitionMs)
+                    .ease(EASE)
                     .style('opacity', '0');
             }
         }
     }
+    return { stationCount, km, lineKm };
 }
 
 function hoverMouseEnter(

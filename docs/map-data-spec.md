@@ -162,6 +162,11 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   Simplify dense polylines by dropping vertices (Douglas–Peucker at ~0.05 `W`, endpoints kept);
   Bézier curves don't count.
 - MUST: a terminus segment ends exactly at the terminus marker's centre. It must not stick out beyond it.
+  `check_map.py` enforces it on butt-capped systems for every track end: inside a marker present at
+  every moment of the track's life (markers move when a station is rebuilt), or on another track of
+  the same line (a branch junction, a loop closing on itself), or outside the drawn area, or on a line
+  the legend marks `simplified` (§9). MTR's round caps let a
+  track overshoot its terminus marker on purpose; the cap makes the end look deliberate.
 - A segment that existed only for a period (e.g. an old alignment) gets its own path with an end
   date. Its replacement is a separate path that starts on the day the old one ends.
 - Shared track (two lines running through the same stations) SHOULD be drawn as parallel offset
@@ -184,8 +189,13 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   - Otherwise derive it from the drawn length, scaled so the line's present-day total matches the
     published figure. Today's figure is then exact and historical figures are within a few percent,
     because a map's scale is consistent within a line (Shanghai and Taipei within 3%, MTR within 7%).
-  - A line the map deliberately simplifies (MTR Light Rail, drawn without most of its stops) keeps
-    derived values and won't match the published network length. Say so in the commit.
+  - A line the map deliberately simplifies (MTR Light Rail, drawn as three tracks without most of
+    its stops) is still calibrated to the published network length: its tracks stand in for the
+    whole network.
+  - A predecessor line the legend names (KCR West Rail, Ma On Shan, Shanghai's Pearl line, Taipei's
+    Muzha line) SHOULD also sum to its own published length at the dates it carried that name. Give
+    its tracks published section values and let the successor line's remaining tracks absorb the
+    difference, so today's total stays exact.
 - Path data: any valid `d` works because the app uses `getTotalLength()`. Shanghai uses absolute
   `M x,y L x,y …` with 3 decimals.
 
@@ -358,7 +368,7 @@ articles) is a worked example of what to look for:
 **Closures**: `end` = the first day without service.
 
 - Permanent closures, withdrawals and relocations are recorded. That includes planned ends of
-  service that last until a later project, e.g. the Expo Line closed 2010-11-02 and reopened as Line 13 2012-12-30.
+  service that last until a later project, e.g. the Expo Line closed 2010-11-02 and reopened as part of Line 13 on 2015-12-19.
 - **Temporary suspensions are omitted**: repairs, maintenance, accidents, incidents, weather,
   events, epidemics (COVID-19) and similar, after which service resumes at the same stations. The
   line didn't vanish, so the map shows it as continuous.
@@ -419,6 +429,8 @@ Exclude:
   is any CSS colour. Shanghai uses `rgb(r,g,b)`, and `#rrggbb` also works.
 - MUST: `id` is a short stable code of lowercase letters and digits (`erl`, `2`, `xinlu`), unique
   within the system. Station markers reference it in `data-lines` (§5). It never appears in labels.
+- `"simplified": true` marks a line drawn without most of its stops (MTR Light Rail, Shanghai's
+  Songjiang trams). Its tracks are exempt from the track-end rule of §4. The app ignores the field.
 - MUST: at every moment, each visible track's name equals the name of a legend state active at that
   moment. That is how a track gets its colour, and how the legend highlight finds a line's tracks: a
   track whose name is not the legend's current name stays dimmed. A line rename therefore changes the
@@ -557,13 +569,15 @@ MTR predates this spec. Don't copy these patterns into new systems:
 ## Appendix: `check_map.py`
 
 Save it anywhere and run it from the repository root: `python3 check_map.py sh`. It checks
-structure, labels, legend coverage, `data-lines`, `data-km` and the segment limit of §4, and compares
-change dates with `events.json`. It also prints each line's present-day length to compare with the
-operator's figure. It doesn't check geometry otherwise; §11 step 6 covers that.
+structure, labels, legend coverage, `data-lines`, `data-km`, the segment limit of §4 and that every
+track starts and ends inside a marker (or meets other track of its line, or runs off the drawn area,
+or belongs to a line marked `simplified`), and compares change dates with `events.json`. It
+also prints each line's present-day length to compare with the operator's figure. It doesn't check
+geometry otherwise; §11 step 6 covers that.
 
 ```python
 # python3 check_map.py <system-key>   (run from the repo root)
-import json, re, sys
+import json, math, re, sys
 from collections import defaultdict
 
 key = sys.argv[1]
@@ -579,6 +593,31 @@ STATE = rf'[^=,_\s][^=,\s]*={DATE}(?:-{DATE})?'
 LABEL = re.compile(rf'^[!^]?{STATE}(?:,{STATE})*$')
 LINES = re.compile(rf'^[a-z0-9]+={DATE}(?:-{DATE})?(?:,[a-z0-9]+={DATE}(?:-{DATE})?)*$')
 errors = []
+
+def vertices(d):  # every vertex of a path's d, absolute; a curve contributes its end point
+    toks = re.findall(r'[MmLlHhVvCcSsQqTtAaZz]|-?\d*\.?\d+(?:e-?\d+)?', d)
+    args = {'M': 2, 'L': 2, 'T': 2, 'H': 1, 'V': 1, 'C': 6, 'S': 4, 'Q': 4, 'A': 7, 'Z': 0}
+    out, cur, start, cmd, i = [], [0.0, 0.0], None, None, 0
+    while i < len(toks):
+        if toks[i].isalpha():
+            cmd = toks[i]; i += 1
+            if cmd in 'Zz' and start:
+                cur = list(start); out.append(tuple(cur))
+            continue
+        n = args[cmd.upper()]; v = [float(t) for t in toks[i:i + n]]; i += n
+        rel = cmd.islower(); c = cmd.upper()
+        if c == 'H': cur = [cur[0] + v[0] if rel else v[0], cur[1]]
+        elif c == 'V': cur = [cur[0], cur[1] + v[0] if rel else v[0]]
+        else: cur = [cur[0] + v[-2], cur[1] + v[-1]] if rel else [v[-2], v[-1]]
+        out.append(tuple(cur))
+        if c == 'M': start = list(cur); cmd = 'l' if rel else 'L'
+    return out
+
+def seg_dist(p, a, b):  # distance from point p to segment ab
+    (x, y), (x1, y1), (x2, y2) = p, a, b
+    dx, dy = x2 - x1, y2 - y1
+    t = max(0.0, min(1.0, ((x - x1) * dx + (y - y1) * dy) / (dx * dx + dy * dy or 1)))
+    return ((x1 + t * dx - x) ** 2 + (y1 + t * dy - y) ** 2) ** 0.5
 
 def states(label):
     out = []
@@ -619,6 +658,8 @@ if not re.search(r'<g\b[^>]*\bid="zoom-layer"', svg):
     errors.append('missing <g id="zoom-layer">')
 track_names = []  # (name, start, end)
 track_km = []     # (states, km)
+track_pts = []    # (label, states, vertices)
+track_widths = [] # per-path stroke widths, the fallback for W
 for tag, attrs in children('lines'):
     label = re.search(r'inkscape:label="([^"]*)"', attrs)
     if tag != 'path' or not label:
@@ -629,6 +670,11 @@ for tag, attrs in children('lines'):
     st = check_label('track', label.group(1))
     record('track', st)
     d = re.search(r'\bd="([^"]*)"', attrs)
+    if d:
+        track_pts.append((label.group(1), st, vertices(d.group(1))))
+    width = re.search(r'stroke-width[:="]+\s*([\d.]+)', attrs)
+    if width:
+        track_widths.append(float(width.group(1)))
     if d and len(re.findall(r'[Ll]', d.group(1))) >= 256:
         errors.append(f'track {label.group(1)!r} has 256+ straight segments: Safari draws it in pieces (§4)')
     km = re.search(r'data-km="([^"]*)"', attrs)
@@ -638,6 +684,7 @@ for tag, attrs in children('lines'):
         track_km.append((st, float(km.group(1))))
     track_names += st
 markers = []  # (label, states, data-lines match)
+reach = []    # (label, states, x, y, deg, half, r): a marker's dates, centre, axis angle, half axis length and radius
 for tag, attrs in children('stations'):
     label = re.search(r'inkscape:label="([^"]*)"', attrs)
     if tag not in ('circle', 'rect', 'path') or not label:
@@ -652,6 +699,49 @@ for tag, attrs in children('stations'):
     record({'circle': 'station', 'rect': 'interchange', 'path': 'connector'}[tag], st)
     if tag != 'path':
         markers.append((label.group(1), st, re.search(r'data-lines="([^"]*)"', attrs)))
+        num = lambda name: float(re.search(rf'\b{name}="([^"]+)"', attrs).group(1))
+        if tag == 'circle':
+            reach.append((label.group(1), st, num('cx'), num('cy'), 0.0, 0.0, num('r')))
+        elif transform:
+            x, y, deg = map(float, re.match(r'translate\(([-\d.]+),([-\d.]+)\) rotate\(([-\d.]+)\)', transform.group(1)).groups())
+            w, h = num('width'), num('height')   # a capsule: a segment of length h - w along its axis, thickened by w / 2
+            reach.append((label.group(1), st, x, y, deg, (h - w) / 2, w / 2))
+# every track starts and ends inside a station marker present at every moment of the track's life
+# (markers move when a station is rebuilt), except where it meets other track of the same line away
+# from any station (a branch junction, a loop closing on itself), runs off the drawn area, or belongs
+# to a line the legend marks "simplified" (drawn without most of its stops). Only for butt-capped
+# systems: with round caps a track may overshoot its terminus (§4, §9)
+def marker_gap(p, m):  # how far p lies outside marker m (negative inside)
+    _, _, x, y, deg, half, r = m
+    a = math.radians(deg); dx, dy = p[0] - x, p[1] - y
+    along = max(-half, min(half, -dx * math.sin(a) + dy * math.cos(a)))   # nearest point on the capsule's axis
+    ax, ay = x - along * math.sin(a), y + along * math.cos(a)
+    return math.hypot(p[0] - ax, p[1] - ay) - r
+W = float((re.search(r'<g\b[^>]*\bid="lines"[^>]*stroke-width[:="]+\s*([\d.]+)', svg)
+           or [None, max(track_widths, key=track_widths.count) if track_widths else 1])[1])
+caps = re.search(r'<g\b[^>]*\bid="lines"[^>]*stroke-linecap[:="]+\s*(\w+)', svg)
+vb = [float(v) for v in re.search(r'viewBox="([^"]*)"', svg).group(1).split()]
+simplified = {n for entry in legend if entry.get('simplified') for n, _, _ in states(entry['label'])}
+for label, st, pts in track_pts if caps and caps.group(1) == 'butt' else []:
+    names = {n for n, _, _ in st}
+    if names & simplified:
+        continue
+    born, gone = st[0][1], st[-1][2]
+    moments = [born] + sorted({d for m in reach for _, s_, e_ in m[1] for d in (s_, e_) if d and born < d and (gone is None or d < gone)})
+    for which, p in (('starts', pts[0]), ('ends', pts[-1])):
+        if not (vb[0] < p[0] < vb[0] + vb[2] and vb[1] < p[1] < vb[1] + vb[3]):
+            continue
+        own = pts[2:-1] if which == 'starts' else pts[:-2]   # its own path, minus the segments touching this end
+        others = [q for l, s2, q in track_pts if l != label and names & {n for n, _, _ in s2}]
+        if any(seg_dist(p, q[i], q[i + 1]) <= W for q in others + [own] for i in range(len(q) - 1)):
+            continue
+        for t in moments:
+            present = [m for m in reach if any(s_ <= t and (e_ is None or t < e_) for _, s_, e_ in m[1])]
+            name, gap = min(((m[0], marker_gap(p, m)) for m in present), key=lambda x: x[1], default=('nothing', float('inf')))
+            if gap > 1:
+                errors.append(f'track {label!r} {which} {gap:.0f} units outside the nearest marker ({name}) on {t} '
+                              'and not on another track of the line (§4)')
+                break
 
 legend_states, legend_ids = [], {}
 for entry in legend:
