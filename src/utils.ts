@@ -43,7 +43,9 @@ export function parseLabelDates(label: string): State[] {
         const interval = rawInterval.split('-');
 
         const appear = new Date(interval[0].replace(/_/g, '-'));
-        const removed = interval[1] ? new Date(interval[1].replace(/_/g, '-')) : END_OF_TIME;
+        const removed = interval[1]
+            ? new Date(interval[1].replace(/_/g, '-'))
+            : END_OF_TIME;
 
         return {
             name: name.replace(/_/g, ' '),
@@ -52,12 +54,17 @@ export function parseLabelDates(label: string): State[] {
     });
 }
 
-export function isActive({ appear, removed }: DateInterval, time: number): boolean {
+export function isActive(
+    { appear, removed }: DateInterval,
+    time: number,
+): boolean {
     return appear.getTime() <= time && time < removed.getTime();
 }
 
 export function findName(states: State[], time: number): string | null {
-    return states.find(({ dateRange }) => isActive(dateRange, time))?.name || null;
+    return (
+        states.find(({ dateRange }) => isActive(dateRange, time))?.name || null
+    );
 }
 
 export function lineStats(
@@ -74,7 +81,8 @@ export function lineStats(
             .reduce((sum, line) => sum + line.km, 0),
         stations: stations.filter(station =>
             station.lines.some(
-                ({ name: id, dateRange }) => id === entry.id && isActive(dateRange, time),
+                ({ name: id, dateRange }) =>
+                    id === entry.id && isActive(dateRange, time),
             ),
         ).length,
     };

@@ -5,7 +5,11 @@ export default function HeaderCard({ config }: { config: SystemConfig }) {
     return (
         <div className="panel max-w-xs px-4 py-3 flex flex-col gap-1.5">
             <div className="flex items-center gap-2 font-mono text-2xs tracking-wide">
-                <img src={config.logo} alt="" className="h-4 w-4 object-contain" />
+                <img
+                    src={config.logo}
+                    alt=""
+                    className="h-4 w-4 object-contain"
+                />
                 <span className="text-ink-faint">system:</span>
                 <h1 className="font-medium text-ink">{config.title}</h1>
             </div>
@@ -21,7 +25,8 @@ export default function HeaderCard({ config }: { config: SystemConfig }) {
             <p className="text-xs text-ink-muted">{config.description}</p>
             <div className="meta flex items-center gap-3 pt-1">
                 <span>
-                    {config.minDate.getUTCFullYear()} → {config.maxDate.getUTCFullYear()}
+                    {config.minDate.getUTCFullYear()} →{' '}
+                    {config.maxDate.getUTCFullYear()}
                 </span>
                 <Link
                     to={'/'}

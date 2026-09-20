@@ -13,13 +13,20 @@ interface ChangelogProps {
     className?: string;
 }
 
-export default function Changelog({ events, time, legend, className = '' }: ChangelogProps) {
+export default function Changelog({
+    events,
+    time,
+    legend,
+    className = '',
+}: ChangelogProps) {
     const [open, setOpen] = useState(wide);
     const listRef = useRef<HTMLDivElement | null>(null);
 
     const entries = useMemo(() => {
         const byName = new Map(
-            legend.flatMap(entry => entry.states.map(({ name }) => [name, entry] as const)),
+            legend.flatMap(entry =>
+                entry.states.map(({ name }) => [name, entry] as const),
+            ),
         );
         return events.map(({ date, descriptions }) => ({
             date,
@@ -47,7 +54,11 @@ export default function Changelog({ events, time, legend, className = '' }: Chan
                 onClick={() => setOpen(true)}
                 className={`zoom-btn w-12 h-12 pointer-events-auto absolute right-4 bottom-28 z-10 cursor-pointer rounded-full ${className}`}
             >
-                <img src={changelogIcon} alt="changelog" className="icon h-5 w-5" />
+                <img
+                    src={changelogIcon}
+                    alt="changelog"
+                    className="icon h-5 w-5"
+                />
             </button>
         );
     }
@@ -58,12 +69,15 @@ export default function Changelog({ events, time, legend, className = '' }: Chan
         >
             <div className="flex items-center justify-between gap-4">
                 <span className="meta">
-                    changelog · {past.length} {past.length === 1 ? 'event' : 'events'}
+                    changelog · {past.length}{' '}
+                    {past.length === 1 ? 'event' : 'events'}
                 </span>
                 <button
                     type="button"
                     aria-expanded={open}
-                    aria-label={open ? 'Minimize changelog' : 'Expand changelog'}
+                    aria-label={
+                        open ? 'Minimize changelog' : 'Expand changelog'
+                    }
                     onClick={() => setOpen(value => !value)}
                 >
                     <img
@@ -91,7 +105,9 @@ export default function Changelog({ events, time, legend, className = '' }: Chan
                             }`}
                         >
                             <div className="meta flex items-center gap-2">
-                                <span className={index === 0 ? 'text-accent' : ''}>
+                                <span
+                                    className={index === 0 ? 'text-accent' : ''}
+                                >
                                     {formatDate(new Date(event.date))}
                                 </span>
                                 {event.items.length > 1 && (
@@ -100,18 +116,29 @@ export default function Changelog({ events, time, legend, className = '' }: Chan
                             </div>
                             <ul className="mt-0.5 flex flex-col gap-1 text-2xs leading-snug">
                                 {event.items.map(({ description, line }) => {
-                                    const [head, ...rest] = description.split(': ');
+                                    const [head, ...rest] =
+                                        description.split(': ');
 
                                     return (
-                                        <li key={description} className="flex gap-1.5">
+                                        <li
+                                            key={description}
+                                            className="flex gap-1.5"
+                                        >
                                             <span
                                                 className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-rule-strong"
-                                                style={line && { backgroundColor: line.color }}
+                                                style={
+                                                    line && {
+                                                        backgroundColor:
+                                                            line.color,
+                                                    }
+                                                }
                                             ></span>
                                             <span>
                                                 {rest.length > 0 ? (
                                                     <>
-                                                        <span className="font-medium">{head}:</span>{' '}
+                                                        <span className="font-medium">
+                                                            {head}:
+                                                        </span>{' '}
                                                         {rest.join(': ')}
                                                     </>
                                                 ) : (

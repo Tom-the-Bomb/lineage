@@ -10,7 +10,14 @@ import {
     Status,
 } from '../schemas';
 
-import { clamp, findName, formatDate, lineStats, parseLabelDates, playPause } from '../utils';
+import {
+    clamp,
+    findName,
+    formatDate,
+    lineStats,
+    parseLabelDates,
+    playPause,
+} from '../utils';
 
 import {
     DEFAULT_SETTINGS,
@@ -61,8 +68,15 @@ export default function Map({ system }: { system: SystemKey }) {
     const linesRef = useRef<LineWrapper[]>([]);
     const stationsRef = useRef<StationWrapper[]>([]);
     const eventDatesRef = useRef<number[]>([]);
-    const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
-    const svgD3Ref = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined> | null>(null);
+    const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(
+        null,
+    );
+    const svgD3Ref = useRef<d3.Selection<
+        SVGSVGElement,
+        unknown,
+        null,
+        undefined
+    > | null>(null);
 
     const [svgDoc, setSvgDoc] = useState<Document | null>(null);
     const [time, setTime] = useState<number>(minDate.getTime());
@@ -70,9 +84,14 @@ export default function Map({ system }: { system: SystemKey }) {
     const [tooltip, setTooltip] = useState<RawTooltipData | null>(null);
     const [highlight, setHighlight] = useState<string[]>([]);
     const [hoveredLine, setHoveredLine] = useState<string | null>(null);
-    const [network, setNetwork] = useState<UpdateResult>({ stationCount: 0, km: 0, lineKm: {} });
+    const [network, setNetwork] = useState<UpdateResult>({
+        stationCount: 0,
+        km: 0,
+        lineKm: {},
+    });
     const [expanded, setExpanded] = useState<boolean>(false);
-    const [settings, setSettings] = useState<PlaybackSettings>(DEFAULT_SETTINGS);
+    const [settings, setSettings] =
+        useState<PlaybackSettings>(DEFAULT_SETTINGS);
 
     const timeRef = useRef(time);
     const settingsRef = useRef(settings);
@@ -89,7 +108,13 @@ export default function Map({ system }: { system: SystemKey }) {
         (e: KeyboardEvent) => {
             if (e.code === 'Space') {
                 e.preventDefault();
-                playPause(setPlaying, timeRef.current, setTime, minDate, maxDate);
+                playPause(
+                    setPlaying,
+                    timeRef.current,
+                    setTime,
+                    minDate,
+                    maxDate,
+                );
             }
         },
         [minDate, maxDate],
@@ -99,7 +124,11 @@ export default function Map({ system }: { system: SystemKey }) {
         const startYear = minDate.getUTCFullYear();
         const endYear = maxDate.getUTCFullYear();
         const tickDates = [];
-        for (let year = Math.ceil(startYear / 5) * 5; year < endYear; year += 5) {
+        for (
+            let year = Math.ceil(startYear / 5) * 5;
+            year < endYear;
+            year += 5
+        ) {
             tickDates.push(new Date(Date.UTC(year, 0, 1)));
         }
         return tickDates;
@@ -140,22 +169,25 @@ export default function Map({ system }: { system: SystemKey }) {
         const lines = svgDoc.querySelector('g#lines')!;
         const stations = svgDoc.querySelector('g#stations')!;
 
-        linesRef.current = Array.from(lines.querySelectorAll('path')).map(el => {
-            const length = el.getTotalLength();
-            const dashArray = svgDoc.defaultView!.getComputedStyle(el).strokeDasharray;
+        linesRef.current = Array.from(lines.querySelectorAll('path')).map(
+            el => {
+                const length = el.getTotalLength();
+                const dashArray =
+                    svgDoc.defaultView!.getComputedStyle(el).strokeDasharray;
 
-            el.style.strokeDashoffset = String(length);
-            el.style.strokeDasharray = String(length);
-            el.dataset.hidden = 'true';
+                el.style.strokeDashoffset = String(length);
+                el.style.strokeDasharray = String(length);
+                el.dataset.hidden = 'true';
 
-            return {
-                el,
-                states: parseLabelDates(el.getAttribute('inkscape:label')!),
-                length,
-                dashArray,
-                km: parseFloat(el.dataset.km!),
-            };
-        });
+                return {
+                    el,
+                    states: parseLabelDates(el.getAttribute('inkscape:label')!),
+                    length,
+                    dashArray,
+                    km: parseFloat(el.dataset.km!),
+                };
+            },
+        );
 
         stationsRef.current = Array.from(
             stations.querySelectorAll<SVGElement>('path, circle, rect'),
@@ -177,7 +209,9 @@ export default function Map({ system }: { system: SystemKey }) {
                 el,
                 status,
                 states: parseLabelDates(label),
-                lines: el.dataset.lines ? parseLabelDates(el.dataset.lines) : [],
+                lines: el.dataset.lines
+                    ? parseLabelDates(el.dataset.lines)
+                    : [],
             };
 
             if (el.localName !== 'path') {
@@ -207,14 +241,20 @@ export default function Map({ system }: { system: SystemKey }) {
         });
 
         const eventDates = new Set<number>();
-        for (const { states } of [...legend, ...linesRef.current, ...stationsRef.current]) {
+        for (const { states } of [
+            ...legend,
+            ...linesRef.current,
+            ...stationsRef.current,
+        ]) {
             for (const { dateRange } of states) {
                 eventDates.add(dateRange.appear.getTime());
                 eventDates.add(dateRange.removed.getTime());
             }
         }
         eventDatesRef.current = [...eventDates]
-            .filter(date => minDate.getTime() <= date && date <= maxDate.getTime())
+            .filter(
+                date => minDate.getTime() <= date && date <= maxDate.getTime(),
+            )
             .sort((a, b) => a - b);
 
         setNetwork(
@@ -233,7 +273,8 @@ export default function Map({ system }: { system: SystemKey }) {
 
         const viewBox = svgEl.viewBox.baseVal;
 
-        const { width: viewportWidth, height: viewportHeight } = svgEl.getBoundingClientRect();
+        const { width: viewportWidth, height: viewportHeight } =
+            svgEl.getBoundingClientRect();
 
         const scaleWidth = viewportWidth / viewBox.width;
         const scaleHeight = viewportHeight / viewBox.height;
@@ -328,7 +369,9 @@ export default function Map({ system }: { system: SystemKey }) {
             .call(zoom)
             .call(
                 zoom.transform,
-                d3.zoomIdentity.translate(initialTranslateX, initialTranslateY).scale(viewZoom),
+                d3.zoomIdentity
+                    .translate(initialTranslateX, initialTranslateY)
+                    .scale(viewZoom),
             );
 
         zoomRef.current = zoom;
@@ -380,14 +423,19 @@ export default function Map({ system }: { system: SystemKey }) {
     useEffect(() => {
         const entry = legend.find(line => line.id === hoveredLine);
         setStats(
-            entry && svgDoc ? lineStats(entry, time, linesRef.current, stationsRef.current) : null,
+            entry && svgDoc
+                ? lineStats(entry, time, linesRef.current, stationsRef.current)
+                : null,
         );
     }, [hoveredLine, time, legend, svgDoc]);
 
     const findPreviousEventDate = useCallback(
         (currentTime: number): number => {
             const eventDates = eventDatesRef.current;
-            return eventDates.findLast(date => date < currentTime) ?? minDate.getTime();
+            return (
+                eventDates.findLast(date => date < currentTime) ??
+                minDate.getTime()
+            );
         },
         [minDate],
     );
@@ -395,7 +443,9 @@ export default function Map({ system }: { system: SystemKey }) {
     const findNextEventDate = useCallback(
         (currentTime: number): number => {
             const eventDates = eventDatesRef.current;
-            return eventDates.find(date => date > currentTime) ?? maxDate.getTime();
+            return (
+                eventDates.find(date => date > currentTime) ?? maxDate.getTime()
+            );
         },
         [maxDate],
     );
@@ -411,8 +461,14 @@ export default function Map({ system }: { system: SystemKey }) {
 
         const timer = d3.interval(() => {
             setTime(prev => {
-                const nextDate = interval.offset(interval.floor(new Date(prev)), step.count);
-                const nextMs = Math.min(nextDate.getTime(), findNextEventDate(prev));
+                const nextDate = interval.offset(
+                    interval.floor(new Date(prev)),
+                    step.count,
+                );
+                const nextMs = Math.min(
+                    nextDate.getTime(),
+                    findNextEventDate(prev),
+                );
 
                 if (nextMs >= maxDate.getTime()) {
                     setPlaying(false);
@@ -429,12 +485,18 @@ export default function Map({ system }: { system: SystemKey }) {
         return name === null ? [] : [{ line, name }];
     });
 
-    const activeLines = presentLines.filter(({ line }) => highlight.includes(line.id));
+    const activeLines = presentLines.filter(({ line }) =>
+        highlight.includes(line.id),
+    );
 
     return (
         <div
             className="w-dvw h-dvh flex justify-center items-center touch-none"
-            style={{ '--slider-thumb': `url("${config.logo}")` } as React.CSSProperties}
+            style={
+                {
+                    '--slider-thumb': `url("${config.logo}")`,
+                } as React.CSSProperties
+            }
         >
             <header
                 className={`absolute top-4 left-4 z-10 flex max-h-[calc(100dvh-17.5rem)] flex-col pointer-events-none
@@ -457,7 +519,9 @@ export default function Map({ system }: { system: SystemKey }) {
                 <Theme />
                 <Info
                     settings={settings}
-                    onSettings={patch => setSettings(current => ({ ...current, ...patch }))}
+                    onSettings={patch =>
+                        setSettings(current => ({ ...current, ...patch }))
+                    }
                 />
             </div>
             <main className="w-dvw h-dvh touch-none">
@@ -470,7 +534,12 @@ export default function Map({ system }: { system: SystemKey }) {
                     className="absolute top-0 left-0 w-full h-full touch-none"
                 />
                 {svgDoc && (
-                    <Tooltip tooltip={tooltip} time={time} config={config} legend={legend} />
+                    <Tooltip
+                        tooltip={tooltip}
+                        time={time}
+                        config={config}
+                        legend={legend}
+                    />
                 )}
             </main>
             <div
@@ -554,7 +623,9 @@ export default function Map({ system }: { system: SystemKey }) {
                                 style={{ backgroundColor: line.color }}
                             ></div>
                             {name}
-                            {stats && line.id === hoveredLine && <BigTooltip stats={stats} />}
+                            {stats && line.id === hoveredLine && (
+                                <BigTooltip stats={stats} />
+                            )}
                         </button>
                     );
                 })}
@@ -565,7 +636,11 @@ export default function Map({ system }: { system: SystemKey }) {
                         className="pill"
                         aria-label="Clear highlight"
                     >
-                        <img src={cross} alt="Clear" className="icon h-3 md:h-4" />
+                        <img
+                            src={cross}
+                            alt="Clear"
+                            className="icon h-3 md:h-4"
+                        />
                     </button>
                 )}
             </div>
@@ -576,7 +651,9 @@ export default function Map({ system }: { system: SystemKey }) {
             >
                 <button
                     type="button"
-                    onClick={() => playPause(setPlaying, time, setTime, minDate, maxDate)}
+                    onClick={() =>
+                        playPause(setPlaying, time, setTime, minDate, maxDate)
+                    }
                     className="absolute left-7 top-4 h-6 flex justify-center items-center pointer-events-auto"
                     aria-label={playing ? 'Pause timeline' : 'Play timeline'}
                 >
@@ -626,7 +703,8 @@ export default function Map({ system }: { system: SystemKey }) {
                         {ticks.map(date => {
                             const min_time = minDate.getTime();
                             const pct =
-                                ((date.getTime() - min_time) / (maxDate.getTime() - min_time)) *
+                                ((date.getTime() - min_time) /
+                                    (maxDate.getTime() - min_time)) *
                                 100;
 
                             return (
@@ -639,7 +717,9 @@ export default function Map({ system }: { system: SystemKey }) {
                                     }}
                                 >
                                     <div className="h-2 w-px bg-rule-strong mt-6"></div>
-                                    <span className="meta mt-1">{date.getUTCFullYear()}</span>
+                                    <span className="meta mt-1">
+                                        {date.getUTCFullYear()}
+                                    </span>
                                 </div>
                             );
                         })}
