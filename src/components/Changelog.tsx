@@ -11,9 +11,16 @@ interface ChangelogProps {
     time: number;
     legend: LegendWrapper[];
     className?: string;
+    setTime: (time: number) => void;
 }
 
-export default function Changelog({ events, time, legend, className = '' }: ChangelogProps) {
+export default function Changelog({
+    events,
+    time,
+    legend,
+    setTime,
+    className = '',
+}: ChangelogProps) {
     const [open, setOpen] = useState(wide);
     const listRef = useRef<HTMLDivElement | null>(null);
 
@@ -84,14 +91,17 @@ export default function Changelog({ events, time, legend, className = '' }: Chan
                     {past.map((event, index) => (
                         <div
                             key={event.date}
-                            className={`border-l-2 py-1.5 pl-3 ${
+                            className={`hover:border-ink/50 hover:text-ink cursor-pointer border-l-2 py-1.5 pl-3 ${
                                 index === 0
                                     ? 'animate-log-in border-accent text-ink'
                                     : 'border-rule text-ink-muted'
                             }`}
+                            onClick={() => setTime(event.ms)}
                         >
                             <div className="meta flex items-center gap-2">
-                                <span className={index === 0 ? 'text-accent' : ''}>
+                                <span
+                                    className={`hover:text-ink ${index === 0 ? 'text-accent' : ''}`}
+                                >
                                     {formatDate(new Date(event.date))}
                                 </span>
                                 {event.items.length > 1 && (

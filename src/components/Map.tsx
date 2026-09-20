@@ -522,6 +522,7 @@ export default function Map({ system }: { system: SystemKey }) {
                 className={`${expanded ? 'translate-x-100' : ''} slide-out-settings`}
                 events={config.events}
                 time={time}
+                setTime={setTime}
                 legend={legend}
             />
             <div
