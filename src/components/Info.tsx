@@ -7,7 +7,15 @@ import infoIcon from '../assets/info.svg';
 import minus from '../assets/minus.svg';
 import play from '../assets/play.svg';
 import plus from '../assets/plus.svg';
-import { RANGES, STEP_UNITS, type PlaybackSettings, type Step, type StepUnit } from '../utils_d3';
+import reset from '../assets/reset.svg';
+import {
+    DEFAULT_SETTINGS,
+    RANGES,
+    STEP_UNITS,
+    type PlaybackSettings,
+    type Step,
+    type StepUnit,
+} from '../utils_d3';
 
 const UNITS = Object.keys(STEP_UNITS) as StepUnit[];
 
@@ -143,7 +151,12 @@ export default function Info({ settings, onSettings }: InfoProps) {
                         ))}
                     </dl>
                     <div className="border-rule mt-3 flex flex-col gap-3 border-t pt-2">
-                        <span className="meta">settings</span>
+                        <span className="meta flex w-full justify-between">
+                            settings
+                            <button type="button" onClick={() => onSettings(DEFAULT_SETTINGS)}>
+                                <img src={reset} alt="Reset" className="icon-btn h-3 w-3" />
+                            </button>
+                        </span>
                         <div className="flex flex-col gap-2">
                             <Setting
                                 label="Event pause"

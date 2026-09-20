@@ -1,6 +1,6 @@
 import type { LegendWrapper, RawTooltipData } from '../schemas';
 import type { SystemConfig } from '../systems';
-import { findName, isActive } from '../utils';
+import { findName, formatDate, isActive } from '../utils';
 
 interface TooltipProps {
     tooltip: RawTooltipData | null;
@@ -19,7 +19,7 @@ export default function Tooltip({
         return null;
     }
 
-    const name = findName(tooltip.station.states, time);
+    const state = tooltip.station.states.find(({ dateRange }) => isActive(dateRange, time));
     const status = tooltip.station.status;
 
     const lines = legend.flatMap(entry => {
@@ -30,7 +30,7 @@ export default function Tooltip({
         return lineName ? [{ id: entry.id, name: lineName, color: entry.color }] : [];
     });
 
-    if (name) {
+    if (state) {
         return (
             <div
                 className="tooltip px-3 py-2 text-sm"
@@ -44,7 +44,12 @@ export default function Tooltip({
                     {config.tooltipLogos?.(status, time).map(logo => (
                         <img key={logo.alt} src={logo.src} alt={logo.alt} className="h-4" />
                     ))}
-                    {name}
+                    <span className="flex items-baseline gap-2">
+                        {state.name}
+                        <span className="meta ml-auto text-[9px]">
+                            since {formatDate(state.dateRange.appear)}
+                        </span>
+                    </span>
                 </div>
                 {lines.length > 0 && (
                     <div className="text-ink-faint mt-1 flex gap-x-2 text-xs">
