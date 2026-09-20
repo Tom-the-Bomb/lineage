@@ -36,7 +36,12 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
         const content = el.firstElementChild?.clientHeight ?? 0;
         setOverflowing(content > el.clientHeight + 1);
         setHiddenBelow(
-            Math.max(0, Math.round((content - el.scrollTop - el.clientHeight) / ROW_HEIGHT)),
+            Math.max(
+                0,
+                Math.round(
+                    (content - el.scrollTop - el.clientHeight) / ROW_HEIGHT,
+                ),
+            ),
         );
     }, []);
 
@@ -55,15 +60,23 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
     const lineCount = lit.size || lines.length;
     const maxKm = Math.max(1, ...lines.map(line => line.km));
     const rank = new Map(
-        [...lines].sort((a, b) => b.km - a.km).map((line, index) => [line.id, index] as const),
+        [...lines]
+            .sort((a, b) => b.km - a.km)
+            .map((line, index) => [line.id, index] as const),
     );
 
     return (
         <section className="panel pointer-events-auto relative mt-2 flex min-h-0 w-80 flex-col px-4 py-3">
             {open ? (
                 <div className="flex gap-6">
-                    <Figure value={stations} label={stations === 1 ? 'station' : 'stations'} />
-                    <Figure value={lineCount} label={lineCount === 1 ? 'line' : 'lines'} />
+                    <Figure
+                        value={stations}
+                        label={stations === 1 ? 'station' : 'stations'}
+                    />
+                    <Figure
+                        value={lineCount}
+                        label={lineCount === 1 ? 'line' : 'lines'}
+                    />
                     <Figure value={km.toFixed(1)} label="km" />
                 </div>
             ) : (
@@ -91,7 +104,10 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
                         onScroll={measure}
                         className="scroll-hidden mt-3 min-h-0 overflow-y-auto overscroll-contain"
                     >
-                        <div className="relative" style={{ height: lines.length * ROW_HEIGHT }}>
+                        <div
+                            className="relative"
+                            style={{ height: lines.length * ROW_HEIGHT }}
+                        >
                             {lines.map(line => {
                                 const dimmed = lit.size > 0 && !lit.has(line);
 
