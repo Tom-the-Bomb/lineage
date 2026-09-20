@@ -40,18 +40,18 @@ export default function Tooltip({
                     transform: 'translate(0, -50%)',
                 }}
             >
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2">
                     {config.tooltipLogos?.(status, time).map(logo => (
                         <img key={logo.alt} src={logo.src} alt={logo.alt} className="h-4" />
                     ))}
                     {name}
                 </div>
                 {lines.length > 0 && (
-                    <div className="flex gap-x-2 mt-1 text-xs text-ink-faint">
+                    <div className="text-ink-faint mt-1 flex gap-x-2 text-xs">
                         {lines.map(line => (
                             <span key={line.id} className="flex items-center gap-1">
                                 <span
-                                    className="w-2 h-2 rounded-full"
+                                    className="h-2 w-2 rounded-full"
                                     style={{ backgroundColor: line.color }}
                                 ></span>
                                 {line.name}
@@ -59,7 +59,7 @@ export default function Tooltip({
                         ))}
                     </div>
                 )}
-                <div className="tooltip-arrow border-l border-b -left-1 top-1/2 -translate-y-1/2"></div>
+                <div className="tooltip-arrow top-1/2 -left-1 -translate-y-1/2 border-b border-l"></div>
             </div>
         );
     }

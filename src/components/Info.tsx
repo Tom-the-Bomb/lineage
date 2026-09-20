@@ -1,12 +1,12 @@
 import { useState, type CSSProperties, type ReactNode } from 'react';
 import chevronLeft from '../assets/chevron-left.svg';
 import chevronRight from '../assets/chevron-right.svg';
+import cross from '../assets/cross.svg';
 import expand from '../assets/expand.svg';
 import infoIcon from '../assets/info.svg';
 import minus from '../assets/minus.svg';
-import plus from '../assets/plus.svg';
 import play from '../assets/play.svg';
-import cross from '../assets/cross.svg';
+import plus from '../assets/plus.svg';
 import { RANGES, STEP_UNITS, type PlaybackSettings, type Step, type StepUnit } from '../utils_d3';
 
 const UNITS = Object.keys(STEP_UNITS) as StepUnit[];
@@ -104,13 +104,13 @@ export default function Info({ settings, onSettings }: InfoProps) {
     const [open, setOpen] = useState(false);
 
     return (
-        <div className="relative pointer-events-auto">
+        <div className="pointer-events-auto relative">
             <button
                 type="button"
                 aria-label="How to use this map"
                 aria-expanded={open}
                 onClick={() => setOpen(open => !open)}
-                className="zoom-btn rounded-full cursor-pointer"
+                className="zoom-btn cursor-pointer rounded-full"
             >
                 <img src={infoIcon} alt="?" className="icon h-4.5 w-4.5" />
             </button>
@@ -118,7 +118,7 @@ export default function Info({ settings, onSettings }: InfoProps) {
                 <section
                     role="dialog"
                     aria-label="How to use this map"
-                    className="panel scroll-hidden absolute top-11 right-0 z-30 max-h-[calc(100dvh-4rem)] w-80 overflow-y-auto bg-surface px-4 py-3 text-2xs text-ink-muted"
+                    className="panel scroll-hidden bg-surface text-2xs text-ink-muted absolute top-11 right-0 z-30 max-h-[calc(100dvh-4rem)] w-80 overflow-y-auto px-4 py-3"
                 >
                     <span className="meta">how to use</span>
                     <button
@@ -132,12 +132,12 @@ export default function Info({ settings, onSettings }: InfoProps) {
                     <dl className="mt-2 flex flex-col gap-2">
                         {GUIDE.map(([topic, body]) => (
                             <div key={topic}>
-                                <dt className="font-medium text-ink">{topic}</dt>
+                                <dt className="text-ink font-medium">{topic}</dt>
                                 <dd className="leading-snug">{body}</dd>
                             </div>
                         ))}
                     </dl>
-                    <div className="mt-3 flex flex-col gap-3 border-t border-rule pt-2">
+                    <div className="border-rule mt-3 flex flex-col gap-3 border-t pt-2">
                         <span className="meta">settings</span>
                         <div className="flex flex-col gap-2">
                             <Setting
@@ -181,7 +181,7 @@ export default function Info({ settings, onSettings }: InfoProps) {
                                     className="meta group cursor-pointer"
                                 >
                                     {step.count}{' '}
-                                    <span className="rounded-sm border border-rule px-0.75 py-0.5 transition-colors hover:border-rule-strong hover:text-ink">
+                                    <span className="border-rule hover:border-rule-strong hover:text-ink rounded-sm border px-0.75 py-0.5 transition-colors">
                                         {step.unit}
                                         {step.count > 1 ? 's' : ''}
                                     </span>

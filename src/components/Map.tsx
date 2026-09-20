@@ -1,43 +1,43 @@
 import * as d3 from 'd3';
-import { useEffect, useCallback, useState, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import {
+    Status,
     type LineStats,
     type LineWrapper,
-    type StationWrapper,
     type RawTooltipData,
+    type StationWrapper,
     type UpdateResult,
-    Status,
 } from '../schemas';
 
 import { clamp, findName, formatDate, lineStats, parseLabelDates, playPause } from '../utils';
 
 import {
-    DEFAULT_SETTINGS,
-    STEP_UNITS,
-    type PlaybackSettings,
-    update,
-    setupHoverEffect,
     applyMapTheme,
+    DEFAULT_SETTINGS,
+    setupHoverEffect,
+    STEP_UNITS,
+    update,
+    type PlaybackSettings,
 } from '../utils_d3';
 
-import { systems, type SystemKey, type SystemConfig } from '../systems';
+import chevronLeft from '../assets/chevron-left.svg';
+import chevronRight from '../assets/chevron-right.svg';
+import cross from '../assets/cross.svg';
+import expand from '../assets/expand.svg';
+import minus from '../assets/minus.svg';
 import pause from '../assets/pause.svg';
 import play from '../assets/play.svg';
 import plus from '../assets/plus.svg';
-import expand from '../assets/expand.svg';
 import shrink from '../assets/shrink.svg';
-import minus from '../assets/minus.svg';
-import chevronLeft from '../assets/chevron-left.svg';
-import chevronRight from '../assets/chevron-right.svg';
-import Tooltip from './Tooltip';
-import cross from '../assets/cross.svg';
+import { systems, type SystemConfig, type SystemKey } from '../systems';
 import { BigTooltip } from './BigTooltip';
-import HeaderCard from './HeaderCard';
-import Stats from './Stats';
 import Changelog from './Changelog';
-import Theme from './Theme';
+import HeaderCard from './HeaderCard';
 import Info from './Info';
+import Stats from './Stats';
+import Theme from './Theme';
+import Tooltip from './Tooltip';
 
 function sameNetwork(a: UpdateResult, b: UpdateResult): boolean {
     return (
@@ -433,12 +433,11 @@ export default function Map({ system }: { system: SystemKey }) {
 
     return (
         <div
-            className="w-dvw h-dvh flex justify-center items-center touch-none"
+            className="flex h-dvh w-dvw touch-none items-center justify-center"
             style={{ '--slider-thumb': `url("${config.logo}")` } as React.CSSProperties}
         >
             <header
-                className={`absolute top-4 left-4 z-10 flex max-h-[calc(100dvh-17.5rem)] flex-col pointer-events-none
-                ${expanded ? '-translate-x-100' : ''} slide-out-settings`}
+                className={`pointer-events-none absolute top-4 left-4 z-10 flex max-h-[calc(100dvh-17.5rem)] flex-col ${expanded ? '-translate-x-100' : ''} slide-out-settings`}
             >
                 <HeaderCard config={config} />
                 <Stats
@@ -460,22 +459,21 @@ export default function Map({ system }: { system: SystemKey }) {
                     onSettings={patch => setSettings(current => ({ ...current, ...patch }))}
                 />
             </div>
-            <main className="w-dvw h-dvh touch-none">
+            <main className="h-dvh w-dvw touch-none">
                 <object
                     ref={svgRef}
                     data={config.map}
                     onLoad={() => setSvgDoc(svgRef.current!.contentDocument)}
                     type="image/svg+xml"
                     aria-label={`Interactive ${config.title} map, ${minDate.getUTCFullYear()}-${maxDate.getUTCFullYear()}`}
-                    className="absolute top-0 left-0 w-full h-full touch-none"
+                    className="absolute top-0 left-0 h-full w-full touch-none"
                 />
                 {svgDoc && (
                     <Tooltip tooltip={tooltip} time={time} config={config} legend={legend} />
                 )}
             </main>
             <div
-                className={`absolute bottom-31 left-4 flex flex-col gap-2 pointer-events-auto
-                ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
+                className={`pointer-events-auto absolute bottom-31 left-4 flex flex-col gap-2 ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
             >
                 <button
                     type="button"
@@ -527,8 +525,7 @@ export default function Map({ system }: { system: SystemKey }) {
                 legend={legend}
             />
             <div
-                className={`absolute bottom-29 flex flex-wrap justify-center w-2/3 lg:w-1/2 items-center gap-1.5 pointer-events-none
-                ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
+                className={`pointer-events-none absolute bottom-29 flex w-2/3 flex-wrap items-center justify-center gap-1.5 lg:w-1/2 ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
             >
                 {presentLines.map(({ line, name }) => {
                     const selected = highlight.includes(line.id);
@@ -550,7 +547,7 @@ export default function Map({ system }: { system: SystemKey }) {
                             className="pill"
                         >
                             <div
-                                className="w-2 h-2 rounded-full"
+                                className="h-2 w-2 rounded-full"
                                 style={{ backgroundColor: line.color }}
                             ></div>
                             {name}
@@ -570,14 +567,12 @@ export default function Map({ system }: { system: SystemKey }) {
                 )}
             </div>
             <footer
-                className={`absolute bottom-0 left-0 w-dvw p-4 pt-2 flex flex-col justify-center items-center gap-2
-                    bg-surface/85 border-t border-rule pointer-events-none
-                    ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
+                className={`bg-surface/85 border-rule pointer-events-none absolute bottom-0 left-0 flex w-dvw flex-col items-center justify-center gap-2 border-t p-4 pt-2 ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
             >
                 <button
                     type="button"
                     onClick={() => playPause(setPlaying, time, setTime, minDate, maxDate)}
-                    className="absolute left-7 top-4 h-6 flex justify-center items-center pointer-events-auto"
+                    className="pointer-events-auto absolute top-4 left-7 flex h-6 items-center justify-center"
                     aria-label={playing ? 'Pause timeline' : 'Play timeline'}
                 >
                     <img
@@ -586,7 +581,7 @@ export default function Map({ system }: { system: SystemKey }) {
                         className="icon h-full"
                     />
                 </button>
-                <div className="flex gap-3 items-center *:pointer-events-auto">
+                <div className="flex items-center gap-3 *:pointer-events-auto">
                     <img
                         src={chevronLeft}
                         alt="Previous"
@@ -598,7 +593,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     />
                     <label
                         htmlFor="date-slider"
-                        className="font-mono text-sm tracking-wider tabular-nums text-ink"
+                        className="text-ink font-mono text-sm tracking-wider tabular-nums"
                     >
                         {formatDate(new Date(time))}
                     </label>
@@ -612,7 +607,7 @@ export default function Map({ system }: { system: SystemKey }) {
                         }}
                     />
                 </div>
-                <div className="relative w-full h-12 flex items-center px-4 pointer-events-auto">
+                <div className="pointer-events-auto relative flex h-12 w-full items-center px-4">
                     <input
                         id="date-slider"
                         type="range"
@@ -620,9 +615,9 @@ export default function Map({ system }: { system: SystemKey }) {
                         max={maxDate.getTime()}
                         value={time}
                         onChange={e => setTime(Number(e.target.value))}
-                        className="absolute left-4 right-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer"
+                        className="absolute top-1/2 right-4 left-4 z-10 -translate-y-1/2 cursor-pointer"
                     />
-                    <div className="absolute top-1/2 left-4 right-4 h-full -translate-y-1/2 pointer-events-none">
+                    <div className="pointer-events-none absolute top-1/2 right-4 left-4 h-full -translate-y-1/2">
                         {ticks.map(date => {
                             const min_time = minDate.getTime();
                             const pct =
@@ -638,7 +633,7 @@ export default function Map({ system }: { system: SystemKey }) {
                                         transform: `translate(-50%, -50%)`,
                                     }}
                                 >
-                                    <div className="h-2 w-px bg-rule-strong mt-6"></div>
+                                    <div className="bg-rule-strong mt-6 h-2 w-px"></div>
                                     <span className="meta mt-1">{date.getUTCFullYear()}</span>
                                 </div>
                             );
