@@ -44,8 +44,7 @@
 
     --range-thumb: 12px;
     --shadow-panel: 0 1px 2px 0 rgb(23 23 23 / 0.05);
-    --shadow-pop:
-        0 10px 15px -3px rgb(23 23 23 / 0.1), 0 4px 6px -4px rgb(23 23 23 / 0.1);
+    --shadow-pop: 0 10px 15px -3px rgb(23 23 23 / 0.1), 0 4px 6px -4px rgb(23 23 23 / 0.1);
 }
 
 .dark {
@@ -61,8 +60,7 @@
     --color-accent: #7aa7ff;
 
     --shadow-panel: 0 1px 2px 0 rgb(0 0 0 / 0.5);
-    --shadow-pop:
-        0 10px 15px -3px rgb(0 0 0 / 0.55), 0 4px 6px -4px rgb(0 0 0 / 0.55);
+    --shadow-pop: 0 10px 15px -3px rgb(0 0 0 / 0.55), 0 4px 6px -4px rgb(0 0 0 / 0.55);
 
     --map-land: #22252a;
     --map-foreign: #1a1c20;
@@ -138,9 +136,7 @@
     .range-tip {
         @apply bottom-full mb-2 w-max max-w-40 -translate-x-1/2 px-2 py-1 text-center text-3xs whitespace-normal
         opacity-0 transition-opacity;
-        left: calc(
-            var(--range-thumb) / 2 + (100% - var(--range-thumb)) * var(--at)
-        );
+        left: calc(var(--range-thumb) / 2 + (100% - var(--range-thumb)) * var(--at));
     }
 
     .kbd {
@@ -156,11 +152,7 @@
     }
 
     .log {
-        mask-image: linear-gradient(
-            to bottom,
-            black calc(100% - 3rem),
-            transparent
-        );
+        mask-image: linear-gradient(to bottom, black calc(100% - 3rem), transparent);
     }
 
     .log::after {

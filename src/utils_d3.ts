@@ -78,9 +78,7 @@ const MAP_PALETTE: Record<string, string> = {
 };
 
 function pageToken(name: string) {
-    return getComputedStyle(document.documentElement)
-        .getPropertyValue(name)
-        .trim();
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
 export function applyMapTheme(svgDoc: Document): void {
@@ -94,8 +92,7 @@ export function applyMapTheme(svgDoc: Document): void {
             continue;
         }
         for (const prop of ['fill', 'stroke'] as const) {
-            const painted =
-                el.getAttribute(prop) ?? el.style.getPropertyValue(prop);
+            const painted = el.getAttribute(prop) ?? el.style.getPropertyValue(prop);
             const name = MAP_PALETTE[painted.trim().toLowerCase()];
             if (name) {
                 el.style[prop] = pageToken(name);
@@ -131,12 +128,7 @@ function desaturate(color: string): string {
     return dimColor;
 }
 
-function setDimmed(
-    el: SVGElement,
-    dimmed: boolean,
-    fade: boolean,
-    dimOpacity: string,
-): void {
+function setDimmed(el: SVGElement, dimmed: boolean, fade: boolean, dimOpacity: string): void {
     const opacity = dimmed ? dimOpacity : '';
 
     if (el.style.strokeOpacity === opacity) {
@@ -145,9 +137,7 @@ function setDimmed(
 
     el.style.transition = fade ? DIM_TRANSITION : '';
     if (fade) {
-        el.addEventListener('transitionend', () => (el.style.transition = ''), {
-            once: true,
-        });
+        el.addEventListener('transitionend', () => (el.style.transition = ''), { once: true });
     }
     el.style.strokeOpacity = el.style.fillOpacity = opacity;
 }
@@ -160,9 +150,7 @@ export function update(
     transitionMs: number,
     highlight: string[] = [],
 ): UpdateResult {
-    const entries = new Map(
-        legend.map(entry => [findName(entry.states, dateNum), entry]),
-    );
+    const entries = new Map(legend.map(entry => [findName(entry.states, dateNum), entry]));
 
     const lit = new Set(
         legend
@@ -188,9 +176,7 @@ export function update(
             }
             if (entry) {
                 lineKm[entry.id] = (lineKm[entry.id] ?? 0) + trackKm;
-                el.style.stroke = dimmed
-                    ? desaturate(entry.color)
-                    : entry.color;
+                el.style.stroke = dimmed ? desaturate(entry.color) : entry.color;
             }
             setDimmed(el, dimmed, el.dataset.hidden === 'false', dimOpacity);
 
@@ -317,10 +303,7 @@ export function setupHoverEffect(el: SVGElement): void {
                     .attr('r', String(r * SCALE_FACTOR));
             })
             .on('mouseleave', () => {
-                d3.select(el)
-                    .transition('hoverEffect')
-                    .duration(300)
-                    .attr('r', String(r));
+                d3.select(el).transition('hoverEffect').duration(300).attr('r', String(r));
             });
     } else if (el.localName === 'rect') {
         const x = parseFloat(el.getAttribute('x') || '0');
@@ -330,11 +313,7 @@ export function setupHoverEffect(el: SVGElement): void {
         const rx = parseFloat(el.getAttribute('rx') || '0');
 
         d3.select(el)
-            .on('mouseenter', () =>
-                hoverMouseEnter(el, x, y, width, height, rx, SCALE_FACTOR),
-            )
-            .on('mouseleave', () =>
-                hoverMouseLeave(el, x, y, width, height, rx),
-            );
+            .on('mouseenter', () => hoverMouseEnter(el, x, y, width, height, rx, SCALE_FACTOR))
+            .on('mouseleave', () => hoverMouseLeave(el, x, y, width, height, rx));
     }
 }

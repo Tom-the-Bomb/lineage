@@ -7,13 +7,7 @@ import minus from '../assets/minus.svg';
 import plus from '../assets/plus.svg';
 import play from '../assets/play.svg';
 import cross from '../assets/cross.svg';
-import {
-    RANGES,
-    STEP_UNITS,
-    type PlaybackSettings,
-    type Step,
-    type StepUnit,
-} from '../utils_d3';
+import { RANGES, STEP_UNITS, type PlaybackSettings, type Step, type StepUnit } from '../utils_d3';
 
 const UNITS = Object.keys(STEP_UNITS) as StepUnit[];
 
@@ -34,14 +28,7 @@ interface SettingProps {
     children: ReactNode;
 }
 
-function Setting({
-    label,
-    hint,
-    range,
-    value,
-    onChange,
-    children,
-}: SettingProps) {
+function Setting({ label, hint, range, value, onChange, children }: SettingProps) {
     const at = (value - range.min) / (range.max - range.min);
 
     return (
@@ -87,12 +74,10 @@ const GUIDE: [string, ReactNode][] = [
         <>
             Drag the slider or use{' '}
             <span className="whitespace-nowrap">
-                <Mini icon={chevronLeft} alt="<" />{' '}
-                <Mini icon={chevronRight} alt=">" />
+                <Mini icon={chevronLeft} alt="<" /> <Mini icon={chevronRight} alt=">" />
             </span>{' '}
             to step between events. <Mini icon={play} alt="Play" /> or pressing{' '}
-            <kbd className="kbd">Space</kbd> advances one step at a time and
-            pauses on every change.
+            <kbd className="kbd">Space</kbd> advances one step at a time and pauses on every change.
         </>,
     ],
     [
@@ -102,14 +87,11 @@ const GUIDE: [string, ReactNode][] = [
             <span className="whitespace-nowrap">
                 <Mini icon={plus} alt="+" /> <Mini icon={minus} alt="-" />
             </span>{' '}
-            Hover over a station marker to see its lines. Click{' '}
-            <Mini icon={expand} alt="expand" /> to hide everything but the map.
+            Hover over a station marker to see its lines. Click <Mini icon={expand} alt="expand" />{' '}
+            to hide everything but the map.
         </>,
     ],
-    [
-        'Legend',
-        'Click a line to highlight it. Hover over one to see its station count and length.',
-    ],
+    ['Legend', 'Click a line to highlight it. Hover over one to see its station count and length.'],
 ];
 
 interface InfoProps {
@@ -150,9 +132,7 @@ export default function Info({ settings, onSettings }: InfoProps) {
                     <dl className="mt-2 flex flex-col gap-2">
                         {GUIDE.map(([topic, body]) => (
                             <div key={topic}>
-                                <dt className="font-medium text-ink">
-                                    {topic}
-                                </dt>
+                                <dt className="font-medium text-ink">{topic}</dt>
                                 <dd className="leading-snug">{body}</dd>
                             </div>
                         ))}
@@ -167,22 +147,16 @@ export default function Info({ settings, onSettings }: InfoProps) {
                                 value={pauseMs}
                                 onChange={pauseMs => onSettings({ pauseMs })}
                             >
-                                <span className="meta">
-                                    {(pauseMs / 1000).toFixed(1)}s
-                                </span>
+                                <span className="meta">{(pauseMs / 1000).toFixed(1)}s</span>
                             </Setting>
                             <Setting
                                 label="Transition"
                                 hint="Animation time per change"
                                 range={RANGES.transitionMs}
                                 value={transitionMs}
-                                onChange={transitionMs =>
-                                    onSettings({ transitionMs })
-                                }
+                                onChange={transitionMs => onSettings({ transitionMs })}
                             >
-                                <span className="meta">
-                                    {(transitionMs / 1000).toFixed(1)}s
-                                </span>
+                                <span className="meta">{(transitionMs / 1000).toFixed(1)}s</span>
                             </Setting>
                             <Setting
                                 label="Interval"
@@ -196,21 +170,14 @@ export default function Info({ settings, onSettings }: InfoProps) {
                             <Setting
                                 label="Step"
                                 hint="How far each step advances"
-                                range={{
-                                    min: 1,
-                                    max: STEP_UNITS[step.unit].max,
-                                }}
+                                range={{ min: 1, max: STEP_UNITS[step.unit].max }}
                                 value={step.count}
-                                onChange={count =>
-                                    onSettings({ step: { ...step, count } })
-                                }
+                                onChange={count => onSettings({ step: { ...step, count } })}
                             >
                                 <button
                                     type="button"
                                     aria-label={`Step unit ${step.unit}, click to change`}
-                                    onClick={() =>
-                                        onSettings({ step: nextUnit(step) })
-                                    }
+                                    onClick={() => onSettings({ step: nextUnit(step) })}
                                     className="meta group cursor-pointer"
                                 >
                                     {step.count}{' '}
