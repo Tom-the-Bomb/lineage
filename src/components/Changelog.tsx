@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import changelogIcon from '../assets/changelog.svg';
+import chevronDown from '../assets/chevron-down.svg';
 import type { ChangelogEvent, LegendWrapper } from '../schemas';
 import { formatDate } from '../utils';
-import chevronDown from '../assets/chevron-down.svg';
-import changelogIcon from '../assets/changelog.svg';
 
 const wide = window.matchMedia('(min-width: 1280px)').matches;
 
@@ -45,7 +45,7 @@ export default function Changelog({ events, time, legend, className = '' }: Chan
                 aria-expanded={false}
                 aria-label="Expand changelog"
                 onClick={() => setOpen(true)}
-                className={`zoom-btn w-12 h-12 pointer-events-auto absolute right-4 bottom-28 z-10 cursor-pointer rounded-full ${className}`}
+                className={`zoom-btn pointer-events-auto absolute right-4 bottom-28 z-10 h-12 w-12 cursor-pointer rounded-full ${className}`}
             >
                 <img src={changelogIcon} alt="changelog" className="icon h-5 w-5" />
             </button>
@@ -74,7 +74,7 @@ export default function Changelog({ events, time, legend, className = '' }: Chan
                 </button>
             </div>
             {open && past.length === 0 && (
-                <p className="mt-3 text-2xs text-ink-faint">No events yet</p>
+                <p className="text-2xs text-ink-faint mt-3">No events yet</p>
             )}
             {open && past.length > 0 && (
                 <div
@@ -84,7 +84,7 @@ export default function Changelog({ events, time, legend, className = '' }: Chan
                     {past.map((event, index) => (
                         <div
                             key={event.date}
-                            className={`border-l-2 pl-3 py-1.5 ${
+                            className={`border-l-2 py-1.5 pl-3 ${
                                 index === 0
                                     ? 'animate-log-in border-accent text-ink'
                                     : 'border-rule text-ink-muted'
@@ -98,14 +98,14 @@ export default function Changelog({ events, time, legend, className = '' }: Chan
                                     <span>· {event.items.length} changes</span>
                                 )}
                             </div>
-                            <ul className="mt-0.5 flex flex-col gap-1 text-2xs leading-snug">
+                            <ul className="text-2xs mt-0.5 flex flex-col gap-1 leading-snug">
                                 {event.items.map(({ description, line }) => {
                                     const [head, ...rest] = description.split(': ');
 
                                     return (
                                         <li key={description} className="flex gap-1.5">
                                             <span
-                                                className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-rule-strong"
+                                                className="bg-rule-strong mt-1 h-1.5 w-1.5 shrink-0 rounded-full"
                                                 style={line && { backgroundColor: line.color }}
                                             ></span>
                                             <span>

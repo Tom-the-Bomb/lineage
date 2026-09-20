@@ -105,10 +105,10 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
                                             opacity: dimmed ? 0.35 : 1,
                                         }}
                                     >
-                                        <span className="w-28 shrink-0 truncate text-3xs text-ink-muted">
+                                        <span className="text-3xs text-ink-muted w-28 shrink-0 truncate">
                                             {line.name}
                                         </span>
-                                        <span className="h-1.5 flex-1 rounded-full bg-rule/50">
+                                        <span className="bg-rule/50 h-1.5 flex-1 rounded-full">
                                             <span
                                                 className="block h-full rounded-full transition-[width] duration-500 ease-out"
                                                 style={{
@@ -126,7 +126,7 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
                         </div>
                     </div>
                     {overflowing && (
-                        <div className="meta mt-2 h-4 shrink-0 border-t border-rule pt-1 text-right">
+                        <div className="meta border-rule mt-2 h-4 shrink-0 border-t pt-1 text-right">
                             {hiddenBelow > 0 && `↓ ${hiddenBelow} more`}
                         </div>
                     )}

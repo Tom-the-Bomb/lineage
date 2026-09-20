@@ -9,5 +9,6 @@
             "files": ["*.json", "*.jsonc", "*.md"],
             "options": { "tabWidth": 2 }
         }
-    ]
+    ],
+    "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"]
 }

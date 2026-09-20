@@ -1,22 +1,22 @@
-import { Status, type ChangelogEvent } from './schemas';
+import mtrEvents from './assets/mtr/data/events.json';
+import mtrLines from './assets/mtr/data/lines.json';
+import kcrLogo from './assets/mtr/kcr.svg';
 import mtrMap from './assets/mtr/map.svg';
 import mtrLogo from './assets/mtr/mtr.svg';
-import kcrLogo from './assets/mtr/kcr.svg';
-import mtrLines from './assets/mtr/data/lines.json';
-import mtrEvents from './assets/mtr/data/events.json';
+import sgEvents from './assets/sg/data/events.json';
+import sgLines from './assets/sg/data/lines.json';
+import sgMap from './assets/sg/map.svg';
+import sgLogo from './assets/sg/metro.svg';
+import shEvents from './assets/sh/data/events.json';
+import shLines from './assets/sh/data/lines.json';
 import shMap from './assets/sh/map.svg';
 import shMetroLogo from './assets/sh/metro.svg';
 import shSuburbanLogo from './assets/sh/suburban.svg';
-import shLines from './assets/sh/data/lines.json';
-import shEvents from './assets/sh/data/events.json';
+import tpEvents from './assets/tp/data/events.json';
+import tpLines from './assets/tp/data/lines.json';
 import tpMap from './assets/tp/map.svg';
 import tpLogo from './assets/tp/metro.svg';
-import tpLines from './assets/tp/data/lines.json';
-import tpEvents from './assets/tp/data/events.json';
-import sgMap from './assets/sg/map.svg';
-import sgLogo from './assets/sg/metro.svg';
-import sgLines from './assets/sg/data/lines.json';
-import sgEvents from './assets/sg/data/events.json';
+import { Status, type ChangelogEvent } from './schemas';
 
 const KCR_MERGER_DATE = Date.UTC(2007, 11, 2);
 

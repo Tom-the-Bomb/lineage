@@ -1,7 +1,7 @@
-import { Routes, Route } from 'react-router-dom';
-import InteractiveMap from './components/Map';
+import { Route, Routes } from 'react-router-dom';
 import Mtr from './components/articles/Mtr';
 import Home from './components/Home';
+import InteractiveMap from './components/Map';
 
 import { systemKeys } from './systems';
 

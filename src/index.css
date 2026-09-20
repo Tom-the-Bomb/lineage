@@ -84,13 +84,12 @@
 
 @layer components {
     .panel {
-        @apply rounded-lg border border-rule bg-surface/85;
+        @apply border-rule bg-surface/85 rounded-lg border;
         box-shadow: var(--shadow-panel);
     }
 
     .zoom-btn {
-        @apply flex h-9 w-9 items-center justify-center rounded-md border border-rule bg-surface/85
-        transition-colors hover:border-rule-strong hover:bg-surface;
+        @apply border-rule bg-surface/85 hover:border-rule-strong hover:bg-surface flex h-9 w-9 items-center justify-center rounded-md border transition-colors;
         box-shadow: var(--shadow-panel);
     }
 
@@ -103,8 +102,7 @@
     }
 
     .pill {
-        @apply pointer-events-auto relative flex cursor-pointer items-center gap-1.5 rounded-full border border-rule
-        bg-surface/85 px-2 py-0.5 text-3xs text-ink-muted transition-colors hover:border-rule-strong hover:text-ink md:text-2xs;
+        @apply border-rule bg-surface/85 text-3xs text-ink-muted hover:border-rule-strong hover:text-ink md:text-2xs pointer-events-auto relative flex cursor-pointer items-center gap-1.5 rounded-full border px-2 py-0.5 transition-colors;
     }
 
     .pill[aria-pressed='true'] {
@@ -112,35 +110,33 @@
     }
 
     .tooltip {
-        @apply pointer-events-none absolute z-50 rounded-lg border border-rule bg-surface/95 text-ink whitespace-nowrap
-        backdrop-blur-sm;
+        @apply border-rule bg-surface/95 text-ink pointer-events-none absolute z-50 rounded-lg border whitespace-nowrap backdrop-blur-sm;
         box-shadow: var(--shadow-pop);
     }
 
     .tooltip-arrow {
-        @apply absolute h-2 w-2 rotate-45 border-rule bg-surface;
+        @apply border-rule bg-surface absolute h-2 w-2 rotate-45;
     }
 
     .meta {
-        @apply font-mono text-3xs text-ink-faint;
+        @apply text-3xs text-ink-faint font-mono;
     }
 
     .mini-btn {
-        @apply inline-flex h-4 w-4 items-center justify-center rounded-sm border border-rule bg-surface align-text-bottom;
+        @apply border-rule bg-surface inline-flex h-4 w-4 items-center justify-center rounded-sm border align-text-bottom;
     }
 
     .range {
-        @apply h-1 cursor-pointer appearance-none rounded-full bg-rule-strong/50;
+        @apply bg-rule-strong/50 h-1 cursor-pointer appearance-none rounded-full;
     }
 
     .range-tip {
-        @apply bottom-full mb-2 w-max max-w-40 -translate-x-1/2 px-2 py-1 text-center text-3xs whitespace-normal
-        opacity-0 transition-opacity;
+        @apply text-3xs bottom-full mb-2 w-max max-w-40 -translate-x-1/2 px-2 py-1 text-center whitespace-normal opacity-0 transition-opacity;
         left: calc(var(--range-thumb) / 2 + (100% - var(--range-thumb)) * var(--at));
     }
 
     .kbd {
-        @apply min-w-5 rounded border border-rule bg-paper px-1 text-center font-mono text-3xs text-ink-muted;
+        @apply border-rule bg-paper text-3xs text-ink-muted min-w-5 rounded border px-1 text-center font-mono;
     }
 
     .scroll-hidden {
@@ -160,7 +156,7 @@
     }
 
     .nav-btn {
-        @apply rounded px-2 py-1 font-medium outline outline-rule-strong hover:outline-2;
+        @apply outline-rule-strong rounded px-2 py-1 font-medium outline hover:outline-2;
     }
 
     .effect-underline {
@@ -168,8 +164,7 @@
     }
 
     .effect-underline:after {
-        @apply absolute left-0 mt-2 inline-block h-4 w-full scale-x-0 scale-y-100 transform border-b border-current
-        opacity-0 transition-all duration-350 content-[''];
+        @apply absolute left-0 mt-2 inline-block h-4 w-full scale-x-0 scale-y-100 transform border-b border-current opacity-0 transition-all duration-350 content-[''];
     }
 
     .effect-underline:hover:after {
@@ -182,7 +177,7 @@
 }
 
 #date-slider {
-    @apply h-1.5 appearance-none rounded-full bg-rule-strong/50;
+    @apply bg-rule-strong/50 h-1.5 appearance-none rounded-full;
 }
 
 #date-slider::-webkit-slider-thumb {

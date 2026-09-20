@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import mtrLogo from '../../assets/mtr/mtr.svg';
 import crossPlatform from '../../assets/mtr/article/crossplatform.webp';
 import railProperty from '../../assets/mtr/article/railproperty.jpg';
+import mtrLogo from '../../assets/mtr/mtr.svg';
 
 import propertiesData from '../../assets/mtr/article/properties.json';
 
@@ -25,22 +25,22 @@ export default function Mtr() {
     }, []);
 
     return (
-        <div className="max-w-dvw min-h-dvh flex flex-col">
+        <div className="flex min-h-dvh max-w-dvw flex-col">
             <header>
-                <nav className="py-4 px-3" aria-label="Article navigation">
+                <nav className="px-3 py-4" aria-label="Article navigation">
                     <RouterLink to="/mtr" className="nav-btn py-1.5!">
                         Return to Map
                     </RouterLink>
                 </nav>
             </header>
             <main className="grow">
-                <article className="grow flex flex-col gap-8 items-center justify-center px-10 sm:px-20 lg:px-30 xl:px-60 py-20">
+                <article className="flex grow flex-col items-center justify-center gap-8 px-10 py-20 sm:px-20 lg:px-30 xl:px-60">
                     <img src={mtrLogo} alt="MTR Corporation logo" className="h-50 w-auto" />
-                    <div className="flex flex-col gap-3 items-center text-center">
-                        <h1 className="text-5xl font-bold font-serif text-shadow-lg">
+                    <div className="flex flex-col items-center gap-3 text-center">
+                        <h1 className="font-serif text-5xl font-bold text-shadow-lg">
                             The MTR System of Hong Kong
                         </h1>
-                        <p className="text-xl font-medium mb-8">By Tom the Bomb</p>
+                        <p className="mb-8 text-xl font-medium">By Tom the Bomb</p>
                     </div>
                     <div className="flex flex-col gap-7 text-base/7">
                         <section aria-label="Introduction">
@@ -135,24 +135,24 @@ export default function Mtr() {
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold">Examples</h3>
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                                <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                                     <div className="flex flex-col gap-2">
                                         <p>
                                             Some of the most notable examples of properties
                                             developed by the MTR include:
                                         </p>
-                                        <ul className="list-disc list-inside">
+                                        <ul className="list-inside list-disc">
                                             {propertiesData.stations.map(station => (
                                                 <li key={station.name}>
                                                     <a
                                                         href={station.href}
-                                                        className="font-bold effect-underline text-accent"
+                                                        className="effect-underline text-accent font-bold"
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >
                                                         {station.name}
                                                     </a>
-                                                    <ul className="list-disc list-inside ml-5">
+                                                    <ul className="ml-5 list-inside list-disc">
                                                         {station.properties.map((name, index) => (
                                                             <li key={index}>{name}</li>
                                                         ))}
@@ -228,7 +228,7 @@ export default function Mtr() {
                             <div>
                                 <h3 className="text-xl font-bold">Cross-Platform Interchanges</h3>
                                 <div className="flex flex-col gap-6">
-                                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                                    <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                                         <p>
                                             Cross-platform interchanges are a feature that allows
                                             passengers to transfer between two lines by simply
@@ -368,7 +368,7 @@ export default function Mtr() {
                     </div>
                 </article>
             </main>
-            <footer className="flex justify-center items-center p-6 font-mono text-ink-faint">
+            <footer className="text-ink-faint flex items-center justify-center p-6 font-mono">
                 Made by&nbsp;
                 <a
                     href="https://github.com/Tom-the-Bomb"
