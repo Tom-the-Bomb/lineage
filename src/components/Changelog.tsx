@@ -52,7 +52,8 @@ export default function Changelog({
                 aria-expanded={false}
                 aria-label="Expand changelog"
                 onClick={() => setOpen(true)}
-                className={`zoom-btn pointer-events-auto absolute right-4 bottom-28 z-10 h-12 w-12 cursor-pointer rounded-full ${className}`}
+                className={`zoom-btn pointer-events-auto absolute right-4 bottom-28 z-10 h-12 w-12
+                    cursor-pointer rounded-full ${className}`}
             >
                 <img src={changelogIcon} alt="changelog" className="icon h-5 w-5" />
             </button>
@@ -61,7 +62,8 @@ export default function Changelog({
 
     return (
         <aside
-            className={`pointer-events-auto absolute right-4 bottom-28 z-10 w-72 px-4 py-3 ${className}`}
+            className={`pointer-events-auto absolute right-4 bottom-28 z-10 w-72 px-4 py-3
+                ${className}`}
         >
             <div className="flex items-center justify-between gap-4">
                 <span className="meta">
@@ -76,7 +78,8 @@ export default function Changelog({
                     <img
                         src={chevronDown}
                         alt={open ? 'v' : '^'}
-                        className={`icon-btn transition-transform duration-300 ${open ? '' : 'rotate-180'}`}
+                        className={`icon-btn transition-transform duration-300
+                            ${open ? '' : 'rotate-180'}`}
                     />
                 </button>
             </div>
@@ -91,7 +94,8 @@ export default function Changelog({
                     {past.map((event, index) => (
                         <div
                             key={event.date}
-                            className={`hover:border-ink/50 hover:text-ink cursor-pointer border-l-2 py-1.5 pl-3 ${
+                            className={`hover:border-ink/50 hover:text-ink cursor-pointer border-l-2
+                            py-1.5 pl-3 ${
                                 index === 0
                                     ? 'animate-log-in border-accent text-ink'
                                     : 'border-rule text-ink-muted'
@@ -115,7 +119,8 @@ export default function Changelog({
                                     return (
                                         <li key={description} className="flex gap-1.5">
                                             <span
-                                                className="bg-rule-strong mt-1 h-1.5 w-1.5 shrink-0 rounded-full"
+                                                className="bg-rule-strong mt-1 h-1.5 w-1.5 shrink-0
+                                                    rounded-full"
                                                 style={line && { backgroundColor: line.color }}
                                             ></span>
                                             <span>

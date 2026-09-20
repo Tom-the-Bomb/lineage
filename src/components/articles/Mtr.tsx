@@ -34,7 +34,10 @@ export default function Mtr() {
                 </nav>
             </header>
             <main className="grow">
-                <article className="flex grow flex-col items-center justify-center gap-8 px-10 py-20 sm:px-20 lg:px-30 xl:px-60">
+                <article
+                    className="flex grow flex-col items-center justify-center gap-8 px-10 py-20
+                        sm:px-20 lg:px-30 xl:px-60"
+                >
                     <img src={mtrLogo} alt="MTR Corporation logo" className="h-50 w-auto" />
                     <div className="flex flex-col items-center gap-3 text-center">
                         <h1 className="font-serif text-5xl font-bold text-shadow-lg">
@@ -146,7 +149,8 @@ export default function Mtr() {
                                                 <li key={station.name}>
                                                     <a
                                                         href={station.href}
-                                                        className="effect-underline text-accent font-bold"
+                                                        className="effect-underline text-accent
+                                                            font-bold"
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >

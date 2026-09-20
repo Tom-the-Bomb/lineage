@@ -51,7 +51,10 @@ function Setting({ label, hint, range, value, onChange, children }: SettingProps
                         style={{ '--at': at } as CSSProperties}
                     >
                         {hint}
-                        <span className="tooltip-arrow top-full left-1/2 -mt-1 -translate-x-1/2 border-r border-b"></span>
+                        <span
+                            className="tooltip-arrow top-full left-1/2 -mt-1 -translate-x-1/2
+                                border-r border-b"
+                        ></span>
                     </span>
                 </span>
                 <span className="w-16 shrink-0">{children}</span>
@@ -118,7 +121,9 @@ export default function Info({ settings, onSettings }: InfoProps) {
                 <section
                     role="dialog"
                     aria-label="How to use this map"
-                    className="panel scroll-hidden bg-surface text-2xs text-ink-muted absolute top-11 right-0 z-30 max-h-[calc(100dvh-4rem)] w-80 overflow-y-auto px-4 py-3"
+                    className="panel scroll-hidden bg-surface text-2xs text-ink-muted absolute
+                        top-11 right-0 z-30 max-h-[calc(100dvh-4rem)] w-80 overflow-y-auto px-4
+                        py-3"
                 >
                     <span className="meta">how to use</span>
                     <button
@@ -181,7 +186,11 @@ export default function Info({ settings, onSettings }: InfoProps) {
                                     className="meta group cursor-pointer"
                                 >
                                     {step.count}{' '}
-                                    <span className="border-rule hover:border-rule-strong hover:text-ink rounded-sm border px-0.75 py-0.5 transition-colors">
+                                    <span
+                                        className="border-rule hover:border-rule-strong
+                                            hover:text-ink rounded-sm border px-0.75 py-0.5
+                                            transition-colors"
+                                    >
                                         {step.unit}
                                         {step.count > 1 ? 's' : ''}
                                     </span>

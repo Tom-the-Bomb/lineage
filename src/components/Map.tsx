@@ -437,7 +437,9 @@ export default function Map({ system }: { system: SystemKey }) {
             style={{ '--slider-thumb': `url("${config.logo}")` } as React.CSSProperties}
         >
             <header
-                className={`pointer-events-none absolute top-4 left-4 z-10 flex max-h-[calc(100dvh-17.5rem)] flex-col ${expanded ? '-translate-x-100' : ''} slide-out-settings`}
+                className={`pointer-events-none absolute top-4 left-4 z-10 flex
+                    max-h-[calc(100dvh-17.5rem)] flex-col ${expanded ? '-translate-x-100' : ''}
+                    slide-out-settings`}
             >
                 <HeaderCard config={config} />
                 <Stats
@@ -473,7 +475,8 @@ export default function Map({ system }: { system: SystemKey }) {
                 )}
             </main>
             <div
-                className={`pointer-events-auto absolute bottom-31 left-4 flex flex-col gap-2 ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
+                className={`pointer-events-auto absolute bottom-31 left-4 flex flex-col gap-2
+                    ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
             >
                 <button
                     type="button"
@@ -526,7 +529,9 @@ export default function Map({ system }: { system: SystemKey }) {
                 legend={legend}
             />
             <div
-                className={`pointer-events-none absolute bottom-29 flex w-2/3 flex-wrap items-center justify-center gap-1.5 lg:w-1/2 ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
+                className={`pointer-events-none absolute bottom-29 flex w-2/3 flex-wrap items-center
+                    justify-center gap-1.5 lg:w-1/2 ${expanded ? 'translate-y-25.5' : ''}
+                    slide-out-settings`}
             >
                 {presentLines.map(({ line, name }) => {
                     const selected = highlight.includes(line.id);
@@ -568,12 +573,15 @@ export default function Map({ system }: { system: SystemKey }) {
                 )}
             </div>
             <footer
-                className={`bg-surface/85 border-rule pointer-events-none absolute bottom-0 left-0 flex w-dvw flex-col items-center justify-center gap-2 border-t p-4 pt-2 ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
+                className={`bg-surface/85 border-rule pointer-events-none absolute bottom-0 left-0
+                    flex w-dvw flex-col items-center justify-center gap-2 border-t p-4 pt-2
+                    ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
             >
                 <button
                     type="button"
                     onClick={() => playPause(setPlaying, time, setTime, minDate, maxDate)}
-                    className="pointer-events-auto absolute top-4 left-7 flex h-6 items-center justify-center"
+                    className="pointer-events-auto absolute top-4 left-7 flex h-6 items-center
+                        justify-center"
                     aria-label={playing ? 'Pause timeline' : 'Play timeline'}
                 >
                     <img
@@ -608,7 +616,49 @@ export default function Map({ system }: { system: SystemKey }) {
                         }}
                     />
                 </div>
-                <div className="pointer-events-auto relative flex h-12 w-full items-center px-4">
+                <div
+                    className="group pointer-events-auto relative flex h-12 w-full items-center
+                        px-4"
+                >
+                    <div
+                        className="pointer-events-none absolute inset-x-7"
+                        onKeyDown={e => e.stopPropagation()}
+                    >
+                        {config.events
+                            .map(event => Date.parse(event.date))
+                            .filter(date => minDate.getTime() <= date && date <= maxDate.getTime())
+                            .map(date => {
+                                const progress =
+                                    (date - minDate.getTime()) /
+                                    (maxDate.getTime() - minDate.getTime());
+                                return (
+                                    <div
+                                        key={date}
+                                        className="absolute top-1/2"
+                                        style={{ left: `${progress * 100}%` }}
+                                    >
+                                        <button
+                                            type="button"
+                                            aria-label={`Jump to ${formatDate(new Date(date))}`}
+                                            disabled={date === time}
+                                            onClick={() => setTime(date)}
+                                            className="peer pointer-events-auto absolute z-20 size-3
+                                                -translate-1/2 cursor-pointer
+                                                disabled:pointer-events-none"
+                                        />
+                                        <span
+                                            aria-hidden="true"
+                                            className="bg-rule-strong peer-hover:bg-accent
+                                                peer-focus-visible:bg-accent peer-disabled:bg-accent
+                                                absolute size-1 -translate-1/2 rounded-full
+                                                opacity-0 transition-opacity duration-150
+                                                group-focus-within:opacity-100
+                                                group-hover:opacity-100"
+                                        />
+                                    </div>
+                                );
+                            })}
+                    </div>
                     <input
                         id="date-slider"
                         type="range"
@@ -616,9 +666,13 @@ export default function Map({ system }: { system: SystemKey }) {
                         max={maxDate.getTime()}
                         value={time}
                         onChange={e => setTime(Number(e.target.value))}
-                        className="absolute top-1/2 right-4 left-4 z-10 -translate-y-1/2 cursor-pointer"
+                        className="absolute top-1/2 right-4 left-4 z-10 -translate-y-1/2
+                            cursor-pointer"
                     />
-                    <div className="pointer-events-none absolute top-1/2 right-4 left-4 h-full -translate-y-1/2">
+                    <div
+                        className="pointer-events-none absolute top-1/2 right-4 left-4 h-full
+                            -translate-y-1/2"
+                    >
                         {ticks.map(date => {
                             const min_time = minDate.getTime();
                             const pct =
