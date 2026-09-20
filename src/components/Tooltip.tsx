@@ -24,13 +24,10 @@ export default function Tooltip({
 
     const lines = legend.flatMap(entry => {
         const calling = tooltip.station.lines.some(
-            ({ name: id, dateRange }) =>
-                id === entry.id && isActive(dateRange, time),
+            ({ name: id, dateRange }) => id === entry.id && isActive(dateRange, time),
         );
         const lineName = calling && findName(entry.states, time);
-        return lineName
-            ? [{ id: entry.id, name: lineName, color: entry.color }]
-            : [];
+        return lineName ? [{ id: entry.id, name: lineName, color: entry.color }] : [];
     });
 
     if (name) {
@@ -45,22 +42,14 @@ export default function Tooltip({
             >
                 <div className="flex gap-2 items-center">
                     {config.tooltipLogos?.(status, time).map(logo => (
-                        <img
-                            key={logo.alt}
-                            src={logo.src}
-                            alt={logo.alt}
-                            className="h-4"
-                        />
+                        <img key={logo.alt} src={logo.src} alt={logo.alt} className="h-4" />
                     ))}
                     {name}
                 </div>
                 {lines.length > 0 && (
                     <div className="flex gap-x-2 mt-1 text-xs text-ink-faint">
                         {lines.map(line => (
-                            <span
-                                key={line.id}
-                                className="flex items-center gap-1"
-                            >
+                            <span key={line.id} className="flex items-center gap-1">
                                 <span
                                     className="w-2 h-2 rounded-full"
                                     style={{ backgroundColor: line.color }}

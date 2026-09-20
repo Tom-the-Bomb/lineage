@@ -13,17 +13,9 @@ export default function Theme() {
             className="zoom-btn rounded-full pointer-events-auto cursor-pointer"
         >
             {isDarkMode ? (
-                <img
-                    src={lightModeIcon}
-                    alt="Light mode"
-                    className="icon h-4 w-4"
-                />
+                <img src={lightModeIcon} alt="Light mode" className="icon h-4 w-4" />
             ) : (
-                <img
-                    src={darkModeIcon}
-                    alt="Dark mode"
-                    className="icon h-4 w-4"
-                />
+                <img src={darkModeIcon} alt="Dark mode" className="icon h-4 w-4" />
             )}
         </button>
     );

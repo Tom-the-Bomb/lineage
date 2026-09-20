@@ -13,9 +13,7 @@ export default function App() {
                 <Route
                     key={systemKey}
                     path={`/${systemKey}`}
-                    element={
-                        <InteractiveMap system={systemKey} key={systemKey} />
-                    }
+                    element={<InteractiveMap system={systemKey} key={systemKey} />}
                 />
             ))}
             <Route path="/mtr/article" element={<Mtr />} />

@@ -31,10 +31,7 @@ export interface SystemConfig {
     lines: { id: string; label: string; color: string }[];
     events: ChangelogEvent[];
     article?: string;
-    tooltipLogos?: (
-        status: Status,
-        time: number,
-    ) => { src: string; alt: string }[];
+    tooltipLogos?: (status: Status, time: number) => { src: string; alt: string }[];
     initialView?: { center: [number, number]; zoom: number };
 }
 
@@ -42,8 +39,7 @@ export const systems = {
     mtr: {
         title: 'MTR History',
         chineseTitle: '港铁历史',
-        description:
-            "Explore the historical development of Hong Kong's MTR system",
+        description: "Explore the historical development of Hong Kong's MTR system",
         map: mtrMap,
         logo: mtrLogo,
         minDate: new Date(Date.UTC(1972, 0, 1)),
@@ -54,9 +50,7 @@ export const systems = {
         tooltipLogos(status, time) {
             const merged = time >= KCR_MERGER_DATE;
             return [
-                ...(!merged && status !== Status.PrimaryOnly
-                    ? [{ src: kcrLogo, alt: 'KCR' }]
-                    : []),
+                ...(!merged && status !== Status.PrimaryOnly ? [{ src: kcrLogo, alt: 'KCR' }] : []),
                 ...(merged || status !== Status.SecondaryOnly
                     ? [{ src: mtrLogo, alt: 'MTR' }]
                     : []),
@@ -80,12 +74,7 @@ export const systems = {
                     ? [{ src: shMetroLogo, alt: 'Shanghai Metro' }]
                     : []),
                 ...(status !== Status.PrimaryOnly
-                    ? [
-                          {
-                              src: shSuburbanLogo,
-                              alt: 'Shanghai Suburban Railway',
-                          },
-                      ]
+                    ? [{ src: shSuburbanLogo, alt: 'Shanghai Suburban Railway' }]
                     : []),
             ];
         },
