@@ -1,3 +1,5 @@
+import { utcDay } from 'd3';
+
 import mtrEvents from './assets/mtr/data/events.json';
 import mtrLines from './assets/mtr/data/lines.json';
 import kcrLogo from './assets/mtr/kcr.svg';
@@ -19,6 +21,7 @@ import tpLogo from './assets/tp/metro.svg';
 import { Status, type ChangelogEvent } from './schemas';
 
 const KCR_MERGER_DATE = Date.UTC(2007, 11, 2);
+const TODAY = utcDay(new Date());
 
 export interface SystemConfig {
     title: string;
@@ -43,7 +46,7 @@ export const systems = {
         map: mtrMap,
         logo: mtrLogo,
         minDate: new Date(Date.UTC(1972, 0, 1)),
-        maxDate: new Date(Date.UTC(2023, 0, 1)),
+        maxDate: TODAY,
         lines: mtrLines.lines,
         events: mtrEvents,
         article: '/mtr/article',
@@ -64,7 +67,7 @@ export const systems = {
         map: shMap,
         logo: shMetroLogo,
         minDate: new Date(Date.UTC(1993, 0, 1)),
-        maxDate: new Date(Date.UTC(2025, 11, 31)),
+        maxDate: TODAY,
         lines: shLines.lines,
         events: shEvents,
         initialView: { center: [2412, 1089], zoom: 1 },
@@ -86,7 +89,7 @@ export const systems = {
         map: tpMap,
         logo: tpLogo,
         minDate: new Date(Date.UTC(1996, 0, 1)),
-        maxDate: new Date(Date.UTC(2025, 11, 31)),
+        maxDate: TODAY,
         lines: tpLines.lines,
         events: tpEvents,
         initialView: { center: [1528, 1907], zoom: 1 },
@@ -101,7 +104,7 @@ export const systems = {
         map: sgMap,
         logo: sgLogo,
         minDate: new Date(Date.UTC(1987, 0, 1)),
-        maxDate: new Date(Date.UTC(2026, 11, 31)),
+        maxDate: TODAY,
         lines: sgLines.lines,
         events: sgEvents,
         initialView: { center: [5831, 4383], zoom: 1 },
