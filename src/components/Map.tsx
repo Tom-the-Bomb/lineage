@@ -33,6 +33,7 @@ import shrink from '../assets/shrink.svg';
 import { systems, type SystemConfig, type SystemKey } from '../systems';
 import { BigTooltip } from './BigTooltip';
 import Changelog from './Changelog';
+import DatePicker from './DatePicker';
 import HeaderCard from './HeaderCard';
 import Info from './Info';
 import Stats from './Stats';
@@ -591,30 +592,31 @@ export default function Map({ system }: { system: SystemKey }) {
                     />
                 </button>
                 <div className="flex items-center gap-3 *:pointer-events-auto">
-                    <img
-                        src={chevronLeft}
-                        alt="Previous"
+                    <button
+                        type="button"
+                        onClick={() => setTime(prev => findPreviousEventDate(prev))}
                         className="icon-btn"
-                        onClick={e => {
-                            e.preventDefault();
-                            setTime(prev => findPreviousEventDate(prev));
-                        }}
-                    />
-                    <label
-                        htmlFor="date-slider"
-                        className="text-ink font-mono text-sm tracking-wider tabular-nums"
+                        aria-label="Previous"
                     >
-                        {formatDate(new Date(time))}
-                    </label>
-                    <img
-                        src={chevronRight}
-                        alt="Next"
-                        className="icon-btn"
+                        <img src={chevronLeft} alt="<" className="icon-btn" />
+                    </button>
+                    <DatePicker
+                        time={time}
+                        minDate={minDate}
+                        maxDate={maxDate}
+                        onChange={setTime}
+                    />
+                    <button
+                        type="button"
                         onClick={e => {
                             e.preventDefault();
                             setTime(prev => findNextEventDate(prev));
                         }}
-                    />
+                        className="icon-btn"
+                        aria-label="Next"
+                    >
+                        <img src={chevronRight} alt=">" className="icon-btn" />
+                    </button>
                 </div>
                 <div
                     className="group pointer-events-auto relative flex h-12 w-full items-center
@@ -642,8 +644,8 @@ export default function Map({ system }: { system: SystemKey }) {
                                             aria-label={`Jump to ${formatDate(new Date(date))}`}
                                             disabled={date === time}
                                             onClick={() => setTime(date)}
-                                            className="peer pointer-events-auto absolute z-20 size-3
-                                                -translate-1/2 cursor-pointer
+                                            className="peer pointer-events-auto absolute z-20 h-3
+                                                w-1.5 -translate-1/2 cursor-pointer
                                                 disabled:pointer-events-none"
                                         />
                                         <span
@@ -662,6 +664,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     <input
                         id="date-slider"
                         type="range"
+                        aria-label="Timeline"
                         min={minDate.getTime()}
                         max={maxDate.getTime()}
                         value={time}
