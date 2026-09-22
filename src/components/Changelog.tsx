@@ -62,7 +62,7 @@ export default function Changelog({
 
     return (
         <aside
-            className={`pointer-events-auto absolute right-4 bottom-28 z-10 w-72 px-4 py-3
+            className={`panel pointer-events-auto absolute right-4 bottom-28 z-10 w-72 px-4 py-3
                 ${className}`}
         >
             <div className="flex items-center justify-between gap-4">
