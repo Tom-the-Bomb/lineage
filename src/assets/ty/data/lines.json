@@ -1,0 +1,79 @@
+{
+  "lines": [
+    {
+      "id": "g",
+      "label": "Tokyo_Underground_Railway=1927_12_30-1941_09_01,Eidan_Subway=1941_09_01-1953_12_01,Ginza_Line=1953_12_01",
+      "color": "#ff9500"
+    },
+    {
+      "id": "gr",
+      "label": "Tokyo_Rapid_Railway=1938_11_18-1941_09_01",
+      "color": "#ff9500"
+    },
+    {
+      "id": "m",
+      "label": "Marunouchi_Line=1954_01_20",
+      "color": "#f62e36"
+    },
+    {
+      "id": "og",
+      "label": "Ogikubo_Line=1961_02_08-1972_04_01",
+      "color": "#f62e36"
+    },
+    {
+      "id": "h",
+      "label": "Hibiya_Line=1961_03_28",
+      "color": "#b5b5ac"
+    },
+    {
+      "id": "t",
+      "label": "Tozai_Line=1964_12_23",
+      "color": "#009bbf"
+    },
+    {
+      "id": "c",
+      "label": "Chiyoda_Line=1969_12_20",
+      "color": "#00bb85"
+    },
+    {
+      "id": "y",
+      "label": "Yurakucho_Line=1974_10_30",
+      "color": "#c1a470"
+    },
+    {
+      "id": "z",
+      "label": "Hanzomon_Line=1978_08_01",
+      "color": "#8f76d6"
+    },
+    {
+      "id": "n",
+      "label": "Namboku_Line=1991_11_29",
+      "color": "#00ac9b"
+    },
+    {
+      "id": "f",
+      "label": "Yurakucho_New_Line=1994_12_07-2008_06_14,Fukutoshin_Line=2008_06_14",
+      "color": "#9c5e31"
+    },
+    {
+      "id": "a",
+      "label": "Toei_Line_1=1960_12_04-1978_07_01,Toei_Asakusa_Line=1978_07_01-2000_04_20,Asakusa_Line=2000_04_20",
+      "color": "#ec6d65"
+    },
+    {
+      "id": "i",
+      "label": "Toei_Line_6=1968_12_27-1978_07_01,Toei_Mita_Line=1978_07_01-2000_04_20,Mita_Line=2000_04_20",
+      "color": "#006ab7"
+    },
+    {
+      "id": "s",
+      "label": "Toei_Shinjuku_Line=1978_12_21-2000_04_20,Shinjuku_Line=2000_04_20",
+      "color": "#b0c124"
+    },
+    {
+      "id": "e",
+      "label": "Toei_Line_12=1991_12_10-2000_04_20,Oedo_Line=2000_04_20",
+      "color": "#da006e"
+    }
+  ]
+}
