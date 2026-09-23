@@ -1,10 +1,10 @@
-import {
-    type DateInterval,
-    type LegendWrapper,
-    type LineStats,
-    type LineWrapper,
-    type State,
-    type StationWrapper,
+import type {
+    DateInterval,
+    LegendWrapper,
+    LineStats,
+    LineWrapper,
+    State,
+    StationWrapper,
 } from './schemas';
 
 // Max date object Javascript can handle:
@@ -33,6 +33,12 @@ export function formatDate(date: Date, end: number = 10): string {
 
 export function clamp(value: number, min: number, max: number): number {
     return Math.min(Math.max(value, min), max);
+}
+
+export function relativeCenter(element: Element, container: Element): [number, number] {
+    const rect = element.getBoundingClientRect();
+    const origin = container.getBoundingClientRect();
+    return [rect.left + rect.width / 2 - origin.left, rect.top + rect.height / 2 - origin.top];
 }
 
 export function parseLabelDates(label: string): State[] {

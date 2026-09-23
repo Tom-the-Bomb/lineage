@@ -1,6 +1,7 @@
+import { useLayoutEffect, useRef, useState } from 'react';
 import type { LegendWrapper, RawTooltipData } from '../schemas';
 import type { SystemConfig } from '../systems';
-import { findName, formatDate, isActive } from '../utils';
+import { clamp, findName, formatDate, isActive } from '../utils';
 
 interface TooltipProps {
     tooltip: RawTooltipData | null;
@@ -9,12 +10,24 @@ interface TooltipProps {
     legend: LegendWrapper[];
 }
 
+export const TOOLTIP_OFFSET = 10;
+
 export default function Tooltip({
     tooltip,
     time,
     config,
     legend,
 }: TooltipProps): React.JSX.Element | null {
+    const ref = useRef<HTMLDivElement>(null);
+    const [size, setSize] = useState({ width: 0, height: 0 });
+
+    useLayoutEffect(() => {
+        if (ref.current) {
+            const { width, height } = ref.current.getBoundingClientRect();
+            setSize({ width, height });
+        }
+    }, [tooltip?.station, time, config, legend]);
+
     if (!tooltip) {
         return null;
     }
@@ -31,14 +44,25 @@ export default function Tooltip({
     });
 
     if (state) {
+        const left = tooltip.x + TOOLTIP_OFFSET + size.width > window.innerWidth;
+        const x = clamp(
+            left ? tooltip.x - TOOLTIP_OFFSET - size.width : tooltip.x + TOOLTIP_OFFSET,
+            0,
+            window.innerWidth - size.width,
+        );
+        const y = clamp(
+            tooltip.y + TOOLTIP_OFFSET - size.height / 2,
+            0,
+            window.innerHeight - size.height,
+        );
+
         return (
             <div
-                className="tooltip px-3 py-2 text-sm"
-                style={{
-                    left: `${tooltip.x + 10}px`,
-                    top: `${tooltip.y + 10}px`,
-                    transform: 'translate(0, -50%)',
-                }}
+                ref={ref}
+                role="tooltip"
+                className="tooltip w-max max-w-[calc(100vw-1rem)] px-3 py-2 text-sm
+                    whitespace-normal"
+                style={{ left: x, top: y }}
             >
                 <div className="flex items-center gap-2">
                     {config.tooltipLogos?.(status, time).map(logo => (
@@ -52,7 +76,7 @@ export default function Tooltip({
                     </span>
                 </div>
                 {lines.length > 0 && (
-                    <div className="text-ink-faint mt-1 flex gap-x-2 text-xs">
+                    <div className="text-ink-faint mt-1 flex flex-wrap gap-x-2 text-xs">
                         {lines.map(line => (
                             <span key={line.id} className="flex items-center gap-1">
                                 <span
@@ -64,7 +88,11 @@ export default function Tooltip({
                         ))}
                     </div>
                 )}
-                <div className="tooltip-arrow top-1/2 -left-1 -translate-y-1/2 border-b border-l"></div>
+                <div
+                    className={`tooltip-arrow -translate-y-1/2
+                        ${left ? '-right-1 border-t border-r' : '-left-1 border-b border-l'}`}
+                    style={{ top: clamp(tooltip.y + TOOLTIP_OFFSET - y, 8, size.height - 8) }}
+                ></div>
             </div>
         );
     }
