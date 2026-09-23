@@ -53,8 +53,7 @@ src/assets/<key>/
 | `tooltipLogos(status, time)` | returns `{ src, alt }[]`                  | Which logos a station tooltip shows. `status` comes from the label prefix (§2). |
 | `article` (optional)         | `'/mtr/article'`                          | Only if an article route exists.                                                |
 
-- Add a `<Link to="/<key>">` in `src/components/Home.tsx` (the home page links are written by hand).
-- `SystemKey` and the routes are derived from `systems`. Nothing else needs registering.
+- Home page links, `SystemKey` and the routes are derived from `systems`. Nothing else needs registering.
 
 ## 2. Label syntax
 
@@ -152,6 +151,19 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 
   If you change a track's opening date, change the date in its `id` too.
 
+- Marker IDs also define search identity. The part before `--` is the stable station ID;
+  an optional `--<YYYY-MM-DD>` suffix identifies a replacement marker by its first appearance.
+  For example, `station-quarry-bay` and `station-quarry-bay--1989-08-06` represent the same
+  station before and after an interchange upgrade. Keep the stem through renames; display names
+  still come only from the dated labels. A marker with no `--` uses its entire ID as its identity.
+- Replacement markers for one station MUST share a stem and MUST NOT overlap in time. Separate
+  stations MUST have different stems, including namesakes and out-of-station transfers (§6).
+  West Nanjing Road's Line 2, 12 and 13 stations therefore have three identities; the Line 2
+  marker's replacement keeps the Line 2 identity. When separate stations become one capsule,
+  continue the earliest station's identity and retire the other separate identities. Their
+  historical search results remain available. Search groups by identity **and historical name**,
+  showing the first date that identity used the name, without shortening or rewriting labels.
+
 ## 4. Tracks
 
 - A track is one `<path>` per **line segment with its own dates**: split a line wherever a stretch
@@ -189,7 +201,7 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   - Otherwise derive it from the drawn length, scaled so the line's present-day total matches the
     published figure. Today's figure is then exact and historical figures are within a few percent,
     because a map's scale is consistent within a line (Shanghai and Taipei within 3%, MTR within 7%).
-  - A line the map deliberately simplifies (MTR Light Rail, drawn as three tracks without most of
+  - A line the map deliberately simplifies (MTR Light Rail, drawn without most of
     its stops) is still calibrated to the published network length: its tracks stand in for the
     whole network.
   - A predecessor line the legend names (KCR West Rail, Ma On Shan, Shanghai's Pearl line, Taipei's
@@ -563,8 +575,62 @@ MTR predates this spec. Don't copy these patterns into new systems:
 
 - Track colours are also set by per-path CSS classes (`.er`, `.kt`, …), which the legend colour overrides.
 - Track width is set inline per path (`stroke-width:1.5`) instead of on the `lines` group. Caps are round.
-- Light Rail is drawn as a simplified network: only its four interchange stops are markers, the 1988
-  trunk and the 1993 Tin Shui Wai branch are dated, and later extensions are not.
+- Light Rail is drawn as a simplified network: only its four heavy-rail interchanges are markers.
+  Tracks are split by opening stage, without modelling individual service routes or stop renames.
+
+### MTR historical coverage and outstanding evidence
+
+- Sha Tau Kok is split at its public openings: Fanling–Shek Chung Au on 1911-12-21,
+  then Sha Tau Kok on 1912-04-01; both close on 1928-04-01. The opening notices are
+  transcribed in the [branch history](https://en.wikipedia.org/wiki/Sha_Tau_Kok_Branch).
+  [KCRC](https://www.kcrc.com/en/about-kcrc/history.html) gives the full route as 11.6 km.
+  The map includes Fanling, Hung Leng, Wo Hang, Shek Chung Au and Sha Tau Kok.
+  Lung Yeuk Tau's location/closure and the five February 1916 halts (Kwan Tei, Ma Mei Ha,
+  Loi Tung, Tai Long, San Tsuen) remain unresolved; do not invent exact days or positions.
+- Che Kung Miu is a separate historical halt, not the present Che Kung Temple station.
+  KCR's [1935 report](https://www.histsyn.com/2023/01/AR1935.html), paragraphs 59 and 102,
+  records its opening on November 16 near Bridge 12; the
+  [1936 report](https://www.histsyn.com/2023/01/AR1936.html), paragraph 41, records closure
+  on October 1. Historical geometry follows the existing map's approximate scale.
+- The original Kowloon terminus and Chatham Road approach are separate from East Tsim Sha Tsui's
+  2004 tunnel. The [1975 replacement](https://www.histsyn.com/2023/01/kcr1976.html) and
+  [1981 Beacon Hill Tunnel switchover](<https://en.wikipedia.org/wiki/Beacon_Hill_Tunnel_(Hong_Kong)>)
+  retain the modern track geometry. Short switchover gaps are collapsed under §7.
+- High Speed Rail's Hong Kong section opens on 2018-09-23, per
+  [MTR's 2018 report](https://www.mtr.com.hk/archive/corporate/en/investor/annual2018/E110.pdf).
+  Its 25.7 km value uses [MTR's business overview](https://www.mtr.com.hk/archive/corporate/en/publications/images/business_overview_e.pdf)
+  rather than the rounded 26 km project length. Its curve follows the
+  [published alignment](https://www.legco.gov.hk/yr16-17/english/panels/tp/tp_rdp/papers/tp_rdp20161209cb4-243-9-e.pdf)
+  through Shek Kong and Mai Po, continuing towards Futian and off the map's northern edge.
+  The Shenzhen continuation supplies geographic context from the Hong Kong opening date;
+  the kilometres and station count cover only the Hong Kong section. No boundary station is added.
+- This is **not yet a complete historical inventory**. KCRC records a Sheung Shui halt in 1913;
+  the map still starts at the dated 1930 station opening. KCR's
+  [1921 report](https://www.histsyn.com/2022/12/AR1921.html), paragraph 19, also records a
+  Ho Mun Tin halt without an exact opening day. Both need dated timetables and location evidence.
+  The old Hung Hom closure (June 13 versus September 15/16, 1921) and the precise 1996 renaming
+  date remain disputed; the existing dates are retained, not newly certified.
+- Light Rail tracks now distinguish the 1988-09-14 public preview, 1988-09-24 northern/estate
+  branches, 1991-11-03 southern extension, 1992-02-02 eastern/Sam Shing extensions,
+  1993-01-10 Tin Shui branch, 1995-03-26 Tin Shui Wai Terminus extension, and 2003-12-07
+  northern/eastern Tin Shui Wai extensions. Existing modern curves and stroke widths are retained.
+  The [contemporary opening notice](https://att.hkitalk.net/HKiTalk2/data/attachment/forum/202303/04/105705khyhdansbyz8h0gs.jpeg)
+  lists public preview routes 610/611/612 on September 14–16 and regular service from September 18.
+  The one-day interruption is collapsed under §7. Route 506's September 23 introduction uses
+  existing track; its individual stops are outside this map's Light Rail scope.
+  The [government's November 6, 1991 bulletin](https://www.histsyn.com/2022/12/daily-information-bulletin-1990s-1991_13.html)
+  says the southern extension opened the previous Sunday (November 3), consistent with the
+  November 4 newspaper cited by [Goodview Garden's history](https://zh.wikipedia.org/wiki/豐景園站).
+  This takes precedence over the November 17 date in several English station articles.
+  The [stop chronology](<https://en.wikipedia.org/wiki/Light_Rail_(MTR)#Stops>) identifies the 1992,
+  1993 and 1995 stages; [LegCo's commissioning report](https://www.legco.gov.hk/yr03-04/english/panels/tp/tp_rdp/papers/tp_rdp1219cb1-613-1e.pdf)
+  confirms December 7, 2003. Tin Shui's former terminus position is interpolated on the existing
+  curve; stop-scale turning loops and the 2002–03 grade-separation realignments remain simplified.
+  Light Rail kilometres remain approximate by stage: 36.2 km today, including 4.4 km of 2003
+  extensions, 3.2 km of earlier Tin Shui Wai track and 28.6 km in Tuen Mun/Yuen Long. The latter
+  includes the roughly 5 km of 1991–92 extensions, divided in proportion to drawn length.
+- Existing route kilometres are estimates: distinguish route length, construction length
+  and the operator's exclusion of duplicated sections before recalibrating individual paths.
 
 ## Appendix: `check_map.py`
 
@@ -593,6 +659,9 @@ STATE = rf'[^=,_\s][^=,\s]*={DATE}(?:-{DATE})?'
 LABEL = re.compile(rf'^[!^]?{STATE}(?:,{STATE})*$')
 LINES = re.compile(rf'^[a-z0-9]+={DATE}(?:-{DATE})?(?:,[a-z0-9]+={DATE}(?:-{DATE})?)*$')
 errors = []
+ids = re.findall(r'\bid="([^"]+)"', svg)
+if len(ids) != len(set(ids)):
+    errors.append('SVG ids must be unique (§3)')
 
 def vertices(d):  # every vertex of a path's d, absolute; a curve contributes its end point
     toks = re.findall(r'[MmLlHhVvCcSsQqTtAaZz]|-?\d*\.?\d+(?:e-?\d+)?', d)
@@ -684,6 +753,7 @@ for tag, attrs in children('lines'):
         track_km.append((st, float(km.group(1))))
     track_names += st
 markers = []  # (label, states, data-lines match)
+identities = defaultdict(list)  # stable station id -> (element id, states)
 reach = []    # (label, states, x, y, deg, half, r): a marker's dates, centre, axis angle, half axis length and radius
 for tag, attrs in children('stations'):
     label = re.search(r'inkscape:label="([^"]*)"', attrs)
@@ -698,6 +768,14 @@ for tag, attrs in children('stations'):
     st = check_label(tag, label.group(1))
     record({'circle': 'station', 'rect': 'interchange', 'path': 'connector'}[tag], st)
     if tag != 'path':
+        marker_id = re.search(r'\bid="([^"]+)"', attrs)
+        if not marker_id:
+            errors.append(f'marker {label.group(1)!r}: missing search identity id (§3)')
+        else:
+            identity, _, version = marker_id.group(1).partition('--')
+            if version and (not st or version != st[0][1]):
+                errors.append(f'marker {marker_id.group(1)!r}: version must match first appearance (§3)')
+            identities[identity].append((marker_id.group(1), st))
         markers.append((label.group(1), st, re.search(r'data-lines="([^"]*)"', attrs)))
         num = lambda name: float(re.search(rf'\b{name}="([^"]+)"', attrs).group(1))
         if tag == 'circle':
@@ -706,6 +784,12 @@ for tag, attrs in children('stations'):
             x, y, deg = map(float, re.match(r'translate\(([-\d.]+),([-\d.]+)\) rotate\(([-\d.]+)\)', transform.group(1)).groups())
             w, h = num('width'), num('height')   # a capsule: a segment of length h - w along its axis, thickened by w / 2
             reach.append((label.group(1), st, x, y, deg, (h - w) / 2, w / 2))
+for identity, versions in identities.items():
+    for i, (aid, a) in enumerate(versions):
+        for bid, b in versions[:i]:
+            if any(s < (e2 or '9999') and s2 < (e or '9999') for _, s, e in a for _, s2, e2 in b):
+                errors.append(f'station identity {identity!r}: {aid} and {bid} overlap; separate stations need separate ids (§3)')
+
 # every track starts and ends inside a station marker present at every moment of the track's life
 # (markers move when a station is rebuilt), except where it meets other track of the same line away
 # from any station (a branch junction, a loop closing on itself), runs off the drawn area, or belongs

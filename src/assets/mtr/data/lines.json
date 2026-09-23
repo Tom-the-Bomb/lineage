@@ -6,6 +6,11 @@
             "color": "rgb(83,183,232)"
         },
         {
+            "id": "stk",
+            "label": "Sha_Tau_Kok_Branch=1911_12_21-1928_04_01",
+            "color": "rgb(139,111,71)"
+        },
+        {
             "id": "ktl",
             "label": "Modified_Initial_System=1979_10_01-1982_04_26,Kwun_Tong_Line=1982_04_26",
             "color": "rgb(0,171,78)"
@@ -22,7 +27,7 @@
         },
         {
             "id": "lr",
-            "label": "KCR_Light_Rail=1988_09_18-2007_12_02,Light_Rail=2007_12_02",
+            "label": "KCR_Light_Rail=1988_09_14-2007_12_02,Light_Rail=2007_12_02",
             "color": "rgb(211,168,9)",
             "simplified": true
         },
@@ -65,6 +70,11 @@
             "id": "sil",
             "label": "South_Island_Line=2016_12_28",
             "color": "rgb(186,196,41)"
+        },
+        {
+            "id": "xrl",
+            "label": "High_Speed_Rail=2018_09_23",
+            "color": "rgb(167,169,172)"
         }
     ]
 }
