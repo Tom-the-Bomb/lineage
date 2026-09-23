@@ -16,6 +16,7 @@ import {
     type Step,
     type StepUnit,
 } from '../utils_d3';
+import ControlTooltip from './ControlTooltip';
 
 const UNITS = Object.keys(STEP_UNITS) as StepUnit[];
 
@@ -53,17 +54,9 @@ function Setting({ label, hint, range, value, onChange, children }: SettingProps
                         value={value}
                         onChange={e => onChange(Number(e.target.value))}
                     />
-                    <span
-                        role="tooltip"
-                        className="tooltip range-tip group-hover:opacity-100"
-                        style={{ '--at': at } as CSSProperties}
-                    >
+                    <ControlTooltip className="range-tip" style={{ '--at': at } as CSSProperties}>
                         {hint}
-                        <span
-                            className="tooltip-arrow top-full left-1/2 -mt-1 -translate-x-1/2
-                                border-r border-b"
-                        ></span>
-                    </span>
+                    </ControlTooltip>
                 </span>
                 <span className="w-16 shrink-0">{children}</span>
             </span>
