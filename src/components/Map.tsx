@@ -104,14 +104,39 @@ export default function Map({ system }: { system: SystemKey }) {
         timeRef.current = time;
     }, [time]);
 
+    const findPreviousEventDate = useCallback(
+        (currentTime: number): number => {
+            const eventDates = eventDatesRef.current;
+            return eventDates.findLast(date => date < currentTime) ?? minDate.getTime();
+        },
+        [minDate],
+    );
+
+    const findNextEventDate = useCallback(
+        (currentTime: number): number => {
+            const eventDates = eventDatesRef.current;
+            return eventDates.find(date => date > currentTime) ?? maxDate.getTime();
+        },
+        [maxDate],
+    );
+
     const keyDownHandler = useCallback(
         (e: KeyboardEvent) => {
+            if (e.target instanceof HTMLInputElement && e.target.id !== 'date-slider') {
+                return;
+            }
             if (e.code === 'Space') {
                 e.preventDefault();
                 playPause(setPlaying, timeRef.current, setTime, minDate, maxDate);
+            } else if (e.code === 'ArrowLeft') {
+                e.preventDefault();
+                setTime(prev => findPreviousEventDate(prev));
+            } else if (e.code === 'ArrowRight') {
+                e.preventDefault();
+                setTime(prev => findNextEventDate(prev));
             }
         },
-        [minDate, maxDate],
+        [minDate, maxDate, findPreviousEventDate, findNextEventDate],
     );
 
     const ticks = useMemo(() => {
@@ -402,22 +427,6 @@ export default function Map({ system }: { system: SystemKey }) {
         });
         return () => observer.disconnect();
     }, [svgDoc, legend, highlight, settings.transitionMs]);
-
-    const findPreviousEventDate = useCallback(
-        (currentTime: number): number => {
-            const eventDates = eventDatesRef.current;
-            return eventDates.findLast(date => date < currentTime) ?? minDate.getTime();
-        },
-        [minDate],
-    );
-
-    const findNextEventDate = useCallback(
-        (currentTime: number): number => {
-            const eventDates = eventDatesRef.current;
-            return eventDates.find(date => date > currentTime) ?? maxDate.getTime();
-        },
-        [maxDate],
-    );
 
     useEffect(() => {
         if (!playing || !svgDoc) {
