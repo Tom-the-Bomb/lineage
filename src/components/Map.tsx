@@ -117,12 +117,16 @@ export default function Map({ system }: { system: SystemKey }) {
     const ticks = useMemo(() => {
         const startYear = minDate.getUTCFullYear();
         const endYear = maxDate.getUTCFullYear();
+        const step = Math.max(
+            5,
+            d3.tickStep(startYear, endYear, (sliderTrackWidth ?? window.innerWidth) / 50),
+        );
         const tickDates = [];
-        for (let year = Math.ceil(startYear / 5) * 5; year < endYear; year += 5) {
+        for (let year = Math.ceil(startYear / step) * step; year < endYear; year += step) {
             tickDates.push(new Date(Date.UTC(year, 0, 1)));
         }
         return tickDates;
-    }, [minDate, maxDate]);
+    }, [minDate, maxDate, sliderTrackWidth]);
 
     useEffect(() => {
         let timer: number;
