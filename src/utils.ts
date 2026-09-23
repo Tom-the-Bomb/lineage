@@ -1,11 +1,4 @@
-import type {
-    DateInterval,
-    LegendWrapper,
-    LineStats,
-    LineWrapper,
-    State,
-    StationWrapper,
-} from './schemas';
+import type { DateInterval, State } from './schemas';
 
 // Max date object Javascript can handle:
 // September 13, 275760
@@ -64,24 +57,4 @@ export function isActive({ appear, removed }: DateInterval, time: number): boole
 
 export function findName(states: State[], time: number): string | null {
     return states.find(({ dateRange }) => isActive(dateRange, time))?.name || null;
-}
-
-export function lineStats(
-    entry: LegendWrapper,
-    time: number,
-    lines: LineWrapper[],
-    stations: StationWrapper[],
-): LineStats {
-    const name = findName(entry.states, time);
-
-    return {
-        km: lines
-            .filter(line => findName(line.states, time) === name)
-            .reduce((sum, line) => sum + line.km, 0),
-        stations: stations.filter(station =>
-            station.lines.some(
-                ({ name: id, dateRange }) => id === entry.id && isActive(dateRange, time),
-            ),
-        ).length,
-    };
 }

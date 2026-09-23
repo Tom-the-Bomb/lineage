@@ -80,7 +80,7 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
                                             transition-[transform,opacity] duration-500 ease-out"
                                         style={{
                                             height: ROW_HEIGHT,
-                                            transform: `translateY(${(rank.get(line.id) ?? 0) * ROW_HEIGHT}px)`,
+                                            transform: `translateY(${rank.get(line.id)! * ROW_HEIGHT}px)`,
                                             opacity: dimmed ? 0.35 : 1,
                                         }}
                                     >

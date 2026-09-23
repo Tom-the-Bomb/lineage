@@ -37,38 +37,34 @@ export function createStationOptions(
                 groups.push(group);
             }
 
+            if (!highlight.length) {
+                group.matches.push({ station, dateRange: state.dateRange });
+            }
+
             for (const line of station.lines) {
-                if (
-                    line.dateRange.appear < state.dateRange.removed &&
-                    state.dateRange.appear < line.dateRange.removed
-                ) {
-                    group.colors.add(colors.get(line.name)!);
+                const appear =
+                    line.dateRange.appear > state.dateRange.appear
+                        ? line.dateRange.appear
+                        : state.dateRange.appear;
+                const removed =
+                    line.dateRange.removed < state.dateRange.removed
+                        ? line.dateRange.removed
+                        : state.dateRange.removed;
+                if (appear >= removed) {
+                    continue;
+                }
+
+                group.colors.add(colors.get(line.name)!);
+                if (highlight.includes(line.name)) {
+                    group.matches.push({ station, dateRange: { appear, removed } });
                 }
             }
 
             group.start = Math.min(group.start, start);
-            group.matches.push({ station, dateRange: state.dateRange });
         }
     }
 
     for (const group of groups) {
-        if (highlight.length) {
-            group.matches = group.matches.flatMap(({ station, dateRange }) =>
-                station.lines
-                    .filter(line => highlight.includes(line.name))
-                    .flatMap(({ dateRange: service }) => {
-                        const appear =
-                            service.appear > dateRange.appear ? service.appear : dateRange.appear;
-                        const removed =
-                            service.removed < dateRange.removed
-                                ? service.removed
-                                : dateRange.removed;
-                        return appear < removed
-                            ? [{ station, dateRange: { appear, removed } }]
-                            : [];
-                    }),
-            );
-        }
         group.matches.sort((a, b) => a.dateRange.appear.getTime() - b.dateRange.appear.getTime());
     }
     return groups.filter(group => group.matches.length > 0);

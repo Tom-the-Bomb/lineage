@@ -3,7 +3,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import {
     Status,
-    type LineStats,
     type LineWrapper,
     type RawTooltipData,
     type StationWrapper,
@@ -15,7 +14,6 @@ import {
     findName,
     formatDate,
     isActive,
-    lineStats,
     parseLabelDates,
     playPause,
     relativeCenter,
@@ -412,14 +410,6 @@ export default function Map({ system }: { system: SystemKey }) {
         return () => observer.disconnect();
     }, [svgDoc, legend, highlight, settings.transitionMs]);
 
-    const [stats, setStats] = useState<LineStats | null>(null);
-    useEffect(() => {
-        const entry = legend.find(line => line.id === hoveredLine);
-        setStats(
-            entry && svgDoc ? lineStats(entry, time, linesRef.current, stationsRef.current) : null,
-        );
-    }, [hoveredLine, time, legend, svgDoc]);
-
     const findPreviousEventDate = useCallback(
         (currentTime: number): number => {
             const eventDates = eventDatesRef.current;
@@ -627,7 +617,19 @@ export default function Map({ system }: { system: SystemKey }) {
                                 style={{ backgroundColor: line.color }}
                             ></div>
                             {name}
-                            {stats && line.id === hoveredLine && <BigTooltip stats={stats} />}
+                            {svgDoc && line.id === hoveredLine && (
+                                <BigTooltip
+                                    stats={{
+                                        km: network.lineKm[line.id] ?? 0,
+                                        stations: stationMarkers.filter(station =>
+                                            station.lines.some(
+                                                ({ name: id, dateRange }) =>
+                                                    id === line.id && isActive(dateRange, time),
+                                            ),
+                                        ).length,
+                                    }}
+                                />
+                            )}
                         </button>
                     );
                 })}
