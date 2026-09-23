@@ -1,5 +1,9 @@
 import { utcDay } from 'd3';
 
+import hzEvents from './assets/hz/data/events.json';
+import hzLines from './assets/hz/data/lines.json';
+import hzMap from './assets/hz/map.svg';
+import hzLogo from './assets/hz/metro.svg';
 import mtrEvents from './assets/mtr/data/events.json';
 import mtrLines from './assets/mtr/data/lines.json';
 import kcrLogo from './assets/mtr/kcr.svg';
@@ -14,10 +18,19 @@ import shLines from './assets/sh/data/lines.json';
 import shMap from './assets/sh/map.svg';
 import shMetroLogo from './assets/sh/metro.svg';
 import shSuburbanLogo from './assets/sh/suburban.svg';
+import szEvents from './assets/sz/data/events.json';
+import szLines from './assets/sz/data/lines.json';
+import szMap from './assets/sz/map.svg';
+import szLogo from './assets/sz/metro.svg';
 import tpEvents from './assets/tp/data/events.json';
 import tpLines from './assets/tp/data/lines.json';
 import tpMap from './assets/tp/map.svg';
 import tpLogo from './assets/tp/metro.svg';
+import tyEvents from './assets/ty/data/events.json';
+import tyLines from './assets/ty/data/lines.json';
+import tyMap from './assets/ty/map.svg';
+import tyMetroLogo from './assets/ty/metro.svg';
+import tyToeiLogo from './assets/ty/toei.svg';
 import { Status, type ChangelogEvent } from './schemas';
 
 const KCR_MERGER_DATE = Date.UTC(2007, 11, 2);
@@ -41,11 +54,11 @@ export interface SystemConfig {
 export const systems = {
     mtr: {
         title: 'MTR History',
-        chineseTitle: '港铁历史',
+        chineseTitle: '港鐵歷史',
         description: "Explore the historical development of Hong Kong's MTR system",
         map: mtrMap,
         logo: mtrLogo,
-        minDate: new Date(Date.UTC(1972, 0, 1)),
+        minDate: new Date(Date.UTC(1910, 0, 1)),
         maxDate: TODAY,
         lines: mtrLines.lines,
         events: mtrEvents,
@@ -100,7 +113,7 @@ export const systems = {
     sg: {
         title: 'Singapore MRT History',
         chineseTitle: '新加坡地铁历史',
-        description: "Explore how Singapore's MRT and LRT network was built",
+        description: "Explore Singapore's MRT & LRT network history",
         map: sgMap,
         logo: sgLogo,
         minDate: new Date(Date.UTC(1987, 0, 1)),
@@ -110,6 +123,56 @@ export const systems = {
         initialView: { center: [5831, 4383], zoom: 1 },
         tooltipLogos() {
             return [{ src: sgLogo, alt: 'MRT' }];
+        },
+    },
+    ty: {
+        title: 'Tokyo Subway History',
+        chineseTitle: '東京の地下鉄の歴史',
+        description: 'Explore the history of Tokyo Metro and Toei Subway',
+        map: tyMap,
+        logo: tyMetroLogo,
+        minDate: new Date(Date.UTC(1927, 0, 1)),
+        maxDate: TODAY,
+        lines: tyLines.lines,
+        events: tyEvents,
+        initialView: { center: [1050, 850], zoom: 1 },
+        tooltipLogos(status) {
+            return [
+                ...(status !== Status.SecondaryOnly
+                    ? [{ src: tyMetroLogo, alt: 'Tokyo Metro' }]
+                    : []),
+                ...(status !== Status.PrimaryOnly ? [{ src: tyToeiLogo, alt: 'Toei Subway' }] : []),
+            ];
+        },
+    },
+    sz: {
+        title: 'Shenzhen Metro History',
+        chineseTitle: '深圳地铁历史',
+        description: "Explore how Shenzhen's metro network was built",
+        map: szMap,
+        logo: szLogo,
+        minDate: new Date(Date.UTC(2004, 0, 1)),
+        maxDate: TODAY,
+        lines: szLines.lines,
+        events: szEvents,
+        initialView: { center: [1640, 1130], zoom: 1 },
+        tooltipLogos() {
+            return [{ src: szLogo, alt: 'Shenzhen Metro' }];
+        },
+    },
+    hz: {
+        title: 'Hangzhou Metro History',
+        chineseTitle: '杭州地铁历史',
+        description: "Explore how Hangzhou's metro network was built",
+        map: hzMap,
+        logo: hzLogo,
+        minDate: new Date(Date.UTC(2012, 0, 1)),
+        maxDate: TODAY,
+        lines: hzLines.lines,
+        events: hzEvents,
+        initialView: { center: [2270, 1140], zoom: 1 },
+        tooltipLogos() {
+            return [{ src: hzLogo, alt: 'Hangzhou Metro' }];
         },
     },
 } satisfies Record<string, SystemConfig>;
