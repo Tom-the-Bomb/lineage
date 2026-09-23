@@ -7,7 +7,7 @@ import {
     type UpdateResult,
 } from './schemas';
 
-import { findName, isActive } from './utils';
+import { clamp, findName, isActive, relativeCenter } from './utils';
 
 export const STEP_UNITS = {
     day: {
@@ -69,6 +69,38 @@ export const RANGES = {
         step: 100,
     },
 } as const;
+
+export function zoomToElement(
+    svg: d3.Selection<SVGSVGElement, unknown, null, undefined>,
+    zoom: d3.ZoomBehavior<SVGSVGElement, unknown>,
+    element: SVGElement,
+    onEnd: () => void,
+): void {
+    const svgElement = svg.node()!;
+    const viewport = svgElement.getBoundingClientRect();
+    const current = d3.zoomTransform(svgElement);
+    const [x, y] = current.invert(relativeCenter(element, svgElement));
+    const [minZoom, maxZoom] = zoom.scaleExtent();
+    const scale = clamp(current.k, minZoom * 3, maxZoom);
+    const transform = zoom.constrain()(
+        d3.zoomIdentity
+            .translate(viewport.width / 2, viewport.height / 2)
+            .scale(scale)
+            .translate(-x, -y),
+        [
+            [0, 0],
+            [viewport.width, viewport.height],
+        ],
+        zoom.translateExtent(),
+    );
+
+    svg.interrupt()
+        .transition()
+        .duration(500)
+        .ease(d3.easeCubicInOut)
+        .call(zoom.transform, transform)
+        .on('end', onEnd);
+}
 
 const MAP_PALETTE: Record<string, string> = {
     '#f6f6f3': '--map-land',

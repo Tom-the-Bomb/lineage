@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import chevronDown from '../assets/chevron-down.svg';
 import Figure from './Figure';
+import useScrollOverflow from '../hooks/useScrollOverflow';
 
 export interface LineBar {
     id: string;
@@ -22,35 +23,10 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
     const [open, setOpen] = useState<boolean>(
         () => window.matchMedia('(min-width: 768px)').matches,
     );
-    const [overflowing, setOverflowing] = useState<boolean>(false);
-    const [hiddenBelow, setHiddenBelow] = useState<number>(0);
-    const listRef = useRef<HTMLDivElement | null>(null);
-
-    const measure = useCallback(() => {
-        const el = listRef.current;
-        if (!el) {
-            setOverflowing(false);
-            setHiddenBelow(0);
-            return;
-        }
-        const content = el.firstElementChild?.clientHeight ?? 0;
-        setOverflowing(content > el.clientHeight + 1);
-        setHiddenBelow(
-            Math.max(0, Math.round((content - el.scrollTop - el.clientHeight) / ROW_HEIGHT)),
-        );
-    }, []);
-
-    useEffect(() => {
-        measure();
-        const el = listRef.current;
-        if (!el) {
-            return;
-        }
-        const observer = new ResizeObserver(measure);
-        observer.observe(el);
-        return () => observer.disconnect();
-    }, [measure, open, lines.length]);
-
+    const { listRef, hintRef, measure, overflowing, hiddenBelow } = useScrollOverflow(
+        lines.length,
+        open,
+    );
     const lit = new Set(lines.filter(line => highlight.includes(line.id)));
     const lineCount = lit.size || lines.length;
     const maxKm = Math.max(1, ...lines.map(line => line.km));
@@ -59,32 +35,31 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
     );
 
     return (
-        <section
-            className="panel pointer-events-auto relative mt-2 flex min-h-0 w-80 flex-col px-4 py-3"
-        >
-            {open ? (
-                <div className="flex gap-6">
-                    <Figure value={stations} label={stations === 1 ? 'station' : 'stations'} />
-                    <Figure value={lineCount} label={lineCount === 1 ? 'line' : 'lines'} />
-                    <Figure value={km.toFixed(1)} label="km" />
-                </div>
-            ) : (
-                <div className="meta tabular-nums">
-                    {stations} stations · {lineCount} lines · {km.toFixed(1)} km
-                </div>
-            )}
+        <section className="panel pointer-events-auto mt-2 flex min-h-0 w-80 flex-col px-4 py-3">
             <button
                 type="button"
                 aria-expanded={open}
                 aria-label={open ? 'Minimize statistics' : 'Expand statistics'}
                 onClick={() => setOpen(value => !value)}
-                className={`absolute ${open ? 'top-4' : 'top-3.5'} right-4 cursor-pointer`}
+                className="group relative shrink-0 cursor-pointer text-left"
             >
+                {open ? (
+                    <span className="flex gap-6">
+                        <Figure value={stations} label={stations === 1 ? 'station' : 'stations'} />
+                        <Figure value={lineCount} label={lineCount === 1 ? 'line' : 'lines'} />
+                        <Figure value={km.toFixed(1)} label="km" />
+                    </span>
+                ) : (
+                    <span className="meta block tabular-nums">
+                        {stations} stations · {lineCount} lines · {km.toFixed(1)} km
+                    </span>
+                )}
                 <img
                     src={chevronDown}
-                    alt={open ? 'v' : '^'}
-                    className={`icon-btn transition-transform duration-300
-                        ${open ? '' : 'rotate-180'}`}
+                    alt="v"
+                    className={`icon-btn absolute right-0 transition-transform duration-300
+                        group-hover:opacity-100 group-focus-visible:opacity-100
+                        ${open ? 'top-1 rotate-180' : 'top-0.5'}`}
                 />
             </button>
             {open && lines.length > 0 && (
@@ -134,8 +109,10 @@ export default function Stats({ stations, km, lines, highlight }: StatsProps) {
                         </div>
                     </div>
                     {overflowing && (
-                        <div className="meta border-rule mt-2 h-4 shrink-0 border-t pt-1 text-right">
-                            {hiddenBelow > 0 && `↓ ${hiddenBelow} more`}
+                        <div ref={hintRef} className="shrink-0 pt-2">
+                            <div className="meta border-rule h-4 border-t pt-1 text-right">
+                                {hiddenBelow > 0 && `↓ ${hiddenBelow} more`}
+                            </div>
                         </div>
                     )}
                 </>

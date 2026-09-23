@@ -65,24 +65,24 @@ export default function Changelog({
             className={`panel pointer-events-auto absolute right-4 bottom-28 z-10 w-72 px-4 py-3
                 ${className}`}
         >
-            <div className="flex items-center justify-between gap-4">
+            <button
+                type="button"
+                aria-expanded={open}
+                aria-label={open ? 'Minimize changelog' : 'Expand changelog'}
+                onClick={() => setOpen(value => !value)}
+                className="group flex w-full cursor-pointer items-center justify-between gap-4
+                    text-left"
+            >
                 <span className="meta">
                     changelog · {past.length} {past.length === 1 ? 'event' : 'events'}
                 </span>
-                <button
-                    type="button"
-                    aria-expanded={open}
-                    aria-label={open ? 'Minimize changelog' : 'Expand changelog'}
-                    onClick={() => setOpen(value => !value)}
-                >
-                    <img
-                        src={chevronDown}
-                        alt={open ? 'v' : '^'}
-                        className={`icon-btn transition-transform duration-300
-                            ${open ? '' : 'rotate-180'}`}
-                    />
-                </button>
-            </div>
+                <img
+                    src={chevronDown}
+                    alt="v"
+                    className={`icon-btn transition-transform duration-300 group-hover:opacity-100
+                        group-focus-visible:opacity-100 ${open ? 'rotate-180' : ''}`}
+                />
+            </button>
             {open && past.length === 0 && (
                 <p className="text-2xs text-ink-faint mt-3">No events yet</p>
             )}
