@@ -1,0 +1,643 @@
+[
+  {
+    "date": "1927-12-30",
+    "descriptions": [
+      "Tokyo Underground Railway: Asakusa - Ueno opens"
+    ]
+  },
+  {
+    "date": "1930-01-01",
+    "descriptions": [
+      "Tokyo Underground Railway: Ueno - Manseibashi opens"
+    ]
+  },
+  {
+    "date": "1931-11-21",
+    "descriptions": [
+      "Tokyo Underground Railway: Manseibashi - Kanda opens",
+      "Tokyo Underground Railway: Manseibashi closes"
+    ]
+  },
+  {
+    "date": "1932-04-29",
+    "descriptions": [
+      "Tokyo Underground Railway: Kanda - Mitsukoshimae opens"
+    ]
+  },
+  {
+    "date": "1932-12-24",
+    "descriptions": [
+      "Tokyo Underground Railway: Mitsukoshimae - Kyobashi opens"
+    ]
+  },
+  {
+    "date": "1934-03-03",
+    "descriptions": [
+      "Tokyo Underground Railway: Kyobashi - Ginza opens"
+    ]
+  },
+  {
+    "date": "1934-06-21",
+    "descriptions": [
+      "Tokyo Underground Railway: Ginza - Shimbashi opens"
+    ]
+  },
+  {
+    "date": "1938-11-18",
+    "descriptions": [
+      "Tokyo Rapid Railway: Aoyama-rokuchome - Toranomon opens"
+    ]
+  },
+  {
+    "date": "1938-12-20",
+    "descriptions": [
+      "Tokyo Rapid Railway: Shibuya - Aoyama-rokuchome opens"
+    ]
+  },
+  {
+    "date": "1939-01-15",
+    "descriptions": [
+      "Tokyo Rapid Railway: Toranomon - Shimbashi opens"
+    ]
+  },
+  {
+    "date": "1939-04-19",
+    "descriptions": [
+      "Shimbashi: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "1939-09-16",
+    "descriptions": [
+      "Aoyama-rokuchome → Jingumae",
+      "Aoyama-yonchome → Gaiemmae",
+      "Tokyo Rapid Railway: Shimbashi moves to the Tokyo Underground Railway station"
+    ]
+  },
+  {
+    "date": "1941-09-01",
+    "descriptions": [
+      "Tokyo Underground Railway and Tokyo Rapid Railway → Eidan Subway"
+    ]
+  },
+  {
+    "date": "1953-12-01",
+    "descriptions": [
+      "Eidan Subway → Ginza Line"
+    ]
+  },
+  {
+    "date": "1954-01-20",
+    "descriptions": [
+      "Marunouchi Line: Ikebukuro - Ochanomizu opens"
+    ]
+  },
+  {
+    "date": "1956-03-20",
+    "descriptions": [
+      "Marunouchi Line: Ochanomizu - Awajicho opens"
+    ]
+  },
+  {
+    "date": "1956-07-20",
+    "descriptions": [
+      "Marunouchi Line: Awajicho - Tokyo opens"
+    ]
+  },
+  {
+    "date": "1957-12-15",
+    "descriptions": [
+      "Ginza - Nishi-ginza: out-of-station interchange opens",
+      "Marunouchi Line: Tokyo - Nishi-ginza opens"
+    ]
+  },
+  {
+    "date": "1958-10-15",
+    "descriptions": [
+      "Marunouchi Line: Nishi-ginza - Kasumigaseki opens"
+    ]
+  },
+  {
+    "date": "1959-03-15",
+    "descriptions": [
+      "Marunouchi Line: Kasumigaseki - Shinjuku opens"
+    ]
+  },
+  {
+    "date": "1960-11-06",
+    "descriptions": [
+      "Marunouchi Line: Ikebukuro relocates"
+    ]
+  },
+  {
+    "date": "1960-11-28",
+    "descriptions": [
+      "Marunouchi Line: Shinjuku relocates"
+    ]
+  },
+  {
+    "date": "1960-12-04",
+    "descriptions": [
+      "Toei Line 1: Oshiage - Asakusabashi opens"
+    ]
+  },
+  {
+    "date": "1961-02-08",
+    "descriptions": [
+      "Ogikubo Line: Nakano-sakaue - Nakano-fujimicho opens",
+      "Ogikubo Line: Shinjuku - Shin-nakano opens"
+    ]
+  },
+  {
+    "date": "1961-03-28",
+    "descriptions": [
+      "Hibiya Line: Minami-senju - Naka-okachimachi opens",
+      "Ueno: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "1961-11-01",
+    "descriptions": [
+      "Ogikubo Line: Shin-nakano - Minami-asagaya opens"
+    ]
+  },
+  {
+    "date": "1962-01-23",
+    "descriptions": [
+      "Ogikubo Line: Minami-asagaya - Ogikubo opens"
+    ]
+  },
+  {
+    "date": "1962-03-23",
+    "descriptions": [
+      "Ogikubo Line: Nakano-fujimicho - Honancho opens"
+    ]
+  },
+  {
+    "date": "1962-05-31",
+    "descriptions": [
+      "Hibiya Line: Kita-senju - Minami-senju opens",
+      "Hibiya Line: Naka-okachimachi - Ningyocho opens",
+      "Toei Line 1: Asakusabashi - Higashi-nihombashi opens"
+    ]
+  },
+  {
+    "date": "1962-09-30",
+    "descriptions": [
+      "Toei Line 1: Higashi-nihombashi - Ningyocho opens"
+    ]
+  },
+  {
+    "date": "1963-02-28",
+    "descriptions": [
+      "Hibiya Line: Ningyocho - Higashi-ginza opens",
+      "Toei Line 1: Ningyocho - Higashi-ginza opens"
+    ]
+  },
+  {
+    "date": "1963-12-12",
+    "descriptions": [
+      "Toei Line 1: Higashi-ginza - Shimbashi opens"
+    ]
+  },
+  {
+    "date": "1964-03-25",
+    "descriptions": [
+      "Hibiya Line: Kasumigaseki - Ebisu opens"
+    ]
+  },
+  {
+    "date": "1964-07-22",
+    "descriptions": [
+      "Hibiya Line: Ebisu - Naka-meguro opens"
+    ]
+  },
+  {
+    "date": "1964-08-29",
+    "descriptions": [
+      "Ginza: in-station interchange opens",
+      "Hibiya Line: Higashi-ginza - Kasumigaseki opens",
+      "Nishi-ginza → Ginza"
+    ]
+  },
+  {
+    "date": "1964-09-18",
+    "descriptions": [
+      "Ogikubo Line: Higashi-koenji opens"
+    ]
+  },
+  {
+    "date": "1964-10-01",
+    "descriptions": [
+      "Toei Line 1: Shimbashi - Daimon opens"
+    ]
+  },
+  {
+    "date": "1964-12-23",
+    "descriptions": [
+      "Tozai Line: Takadanobaba - Kudanshita opens"
+    ]
+  },
+  {
+    "date": "1966-03-16",
+    "descriptions": [
+      "Tozai Line: Kudanshita - Takebashi opens",
+      "Tozai Line: Nakano - Takadanobaba opens"
+    ]
+  },
+  {
+    "date": "1966-10-01",
+    "descriptions": [
+      "Otemachi: out-of-station interchange opens",
+      "Tozai Line: Takebashi - Otemachi opens"
+    ]
+  },
+  {
+    "date": "1967-09-14",
+    "descriptions": [
+      "Nihombashi - Edobashi: out-of-station interchange opens",
+      "Tozai Line: Otemachi - Toyocho opens"
+    ]
+  },
+  {
+    "date": "1968-06-21",
+    "descriptions": [
+      "Toei Line 1: Daimon - Sengakuji opens"
+    ]
+  },
+  {
+    "date": "1968-11-15",
+    "descriptions": [
+      "Toei Line 1: Sengakuji - Nishi-magome opens"
+    ]
+  },
+  {
+    "date": "1968-12-27",
+    "descriptions": [
+      "Toei Line 6: Shimura - Sugamo opens"
+    ]
+  },
+  {
+    "date": "1969-03-29",
+    "descriptions": [
+      "Tozai Line: Toyocho - Nishi-funabashi opens"
+    ]
+  },
+  {
+    "date": "1969-08-01",
+    "descriptions": [
+      "Shimura → Takashimadaira"
+    ]
+  },
+  {
+    "date": "1969-12-20",
+    "descriptions": [
+      "Chiyoda Line: Kita-senju - Otemachi opens",
+      "Ochanomizu - Shin-ochanomizu: out-of-station interchange opens",
+      "Otemachi: in-station interchange opens with the Chiyoda Line"
+    ]
+  },
+  {
+    "date": "1971-03-20",
+    "descriptions": [
+      "Chiyoda Line: Otemachi - Kasumigaseki opens"
+    ]
+  },
+  {
+    "date": "1971-04-20",
+    "descriptions": [
+      "Chiyoda Line: Ayase - Kita-senju opens"
+    ]
+  },
+  {
+    "date": "1972-04-01",
+    "descriptions": [
+      "Ogikubo Line → Marunouchi Line"
+    ]
+  },
+  {
+    "date": "1972-06-30",
+    "descriptions": [
+      "Korakuen - Kasuga: out-of-station interchange opens",
+      "Toei Line 6: Sugamo - Hibiya opens"
+    ]
+  },
+  {
+    "date": "1972-10-20",
+    "descriptions": [
+      "Chiyoda Line: Kasumigaseki - Yoyogi-koen opens",
+      "Jingumae → Omote-sando",
+      "Omote-sando: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "1973-11-27",
+    "descriptions": [
+      "Toei Line 6: Hibiya - Mita opens"
+    ]
+  },
+  {
+    "date": "1974-10-30",
+    "descriptions": [
+      "Hibiya - Yurakucho: out-of-station interchange opens",
+      "Iidabashi: out-of-station interchange opens",
+      "Ikebukuro: out-of-station interchange opens",
+      "Yurakucho Line: Ikebukuro - Ginza-itchome opens"
+    ]
+  },
+  {
+    "date": "1976-05-06",
+    "descriptions": [
+      "Toei Line 6: Takashimadaira - Nishi-takashimadaira opens"
+    ]
+  },
+  {
+    "date": "1978-03-31",
+    "descriptions": [
+      "Chiyoda Line: Yoyogi-koen - Yoyogi-uehara opens"
+    ]
+  },
+  {
+    "date": "1978-07-01",
+    "descriptions": [
+      "Toei Line 1 → Toei Asakusa Line",
+      "Toei Line 6 → Toei Mita Line"
+    ]
+  },
+  {
+    "date": "1978-08-01",
+    "descriptions": [
+      "Ginza Line: Omote-sando relocates",
+      "Hanzomon Line: Shibuya - Aoyama-itchome opens",
+      "Omote-sando: in-station interchange opens",
+      "Shibuya: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "1978-12-21",
+    "descriptions": [
+      "Higashi-nihombashi - Bakuro-yokoyama: out-of-station interchange opens",
+      "Toei Shinjuku Line: Iwamotocho - Higashi-ojima opens"
+    ]
+  },
+  {
+    "date": "1979-09-21",
+    "descriptions": [
+      "Akasaka-mitsuke - Nagatacho: in-station interchange opens",
+      "Hanzomon Line: Aoyama-itchome - Nagatacho opens"
+    ]
+  },
+  {
+    "date": "1979-10-01",
+    "descriptions": [
+      "Tozai Line: Nishi-kasai opens"
+    ]
+  },
+  {
+    "date": "1979-12-20",
+    "descriptions": [
+      "Chiyoda Line: Ayase - Kita-ayase opens"
+    ]
+  },
+  {
+    "date": "1980-03-16",
+    "descriptions": [
+      "Awajicho - Ogawamachi: out-of-station interchange opens",
+      "Awajicho - Shin-ochanomizu: out-of-station interchange opens",
+      "Kudanshita: out-of-station interchange opens",
+      "Ochanomizu - Shin-ochanomizu: designated interchange replaced by Awajicho - Shin-ochanomizu",
+      "Shin-ochanomizu - Ogawamachi: out-of-station interchange opens",
+      "Toei Shinjuku Line: Shinjuku - Iwamotocho opens"
+    ]
+  },
+  {
+    "date": "1980-03-27",
+    "descriptions": [
+      "Yurakucho Line: Ginza-itchome - Shintomicho opens"
+    ]
+  },
+  {
+    "date": "1981-03-27",
+    "descriptions": [
+      "Tozai Line: Minami-gyotoku opens"
+    ]
+  },
+  {
+    "date": "1982-12-09",
+    "descriptions": [
+      "Hanzomon Line: Nagatacho - Hanzomon opens"
+    ]
+  },
+  {
+    "date": "1983-06-24",
+    "descriptions": [
+      "Yurakucho Line: Eidan-narimasu - Ikebukuro opens"
+    ]
+  },
+  {
+    "date": "1983-12-23",
+    "descriptions": [
+      "Toei Shinjuku Line: Higashi-ojima - Funabori opens"
+    ]
+  },
+  {
+    "date": "1986-09-14",
+    "descriptions": [
+      "Toei Shinjuku Line: Funabori - Shinozaki opens"
+    ]
+  },
+  {
+    "date": "1987-08-25",
+    "descriptions": [
+      "Yurakucho Line: Wakoshi - Eidan-narimasu opens"
+    ]
+  },
+  {
+    "date": "1988-06-08",
+    "descriptions": [
+      "Yurakucho Line: Shintomicho - Shin-kiba opens"
+    ]
+  },
+  {
+    "date": "1989-01-26",
+    "descriptions": [
+      "Hanzomon Line: Hanzomon - Mitsukoshimae opens",
+      "Kudanshita: out-of-station interchange opens",
+      "Mitsukoshimae: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "1989-03-19",
+    "descriptions": [
+      "Edobashi → Nihombashi",
+      "Toei Shinjuku Line: Shinozaki - Motoyawata opens"
+    ]
+  },
+  {
+    "date": "1990-11-28",
+    "descriptions": [
+      "Hanzomon Line: Mitsukoshimae - Suitengumae opens"
+    ]
+  },
+  {
+    "date": "1991-11-29",
+    "descriptions": [
+      "Namboku Line: Komagome - Akabane-iwabuchi opens"
+    ]
+  },
+  {
+    "date": "1991-12-10",
+    "descriptions": [
+      "Toei Line 12: Hikarigaoka - Nerima opens"
+    ]
+  },
+  {
+    "date": "1994-12-07",
+    "descriptions": [
+      "Ikebukuro - New Line Ikebukuro: out-of-station interchange opens",
+      "Yurakucho New Line: Kotake-mukaihara - New Line Ikebukuro opens"
+    ]
+  },
+  {
+    "date": "1996-03-26",
+    "descriptions": [
+      "Iidabashi: out-of-station interchange opens",
+      "Namboku Line: Yotsuya - Komagome opens"
+    ]
+  },
+  {
+    "date": "1996-05-28",
+    "descriptions": [
+      "Marunouchi Line: Nishi-shinjuku opens"
+    ]
+  },
+  {
+    "date": "1997-09-30",
+    "descriptions": [
+      "Ginza Line: Tameike-sanno opens",
+      "Kokkai-gijidomae - Tameike-sanno: in-station interchange opens",
+      "Namboku Line: Tameike-sanno - Yotsuya opens"
+    ]
+  },
+  {
+    "date": "1997-12-19",
+    "descriptions": [
+      "Toei Line 12: Nerima - Shinjuku opens"
+    ]
+  },
+  {
+    "date": "2000-01-22",
+    "descriptions": [
+      "Tozai Line: Myoden opens"
+    ]
+  },
+  {
+    "date": "2000-04-20",
+    "descriptions": [
+      "Oedo Line: Shinjuku - Kokuritsu-kyogijo opens",
+      "Toei Asakusa Line → Asakusa Line",
+      "Toei Line 12 → Oedo Line",
+      "Toei Mita Line → Mita Line",
+      "Toei Shinjuku Line → Shinjuku Line"
+    ]
+  },
+  {
+    "date": "2000-09-26",
+    "descriptions": [
+      "Mita Line: Mita - Meguro opens",
+      "Namboku Line: Meguro - Tameike-sanno opens"
+    ]
+  },
+  {
+    "date": "2000-12-12",
+    "descriptions": [
+      "Hongo-sanchome: out-of-station interchange opens",
+      "Iidabashi: out-of-station interchange opens",
+      "Kuramae: out-of-station interchange opens",
+      "Naka-okachimachi - Ueno-okachimachi: out-of-station interchange opens",
+      "Oedo Line: Kokuritsu-kyogijo - Tochomae opens",
+      "Shinjuku - Shinjuku-nishiguchi: out-of-station interchange opens",
+      "Ueno-hirokoji - Naka-okachimachi: out-of-station interchange opens",
+      "Ueno-hirokoji - Ueno-okachimachi: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "2002-11-02",
+    "descriptions": [
+      "Oedo Line: Shiodome opens"
+    ]
+  },
+  {
+    "date": "2003-03-19",
+    "descriptions": [
+      "Hanzomon Line: Suitengumae - Oshiage opens"
+    ]
+  },
+  {
+    "date": "2004-04-01",
+    "descriptions": [
+      "Eidan-akatsuka → Chikatetsu-akatsuka",
+      "Eidan-narimasu → Chikatetsu-narimasu"
+    ]
+  },
+  {
+    "date": "2008-06-14",
+    "descriptions": [
+      "Fukutoshin Line: Ikebukuro - Shibuya opens",
+      "Fukutoshin Line: Kanamecho opens",
+      "Fukutoshin Line: Senkawa opens",
+      "Fukutoshin Line: Wakoshi - Kotake-mukaihara opens",
+      "Ikebukuro: in-station interchange opens between Marunouchi Line and Fukutoshin Line",
+      "New Line Ikebukuro → Ikebukuro",
+      "Shibuya: out-of-station interchange opens",
+      "Yurakucho New Line → Fukutoshin Line"
+    ]
+  },
+  {
+    "date": "2010-03-06",
+    "descriptions": [
+      "Meiji-jingumae → Meiji-jingumae (Harajuku)"
+    ]
+  },
+  {
+    "date": "2012-05-22",
+    "descriptions": [
+      "Oshiage → Oshiage (SKYTREE)"
+    ]
+  },
+  {
+    "date": "2013-03-16",
+    "descriptions": [
+      "Akihabara - Iwamotocho: out-of-station interchange opens",
+      "Kudanshita: in-station interchange opens between Hanzomon Line and Shinjuku Line"
+    ]
+  },
+  {
+    "date": "2018-03-17",
+    "descriptions": [
+      "Nijubashimae → Nijubashimae (Marunouchi)",
+      "Ningyocho - Suitengumae: out-of-station interchange opens",
+      "Tsukiji - Shintomicho: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "2020-01-03",
+    "descriptions": [
+      "Ginza Line: Shibuya relocates"
+    ]
+  },
+  {
+    "date": "2020-03-14",
+    "descriptions": [
+      "Kudanshita: Tozai Line joins the in-station interchange"
+    ]
+  },
+  {
+    "date": "2020-06-06",
+    "descriptions": [
+      "Ginza - Ginza-itchome: out-of-station interchange opens",
+      "Hibiya Line: Toranomon Hills opens",
+      "Toranomon - Toranomon Hills: out-of-station interchange opens"
+    ]
+  }
+]

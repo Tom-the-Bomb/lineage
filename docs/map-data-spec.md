@@ -183,6 +183,10 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   date. Its replacement is a separate path that starts on the day the old one ends.
 - Shared track (two lines running through the same stations) SHOULD be drawn as parallel offset
   paths, one per line, 3.5–5 units apart at Shanghai scale.
+- SHOULD: use smooth, tangent-continuous Bézier bends rather than chains of angular corners.
+  Round bends locally, keeping the route close to its source geography (normally within one track
+  width `W`). Preserve station alignment, historical segment endpoints, branch junctions and spacing
+  between parallel routes; check the resulting curves at historical dates as well as the present.
 - Width: every metro track uses the width `W` set on the `lines` group (Shanghai `W = 5`). Trams and
   light rail use a thinner per-path `stroke-width`: Shanghai trams use 2 (`0.4 W`).
 - Caps: set `stroke-linecap` once per system on the `lines` group. Shanghai uses `butt` and MTR
@@ -256,6 +260,9 @@ transform = "translate(cx,cy) rotate(θ)"
   `r - W/2` of the segment `PQ`. If a line would be missed, lengthen `PQ` (or reposition it) until
   it isn't.
 - If `span` would be 0, it's one line: use a circle.
+- SHOULD: keep capsules compact. A small shift along the serving tracks and a slight rotation may
+  shorten the span without rerouting the lines. Preserve station order, cover every serving line,
+  avoid unrelated tracks, and move any attached connector endpoints with the marker.
 - Coordinates use 3 decimals and angles 4.
 
 **Connector (official out-of-station transfer): `<path>`**
@@ -408,7 +415,26 @@ Include:
   the Suburban Railway lines for Shanghai), with every station and every historical alignment.
 - Temporary lines that carried the public (the Expo Line).
 - Trams and light rail belonging to the system, as **tracks only, without stop markers** (MTR Light Rail,
-  Songjiang Tram). Their interchange stations keep the heavy-rail markers.
+  Songjiang Tram). Their interchange stations keep the heavy-rail markers, and MUST include the
+  simplified line's id in `data-lines` from the day the interchange becomes available. This is what
+  makes those stations appear in the line's tooltips, highlighting, search and station count.
+  Keep the heavy-rail marker's name, identity and shape; don't add a duplicate tram stop or turn it
+  into a capsule solely for a simplified service. This is an exception to the full interchange
+  drawing rules in §6, following MTR Light Rail and Singapore LRT.
+  - Start at the later of the two services' openings, or the actual transfer opening if later.
+    Qinghu gains Longhua Tram on 2017-10-28; Guanlan gains it when Line 4 reaches it on 2020-10-28.
+  - A differently named light-rail stop can be represented by its designated heavy-rail interchange:
+    Longhua Tram's Xinlan by Guanlan, Skyshuttle's Longbei by Dongjiang Column Memorial Hall.
+    Confirm the operator's transfer list; a nearby track or station alone isn't enough.
+  - Membership alone does not draw the connection. Include passenger branches (Songjiang University
+    Town) and shared routes in both line colours (Songjiang Trams 1/2 through Sports Center).
+    For simplified services, locally adjust the track to meet the existing heavy-rail marker,
+    including designated walking transfers (Pingshan Center; Longbei at Dongjiang Column Memorial
+    Hall). Keep the dated membership; do not add a separate light-rail marker or walking connector.
+    This is a schematic simplification, not a claim of an in-station transfer. Do not extend
+    passenger branches into depots.
+  - Check every historical marker version covering that transfer period. Clip the membership to
+    each marker's lifetime, just like any other `data-lines` entry (§5).
 - Other rail modes the operator's own map treats as part of the network (Shanghai Maglev,
   MTR Ngong Ping 360), with markers only where they meet the network.
 - Geography: land and water fills, and nothing else.
@@ -565,6 +591,8 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
 - [ ] Openings are first public days, suspensions are omitted, and switchover gaps under a month are collapsed (§7).
 - [ ] Every track's name matches a legend entry at every moment (§9).
 - [ ] Every marker has `data-lines` with legend ids, inside its own dates (§5).
+- [ ] Every simplified line's designated heavy-rail interchanges list that line in `data-lines`,
+      from the correct transfer dates; selecting the line shows those stations (§8).
 - [ ] Every track has `data-km`, and each line's present-day sum equals its published length (§4).
 - [ ] `events.json` has one entry per change date and none otherwise, using the §10 templates.
 - [ ] `check_map.py` prints `OK`. The rendered checks (§11 step 6) look right. `npm run lint` and `npm run build` pass.

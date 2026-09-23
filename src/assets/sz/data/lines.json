@@ -1,0 +1,101 @@
+{
+  "lines": [
+    {
+      "id": "1",
+      "label": "Line_1=2004_12_28-2008_04_23,Luobao_Line=2008_04_23-2013_10_23,Line_1_(Luobao_Line)=2013_10_23-2016_06_28,Line_1=2016_06_28",
+      "color": "#00ab39"
+    },
+    {
+      "id": "2",
+      "label": "Shekou_Line=2010_12_28-2013_10_23,Line_2_(Shekou_Line)=2013_10_23-2016_06_28,Line_2=2016_06_28",
+      "color": "#db6d1c"
+    },
+    {
+      "id": "3",
+      "label": "Longgang_Line=2010_12_28-2013_10_23,Line_3_(Longgang_Line)=2013_10_23-2016_06_28,Line_3=2016_06_28",
+      "color": "#00a2e1"
+    },
+    {
+      "id": "4",
+      "label": "Line_4=2004_12_28-2008_04_23,Longhua_Line=2008_04_23-2013_10_23,Line_4_(Longhua_Line)=2013_10_23-2016_06_28,Line_4=2016_06_28",
+      "color": "#dc241f"
+    },
+    {
+      "id": "5",
+      "label": "Huanzhong_Line=2011_06_22-2013_10_23,Line_5_(Huanzhong_Line)=2013_10_23-2016_06_28,Line_5=2016_06_28",
+      "color": "#9950b2"
+    },
+    {
+      "id": "6",
+      "label": "Line_6=2020_08_18",
+      "color": "#3abca8"
+    },
+    {
+      "id": "6b",
+      "label": "Line_6_Branch=2022_11_28",
+      "color": "#008578"
+    },
+    {
+      "id": "7",
+      "label": "Line_7=2016_10_28",
+      "color": "#0035ad"
+    },
+    {
+      "id": "8",
+      "label": "Line_8=2020_10_28",
+      "color": "#db6d1c"
+    },
+    {
+      "id": "9",
+      "label": "Line_9=2016_10_28",
+      "color": "#846e74"
+    },
+    {
+      "id": "10",
+      "label": "Line_10=2020_08_18",
+      "color": "#f8779e"
+    },
+    {
+      "id": "11",
+      "label": "Line_11=2016_06_28",
+      "color": "#6a1d44"
+    },
+    {
+      "id": "12",
+      "label": "Line_12=2022_11_28",
+      "color": "#a192b2"
+    },
+    {
+      "id": "13",
+      "label": "Line_13=2024_12_28",
+      "color": "#de7c00"
+    },
+    {
+      "id": "14",
+      "label": "Line_14=2022_10_28",
+      "color": "#f2c75c"
+    },
+    {
+      "id": "16",
+      "label": "Line_16=2022_12_28",
+      "color": "#1e22aa"
+    },
+    {
+      "id": "20",
+      "label": "Line_20=2021_12_28",
+      "color": "#88dbdf"
+    },
+    {
+      "id": "tram",
+      "label": "Longhua_Tram=2017_10_28",
+      "color": "#ae9386",
+      "simplified": true
+    },
+    {
+      "id": "skyshuttle",
+      "label": "Pingshan_Skyshuttle=2022_12_28",
+      "color": "#1974d2",
+      "simplified": true
+    }
+  ]
+}
