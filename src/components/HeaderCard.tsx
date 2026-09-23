@@ -15,7 +15,7 @@ export default function HeaderCard({ config }: { config: SystemConfig }) {
                     className="font-zh text-ink text-xl font-medium tracking-[0.12em]"
                     lang="zh-Hans"
                 >
-                    {config.chineseTitle}
+                    {config.localTitle}
                 </span>
             </h2>
             <p className="text-ink-muted text-xs">{config.description}</p>
