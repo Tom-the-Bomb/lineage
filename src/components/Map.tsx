@@ -42,6 +42,7 @@ import { createStationOptions, type StationOption } from '../stationSearch';
 import { systems, type SystemConfig, type SystemKey } from '../systems';
 import { BigTooltip } from './BigTooltip';
 import Changelog from './Changelog';
+import ControlTooltip from './ControlTooltip';
 import DatePicker from './DatePicker';
 import HeaderCard from './HeaderCard';
 import Info from './Info';
@@ -654,9 +655,11 @@ export default function Map({ system }: { system: SystemKey }) {
                     <button
                         type="button"
                         onClick={() => setTime(prev => findPreviousEventDate(prev))}
-                        aria-label="Previous"
+                        aria-label="Previous event"
+                        className="group relative"
                     >
                         <img src={chevronLeft} alt="<" className="icon-btn" />
+                        <ControlTooltip>Previous event</ControlTooltip>
                     </button>
                     <DatePicker
                         time={time}
@@ -670,9 +673,11 @@ export default function Map({ system }: { system: SystemKey }) {
                             e.preventDefault();
                             setTime(prev => findNextEventDate(prev));
                         }}
-                        aria-label="Next"
+                        aria-label="Next event"
+                        className="group relative"
                     >
                         <img src={chevronRight} alt=">" className="icon-btn" />
+                        <ControlTooltip>Next event</ControlTooltip>
                     </button>
                 </div>
                 <div

@@ -152,9 +152,12 @@
         @apply bg-rule-strong/50 h-1 cursor-pointer appearance-none rounded-full;
     }
 
+    .control-tip {
+        @apply text-3xs bottom-full left-1/2 mb-2 w-max max-w-40 -translate-x-1/2 px-2 py-1
+            text-center whitespace-normal opacity-0 transition-opacity;
+    }
+
     .range-tip {
-        @apply text-3xs bottom-full mb-2 w-max max-w-40 -translate-x-1/2 px-2 py-1 text-center
-            whitespace-normal opacity-0 transition-opacity;
         left: calc(var(--range-thumb) / 2 + (100% - var(--range-thumb)) * var(--at));
     }
 
