@@ -43,7 +43,7 @@ src/assets/<key>/
 | Field                        | Type / example                            | Rule                                                                            |
 | ---------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------- |
 | `title`                      | `'Shanghai Metro History'`                | Page and browser-tab title.                                                     |
-| `chineseTitle`               | `'上海地铁历史'`                          | Subtitle.                                                                       |
+| `localTitle`                 | `'上海地铁历史'`                          | Subtitle.                                                                       |
 | `description`                | one sentence                              | Shown under the title.                                                          |
 | `map`                        | `import shMap from './assets/sh/map.svg'` | The SVG.                                                                        |
 | `logo`                       | imported SVG                              | Header logo.                                                                    |

@@ -38,7 +38,7 @@ const TODAY = utcDay(new Date());
 
 export interface SystemConfig {
     title: string;
-    chineseTitle: string;
+    localTitle: string;
     description: string;
     map: string;
     logo: string;
@@ -54,7 +54,7 @@ export interface SystemConfig {
 export const systems = {
     mtr: {
         title: 'MTR History',
-        chineseTitle: '港鐵歷史',
+        localTitle: '港鐵歷史',
         description: "Explore the historical development of Hong Kong's MTR system",
         map: mtrMap,
         logo: mtrLogo,
@@ -75,7 +75,7 @@ export const systems = {
     },
     sh: {
         title: 'Shanghai Metro History',
-        chineseTitle: '上海地铁历史',
+        localTitle: '上海地铁历史',
         description: "Explore how Shanghai's metro network was built",
         map: shMap,
         logo: shMetroLogo,
@@ -97,7 +97,7 @@ export const systems = {
     },
     tp: {
         title: 'Taipei Metro History',
-        chineseTitle: '臺北捷運歷史',
+        localTitle: '臺北捷運歷史',
         description: "Explore how Taipei's metro network was built",
         map: tpMap,
         logo: tpLogo,
@@ -112,7 +112,7 @@ export const systems = {
     },
     sg: {
         title: 'Singapore MRT History',
-        chineseTitle: '新加坡地铁历史',
+        localTitle: '新加坡地铁历史',
         description: "Explore Singapore's MRT & LRT network history",
         map: sgMap,
         logo: sgLogo,
@@ -127,7 +127,7 @@ export const systems = {
     },
     ty: {
         title: 'Tokyo Subway History',
-        chineseTitle: '東京の地下鉄の歴史',
+        localTitle: '東京の地下鉄の歴史',
         description: 'Explore the history of Tokyo Metro and Toei Subway',
         map: tyMap,
         logo: tyMetroLogo,
@@ -147,7 +147,7 @@ export const systems = {
     },
     sz: {
         title: 'Shenzhen Metro History',
-        chineseTitle: '深圳地铁历史',
+        localTitle: '深圳地铁历史',
         description: "Explore how Shenzhen's metro network was built",
         map: szMap,
         logo: szLogo,
@@ -162,7 +162,7 @@ export const systems = {
     },
     hz: {
         title: 'Hangzhou Metro History',
-        chineseTitle: '杭州地铁历史',
+        localTitle: '杭州地铁历史',
         description: "Explore how Hangzhou's metro network was built",
         map: hzMap,
         logo: hzLogo,
