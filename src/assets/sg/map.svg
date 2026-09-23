@@ -51,51 +51,51 @@
       <circle id="station-yio-chu-kang" data-lines="ns=1987_11_07" cx="5770.292" cy="2303.507" r="15.18" inkscape:label="Yio_Chu_Kang=1987_11_07" />
       <circle id="station-ang-mo-kio" data-lines="ns=1987_11_07" cx="5882.84" cy="2593.742" r="15.18" inkscape:label="Ang_Mo_Kio=1987_11_07" />
       <circle id="station-bishan" data-lines="ns=1987_11_07-2009_05_28" cx="5841.237" cy="3018.055" r="15.18" inkscape:label="Bishan=1987_11_07-2009_05_28" />
-      <rect id="station-bishan-1" data-lines="ns=2009_05_28,cc=2009_05_28" x="-15.18" y="-24.52" width="30.36" height="49.04" rx="15.18" transform="translate(5848.711,3012.454) rotate(-126.8475)" inkscape:label="Bishan=2009_05_28" />
+      <rect id="station-bishan--2009-05-28" data-lines="ns=2009_05_28,cc=2009_05_28" x="-15.18" y="-24.52" width="30.36" height="49.04" rx="15.18" transform="translate(5848.711,3012.454) rotate(-126.8475)" inkscape:label="Bishan=2009_05_28" />
       <circle id="station-braddell" data-lines="ns=1987_11_07" cx="5810.716" cy="3267.402" r="15.18" inkscape:label="Braddell=1987_11_07" />
       <circle id="station-toa-payoh" data-lines="ns=1987_11_07" cx="5831.881" cy="3451.404" r="15.18" inkscape:label="Toa_Payoh=1987_11_07" />
       <circle id="station-novena" data-lines="ns=1987_12_12" cx="5754.184" cy="3727.976" r="15.18" inkscape:label="Novena=1987_12_12" />
       <circle id="station-newton" data-lines="ns=1987_12_12" cx="5619.946" cy="3922.524" r="15.18" inkscape:label="Newton=1987_12_12" />
       <circle id="station-newton-1-dt" data-lines="dt=2015_12_27" cx="5612.497" cy="3889.719" r="15.18" inkscape:label="Newton=2015_12_27" />
       <circle id="station-orchard" data-lines="ns=1987_12_12-2022_11_13" cx="5468.46" cy="4139.935" r="15.18" inkscape:label="Orchard=1987_12_12-2022_11_13" />
-      <rect id="station-orchard-1" data-lines="ns=2022_11_13,te=2022_11_13" x="-15.18" y="-24.361" width="30.36" height="48.722" rx="15.18" transform="translate(5460.818,4145.024) rotate(56.3452)" inkscape:label="Orchard=2022_11_13" />
+      <rect id="station-orchard--2022-11-13" data-lines="ns=2022_11_13,te=2022_11_13" x="-15.18" y="-24.361" width="30.36" height="48.722" rx="15.18" transform="translate(5460.818,4145.024) rotate(56.3452)" inkscape:label="Orchard=2022_11_13" />
       <circle id="station-somerset" data-lines="ns=1987_12_12" cx="5642.085" cy="4221.118" r="15.18" inkscape:label="Somerset=1987_12_12" />
       <circle id="station-dhoby-ghaut" data-lines="ns=1987_12_12-2003_06_20" cx="5793.899" cy="4252.388" r="15.18" inkscape:label="Dhoby_Ghaut=1987_12_12-2003_06_20" />
-      <rect id="station-dhoby-ghaut-1" data-lines="ns=2003_06_20-2010_04_17,ne=2003_06_20-2010_04_17" x="-15.18" y="-36.93" width="30.36" height="73.859" rx="15.18" transform="translate(5788.705,4231.268) rotate(166.1823)" inkscape:label="Dhoby_Ghaut=2003_06_20-2010_04_17" />
-      <rect id="station-dhoby-ghaut-2" data-lines="ns=2010_04_17,ne=2010_04_17,cc=2010_04_17" x="-15.18" y="-44.045" width="30.36" height="88.089" rx="15.18" transform="translate(5793.48,4223.526) rotate(-1.0000)" inkscape:label="Dhoby_Ghaut=2010_04_17" />
+      <rect id="station-dhoby-ghaut--2003-06-20" data-lines="ns=2003_06_20-2010_04_17,ne=2003_06_20-2010_04_17" x="-15.18" y="-36.93" width="30.36" height="73.859" rx="15.18" transform="translate(5788.705,4231.268) rotate(166.1823)" inkscape:label="Dhoby_Ghaut=2003_06_20-2010_04_17" />
+      <rect id="station-dhoby-ghaut--2010-04-17" data-lines="ns=2010_04_17,ne=2010_04_17,cc=2010_04_17" x="-15.18" y="-44.045" width="30.36" height="88.089" rx="15.18" transform="translate(5793.48,4223.526) rotate(-1.0000)" inkscape:label="Dhoby_Ghaut=2010_04_17" />
       <rect id="station-city-hall" data-lines="ns=1987_12_12,ew=1987_12_12" x="-15.18" y="-27.871" width="30.36" height="55.742" rx="15.18" transform="translate(5954.109,4382.715) rotate(63.4346)" inkscape:label="City_Hall=1987_12_12" />
       <rect id="station-raffles-place" data-lines="ns=1987_12_12,ew=1987_12_12" x="-15.18" y="-23.179" width="30.36" height="46.358" rx="15.18" transform="translate(5923.116,4582.126) rotate(-82.2350)" inkscape:label="Raffles_Place=1987_12_12" />
       <circle id="station-tanjong-pagar" data-lines="ew=1987_12_12" cx="5787.586" cy="4768.631" r="15.18" inkscape:label="Tanjong_Pagar=1987_12_12" />
       <circle id="station-outram-park" data-lines="ew=1987_12_12-2003_06_20" cx="5634.19" cy="4660" r="15.18" inkscape:label="Outram_Park=1987_12_12-2003_06_20" />
-      <rect id="station-outram-park-1" data-lines="ew=2003_06_20-2022_11_13,ne=2003_06_20-2022_11_13" x="-15.18" y="-28.29" width="30.36" height="56.58" rx="15.18" transform="translate(5641.683,4670.757) rotate(-34.8616)" inkscape:label="Outram_Park=2003_06_20-2022_11_13" />
-      <rect id="station-outram-park-2" data-lines="ew=2022_11_13,ne=2022_11_13,te=2022_11_13" x="-15.18" y="-46.436" width="30.36" height="92.872" rx="15.18" transform="translate(5642.432,4669.069) rotate(19.0000)" inkscape:label="Outram_Park=2022_11_13" />
+      <rect id="station-outram-park--2003-06-20" data-lines="ew=2003_06_20-2022_11_13,ne=2003_06_20-2022_11_13" x="-15.18" y="-28.29" width="30.36" height="56.58" rx="15.18" transform="translate(5641.683,4670.757) rotate(-34.8616)" inkscape:label="Outram_Park=2003_06_20-2022_11_13" />
+      <rect id="station-outram-park--2022-11-13" data-lines="ew=2022_11_13,ne=2022_11_13,te=2022_11_13" x="-15.18" y="-46.436" width="30.36" height="92.872" rx="15.18" transform="translate(5642.432,4669.069) rotate(19.0000)" inkscape:label="Outram_Park=2022_11_13" />
       <circle id="station-tiong-bahru" data-lines="ew=1988_03_12" cx="5356.716" cy="4550.016" r="15.18" inkscape:label="Tiong_Bahru=1988_03_12" />
       <circle id="station-redhill" data-lines="ew=1988_03_12" cx="5112.418" cy="4463.954" r="15.18" inkscape:label="Redhill=1988_03_12" />
       <circle id="station-queenstown" data-lines="ew=1988_03_12" cx="4859.112" cy="4351.291" r="15.18" inkscape:label="Queenstown=1988_03_12" />
       <circle id="station-commonwealth" data-lines="ew=1988_03_12" cx="4677.1" cy="4169.3" r="15.18" inkscape:label="Commonwealth=1988_03_12" />
       <circle id="station-buona-vista" data-lines="ew=1988_03_12-2011_10_08" cx="4470.22" cy="4049.422" r="15.18" inkscape:label="Buona_Vista=1988_03_12-2011_10_08" />
-      <rect id="station-buona-vista-1" data-lines="ew=2011_10_08,cc=2011_10_08" x="-15.18" y="-30.154" width="30.36" height="60.309" rx="15.18" transform="translate(4479.144,4061.447) rotate(-36.5794)" inkscape:label="Buona_Vista=2011_10_08" />
+      <rect id="station-buona-vista--2011-10-08" data-lines="ew=2011_10_08,cc=2011_10_08" x="-15.18" y="-30.154" width="30.36" height="60.309" rx="15.18" transform="translate(4479.144,4061.447) rotate(-36.5794)" inkscape:label="Buona_Vista=2011_10_08" />
       <circle id="station-clementi" data-lines="ew=1988_03_12" cx="3886.436" cy="3849.785" r="15.18" inkscape:label="Clementi=1988_03_12" />
       <circle id="station-jurong-east" data-lines="ew=1988_11_05-1990_03_10" cx="3344.856" cy="3446.299" r="15.18" inkscape:label="Jurong_East=1988_11_05-1990_03_10" />
-      <rect id="station-jurong-east-1" data-lines="ew=1990_03_10,branch=1990_03_10-1996_02_10,ns=1996_02_10" x="-15.18" y="-28.556" width="30.36" height="57.112" rx="15.18" transform="translate(3354.293,3436.82) rotate(-135.1298)" inkscape:label="Jurong_East=1990_03_10" />
+      <rect id="station-jurong-east--1990-03-10" data-lines="ew=1990_03_10,branch=1990_03_10-1996_02_10,ns=1996_02_10" x="-15.18" y="-28.556" width="30.36" height="57.112" rx="15.18" transform="translate(3354.293,3436.82) rotate(-135.1298)" inkscape:label="Jurong_East=1990_03_10" />
       <circle id="station-chinese-garden" data-lines="ew=1988_11_05" cx="3139.985" cy="3229.124" r="15.18" inkscape:label="Chinese_Garden=1988_11_05" />
       <circle id="station-lakeside" data-lines="ew=1988_11_05" cx="2857.391" cy="3174.358" r="15.18" inkscape:label="Lakeside=1988_11_05" />
       <circle id="station-yishun" data-lines="ns=1988_12_20" cx="5539.107" cy="1187.8" r="15.18" inkscape:label="Yishun=1988_12_20" />
       <circle id="station-khatib" data-lines="ns=1988_12_20" cx="5498.466" cy="1464.885" r="15.18" inkscape:label="Khatib=1988_12_20" />
       <circle id="station-marina-bay" data-lines="ns=1989_11_04-2012_01_14" cx="6006.264" cy="4801.789" r="15.18" inkscape:label="Marina_Bay=1989_11_04-2012_01_14" />
-      <rect id="station-marina-bay-1" data-lines="ns=2012_01_14-2022_11_13,cc=2012_01_14-2022_11_13" x="-15.18" y="-23.9" width="30.36" height="47.801" rx="15.18" transform="translate(6014.888,4800.497) rotate(-98.5188)" inkscape:label="Marina_Bay=2012_01_14-2022_11_13" />
-      <rect id="station-marina-bay-2" data-lines="ns=2022_11_13,cc=2022_11_13,te=2022_11_13" x="-15.18" y="-24.099" width="30.36" height="48.198" rx="15.18" transform="translate(6015.45,4803.021) rotate(64.0000)" inkscape:label="Marina_Bay=2022_11_13" />
+      <rect id="station-marina-bay--2012-01-14" data-lines="ns=2012_01_14-2022_11_13,cc=2012_01_14-2022_11_13" x="-15.18" y="-23.9" width="30.36" height="47.801" rx="15.18" transform="translate(6014.888,4800.497) rotate(-98.5188)" inkscape:label="Marina_Bay=2012_01_14-2022_11_13" />
+      <rect id="station-marina-bay--2022-11-13" data-lines="ns=2022_11_13,cc=2022_11_13,te=2022_11_13" x="-15.18" y="-24.099" width="30.36" height="48.198" rx="15.18" transform="translate(6015.45,4803.021) rotate(64.0000)" inkscape:label="Marina_Bay=2022_11_13" />
       <circle id="station-tanah-merah" data-lines="ew=1989_11_04" cx="8172.069" cy="3582.105" r="15.18" inkscape:label="Tanah_Merah=1989_11_04" />
       <circle id="station-bedok" data-lines="ew=1989_11_04" cx="7783.395" cy="3654.357" r="15.18" inkscape:label="Bedok=1989_11_04" />
       <circle id="station-kembangan" data-lines="ew=1989_11_04" cx="7380.885" cy="3724.523" r="15.18" inkscape:label="Kembangan=1989_11_04" />
       <circle id="station-eunos" data-lines="ew=1989_11_04" cx="7155.592" cy="3758.816" r="15.18" inkscape:label="Eunos=1989_11_04" />
       <circle id="station-paya-lebar" data-lines="ew=1989_11_04-2010_04_17" cx="6891.937" cy="3794.92" r="15.18" inkscape:label="Paya_Lebar=1989_11_04-2010_04_17" />
-      <rect id="station-paya-lebar-1" data-lines="ew=2010_04_17,cc=2010_04_17" x="-15.18" y="-25.265" width="30.36" height="50.529" rx="15.18" transform="translate(6885.852,3802.963) rotate(37.1100)" inkscape:label="Paya_Lebar=2010_04_17" />
+      <rect id="station-paya-lebar--2010-04-17" data-lines="ew=2010_04_17,cc=2010_04_17" x="-15.18" y="-25.265" width="30.36" height="50.529" rx="15.18" transform="translate(6885.852,3802.963) rotate(37.1100)" inkscape:label="Paya_Lebar=2010_04_17" />
       <circle id="station-aljunied" data-lines="ew=1989_11_04" cx="6677.796" cy="3832.38" r="15.18" inkscape:label="Aljunied=1989_11_04" />
       <circle id="station-kallang" data-lines="ew=1989_11_04" cx="6411.964" cy="3936.346" r="15.18" inkscape:label="Kallang=1989_11_04" />
       <circle id="station-lavender" data-lines="ew=1989_11_04" cx="6195.069" cy="4038.858" r="15.18" inkscape:label="Lavender=1989_11_04" />
       <circle id="station-bugis" data-lines="ew=1989_11_04-2013_12_22" cx="6025.961" cy="4202.184" r="15.18" inkscape:label="Bugis=1989_11_04-2013_12_22" />
-      <rect id="station-bugis-1" data-lines="ew=2013_12_22,dt=2013_12_22" x="-15.18" y="-24.891" width="30.36" height="49.782" rx="15.18" transform="translate(6033.666,4208.095) rotate(-52.5083)" inkscape:label="Bugis=2013_12_22" />
+      <rect id="station-bugis--2013-12-22" data-lines="ew=2013_12_22,dt=2013_12_22" x="-15.18" y="-24.891" width="30.36" height="49.782" rx="15.18" transform="translate(6033.666,4208.095) rotate(-52.5083)" inkscape:label="Bugis=2013_12_22" />
       <circle id="station-pasir-ris" data-lines="ew=1989_12_16" cx="8227.629" cy="2549.574" r="15.18" inkscape:label="Pasir_Ris=1989_12_16" />
       <circle id="station-tampines" data-lines="ew=1989_12_16" cx="8123.454" cy="2951.04" r="15.18" inkscape:label="Tampines=1989_12_16" />
       <circle id="station-tampines-1-dt" data-lines="dt=2017_10_21" cx="8092.324" cy="2920.375" r="15.18" inkscape:label="Tampines=2017_10_21" />
@@ -108,25 +108,25 @@
       <circle id="station-kranji" data-lines="ns=1996_02_10" cx="3821.632" cy="1278.851" r="15.18" inkscape:label="Kranji=1996_02_10" />
       <circle id="station-marsiling" data-lines="ns=1996_02_10" cx="4105.997" cy="1110.185" r="15.18" inkscape:label="Marsiling=1996_02_10" />
       <circle id="station-woodlands" data-lines="ns=1996_02_10-2020_01_31" cx="4408.403" cy="995.937" r="15.18" inkscape:label="Woodlands=1996_02_10-2020_01_31" />
-      <rect id="station-woodlands-1" data-lines="ns=2020_01_31,te=2020_01_31" x="-15.18" y="-31.106" width="30.36" height="62.211" rx="15.18" transform="translate(4422.999,1002.307) rotate(-66.4204)" inkscape:label="Woodlands=2020_01_31" />
+      <rect id="station-woodlands--2020-01-31" data-lines="ns=2020_01_31,te=2020_01_31" x="-15.18" y="-31.106" width="30.36" height="62.211" rx="15.18" transform="translate(4422.999,1002.307) rotate(-66.4204)" inkscape:label="Woodlands=2020_01_31" />
       <circle id="station-admiralty" data-lines="ns=1996_02_10" cx="4741.123" cy="917.837" r="15.18" inkscape:label="Admiralty=1996_02_10" />
       <circle id="station-sembawang" data-lines="ns=1996_02_10" cx="5199.711" cy="715.411" r="15.18" inkscape:label="Sembawang=1996_02_10" />
       <circle id="station-expo" data-lines="ew=2001_01_10-2017_10_21" cx="8545.77" cy="3386.28" r="15.18" inkscape:label="Expo=2001_01_10-2017_10_21" />
-      <rect id="station-expo-1" data-lines="ew=2017_10_21,dt=2017_10_21" x="-15.18" y="-21.982" width="30.36" height="43.964" rx="15.18" transform="translate(8551.672,3389.66) rotate(-60.2002)" inkscape:label="Expo=2017_10_21" />
+      <rect id="station-expo--2017-10-21" data-lines="ew=2017_10_21,dt=2017_10_21" x="-15.18" y="-21.982" width="30.36" height="43.964" rx="15.18" transform="translate(8551.672,3389.66) rotate(-60.2002)" inkscape:label="Expo=2017_10_21" />
       <circle id="station-dover" data-lines="ew=2001_10_18" cx="4214.215" cy="3954.071" r="15.18" inkscape:label="Dover=2001_10_18" />
       <circle id="station-changi-airport" data-lines="ew=2002_02_08" cx="9150.637" cy="2873.664" r="15.18" inkscape:label="Changi_Airport=2002_02_08" />
       <circle id="station-harbourfront" data-lines="ne=2003_06_20-2011_10_08" cx="5226.497" cy="5015.57" r="15.18" inkscape:label="HarbourFront=2003_06_20-2011_10_08" />
-      <rect id="station-harbourfront-1" data-lines="ne=2011_10_08,cc=2011_10_08" x="-15.18" y="-28.161" width="30.36" height="56.321" rx="15.18" transform="translate(5224.641,5028.417) rotate(8.2182)" inkscape:label="HarbourFront=2011_10_08" />
+      <rect id="station-harbourfront--2011-10-08" data-lines="ne=2011_10_08,cc=2011_10_08" x="-15.18" y="-28.161" width="30.36" height="56.321" rx="15.18" transform="translate(5224.641,5028.417) rotate(8.2182)" inkscape:label="HarbourFront=2011_10_08" />
       <circle id="station-chinatown" data-lines="ne=2003_06_20-2013_12_22" cx="5752.609" cy="4574.309" r="15.18" inkscape:label="Chinatown=2003_06_20-2013_12_22" />
-      <rect id="station-chinatown-1" data-lines="ne=2013_12_22,dt=2013_12_22" x="-15.18" y="-16.906" width="30.36" height="33.813" rx="15.18" transform="translate(5753.574,4572.878) rotate(-146.0203)" inkscape:label="Chinatown=2013_12_22" />
+      <rect id="station-chinatown--2013-12-22" data-lines="ne=2013_12_22,dt=2013_12_22" x="-15.18" y="-16.906" width="30.36" height="33.813" rx="15.18" transform="translate(5753.574,4572.878) rotate(-146.0203)" inkscape:label="Chinatown=2013_12_22" />
       <circle id="station-clarke-quay" data-lines="ne=2003_06_20" cx="5813.083" cy="4482.395" r="15.18" inkscape:label="Clarke_Quay=2003_06_20" />
       <circle id="station-little-india" data-lines="ne=2003_06_20-2015_12_27" cx="5878.253" cy="4070.148" r="15.18" inkscape:label="Little_India=2003_06_20-2015_12_27" />
-      <rect id="station-little-india-1" data-lines="ne=2015_12_27,dt=2015_12_27" x="-15.18" y="-15.965" width="30.36" height="31.929" rx="15.18" transform="translate(5877.631,4069.669) rotate(127.6252)" inkscape:label="Little_India=2015_12_27" />
+      <rect id="station-little-india--2015-12-27" data-lines="ne=2015_12_27,dt=2015_12_27" x="-15.18" y="-15.965" width="30.36" height="31.929" rx="15.18" transform="translate(5877.631,4069.669) rotate(127.6252)" inkscape:label="Little_India=2015_12_27" />
       <circle id="station-farrer-park" data-lines="ne=2003_06_20" cx="6001.402" cy="3929.302" r="15.18" inkscape:label="Farrer_Park=2003_06_20" />
       <circle id="station-boon-keng" data-lines="ne=2003_06_20" cx="6176.05" cy="3746.746" r="15.18" inkscape:label="Boon_Keng=2003_06_20" />
       <circle id="station-potong-pasir" data-lines="ne=2003_06_20" cx="6342.473" cy="3477.423" r="15.18" inkscape:label="Potong_Pasir=2003_06_20" />
       <circle id="station-serangoon" data-lines="ne=2003_06_20-2009_05_28" cx="6440.174" cy="3064.116" r="15.18" inkscape:label="Serangoon=2003_06_20-2009_05_28" />
-      <rect id="station-serangoon-1" data-lines="ne=2009_05_28,cc=2009_05_28" x="-15.18" y="-26.991" width="30.36" height="53.982" rx="15.18" transform="translate(6436.413,3052.92) rotate(161.4309)" inkscape:label="Serangoon=2009_05_28" />
+      <rect id="station-serangoon--2009-05-28" data-lines="ne=2009_05_28,cc=2009_05_28" x="-15.18" y="-26.991" width="30.36" height="53.982" rx="15.18" transform="translate(6436.413,3052.92) rotate(161.4309)" inkscape:label="Serangoon=2009_05_28" />
       <circle id="station-kovan" data-lines="ne=2003_06_20" cx="6717.684" cy="2798.183" r="15.18" inkscape:label="Kovan=2003_06_20" />
       <circle id="station-hougang" data-lines="ne=2003_06_20" cx="6883.155" cy="2546.862" r="15.18" inkscape:label="Hougang=2003_06_20" />
       <circle id="station-sengkang" data-lines="sklrt=2003_06_20,ne=2003_06_20" cx="6966.639" cy="2067.718" r="15.18" inkscape:label="Sengkang=2003_06_20" />
@@ -140,19 +140,19 @@
       <circle id="station-bras-basah" data-lines="cc=2010_04_17" cx="5909.706" cy="4283.671" r="15.18" inkscape:label="Bras_Basah=2010_04_17" />
       <circle id="station-esplanade" data-lines="cc=2010_04_17" cx="6025.397" cy="4382.705" r="15.18" inkscape:label="Esplanade=2010_04_17" />
       <circle id="station-promenade" data-lines="cc=2010_04_17-2013_12_22" cx="6154.799" cy="4373.29" r="15.18" inkscape:label="Promenade=2010_04_17-2013_12_22" />
-      <rect id="station-promenade-1" data-lines="cc=2013_12_22,dt=2013_12_22" x="-15.18" y="-27.726" width="30.36" height="55.452" rx="15.18" transform="translate(6142.256,4373.003) rotate(91.3115)" inkscape:label="Promenade=2013_12_22" />
+      <rect id="station-promenade--2013-12-22" data-lines="cc=2013_12_22,dt=2013_12_22" x="-15.18" y="-27.726" width="30.36" height="55.452" rx="15.18" transform="translate(6142.256,4373.003) rotate(91.3115)" inkscape:label="Promenade=2013_12_22" />
       <circle id="station-nicoll-highway" data-lines="cc=2010_04_17" cx="6220.592" cy="4225.585" r="15.18" inkscape:label="Nicoll_Highway=2010_04_17" />
       <circle id="station-stadium" data-lines="cc=2010_04_17" cx="6498.056" cy="4150.006" r="15.18" inkscape:label="Stadium=2010_04_17" />
       <circle id="station-mountbatten" data-lines="cc=2010_04_17" cx="6665.27" cy="4063.632" r="15.18" inkscape:label="Mountbatten=2010_04_17" />
       <circle id="station-dakota" data-lines="cc=2010_04_17" cx="6804.588" cy="4023.42" r="15.18" inkscape:label="Dakota=2010_04_17" />
       <circle id="station-macpherson" data-lines="cc=2010_04_17-2017_10_21" cx="6831.464" cy="3589.122" r="15.18" inkscape:label="MacPherson=2010_04_17-2017_10_21" />
-      <rect id="station-macpherson-1" data-lines="cc=2017_10_21,dt=2017_10_21" x="-15.18" y="-23.943" width="30.36" height="47.885" rx="15.18" transform="translate(6825.297,3595.347) rotate(44.7332)" inkscape:label="MacPherson=2017_10_21" />
+      <rect id="station-macpherson--2017-10-21" data-lines="cc=2017_10_21,dt=2017_10_21" x="-15.18" y="-23.943" width="30.36" height="47.885" rx="15.18" transform="translate(6825.297,3595.347) rotate(44.7332)" inkscape:label="MacPherson=2017_10_21" />
       <circle id="station-tai-seng" data-lines="cc=2010_04_17" cx="6794.7" cy="3385.8" r="15.18" inkscape:label="Tai_Seng=2010_04_17" />
       <circle id="station-woodleigh" data-lines="ne=2011_06_20" cx="6372.242" cy="3286.901" r="15.18" inkscape:label="Woodleigh=2011_06_20" />
       <circle id="station-caldecott" data-lines="cc=2011_10_08-2021_08_28" cx="5641.411" cy="3338.961" r="15.18" inkscape:label="Caldecott=2011_10_08-2021_08_28" />
-      <rect id="station-caldecott-1" data-lines="cc=2021_08_28,te=2021_08_28" x="-15.18" y="-27.356" width="30.36" height="54.713" rx="15.18" transform="translate(5653.574,3338.396) rotate(-92.6591)" inkscape:label="Caldecott=2021_08_28" />
+      <rect id="station-caldecott--2021-08-28" data-lines="cc=2021_08_28,te=2021_08_28" x="-15.18" y="-27.356" width="30.36" height="54.713" rx="15.18" transform="translate(5653.574,3338.396) rotate(-92.6591)" inkscape:label="Caldecott=2021_08_28" />
       <circle id="station-botanic-gardens" data-lines="cc=2011_10_08-2015_12_27" cx="5087.013" cy="3688.259" r="15.18" inkscape:label="Botanic_Gardens=2011_10_08-2015_12_27" />
-      <rect id="station-botanic-gardens-1" data-lines="cc=2015_12_27,dt=2015_12_27" x="-15.18" y="-21.092" width="30.36" height="42.185" rx="15.18" transform="translate(5092.801,3687.049) rotate(-101.8088)" inkscape:label="Botanic_Gardens=2015_12_27" />
+      <rect id="station-botanic-gardens--2015-12-27" data-lines="cc=2015_12_27,dt=2015_12_27" x="-15.18" y="-21.092" width="30.36" height="42.185" rx="15.18" transform="translate(5092.801,3687.049) rotate(-101.8088)" inkscape:label="Botanic_Gardens=2015_12_27" />
       <circle id="station-farrer-road" data-lines="cc=2011_10_08" cx="4901.587" cy="3804.786" r="15.18" inkscape:label="Farrer_Road=2011_10_08" />
       <circle id="station-holland-village" data-lines="cc=2011_10_08" cx="4637.886" cy="3926.477" r="15.18" inkscape:label="Holland_Village=2011_10_08" />
       <circle id="station-one-north" data-lines="cc=2011_10_08" cx="4423.471" cy="4211.482" r="15.18" inkscape:label="one-north=2011_10_08" />
@@ -162,7 +162,7 @@
       <circle id="station-labrador-park" data-lines="cc=2011_10_08" cx="4795.299" cy="4855.708" r="15.18" inkscape:label="Labrador_Park=2011_10_08" />
       <circle id="station-telok-blangah" data-lines="cc=2011_10_08" cx="4955.599" cy="4894.71" r="15.18" inkscape:label="Telok_Blangah=2011_10_08" />
       <circle id="station-bayfront" data-lines="cc=2012_01_14-2013_12_22" cx="6114.122" cy="4632.621" r="15.18" inkscape:label="Bayfront=2012_01_14-2013_12_22" />
-      <rect id="station-bayfront-1" data-lines="cc=2013_12_22,dt=2013_12_22" x="-15.18" y="-29.101" width="30.36" height="58.202" rx="15.18" transform="translate(6101.934,4625.894) rotate(118.8953)" inkscape:label="Bayfront=2013_12_22" />
+      <rect id="station-bayfront--2013-12-22" data-lines="cc=2013_12_22,dt=2013_12_22" x="-15.18" y="-29.101" width="30.36" height="58.202" rx="15.18" transform="translate(6101.934,4625.894) rotate(118.8953)" inkscape:label="Bayfront=2013_12_22" />
       <circle id="station-downtown" data-lines="dt=2013_12_22" cx="5931.019" cy="4677.976" r="15.18" inkscape:label="Downtown=2013_12_22" />
       <circle id="station-telok-ayer" data-lines="dt=2013_12_22" cx="5853.597" cy="4631.405" r="15.18" inkscape:label="Telok_Ayer=2013_12_22" />
       <circle id="station-marina-south-pier" data-lines="ns=2014_11_23" cx="6200.984" cy="4880.882" r="15.18" inkscape:label="Marina_South_Pier=2014_11_23" />
@@ -174,7 +174,7 @@
       <circle id="station-sixth-avenue" data-lines="dt=2015_12_27" cx="4652.793" cy="3492.622" r="15.18" inkscape:label="Sixth_Avenue=2015_12_27" />
       <circle id="station-tan-kah-kee" data-lines="dt=2015_12_27" cx="4886.669" cy="3610.24" r="15.18" inkscape:label="Tan_Kah_Kee=2015_12_27" />
       <circle id="station-stevens" data-lines="dt=2015_12_27-2022_11_13" cx="5335.471" cy="3742.007" r="15.18" inkscape:label="Stevens=2015_12_27-2022_11_13" />
-      <rect id="station-stevens-1" data-lines="dt=2022_11_13,te=2022_11_13" x="-15.18" y="-25.576" width="30.36" height="51.151" rx="15.18" transform="translate(5330.944,3751.366) rotate(25.8116)" inkscape:label="Stevens=2022_11_13" />
+      <rect id="station-stevens--2022-11-13" data-lines="dt=2022_11_13,te=2022_11_13" x="-15.18" y="-25.576" width="30.36" height="51.151" rx="15.18" transform="translate(5330.944,3751.366) rotate(25.8116)" inkscape:label="Stevens=2022_11_13" />
       <circle id="station-rochor" data-lines="dt=2015_12_27" cx="5942.516" cy="4121.479" r="15.18" inkscape:label="Rochor=2015_12_27" />
       <circle id="station-gul-circle" data-lines="ew=2017_06_18" cx="1430.297" cy="3766.842" r="15.18" inkscape:label="Gul_Circle=2017_06_18" />
       <circle id="station-tuas-crescent" data-lines="ew=2017_06_18" cx="1167.523" cy="3727.775" r="15.18" inkscape:label="Tuas_Crescent=2017_06_18" />

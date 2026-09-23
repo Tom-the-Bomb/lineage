@@ -12,15 +12,45 @@
     ]
   },
   {
+    "date": "1911-12-21",
+    "descriptions": [
+      "Sha Tau Kok Branch: Fanling - Shek Chung Au opens"
+    ]
+  },
+  {
+    "date": "1912-04-01",
+    "descriptions": [
+      "Sha Tau Kok Branch: Shek Chung Au - Sha Tau Kok opens"
+    ]
+  },
+  {
     "date": "1921-06-13",
     "descriptions": [
       "KCR British Section: Hung Hom (temporary station) closes"
     ]
   },
   {
+    "date": "1928-04-01",
+    "descriptions": [
+      "Sha Tau Kok Branch closes permanently"
+    ]
+  },
+  {
     "date": "1930-05-16",
     "descriptions": [
       "KCR British Section: Sheung Shui opens"
+    ]
+  },
+  {
+    "date": "1935-11-16",
+    "descriptions": [
+      "KCR British Section: Che Kung Miu experimental passenger halt opens"
+    ]
+  },
+  {
+    "date": "1936-10-01",
+    "descriptions": [
+      "KCR British Section: Che Kung Miu halt closes permanently"
     ]
   },
   {
@@ -100,6 +130,12 @@
     "date": "1980-02-12",
     "descriptions": [
       "Modified Initial System: Tsim Sha Tsui - Chater opens"
+    ]
+  },
+  {
+    "date": "1981-04-26",
+    "descriptions": [
+      "KCR British Section: new Beacon Hill Tunnel replaces the original tunnel"
     ]
   },
   {
@@ -185,9 +221,15 @@
     ]
   },
   {
-    "date": "1988-09-18",
+    "date": "1988-09-14",
     "descriptions": [
-      "KCR Light Rail: Tuen Mun - Yuen Long opens"
+      "KCR Light Rail: Tuen Mun - Yuen Long public preview opens; regular service begins on 18 September"
+    ]
+  },
+  {
+    "date": "1988-09-24",
+    "descriptions": [
+      "KCR Light Rail: Ching Chung - San Wai and Shan King branch open"
     ]
   },
   {
@@ -209,9 +251,27 @@
     ]
   },
   {
+    "date": "1991-11-03",
+    "descriptions": [
+      "KCR Light Rail: Yau Oi - Tuen Mun Ferry Pier extension opens"
+    ]
+  },
+  {
+    "date": "1992-02-02",
+    "descriptions": [
+      "KCR Light Rail: Tuen Mun northeast extension and Sam Shing branch open"
+    ]
+  },
+  {
     "date": "1993-01-10",
     "descriptions": [
-      "KCR Light Rail: Tin Shui Wai branch opens"
+      "KCR Light Rail: Tong Fong Tsuen - Tin Shui opens"
+    ]
+  },
+  {
+    "date": "1995-03-26",
+    "descriptions": [
+      "KCR Light Rail: Tin Shui - Tin Shui Wai Terminus extension opens"
     ]
   },
   {
@@ -254,6 +314,12 @@
     "descriptions": [
       "Kwun Tong Line: Yau Tong - Tiu Keng Leng opens",
       "Tseung Kwan O Line: Yau Tong - Po Lam opens"
+    ]
+  },
+  {
+    "date": "2003-12-07",
+    "descriptions": [
+      "KCR Light Rail: Tin Shui Wai northern and eastern extensions open"
     ]
   },
   {
@@ -356,6 +422,12 @@
     "date": "2016-12-28",
     "descriptions": [
       "South Island Line: Admiralty - South Horizons opens"
+    ]
+  },
+  {
+    "date": "2018-09-23",
+    "descriptions": [
+      "High Speed Rail: Hong Kong section and Hong Kong West Kowloon open, with walking connections to Kowloon and Austin"
     ]
   },
   {
