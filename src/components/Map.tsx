@@ -92,7 +92,6 @@ export default function Map({ system }: { system: SystemKey }) {
     const [sliderTrackWidth, setSliderTrackWidth] = useState<number | null>(null);
 
     const timeRef = useRef(time);
-    const settingsRef = useRef(settings);
 
     const sliderRef = useCallback((slider: HTMLInputElement | null) => {
         if (slider) {
@@ -103,10 +102,6 @@ export default function Map({ system }: { system: SystemKey }) {
     useEffect(() => {
         timeRef.current = time;
     }, [time]);
-
-    useEffect(() => {
-        settingsRef.current = settings;
-    }, [settings]);
 
     const keyDownHandler = useCallback(
         (e: KeyboardEvent) => {
@@ -251,16 +246,6 @@ export default function Map({ system }: { system: SystemKey }) {
             .filter(date => minDate.getTime() <= date && date <= maxDate.getTime())
             .sort((a, b) => a - b);
 
-        setNetwork(
-            update(
-                timeRef.current,
-                linesRef.current,
-                stationsRef.current,
-                legend,
-                settingsRef.current.transitionMs,
-            ),
-        );
-
         const svgd3 = d3.select(svgDoc).select<SVGSVGElement>('svg');
         const zoomLayer = d3.select(svgDoc).select<SVGGElement>('#zoom-layer');
         const svgEl = svgd3.node()!;
@@ -376,6 +361,9 @@ export default function Map({ system }: { system: SystemKey }) {
     }, [svgDoc, legend, keyDownHandler, minDate, maxDate, config.initialView]);
 
     useEffect(() => {
+        if (!svgDoc) {
+            return;
+        }
         const next = update(
             time,
             linesRef.current,
@@ -385,7 +373,7 @@ export default function Map({ system }: { system: SystemKey }) {
             highlight,
         );
         setNetwork(prev => (sameNetwork(prev, next) ? prev : next));
-    }, [time, legend, highlight, settings.transitionMs]);
+    }, [svgDoc, time, legend, highlight, settings.transitionMs]);
 
     useEffect(() => {
         if (!svgDoc) {
