@@ -480,7 +480,7 @@ export default function Map({ system }: { system: SystemKey }) {
     return (
         <div
             className="flex h-dvh w-dvw touch-none items-center justify-center"
-            style={{ '--slider-thumb': `url("${config.logo}")` } as React.CSSProperties}
+            style={{ '--slider-thumb': `url("${config.logos[0]}")` } as React.CSSProperties}
         >
             <header
                 className={`pointer-events-none absolute top-4 left-4 z-10 flex

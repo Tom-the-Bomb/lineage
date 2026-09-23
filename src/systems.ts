@@ -41,7 +41,7 @@ export interface SystemConfig {
     localTitle: string;
     description: string;
     map: string;
-    logo: string;
+    logos: string[];
     minDate: Date;
     maxDate: Date;
     lines: { id: string; label: string; color: string }[];
@@ -57,7 +57,7 @@ export const systems = {
         localTitle: '港鐵歷史',
         description: "Explore the historical development of Hong Kong's MTR system",
         map: mtrMap,
-        logo: mtrLogo,
+        logos: [mtrLogo],
         minDate: new Date(Date.UTC(1910, 0, 1)),
         maxDate: TODAY,
         lines: mtrLines.lines,
@@ -78,7 +78,7 @@ export const systems = {
         localTitle: '上海地铁历史',
         description: "Explore how Shanghai's metro network was built",
         map: shMap,
-        logo: shMetroLogo,
+        logos: [shMetroLogo],
         minDate: new Date(Date.UTC(1993, 0, 1)),
         maxDate: TODAY,
         lines: shLines.lines,
@@ -100,7 +100,7 @@ export const systems = {
         localTitle: '臺北捷運歷史',
         description: "Explore how Taipei's metro network was built",
         map: tpMap,
-        logo: tpLogo,
+        logos: [tpLogo],
         minDate: new Date(Date.UTC(1996, 0, 1)),
         maxDate: TODAY,
         lines: tpLines.lines,
@@ -115,7 +115,7 @@ export const systems = {
         localTitle: '新加坡地铁历史',
         description: "Explore Singapore's MRT & LRT network history",
         map: sgMap,
-        logo: sgLogo,
+        logos: [sgLogo],
         minDate: new Date(Date.UTC(1987, 0, 1)),
         maxDate: TODAY,
         lines: sgLines.lines,
@@ -130,7 +130,7 @@ export const systems = {
         localTitle: '東京の地下鉄の歴史',
         description: 'Explore the history of Tokyo Metro and Toei Subway',
         map: tyMap,
-        logo: tyMetroLogo,
+        logos: [tyMetroLogo, tyToeiLogo],
         minDate: new Date(Date.UTC(1927, 0, 1)),
         maxDate: TODAY,
         lines: tyLines.lines,
@@ -150,7 +150,7 @@ export const systems = {
         localTitle: '深圳地铁历史',
         description: "Explore how Shenzhen's metro network was built",
         map: szMap,
-        logo: szLogo,
+        logos: [szLogo],
         minDate: new Date(Date.UTC(2004, 0, 1)),
         maxDate: TODAY,
         lines: szLines.lines,
@@ -165,7 +165,7 @@ export const systems = {
         localTitle: '杭州地铁历史',
         description: "Explore how Hangzhou's metro network was built",
         map: hzMap,
-        logo: hzLogo,
+        logos: [hzLogo],
         minDate: new Date(Date.UTC(2012, 0, 1)),
         maxDate: TODAY,
         lines: hzLines.lines,
