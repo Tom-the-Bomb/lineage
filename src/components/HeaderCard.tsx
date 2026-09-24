@@ -9,7 +9,7 @@ export default function HeaderCard({ config }: { config: SystemConfig }) {
                     <img src={logo} alt="" className="h-4 w-4 object-contain" />
                 ))}
                 <span className="text-ink-faint">system:</span>
-                <h1 className="text-ink font-medium">{config.title}</h1>
+                <h1 className="text-ink font-medium">{config.name} History</h1>
             </div>
             <h2 className="flex items-baseline gap-2 leading-none">
                 <span className="text-ink-faint font-mono text-sm">//</span>

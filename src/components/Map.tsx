@@ -61,8 +61,8 @@ export default function Map({ system }: { system: SystemKey }) {
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
-        document.title = config.title;
-    }, [config.title]);
+        document.title = `${config.name} History`;
+    }, [config.name]);
 
     const svgRef = useRef<HTMLObjectElement | null>(null);
     const linesRef = useRef<LineWrapper[]>([]);
@@ -521,7 +521,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     data={config.map}
                     onLoad={() => setSvgDoc(svgRef.current!.contentDocument)}
                     type="image/svg+xml"
-                    aria-label={`Interactive ${config.title} map, ${minDate.getUTCFullYear()}-${maxDate.getUTCFullYear()}`}
+                    aria-label={`Interactive ${config.name} History map, ${minDate.getUTCFullYear()}-${maxDate.getUTCFullYear()}`}
                     className="absolute top-0 left-0 h-full w-full touch-none"
                 />
                 {svgDoc && (

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import crossPlatform from '../../assets/mtr/article/crossplatform.webp';
-import railProperty from '../../assets/mtr/article/railproperty.jpg';
-import mtrLogo from '../../assets/mtr/mtr.svg';
+import crossPlatform from '../../assets/hongkong/article/crossplatform.webp';
+import railProperty from '../../assets/hongkong/article/railproperty.jpg';
+import mtrLogo from '../../assets/hongkong/mtr.svg';
 
-import propertiesData from '../../assets/mtr/article/properties.json';
+import propertiesData from '../../assets/hongkong/article/properties.json';
 
 function Link({ href, children }: { href: string; children: React.ReactNode }) {
     return (
@@ -28,7 +28,7 @@ export default function Mtr() {
         <div className="flex min-h-dvh max-w-dvw flex-col">
             <header>
                 <nav className="px-3 py-4" aria-label="Article navigation">
-                    <RouterLink to="/mtr" className="nav-btn py-1.5!">
+                    <RouterLink to="/hongkong" className="nav-btn py-1.5!">
                         Return to Map
                     </RouterLink>
                 </nav>

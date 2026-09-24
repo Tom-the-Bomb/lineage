@@ -16,7 +16,7 @@ export default function App() {
                     element={<InteractiveMap system={systemKey} key={systemKey} />}
                 />
             ))}
-            <Route path="/mtr/article" element={<Mtr />} />
+            <Route path="/hongkong/article" element={<Mtr />} />
         </Routes>
     );
 }
