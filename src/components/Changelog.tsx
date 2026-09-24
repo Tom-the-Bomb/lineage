@@ -100,17 +100,19 @@ export default function Changelog({
                     className="log scroll-hidden mt-3 max-h-72 overflow-y-auto overscroll-contain"
                 >
                     {past.map((event, index) => (
-                        <div
+                        <button
                             key={event.date}
-                            className={`hover:border-ink/50 hover:text-ink cursor-pointer border-l-2
-                            py-1.5 pl-3 ${
+                            type="button"
+                            className={`hover:border-ink/50 hover:text-ink block w-full
+                            cursor-pointer border-l-2 py-1.5 pl-3 text-left ${
                                 index === 0
                                     ? 'animate-log-in border-accent text-ink'
                                     : 'border-rule text-ink-muted'
                             }`}
                             onClick={() => setTime(event.ms)}
+                            onKeyDown={e => e.stopPropagation()}
                         >
-                            <div className="meta flex items-center gap-2">
+                            <span className="meta flex items-center gap-2">
                                 <span
                                     className={`hover:text-ink ${index === 0 ? 'text-accent' : ''}`}
                                 >
@@ -119,13 +121,13 @@ export default function Changelog({
                                 {event.items.length > 1 && (
                                     <span>· {event.items.length} changes</span>
                                 )}
-                            </div>
-                            <ul className="text-2xs mt-0.5 flex flex-col gap-1 leading-snug">
+                            </span>
+                            <span className="text-2xs mt-0.5 flex flex-col gap-1 leading-snug">
                                 {event.items.map(({ description, line }) => {
                                     const [head, ...rest] = description.split(': ');
 
                                     return (
-                                        <li key={description} className="flex gap-1.5">
+                                        <span key={description} className="flex gap-1.5">
                                             <span
                                                 className="bg-rule-strong mt-1 h-1.5 w-1.5 shrink-0
                                                     rounded-full"
@@ -141,11 +143,11 @@ export default function Changelog({
                                                     description
                                                 )}
                                             </span>
-                                        </li>
+                                        </span>
                                     );
                                 })}
-                            </ul>
-                        </div>
+                            </span>
+                        </button>
                     ))}
                 </div>
             )}

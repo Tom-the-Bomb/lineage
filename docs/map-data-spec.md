@@ -552,6 +552,30 @@ several existing stations across the area, then inspect riverbanks, islands and 
 Smooth the verified alignment; do not invent it by joining station centres. Keep any small offsets
 needed for readable interchanges local.
 
+### Background geography
+
+- Preserve accurate source artwork. Correct a coastline or border against mapped geometry, not by
+  drawing a more plausible-looking outline. Government geographic data or OpenStreetMap extracts
+  can supply coastlines, islands and river polygons; a regional extract is useful when individual
+  queries fail or omit neighbouring territory.
+- Fit geographic coordinates to the SVG using several well-distributed, verified control points.
+  Check the fit locally around islands, riverbanks and coastal stations; one global fit can leave
+  local errors in a schematic source map. Do not move stations or tracks to hide those errors.
+- Coastlines and administrative boundaries serve different purposes: use coastlines for land/water
+  and administrative boundaries to divide land colours. Administrative areas can include sea.
+  Use actual river polygons for border rivers, not an invented gap or a fixed-width buffer.
+- Assemble complete coastline ways into closed land polygons, preserving islands and holes. When
+  using OSM coastline direction to identify land, account for SVG's downward-pointing y-axis.
+  Simplify with topology preserved and a tolerance appropriate to the map's scale; keep real angular
+  quays and reclamation edges. Recheck for self-intersections after rounding coordinates.
+- For a geography-only edit, keep everything outside `geography` unchanged, including the viewport.
+  Extend geometry beyond the viewport where needed so clipping does not create visible seams.
+  Inspect both themes, close-up shorelines and railway alignment; the map checker alone does not
+  validate geographic accuracy.
+- Record the dataset, snapshot date, attribution, coordinate fit and simplification choices in
+  [timeline-sources.md](timeline-sources.md). State whether the background is present-day geography
+  throughout playback; modern coastlines do not establish historical reclamation boundaries.
+
 **Procedure**:
 
 1. From the timeline article, list every opening, closure and rename. That's the completeness baseline.
@@ -608,6 +632,11 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
 - [ ] Every track has `data-km`, and each line's present-day sum equals its published length (§4).
 - [ ] `events.json` has one entry per change date and none otherwise, using the §10 templates.
 - [ ] `check_map.py` prints `OK`. The rendered checks (§11 step 6) look right. `npm run lint` and `npm run build` pass.
+- [ ] New sources and system-specific methods or limitations are recorded in
+      [timeline-sources.md](timeline-sources.md). Reusable techniques and lessons from the work are
+      added to the relevant section of this spec (or an existing applicable skill), so future systems
+      benefit without repeating the investigation. Keep these notes concise; do not duplicate rules
+      or turn one system's numeric choices into universal requirements.
 
 ## Legacy MTR differences
 
