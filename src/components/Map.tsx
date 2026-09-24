@@ -578,6 +578,7 @@ export default function Map({ system }: { system: SystemKey }) {
             <Changelog
                 className={`${expanded ? 'translate-x-100' : ''} slide-out-settings`}
                 events={config.events}
+                highlight={highlight}
                 time={time}
                 setTime={setTime}
                 legend={legend}
