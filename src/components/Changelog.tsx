@@ -10,6 +10,7 @@ interface ChangelogProps {
     events: ChangelogEvent[];
     time: number;
     legend: LegendWrapper[];
+    highlight: string[];
     className?: string;
     setTime: (time: number) => void;
 }
@@ -18,6 +19,7 @@ export default function Changelog({
     events,
     time,
     legend,
+    highlight,
     setTime,
     className = '',
 }: ChangelogProps) {
@@ -28,15 +30,21 @@ export default function Changelog({
         const byName = new Map(
             legend.flatMap(entry => entry.states.map(({ name }) => [name, entry] as const)),
         );
-        return events.map(({ date, descriptions }) => ({
-            date,
-            ms: Date.parse(date),
-            items: descriptions.map(description => ({
-                description,
-                line: byName.get(description.split(/: | → /)[0]),
-            })),
-        }));
-    }, [events, legend]);
+        return events
+            .map(({ date, descriptions }) => ({
+                date,
+                ms: Date.parse(date),
+                items: descriptions
+                    .map(description => ({
+                        description,
+                        line: byName.get(description.split(/: | → /)[0]),
+                    }))
+                    .filter(
+                        ({ line }) => !highlight.length || (line && highlight.includes(line.id)),
+                    ),
+            }))
+            .filter(event => event.items.length > 0);
+    }, [events, legend, highlight]);
 
     const past = entries.filter(event => event.ms <= time).reverse();
     const latestDate = past[0]?.date;
