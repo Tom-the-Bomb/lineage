@@ -9,15 +9,7 @@ import {
     type UpdateResult,
 } from '../schemas';
 
-import {
-    clamp,
-    findName,
-    formatDate,
-    isActive,
-    parseLabelDates,
-    playPause,
-    relativeCenter,
-} from '../utils';
+import { clamp, formatDate, isActive, parseLabelDates, playPause, relativeCenter } from '../utils';
 
 import {
     applyMapTheme,
@@ -453,8 +445,8 @@ export default function Map({ system }: { system: SystemKey }) {
     }, [playing, time, svgDoc, maxDate, findNextEventDate, settings]);
 
     const presentLines = legend.flatMap(line => {
-        const name = findName(line.states, time);
-        return name === null ? [] : [{ line, name }];
+        const state = line.states.find(({ dateRange }) => isActive(dateRange, time));
+        return state ? [{ line, name: state.name, since: state.dateRange.appear }] : [];
     });
 
     const activeLines = presentLines.filter(({ line }) => highlight.includes(line.id));
@@ -595,7 +587,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     justify-center gap-1.5 lg:w-1/2 ${expanded ? 'translate-y-25.5' : ''}
                     slide-out-settings`}
             >
-                {presentLines.map(({ line, name }) => {
+                {presentLines.map(({ line, name, since }) => {
                     const selected = highlight.includes(line.id);
 
                     return (
@@ -621,6 +613,7 @@ export default function Map({ system }: { system: SystemKey }) {
                             {name}
                             {svgDoc && line.id === hoveredLine && (
                                 <BigTooltip
+                                    since={since}
                                     stats={{
                                         km: network.lineKm[line.id] ?? 0,
                                         stations: stationMarkers.filter(station =>
