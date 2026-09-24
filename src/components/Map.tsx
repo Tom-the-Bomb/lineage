@@ -430,16 +430,13 @@ export default function Map({ system }: { system: SystemKey }) {
         const { interval } = STEP_UNITS[step.unit];
 
         const timer = d3.interval(() => {
-            setTime(prev => {
-                const nextDate = interval.offset(interval.floor(new Date(prev)), step.count);
-                const nextMs = Math.min(nextDate.getTime(), findNextEventDate(prev));
+            const nextDate = interval.offset(interval.floor(new Date(time)), step.count);
+            const nextMs = Math.min(nextDate.getTime(), findNextEventDate(time));
 
-                if (nextMs >= maxDate.getTime()) {
-                    setPlaying(false);
-                    return maxDate.getTime();
-                }
-                return nextMs;
-            });
+            if (nextMs >= maxDate.getTime()) {
+                setPlaying(false);
+            }
+            setTime(Math.min(nextMs, maxDate.getTime()));
         }, delay);
         return () => timer.stop();
     }, [playing, time, svgDoc, maxDate, findNextEventDate, settings]);

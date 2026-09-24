@@ -157,8 +157,8 @@ export default function Mtr() {
                                                         {station.name}
                                                     </a>
                                                     <ul className="ml-5 list-inside list-disc">
-                                                        {station.properties.map((name, index) => (
-                                                            <li key={index}>{name}</li>
+                                                        {station.properties.map(name => (
+                                                            <li key={name}>{name}</li>
                                                         ))}
                                                     </ul>
                                                 </li>
