@@ -49,6 +49,11 @@
             "id": "y",
             "label": "Circular_Line=2020_01_31",
             "color": "rgb(240,217,67)"
+        },
+        {
+            "id": "maokong",
+            "label": "Maokong_Gondola=2007_07_04",
+            "color": "rgb(0,175,226)"
         }
     ]
 }
