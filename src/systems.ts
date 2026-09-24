@@ -51,6 +51,7 @@ export interface SystemConfig {
     maxDate: Date;
     lines: { id: string; label: string; color: string }[];
     events: ChangelogEvent[];
+    milestoneDates: string[];
     article?: string;
     tooltipLogos?: (status: Status, time: number) => { src: string; alt: string }[];
     initialView?: { center: [number, number]; zoom: number };
@@ -67,6 +68,7 @@ export const systems = {
         maxDate: TODAY,
         lines: mtrLines.lines,
         events: mtrEvents,
+        milestoneDates: ['1910-10-01', '1979-10-01', '1985-05-31', '1998-07-06', '2022-05-15'],
         article: '/mtr/article',
         tooltipLogos(status, time) {
             const merged = time >= KCR_MERGER_DATE;
@@ -88,6 +90,7 @@ export const systems = {
         maxDate: TODAY,
         lines: shLines.lines,
         events: shEvents,
+        milestoneDates: ['1993-05-28', '1999-09-20', '2003-10-11', '2007-12-29', '2024-12-27'],
         initialView: { center: [2412, 1089], zoom: 1 },
         tooltipLogos(status) {
             return [
@@ -110,6 +113,7 @@ export const systems = {
         maxDate: TODAY,
         lines: tpLines.lines,
         events: tpEvents,
+        milestoneDates: ['1996-03-28', '1997-03-28', '1999-12-24', '2014-11-15', '2020-01-31'],
         initialView: { center: [1528, 1907], zoom: 1 },
         tooltipLogos() {
             return [{ src: tpLogo, alt: 'Taipei Metro' }];
@@ -125,6 +129,7 @@ export const systems = {
         maxDate: TODAY,
         lines: sgLines.lines,
         events: sgEvents,
+        milestoneDates: ['1987-11-07', '1996-02-10', '2003-06-20', '2013-12-22', '2020-01-31'],
         initialView: { center: [5831, 4383], zoom: 1 },
         tooltipLogos() {
             return [{ src: sgLogo, alt: 'MRT' }];
@@ -140,6 +145,14 @@ export const systems = {
         maxDate: TODAY,
         lines: tyLines.lines,
         events: tyEvents,
+        milestoneDates: [
+            '1927-12-30',
+            '1954-01-20',
+            '1960-12-04',
+            '1964-12-23',
+            '2000-12-12',
+            '2008-06-14',
+        ],
         initialView: { center: [1050, 850], zoom: 1 },
         tooltipLogos(status) {
             return [
@@ -160,6 +173,7 @@ export const systems = {
         maxDate: TODAY,
         lines: szLines.lines,
         events: szEvents,
+        milestoneDates: ['2004-12-28', '2011-06-22', '2016-06-28', '2020-08-18', '2022-10-28'],
         initialView: { center: [1640, 1130], zoom: 1 },
         tooltipLogos() {
             return [{ src: szLogo, alt: 'Shenzhen Metro' }];
@@ -175,6 +189,7 @@ export const systems = {
         maxDate: TODAY,
         lines: hzLines.lines,
         events: hzEvents,
+        milestoneDates: ['2012-11-18', '2014-11-18', '2019-06-24', '2020-12-30', '2022-09-22'],
         initialView: { center: [2270, 1140], zoom: 1 },
         tooltipLogos() {
             return [{ src: hzLogo, alt: 'Hangzhou Metro' }];
@@ -190,6 +205,7 @@ export const systems = {
         maxDate: TODAY,
         lines: gzLines.lines,
         events: gzEvents,
+        milestoneDates: ['1997-06-28', '2002-12-29', '2010-11-03', '2021-09-28', '2024-12-28'],
         initialView: { center: [1870, 2360], zoom: 1 },
         tooltipLogos(status) {
             return [

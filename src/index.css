@@ -4,6 +4,218 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+.home-page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(var(--color-rule-strong) 0.8px, transparent 0.8px) center / 16px
+        16px;
+    opacity: 0.85;
+    mask-image: linear-gradient(90deg, black, #0005 28%, #0005 72%, black);
+}
+
+.dark .home-page::before {
+    opacity: 0.6;
+}
+
+.home-atlas {
+    --map-height: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 112px;
+    padding-bottom: 30vh;
+}
+
+.home-atlas::before,
+.home-network-link::before,
+.home-network-link::after {
+    content: '';
+    position: absolute;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.home-atlas::before {
+    top: calc(var(--map-height) + 16px);
+    bottom: calc(30vh + 96px);
+    left: -12px;
+    width: 1px;
+    background: var(--color-rule-strong);
+}
+
+.home-network-link {
+    @apply focus-visible:outline-accent relative isolate rounded-lg focus-visible:outline-2
+        focus-visible:outline-offset-8;
+    opacity: calc(0.22 + var(--focus, 1) * 0.78);
+    transition: opacity 180ms ease-out;
+}
+
+.home-network-link::before {
+    inset: 0 0 auto;
+    height: var(--map-height);
+    border: 1px solid var(--color-rule-strong);
+    mask:
+        linear-gradient(#000 0 0) top left,
+        linear-gradient(#000 0 0) top right,
+        linear-gradient(#000 0 0) bottom left,
+        linear-gradient(#000 0 0) bottom right;
+    mask-size: 24px 24px;
+    mask-repeat: no-repeat;
+    z-index: -1;
+}
+
+.home-network-link::after {
+    top: calc(var(--map-height) + 16px);
+    left: -11px;
+    width: 11px;
+    border-top: 1px solid var(--color-rule-strong);
+    z-index: -1;
+}
+
+.home-network-link:is(:hover, :focus-visible) {
+    opacity: 1;
+
+    .home-network-art {
+        scale: 1.03;
+    }
+
+    .home-history-track {
+        animation-play-state: paused;
+    }
+}
+
+.home-network-art {
+    width: 100%;
+    height: var(--map-height);
+    padding-top: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 2px #0003);
+    scale: calc(0.82 + var(--focus, 1) * 0.18);
+    transition: scale 180ms ease-out;
+}
+
+.home-history {
+    display: none;
+
+    li {
+        @apply relative pb-7 pl-5;
+    }
+
+    li::before {
+        @apply bg-paper border-rule-strong absolute top-1 -left-1 size-2 rounded-full border
+            content-[''];
+    }
+}
+
+.home-history-window {
+    height: 192px;
+    margin-inline: -4px;
+    padding-inline: 4px;
+    overflow: hidden;
+    mask-image: linear-gradient(transparent, black 15%, black 80%, transparent);
+}
+
+.home-history-track {
+    animation: home-history-scroll 80s linear infinite;
+    animation-play-state: var(--history-play-state, paused);
+}
+
+@keyframes home-history-scroll {
+    to {
+        transform: translateY(-50%);
+    }
+}
+
+@media (min-width: 768px) {
+    .home-atlas {
+        --map-height: 360px;
+        gap: 0;
+    }
+
+    .home-atlas::before {
+        top: 96px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .home-network-link {
+        width: 46%;
+    }
+
+    .home-network-link:nth-child(even) {
+        align-self: flex-end;
+    }
+
+    .home-network-link + .home-network-link {
+        margin-top: -80px;
+    }
+
+    .home-network-link::after {
+        left: 100%;
+        width: calc(100% * 4 / 46);
+    }
+
+    .home-network-link:nth-child(even)::after {
+        left: auto;
+        right: 100%;
+        width: calc(100% * 4 / 46 - 1px);
+    }
+
+    .home-history {
+        display: block;
+        position: absolute;
+        top: 96px;
+        /* Reach the atlas midpoint from a link that occupies 46% of its width. */
+        left: calc(100% * 50 / 46);
+        width: calc(100% - 32px);
+        max-width: 320px;
+    }
+
+    .home-network-link:nth-child(even) .home-history {
+        left: auto;
+        right: calc(100% * 50 / 46);
+        text-align: right;
+
+        li {
+            padding-left: 0;
+            padding-right: 20px;
+        }
+
+        li::before {
+            left: auto;
+            right: -4px;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-history-track {
+        animation: none;
+    }
+
+    .home-history-track ol[aria-hidden='true'] {
+        display: none;
+    }
+
+    .home-history-window {
+        overflow-y: auto;
+        mask-image: none;
+    }
+
+    .home-network-link {
+        opacity: 1;
+        transition: none;
+    }
+
+    .home-network-art {
+        scale: 1;
+        transition: none;
+    }
+}
+
 @theme {
     --font-sans: 'Plus Jakarta Sans', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
