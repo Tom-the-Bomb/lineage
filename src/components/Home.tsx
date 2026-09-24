@@ -123,7 +123,7 @@ export default function Home() {
                                                 group-focus-visible:text-accent text-lg
                                                 font-semibold tracking-tight transition-colors"
                                         >
-                                            {system.title.replace(/ History$/, '')}
+                                            {system.name}
                                         </h2>
                                         <p className="font-zh text-ink-faint mt-1 text-xs">
                                             {system.localTitle}

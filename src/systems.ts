@@ -1,48 +1,48 @@
-import { utcDay } from 'd3';
+import { utcDay, utcYear } from 'd3';
 
-import gzEvents from './assets/gz/data/events.json';
-import gzLines from './assets/gz/data/lines.json';
-import foshanLogo from './assets/gz/foshan.svg';
-import gzMap from './assets/gz/map.svg';
-import gzLogo from './assets/gz/metro.svg';
-import hzEvents from './assets/hz/data/events.json';
-import hzLines from './assets/hz/data/lines.json';
-import hzMap from './assets/hz/map.svg';
-import hzLogo from './assets/hz/metro.svg';
-import mtrEvents from './assets/mtr/data/events.json';
-import mtrLines from './assets/mtr/data/lines.json';
-import kcrLogo from './assets/mtr/kcr.svg';
-import mtrMap from './assets/mtr/map.svg';
-import mtrLogo from './assets/mtr/mtr.svg';
-import sgEvents from './assets/sg/data/events.json';
-import sgLines from './assets/sg/data/lines.json';
-import sgMap from './assets/sg/map.svg';
-import sgLogo from './assets/sg/metro.svg';
-import shEvents from './assets/sh/data/events.json';
-import shLines from './assets/sh/data/lines.json';
-import shMap from './assets/sh/map.svg';
-import shMetroLogo from './assets/sh/metro.svg';
-import shSuburbanLogo from './assets/sh/suburban.svg';
-import szEvents from './assets/sz/data/events.json';
-import szLines from './assets/sz/data/lines.json';
-import szMap from './assets/sz/map.svg';
-import szLogo from './assets/sz/metro.svg';
-import tpEvents from './assets/tp/data/events.json';
-import tpLines from './assets/tp/data/lines.json';
-import tpMap from './assets/tp/map.svg';
-import tpLogo from './assets/tp/metro.svg';
-import tyEvents from './assets/ty/data/events.json';
-import tyLines from './assets/ty/data/lines.json';
-import tyMap from './assets/ty/map.svg';
-import tyMetroLogo from './assets/ty/metro.svg';
-import tyToeiLogo from './assets/ty/toei.svg';
+import guangfoEvents from './assets/guangfo/data/events.json';
+import guangfoLines from './assets/guangfo/data/lines.json';
+import foshanLogo from './assets/guangfo/foshan-metro.svg';
+import guangfoMap from './assets/guangfo/map.svg';
+import guangzhouLogo from './assets/guangfo/guangzhou-metro.svg';
+import hangzhouEvents from './assets/hangzhou/data/events.json';
+import hangzhouLines from './assets/hangzhou/data/lines.json';
+import hangzhouMap from './assets/hangzhou/map.svg';
+import hangzhouLogo from './assets/hangzhou/hangzhou-metro.svg';
+import hongkongEvents from './assets/hongkong/data/events.json';
+import hongkongLines from './assets/hongkong/data/lines.json';
+import kcrLogo from './assets/hongkong/kcr.svg';
+import hongkongMap from './assets/hongkong/map.svg';
+import hongkongLogo from './assets/hongkong/mtr.svg';
+import singaporeEvents from './assets/singapore/data/events.json';
+import singaporeLines from './assets/singapore/data/lines.json';
+import singaporeMap from './assets/singapore/map.svg';
+import singaporeLogo from './assets/singapore/singapore-mrt.svg';
+import shanghaiEvents from './assets/shanghai/data/events.json';
+import shanghaiLines from './assets/shanghai/data/lines.json';
+import shanghaiMap from './assets/shanghai/map.svg';
+import shanghaiMetroLogo from './assets/shanghai/shanghai-metro.svg';
+import shanghaiSuburbanLogo from './assets/shanghai/shanghai-suburban.svg';
+import shenzhenEvents from './assets/shenzhen/data/events.json';
+import shenzhenLines from './assets/shenzhen/data/lines.json';
+import shenzhenMap from './assets/shenzhen/map.svg';
+import shenzhenLogo from './assets/shenzhen/shenzhen-metro.svg';
+import taipeiEvents from './assets/taipei/data/events.json';
+import taipeiLines from './assets/taipei/data/lines.json';
+import taipeiMap from './assets/taipei/map.svg';
+import taipeiLogo from './assets/taipei/taipei-metro.svg';
+import tokyoEvents from './assets/tokyo/data/events.json';
+import tokyoLines from './assets/tokyo/data/lines.json';
+import tokyoMap from './assets/tokyo/map.svg';
+import tokyoMetroLogo from './assets/tokyo/tokyo-metro.svg';
+import tokyoToeiLogo from './assets/tokyo/toei-subway.svg';
 import { Status, type ChangelogEvent } from './schemas';
 
 const KCR_MERGER_DATE = Date.UTC(2007, 11, 2);
 const TODAY = utcDay(new Date());
 
 export interface SystemConfig {
-    title: string;
+    name: string;
     localTitle: string;
     description: string;
     map: string;
@@ -57,94 +57,92 @@ export interface SystemConfig {
     initialView?: { center: [number, number]; zoom: number };
 }
 
+function defineSystem(config: Omit<SystemConfig, 'minDate' | 'maxDate'>): SystemConfig {
+    return {
+        ...config,
+        minDate: utcYear(new Date(config.events[0].date)),
+        maxDate: TODAY,
+    };
+}
+
 export const systems = {
-    mtr: {
-        title: 'MTR History',
+    hongkong: defineSystem({
+        name: 'MTR',
         localTitle: '港鐵歷史',
         description: "Explore the historical development of Hong Kong's MTR system",
-        map: mtrMap,
-        logos: [mtrLogo],
-        minDate: new Date(Date.UTC(1910, 0, 1)),
-        maxDate: TODAY,
-        lines: mtrLines.lines,
-        events: mtrEvents,
+        map: hongkongMap,
+        logos: [hongkongLogo],
+        lines: hongkongLines.lines,
+        events: hongkongEvents,
         milestoneDates: ['1910-10-01', '1979-10-01', '1985-05-31', '1998-07-06', '2022-05-15'],
-        article: '/mtr/article',
+        article: '/hongkong/article',
         tooltipLogos(status, time) {
             const merged = time >= KCR_MERGER_DATE;
             return [
                 ...(!merged && status !== Status.PrimaryOnly ? [{ src: kcrLogo, alt: 'KCR' }] : []),
                 ...(merged || status !== Status.SecondaryOnly
-                    ? [{ src: mtrLogo, alt: 'MTR' }]
+                    ? [{ src: hongkongLogo, alt: 'MTR' }]
                     : []),
             ];
         },
-    },
-    sh: {
-        title: 'Shanghai Metro History',
+    }),
+    shanghai: defineSystem({
+        name: 'Shanghai Metro',
         localTitle: '上海地铁历史',
         description: "Explore how Shanghai's metro network was built",
-        map: shMap,
-        logos: [shMetroLogo],
-        minDate: new Date(Date.UTC(1993, 0, 1)),
-        maxDate: TODAY,
-        lines: shLines.lines,
-        events: shEvents,
+        map: shanghaiMap,
+        logos: [shanghaiMetroLogo],
+        lines: shanghaiLines.lines,
+        events: shanghaiEvents,
         milestoneDates: ['1993-05-28', '1999-09-20', '2003-10-11', '2007-12-29', '2024-12-27'],
         initialView: { center: [2412, 1089], zoom: 1 },
         tooltipLogos(status) {
             return [
                 ...(status !== Status.SecondaryOnly
-                    ? [{ src: shMetroLogo, alt: 'Shanghai Metro' }]
+                    ? [{ src: shanghaiMetroLogo, alt: 'Shanghai Metro' }]
                     : []),
                 ...(status !== Status.PrimaryOnly
-                    ? [{ src: shSuburbanLogo, alt: 'Shanghai Suburban Railway' }]
+                    ? [{ src: shanghaiSuburbanLogo, alt: 'Shanghai Suburban Railway' }]
                     : []),
             ];
         },
-    },
-    tp: {
-        title: 'Taipei Metro History',
+    }),
+    taipei: defineSystem({
+        name: 'Taipei Metro',
         localTitle: '臺北捷運歷史',
         description: "Explore how Taipei's metro network was built",
-        map: tpMap,
-        logos: [tpLogo],
-        minDate: new Date(Date.UTC(1996, 0, 1)),
-        maxDate: TODAY,
-        lines: tpLines.lines,
-        events: tpEvents,
+        map: taipeiMap,
+        logos: [taipeiLogo],
+        lines: taipeiLines.lines,
+        events: taipeiEvents,
         milestoneDates: ['1996-03-28', '1997-03-28', '1999-12-24', '2014-11-15', '2020-01-31'],
         initialView: { center: [1528, 1907], zoom: 1 },
         tooltipLogos() {
-            return [{ src: tpLogo, alt: 'Taipei Metro' }];
+            return [{ src: taipeiLogo, alt: 'Taipei Metro' }];
         },
-    },
-    sg: {
-        title: 'Singapore MRT History',
+    }),
+    singapore: defineSystem({
+        name: 'Singapore MRT',
         localTitle: '新加坡地铁历史',
         description: "Explore Singapore's MRT & LRT network history",
-        map: sgMap,
-        logos: [sgLogo],
-        minDate: new Date(Date.UTC(1987, 0, 1)),
-        maxDate: TODAY,
-        lines: sgLines.lines,
-        events: sgEvents,
+        map: singaporeMap,
+        logos: [singaporeLogo],
+        lines: singaporeLines.lines,
+        events: singaporeEvents,
         milestoneDates: ['1987-11-07', '1996-02-10', '2003-06-20', '2013-12-22', '2020-01-31'],
         initialView: { center: [5831, 4383], zoom: 1 },
         tooltipLogos() {
-            return [{ src: sgLogo, alt: 'MRT' }];
+            return [{ src: singaporeLogo, alt: 'MRT' }];
         },
-    },
-    ty: {
-        title: 'Tokyo Subway History',
+    }),
+    tokyo: defineSystem({
+        name: 'Tokyo Subway',
         localTitle: '東京の地下鉄の歴史',
         description: 'Explore the history of Tokyo Metro and Toei Subway',
-        map: tyMap,
-        logos: [tyMetroLogo, tyToeiLogo],
-        minDate: new Date(Date.UTC(1927, 0, 1)),
-        maxDate: TODAY,
-        lines: tyLines.lines,
-        events: tyEvents,
+        map: tokyoMap,
+        logos: [tokyoMetroLogo, tokyoToeiLogo],
+        lines: tokyoLines.lines,
+        events: tokyoEvents,
         milestoneDates: [
             '1927-12-30',
             '1954-01-20',
@@ -157,68 +155,64 @@ export const systems = {
         tooltipLogos(status) {
             return [
                 ...(status !== Status.SecondaryOnly
-                    ? [{ src: tyMetroLogo, alt: 'Tokyo Metro' }]
+                    ? [{ src: tokyoMetroLogo, alt: 'Tokyo Metro' }]
                     : []),
-                ...(status !== Status.PrimaryOnly ? [{ src: tyToeiLogo, alt: 'Toei Subway' }] : []),
+                ...(status !== Status.PrimaryOnly
+                    ? [{ src: tokyoToeiLogo, alt: 'Toei Subway' }]
+                    : []),
             ];
         },
-    },
-    sz: {
-        title: 'Shenzhen Metro History',
+    }),
+    shenzhen: defineSystem({
+        name: 'Shenzhen Metro',
         localTitle: '深圳地铁历史',
         description: "Explore how Shenzhen's metro network was built",
-        map: szMap,
-        logos: [szLogo],
-        minDate: new Date(Date.UTC(2004, 0, 1)),
-        maxDate: TODAY,
-        lines: szLines.lines,
-        events: szEvents,
+        map: shenzhenMap,
+        logos: [shenzhenLogo],
+        lines: shenzhenLines.lines,
+        events: shenzhenEvents,
         milestoneDates: ['2004-12-28', '2011-06-22', '2016-06-28', '2020-08-18', '2022-10-28'],
         initialView: { center: [1640, 1130], zoom: 1 },
         tooltipLogos() {
-            return [{ src: szLogo, alt: 'Shenzhen Metro' }];
+            return [{ src: shenzhenLogo, alt: 'Shenzhen Metro' }];
         },
-    },
-    hz: {
-        title: 'Hangzhou Metro History',
+    }),
+    hangzhou: defineSystem({
+        name: 'Hangzhou Metro',
         localTitle: '杭州地铁历史',
         description: "Explore how Hangzhou's metro network was built",
-        map: hzMap,
-        logos: [hzLogo],
-        minDate: new Date(Date.UTC(2012, 0, 1)),
-        maxDate: TODAY,
-        lines: hzLines.lines,
-        events: hzEvents,
+        map: hangzhouMap,
+        logos: [hangzhouLogo],
+        lines: hangzhouLines.lines,
+        events: hangzhouEvents,
         milestoneDates: ['2012-11-18', '2014-11-18', '2019-06-24', '2020-12-30', '2022-09-22'],
         initialView: { center: [2270, 1140], zoom: 1 },
         tooltipLogos() {
-            return [{ src: hzLogo, alt: 'Hangzhou Metro' }];
+            return [{ src: hangzhouLogo, alt: 'Hangzhou Metro' }];
         },
-    },
-    gz: {
-        title: 'Guangfo Metro History',
+    }),
+    guangfo: defineSystem({
+        name: 'Guangfo Metro',
         localTitle: '广佛地铁历史',
         description: "Explore how Guangzhou and Foshan's metro networks were built",
-        map: gzMap,
-        logos: [gzLogo, foshanLogo],
-        minDate: new Date(Date.UTC(1997, 0, 1)),
-        maxDate: TODAY,
-        lines: gzLines.lines,
-        events: gzEvents,
+        map: guangfoMap,
+        logos: [guangzhouLogo, foshanLogo],
+        lines: guangfoLines.lines,
+        events: guangfoEvents,
         milestoneDates: ['1997-06-28', '2002-12-29', '2010-11-03', '2021-09-28', '2024-12-28'],
         initialView: { center: [1870, 2360], zoom: 1 },
         tooltipLogos(status) {
             return [
                 ...(status !== Status.SecondaryOnly
-                    ? [{ src: gzLogo, alt: 'Guangzhou Metro' }]
+                    ? [{ src: guangzhouLogo, alt: 'Guangzhou Metro' }]
                     : []),
                 ...(status !== Status.PrimaryOnly
                     ? [{ src: foshanLogo, alt: 'Foshan Metro' }]
                     : []),
             ];
         },
-    },
-} satisfies Record<string, SystemConfig>;
+    }),
+};
 
 export type SystemKey = keyof typeof systems;
 

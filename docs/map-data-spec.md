@@ -4,8 +4,8 @@ This is the contract for every metro system in this app. Follow it exactly when 
 converting a source map, or editing dates. `MUST` means the app or the checks break without it.
 `SHOULD` means it's the house style, and you need a stated reason to deviate.
 
-Reference implementations: Shanghai (`src/assets/sh/`) is the model for new systems. MTR
-(`src/assets/mtr/`) is the original, and its known deviations are listed in
+Reference implementations: Shanghai (`src/assets/shanghai/`) is the model for new systems. MTR
+(`src/assets/hongkong/`) is the original, and its known deviations are listed in
 [Legacy MTR differences](#legacy-mtr-differences).
 
 ## Contents
@@ -37,23 +37,26 @@ src/assets/<key>/
   <logo>.svg           one logo per system shown in tooltips
 ```
 
-- `<key>` is a short lowercase code, e.g. `mtr` or `sh`. It is also the URL (`/sh`).
-- Register the system in `src/systems.ts` by adding an entry to `systems`:
+- Name logos after their operator or network, e.g. `shanghai-metro.svg`, `toei-subway.svg` or `mtr.svg`, rather than `metro.svg`.
+- `<key>` is a readable lowercase place name: `hongkong`, `shanghai`, `taipei`, `singapore`, `tokyo`, `shenzhen`, `hangzhou` or `guangfo`. Use the same key for the folder, `systems` entry and URL (e.g. `/shanghai`); no separate key field.
+- Register the system in `src/systems.ts` by adding a `defineSystem({ ... })` entry to `systems`:
 
-| Field                        | Type / example                            | Rule                                                                            |
-| ---------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------- |
-| `title`                      | `'Shanghai Metro History'`                | Page and browser-tab title.                                                     |
-| `localTitle`                 | `'上海地铁历史'`                          | Subtitle.                                                                       |
-| `description`                | one sentence                              | Shown under the title.                                                          |
-| `map`                        | `import shMap from './assets/sh/map.svg'` | The SVG.                                                                        |
-| `logo`                       | imported SVG                              | Header logo.                                                                    |
-| `minDate`                    | `new Date(Date.UTC(1993, 0, 1))`          | MUST be on or before the first change date. Always `Date.UTC`.                  |
-| `maxDate`                    | `new Date(Date.UTC(2025, 11, 31))`        | MUST be on or after the last change date, or later changes can never be shown.  |
-| `lines`                      | `shLines.lines`                           | The imported `lines.json` array.                                                |
-| `tooltipLogos(status, time)` | returns `{ src, alt }[]`                  | Which logos a station tooltip shows. `status` comes from the label prefix (§2). |
-| `article` (optional)         | `'/mtr/article'`                          | Only if an article route exists.                                                |
+| Field                        | Type / example                                        | Rule                                                                            |
+| ---------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `name`                       | `'Shanghai Metro'`                                    | System name without “History”; the map heading and browser title append it.     |
+| `localTitle`                 | `'上海地铁历史'`                                      | Full localized title, including “history”.                                      |
+| `description`                | one sentence                                          | Shown under the title.                                                          |
+| `map`                        | `import shanghaiMap from './assets/shanghai/map.svg'` | The SVG.                                                                        |
+| `logos`                      | `[shanghaiMetroLogo]`                                 | Imported header logos.                                                          |
+| `minDate` (derived)          | `Date`                                                | Automatically January 1 UTC of the first event's year; do not configure it.     |
+| `maxDate` (derived)          | `Date`                                                | Automatically today at midnight UTC when the app loads; do not configure it.    |
+| `lines`                      | `shanghaiLines.lines`                                 | The imported `lines.json` array.                                                |
+| `events`                     | `shanghaiEvents`                                      | The imported `events.json` array, sorted by date.                               |
+| `milestoneDates`             | `['1993-05-28', ...]`                                 | Dates from `events` to feature on the home page.                                |
+| `tooltipLogos(status, time)` | returns `{ src, alt }[]`                              | Which logos a station tooltip shows. `status` comes from the label prefix (§2). |
+| `article` (optional)         | `'/hongkong/article'`                                 | Only if an article route exists.                                                |
 
-- Home page links, `SystemKey` and the routes are derived from `systems`. Nothing else needs registering.
+- Home page links, `SystemKey` and the routes are derived from `systems`. Add the public URL to `public/sitemap.xml` too. The Hong Kong article is at `/hongkong/article`.
 
 ## 2. Label syntax
 
@@ -592,7 +595,7 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
 
 ## 13. Checklist
 
-- [ ] Assets in `src/assets/<key>/`, entry in `systems.ts`, link in `Home.tsx`; `minDate` ≤ first change, `maxDate` ≥ last change.
+- [ ] Assets in `src/assets/<key>/`, entry in `systems.ts`, URL in `public/sitemap.xml`; Home links and date bounds are derived automatically.
 - [ ] `zoom-layer` › (`geography`) › `lines` › `stations`; only labelled path/circle/rect; paint on groups; no text/title/defs/use.
 - [ ] Every label matches §2. Names are the verbatim English names of that period, and prefixes appear on markers only.
 - [ ] Sizes follow §5. Circles are on their tracks, capsules cover all their lines, and no marker sits on a line that doesn't stop there.
@@ -671,7 +674,7 @@ MTR predates this spec. Don't copy these patterns into new systems:
 
 ## Appendix: `check_map.py`
 
-Save it anywhere and run it from the repository root: `python3 check_map.py sh`. It checks
+Save it anywhere and run it from the repository root: `python3 check_map.py shanghai`. It checks
 structure, labels, legend coverage, `data-lines`, `data-km`, the segment limit of §4 and that every
 track starts and ends inside a marker (or meets other track of its line, or runs off the drawn area,
 or belongs to a line marked `simplified`), and compares change dates with `events.json`. It

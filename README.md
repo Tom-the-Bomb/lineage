@@ -1,6 +1,7 @@
-<img src="public/logo.svg" width="64" height="64" alt="Lineage logo" />
-
-# Lineage
+<div align="center">
+    <img src="public/logo.svg" width="64" height="64" alt="Lineage logo" />
+    <h1 align="center">Lineage</h1>
+</div>
 
 A comprehensive overview of the history of several of the world's best metro systems.
 
@@ -23,12 +24,12 @@ Powered by [`D3.js`](https://d3js.org/) for animating SVG map elements, `React` 
 
 ### Maps
 
-Maps are heavily modified according to `docs/map-data-spec.md` versions of:
+Maps are sourced from below and heavily modified according to `docs/map-data-spec.md`
 
 (All sourced from [Wikimedia Commons](commons.wikimedia.org)) unless specified
 
 - [Mass Transit Railway](https://commons.wikimedia.org/wiki/File:Hong_Kong_Railway_Route_Map_en.svg)
-- [Shanghai Metro](https://commons.wikimedia.org/wiki/File:Guangzhou_Metro_Linemap.svg)
+- [Shanghai Metro](https://commons.wikimedia.org/wiki/File:Shanghai_Metro_Linemap.svg)
 - [Taipei Metro](https://commons.wikimedia.org/wiki/File:Taipei_Metro_geographical_map.svg)
 - [Singapore MRT](https://mrt.sg/map) (from official MRT website)
 - [Tokyo Subway](https://commons.wikimedia.org/wiki/File:Tokyo_Subway_Linemap_en.svg)

@@ -39,16 +39,16 @@ Use [the map data spec](map-data-spec.md#11-sources-and-verification) for scope 
 
 “Descriptions” counts individual claims in the JSON arrays; “lines” includes historical legend entries. The last recorded event is **not** a certification of completeness through today. Extending the player to the present date does not update the underlying research.
 
-| System                        | Event dates | Descriptions | Legend lines | Last recorded event |
-| ----------------------------- | ----------: | -----------: | -----------: | ------------------- |
-| [Hong Kong — MTR / KCR](#mtr) |          71 |           97 |           15 | 2022-05-15          |
-| [Shanghai](#sh)               |          82 |          151 |           24 | 2025-12-27          |
-| [Taipei](#tp)                 |          24 |           38 |           11 | 2020-01-31          |
-| [Singapore](#sg)              |          38 |           44 |           10 | 2026-07-12          |
-| [Tokyo — Metro / Toei](#ty)   |          96 |          161 |           15 | 2020-06-06          |
-| [Shenzhen](#sz)               |          28 |           59 |           19 | 2026-06-28          |
-| [Hangzhou](#hz)               |          38 |           72 |           12 | 2025-07-26          |
-| [Guangzhou / Foshan](#gz)     |          58 |           99 |           25 | 2026-07-01          |
+| System                             | Event dates | Descriptions | Legend lines | Last recorded event |
+| ---------------------------------- | ----------: | -----------: | -----------: | ------------------- |
+| [Hong Kong — MTR / KCR](#hongkong) |          71 |           97 |           15 | 2022-05-15          |
+| [Shanghai](#shanghai)              |          82 |          151 |           24 | 2025-12-27          |
+| [Taipei](#taipei)                  |          24 |           38 |           11 | 2020-01-31          |
+| [Singapore](#singapore)            |          38 |           44 |           10 | 2026-07-12          |
+| [Tokyo — Metro / Toei](#tokyo)     |          96 |          161 |           15 | 2020-06-06          |
+| [Shenzhen](#shenzhen)              |          28 |           59 |           19 | 2026-06-28          |
+| [Hangzhou](#hangzhou)              |          38 |           72 |           12 | 2025-07-26          |
+| [Guangzhou / Foshan](#guangfo)     |          58 |           99 |           25 | 2026-07-01          |
 
 ## Accuracy gaps to keep visible
 
@@ -61,11 +61,11 @@ Use [the map data spec](map-data-spec.md#11-sources-and-verification) for scope 
 7. **Guangzhou/Foshan:** May/November 2006 and September 2021 naming rollouts lack exact days; historical tram previews require their timetable. Line 12 length definitions differ between sources.
 8. **Across systems:** a published present-day total does not prove each historical `data-km` allocation, and a geographic SVG is not a survey. Original artwork provenance remains incompletely recovered for several older systems.
 
-<a id="mtr"></a>
+<a id="hongkong"></a>
 
-## Hong Kong — MTR / KCR (`mtr`)
+## Hong Kong — MTR / KCR (`hongkong`)
 
-Assets: [events](../src/assets/mtr/data/events.json), [line names](../src/assets/mtr/data/lines.json), [SVG](../src/assets/mtr/map.svg).
+Assets: [events](../src/assets/hongkong/data/events.json), [line names](../src/assets/hongkong/data/lines.json), [SVG](../src/assets/hongkong/map.svg).
 
 ### Primary records and other focused references
 
@@ -201,11 +201,11 @@ The SVG retains the title “MTR system map in English released to the public do
 - The XRL geometry was corrected through Kwai Chung/Shek Kong using mapped track plus the LegCo alignment. It continues into Shenzhen at the SVG boundary; only Hong Kong mileage is counted. Old Beacon Hill and Tsim Sha Tsui approaches are historical reconstructions, not current OSM railway.
 - Light Rail is simplified. The documented allocation is 36.2 km today, with 4.4 km for 2003 extensions, 3.2 km for earlier Tin Shui Wai track and 28.6 km for the older Tuen Mun/Yuen Long area. Splits within that last group were prorated by drawn length: **estimates, not measured historical engineering lengths**.
 
-<a id="sh"></a>
+<a id="shanghai"></a>
 
-## Shanghai (`sh`)
+## Shanghai (`shanghai`)
 
-Assets: [events](../src/assets/sh/data/events.json), [line names](../src/assets/sh/data/lines.json), [SVG](../src/assets/sh/map.svg).
+Assets: [events](../src/assets/shanghai/data/events.json), [line names](../src/assets/shanghai/data/lines.json), [SVG](../src/assets/shanghai/map.svg).
 
 ### Primary records and other focused references
 
@@ -345,11 +345,11 @@ Exact upstream SVG revision/author has not been recovered. Existing rivers and t
 - Shanghai Railway Station, West Nanjing Road, Caoyang Road and other walking transfers need separate paid-area identities. A shared name or fare concession does not justify merging all markers or highlighting every line’s platforms.
 - The early Jinjiang Park/Shanghai South and Zhangjiang High-Tech Park replacement alignments require historical maps. Modern line geometry cannot independently verify removed surface stations.
 
-<a id="tp"></a>
+<a id="taipei"></a>
 
-## Taipei (`tp`)
+## Taipei (`taipei`)
 
-Assets: [events](../src/assets/tp/data/events.json), [line names](../src/assets/tp/data/lines.json), [SVG](../src/assets/tp/map.svg).
+Assets: [events](../src/assets/taipei/data/events.json), [line names](../src/assets/taipei/data/lines.json), [SVG](../src/assets/taipei/map.svg).
 
 ### Primary records and other focused references
 
@@ -419,11 +419,11 @@ Exact upstream SVG revision/author has not been recovered. The pre-existing metr
 - The operator specifies a walk from Taipei Zoo MRT to the gondola. Banqiao/Circular Line and Xinpu/Xinpu Minsheng similarly need separate identities, not automatic grouping by proximity/name.
 - Compare stored section lengths against operator historical tables: for example the operator chronology quotes 10.5 km for the initial Muzha section and 8.4 km for the Guting–Xindian extension, whereas existing allocations use different totals. These require reconciliation, not a blanket “verified” label.
 
-<a id="sg"></a>
+<a id="singapore"></a>
 
-## Singapore (`sg`)
+## Singapore (`singapore`)
 
-Assets: [events](../src/assets/sg/data/events.json), [line names](../src/assets/sg/data/lines.json), [SVG](../src/assets/sg/map.svg).
+Assets: [events](../src/assets/singapore/data/events.json), [line names](../src/assets/singapore/data/lines.json), [SVG](../src/assets/singapore/map.svg).
 
 ### Primary records and other focused references
 
@@ -509,11 +509,11 @@ Exact upstream SVG revision/author has not been recovered. LTA’s official netw
 - Bukit Panjang, Sengkang and Punggol LRT use simplified track coverage. Intermediate stop openings are not all separate markers/events; this is a scope choice, not evidence those stops never existed.
 - Document line-total rounding and branch accounting before treating section `data-km` as precise engineering measurements. The completed Circle Line’s ring and Marina Bay spur need consistent treatment.
 
-<a id="ty"></a>
+<a id="tokyo"></a>
 
-## Tokyo — Metro / Toei (`ty`)
+## Tokyo — Metro / Toei (`tokyo`)
 
-Assets: [events](../src/assets/ty/data/events.json), [line names](../src/assets/ty/data/lines.json), [SVG](../src/assets/ty/map.svg).
+Assets: [events](../src/assets/tokyo/data/events.json), [line names](../src/assets/tokyo/data/lines.json), [SVG](../src/assets/tokyo/map.svg).
 
 ### Primary records and other focused references
 
@@ -691,11 +691,11 @@ These station-specific pages preserve the research trail for compact markers, fo
 - [霞ケ関駅 (東京都)][ty-st-霞ケ関駅_(東京都)] — recovered secondary station history.
 - [飯田橋駅][ty-st-飯田橋駅] — recovered secondary station history.
 
-<a id="sz"></a>
+<a id="shenzhen"></a>
 
-## Shenzhen (`sz`)
+## Shenzhen (`shenzhen`)
 
-Assets: [events](../src/assets/sz/data/events.json), [line names](../src/assets/sz/data/lines.json), [SVG](../src/assets/sz/map.svg).
+Assets: [events](../src/assets/shenzhen/data/events.json), [line names](../src/assets/shenzhen/data/lines.json), [SVG](../src/assets/shenzhen/map.svg).
 
 ### Primary records and other focused references
 
@@ -775,11 +775,11 @@ Recovered original artwork: [Shenzhen Metro (Rapid Transit) System Map.svg](<htt
 - Longhua Tram and Pingshan Skyshuttle are simplified. The Skyshuttle drawing was deliberately adjusted to reach the selected metro interchange markers, like the existing Guanlan representation. This is **not evidence that the actual tracks pass through those metro platforms**. Real walking/paid-area arrangements must be taken from station plans.
 - Use the Line 13 engineering report above for an independent alignment cross-check; future planned connections shown there are not historical service.
 
-<a id="hz"></a>
+<a id="hangzhou"></a>
 
-## Hangzhou (`hz`)
+## Hangzhou (`hangzhou`)
 
-Assets: [events](../src/assets/hz/data/events.json), [line names](../src/assets/hz/data/lines.json), [SVG](../src/assets/hz/map.svg).
+Assets: [events](../src/assets/hangzhou/data/events.json), [line names](../src/assets/hangzhou/data/lines.json), [SVG](../src/assets/hangzhou/map.svg).
 
 ### Primary records and other focused references
 
@@ -868,11 +868,11 @@ The supplied Hangzhou SVG is the geographic base, but its exact upstream artwork
 - East Railway Station and East Square remain separate paid areas even after eligible tickets gain continuous fares. Shentangqiao’s actual passage opening has its own 1 November 2022 source.
 - Unopened Tiaoxi and deferred intermediate platforms must not be inferred open from the full planned project length. Verify operating extent before using a line-total kilometre figure.
 
-<a id="gz"></a>
+<a id="guangfo"></a>
 
-## Guangzhou / Foshan (`gz`)
+## Guangzhou / Foshan (`guangfo`)
 
-Assets: [events](../src/assets/gz/data/events.json), [line names](../src/assets/gz/data/lines.json), [SVG](../src/assets/gz/map.svg).
+Assets: [events](../src/assets/guangfo/data/events.json), [line names](../src/assets/guangfo/data/lines.json), [SVG](../src/assets/guangfo/map.svg).
 
 ### Primary records and other focused references
 
