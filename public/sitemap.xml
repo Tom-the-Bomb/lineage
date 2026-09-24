@@ -1,37 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mtr.tomthebomb.dev/</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://lineage.tomthebomb.dev/</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mtr.tomthebomb.dev/mtr</loc>
+    <loc>https://lineage.tomthebomb.dev/mtr</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mtr.tomthebomb.dev/sh</loc>
+    <loc>https://lineage.tomthebomb.dev/sh</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mtr.tomthebomb.dev/tp</loc>
+    <loc>https://lineage.tomthebomb.dev/tp</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mtr.tomthebomb.dev/sg</loc>
+    <loc>https://lineage.tomthebomb.dev/sg</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mtr.tomthebomb.dev/mtr/article</loc>
+    <loc>https://lineage.tomthebomb.dev/ty</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lineage.tomthebomb.dev/sz</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lineage.tomthebomb.dev/hz</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lineage.tomthebomb.dev/gz</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lineage.tomthebomb.dev/mtr/article</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

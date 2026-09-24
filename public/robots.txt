@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mtr.tomthebomb.dev/sitemap.xml
+Sitemap: https://lineage.tomthebomb.dev/sitemap.xml

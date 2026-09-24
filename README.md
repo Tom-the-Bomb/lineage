@@ -1,6 +1,10 @@
-# Metro History
+<img src="public/logo.svg" width="64" height="64" alt="Lineage logo" />
+
+# Lineage
 
 A comprehensive overview of the history of several of the world's best metro systems.
+
+[Explore Lineage](https://lineage.tomthebomb.dev/) · Transit through time.
 
 Powered by [`D3.js`](https://d3js.org/) for animating SVG map elements, `React` with `TS`, `Tailwind`, and `Vite`.
 
@@ -14,3 +18,20 @@ Powered by [`D3.js`](https://d3js.org/) for animating SVG map elements, `React` 
 - [Shenzhen Metro](https://www.szmc.net/), including Longhua Tram and Pingshan Skyshuttle as tracks only
 - [Hangzhou Metro](https://www.hzmetro.com/)
 - [Guangzhou Metro](https://www.gzmtr.com/) and [Foshan Metro](https://www.fmetro.net/), including Guangfo and APM, plus Haizhu, Huangpu and Nanhai trams as tracks only
+
+## Asset Sources
+
+### Maps
+
+Maps are heavily modified according to `docs/map-data-spec.md` versions of:
+
+(All sourced from [Wikimedia Commons](commons.wikimedia.org)) unless specified
+
+- [Mass Transit Railway](https://commons.wikimedia.org/wiki/File:Hong_Kong_Railway_Route_Map_en.svg)
+- [Shanghai Metro](https://commons.wikimedia.org/wiki/File:Guangzhou_Metro_Linemap.svg)
+- [Taipei Metro](https://commons.wikimedia.org/wiki/File:Taipei_Metro_geographical_map.svg)
+- [Singapore MRT](https://mrt.sg/map) (from official MRT website)
+- [Tokyo Subway](https://commons.wikimedia.org/wiki/File:Tokyo_Subway_Linemap_en.svg)
+- [Shenzhen Metro](https://commons.wikimedia.org/wiki/File:Shenzhen_Metro_Linemap.svg)
+- [Hangzhou Metro](https://commons.wikimedia.org/wiki/File:Hangzhou_Metro_Linemap.svg)
+- [Guangzhou Metro](https://commons.wikimedia.org/wiki/File:Guangzhou_Metro_Linemap.svg)
