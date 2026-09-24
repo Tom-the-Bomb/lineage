@@ -1,0 +1,133 @@
+{
+  "lines": [
+    {
+      "id": "1",
+      "label": "Line_1=1997_06_28",
+      "color": "#f3d03e"
+    },
+    {
+      "id": "2",
+      "label": "Line_2=2002_12_29",
+      "color": "#00629b"
+    },
+    {
+      "id": "3",
+      "label": "Line_3=2005_12_26",
+      "color": "#eca154"
+    },
+    {
+      "id": "4",
+      "label": "Line_4=2005_12_26",
+      "color": "#00843d"
+    },
+    {
+      "id": "5",
+      "label": "Line_5=2009_12_28",
+      "color": "#c5003e"
+    },
+    {
+      "id": "6",
+      "label": "Line_6=2013_12_28",
+      "color": "#80225f"
+    },
+    {
+      "id": "7",
+      "label": "Line_7=2016_12_28",
+      "color": "#97d700"
+    },
+    {
+      "id": "8",
+      "label": "Line_8=2010_09_25",
+      "color": "#008c95"
+    },
+    {
+      "id": "9",
+      "label": "Line_9=2017_12_28",
+      "color": "#71cc98"
+    },
+    {
+      "id": "10",
+      "label": "Line_10=2025_06_29",
+      "color": "#7c58a5"
+    },
+    {
+      "id": "11",
+      "label": "Line_11=2024_12_28",
+      "color": "#78342f"
+    },
+    {
+      "id": "12",
+      "label": "Line_12=2025_06_29",
+      "color": "#59621e"
+    },
+    {
+      "id": "13",
+      "label": "Line_13=2017_12_28",
+      "color": "#8e8c13"
+    },
+    {
+      "id": "14",
+      "label": "Line_14=2017_12_28",
+      "color": "#81312f"
+    },
+    {
+      "id": "18",
+      "label": "Line_18=2021_09_28",
+      "color": "#0047ba"
+    },
+    {
+      "id": "21",
+      "label": "Line_21=2018_12_28",
+      "color": "#201747"
+    },
+    {
+      "id": "22",
+      "label": "Line_22=2022_03_31",
+      "color": "#cd5228"
+    },
+    {
+      "id": "gf",
+      "label": "Guangfo_Line=2010_11_03",
+      "color": "#c4d600"
+    },
+    {
+      "id": "apm",
+      "label": "APM=2010_11_08",
+      "color": "#00b5e2"
+    },
+    {
+      "id": "tram",
+      "label": "Haizhu_Tram=2014_12_31-2021_09_01,Haizhu_Tram_Line_1=2021_09_01",
+      "color": "#43b02a",
+      "simplified": true
+    },
+    {
+      "id": "hp1",
+      "label": "Huangpu_Tram_Line_1=2020_07_01",
+      "color": "#0072ce",
+      "simplified": true
+    },
+    {
+      "id": "hp2",
+      "label": "Huangpu_Tram_Line_2=2020_12_29-2021_01_04,Huangpu_Tram_Line_2=2025_06_20",
+      "color": "#d42d1b",
+      "simplified": true
+    },
+    {
+      "id": "f2",
+      "label": "Foshan_Line_2=2021_12_28",
+      "color": "#c10230"
+    },
+    {
+      "id": "f3",
+      "label": "Foshan_Line_3=2022_12_28",
+      "color": "#002f87"
+    },
+    {
+      "id": "nh",
+      "label": "Nanhai_Tram_Line_1=2021_08_18",
+      "color": "#5eb3e4",
+      "simplified": true
+    }
+  ]
+}

@@ -435,8 +435,10 @@ Include:
     passenger branches into depots.
   - Check every historical marker version covering that transfer period. Clip the membership to
     each marker's lifetime, just like any other `data-lines` entry (§5).
-- Other rail modes the operator's own map treats as part of the network (Shanghai Maglev,
-  MTR Ngong Ping 360), with markers only where they meet the network.
+- Other modes the operator's own map treats as part of the network (Shanghai Maglev,
+  MTR Ngong Ping 360, Taipei Maokong Gondola), with their passenger stations. For gondolas,
+  omit towers and non-passenger angle stations. Separate gondola and metro stations use
+  separate markers and a walking connector (§6), as at Taipei Zoo.
 - Geography: land and water fills, and nothing else.
 
 Exclude:
@@ -539,6 +541,13 @@ Exclude:
 When sources disagree, prefer the one that cites a dated primary source. Note the decision and the
 losing claim in the commit message. For example, Line 3 opened 2000-12-26 (zh line article) and not
 2000-12-27 (en timeline).
+
+For added geography, verify station coordinates and the route between them against mapped track
+alignments or operator engineering maps. Match coordinate systems before placing them on the SVG:
+OpenStreetMap uses WGS84; mainland Chinese maps commonly use GCJ-02. Check the conversion against
+several existing stations across the area, then inspect riverbanks, islands and road corridors.
+Smooth the verified alignment; do not invent it by joining station centres. Keep any small offsets
+needed for readable interchanges local.
 
 **Procedure**:
 

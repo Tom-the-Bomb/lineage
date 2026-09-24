@@ -1,0 +1,391 @@
+[
+  {
+    "date": "1997-06-28",
+    "descriptions": [
+      "Line 1: Xi Lang - Huang Sha opens"
+    ]
+  },
+  {
+    "date": "1999-02-16",
+    "descriptions": [
+      "Line 1: Huang Sha - Guang Zhou Dong Zhan opens",
+      "Public preview service begins on the full Line 1; regular operation follows on 28 June"
+    ]
+  },
+  {
+    "date": "2002-12-29",
+    "descriptions": [
+      "Line 2: San Yuan Li - Jiang Nan Xi opens",
+      "Line 2 continues from Jiang Nan Xi to Xiao Gang over its original eastward alignment"
+    ]
+  },
+  {
+    "date": "2003-06-28",
+    "descriptions": [
+      "Line 2: Xiao Gang - Pa Zhou opens"
+    ]
+  },
+  {
+    "date": "2005-12-26",
+    "descriptions": [
+      "Line 2: Pa Zhou - Wan Sheng Wei opens",
+      "Line 3: Ke Cun - Guang Zhou Dong Zhan opens",
+      "Line 4: Wan Sheng Wei - Xin Zao opens"
+    ]
+  },
+  {
+    "date": "2006-05-01",
+    "descriptions": [
+      "Bei Ting and Nan Ting → Da Xue Cheng Bei and Da Xue Cheng Nan (May 2006; exact day unverified)"
+    ]
+  },
+  {
+    "date": "2006-11-01",
+    "descriptions": [
+      "English station names replace the original syllable-spaced Pinyin, including Chen Jia Ci → Chen Clan Academy and Zhong Da → Sun Yat-sen University (November 2006 rollout; exact day unverified)"
+    ]
+  },
+  {
+    "date": "2006-12-30",
+    "descriptions": [
+      "Line 3: Kecun - Panyu Square opens",
+      "Line 3: Tiyu Xilu - Tianhe Coach Terminal opens",
+      "Line 4: Xinzao - Huangge opens"
+    ]
+  },
+  {
+    "date": "2007-06-28",
+    "descriptions": [
+      "Line 4: Huangge - Jinzhou opens"
+    ]
+  },
+  {
+    "date": "2009-12-28",
+    "descriptions": [
+      "Line 4: Wanshengwei - Chebeinan opens",
+      "Line 5: Jiaokou - Wenchong opens"
+    ]
+  },
+  {
+    "date": "2010-09-25",
+    "descriptions": [
+      "Line 2: Sanyuanli - Jiahewanggang opens",
+      "Line 2: Jiangnanxi - Guangzhou South Railway Station opens",
+      "Line 4: Chebeinan - Huangcun opens",
+      "Line 8: Changgang - Xiaogang opens",
+      "Line 2 splits: Xiaogang - Wanshengwei becomes Line 8; the old Jiangnanxi - Xiaogang curve is retired and both lines serve Changgang"
+    ]
+  },
+  {
+    "date": "2010-10-30",
+    "descriptions": [
+      "Line 3: Guangzhou East Railway Station - Airport South opens"
+    ]
+  },
+  {
+    "date": "2010-11-03",
+    "descriptions": [
+      "Line 8: Fenghuang Xincun - Changgang opens",
+      "Guangfo Line: Kuiqi Lu - Xilang opens"
+    ]
+  },
+  {
+    "date": "2010-11-08",
+    "descriptions": [
+      "APM: Linhexi - Guangzhou Opera House opens",
+      "APM opens with a separate fare system; Linhexi requires exit and re-entry"
+    ]
+  },
+  {
+    "date": "2010-11-28",
+    "descriptions": [
+      "APM: Guangzhou Opera House - Chigang Pagoda opens",
+      "APM reaches Chigang Pagoda with an out-of-paid-area transfer to Line 3; Haixinsha remains closed"
+    ]
+  },
+  {
+    "date": "2011-02-24",
+    "descriptions": [
+      "APM: Haixinsha opens"
+    ]
+  },
+  {
+    "date": "2013-12-28",
+    "descriptions": [
+      "Line 6: Xunfenggang - Changban opens",
+      "Chigang Pagoda → Canton Tower on Line 3 and APM"
+    ]
+  },
+  {
+    "date": "2014-12-31",
+    "descriptions": [
+      "Haizhu Tram opens Canton Tower - Wanshengwei for public trial rides"
+    ]
+  },
+  {
+    "date": "2015-01-28",
+    "descriptions": [
+      "Line 6: Yide Lu opens"
+    ]
+  },
+  {
+    "date": "2015-12-28",
+    "descriptions": [
+      "Guangfo Line: Xilang - Yangang opens"
+    ]
+  },
+  {
+    "date": "2016-12-28",
+    "descriptions": [
+      "Line 6: Changban - Xiangxue opens",
+      "Line 7: Guangzhou South Railway Station - Higher Education Mega Center South opens",
+      "Guangfo Line: Kuiqi Lu - Xincheng Dong opens"
+    ]
+  },
+  {
+    "date": "2017-06-28",
+    "descriptions": [
+      "Line 6: Botanical Garden opens",
+      "Line 6: Kemulang opens"
+    ]
+  },
+  {
+    "date": "2017-12-28",
+    "descriptions": [
+      "Line 3: Gaozeng opens",
+      "Line 4: Jinzhou - Nansha Passenger Port opens",
+      "Line 4: Qingsheng opens",
+      "Line 9: Fei'eling - Gaozeng opens",
+      "Line 13: Yuzhu - Xinsha opens",
+      "Line 14: Xinhe - Zhenlong opens"
+    ]
+  },
+  {
+    "date": "2018-04-26",
+    "descriptions": [
+      "Line 3: Airport South (Terminal 1) - Airport North (Terminal 2) opens",
+      "Airport South → Airport South (Terminal 1) as Terminal 2 gains Airport North"
+    ]
+  },
+  {
+    "date": "2018-06-30",
+    "descriptions": [
+      "Line 9: Qingtang opens"
+    ]
+  },
+  {
+    "date": "2018-12-28",
+    "descriptions": [
+      "Line 14: Jiahewanggang - Dongfeng opens",
+      "Line 21: Zhenlongxi - Zengcheng Square opens",
+      "Guangfo Line: Yangang - Lijiao opens"
+    ]
+  },
+  {
+    "date": "2019-12-20",
+    "descriptions": [
+      "Line 21: Tianhe Park - Zhenlongxi opens",
+      "Line 21: Yuancun - Tianhe Park opens"
+    ]
+  },
+  {
+    "date": "2019-12-28",
+    "descriptions": [
+      "Line 8: Fenghuang Xincun - Cultural Park opens"
+    ]
+  },
+  {
+    "date": "2020-07-01",
+    "descriptions": [
+      "Huangpu Tram Line 1 opens Changping - Xinfeng Lu"
+    ]
+  },
+  {
+    "date": "2020-11-26",
+    "descriptions": [
+      "Line 8: Cultural Park - Jiaoxin opens"
+    ]
+  },
+  {
+    "date": "2020-12-28",
+    "descriptions": [
+      "Huangpu Tram Line 1 extends from Changping to Xiangxue, adding metro connections at Shuixi and Xiangxue"
+    ]
+  },
+  {
+    "date": "2020-12-29",
+    "descriptions": [
+      "Huangpu Tram Line 2 offers public preview rides between Huangpu Library and Xiangxue Park"
+    ]
+  },
+  {
+    "date": "2021-01-04",
+    "descriptions": [
+      "Huangpu Tram Line 2 public preview ends after 3 January; regular service has not yet begun"
+    ]
+  },
+  {
+    "date": "2021-08-18",
+    "descriptions": [
+      "Nanhai Tram Line 1: Leigang - Sanshanxinchengbei opens"
+    ]
+  },
+  {
+    "date": "2021-09-01",
+    "descriptions": [
+      "Haizhu Tram → Haizhu Tram Line 1 (September 2021 map update; exact day unverified)",
+      "Qiandenghu Lake → Qiandeng Lake (September 2021 map update; exact day unverified)"
+    ]
+  },
+  {
+    "date": "2021-09-28",
+    "descriptions": [
+      "Line 18: Xiancun - Wanqingsha opens"
+    ]
+  },
+  {
+    "date": "2021-12-28",
+    "descriptions": [
+      "Foshan Line 2: Nanzhuang - Guangzhou South Railway Station opens"
+    ]
+  },
+  {
+    "date": "2022-03-31",
+    "descriptions": [
+      "Line 22: Chentougang - Panyu Square opens"
+    ]
+  },
+  {
+    "date": "2022-05-01",
+    "descriptions": [
+      "Line 7: Guangzhou South Railway Station - Meidi Dadao opens"
+    ]
+  },
+  {
+    "date": "2022-09-28",
+    "descriptions": [
+      "Line 8: Caihong Bridge opens"
+    ]
+  },
+  {
+    "date": "2022-11-29",
+    "descriptions": [
+      "Nanhai Tram Line 1: Sanshanxinchengbei - Linyuedong opens"
+    ]
+  },
+  {
+    "date": "2022-12-28",
+    "descriptions": [
+      "Line 8: Xicun opens",
+      "Foshan Line 3: Shunde College Railway Station - Zhen'an opens"
+    ]
+  },
+  {
+    "date": "2023-08-22",
+    "descriptions": [
+      "A passage links Tiyu Xilu and APM Tianhenan through Parc Central; fares remain separate"
+    ]
+  },
+  {
+    "date": "2023-12-28",
+    "descriptions": [
+      "Line 5: Wenchong - Huangpu New Port opens",
+      "Line 7: Higher Education Mega Center South - Yanshan opens"
+    ]
+  },
+  {
+    "date": "2024-01-21",
+    "descriptions": [
+      "Guangzhou South Railway Station: the paid-area passage links Foshan Line 2 with Guangzhou Lines 2, 7 and 22"
+    ]
+  },
+  {
+    "date": "2024-08-23",
+    "descriptions": [
+      "Foshan Line 3: Zhen'an - Zhongshan Park opens",
+      "Foshan Line 3: Lianhe - Foshan University opens"
+    ]
+  },
+  {
+    "date": "2024-10-02",
+    "descriptions": [
+      "Line 21 withdraws from Yuancun - Tianhe Park so the section can be converted for Line 11; Tianhe Park becomes the terminus"
+    ]
+  },
+  {
+    "date": "2024-11-01",
+    "descriptions": [
+      "Line 3: Panyu Square - Haibang opens"
+    ]
+  },
+  {
+    "date": "2024-11-12",
+    "descriptions": [
+      "Haizhu Tram permanently removes its old Canton Tower terminus; service is cut back to Liede Bridge South during relocation"
+    ]
+  },
+  {
+    "date": "2024-12-28",
+    "descriptions": [
+      "Line 6: Shahe opens",
+      "Line 11: the ring opens, including the former Line 21 section; its Guangzhou East Railway Station and Guangzhou Railway Station platforms remain unopened",
+      "Pazhou: transferring between Lines 8 and 11 requires leaving and re-entering the paid area; Jiangtai Lu → Jiangtai Road"
+    ]
+  },
+  {
+    "date": "2025-06-20",
+    "descriptions": [
+      "Huangpu Tram Line 2 opens regular service Xiangxue - Kaiyuan Dadao East, including the earlier public-preview section"
+    ]
+  },
+  {
+    "date": "2025-06-29",
+    "descriptions": [
+      "Line 10: Xilang - Yangji East opens",
+      "Line 12: Xunfenggang - Guangzhou Gymnasium opens",
+      "Line 12: Ersha Island - Higher Education Mega Center South opens",
+      "Wuyangcun uses an out-of-station transfer between Lines 5 and 10; Dongxiaonan → Dongxiao South",
+      "Line 12 opens as two separate sections; its Chigang platforms and Line 10’s Sun Yat-sen University South Gate remain unopened"
+    ]
+  },
+  {
+    "date": "2025-07-01",
+    "descriptions": [
+      "Haizhu Tram reopens to its relocated Canton Tower terminus, at the former Canton Tower East stop; the old westernmost track remains removed"
+    ]
+  },
+  {
+    "date": "2025-09-29",
+    "descriptions": [
+      "Line 11: Guangzhou East Railway Station opens",
+      "Line 13: Yuzhu - Tianhe Park opens",
+      "Line 14: Jiahewanggang - Lejia Road opens"
+    ]
+  },
+  {
+    "date": "2025-12-29",
+    "descriptions": [
+      "Line 10: Sun Yat-sen University South Gate opens",
+      "Line 22: Chentougang - Fangcun opens"
+    ]
+  },
+  {
+    "date": "2026-02-13",
+    "descriptions": [
+      "Line 12: Chigang opens"
+    ]
+  },
+  {
+    "date": "2026-06-18",
+    "descriptions": [
+      "Foshan Line 3: Zhongshan Park - Lianhe opens",
+      "Foshan Line 3: the northern and southern sections join; Dunhou station opens, while trains initially bypass Foshan Railway Station"
+    ]
+  },
+  {
+    "date": "2026-07-01",
+    "descriptions": [
+      "Foshan Line 3: Foshan Railway Station opens"
+    ]
+  }
+]

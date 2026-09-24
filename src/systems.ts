@@ -1,5 +1,10 @@
 import { utcDay } from 'd3';
 
+import gzEvents from './assets/gz/data/events.json';
+import gzLines from './assets/gz/data/lines.json';
+import foshanLogo from './assets/gz/foshan.svg';
+import gzMap from './assets/gz/map.svg';
+import gzLogo from './assets/gz/metro.svg';
 import hzEvents from './assets/hz/data/events.json';
 import hzLines from './assets/hz/data/lines.json';
 import hzMap from './assets/hz/map.svg';
@@ -173,6 +178,28 @@ export const systems = {
         initialView: { center: [2270, 1140], zoom: 1 },
         tooltipLogos() {
             return [{ src: hzLogo, alt: 'Hangzhou Metro' }];
+        },
+    },
+    gz: {
+        title: 'Guangfo Metro History',
+        localTitle: '广佛地铁历史',
+        description: "Explore how Guangzhou and Foshan's metro networks were built",
+        map: gzMap,
+        logos: [gzLogo, foshanLogo],
+        minDate: new Date(Date.UTC(1997, 0, 1)),
+        maxDate: TODAY,
+        lines: gzLines.lines,
+        events: gzEvents,
+        initialView: { center: [1870, 2360], zoom: 1 },
+        tooltipLogos(status) {
+            return [
+                ...(status !== Status.SecondaryOnly
+                    ? [{ src: gzLogo, alt: 'Guangzhou Metro' }]
+                    : []),
+                ...(status !== Status.PrimaryOnly
+                    ? [{ src: foshanLogo, alt: 'Foshan Metro' }]
+                    : []),
+            ];
         },
     },
 } satisfies Record<string, SystemConfig>;
