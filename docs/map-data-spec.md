@@ -59,6 +59,8 @@ src/assets/<key>/
 - Home page links, `SystemKey` and the routes are derived from `systems`. Add the public URL to `public/sitemap.xml` too. The Hong Kong article is at `/hongkong/article`.
 - Optional `logoSize` sets the header logo width (automatic height) and a square image box for the home page and timeline thumb, in pixels. Artwork proportions are preserved. Defaults are 16 px wide in the header, 28 × 28 on the home page and 24 × 16 for the thumb. Tick/dot positions account for thumb width.
 - Optional `tooltipLogoSize` sets station tooltip logo height in pixels (default 16); width stays automatic.
+- `initialBounds: [width, height]` preserves the opening framing independently of the expanded SVG
+  canvas. Optional `initialView: { center: [x, y], zoom }` uses the same unchanged map coordinates.
 
 ## 2. Label syntax
 
@@ -128,7 +130,10 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 ```
 
 - MUST: the `xmlns:inkscape` namespace, because labels are read with `getAttribute('inkscape:label')`.
-- MUST: a `viewBox`. The app reads it to scale the map so it fills the window and sets the zoom limits.
+- MUST: a `viewBox` covering the complete drawing and geographic margin; its origin may be negative.
+  It sets the minimum zoom and pan bounds. `initialBounds: [width, height]` in system config defines
+  the original `(0, 0)` framing rectangle; `initialView` positions the opening view within it. Keep
+  these separate so extending the canvas does not change the opening view or maximum zoom.
 - MUST: `<g id="zoom-layer">` wraps everything. Zoom and pan transform this group.
 - MUST: `<g id="lines">` contains **only** `<path>` elements, and every one has a label. The app animates
   every child and reads every label, so an unlabelled element breaks it.
@@ -571,6 +576,19 @@ service dates independently, since an OSM edit timestamp is not an opening or cl
 
 ### Background geography
 
+**Preservation comes first.** Keep the original geography inside the original bounds of Hong Kong,
+Shanghai, Shenzhen, Hangzhou, Guangfo, Taipei, Singapore and Tokyo. The baseline is the artwork
+before the canvas/geography expansion (commit `c4fe500`), not an intermediate regenerated version.
+Do not replace, simplify or remove those original paths. Correct administrative land shading is
+required for every system and is an explicit exception to preserving paint colours. Modest, source-backed additions
+are allowed, especially in sparse areas. Preserve existing water and coastline shapes at joins,
+but paint added waterways above land and administrative shading so neither can hide their course.
+Extend geography outside the old bounds and preserve the enlarged zoom-out canvas. Any unavoidable
+join adjustment must be narrowly scoped and documented. Beijing, Chengdu, Chongqing and Nanjing
+are exceptions: their newly created geography may be reworked. Reduce the first three's small-feature
+clutter; give Nanjing useful river/lake context. The normalization rules below apply to **new geography
+and these four exceptions**, not as permission to rebuild the eight established maps.
+
 - Preserve accurate source artwork. Correct a coastline or border against mapped geometry, not by
   drawing a more plausible-looking outline. Government geographic data or OpenStreetMap extracts
   can supply coastlines, islands and river polygons; a regional extract is useful when individual
@@ -581,14 +599,93 @@ service dates independently, since an OSM edit timestamp is not an opening or cl
 - Coastlines and administrative boundaries serve different purposes: use coastlines for land/water
   and administrative boundaries to divide land colours. Administrative areas can include sea.
   Use actual river polygons for border rivers, not an invented gap or a fixed-width buffer.
+  Shade land outside each system's named administrative area consistently across both the original
+  canvas and expanded margins: Hong Kong SAR; Shanghai, Shenzhen, Hangzhou, Chengdu, Beijing,
+  Nanjing and Chongqing municipalities; Guangzhou + Foshan for Guangfo; Taipei + New Taipei +
+  Taoyuan for the combined Taipei map; Tokyo Metropolis; and Singapore. Cross-boundary tracks
+  remain visible on outside-coloured land. Administrative boundaries change fill only, without
+  a coastline-coloured outline. Colour the existing land shapes rather than replacing their coastlines;
+  sea, rivers and lakes keep their water colour. Use solid fills and boundary overlays, clipping
+  to original curves where needed. Avoid full-map paint patterns: they make pan/zoom repaints
+  expensive in WebKit, even when shared by only a few shapes. Check zoom performance in both
+  WebKit and Chromium, at wide and close scales with the latest network visible.
+  Where verified coastal wetlands/tidal flats lie inside the source coastline, distinguish them
+  from opaque dry land with a subdued, unoutlined surface. Do not infer dry land from seawalls,
+  low-tide imagery or a coarse coastal polygon alone; retain genuine reclaimed land.
+- Do not outline water-area polygons lying wholly in the sea: the sea layer already covers them.
+  OSM can represent named marine areas with approximate circles whose edges are not shorelines
+  (for example Rocky Harbour near Sai Kung). Check geography against the combined sea and inland
+  water layers; testing inland water alone can incorrectly reward these duplicate overlays.
+- Check conflicting source tags before treating an area as permanent water. In particular,
+  `natural=water` with `landuse=farmland` and `intermittent=yes` can describe a flood-retention
+  field, not a lake. Keep independently mapped river channels and reservoirs within it;
+  do not reject all intermittent waterways or leave fragments of the removed field outline.
 - Assemble complete coastline ways into closed land polygons, preserving islands and holes. When
   using OSM coastline direction to identify land, account for SVG's downward-pointing y-axis.
   Simplify with topology preserved and a tolerance appropriate to the map's scale; keep real angular
   quays and reclamation edges. Recheck for self-intersections after rounding coordinates.
-- For a geography-only edit, keep everything outside `geography` unchanged, including the viewport.
-  Extend geometry beyond the viewport where needed so clipping does not create visible seams.
+- For a geography-only edit, keep tracks, markers, connectors, labels and their coordinates unchanged.
+  For an explicit canvas expansion, change the root `viewBox` and preserve the original framing in
+  `initialBounds`; do not translate or rescale railway paths. Extend mapped geometry past all four
+  new edges. Never stretch the old edge, leave an old rectangular clipping seam, or fill unknown
+  territory with guessed land/water.
+  Check the final painted result on both sides of old canvas edges and administrative borders.
+  A continuous source path can still be hidden by a land backing or a later land shape. Trace
+  depicted rivers through name changes and confluences; expose only the missing continuation,
+  without duplicating existing banks or adding unrelated tributaries. Do not mistake small
+  source-to-artwork offsets for missing rivers.
+  Check alternate/English names and adjoining source ways: a name filter alone can drop part
+  of the same river. Include substantial side channels around river islands even when their
+  names differ from the main river; otherwise an island can incorrectly become mainland.
+  At confluences, check both the water fill and the painted shoreline;
+  touching fills are insufficient if an old bank stroke still crosses the mouth. Draw only
+  exposed banks around an added tributary, keeping the original geometry intact.
+  Check contextual railway continuations too: a track previously cut at the old canvas edge
+  must follow its mapped alignment beyond the new edge. Do not extend actual termini or add
+  out-of-system distance to `data-km`.
   Inspect both themes, close-up shorelines and railway alignment; the map checker alone does not
   validate geographic accuracy.
+- Normalize detail at the **whole-network overview**, not at the SVG's native coordinate scale.
+  At a 1440 × 900 reference viewport, compute `scale = max(1440 / viewBox.width,
+900 / viewBox.height)`. A starting threshold for isolated lakes/reservoirs is
+  `150 / scale²` square SVG units, with important urban landmarks exempted. Measure the **whole
+  source feature before clipping**, so the visible edge of a large lake is retained. Never use
+  area-to-perimeter ratio to reject lakes: it wrongly removes reservoirs with long branching arms.
+  Select features at overview scale, but retain bank detail for the opening view: a starting
+  simplification tolerance is `0.15 / initialScale` SVG units, using the original opening bounds
+  to calculate `initialScale`. Retain source bends rather than inventing extra vertices. Inspect
+  at maximum zoom too. These are editorial defaults, not a substitute for checking actual features.
+  Check disconnected bank fragments against adjoining source ways, including unnamed reaches;
+  do not bridge real dams, gates or covered channels simply because their ends are close.
+  Retain the fitted coastline and its existing simplification scale. Reassess inland-water detail
+  at the current overview when explicitly reducing clutter; older detail thresholds need not be
+  preserved. Omit tiny isolated offshore islets below roughly 4 overview pixels² unless relevant
+  to a station or landmark. Never remove a substantial lake merely because only its edge is visible.
+- Select principal river corridors explicitly, including alternate/local-language names, upstream
+  connections and substantial navigable canals. Match their bank polygons spatially as well as by
+  name: an unnamed bank section still belongs to the same river. Keep all those sections, union
+  adjoining banks, then simplify. Preserve islands/holes and channels through confluences. Omit
+  minor irrigation networks as features; do not create gaps by filtering pieces of a principal river.
+  A compound bank relation may contain a whole drainage network: intersecting a selected river
+  does not make every attached side branch important. Retain broad bank areas and measured banks
+  along the selected main course, pruning narrow side drains without widening the river. Apply
+  that pruning only to river/canal banks, not to branching lakes and reservoirs.
+- Use mapped banks wherever available. A thin mapped centreline symbol is acceptable only for
+  missing-bank stretches; do not buffer the entire river over existing banks and change their width.
+  Document symbolic stretches separately from measured banks. Do not invent border rivers.
+- Compare retained lakes and principal banks against the projected source polygons, not just the
+  finished map's appearance. Check missing area, holes, shoreline displacement and continuity at
+  clipped edges. Compare duplicate relations across adjacent extracts and verify that the extracts
+  cover the expanded canvas. A small visible fraction of a lake is not evidence of a misplaced lake.
+- Review the opening view and whole network in both themes. Background detail must remain subordinate
+  to railway lines. Check mapped station/shoreline relationships as well as overall appearance.
+- Check 1280 × 720, 1280 × 800, 1366 × 768, 1440 × 900 and 1536 × 864 with Stats and Changelog
+  expanded and the line legend visible. At minimum zoom, latest-date tracks and markers must fit
+  in the unobstructed area, with clearance from panels, controls and the footer. Merely fitting
+  inside the viewport or hiding the panels with full view is insufficient. Check constrained pan
+  extremes too, without exposing canvas edges. Preserve the opening transform at these sizes and
+  on mobile; verify maximum zoom, search zoom and resize behavior separately. Prefer changing
+  canvas bounds to adding new runtime camera behavior when the existing zoom logic supports it.
 - Record the dataset, snapshot date, attribution, coordinate fit and simplification choices in
   [timeline-sources.md](timeline-sources.md). State whether the background is present-day geography
   throughout playback; modern coastlines do not establish historical reclamation boundaries.

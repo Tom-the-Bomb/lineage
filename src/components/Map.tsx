@@ -279,8 +279,9 @@ export default function Map({ system }: { system: SystemKey }) {
 
         const { width: viewportWidth, height: viewportHeight } = svgEl.getBoundingClientRect();
 
-        const scaleWidth = viewportWidth / viewBox.width;
-        const scaleHeight = viewportHeight / viewBox.height;
+        const [initialWidth, initialHeight] = config.initialBounds;
+        const scaleWidth = viewportWidth / initialWidth;
+        const scaleHeight = viewportHeight / initialHeight;
 
         const initialScale = Math.max(scaleWidth, scaleHeight);
 
@@ -290,24 +291,27 @@ export default function Map({ system }: { system: SystemKey }) {
         const initialTranslateX = view
             ? clamp(
                   viewportWidth / 2 - view.center[0] * viewZoom,
-                  viewportWidth - viewBox.width * viewZoom,
+                  viewportWidth - initialWidth * viewZoom,
                   0,
               )
-            : (viewportWidth - viewBox.width * initialScale) / 2;
+            : (viewportWidth - initialWidth * initialScale) / 2;
         const initialTranslateY = view
             ? clamp(
                   viewportHeight / 2 - view.center[1] * viewZoom,
-                  viewportHeight - viewBox.height * viewZoom,
+                  viewportHeight - initialHeight * viewZoom,
                   0,
               )
-            : viewportHeight - viewBox.height * initialScale;
+            : viewportHeight - initialHeight * initialScale;
 
         const zoom = d3
             .zoom<SVGSVGElement, unknown>()
-            .scaleExtent([initialScale, initialScale * 4])
+            .scaleExtent([
+                Math.max(viewportWidth / viewBox.width, viewportHeight / viewBox.height),
+                initialScale * 4,
+            ])
             .translateExtent([
-                [0, 0],
-                [viewBox.width, viewBox.height],
+                [viewBox.x, viewBox.y],
+                [viewBox.x + viewBox.width, viewBox.y + viewBox.height],
             ])
             .on('zoom', (event: d3.D3ZoomEvent<SVGSVGElement, unknown>) => {
                 zoomLayer.attr('transform', event.transform.toString());
@@ -383,7 +387,15 @@ export default function Map({ system }: { system: SystemKey }) {
         svgEl.style.height = '100%';
 
         return () => svgDoc.removeEventListener('keydown', keyDownHandler);
-    }, [svgDoc, legend, keyDownHandler, minDate, maxDate, config.initialView]);
+    }, [
+        svgDoc,
+        legend,
+        keyDownHandler,
+        minDate,
+        maxDate,
+        config.initialView,
+        config.initialBounds,
+    ]);
 
     useEffect(() => {
         if (!svgDoc) {

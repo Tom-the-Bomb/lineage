@@ -72,6 +72,7 @@ export interface SystemConfig {
     milestoneDates: string[];
     article?: string;
     tooltipLogos?: (status: Status, time: number) => { src: string; alt: string }[];
+    initialBounds: [number, number];
     initialView?: { center: [number, number]; zoom: number };
 }
 
@@ -89,6 +90,7 @@ export const systems = {
         localTitle: '港鐵歷史',
         description: "Explore the growth of Hong Kong's rail network",
         map: hongkongMap,
+        initialBounds: [1038, 950],
         logos: [hongkongLogo],
         lines: hongkongLines.lines,
         events: hongkongEvents,
@@ -109,6 +111,7 @@ export const systems = {
         localTitle: '上海地铁历史',
         description: "Explore the growth of Shanghai's rail network",
         map: shanghaiMap,
+        initialBounds: [4600.74, 2843.75],
         logos: [shanghaiMetroLogo],
         lines: shanghaiLines.lines,
         events: shanghaiEvents,
@@ -130,6 +133,7 @@ export const systems = {
         localTitle: '臺北捷運歷史',
         description: "Explore the growth of Taipei's rail network",
         map: taipeiMap,
+        initialBounds: [3012.8, 3321.3],
         logos: [taipeiLogo],
         lines: taipeiLines.lines,
         events: taipeiEvents,
@@ -144,6 +148,7 @@ export const systems = {
         localTitle: '新加坡地铁历史',
         description: "Explore the growth of Singapore's rail network",
         map: singaporeMap,
+        initialBounds: [11662, 6527],
         logos: [singaporeLogo],
         lines: singaporeLines.lines,
         events: singaporeEvents,
@@ -158,6 +163,7 @@ export const systems = {
         localTitle: '東京の地下鉄の歴史',
         description: "Explore the growth of Tokyo's rail network",
         map: tokyoMap,
+        initialBounds: [2361.4, 1718.54],
         logos: [tokyoMetroLogo, tokyoToeiLogo],
         lines: tokyoLines.lines,
         events: tokyoEvents,
@@ -186,6 +192,7 @@ export const systems = {
         localTitle: '深圳地铁历史',
         description: "Explore the growth of Shenzhen's rail network",
         map: shenzhenMap,
+        initialBounds: [3364.88, 2022.88],
         logos: [shenzhenLogo],
         lines: shenzhenLines.lines,
         events: shenzhenEvents,
@@ -200,6 +207,7 @@ export const systems = {
         localTitle: '杭州地铁历史',
         description: "Explore the growth of Hangzhou's rail network",
         map: hangzhouMap,
+        initialBounds: [4030.08, 2319.29],
         logos: [hangzhouLogo],
         lines: hangzhouLines.lines,
         events: hangzhouEvents,
@@ -214,6 +222,7 @@ export const systems = {
         localTitle: '广佛地铁历史',
         description: "Explore Guangzhou and Foshan's rail history",
         map: guangfoMap,
+        initialBounds: [4046.5, 4485.133],
         logos: [guangzhouLogo, foshanLogo],
         lines: guangfoLines.lines,
         events: guangfoEvents,
@@ -235,6 +244,7 @@ export const systems = {
         localTitle: '成都地铁历史',
         description: "Explore the growth of Chengdu's rail network",
         map: chengduMap,
+        initialBounds: [5848.204, 4008.07],
         logos: [chengduLogo],
         logoSize: 32,
         tooltipLogoSize: 8,
@@ -251,6 +261,7 @@ export const systems = {
         localTitle: '北京地铁历史',
         description: "Explore the growth of Beijing's rail network",
         map: beijingMap,
+        initialBounds: [4400, 5300],
         logos: [beijingLogo],
         lines: beijingLines.lines,
         events: beijingEvents,
@@ -265,6 +276,7 @@ export const systems = {
         localTitle: '南京地铁历史',
         description: "Explore the growth of Nanjing's rail network",
         map: nanjingMap,
+        initialBounds: [6200, 8300],
         logos: [nanjingLogo],
         lines: nanjingLines.lines,
         events: nanjingEvents,
@@ -279,6 +291,7 @@ export const systems = {
         localTitle: '重庆轨道交通历史',
         description: "Explore the growth of Chongqing's rail network",
         map: chongqingMap,
+        initialBounds: [5800, 4800],
         logos: [chongqingLogo],
         logoSize: 36,
         tooltipLogoSize: 12,

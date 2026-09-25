@@ -80,8 +80,9 @@ export function zoomToElement(
     const viewport = svgElement.getBoundingClientRect();
     const current = d3.zoomTransform(svgElement);
     const [x, y] = current.invert(relativeCenter(element, svgElement));
-    const [minZoom, maxZoom] = zoom.scaleExtent();
-    const scale = clamp(current.k, minZoom * 3, maxZoom);
+    const maxZoom = zoom.scaleExtent()[1];
+
+    const scale = clamp(current.k, (maxZoom * 3) / 4, maxZoom);
     const transform = zoom.constrain()(
         d3.zoomIdentity
             .translate(viewport.width / 2, viewport.height / 2)

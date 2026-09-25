@@ -136,7 +136,7 @@ export default function Home() {
                                     </div>
                                     <span
                                         aria-hidden="true"
-                                        className="text-ink-faint group-hover:text-accent size-5
+                                        className="text-ink-faint group-hover:text-accent h-7 w-5
                                             shrink-0 bg-current transition-transform
                                             group-hover:translate-x-1"
                                         style={{

@@ -39,6 +39,15 @@ Maps are sourced from below and heavily modified according to `docs/map-data-spe
 - [Shenzhen Metro](https://commons.wikimedia.org/wiki/File:Shenzhen_Metro_Linemap.svg)
 - [Hangzhou Metro](https://commons.wikimedia.org/wiki/File:Hangzhou_Metro_Linemap.svg)
 - [Guangzhou Metro](https://commons.wikimedia.org/wiki/File:Guangzhou_Metro_Linemap.svg)
-- Beijing: drawn from [OpenStreetMap](https://www.openstreetmap.org/) railway and geographic data
-- Nanjing: drawn from [OpenStreetMap](https://www.openstreetmap.org/) railway and geographic data
-- Chongqing: drawn from [OpenStreetMap](https://www.openstreetmap.org/) railway alignments, riverbanks and administrative boundaries
+
+- Beijing, Nanjing, Chongqing are drawn from scratch with [OpenStreetMap](https://www.openstreetmap.org/)
+
+### Legacy
+
+- Revamp of the old website [MTR History](https://9808f789.mtr-history.pages.dev) @ [Git snapshot](https://github.com/Tom-the-Bomb/lineage/tree/9aa3e65174eb16cc44d46a3dbc72e0189e1e393d)
+
+### AI
+
+- Primarily handwritten to prevent the dwindling of my skills, LLMs were used for automating the map (SVG) setup and data compilation in these directories:
+  - `docs/*`
+  - `src/assets/[system]/*`

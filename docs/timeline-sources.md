@@ -2105,3 +2105,371 @@ Validation: the spec checker, every event and adjacent day in forward/reverse pl
 search (including historical names and separate same-name stations), line-filtered search,
 tooltip dismissal, mobile resize, home preview and actual Bézier-to-marker clearance.
 The checks validate the implementation, not the unresolved exact-day rollout questions above.
+
+## Map geography normalization
+
+### Current preservation policy (supersedes the intermediate rebuilds below)
+
+The enlarged canvases and zoom limits are retained. The original geography from `c4fe500` is
+preserved in Hong Kong, Shanghai, Shenzhen, Hangzhou, Guangfo, Taipei, Singapore and Tokyo.
+All original path data and nested transforms remain intact; land fills are updated only for
+correct administrative shading. The original artwork
+is clipped to its original canvas and placed above the expanded geography. A land backing prevents
+new background features showing through previously empty parts of that original artwork.
+
+Only restrained additions are made inside those maps:
+
+- **Shanghai:** Suzhou Creek/Wusong River and Dishui Lake; Dazhi River's continuation across the old eastern edge.
+- **Shenzhen:** Dasha River; Tiegang, Xili, Shiyan, Shenzhen and Guangming reservoirs; Longgang River's continuation across the old eastern edge.
+- **Guangfo:** the Beijiang gap at the original northwestern corner.
+- **Hangzhou:** continuations of East Tiaoxi, the second canal channel, Hangyong and Xiaocao canals, and Puyang River across the old canvas edges; the missing Xixiao connecting reach and western Beitang reach to its mapped intake.
+- **Taipei:** Maling Creek's continuation across the old eastern edge.
+- **Tokyo:** Kanda, Ayase and Shingashi rivers, plus the short Nakagawa gap at the old northern edge.
+- **Hong Kong and Singapore:** retain their original interior geography.
+
+The added waterways use the September 23 OSM extracts and the existing coordinate fits, with
+mapped banks where available and a thin centreline symbol where banks are absent. Continuations reuse
+the already-curated banks and exclude existing water, allowing for small cartographic offsets.
+Their outlines stop at existing water rather than adding duplicate banks or bars across confluences.
+Small side-drain networks are excluded from these additions.
+Suzhou Creek's Jiangsu reach was present but hidden underneath the preserved land shapes; its
+addition now paints above the original fills, with only its exposed banks outlined. This also
+removes the old Huangpu bank stroke across the tributary mouth without altering either original
+path. The upstream Wusong/Suzhou identity
+is also described by [Shanghai's government](https://service.shanghai.gov.cn/sheninfo/specialdetail.aspx?Id=da509036-d8fa-48d5-af6b-81ce21db55ab).
+The continuity audit checked all twelve systems, including 31 selected river crossings of the old
+canvas edges. It addresses clipped/hidden continuations, not every minor waterway omitted from the
+original maps. Original path geometry, railway data, expanded bounds and runtime remain intact.
+The original Pudong shoreline is restored; the intermediate tidal-flat treatment does not replace it.
+Administrative land shading applies to **all twelve systems**, including the preserved interiors.
+The boundaries are Hong Kong SAR, Shanghai, Shenzhen, Hangzhou, Guangzhou + Foshan, Taipei +
+New Taipei + Taoyuan, Singapore and Tokyo Metropolis; the four reworked maps use their respective
+municipalities. The existing OSM administrative polygons and coordinate fits supply these boundaries.
+Tokyo uses full relation [1543125](https://www.openstreetmap.org/relation/1543125), version 384
+(2026-09-20), because its offshore members prevent the regional extract assembling a complete area.
+
+All eight preserved maps use solid fills and boundary overlays for administrative shading.
+Full-map paint patterns were removed after zoom tests exposed expensive WebKit repaints in all
+eight, especially Hong Kong and Tokyo. Overlays follow the existing polygons or clip to the original
+Bezier curves; original coastline strokes remain on top. This keeps continuous shading without
+altering shorelines, water fills or zoom behaviour. The four reworked maps already use solid fills.
+
+**Beijing, Chengdu, Chongqing and Nanjing** are explicitly exempt from preservation. Their backgrounds
+use the reworked, less cluttered geography: principal connected waterways, substantial lakes and
+reservoirs, and municipality-based outside-land colours. Beijing/Chengdu/Chongqing lose minor ponds
+and side drains; Nanjing gains useful Qinhuai/Yangtze, lake and regional-waterway context. Original
+railway geometry and the expanded bounds remain unchanged in all twelve maps.
+
+### Confluence and contextual-rail audit (2026-09-25)
+
+This follow-up checked all twelve maps for old-edge railway cutoffs, waterway name changes,
+shoreline seams, detail selection and administrative shading. Corrections are limited to:
+
+| Map       | Correction and source geometry                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Hong Kong | Append XRL beyond the enlarged northern edge along [OSM relation 9405634](https://www.openstreetmap.org/relation/9405634), through Shenzhen toward Shenzhen North. Preserve the existing path prefix and tangent, West Kowloon terminal, opening date and Hong Kong-only `data-km="25.7"`. The [LegCo alignment paper](https://www.legco.gov.hk/yr16-17/english/panels/tp/tp_rdp/papers/tp_rdp20161209cb4-243-9-e.pdf) documents the Shenzhen/Futian–Longhua route.                                                                                                            |
+| Shanghai  | Remove the internal shoreline across Suzhou Creek's mouth; the new fill covers the old bank and its outline excludes existing water. The [Shanghai river register](https://www.shanghai.gov.cn/nw5558/20200905/0001-5558_352.html) identifies Wusong–Suzhou's endpoint as Huangpu.                                                                                                                                                                                                                                                                                             |
+| Hangzhou  | Join Hangyong Canal through Xixiao River using ways 1221899641, 651959787 and 651959786. Add only Beitang's western reach from the Xiaocao junction to the mapped intake, using part of 113467368 and ways 1484314077–1484314078. The intake/culvert is not redrawn as an open Qiantang confluence. [Hangzhou's canal project report](https://epb.hangzhou.gov.cn/module/download/downfile.jsp?classid=0&filename=f8a25ba95b544721aab985a4da50f79c.pdf) documents the Puyang–Xixiao route.                                                                                     |
+| Guangfo   | Complete the exposed Dongping waterway reach, way 398838941 (`alt_name=北江`), outside the preserved original artwork.                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Shenzhen  | Continue Longgang River into the mapped Danshui reach in the expanded margin, ways 902363290 and 781657512. [Shenzhen's water authority](https://swj.sz.gov.cn/gkmlpt/content/5/5666/post_5666484.html) identifies Longgang as the upper Long–Dan river reach.                                                                                                                                                                                                                                                                                                                 |
+| Tokyo     | Join the Tsurumi reaches tagged Yamoto (`谷本川`), ways 90332617, 1184496059, 1184496061 and 1392124883, plus short connector 148068758, in the expanded western margin. [Yokohama's river plan](https://www.city.yokohama.lg.jp/kurashi/machizukuri-kankyo/kankyohozen/emp/old-emp.files/0060_20190307.pdf) also names this reach Tsurumi (Yamoto).                                                                                                                                                                                                                           |
+| Chengdu   | Fill missing stretches of Jinma River (264865351), Nan River (157818909, recorded under `name:en`), Bei River (50203017) and a short unnamed Tuo connector (1370530134). These join existing depicted reaches; surrounding tributaries are excluded.                                                                                                                                                                                                                                                                                                                           |
+| Chongqing | Complete Liangtan's downstream connection to Jialing using way 102262104 (`name=龙凤溪`, `alt_name=梁滩河`). [Chongqing's river account](https://gxq.cq.gov.cn/hbslgg/202007/P020200724319866874079.pdf) describes the route through Longfengqiao to the Jialing mouth.                                                                                                                                                                                                                                                                                                        |
+| Nanjing   | Close the Baishitian connection (1122943982) and canal gaps on 71187259. Restore the unnamed reach 106061879 and Zhongshan junction 903408515, with Lishui ways 36829414, 586775002 and 400809820 connecting the isolated upper fragments to Qinhuai. Restore Jiajiang (159868004–159868005) using bank relation 2538928: this substantial Yangtze side channel separates Jiangxinzhou from the mainland. The [Nanjing government’s crossing description](https://www.nanjing.gov.cn/msxx/202510/t20251024_5675704.html) distinguishes Jiajiang from the main Yangtze channel. |
+| Taipei    | Add a local Dahan River bank join at the original western canvas edge, following the mapped bend around the island. Preserve the original interior paths; draw only exposed banks over the seam.                                                                                                                                                                                                                                                                                                                                                                               |
+
+The island/channel follow-up also compared unnamed and differently named branches between
+already depicted water areas across all twelve maps. Bank polygons restore Huangshali and nearby
+delta connections in Shenzhen; Xihai, Dongping and Xinkai connections in Guangfo; two short
+lake/channel connections in Shanghai's added western margin; Fenshui and Yaowan reaches in
+Hangzhou; an exposed side channel in Tokyo; the Fu River reach in Chengdu; Baihe/Xinhe reaches
+in Beijing; the Qu River bend and a Yangtze side channel in Chongqing; and omitted connected
+regional channels in Nanjing. Hong Kong gains one short delta connection in its expanded margin.
+These additions follow source water polygons, not straight endpoint bridges. Bank-less routes and covered channels are not automatically converted into open water;
+the source-bank pass adds no connecting channels in Taipei or Singapore.
+
+All twelve maps also receive finer source-bank detail within the existing added-water footprint,
+using the original opening scale rather than the expanded canvas to set simplification tolerance.
+This refines depicted bends without selecting more tiny lakes or surrounding drainage networks.
+The eight preserved interiors retain their original path data and transforms.
+
+Source way IDs refer to the September 23 Geofabrik/OSM extracts used for the expansion. Added
+reaches reuse mapped bank polygons where available, with the existing thin centreline convention
+elsewhere. No isolated lakes, surrounding side-drain networks or covered Beijing moat were added.
+Original artwork omissions and genuine headwaters are not automatically treated as broken joins.
+Preserved original path data and transforms, station data, dates, distances, canvas bounds and
+runtime/configuration code are unchanged; XRL's appended continuation is the sole railway edit.
+
+Final bank-detail validation: all twelve map-data checks and administrative-color probes pass.
+The eight protected interiors retain their original path data and transforms; canvas bounds and
+railway data are preserved except for the documented XRL extension. A production-build check
+across twelve maps, Chromium/WebKit, both themes and three zoom levels sampled 5,184 frames:
+maximum mean frame time 17.1 ms, one frame above 32 ms, and no browser errors. This is a local
+rendering benchmark, not a guarantee for every device. The production build passes.
+
+Validation of this preservation pass: all eight original geography trees match their baseline
+path data and transforms (land-fill references change for shading). The twelve map-data checkers pass; SVG bounds and
+railway nodes match the pre-pass versions, and runtime/configuration code is unchanged. All twelve
+maps render in both themes. The four reworked maps pass checks of 94 substantial/landmark lakes
+and their selected principal-river centrelines at overview tolerance. Production build passes.
+
+### Regression audit after the geography expansion (2026-09-25)
+
+Reviewed Hong Kong, Shanghai, Taipei, Singapore, Tokyo, Shenzhen, Hangzhou, Guangfo,
+Chengdu, Beijing, Nanjing and Chongqing. The additional correction is limited to Beijing's
+and Nanjing's `inland-water` paths: some source polygons combine `natural=water`,
+`landuse=farmland` and `intermittent=yes`. Their flood-retention fields were incorrectly
+painted as permanent lakes. Remove those field surfaces and their residual outlines while
+retaining independently mapped water bodies and river courses within them.
+
+- **Beijing's expanded surroundings:** ways 1181920553, 1195186174–1195186175,
+  1195186688–1195186689, 1195288131, 1195594923–1195594927 and 1195903054.
+  These include Yongding and Zhaowang flood-retention areas. The
+  [Beijing water authority's Yongding plan](https://swj.beijing.gov.cn/zwgk/ghjhzj/202107/P020210705624970672074.pdf)
+  distinguishes river, inundation and bank-protection areas and their mixed land uses.
+- **Nanjing's expanded northwestern surroundings:** relation 6905928 and ways
+  471512676 and 471512718, near the Huai River/Shouxian floodplain. The
+  [Shouxian land-use plan](https://www.shouxian.gov.cn/public/118322767/1260264458.html)
+  distinguishes flood-retention areas from river channels;
+  [Shouxihu Farm's account](https://www.ahnk.com.cn/display.php?id=16720)
+  documents the extensive farmland there. This does not remove genuine lakes or reservoirs.
+
+No matching painted flood-field issue was found in the other ten maps. Source-tag checks
+also distinguish genuine round reservoirs/ponds from the unwanted marine-area outlines.
+Original geography, railways, timeline data, camera configuration and runtime code are
+unchanged in this audit. In particular, Nanjing's restored Jiajiang side channel and upper
+Qinhuai connections remain intact.
+
+Validation:
+
+- All twelve map-data checkers and administrative-colour probes pass; added geography has
+  valid polygon rings and no detached marine-water overlays.
+- All eight protected interiors retain their original geometry. A rendered comparison at
+  2,200 pixels wide found no erased original water interiors, excluding shoreline antialiasing.
+- All 72 viewport checks pass: five laptop sizes and one mobile size per system. Opening
+  transforms and maximum zoom match the baseline; pan limits retain the enlarged canvas.
+  Latest station markers clear expanded panels at minimum zoom in all 60 laptop checks.
+  Complete active line-path bounds also clear the panels in a separate 60-case check,
+  excluding XRL's deliberately off-canvas contextual continuation.
+- Search, tooltip dismissal, preserved highlight/search magnification, and date/playback/
+  highlight preservation after resize pass on every system. Repeated theme toggles restore
+  the same light-mode geography colours. No browser errors were observed.
+- The older ignored local test scripts were updated for the current playback settings and
+  test mocks; 29 playback, transition and search tests pass, including the original Airport
+  Express dash behavior. Lint and the production build pass.
+- A fresh final-asset Chromium/WebKit run covers all twelve systems in both themes at
+  three zoom levels: 144 combinations, 5,184 sampled frames, maximum mean 17.1 ms,
+  maximum 95th-percentile 21 ms, one frame above 32 ms, and no browser errors.
+  These are local rendering measurements, not a performance guarantee for every device.
+
+One pre-existing schematic discrepancy remains intentionally unchanged: AsiaWorld-Expo's
+marker centre slightly overlaps the original shoreline. Both baseline and current rendered
+maps show the same overlap. These checks establish regression coverage against the artwork
+and selected geographic sources, not exhaustive real-world or historical completeness.
+
+The earlier sections below record intermediate datasets, corrections and validation results; their
+whole-map regeneration and coverage figures do not describe the preserved final interiors.
+
+September 24, 2026: all twelve canvases were extended on all four sides. The original
+`initialBounds` and `initialView` still determine the opening framing and maximum zoom;
+the expanded SVG `viewBox` determines the minimum zoom and pan limits. Railway coordinates,
+identities, labels and distances are unchanged, except for the Jinshan completion noted below.
+These are **present-day backgrounds throughout playback**, not historical coastlines.
+
+### Data and coordinate alignment
+
+Water, coastline ways and administrative polygons come from © OpenStreetMap contributors,
+[ODbL 1.0](https://www.openstreetmap.org/copyright), via Geofabrik's September 23, 2026 snapshots:
+
+- [China regional extracts](https://download.geofabrik.de/asia/china.html): Guangdong (including
+  Hong Kong), Shanghai, Jiangsu, Zhejiang, Anhui, Hebei (including Beijing), Sichuan and Chongqing.
+- [Taiwan](https://download.geofabrik.de/asia/taiwan.html),
+  [Kanto](https://download.geofabrik.de/asia/japan/kanto.html), and
+  [Malaysia–Singapore–Brunei](https://download.geofabrik.de/asia/malaysia-singapore-brunei.html).
+
+Existing WGS84-to-SVG coordinate fits were retained for Hong Kong, Shanghai, Taipei, Tokyo,
+Shenzhen, Hangzhou and Guangfo. Guangfo's fit includes the existing artwork's 550-unit horizontal
+translation; this corrects the reference transform, not the railway drawing. Median station-control
+residuals are respectively 2.37, 2.28, 4.91, 2.32, 1.03, 1.68 and 1.48 SVG units. These fits reproduce
+geographic artwork with local schematic offsets; they do not establish survey-grade platform positions.
+Singapore uses a robust affine fit to 34 matched station controls (median residual 7.22 SVG units,
+about one pixel at its original laptop opening scale).
+
+Beijing and Nanjing retain EPSG:32650 at 20 metres per SVG unit; Chongqing retains EPSG:32648
+at 18 metres per unit. Chengdu retains its station-calibrated Web Mercator fit and the existing
+1552.494-unit west-extension translation. Administrative relations retained are Hong Kong 913110,
+Shanghai 913067, Beijing 912940, Chengdu 2110264, Chongqing 913069, Jiangsu 913012 and Singapore 536780. The Sham Chun/Shenzhen border river retains bank polygon relation 9791660, exempt from
+small-water filtering. Boundaries divide land colours only; mapped coastlines determine land versus sea.
+
+### Geography re-audit and corrections
+
+The first normalization pass was too aggressive. Its `2 × area / perimeter` filter discarded
+branching reservoirs and narrow bank sections, including unnamed sections of principal rivers.
+An exact-name filter also missed the English-labelled Huangpu bank relation **197358**. Passing
+the map-data checker did not detect these geographic omissions.
+
+The revised pass assesses whole lakes before clipping, retains lakes/reservoirs of at least
+100 overview pixels² plus named urban landmarks, and selects principal river corridors using
+both names and spatial matches to their bank polygons. This includes significant navigation
+canals, not just features tagged `water=river`. Unnamed banks are unioned with their adjoining
+sections before simplification. Small ponds and minor irrigation channels remain omitted.
+Perimeter/width is no longer used to reject lakes or principal bank sections. Other minor river
+features are screened separately; a large connected irrigation grid is not automatically retained.
+Shoreline simplification is reduced from 0.4 to **0.2 overview pixels**, with topology and holes
+preserved. Centreline symbols are restricted to missing-bank stretches instead of widening the
+entire river over mapped banks.
+
+| Map       | Corrections and coverage checked                                                                                                                                                                                                                                                                                                                                                       |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hong Kong | Restored Tai Lam Chung and Shing Mun reservoirs; retained the Sham Chun border river's actual banks. Checked Lantau, the airport reclamation, Pearl River estuary and eastern islands.                                                                                                                                                                                                 |
+| Shanghai  | Restored the omitted Huangpu bank relation, Shengze Dang, Shi Lake and Xiamu Dang. Completed the selected Suzhou/Wusong, Taipu and upper Huangpu corridors, including Lanlugang–Maohe–Xietang, Hengliaojing/Shuliaojing, and Damaogang. Retained Dazhi and Dianpu river context. Checked Dianshan Lake, the Yangcheng lakes, Taihu's visible fringe, estuary islands and Hangzhou Bay. |
+| Taipei    | Restored missing banks along the Keelung/Xindian/Dahan system, Breeze Canal and the Beishi reservoir tributary. Checked the Tamsui mouth, north coast and Feitsui/Shimen reservoirs.                                                                                                                                                                                                   |
+| Singapore | Restored Jurong Lake, Punggol Reservoir, Seletar Wet Gap and omitted riverbanks, including the Sungei Kadut/Pang Sua corridor. Checked Johor Strait, reservoir dams, offshore islands and reclamation outlines.                                                                                                                                                                        |
+| Tokyo     | Restored Keihin/Keihin South, Shinonome/Toyosu and Ariake West canals, plus missing riverbanks around the old Nakagawa, Shingashi and Tsurumi corridors. These waterways must not be removed with minor drainage canals. Checked Tokyo Bay port islands and the Arakawa/Sumida/Edogawa/Tama system.                                                                                    |
+| Shenzhen  | Restored Changlingpi, Qinglinjing, Qiankeng, Sanzhoutian and other substantial reservoirs, plus Longgang River banks. Checked both coastal margins and the Hong Kong boundary.                                                                                                                                                                                                         |
+| Hangzhou  | Restored Xiang Lake, Tongjian Lake, Jian Lake, Xianlin Reservoir and omitted Qiantang tributary banks. Retained the Jiangnan/Hangyong canal corridors and the second canal channel; checked West Lake and the river's islands.                                                                                                                                                         |
+| Guangfo   | Restored Pearl River back-channel, Dongping/Desheng and unnamed delta banks, with Xizhi/Danshui tributary context and omitted substantial reservoirs. Checked islands and channels through the delta instead of treating every narrow water polygon as a drain.                                                                                                                        |
+| Chengdu   | Restored Sancha, Heilongtan, Longquan, Laoying and other substantial reservoirs. Reconnected selected Min/Tuo tributary banks, retaining Qingbaijiang/Shiting/Mianyuan context. Small isolated ponds remain omitted.                                                                                                                                                                   |
+| Beijing   | Restored Jinhai Lake, Shahe Reservoir, the North Canal and Chaobai New River banks. Checked central lakes, reservoir outlines and Beijing–Hebei land colouring.                                                                                                                                                                                                                        |
+| Nanjing   | Restored Tianmu Lake's Shahe Reservoir, Dongjiu and other substantial lakes/reservoirs; included Chaohu outlet and selected Shuiyang/Qingyi/canal corridors. Checked Yangtze banks/islands, Xuanwu, Mochou, Shijiu, Gucheng, Chaohu and the visible part of Taihu.                                                                                                                     |
+| Chongqing | Restored the Yulin River and missing tributary bank sections, Yinglong/Longshui lakes and substantial branching reservoirs. Checked the Yangtze–Jialing confluence, islands and municipal boundary; small pond clutter remains omitted.                                                                                                                                                |
+
+**Taihu at the first expansion (before the further expansion below):** relation **1126533** has identical full geometry in the Jiangsu and Zhejiang
+extracts. Shanghai's expanded viewport contains about **1.9%** of its water area—the eastern fringe;
+Nanjing's contains about **53.6%**. The rest lies outside those canvases, rather than being deleted
+from the lake polygon. Against the projected source, the simplified visible water area omitted is
+approximately **0.17%** in Shanghai and **0.07%** in Nanjing. These are geometry comparisons, not
+an independent survey. Nearby Dianshan, Yangcheng, Cheng and other lakes are separate features;
+the [Taihu Basin Authority's lake inventory](https://www.tba.gov.cn/slbthlyglj/lygk/content/3035596f-70fb-426e-9011-72a20188926e.html)
+provides an independent check of that distinction.
+
+Additional feature checks:
+
+- [Shanghai's managed river extents](https://www.shanghai.gov.cn/nw5558/20200905/0001-5558_352.html)
+  and [Water Authority description of the upper Huangpu/Taipu system](https://swj.sh.gov.cn/shsdfbzssglc-tpxw/20201009/f5c0d47bcde1426fb03fdf93a9aabbda.html).
+- [Hong Kong WSD: Tai Lam Chung Reservoir](https://www.wsd.gov.hk/en/customer-services/other-customer-services/fishing-in-reservoirs/brief-introduction-of-reservoirs/tai-lam-chung-reservoir/index.html).
+- [Singapore PUB: Jurong Lake](https://www.pub.gov.sg/Public/Places-of-Interest/Our-Reservoirs-and-Waterways/Jurong-Lake)
+  and [reservoir/waterway inventory](https://www.pub.gov.sg/Public/Places-of-Interest/Our-Reservoirs-and-Waterways).
+- [Tokyo's river inventory](https://www.kensetsu.metro.tokyo.lg.jp/river/kanri) and
+  [bridge/waterway inventory](https://www.kensetsu.metro.tokyo.lg.jp/content/000060891.pdf).
+- [Chongqing government: Yulin River](https://www.cq.gov.cn/zwgk/zfxxgkml/zdlyxxgk/stbh/hjbh/202404/t20240429_13169521.html).
+
+These official sources corroborate feature identity and connectivity; the detailed bank coordinates
+still come from the OSM snapshot above. The audit compared water polygons, checked duplicate
+relations across neighbouring extracts, inspected coastlines/islands and rendered all twelve maps
+in light and dark themes. It did not independently survey every bank or validate seasonal water levels.
+
+That re-audit’s coverage check compared **534 map/feature pairs**: water bodies of at least 150 overview
+pixels² with at least one visible pixel², plus the named Huangpu/Suzhou features. After allowing the
+0.2-pixel simplification tolerance and coordinate rounding, none had more than one pixel² of
+uncovered source water. This checks substantial-feature omissions against the chosen dataset;
+it does not certify all smaller waterways or the dataset itself. All **3,253 serialized polygon
+rings** are valid, and all twelve map-data checkers pass. Comparing each SVG with the start of this
+re-audit confirms that everything outside `#geography`, including the viewBox, is unchanged.
+
+Station-center checks flag small water overlaps at AsiaWorld-Expo (0.49 SVG units),
+Nakano-fujimichō (0.52), Changlingpi (0.79), Haixinsha (0.02) and Anheqiao Bei (0.21).
+AsiaWorld-Expo and Anheqiao Bei also overlap water in the pre-expansion artwork. Changlingpi
+and Anheqiao Bei's projected source station points themselves fall just inside the source-derived
+water rendering. These are alignment/data limitations, not proof that the riverbank should move;
+station points can also differ from a platform footprint. Railway coordinates and source banks
+were not nudged to conceal the flags. The station-control residuals above remain relevant when
+viewing individual markers at high zoom.
+
+Follow-up: removed three redundant marine-water outlines—Crooked Harbour (OSM way 675102262)
+from the Hong Kong and Shenzhen maps, and Rocky Harbour (way 676971270) from Hong Kong.
+Their circular outlines lay entirely inside the existing sea fill, not along physical shorelines.
+The earlier inland-water coverage check missed this distinction. Marine components are now
+excluded from the additional water outline layer, and coverage checks include the sea layer.
+Round inland lakes/reservoirs are not removed merely for being round.
+
+### Further expansion with panels visible
+
+All twelve canvases were expanded again to allow the latest network to fit between the open
+Stats and Changelog panels, above the line legend and footer. The offline bounds calculation
+uses the rendered panels and network bounds at five laptop sizes. It leaves at least 24 pixels
+of clearance and checks both extremes of each constrained pan axis at minimum zoom, with
+additional rounding/stroke slack. The full-view button is not required.
+
+Only SVG `viewBox` values and geography changed in this pass. `initialBounds`, `initialView`,
+railway coordinates, station identities, dates and all runtime code remain unchanged. Thus the
+opening transform, maximum zoom and search magnification retain their previous values.
+
+| Map       | Expanded viewBox          | Reduction in minimum magnification at 1440 × 900 |
+| --------- | ------------------------- | ------------------------------------------------ |
+| Hong Kong | `-955 -198 2866 1676`     | 23%                                              |
+| Shanghai  | `-3937 -669 12175 7204`   | 28%                                              |
+| Taipei    | `-3431 -642 9632 5411`    | 15%                                              |
+| Singapore | `-4451 -1762 18448 11530` | 32%                                              |
+| Tokyo     | `-1465 -321 5142 3154`    | 29%                                              |
+| Shenzhen  | `-1958 -715 7106 4441`    | 41%                                              |
+| Hangzhou  | `-2469 -996 8724 5452`    | 41%                                              |
+| Guangfo   | `-5351 -862 14630 8219`   | 25%                                              |
+| Chengdu   | `-2469 -702 12041 7000`   | 23%                                              |
+| Beijing   | `-5951 -604 15269 8578`   | 33%                                              |
+| Nanjing   | `-7523 -849 19983 11226`  | 22%                                              |
+| Chongqing | `-2917 -542 11139 6670`   | 30%                                              |
+
+Geography uses the same September 23 OSM snapshot and coordinate transforms. Existing features
+retain their earlier detail scale; newly exposed isolated lakes/reservoirs must meet the 100-pixel²
+threshold at the wider overview, with principal rivers and important landmarks exempted. Existing
+shoreline simplification is retained. No background roads, labels or decorative details were added.
+The rule excluding redundant marine-water outlines remains in place.
+
+Additional coverage:
+
+- **Singapore:** added [Sumatra/Riau Islands](https://download.geofabrik.de/asia/indonesia/sumatra.html)
+  alongside Malaysia–Singapore–Brunei, including northern Batam and adjacent islands. This also
+  corrects missing land along the previous southern edge, which had incorrectly appeared as sea.
+- **Shanghai:** extended toward more of Taihu (about 70% of its mapped area is now within the
+  canvas), the Qiantang/Hangzhou Bay shores and Zhoushan islands; increased the Zhejiang extraction
+  extent to cover the eastern edge.
+- **Nanjing:** extended the Anhui extraction westward and included Zhejiang, supplying the newly
+  visible western reservoirs and southern Taihu/Huzhou water features. Taihu is now fully within
+  the Nanjing canvas.
+- **Beijing:** included the narrow [Shanxi](https://download.geofabrik.de/asia/china/shanxi.html)
+  overlap at the western edge. The other maps' expanded bounds remain within their existing
+  regional datasets; their land, coastlines and selected waterways were rebuilt to the new edges.
+
+- **Shenzhen / Guangfo:** retained the substantial Modao, Qianshan, Jitimen and adjoining delta
+  waterways in the expanded southern/western context, including mapped banks tagged as canals.
+- **Tokyo:** completed the Asahi, Asano and Ikegami port canals; retained the newly visible
+  Sagami and Yoro river corridors.
+- **Hangzhou / Taipei:** retained the newly exposed East Tiaoxi/Puyang and Laojie river corridors.
+
+Within the previous bounds, coastlines match to rounding/simplification tolerance except for the
+Batam correction. The waterway audit also fills previously omitted connected banks/canals, and
+additional source coverage supplies water areas in Guangfo and Nanjing. These are geography
+corrections, not railway or camera changes.
+
+Validation: 60 laptop layouts (all twelve systems at 1280 × 720, 1280 × 800, 1366 × 768,
+1440 × 900 and 1536 × 864); the normal minimum-zoom position and all four constrained pan
+corners remain inside the measured clear area in every layout. All 60 opening transforms match
+exactly. Mobile opening framing, light/dark rendering, polygon validity, unwanted marine overlays,
+unchanged railway data and the twelve map-data checkers also pass. The final coverage check
+compares 478 map/feature pairs (whole water bodies of at least 150 overview pixels², with a
+visible portion of at least 1 pixel², plus the named Huangpu/Suzhou/Taihu checks). None has more
+than 1 pixel² missing beyond simplification tolerance. Sea and inland water are checked together
+so redundant marine outlines are not rewarded as “coverage.” This tests the selected OSM snapshot,
+not exhaustive real-world completeness; small omitted waterways remain intentional.
+
+### Jinshan Railway cutoff exposed by expansion
+
+The old Shanghai drawing stopped south of Yexie and omitted Tinglin, Jinshan Yuanqu and
+Jinshanwei. The enlarged canvas exposed that cutoff. The existing 2012 opening path now follows
+mapped passenger tracks to Jinshanwei, with those three station markers added from **2012-09-28**.
+The original path north of the cutoff, opening event and **56.4 km** value remain intact. This adds
+three stations to statistics/search from that date; it is an explicit data correction, not a claimed
+behavior-neutral change. Pre-2012 freight history is outside this map's Jinshan commuter-service scope.
+
+Sources: the [2012 opening report](https://news.sina.com.cn/o/2012-09-18/150125200013.shtml),
+[Jinshan Yuanqu station history](https://en.wikipedia.org/wiki/Jinshan_Yuanqu_railway_station),
+and the [Jinshan district's 2025 timetable and fare map](https://www.shanghai.gov.cn/nw17239/20250103/d4782b40a6f74ef5a5605f102b2bf984.html).
+The continuation geometry uses the same Shanghai coordinate fit and the regional OSM railway ways.
+
+Validation of the first expansion: all twelve spec checkers pass. All latest-date drawn networks fit at minimum zoom in
+1366 × 768, 1440 × 900 and 1536 × 864 viewports (36 checks); overlays can be hidden with the
+existing full-view control. Opening transforms match the prior framing within 0.001 pixel across
+those sizes and 390 × 844 mobile (48 comparisons). Extreme pans remain clamped at minimum and
+maximum zoom; the maximum zoom and search magnification are preserved. Light/dark rendering,
+shoreline alignment, polygon-ring validity, lint and the production build were checked.
