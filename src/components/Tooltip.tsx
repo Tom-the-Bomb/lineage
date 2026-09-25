@@ -66,7 +66,13 @@ export default function Tooltip({
             >
                 <div className="flex items-center gap-2">
                     {config.tooltipLogos?.(status, time).map(logo => (
-                        <img key={logo.alt} src={logo.src} alt={logo.alt} className="h-4" />
+                        <img
+                            key={logo.alt}
+                            src={logo.src}
+                            alt={logo.alt}
+                            className="h-4"
+                            style={{ height: config.tooltipLogoSize }}
+                        />
                     ))}
                     <span className="flex items-baseline gap-2">
                         {state.name}

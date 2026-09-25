@@ -1,5 +1,17 @@
 import { utcDay, utcYear } from 'd3';
 
+import beijingLogo from './assets/beijing/beijing-subway.svg';
+import beijingEvents from './assets/beijing/data/events.json';
+import beijingLines from './assets/beijing/data/lines.json';
+import beijingMap from './assets/beijing/map.svg';
+import chengduEvents from './assets/chengdu/data/events.json';
+import chengduLines from './assets/chengdu/data/lines.json';
+import chengduLogo from './assets/chengdu/chengdu-metro.svg';
+import chengduMap from './assets/chengdu/map.svg';
+import chongqingLogo from './assets/chongqing/chongqing-rail-transit.svg';
+import chongqingEvents from './assets/chongqing/data/events.json';
+import chongqingLines from './assets/chongqing/data/lines.json';
+import chongqingMap from './assets/chongqing/map.svg';
 import guangfoEvents from './assets/guangfo/data/events.json';
 import guangfoLines from './assets/guangfo/data/lines.json';
 import foshanLogo from './assets/guangfo/foshan-metro.svg';
@@ -14,6 +26,10 @@ import hongkongLines from './assets/hongkong/data/lines.json';
 import kcrLogo from './assets/hongkong/kcr.svg';
 import hongkongMap from './assets/hongkong/map.svg';
 import hongkongLogo from './assets/hongkong/mtr.svg';
+import nanjingEvents from './assets/nanjing/data/events.json';
+import nanjingLines from './assets/nanjing/data/lines.json';
+import nanjingMap from './assets/nanjing/map.svg';
+import nanjingLogo from './assets/nanjing/nanjing-metro.svg';
 import singaporeEvents from './assets/singapore/data/events.json';
 import singaporeLines from './assets/singapore/data/lines.json';
 import singaporeMap from './assets/singapore/map.svg';
@@ -47,6 +63,8 @@ export interface SystemConfig {
     description: string;
     map: string;
     logos: string[];
+    logoSize?: number;
+    tooltipLogoSize?: number;
     minDate: Date;
     maxDate: Date;
     lines: { id: string; label: string; color: string }[];
@@ -69,7 +87,7 @@ export const systems = {
     hongkong: defineSystem({
         name: 'MTR',
         localTitle: '港鐵歷史',
-        description: "Explore the historical development of Hong Kong's MTR system",
+        description: "Explore the growth of Hong Kong's rail network",
         map: hongkongMap,
         logos: [hongkongLogo],
         lines: hongkongLines.lines,
@@ -89,7 +107,7 @@ export const systems = {
     shanghai: defineSystem({
         name: 'Shanghai Metro',
         localTitle: '上海地铁历史',
-        description: "Explore how Shanghai's metro network was built",
+        description: "Explore the growth of Shanghai's rail network",
         map: shanghaiMap,
         logos: [shanghaiMetroLogo],
         lines: shanghaiLines.lines,
@@ -110,7 +128,7 @@ export const systems = {
     taipei: defineSystem({
         name: 'Taipei Metro',
         localTitle: '臺北捷運歷史',
-        description: "Explore how Taipei's metro network was built",
+        description: "Explore the growth of Taipei's rail network",
         map: taipeiMap,
         logos: [taipeiLogo],
         lines: taipeiLines.lines,
@@ -124,7 +142,7 @@ export const systems = {
     singapore: defineSystem({
         name: 'Singapore MRT',
         localTitle: '新加坡地铁历史',
-        description: "Explore Singapore's MRT & LRT network history",
+        description: "Explore the growth of Singapore's rail network",
         map: singaporeMap,
         logos: [singaporeLogo],
         lines: singaporeLines.lines,
@@ -138,7 +156,7 @@ export const systems = {
     tokyo: defineSystem({
         name: 'Tokyo Subway',
         localTitle: '東京の地下鉄の歴史',
-        description: 'Explore the history of Tokyo Metro and Toei Subway',
+        description: "Explore the growth of Tokyo's rail network",
         map: tokyoMap,
         logos: [tokyoMetroLogo, tokyoToeiLogo],
         lines: tokyoLines.lines,
@@ -166,7 +184,7 @@ export const systems = {
     shenzhen: defineSystem({
         name: 'Shenzhen Metro',
         localTitle: '深圳地铁历史',
-        description: "Explore how Shenzhen's metro network was built",
+        description: "Explore the growth of Shenzhen's rail network",
         map: shenzhenMap,
         logos: [shenzhenLogo],
         lines: shenzhenLines.lines,
@@ -180,7 +198,7 @@ export const systems = {
     hangzhou: defineSystem({
         name: 'Hangzhou Metro',
         localTitle: '杭州地铁历史',
-        description: "Explore how Hangzhou's metro network was built",
+        description: "Explore the growth of Hangzhou's rail network",
         map: hangzhouMap,
         logos: [hangzhouLogo],
         lines: hangzhouLines.lines,
@@ -194,7 +212,7 @@ export const systems = {
     guangfo: defineSystem({
         name: 'Guangfo Metro',
         localTitle: '广佛地铁历史',
-        description: "Explore how Guangzhou and Foshan's metro networks were built",
+        description: "Explore Guangzhou and Foshan's rail history",
         map: guangfoMap,
         logos: [guangzhouLogo, foshanLogo],
         lines: guangfoLines.lines,
@@ -210,6 +228,66 @@ export const systems = {
                     ? [{ src: foshanLogo, alt: 'Foshan Metro' }]
                     : []),
             ];
+        },
+    }),
+    chengdu: defineSystem({
+        name: 'Chengdu Metro',
+        localTitle: '成都地铁历史',
+        description: "Explore the growth of Chengdu's rail network",
+        map: chengduMap,
+        logos: [chengduLogo],
+        logoSize: 32,
+        tooltipLogoSize: 8,
+        lines: chengduLines.lines,
+        events: chengduEvents,
+        milestoneDates: ['2010-09-27', '2017-12-06', '2020-12-18', '2023-11-28', '2025-12-16'],
+        initialView: { center: [2924, 1200], zoom: 1 },
+        tooltipLogos() {
+            return [{ src: chengduLogo, alt: 'Chengdu Metro' }];
+        },
+    }),
+    beijing: defineSystem({
+        name: 'Beijing Subway',
+        localTitle: '北京地铁历史',
+        description: "Explore the growth of Beijing's rail network",
+        map: beijingMap,
+        logos: [beijingLogo],
+        lines: beijingLines.lines,
+        events: beijingEvents,
+        milestoneDates: ['1971-01-15', '1987-12-28', '2008-07-19', '2010-12-30', '2025-12-27'],
+        initialView: { center: [2000, 2380], zoom: 1 },
+        tooltipLogos() {
+            return [{ src: beijingLogo, alt: 'Beijing Subway' }];
+        },
+    }),
+    nanjing: defineSystem({
+        name: 'Nanjing Metro',
+        localTitle: '南京地铁历史',
+        description: "Explore the growth of Nanjing's rail network",
+        map: nanjingMap,
+        logos: [nanjingLogo],
+        lines: nanjingLines.lines,
+        events: nanjingEvents,
+        milestoneDates: ['2005-05-15', '2010-05-28', '2014-07-01', '2017-12-06', '2026-04-22'],
+        initialView: { center: [3000, 3400], zoom: 1.6 },
+        tooltipLogos() {
+            return [{ src: nanjingLogo, alt: 'Nanjing Metro' }];
+        },
+    }),
+    chongqing: defineSystem({
+        name: 'Chongqing Metro',
+        localTitle: '重庆轨道交通历史',
+        description: "Explore the growth of Chongqing's rail network",
+        map: chongqingMap,
+        logos: [chongqingLogo],
+        logoSize: 36,
+        tooltipLogoSize: 12,
+        lines: chongqingLines.lines,
+        events: chongqingEvents,
+        milestoneDates: ['2004-11-06', '2011-09-29', '2018-12-28', '2024-12-26', '2026-02-10'],
+        initialView: { center: [3290, 2460], zoom: 1.7 },
+        tooltipLogos() {
+            return [{ src: chongqingLogo, alt: 'Chongqing Rail Transit' }];
         },
     }),
 };

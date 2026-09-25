@@ -6,7 +6,13 @@ export default function HeaderCard({ config }: { config: SystemConfig }) {
         <div className="panel flex max-w-xs flex-col gap-1.5 px-4 py-3">
             <div className="text-2xs flex items-center gap-2 font-mono tracking-wide">
                 {config.logos.map(logo => (
-                    <img key={logo} src={logo} alt="" className="h-4 w-4 object-contain" />
+                    <img
+                        key={logo}
+                        src={logo}
+                        alt=""
+                        className="w-4 shrink-0"
+                        style={{ width: config.logoSize }}
+                    />
                 ))}
                 <span className="text-ink-faint">system:</span>
                 <h1 className="text-ink font-medium">{config.name} History</h1>

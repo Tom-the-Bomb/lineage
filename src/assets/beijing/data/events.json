@@ -1,0 +1,397 @@
+[
+    {
+        "date": "1971-01-15",
+        "descriptions": [
+            "Line 1: Lixin (now Gongzhufen) - Beijing Railway Station opens to public trial passengers"
+        ]
+    },
+    {
+        "date": "1971-08-15",
+        "descriptions": [
+            "Line 1: Gongzhufen - Yuquan Lu opens"
+        ]
+    },
+    {
+        "date": "1971-11-07",
+        "descriptions": [
+            "Line 1: Yuquan Lu - Gucheng opens"
+        ]
+    },
+    {
+        "date": "1973-04-23",
+        "descriptions": [
+            "Line 1: Gucheng - Pingguoyuan opens"
+        ]
+    },
+    {
+        "date": "1984-09-20",
+        "descriptions": [
+            "Second Phase: Fuxingmen - Jianguomen opens"
+        ]
+    },
+    {
+        "date": "1987-12-28",
+        "descriptions": [
+            "Line 1: Nanlishi Lu - Changchun Jie alignment withdrawn; Changchun Jie - Beijing Railway Station becomes part of the Loop Line",
+            "Line 1: Nanlishi Lu - Fuxingmen opens",
+            "Loop Line: Fuxingmen - Changchun Jie and Beijing Railway Station - Jianguomen open, completing the loop",
+            "Second Phase → Loop Line"
+        ]
+    },
+    {
+        "date": "1992-12-12",
+        "descriptions": [
+            "Line 1: Fuxingmen - Xidan opens"
+        ]
+    },
+    {
+        "date": "1999-09-28",
+        "descriptions": [
+            "Fuba Line: Tian'anmenxi - Sihui Dong opens"
+        ]
+    },
+    {
+        "date": "2000-06-28",
+        "descriptions": [
+            "Fuba Line → Line 1",
+            "Line 1: Xidan - Tian'anmenxi opens"
+        ]
+    },
+    {
+        "date": "2002-07-24",
+        "descriptions": [
+            "Loop Line → Line 2"
+        ]
+    },
+    {
+        "date": "2002-09-28",
+        "descriptions": [
+            "Line 13: Xizhimen - Huoying opens",
+            "Xizhimen: out-of-station interchange opens"
+        ]
+    },
+    {
+        "date": "2003-01-28",
+        "descriptions": [
+            "Dongzhimen: separate-fare interchange opens between Line 2 and Line 13",
+            "Line 13: Huoying - Dongzhimen opens"
+        ]
+    },
+    {
+        "date": "2003-12-27",
+        "descriptions": [
+            "Batong Line: Sihui - Tu Qiao opens",
+            "Sihui and Sihui Dong: out-of-station interchange opens between Line 1 and Batong Line"
+        ]
+    },
+    {
+        "date": "2007-04-11",
+        "descriptions": [
+            "Broadcasting Institute → Communication University of China"
+        ]
+    },
+    {
+        "date": "2007-10-07",
+        "descriptions": [
+            "Dongzhimen: in-station interchange opens with unified metro fares",
+            "Line 5: Songjiazhuang - Tiantongyuan Bei opens",
+            "Sihui and Sihui Dong: in-station interchange opens with unified metro fares"
+        ]
+    },
+    {
+        "date": "2008-06-09",
+        "descriptions": [
+            "Xizhimen: in-station interchange opens"
+        ]
+    },
+    {
+        "date": "2008-07-19",
+        "descriptions": [
+            "Airport Express: Dongzhimen - Terminal 3 / Terminal 2 opens",
+            "Line 8: Beitucheng - Forest Park South Gate opens",
+            "Line 10: Bagou - Jingsong opens"
+        ]
+    },
+    {
+        "date": "2008-10-09",
+        "descriptions": [
+            "Line 8: Olympic Sports Center opens"
+        ]
+    },
+    {
+        "date": "2009-09-28",
+        "descriptions": [
+            "Line 4: Anheqiao Bei - Gongyi Xiqiao opens"
+        ]
+    },
+    {
+        "date": "2010-12-25",
+        "descriptions": [
+            "Line 13: Xi'erqi moves to its new station north of the original platforms"
+        ]
+    },
+    {
+        "date": "2010-12-30",
+        "descriptions": [
+            "Changping Line: Xi'erqi - Nanshao opens",
+            "Daxing Line: Gongyi Xiqiao - Tiangong Yuan opens",
+            "Fangshan Line: Dabaotai - Suzhuang opens",
+            "Line 15: Wangjing Xi - Houshayu opens",
+            "Yizhuang Line: Songjiazhuang - Ciqu opens"
+        ]
+    },
+    {
+        "date": "2011-12-31",
+        "descriptions": [
+            "Fangshan Line: Dabaotai - Guogongzhuang opens",
+            "Line 8: Forest Park South Gate - Huilongguan Dongdajie opens",
+            "Line 9: Guogongzhuang - Beijing West Railway Station opens",
+            "Line 15: Houshayu - Fengbo opens"
+        ]
+    },
+    {
+        "date": "2012-10-12",
+        "descriptions": [
+            "Line 9: Fengtai Dongdajie opens"
+        ]
+    },
+    {
+        "date": "2012-12-30",
+        "descriptions": [
+            "Line 6: Haidian Wuluju - Caofang opens",
+            "Line 8: Beitucheng - Gulou Dajie opens",
+            "Line 9: Beijing West Railway Station - National Library opens",
+            "Line 10: Bagou - Xiju opens",
+            "Line 10: Jingsong - Capital University of Economics and Business opens"
+        ]
+    },
+    {
+        "date": "2013-05-05",
+        "descriptions": [
+            "Line 10: Capital University of Economics and Business - Xiju opens",
+            "Line 10: Jiaomen Dong opens",
+            "Line 14: Zhangguozhuang - Xiju opens"
+        ]
+    },
+    {
+        "date": "2013-12-21",
+        "descriptions": [
+            "Line 9: Military Museum opens"
+        ]
+    },
+    {
+        "date": "2013-12-28",
+        "descriptions": [
+            "Line 8: Gulou Dajie - Nanluogu Xiang opens",
+            "Line 8: Huilongguan Dongdajie - Zhuxinzhuang opens"
+        ]
+    },
+    {
+        "date": "2014-02-15",
+        "descriptions": [
+            "Line 14: Qilizhuang opens"
+        ]
+    },
+    {
+        "date": "2014-12-28",
+        "descriptions": [
+            "Line 6: Caofang - Lucheng opens",
+            "Line 7: Beijing West Railway Station - Jiaohua Chang opens",
+            "Line 14: Jintai Lu - Shan'gezhuang opens",
+            "Line 15: Wangjing Xi - Qinghua Donglu Xikou opens"
+        ]
+    },
+    {
+        "date": "2015-12-26",
+        "descriptions": [
+            "Changping Line: Nanshao - Changping Xishankou opens",
+            "Line 8: Andeli Beijie opens",
+            "Line 14: Beijing South Railway Station - Jintai Lu opens",
+            "Line 15: Datunludong opens"
+        ]
+    },
+    {
+        "date": "2016-12-31",
+        "descriptions": [
+            "Line 14: Chaoyang Park opens",
+            "Line 15: Wangjing Dong opens",
+            "Line 16: Bei'anhe - Xi Yuan opens"
+        ]
+    },
+    {
+        "date": "2017-12-30",
+        "descriptions": [
+            "Fangshan Line: Suzhuang - Yancun Dong opens",
+            "Line 14: Pingle Yuan opens",
+            "Line 16: Nongda Nanlu opens",
+            "S1: Jin'anqiao - Shichang opens",
+            "Xijiao Line: Bagou - Fragrant Hills opens",
+            "Yanfang Line: Yancun Dong - Yanshan opens"
+        ]
+    },
+    {
+        "date": "2018-12-30",
+        "descriptions": [
+            "Line 6: Beiyunhe Dong opens",
+            "Line 6: Haidian Wuluju - Jin'anqiao opens",
+            "Line 7: Fatou opens",
+            "Line 8: Nanluogu Xiang - National Art Museum opens",
+            "Line 8: Zhushikou - Yinghai opens",
+            "Yizhuang Line: Ciqu - Yizhuang Railway Station opens"
+        ]
+    },
+    {
+        "date": "2019-02-17",
+        "descriptions": [
+            "Line 13: Shangdi - Xi'erqi rerouted through the future Qinghe station site"
+        ]
+    },
+    {
+        "date": "2019-09-24",
+        "descriptions": [
+            "Airport Express → Capital Airport Express"
+        ]
+    },
+    {
+        "date": "2019-09-26",
+        "descriptions": [
+            "Daxing Airport Express: Caoqiao - Daxing Airport opens"
+        ]
+    },
+    {
+        "date": "2019-12-28",
+        "descriptions": [
+            "Batong Line: Tu Qiao - Huazhuang opens",
+            "Line 7: Jiaohua Chang - Huazhuang opens",
+            "Line 7: Shuangjing opens"
+        ]
+    },
+    {
+        "date": "2019-12-30",
+        "descriptions": [
+            "Line 13: Qinghe Railway Station opens"
+        ]
+    },
+    {
+        "date": "2020-12-31",
+        "descriptions": [
+            "Fangshan Line: Guogongzhuang - Dongguantou Nan opens",
+            "Line 16: Xi Yuan - Ganjia Kou opens",
+            "Yizhuang T1: Quzhuang - Dinghaiyuan opens"
+        ]
+    },
+    {
+        "date": "2021-08-26",
+        "descriptions": [
+            "Batong Line: Huazhuang - Universal Resort opens",
+            "Line 7: Huazhuang - Universal Resort opens"
+        ]
+    },
+    {
+        "date": "2021-08-29",
+        "descriptions": [
+            "Line 1 and Batong Line → Line 1 / Batong; the old Line 1 platforms at Sihui Dong and Batong platforms at Sihui close"
+        ]
+    },
+    {
+        "date": "2021-12-31",
+        "descriptions": [
+            "Capital Airport Express: Dongzhimen - Beixinqiao opens",
+            "Changping Line: Xi'erqi - Qinghe Railway Station opens",
+            "Line 6: Pingguoyuan opens",
+            "Line 8: National Art Museum - Zhushikou opens",
+            "Line 11: Jin'anqiao - Shougang Park opens",
+            "Line 14: Xiju - Beijing South Railway Station opens",
+            "Line 16: Ganjia Kou - Yuyuantan Park East Gate opens",
+            "Line 17: Shilihe - Jiahuihu opens",
+            "Line 19: Mudanyuan - Xingong opens",
+            "S1: Jin'anqiao - Pingguoyuan opens"
+        ]
+    },
+    {
+        "date": "2022-07-30",
+        "descriptions": [
+            "Line 19: Beitaipingzhuang opens",
+            "Line 19: Jingfengmen opens",
+            "Line 19: Ping'anli opens",
+            "Line 19: Taipingqiao opens"
+        ]
+    },
+    {
+        "date": "2022-12-31",
+        "descriptions": [
+            "Line 16: Yuyuantan Park East Gate - Yushuzhuang opens",
+            "Muxidi: out-of-station interchange opens"
+        ]
+    },
+    {
+        "date": "2023-02-04",
+        "descriptions": [
+            "Changping Line: Qinghe Railway Station - Xitucheng opens"
+        ]
+    },
+    {
+        "date": "2023-03-18",
+        "descriptions": [
+            "Line 6: Erligou opens",
+            "Line 16: Erligou opens"
+        ]
+    },
+    {
+        "date": "2023-12-30",
+        "descriptions": [
+            "Line 11: Jin'anqiao - Moshikou opens",
+            "Line 16: Suzhou Jie opens",
+            "Line 16: Yushuzhuang - Wanpingcheng opens",
+            "Line 17: Future Science City North - Workers' Stadium opens"
+        ]
+    },
+    {
+        "date": "2024-12-15",
+        "descriptions": [
+            "Changping Line: Xitucheng - Jimen Qiao opens",
+            "Changping Line: Zhufangbei opens",
+            "Dazhong Si: out-of-station interchange opens",
+            "Line 3: Dongsi Shitiao - Dongbabei opens",
+            "Line 12: Sijiqing Qiao - Dongbabei opens"
+        ]
+    },
+    {
+        "date": "2025-01-19",
+        "descriptions": [
+            "Line 16: Lize Shangwuqu opens"
+        ]
+    },
+    {
+        "date": "2025-11-08",
+        "descriptions": [
+            "Line 8: Dahong Men opens"
+        ]
+    },
+    {
+        "date": "2025-12-27",
+        "descriptions": [
+            "Line 6: Lucheng - Luyang opens",
+            "Line 17: Workers' Stadium - Shilihe opens",
+            "Line 18: Malianwa - Tiantongyuandong opens"
+        ]
+    },
+    {
+        "date": "2026-01-31",
+        "descriptions": [
+            "Line 17: Wangjing Xi opens"
+        ]
+    },
+    {
+        "date": "2026-05-16",
+        "descriptions": [
+            "Pingguoyuan: in-station interchange opens between Line 1 / Batong, Line 6 and S1"
+        ]
+    },
+    {
+        "date": "2026-06-30",
+        "descriptions": [
+            "Line 6: Tongyun Men opens"
+        ]
+    }
+]

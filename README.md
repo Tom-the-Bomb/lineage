@@ -19,6 +19,9 @@ Powered by [`D3.js`](https://d3js.org/) for animating SVG map elements, `React` 
 - [Shenzhen Metro](https://www.szmc.net/), including Longhua Tram and Pingshan Skyshuttle as tracks only
 - [Hangzhou Metro](https://www.hzmetro.com/)
 - [Guangzhou Metro](https://www.gzmtr.com/) and [Foshan Metro](https://www.fmetro.net/), including Guangfo and APM, plus Haizhu, Huangpu and Nanhai trams as tracks only
+- [Beijing Subway](https://www.bjsubway.com/), including both airport railways, S1, and Xijiao / Yizhuang T1 trams as tracks only
+- [Nanjing Metro](https://www.njmetro.com.cn/), including the suburban lines and Hexi / Qilin trams as tracks only
+- [Chongqing Rail Transit](https://www.cqmetro.cn/), including Jiangtiao and Bitong suburban railways, plus Bishan SkyShuttle as tracks only
 
 ## Asset Sources
 
@@ -36,3 +39,6 @@ Maps are sourced from below and heavily modified according to `docs/map-data-spe
 - [Shenzhen Metro](https://commons.wikimedia.org/wiki/File:Shenzhen_Metro_Linemap.svg)
 - [Hangzhou Metro](https://commons.wikimedia.org/wiki/File:Hangzhou_Metro_Linemap.svg)
 - [Guangzhou Metro](https://commons.wikimedia.org/wiki/File:Guangzhou_Metro_Linemap.svg)
+- Beijing: drawn from [OpenStreetMap](https://www.openstreetmap.org/) railway and geographic data
+- Nanjing: drawn from [OpenStreetMap](https://www.openstreetmap.org/) railway and geographic data
+- Chongqing: drawn from [OpenStreetMap](https://www.openstreetmap.org/) railway alignments, riverbanks and administrative boundaries

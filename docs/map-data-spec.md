@@ -38,7 +38,7 @@ src/assets/<key>/
 ```
 
 - Name logos after their operator or network, e.g. `shanghai-metro.svg`, `toei-subway.svg` or `mtr.svg`, rather than `metro.svg`.
-- `<key>` is a readable lowercase place name: `hongkong`, `shanghai`, `taipei`, `singapore`, `tokyo`, `shenzhen`, `hangzhou` or `guangfo`. Use the same key for the folder, `systems` entry and URL (e.g. `/shanghai`); no separate key field.
+- `<key>` is a readable lowercase place name: `hongkong`, `shanghai`, `taipei`, `singapore`, `tokyo`, `shenzhen`, `hangzhou`, `guangfo`, `chengdu`, `beijing`, `nanjing` or `chongqing`. Use the same key for the folder, `systems` entry and URL (e.g. `/shanghai`); no separate key field.
 - Register the system in `src/systems.ts` by adding a `defineSystem({ ... })` entry to `systems`:
 
 | Field                        | Type / example                                        | Rule                                                                            |
@@ -57,6 +57,8 @@ src/assets/<key>/
 | `article` (optional)         | `'/hongkong/article'`                                 | Only if an article route exists.                                                |
 
 - Home page links, `SystemKey` and the routes are derived from `systems`. Add the public URL to `public/sitemap.xml` too. The Hong Kong article is at `/hongkong/article`.
+- Optional `logoSize` sets the header logo width (automatic height) and a square image box for the home page and timeline thumb, in pixels. Artwork proportions are preserved. Defaults are 16 px wide in the header, 28 × 28 on the home page and 24 × 16 for the thumb. Tick/dot positions account for thumb width.
+- Optional `tooltipLogoSize` sets station tooltip logo height in pixels (default 16); width stays automatic.
 
 ## 2. Label syntax
 
@@ -313,6 +315,9 @@ written like a label but with the legend entry's `id` (§9) in place of the name
   the crossing, so neither sits on the other line (Hongkou Football Stadium 2007–2012, Longhua 2015–2018).
 - Where they run **parallel**: stagger the circles along the corridor so they read as two
   (Hongqiao Airport Terminal 2 2010–2017).
+- Where a new line runs straight **through** an existing station marker, put the new line's station point
+  about one marker width (`2r`) along the new line, so the capsule has an orientation; leave the older line's
+  point where it was (Chengdu's Xinnanmen, Dongpo Road).
 - Where one line **ends** at the other: the circles touch. If the ending track exists only for the
   out-of-station period, trim it so it ends at its own circle (Pearl Line at Shanghai South Railway
   Station 2000–2004).
@@ -338,6 +343,9 @@ change over the station's life.
 - The test is the operator's own classification: its list of out-of-station transfer stations, its
   station pages and signage, and dated announcements such as "passage opens on …". Physical distance
   doesn't count, and neither does how the official diagram happens to draw it.
+- An operator app or station API that lists each station's transfer lines is a good test, and archived
+  copies date it. Two nearby stations that list only their own lines have no designated transfer
+  (Chengdu's Jincheng Plaza / Jincheng Plaza East).
 - Separate fare systems count as out-of-station **within the primary system**. Shanghai Lines 3 and 5
   used separate tickets from Lines 1/2 until the network-wide one-ticket system on 2005-12-25, so
   Zhongshan Park, Xinzhuang and Shanghai South Railway Station are drawn as connectors until then.
@@ -552,6 +560,15 @@ several existing stations across the area, then inspect riverbanks, islands and 
 Smooth the verified alignment; do not invent it by joining station centres. Keep any small offsets
 needed for readable interchanges local.
 
+When the source artwork is itself geographic, fit an affine transform from projected coordinates to the
+SVG on the line termini, then add a smooth local correction interpolated from every matched station
+(Gaussian weights; exclude outliers). Project added lines, stations and water through the same
+correction so they meet the artwork's own stations (Chengdu: 2.4 → 1.1 units median residual).
+
+For a map drawn from scratch, project railway geometry, station coordinates and geography through
+one metric projection. Historical OSM snapshots can recover retired alignments; check their actual
+service dates independently, since an OSM edit timestamp is not an opening or closure date.
+
 ### Background geography
 
 - Preserve accurate source artwork. Correct a coastline or border against mapped geometry, not by
@@ -613,6 +630,12 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
    offset box at each station leave a jog at every station, like the Jinshan Railway did. Delete the jog
    vertices: two opposite turns over a short segment, within a few units of the straight line. Then
    re-snap the stations. Simplify every track to fewer than 256 straight segments (§4).
+   Design artwork often draws lines as **outlined strokes**: a closed filled outline whose two sides are
+   offsets of the original centreline, joined by round caps (two quarter arcs of radius `W/2`). Recover the
+   centreline exactly instead of tracing it: split the outline at the two caps, take the midpoint between
+   each point of one side and its nearest point on the other, and check every centre point lies `W/2` from
+   the outline (Chengdu). A shared corridor drawn as two half-width stripes becomes full-width parallels
+   (§4); fade the separation out where the two lines cross, because the push direction flips there.
 6. **Resize markers** to the formulas in §5 for the chosen `W`, and snap every circle centre onto its track.
 7. **Label everything** per §2 and §7, then build `lines.json` and `events.json`.
 8. Round coordinates to 3 decimals, and check that every `id` is unique.

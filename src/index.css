@@ -423,8 +423,8 @@
 #date-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 24px;
-    height: 16px;
+    width: var(--slider-thumb-width);
+    height: var(--slider-thumb-height);
     border: 0;
     background: var(--slider-thumb) center / contain no-repeat transparent;
     box-shadow: none;
@@ -437,8 +437,8 @@
 }
 
 #date-slider::-moz-range-thumb {
-    width: 24px;
-    height: 16px;
+    width: var(--slider-thumb-width);
+    height: var(--slider-thumb-height);
     border: 0;
     background: var(--slider-thumb) center / contain no-repeat transparent;
     box-shadow: none;

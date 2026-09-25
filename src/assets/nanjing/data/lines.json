@@ -1,0 +1,91 @@
+{
+    "lines": [
+        {
+            "id": "1",
+            "label": "Line_1=2005_05_15",
+            "color": "#00a2df"
+        },
+        {
+            "id": "2",
+            "label": "Line_2=2010_05_28",
+            "color": "#c7003f"
+        },
+        {
+            "id": "3",
+            "label": "Line_3=2015_04_01",
+            "color": "#009651"
+        },
+        {
+            "id": "4",
+            "label": "Line_4=2017_01_18",
+            "color": "#a513c0"
+        },
+        {
+            "id": "5",
+            "label": "Line_5=2024_03_31",
+            "color": "#f2da51"
+        },
+        {
+            "id": "7",
+            "label": "Line_7=2022_12_28",
+            "color": "#4A7729"
+        },
+        {
+            "id": "10",
+            "label": "Line_10=2014_07_01",
+            "color": "#eac384"
+        },
+        {
+            "id": "s1",
+            "label": "S1=2014_07_01",
+            "color": "#4BBBB4"
+        },
+        {
+            "id": "s2",
+            "label": "S2=2026_04_22",
+            "color": "#92282b"
+        },
+        {
+            "id": "s3",
+            "label": "S3=2017_12_06",
+            "color": "#BA84AC"
+        },
+        {
+            "id": "s4",
+            "label": "S4=2023_06_28",
+            "color": "#FF631B"
+        },
+        {
+            "id": "s6",
+            "label": "S6=2021_12_28",
+            "color": "#b58bd7"
+        },
+        {
+            "id": "s7",
+            "label": "S7=2018_05_26",
+            "color": "#ca8687"
+        },
+        {
+            "id": "s8",
+            "label": "S8=2014_08_01",
+            "color": "#eca153"
+        },
+        {
+            "id": "s9",
+            "label": "S9=2017_12_30",
+            "color": "#f1bc1a"
+        },
+        {
+            "id": "hx",
+            "label": "Hexi_Tram=2014_08_01",
+            "color": "#46F0FF",
+            "simplified": true
+        },
+        {
+            "id": "ql",
+            "label": "Qilin_Tram=2017_10_31",
+            "color": "#57C45B",
+            "simplified": true
+        }
+    ]
+}

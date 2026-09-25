@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import arrowUpRight from '../assets/arrow-up-right.svg';
 import type { ChangelogEvent } from '../schemas';
 import { systemKeys, systems } from '../systems';
 import { formatDate } from '../utils';
@@ -113,7 +114,11 @@ export default function Home() {
                                                 key={logo}
                                                 src={logo}
                                                 alt=""
-                                                className="size-7 object-contain"
+                                                className="size-7 shrink-0 object-contain"
+                                                style={{
+                                                    width: system.logoSize,
+                                                    height: system.logoSize,
+                                                }}
                                             />
                                         ))}
                                     </div>
@@ -131,11 +136,13 @@ export default function Home() {
                                     </div>
                                     <span
                                         aria-hidden="true"
-                                        className="text-ink-faint group-hover:text-accent text-xl
-                                            transition-transform group-hover:translate-x-1"
-                                    >
-                                        ↗
-                                    </span>
+                                        className="text-ink-faint group-hover:text-accent size-5
+                                            shrink-0 bg-current transition-transform
+                                            group-hover:translate-x-1"
+                                        style={{
+                                            mask: `url("${arrowUpRight}") center / contain no-repeat`,
+                                        }}
+                                    />
                                 </div>
                                 <p className="meta mt-4 tabular-nums">
                                     {system.minDate.getUTCFullYear()} —{' '}

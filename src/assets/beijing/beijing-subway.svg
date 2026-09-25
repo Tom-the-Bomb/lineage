@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="59,59 382 382">
+<title>Beijing Subway simplified logo</title>
+<g stroke="#004A9D" fill="none">
+ <path d="M 165,173 H 329 M 165,327 H 329" stroke-width="32" />
+ <path d="M 186,157 V 343 M 311,169 A 180 180 0 0 1 311,333" stroke-width="42" />
+ <path d="M 415,202 A 172 172 1 1 0 421,269 H 329" stroke-width="38" />
+</g>
+</svg>

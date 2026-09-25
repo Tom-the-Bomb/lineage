@@ -43,7 +43,6 @@ import Stats from './Stats';
 import Theme from './Theme';
 import Tooltip, { TOOLTIP_OFFSET } from './Tooltip';
 
-const SLIDER_THUMB_WIDTH = 24;
 const EVENT_DOT_SIZE = 4;
 
 function sameNetwork(a: UpdateResult, b: UpdateResult): boolean {
@@ -58,6 +57,7 @@ function sameNetwork(a: UpdateResult, b: UpdateResult): boolean {
 export default function Map({ system }: { system: SystemKey }) {
     const config: SystemConfig = systems[system];
     const { minDate, maxDate } = config;
+    const thumbWidth = config.logoSize ?? 24;
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
@@ -86,11 +86,14 @@ export default function Map({ system }: { system: SystemKey }) {
 
     const timeRef = useRef(time);
 
-    const sliderRef = useCallback((slider: HTMLInputElement | null) => {
-        if (slider) {
-            setSliderTrackWidth(slider.clientWidth - SLIDER_THUMB_WIDTH);
-        }
-    }, []);
+    const sliderRef = useCallback(
+        (slider: HTMLInputElement | null) => {
+            if (slider) {
+                setSliderTrackWidth(slider.clientWidth - thumbWidth);
+            }
+        },
+        [thumbWidth],
+    );
 
     useEffect(() => {
         timeRef.current = time;
@@ -483,7 +486,13 @@ export default function Map({ system }: { system: SystemKey }) {
     return (
         <div
             className="flex h-dvh w-dvw touch-none items-center justify-center"
-            style={{ '--slider-thumb': `url("${config.logos[0]}")` } as React.CSSProperties}
+            style={
+                {
+                    '--slider-thumb': `url("${config.logos[0]}")`,
+                    '--slider-thumb-width': `${thumbWidth}px`,
+                    '--slider-thumb-height': `${config.logoSize ?? 16}px`,
+                } as React.CSSProperties
+            }
         >
             <header
                 className={`pointer-events-none absolute top-4 left-4 z-10 flex
@@ -689,7 +698,8 @@ export default function Map({ system }: { system: SystemKey }) {
                         px-4"
                 >
                     <div
-                        className="pointer-events-none absolute inset-x-7"
+                        className="pointer-events-none absolute
+                            inset-x-[calc(1rem+var(--slider-thumb-width)/2)]"
                         onKeyDown={e => e.stopPropagation()}
                     >
                         {config.events
@@ -701,7 +711,7 @@ export default function Map({ system }: { system: SystemKey }) {
                                     date === time ||
                                     (sliderTrackWidth !== null &&
                                         Math.abs(progress - timeProgress) * sliderTrackWidth <=
-                                            (SLIDER_THUMB_WIDTH + EVENT_DOT_SIZE) / 2);
+                                            (thumbWidth + EVENT_DOT_SIZE) / 2);
                                 return (
                                     <div
                                         key={date}
@@ -742,7 +752,8 @@ export default function Map({ system }: { system: SystemKey }) {
                             cursor-pointer"
                     />
                     <div
-                        className="pointer-events-none absolute inset-x-7 top-1/2 h-full
+                        className="pointer-events-none absolute
+                            inset-x-[calc(1rem+var(--slider-thumb-width)/2)] top-1/2 h-full
                             -translate-y-1/2"
                     >
                         {ticks.map(date => (

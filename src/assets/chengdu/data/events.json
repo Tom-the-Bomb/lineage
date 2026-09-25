@@ -1,0 +1,226 @@
+[
+    {
+        "date": "2010-09-27",
+        "descriptions": [
+            "Line 1: Shengxian Lake - Century City opens"
+        ]
+    },
+    {
+        "date": "2012-09-16",
+        "descriptions": [
+            "Line 2: Chadianzi Bus Terminal Station - Chengdu Institute of Public Administration opens"
+        ]
+    },
+    {
+        "date": "2013-06-08",
+        "descriptions": [
+            "Line 1: Ocean Park opens",
+            "Line 2: Xipu - Chadianzi Bus Terminal Station opens"
+        ]
+    },
+    {
+        "date": "2013-07-08",
+        "descriptions": [
+            "Ocean Park → Jincheng Square"
+        ]
+    },
+    {
+        "date": "2014-10-26",
+        "descriptions": [
+            "Line 2: Chengdu Institute of Public Administration - Longquanyi opens"
+        ]
+    },
+    {
+        "date": "2015-07-25",
+        "descriptions": [
+            "Line 1: Century City - Guangdu opens"
+        ]
+    },
+    {
+        "date": "2015-12-26",
+        "descriptions": [
+            "Line 4: Intangible Cultural Heritage Park - Wannianchang opens"
+        ]
+    },
+    {
+        "date": "2016-07-31",
+        "descriptions": [
+            "Line 3: Chengdu Junqu General Hospital - Taipingyuan opens"
+        ]
+    },
+    {
+        "date": "2017-06-02",
+        "descriptions": [
+            "Line 4: Intangible Cultural Heritage Park - Wansheng opens",
+            "Line 4: Wannianchang - Xihe opens"
+        ]
+    },
+    {
+        "date": "2017-09-06",
+        "descriptions": [
+            "Line 10: Taipingyuan - Terminal 2 of Shuangliu International Airport opens"
+        ]
+    },
+    {
+        "date": "2017-12-06",
+        "descriptions": [
+            "Line 7: North Railway Station - North Railway Station opens, as a complete loop"
+        ]
+    },
+    {
+        "date": "2017-12-08",
+        "descriptions": [
+            "Jincheng Square → Jincheng Plaza"
+        ]
+    },
+    {
+        "date": "2018-03-18",
+        "descriptions": [
+            "Line 1: Guangdu - Wugensong opens",
+            "Line 1: Shengxian Lake - Weijianian opens",
+            "Line 1: Sihe - Science City opens"
+        ]
+    },
+    {
+        "date": "2018-12-26",
+        "descriptions": [
+            "Chengdu Tram Line 2: Hexin Road - Chenguang opens",
+            "Line 3: Chengdu Junqu General Hospital - Chengdu Medical College opens",
+            "Line 3: Taipingyuan - Shuangliu West Station opens"
+        ]
+    },
+    {
+        "date": "2019-12-27",
+        "descriptions": [
+            "Chengdu Tram Line 2: Chenguang - Pixian West Railway Station opens",
+            "Chengdu Tram Line 2: Hexin Road - Chengdu West Railway Station opens",
+            "Chengdu Tram Line 2: Xinye Road - Renhe opens",
+            "Line 5: Huagui Road - Huilong opens",
+            "Line 10: Terminal 2 of Shuangliu International Airport - Xinping opens"
+        ]
+    },
+    {
+        "date": "2020-08-20",
+        "descriptions": [
+            "Chengdu Institute of Public Administration → Chengdu Academy of Governance"
+        ]
+    },
+    {
+        "date": "2020-09-27",
+        "descriptions": [
+            "Line 18: South Railway Station - Sancha opens"
+        ]
+    },
+    {
+        "date": "2020-12-18",
+        "descriptions": [
+            "Line 6: Wangcong Temple - Lanjiagou opens",
+            "Line 8: Lianhua - Shilidian opens",
+            "Line 9: Financial City East - Huangtianba opens",
+            "Line 17: Jinxing - Jiujiang North opens",
+            "Line 17: Jiujiang North - Jitouqiao opens",
+            "Line 18: Sancha - Tianfu International Airport North opens"
+        ]
+    },
+    {
+        "date": "2021-06-27",
+        "descriptions": [
+            "Line 18: Terminal 1&2 of Tianfu International Airport opens"
+        ]
+    },
+    {
+        "date": "2023-07-25",
+        "descriptions": [
+            "2nd Beizhan Road West → 2nd Beizhan West Road",
+            "Caotang Road North → Caotang North Road",
+            "Chuan-Zang Flyover → Chuanzang Flyover",
+            "Dongda Road → Dongdalu Road",
+            "East Chengdu Railway Station → Chengdu East Railway Station",
+            "East Lake Park → Donghu Park",
+            "East Shuhan Road → Shuhan Road East",
+            "Jingju Temple → Jingjusi",
+            "Jinhua Temple East Road → Jinhuasi East Road",
+            "Jinke Road North → Jinke North Road",
+            "Liangjia Alley → Liangjiaxiang",
+            "Qingjiang Road West → Qingjiang West Road",
+            "Renmin Rd. North → Renmin North Road",
+            "Rulinlu → Rulin Road",
+            "Shuangliu West Station → Shuangliu West Railway Station",
+            "Simaqiao → Sima Bridge",
+            "Taisheng Road South → Taisheng South Road",
+            "Xibeiqiao → Xibei Bridge",
+            "Xinjin Station → Xinjin Railway Station",
+            "Xipu → Xipu Railway Station",
+            "Yingtiansi Temple → Yingtian Temple",
+            "Zhaojuesi Road South → Zhaojuesi South Road"
+        ]
+    },
+    {
+        "date": "2023-08-13",
+        "descriptions": [
+            "Line 18: Futian opens"
+        ]
+    },
+    {
+        "date": "2023-09-22",
+        "descriptions": [
+            "Jinxing - Jiujiang North transfers from Line 17 to Line 19"
+        ]
+    },
+    {
+        "date": "2023-11-28",
+        "descriptions": [
+            "Line 18: Tianfu Station opens (transfer only, no exits)",
+            "Line 19: Jiujiang North - Tianfu Station opens",
+            "Line 19: Tianfu Station - Tianfu International Airport North opens",
+            "Terminal 2 of Shuangliu International Airport: out-of-station interchange opens with East of Terminal 2 of Shuangliu International Airport"
+        ]
+    },
+    {
+        "date": "2024-04-08",
+        "descriptions": [
+            "Line 6: Qingdao Road opens"
+        ]
+    },
+    {
+        "date": "2024-09-29",
+        "descriptions": [
+            "Line S3: Futian - Ziyang Bei Station opens"
+        ]
+    },
+    {
+        "date": "2024-12-19",
+        "descriptions": [
+            "Line 8: Lianhua - Longgang opens",
+            "Line 8: Shilidian - Guilong Road opens",
+            "Line 27: Shifo - Shuxin Road opens"
+        ]
+    },
+    {
+        "date": "2025-08-22",
+        "descriptions": [
+            "Line 6: Lujiao opens"
+        ]
+    },
+    {
+        "date": "2025-09-17",
+        "descriptions": [
+            "Line 10: Wuhou Shrine - Taipingyuan opens",
+            "Line 17: Jitouqiao - Gaohong opens"
+        ]
+    },
+    {
+        "date": "2025-12-16",
+        "descriptions": [
+            "Line 13: Long'an - Wayaotan opens",
+            "Line 30: Longquanyi Railway Station South - East of Terminal 2 of Shuangliu International Airport opens",
+            "Terminal 2 of Shuangliu International Airport: out-of-station interchange extends to Line 30"
+        ]
+    },
+    {
+        "date": "2025-12-20",
+        "descriptions": [
+            "Line 2: Chengdu Academy of Governance - Longquanyi closes for rebuilding on a new alignment"
+        ]
+    }
+]

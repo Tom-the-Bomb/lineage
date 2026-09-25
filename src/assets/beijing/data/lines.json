@@ -1,0 +1,161 @@
+{
+    "lines": [
+        {
+            "id": "1",
+            "label": "Line_1=1971_01_15-2021_08_29,Line_1_/_Batong=2021_08_29",
+            "color": "#a4343a"
+        },
+        {
+            "id": "2",
+            "label": "Second_Phase=1984_09_20-1987_12_28,Loop_Line=1987_12_28-2002_07_24,Line_2=2002_07_24",
+            "color": "#004b87"
+        },
+        {
+            "id": "3",
+            "label": "Line_3=2024_12_15",
+            "color": "#ca152b"
+        },
+        {
+            "id": "4",
+            "label": "Line_4=2009_09_28",
+            "color": "#008c95"
+        },
+        {
+            "id": "5",
+            "label": "Line_5=2007_10_07",
+            "color": "#a05eb5"
+        },
+        {
+            "id": "6",
+            "label": "Line_6=2012_12_30",
+            "color": "#b58500"
+        },
+        {
+            "id": "7",
+            "label": "Line_7=2014_12_28",
+            "color": "#ffc56e"
+        },
+        {
+            "id": "8",
+            "label": "Line_8=2008_07_19",
+            "color": "#009b77"
+        },
+        {
+            "id": "9",
+            "label": "Line_9=2011_12_31",
+            "color": "#97d700"
+        },
+        {
+            "id": "10",
+            "label": "Line_10=2008_07_19",
+            "color": "#0092bc"
+        },
+        {
+            "id": "11",
+            "label": "Line_11=2021_12_31",
+            "color": "#ed796b"
+        },
+        {
+            "id": "12",
+            "label": "Line_12=2024_12_15",
+            "color": "#a192b2"
+        },
+        {
+            "id": "13",
+            "label": "Line_13=2002_09_28",
+            "color": "#f4da40"
+        },
+        {
+            "id": "14",
+            "label": "Line_14=2013_05_05",
+            "color": "#ca9a8e"
+        },
+        {
+            "id": "15",
+            "label": "Line_15=2010_12_30",
+            "color": "#653279"
+        },
+        {
+            "id": "16",
+            "label": "Line_16=2016_12_31",
+            "color": "#6ba539"
+        },
+        {
+            "id": "17",
+            "label": "Line_17=2021_12_31",
+            "color": "#00b2a9"
+        },
+        {
+            "id": "18",
+            "label": "Line_18=2025_12_27",
+            "color": "#00a9ce"
+        },
+        {
+            "id": "19",
+            "label": "Line_19=2021_12_31",
+            "color": "#d3a8c7"
+        },
+        {
+            "id": "bt",
+            "label": "Batong_Line=2003_12_27-2021_08_29",
+            "color": "#a4343a"
+        },
+        {
+            "id": "ca",
+            "label": "Airport_Express=2008_07_19-2019_09_24,Capital_Airport_Express=2019_09_24",
+            "color": "#a29bb4"
+        },
+        {
+            "id": "cp",
+            "label": "Changping_Line=2010_12_30",
+            "color": "#d986ba"
+        },
+        {
+            "id": "da",
+            "label": "Daxing_Airport_Express=2019_09_26",
+            "color": "#0047bb"
+        },
+        {
+            "id": "dx",
+            "label": "Daxing_Line=2010_12_30",
+            "color": "#008c95"
+        },
+        {
+            "id": "fb",
+            "label": "Fuba_Line=1999_09_28-2000_06_28",
+            "color": "#a4343a"
+        },
+        {
+            "id": "fs",
+            "label": "Fangshan_Line=2010_12_30",
+            "color": "#d86018"
+        },
+        {
+            "id": "s1",
+            "label": "S1=2017_12_30",
+            "color": "#a45a2a"
+        },
+        {
+            "id": "t1",
+            "label": "Yizhuang_T1=2020_12_31",
+            "color": "#d22630",
+            "simplified": true
+        },
+        {
+            "id": "xj",
+            "label": "Xijiao_Line=2017_12_30",
+            "color": "#d22630",
+            "simplified": true
+        },
+        {
+            "id": "yf",
+            "label": "Yanfang_Line=2017_12_30",
+            "color": "#dc6016"
+        },
+        {
+            "id": "yz",
+            "label": "Yizhuang_Line=2010_12_30",
+            "color": "#d0006f"
+        }
+    ]
+}

@@ -1,0 +1,75 @@
+{
+    "lines": [
+        {
+            "id": "1",
+            "label": "Line_1=2011_07_28",
+            "color": "#E4002B"
+        },
+        {
+            "id": "2",
+            "label": "Line_2=2004_11_06",
+            "color": "#007A33"
+        },
+        {
+            "id": "3",
+            "label": "Line_3=2011_09_29",
+            "color": "#003DA5"
+        },
+        {
+            "id": "4",
+            "label": "Line_4=2018_12_28",
+            "color": "#DC8633"
+        },
+        {
+            "id": "5",
+            "label": "Line_5=2017_12_28",
+            "color": "#00A3E0"
+        },
+        {
+            "id": "6",
+            "label": "Line_6=2012_09_28",
+            "color": "#F67599"
+        },
+        {
+            "id": "expo",
+            "label": "International_Expo_Line=2013_05_15",
+            "color": "#F67599"
+        },
+        {
+            "id": "9",
+            "label": "Line_9=2022_01_25",
+            "color": "#862041"
+        },
+        {
+            "id": "10",
+            "label": "Line_10=2017_12_28",
+            "color": "#3C1053"
+        },
+        {
+            "id": "18",
+            "label": "Line_18=2023_12_28",
+            "color": "#2CD5C4"
+        },
+        {
+            "id": "loop",
+            "label": "Loop_Line=2018_12_28",
+            "color": "#F2A900"
+        },
+        {
+            "id": "jt",
+            "label": "Jiangtiao_Line=2022_08_06",
+            "color": "#0077C8"
+        },
+        {
+            "id": "bt",
+            "label": "Bitong_Line=2024_12_26",
+            "color": "#0057B8"
+        },
+        {
+            "id": "yunba",
+            "label": "Bishan_SkyShuttle=2021_02_15",
+            "color": "#1974D2",
+            "simplified": true
+        }
+    ]
+}
