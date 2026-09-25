@@ -86,7 +86,7 @@ function defineSystem(config: Omit<SystemConfig, 'minDate' | 'maxDate'>): System
 
 export const systems = {
     hongkong: defineSystem({
-        name: 'MTR',
+        name: 'Hong Kong MTR',
         localTitle: '港鐵歷史',
         description: "Explore the growth of Hong Kong's rail network",
         map: hongkongMap,
@@ -287,7 +287,7 @@ export const systems = {
         },
     }),
     chongqing: defineSystem({
-        name: 'Chongqing Metro',
+        name: 'Chongqing Rail Transit',
         localTitle: '重庆轨道交通历史',
         description: "Explore the growth of Chongqing's rail network",
         map: chongqingMap,

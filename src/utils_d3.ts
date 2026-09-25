@@ -35,14 +35,16 @@ export interface Step {
     unit: StepUnit;
 }
 
-export interface PlaybackSettings {
+export interface MapSettings {
+    showGeography: boolean;
     tickMs: number;
     step: Step;
     transitionMs: number;
     pauseMs: number;
 }
 
-export const DEFAULT_SETTINGS: PlaybackSettings = {
+export const DEFAULT_SETTINGS: MapSettings = {
+    showGeography: true,
     tickMs: 40,
     step: {
         count: 1,

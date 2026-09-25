@@ -12,7 +12,7 @@ import {
     DEFAULT_SETTINGS,
     RANGES,
     STEP_UNITS,
-    type PlaybackSettings,
+    type MapSettings,
     type Step,
     type StepUnit,
 } from '../utils_d3';
@@ -99,12 +99,12 @@ const GUIDE: [string, ReactNode][] = [
 ];
 
 interface InfoProps {
-    settings: PlaybackSettings;
-    onSettings: (patch: Partial<PlaybackSettings>) => void;
+    settings: MapSettings;
+    onSettings: (patch: Partial<MapSettings>) => void;
 }
 
 export default function Info({ settings, onSettings }: InfoProps) {
-    const { tickMs, step, transitionMs, pauseMs } = settings;
+    const { tickMs, step, transitionMs, pauseMs, showGeography } = settings;
     const [open, setOpen] = useState(false);
 
     return (
@@ -202,6 +202,23 @@ export default function Info({ settings, onSettings }: InfoProps) {
                                     </span>
                                 </button>
                             </Setting>
+                            <button
+                                type="button"
+                                role="switch"
+                                aria-checked={showGeography}
+                                onClick={() => onSettings({ showGeography: !showGeography })}
+                                onKeyDown={e => e.stopPropagation()}
+                                className="flex cursor-pointer items-center gap-3 text-left"
+                            >
+                                <span className="w-18 shrink-0">Geography</span>
+                                <span aria-hidden="true" className="range flex w-6 items-center">
+                                    <span
+                                        className={`bg-accent size-(--range-thumb) rounded-full
+                                        transition-transform
+                                        ${showGeography ? 'translate-x-[calc(1.5rem-var(--range-thumb))]' : ''}`}
+                                    />
+                                </span>
+                            </button>
                         </div>
                     </div>
                 </section>

@@ -15,7 +15,7 @@ export default function HeaderCard({ config }: { config: SystemConfig }) {
                     />
                 ))}
                 <span className="text-ink-faint">system:</span>
-                <h1 className="text-ink font-medium">{config.name} History</h1>
+                <h1 className="text-ink font-medium">{config.name}</h1>
             </div>
             <h2 className="flex items-baseline gap-2 leading-none">
                 <span className="text-ink-faint font-mono text-sm">//</span>

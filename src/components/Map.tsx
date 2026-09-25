@@ -18,7 +18,7 @@ import {
     STEP_UNITS,
     update,
     zoomToElement,
-    type PlaybackSettings,
+    type MapSettings,
 } from '../utils_d3';
 
 import chevronLeft from '../assets/chevron-left.svg';
@@ -80,7 +80,7 @@ export default function Map({ system }: { system: SystemKey }) {
     const [hoveredLine, setHoveredLine] = useState<string | null>(null);
     const [network, setNetwork] = useState<UpdateResult>({ stationCount: 0, km: 0, lineKm: {} });
     const [expanded, setExpanded] = useState<boolean>(false);
-    const [settings, setSettings] = useState<PlaybackSettings>(DEFAULT_SETTINGS);
+    const [settings, setSettings] = useState<MapSettings>(DEFAULT_SETTINGS);
     const [stationMarkers, setStationMarkers] = useState<StationWrapper[]>([]);
     const [sliderTrackWidth, setSliderTrackWidth] = useState<number | null>(null);
 
@@ -413,6 +413,13 @@ export default function Map({ system }: { system: SystemKey }) {
     }, [svgDoc, time, legend, highlight, settings.transitionMs]);
 
     useEffect(() => {
+        const geography = svgDoc?.querySelector<SVGElement>('#geography');
+        if (geography) {
+            geography.style.display = settings.showGeography ? '' : 'none';
+        }
+    }, [svgDoc, settings.showGeography]);
+
+    useEffect(() => {
         if (!svgDoc) {
             return;
         }
@@ -440,12 +447,11 @@ export default function Map({ system }: { system: SystemKey }) {
             return;
         }
 
-        const { tickMs, step, pauseMs } = settings;
-        const delay = eventDatesRef.current.includes(time) ? pauseMs : tickMs;
-        const { interval } = STEP_UNITS[step.unit];
+        const delay = eventDatesRef.current.includes(time) ? settings.pauseMs : settings.tickMs;
+        const { interval } = STEP_UNITS[settings.step.unit];
 
         const timer = d3.interval(() => {
-            const nextDate = interval.offset(interval.floor(new Date(time)), step.count);
+            const nextDate = interval.offset(interval.floor(new Date(time)), settings.step.count);
             const nextMs = Math.min(nextDate.getTime(), findNextEventDate(time));
 
             if (nextMs >= maxDate.getTime()) {
@@ -454,7 +460,16 @@ export default function Map({ system }: { system: SystemKey }) {
             setTime(Math.min(nextMs, maxDate.getTime()));
         }, delay);
         return () => timer.stop();
-    }, [playing, time, svgDoc, maxDate, findNextEventDate, settings]);
+    }, [
+        playing,
+        time,
+        svgDoc,
+        maxDate,
+        findNextEventDate,
+        settings.pauseMs,
+        settings.tickMs,
+        settings.step,
+    ]);
 
     const presentLines = legend.flatMap(line => {
         const state = line.states.find(({ dateRange }) => isActive(dateRange, time));
