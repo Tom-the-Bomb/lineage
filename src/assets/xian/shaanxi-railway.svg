@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 15 88 51.5">
+  <!-- Shaanxi Province Railway Group emblem (parent of Shaanxi Intercity Railway Co.), redrawn as vector from the group's raster logo (sxprgc.com, archived 2020) without its lettering; trademark of its owner. See docs/timeline-sources.md#xian -->
+  <g fill="#00468e">
+    <path d="M31,16 H79 L78,26 H34 C29,28 26,33 24,40.5 H5 C7,29 15,19 31,16 Z"/>
+    <path d="M35,32 H72 L71,38 L68,41 L67,38 H30 Z"/>
+  </g>
+  <g fill="#007d3c">
+    <path d="M24,41 L28,44 H65 L63,49.5 H22 L23,44 Z"/>
+    <path d="M71,41 H91 C90,48 88,52 84,55 C82,60 76,64 63,65.5 H16 L19,56 H60 C66,54 70,50 71,41 Z"/>
+  </g>
+</svg>

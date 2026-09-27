@@ -97,7 +97,7 @@
         },
         {
             "id": "maglev",
-            "label": "Maglev=2003_01_01-2003_03_10,Maglev=2003_09_20",
+            "label": "Maglev=2003_01_01",
             "color": "rgb(0,139,154)"
         },
         {
@@ -118,7 +118,7 @@
         },
         {
             "id": "tram2",
-            "label": "Songjiang_Tram_2=2018_12_20-2018_12_22,Songjiang_Tram_2=2018_12_26",
+            "label": "Songjiang_Tram_2=2018_12_20",
             "color": "rgb(1,163,104)",
             "simplified": true
         }

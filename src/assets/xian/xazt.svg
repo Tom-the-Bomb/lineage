@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 24 129 114" fill="#e42129" fill-rule="evenodd">
+  <!-- Xi'an China Railway Rail Transit Co. (XAZT) emblem, redrawn as vector from the company's raster mark (xaztgdjt.com) with the "XAZT" lettering removed; trademark of its owner. See docs/timeline-sources.md#xian -->
+  <path d="M10,24 H66 V39 Q66,42 69,42 H81 Q84,42 84,39 V24 H139 V138 H10 Z M28,86 V64 A14,14 0 0 1 56,64 V74 H93 V64 A14.5,14.5 0 0 1 122,64 V88 H62 C51,89 41,93 34,100 L32,101 L15,123 L10,137 V100 C16,95 23,90 27,87.5 Q28,87 28,86 Z M47,102 H133 L126,123 H38 Z"/>
+</svg>

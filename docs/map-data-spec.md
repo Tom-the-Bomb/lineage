@@ -38,7 +38,7 @@ src/assets/<key>/
 ```
 
 - Name logos after their operator or network, e.g. `shanghai-metro.svg`, `toei-subway.svg` or `mtr.svg`, rather than `metro.svg`.
-- `<key>` is a readable lowercase place name: `hongkong`, `shanghai`, `taipei`, `singapore`, `tokyo`, `shenzhen`, `hangzhou`, `guangfo`, `chengdu`, `beijing`, `nanjing`, `chongqing`, `seoul` or `newyork`. Use the same key for the folder, `systems` entry and URL (e.g. `/shanghai`); no separate key field.
+- `<key>` is a readable lowercase place name: `hongkong`, `shanghai`, `taipei`, `singapore`, `tokyo`, `shenzhen`, `hangzhou`, `guangfo`, `chengdu`, `beijing`, `nanjing`, `chongqing`, `xian`, `seoul` or `newyork`. Use the same key for the folder, `systems` entry and URL (e.g. `/shanghai`); no separate key field.
 - Register the system in `src/systems.ts` by adding a `defineSystem({ ... })` entry to `systems`:
 
 | Field                | Type / example                                        | Rule                                                                                                        |
@@ -92,8 +92,7 @@ Rules:
   not its last day of service. A state with no `end` lasts to the present.
 - MUST: states are in chronological order and don't overlap. A rename is two states where the first
   one's `end` equals the second one's `start`. A gap between states means the element is hidden
-  during the gap. Use gaps only for real closures and for the days between a preview and the
-  opening when nobody could ride (§7).
+  during the gap. Use gaps only for real closures (§7); never between a preview and the opening.
 - MUST: a name MUST NOT contain `=`, `,`, whitespace or a literal underscore, and MUST NOT start with
   `_`. Hyphens, apostrophes, periods and `·` are fine (`Zhangjiang_High-Tech_Park`,
   `People's_Square`, `Shimen_No._1_Road`, `Site_of_the_First_CPC_National_Congress_·_Xintiandi`).
@@ -469,23 +468,25 @@ days when nobody could.
   drew the line. Other recorded status changes are kept the same way (restricted access → open to all
   passengers, sightseeing → regular service). `opens` means regular service (including the 试运营 or
   初期运营 that is regular service in mainland China); anything else names its kind (§10).
-- **Draw previews as they ran.** A preview that stopped before the opening ends on its first day
-  without rides, and the line reappears on the opening day; the end gets its own event
-  (`… rides end`). A one-day open house is therefore on the map for that day only. These gaps are
-  never collapsed, however short. Markers follow the same intervals: during the gap a station looks
-  as it did before the preview (a new capsule reverts to the older line's circle). A recurring
-  weekly pattern (weekend-only sightseeing) is continuous service.
+- **The map only grows into an opening.** A line, section or station appears once, on the first day
+  the public could ride it, and stays: the days between a preview (open house, trial rides,
+  sightseeing service) and the opening are **not** drawn as a closure, however long the pause, and
+  get no `… rides end` event. Markers follow the same rule (a new capsule stays a capsule). The
+  playback should read as construction finishing and the line opening, never as a line being
+  demolished and rebuilt. Only when a preview was followed by more than a year without service
+  (the section was effectively unfinished) is the preview left off the map entirely; the line then
+  appears at its regular opening and the source notes mention the preview.
 
 Examples:
 
 - The MTR's 1979-09-30 open day ran straight into regular service, so the line appears on
   **1979-09-30** and **1979-10-01** is an `opens` event with no map change.
 - Singapore's Downtown Line held a one-day open house on **2013-12-07** and opened on
-  **2013-12-22**: it is drawn on 7 December, hidden from 8 to 21 December (an event on the 8th says
-  the open-house rides ended) and back from 22 December.
-- Huangpu Tram Line 2's Huangpu Library – Xiangxue Park preview ran from **2020-12-29** to
-  2021-01-03 and the line closed again, so that section is drawn from 2020-12-29 to 2021-01-04 and
-  again from its regular opening on 2025-06-20.
+  **2013-12-22**: it is drawn from 7 December onwards, and 22 December is an `opens` event with no
+  map change.
+- Huangpu Tram Line 2's Huangpu Library – Xiangxue Park preview ran from 2020-12-29 to 2021-01-03,
+  then the line had no service until its regular opening on **2025-06-20**: the gap is over a year,
+  so the preview is left off and the section appears on 2025-06-20.
 - Beijing Line 1 appears on **1971-01-15** with restricted-access trial operation (tickets sold only
   against work-unit letters); the start of sale to everyone on **1972-12-27** is its own event.
 - Shanghai Line 2 opened **1999-09-20** carrying organised visitor groups; regular service on
@@ -507,14 +508,14 @@ the date already recorded where it is disputed, and note the doubt in the system
   service that last until a later project, e.g. the Expo Line closed 2010-11-02 and reopened as part of Line 13 on 2015-12-19.
 - **Temporary suspensions are omitted**: repairs, maintenance, accidents, incidents, weather,
   events, epidemics (COVID-19) and similar, after which service resumes at the same stations. The
-  line didn't vanish, so the map shows it as continuous. A preview that ended with the line closing
-  again is not a suspension (see Openings).
+  line didn't vanish, so the map shows it as continuous. The pause between a preview and the opening
+  is treated the same way (see Openings).
 - **Relocations / switchovers**: the old element ends on the day the new one opens. If the gap
   between them is under a month, collapse it (Zhangjiang High-Tech Park: elevated closed
   2010-02-14, underground opened 2010-02-24, so both change on 2010-02-24). Longer gaps where the
   service really was cut back are kept (Line 3 at Shanghai South Railway Station 2004-01-01 → 2005-10-15;
-  Dongfang Road closed 2005-10-22 → reopened as Century Avenue 2006-10-28). The gap between a preview
-  and the opening is never collapsed (see Openings).
+  Dongfang Road closed 2005-10-22 → reopened as Century Avenue 2006-10-28). A preview and its opening
+  never have a gap at all (see Openings).
 
 **Renames**: the date the new name took effect.
 
@@ -653,7 +654,6 @@ Exclude:
 | ----------------------------------------------- | ---------------------------------------------------------------------------- |
 | section opens / closes (regular service)        | `<Line>: <A> - <B> opens` / `closes`                                         |
 | first public rides are not regular service (§7) | `<Line>: <A> - <B> <kind> begins` (one day only: `<A> - <B> one-day <kind>`) |
-| a preview ends and the section closes (§7)      | `<Line>: <A> - <B> <kind> end`                                               |
 | regular service follows a preview (§7)          | `<Line>: <A> - <B> opens`, even if the map doesn't change                    |
 | another status change (§7)                      | `<Line>: <A> - <B> opens to all passengers` / `regular service begins`       |
 | single station opens / closes                   | `<Line>: <Station> opens` / `closes`                                         |
@@ -667,7 +667,7 @@ Exclude:
   `<A> - <B>` uses a spaced hyphen.
 - `<kind>` names the service exactly (§7), for example `public preview rides`,
   `free trial rides`, `free experience week`, `sightseeing service` or
-  `restricted service for work-unit ticket holders`. Use `rides begin` / `rides end` for plural
+  `restricted service for work-unit ticket holders`. Use `rides begin` for plural
   kinds. The opening that follows is its own entry (`opens`), not a clause in the preview's.
 - A short clarifier after a comma or in parentheses is allowed when the template alone would mislead:
   `Line 2: Longyang Road - Guanglan Road opens, with Zhangjiang High-Tech Park rebuilt underground`,
@@ -741,8 +741,8 @@ and these four exceptions**, not as permission to rebuild the eight established 
   and administrative boundaries to divide land colours. Administrative areas can include sea.
   Use actual river polygons for border rivers, not an invented gap or a fixed-width buffer.
   Shade land outside each system's named administrative area consistently across both the original
-  canvas and expanded margins: Hong Kong SAR; Shanghai, Shenzhen, Hangzhou, Chengdu, Beijing and
-  Chongqing municipalities; Jiangsu province for Nanjing; Guangzhou + Foshan for Guangfo; Taipei + New Taipei +
+  canvas and expanded margins: Hong Kong SAR; Shanghai, Shenzhen, Hangzhou, Chengdu, Beijing,
+  Chongqing and Xi'an municipalities (Xi'an's Xianyang sections run on outside land); Jiangsu province for Nanjing; Guangzhou + Foshan for Guangfo; Taipei + New Taipei +
   Taoyuan for the combined Taipei map; Tokyo Metropolis; Singapore; New York City's five
   boroughs (not the wider MTA service area); and Seoul Special City (not the wider metropolitan
   subway service area). Cross-boundary tracks
@@ -891,7 +891,7 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
 - [ ] Every label matches §2. Names are the verbatim English names of that period.
 - [ ] Sizes follow §5. Circles are on their tracks, capsules cover all their lines, and no marker sits on a line that doesn't stop there.
 - [ ] Interchanges follow the operator's dated classification (§6), with connectors for out-of-station periods.
-- [ ] Lines are drawn exactly when the public could ride them, previews included (not test runs, ceremonies or station-only open days); a preview and the later opening are separate events, a preview that stopped is hidden until the opening (with a `… rides end` event), suspensions are omitted and only relocation gaps under a month are collapsed (§7).
+- [ ] Lines are drawn exactly when the public could ride them, previews included (not test runs, ceremonies or station-only open days); a preview and the later opening are separate events, the line stays on the map from the preview (no gap, no `… rides end` event; a preview followed by over a year without service is left off), suspensions are omitted and only relocation gaps under a month are collapsed (§7).
 - [ ] Every track's name matches a legend entry at every moment (§9).
 - [ ] Every marker has `data-lines` with legend ids, inside its own dates (§5).
 - [ ] In a multi-operator system every marker has `data-logos`, and every handover has an event (§5).

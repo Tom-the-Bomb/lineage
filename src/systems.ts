@@ -70,6 +70,12 @@ import tokyoLines from './assets/tokyo/data/lines.json';
 import tokyoMap from './assets/tokyo/map.svg';
 import tokyoMetroLogo from './assets/tokyo/tokyo-metro.svg';
 import tokyoToeiLogo from './assets/tokyo/toei-subway.svg';
+import xianEvents from './assets/xian/data/events.json';
+import xianLines from './assets/xian/data/lines.json';
+import xianMap from './assets/xian/map.svg';
+import xianIntercityLogo from './assets/xian/shaanxi-railway.svg';
+import xianXaztLogo from './assets/xian/xazt.svg';
+import xianLogo from './assets/xian/xian-metro.svg';
 import type { ChangelogEvent } from './schemas';
 
 const TODAY = utcDay(new Date());
@@ -300,6 +306,23 @@ export const systems = {
         initialView: { center: [3290, 2460], zoom: 1.7 },
         operators: {
             rail: { src: chongqingLogo, alt: 'Chongqing Rail Transit' },
+        },
+    }),
+    xian: defineSystem({
+        name: "Xi'an Metro",
+        localTitle: '西安地铁历史',
+        description: "Explore the growth of Xi'an's rail network",
+        map: xianMap,
+        initialBounds: [3400, 2800],
+        logos: [xianLogo],
+        lines: xianLines.lines,
+        events: xianEvents,
+        milestoneDates: ['2011-09-16', '2013-09-15', '2020-12-28', '2021-06-29', '2024-12-26'],
+        initialView: { center: [1780, 1600], zoom: 1.2 },
+        operators: {
+            metro: { src: xianLogo, alt: "Xi'an Metro" },
+            xazt: { src: xianXaztLogo, alt: "Xi'an China Railway Rail Transit" },
+            intercity: { src: xianIntercityLogo, alt: 'Shaanxi Intercity Railway' },
         },
     }),
     seoul: defineSystem({

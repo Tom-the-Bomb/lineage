@@ -27,7 +27,7 @@
         },
         {
             "id": "lr",
-            "label": "KCR_Light_Rail=1988_09_14-1988_09_17,KCR_Light_Rail=1988_09_18-2007_12_02,Light_Rail=2007_12_02",
+            "label": "KCR_Light_Rail=1988_09_14-2007_12_02,Light_Rail=2007_12_02",
             "color": "rgb(211,168,9)",
             "simplified": true
         },
@@ -48,12 +48,12 @@
         },
         {
             "id": "wrl",
-            "label": "KCR_West_Rail=2003_12_16-2003_12_19,KCR_West_Rail=2003_12_20-2007_12_02,West_Rail_Line=2007_12_02-2021_06_27",
+            "label": "KCR_West_Rail=2003_12_16-2007_12_02,West_Rail_Line=2007_12_02-2021_06_27",
             "color": "rgb(163,35,143)"
         },
         {
             "id": "tml",
-            "label": "Ma_On_Shan_Rail=2004_12_19-2004_12_20,Ma_On_Shan_Rail=2004_12_21-2007_12_02,Ma_On_Shan_Line=2007_12_02-2020_02_14,Tuen_Ma_Line_Phase_1=2020_02_14-2021_06_27,Tuen_Ma_Line=2021_06_27",
+            "label": "Ma_On_Shan_Rail=2004_12_19-2007_12_02,Ma_On_Shan_Line=2007_12_02-2020_02_14,Tuen_Ma_Line_Phase_1=2020_02_14-2021_06_27,Tuen_Ma_Line=2021_06_27",
             "color": "rgb(146,48,17)"
         },
         {

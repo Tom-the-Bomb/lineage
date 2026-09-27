@@ -12,12 +12,6 @@
     ]
   },
   {
-    "date": "1999-03-03",
-    "descriptions": [
-      "Line 1: Xi Lang - Guang Zhou Dong Zhan sightseeing service ends; the line closes for final testing"
-    ]
-  },
-  {
     "date": "1999-06-28",
     "descriptions": [
       "Line 1: Xi Lang - Guang Zhou Dong Zhan opens"
@@ -96,7 +90,6 @@
   {
     "date": "2010-10-30",
     "descriptions": [
-      "Guangfo Line: Kuiqi Lu - Xilang free public trial rides end",
       "Line 3: Guangzhou East Railway Station - Airport South opens"
     ]
   },
@@ -234,18 +227,6 @@
     "date": "2020-12-28",
     "descriptions": [
       "Huangpu Tram Line 1 extends from Changping to Xiangxue, adding metro connections at Shuixi and Xiangxue"
-    ]
-  },
-  {
-    "date": "2020-12-29",
-    "descriptions": [
-      "Huangpu Tram Line 2: Huangpu Library - Xiangxue Park public preview rides begin"
-    ]
-  },
-  {
-    "date": "2021-01-04",
-    "descriptions": [
-      "Huangpu Tram Line 2: Huangpu Library - Xiangxue Park public preview rides end"
     ]
   },
   {
