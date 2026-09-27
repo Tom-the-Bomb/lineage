@@ -27,26 +27,29 @@
         },
         {
             "id": "dt",
-            "label": "Downtown_Line=2013_12_22",
+            "label": "Downtown_Line=2013_12_07-2013_12_08,Downtown_Line=2013_12_22",
             "color": "rgb(0,80,159)"
         },
         {
             "id": "te",
-            "label": "Thomson-East_Coast_Line=2020_01_31",
+            "label": "Thomson-East_Coast_Line=2020_01_11-2020_01_12,Thomson-East_Coast_Line=2020_01_31",
             "color": "rgb(157,91,37)"
         },
         {
             "id": "bplrt",
+            "simplified": true,
             "label": "Bukit_Panjang_LRT=1999_11_06",
             "color": "rgb(116,132,119)"
         },
         {
             "id": "sklrt",
+            "simplified": true,
             "label": "Sengkang_LRT=2003_01_18",
             "color": "rgb(116,132,119)"
         },
         {
             "id": "pglrt",
+            "simplified": true,
             "label": "Punggol_LRT=2005_01_29",
             "color": "rgb(116,132,119)"
         }

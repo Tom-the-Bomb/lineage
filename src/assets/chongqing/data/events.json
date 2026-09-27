@@ -2,22 +2,36 @@
     {
         "date": "2004-11-06",
         "descriptions": [
-            "Line 2: public sightseeing rides begin between Daping and Zoo, calling at Yuanjiagang, Xiejiawan and Yangjiaping"
+            "Line 2: Daping - Zoo weekend sightseeing service begins, with no intermediate stations open"
         ]
     },
     {
         "date": "2004-12-11",
         "descriptions": [
-            "Line 2: public sightseeing service extends from Daping to Jiaochangkou"
+            "Line 2: Daping - Jiaochangkou weekend sightseeing service begins, calling only at Daxigou"
         ]
     },
     {
         "date": "2004-12-28",
         "descriptions": [
+            "Line 2: Jiaochangkou - Zoo daily trial running begins",
             "Line 2: Linjiangmen opens",
-            "Line 2: Daxigou opens",
+            "Line 2: Liziba opens",
             "Line 2: Niujiaotuo opens",
-            "Line 2: Liziba opens"
+            "Line 2: Yangjiaping opens",
+            "Line 2: Yuanjiagang opens"
+        ]
+    },
+    {
+        "date": "2005-02-09",
+        "descriptions": [
+            "Line 2: Huanghuayuan opens"
+        ]
+    },
+    {
+        "date": "2005-03-31",
+        "descriptions": [
+            "Line 2: Xiejiawan opens"
         ]
     },
     {
@@ -35,7 +49,7 @@
     {
         "date": "2005-06-18",
         "descriptions": [
-            "Line 2: Huanghuayuan opens"
+            "Line 2: Jiaochangkou - Zoo regular service begins"
         ]
     },
     {
@@ -315,7 +329,19 @@
     {
         "date": "2021-02-15",
         "descriptions": [
-            "Bishan SkyShuttle: public trial rides begin along the full route, calling at five stations including the Line 1 connection at Bishan"
+            "Bishan SkyShuttle: Subway Line 1 - Chengyu Railway Station free public trial rides begin, calling at five stations"
+        ]
+    },
+    {
+        "date": "2021-02-25",
+        "descriptions": [
+            "Bishan SkyShuttle: Subway Line 1 - Chengyu Railway Station free public trial rides end"
+        ]
+    },
+    {
+        "date": "2021-04-16",
+        "descriptions": [
+            "Bishan SkyShuttle: Subway Line 1 - Chengyu Railway Station opens, connecting with Line 1 at Bishan"
         ]
     },
     {
@@ -401,16 +427,15 @@
     {
         "date": "2024-12-26",
         "descriptions": [
-            "Bitong Line: public passenger trials begin between Bishan and Tongliangxi; Qinglonghu remains unopened",
-            "Line 1: Bishan gains an out-of-station interchange with Bitong Line",
-            "Bitong Line: Bishan gains an out-of-station interchange with Line 1"
+            "Bishan: out-of-station interchange opens between Line 1 and Bitong Line",
+            "Bitong Line: Bishan - Tongliangxi free experience week begins, with Qinglonghu unopened"
         ]
     },
     {
         "date": "2025-01-02",
         "descriptions": [
-            "Line 1: Bishan gains a paid-area interchange with Bitong Line",
-            "Bitong Line: Bishan gains a paid-area interchange with Line 1"
+            "Bishan: in-station interchange opens between Line 1 and Bitong Line",
+            "Bitong Line: Bishan - Tongliangxi opens, with Qinglonghu unopened"
         ]
     },
     {

@@ -2,7 +2,7 @@
     "lines": [
         {
             "id": "br",
-            "label": "Muzha_Line=1996_03_28-2009_07_04,Muzha–Neihu_Line=2009_07_04-2009_10_08,Wenhu_Line=2009_10_08",
+            "label": "Muzha_Line=1996_02_27-2009_07_04,Muzha–Neihu_Line=2009_07_04-2009_10_08,Wenhu_Line=2009_10_08",
             "color": "rgb(158,101,46)"
         },
         {
@@ -47,8 +47,30 @@
         },
         {
             "id": "y",
-            "label": "Circular_Line=2020_01_31",
+            "label": "Circular_Line=2020_01_19",
             "color": "rgb(240,217,67)"
+        },
+        {
+            "id": "a",
+            "label": "Taoyuan_Airport_MRT=2017_02_16",
+            "color": "rgb(130,70,175)"
+        },
+        {
+            "id": "lb",
+            "label": "Sanying_Line=2026_06_30",
+            "color": "rgb(72,182,210)"
+        },
+        {
+            "id": "v",
+            "label": "Danhai_LRT=2018_12_24",
+            "color": "rgb(220,82,77)",
+            "simplified": true
+        },
+        {
+            "id": "k",
+            "label": "Ankeng_LRT=2023_02_10",
+            "color": "rgb(155,143,94)",
+            "simplified": true
         },
         {
             "id": "maokong",

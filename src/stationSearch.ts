@@ -1,5 +1,9 @@
 import type { DateInterval, LegendWrapper, StationWrapper } from './schemas';
 
+export function stationIdentity(station: StationWrapper): string {
+    return station.el.id.split('--')[0];
+}
+
 export interface StationOption {
     id: string;
     name: string;
@@ -21,7 +25,7 @@ export function createStationOptions(
             continue;
         }
 
-        const id = station.el.id.split('--')[0];
+        const id = stationIdentity(station);
         for (const state of station.states) {
             const start = state.dateRange.appear.getTime();
             let group = groups.find(option => option.id === id && option.name === state.name);

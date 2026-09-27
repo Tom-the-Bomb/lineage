@@ -1,7 +1,8 @@
 import type { DateInterval, State } from './schemas';
 
-// Max date object Javascript can handle:
-// September 13, 275760
+// Min and max date objects Javascript can handle:
+// April 20, 271821 BC and September 13, 275760
+const START_OF_TIME = new Date(-8.64e15);
 const END_OF_TIME = new Date(8.64e15);
 
 export function playPause(
@@ -39,9 +40,9 @@ export function parseLabelDates(label: string): State[] {
 
     return parts.map(part => {
         const [name, rawInterval] = part.split('=');
-        const interval = rawInterval.split('-');
+        const interval = rawInterval?.split('-') ?? [];
 
-        const appear = new Date(interval[0].replace(/_/g, '-'));
+        const appear = interval[0] ? new Date(interval[0].replace(/_/g, '-')) : START_OF_TIME;
         const removed = interval[1] ? new Date(interval[1].replace(/_/g, '-')) : END_OF_TIME;
 
         return {

@@ -1,10 +1,12 @@
 import { useLayoutEffect, useRef, useState } from 'react';
-import type { LegendWrapper, RawTooltipData } from '../schemas';
+import type { LegendWrapper, RawTooltipData, StationWrapper } from '../schemas';
+import { stationIdentity } from '../stationSearch';
 import type { SystemConfig } from '../systems';
 import { clamp, findName, formatDate, isActive } from '../utils';
 
 interface TooltipProps {
     tooltip: RawTooltipData | null;
+    stations: StationWrapper[];
     time: number;
     config: SystemConfig;
     legend: LegendWrapper[];
@@ -12,8 +14,32 @@ interface TooltipProps {
 
 export const TOOLTIP_OFFSET = 10;
 
+function since(
+    stations: StationWrapper[],
+    station: StationWrapper,
+    name: string,
+    time: number,
+): Date {
+    const id = stationIdentity(station);
+    const ranges = stations
+        .filter(other => stationIdentity(other) === id)
+        .flatMap(other =>
+            other.states.filter(state => state.name === name).map(state => state.dateRange),
+        )
+        .sort((a, b) => b.appear.getTime() - a.appear.getTime());
+
+    let appear = time;
+    for (const range of ranges) {
+        if (range.appear.getTime() <= appear && appear <= range.removed.getTime()) {
+            appear = Math.min(appear, range.appear.getTime());
+        }
+    }
+    return new Date(appear);
+}
+
 export default function Tooltip({
     tooltip,
+    stations,
     time,
     config,
     legend,
@@ -32,8 +58,14 @@ export default function Tooltip({
         return null;
     }
 
-    const state = tooltip.station.states.find(({ dateRange }) => isActive(dateRange, time));
-    const status = tooltip.station.status;
+    const stateIndex = tooltip.station.states.findIndex(({ dateRange }) =>
+        isActive(dateRange, time),
+    );
+    const state = tooltip.station.states[stateIndex];
+    const logos = tooltip.station.operators.flatMap(({ name, dateRange }) => {
+        const logo = config.operators[name];
+        return logo && isActive(dateRange, time) ? [logo] : [];
+    });
 
     const lines = legend.flatMap(entry => {
         const calling = tooltip.station.lines.some(
@@ -65,7 +97,7 @@ export default function Tooltip({
                 style={{ left: x, top: y }}
             >
                 <div className="flex items-center gap-2">
-                    {config.tooltipLogos?.(status, time).map(logo => (
+                    {logos.map(logo => (
                         <img
                             key={logo.alt}
                             src={logo.src}
@@ -77,7 +109,7 @@ export default function Tooltip({
                     <span className="flex items-baseline gap-2">
                         {state.name}
                         <span className="meta ml-auto text-[9px]">
-                            since {formatDate(state.dateRange.appear)}
+                            since {formatDate(since(stations, tooltip.station, state.name, time))}
                         </span>
                     </span>
                 </div>

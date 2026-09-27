@@ -2,14 +2,25 @@
   {
     "date": "1997-06-28",
     "descriptions": [
-      "Line 1: Xi Lang - Huang Sha opens"
+      "Line 1: Xi Lang - Huang Sha paid sightseeing service begins"
     ]
   },
   {
     "date": "1999-02-16",
     "descriptions": [
-      "Line 1: Huang Sha - Guang Zhou Dong Zhan opens",
-      "Public preview service begins on the full Line 1; regular operation follows on 28 June"
+      "Line 1: Huang Sha - Guang Zhou Dong Zhan paid sightseeing service begins, running over the whole line"
+    ]
+  },
+  {
+    "date": "1999-03-03",
+    "descriptions": [
+      "Line 1: Xi Lang - Guang Zhou Dong Zhan sightseeing service ends; the line closes for final testing"
+    ]
+  },
+  {
+    "date": "1999-06-28",
+    "descriptions": [
+      "Line 1: Xi Lang - Guang Zhou Dong Zhan opens"
     ]
   },
   {
@@ -77,16 +88,23 @@
     ]
   },
   {
+    "date": "2010-10-28",
+    "descriptions": [
+      "Guangfo Line: Kuiqi Lu - Xilang free public trial rides begin"
+    ]
+  },
+  {
     "date": "2010-10-30",
     "descriptions": [
+      "Guangfo Line: Kuiqi Lu - Xilang free public trial rides end",
       "Line 3: Guangzhou East Railway Station - Airport South opens"
     ]
   },
   {
     "date": "2010-11-03",
     "descriptions": [
-      "Line 8: Fenghuang Xincun - Changgang opens",
-      "Guangfo Line: Kuiqi Lu - Xilang opens"
+      "Guangfo Line: Kuiqi Lu - Xilang opens",
+      "Line 8: Fenghuang Xincun - Changgang opens"
     ]
   },
   {
@@ -119,13 +137,19 @@
   {
     "date": "2014-12-31",
     "descriptions": [
-      "Haizhu Tram opens Canton Tower - Wanshengwei for public trial rides"
+      "Haizhu Tram: Canton Tower - Wanshengwei paid trial-ride period begins"
     ]
   },
   {
     "date": "2015-01-28",
     "descriptions": [
       "Line 6: Yide Lu opens"
+    ]
+  },
+  {
+    "date": "2015-02-12",
+    "descriptions": [
+      "Haizhu Tram: Canton Tower - Wanshengwei regular service begins"
     ]
   },
   {
@@ -215,13 +239,13 @@
   {
     "date": "2020-12-29",
     "descriptions": [
-      "Huangpu Tram Line 2 offers public preview rides between Huangpu Library and Xiangxue Park"
+      "Huangpu Tram Line 2: Huangpu Library - Xiangxue Park public preview rides begin"
     ]
   },
   {
     "date": "2021-01-04",
     "descriptions": [
-      "Huangpu Tram Line 2 public preview ends after 3 January; regular service has not yet begun"
+      "Huangpu Tram Line 2: Huangpu Library - Xiangxue Park public preview rides end"
     ]
   },
   {
@@ -335,7 +359,7 @@
   {
     "date": "2025-06-20",
     "descriptions": [
-      "Huangpu Tram Line 2 opens regular service Xiangxue - Kaiyuan Dadao East, including the earlier public-preview section"
+      "Huangpu Tram Line 2: Xiangxue - Kaiyuan Dadao East opens"
     ]
   },
   {

@@ -11,17 +11,20 @@ Powered by [`D3.js`](https://d3js.org/) for animating SVG map elements, `React` 
 
 ## Coverage
 
-- [Mass Transit Railway](https://www.mtr.com.hk/en/corporate/main/index.html) (MTR) Corporation (Includes relevant parts of the [Kowloon Canton Railway](https://www.kcrc.com/index.html) (KCR))
-- [Shanghai Metro](https://en.wikipedia.org/wiki/Shanghai_Metro) (Includes the [Shanghai Suburban Railway](https://en.wikipedia.org/wiki/Shanghai_Suburban_Railway))
-- [Taipei Metro](https://en.wikipedia.org/wiki/Taipei_Metro) (Includes the Circular line, now run by New Taipei Metro, and the [Maokong Gondola](https://english.gondola.taipei/cp.aspx?n=6D76903BDB902EED))
+- [Mass Transit Railway](https://www.mtr.com.hk/en/corporate/main/index.html) (MTR) Corporation (Includes relevant parts of the [Kowloon Canton Railway](https://www.kcrc.com/index.html) (KCR), the High Speed Rail's Hong Kong section, Ngong Ping 360, and LRT as tracks only)
+- [Shanghai Metro](https://en.wikipedia.org/wiki/Shanghai_Metro) (Includes the [Shanghai Suburban Railway](https://en.wikipedia.org/wiki/Shanghai_Suburban_Railway) and the [Maglev](https://en.wikipedia.org/wiki/Shanghai_maglev_train), plus Songjiang trams as tracks only)
+- [Taipei Metro](https://en.wikipedia.org/wiki/Taipei_Metro) (as drawn on Taipei Metro's official route map: includes New Taipei Metro's Circular line, Sanying line and Danhai/Ankeng light rail (tracks only), the [Taoyuan Airport MRT](https://en.wikipedia.org/wiki/Taoyuan_Airport_MRT), and the [Maokong Gondola](https://english.gondola.taipei/cp.aspx?n=6D76903BDB902EED))
 - [Singapore MRT](<https://en.wikipedia.org/wiki/Mass_Rapid_Transit_(Singapore)>) (Includes the [LRT](<https://en.wikipedia.org/wiki/Light_Rail_Transit_(Singapore)>) lines, as tracks only)
-- [Tokyo Metro](https://www.tokyometro.jp/en/) and [Toei Subway](https://www.kotsu.metro.tokyo.jp/eng/services/subway.html), including their predecessors
+- [Tokyo Metro](https://www.tokyometro.jp/en/) and [Toei Subway](https://www.kotsu.metro.tokyo.jp/eng/services/subway.html), including their predecessors, plus Toei's Toden Arakawa Line and Nippori–Toneri Liner as tracks only
 - [Shenzhen Metro](https://www.szmc.net/), including Longhua Tram and Pingshan Skyshuttle as tracks only
 - [Hangzhou Metro](https://www.hzmetro.com/)
 - [Guangzhou Metro](https://www.gzmtr.com/) and [Foshan Metro](https://www.fmetro.net/), including Guangfo and APM, plus Haizhu, Huangpu and Nanhai trams as tracks only
+- [Chengdu Metro](https://en.wikipedia.org/wiki/Chengdu_Metro), including Tram Line 2 as tracks only
 - [Beijing Subway](https://www.bjsubway.com/), including both airport railways, S1, and Xijiao / Yizhuang T1 trams as tracks only
 - [Nanjing Metro](https://www.njmetro.com.cn/), including the suburban lines and Hexi / Qilin trams as tracks only
 - [Chongqing Rail Transit](https://www.cqmetro.cn/), including Jiangtiao and Bitong suburban railways, plus Bishan SkyShuttle as tracks only
+- [New York City Subway](https://www.mta.info/), including historical elevated lines.
+- [Seoul Metropolitan Subway](https://www.seoulmetro.co.kr/en/): Seoul Lines 1–9, Incheon Lines 1–2, Korail's metropolitan lines, AREX, Shinbundang, Seohae and GTX-A, plus 5 LRT lines as tracks only.
 
 ## Asset Sources
 
@@ -29,7 +32,7 @@ Powered by [`D3.js`](https://d3js.org/) for animating SVG map elements, `React` 
 
 Maps are sourced from below and heavily modified according to `docs/map-data-spec.md`
 
-(All sourced from [Wikimedia Commons](commons.wikimedia.org)) unless specified
+**Note:** All sourced from [Wikimedia Commons](https://commons.wikimedia.org) unless specified
 
 - [Mass Transit Railway](https://commons.wikimedia.org/wiki/File:Hong_Kong_Railway_Route_Map_en.svg)
 - [Shanghai Metro](https://commons.wikimedia.org/wiki/File:Shanghai_Metro_Linemap.svg)
@@ -39,8 +42,13 @@ Maps are sourced from below and heavily modified according to `docs/map-data-spe
 - [Shenzhen Metro](https://commons.wikimedia.org/wiki/File:Shenzhen_Metro_Linemap.svg)
 - [Hangzhou Metro](https://commons.wikimedia.org/wiki/File:Hangzhou_Metro_Linemap.svg)
 - [Guangzhou Metro](https://commons.wikimedia.org/wiki/File:Guangzhou_Metro_Linemap.svg)
+- [Chengdu Metro](https://commons.wikimedia.org/wiki/File:Chengdu_Metro_Linemap.svg)
 
-- Beijing, Nanjing, Chongqing are drawn from scratch with [OpenStreetMap](https://www.openstreetmap.org/)
+_All above maps have been expanded using [OpenStreetMap](https://www.openstreetmap.org/)_
+
+- Beijing, Nanjing, Chongqing, Seoul are drawn from scratch with OpenStreetMap
+
+- New York is drawn from [MTA station data & GTFS](https://www.mta.info/developers), historical station locations, [NYC shoreline and hydrography](https://opendata.cityofnewyork.us/), and surrounding shorelines and water from OpenStreetMap
 
 ### Legacy
 
@@ -48,6 +56,6 @@ Maps are sourced from below and heavily modified according to `docs/map-data-spe
 
 ### AI
 
-- Primarily handwritten to prevent the dwindling of my skills, LLMs were used for automating the map (SVG) setup and data compilation in these directories:
+- Primarily handwritten code, LLMs were used for automating the map (SVG) setup and data compilation in these directories:
   - `docs/*`
   - `src/assets/[system]/*`

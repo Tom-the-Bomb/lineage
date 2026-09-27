@@ -124,6 +124,18 @@
     ]
   },
   {
+    "date": "2010-04-04",
+    "descriptions": [
+      "Circle Line: Dhoby Ghaut - Tai Seng one-day open-house free rides"
+    ]
+  },
+  {
+    "date": "2010-04-05",
+    "descriptions": [
+      "Circle Line: Dhoby Ghaut - Tai Seng open-house rides end"
+    ]
+  },
+  {
     "date": "2010-04-17",
     "descriptions": [
       "Circle Line: Dhoby Ghaut - Tai Seng opens"
@@ -136,6 +148,18 @@
     ]
   },
   {
+    "date": "2011-10-02",
+    "descriptions": [
+      "Circle Line: Caldecott - HarbourFront one-day open-house free rides"
+    ]
+  },
+  {
+    "date": "2011-10-03",
+    "descriptions": [
+      "Circle Line: Caldecott - HarbourFront open-house rides end"
+    ]
+  },
+  {
     "date": "2011-10-08",
     "descriptions": [
       "Circle Line: Caldecott - HarbourFront opens"
@@ -145,6 +169,18 @@
     "date": "2012-01-14",
     "descriptions": [
       "Circle Line: Marina Bay - Bayfront opens"
+    ]
+  },
+  {
+    "date": "2013-12-07",
+    "descriptions": [
+      "Downtown Line: Bugis - Chinatown one-day open-house free rides"
+    ]
+  },
+  {
+    "date": "2013-12-08",
+    "descriptions": [
+      "Downtown Line: Bugis - Chinatown open-house rides end"
     ]
   },
   {
@@ -173,9 +209,33 @@
     ]
   },
   {
+    "date": "2017-06-16",
+    "descriptions": [
+      "East-West Line: Gul Circle - Tuas Link one-day open-house free rides"
+    ]
+  },
+  {
+    "date": "2017-06-17",
+    "descriptions": [
+      "East-West Line: Gul Circle - Tuas Link open-house rides end"
+    ]
+  },
+  {
     "date": "2017-06-18",
     "descriptions": [
       "East-West Line: Joo Koon - Tuas Link opens"
+    ]
+  },
+  {
+    "date": "2017-10-15",
+    "descriptions": [
+      "Downtown Line: Fort Canning - Expo one-day open-house free rides"
+    ]
+  },
+  {
+    "date": "2017-10-16",
+    "descriptions": [
+      "Downtown Line: Fort Canning - Expo open-house rides end"
     ]
   },
   {
@@ -192,6 +252,18 @@
     ]
   },
   {
+    "date": "2020-01-11",
+    "descriptions": [
+      "Thomson-East Coast Line: Woodlands North - Woodlands South one-day open-house free rides"
+    ]
+  },
+  {
+    "date": "2020-01-12",
+    "descriptions": [
+      "Thomson-East Coast Line: Woodlands North - Woodlands South open-house rides end"
+    ]
+  },
+  {
     "date": "2020-01-31",
     "descriptions": [
       "Thomson-East Coast Line: Woodlands North - Woodlands South opens"
@@ -204,9 +276,33 @@
     ]
   },
   {
+    "date": "2022-11-11",
+    "descriptions": [
+      "Thomson-East Coast Line: Stevens - Gardens by the Bay one-day public preview free rides"
+    ]
+  },
+  {
+    "date": "2022-11-12",
+    "descriptions": [
+      "Thomson-East Coast Line: Stevens - Gardens by the Bay public preview rides end"
+    ]
+  },
+  {
     "date": "2022-11-13",
     "descriptions": [
-      "Thomson-East Coast Line: Stevens - Gardens by the Bay opens"
+      "Thomson-East Coast Line: Caldecott - Gardens by the Bay opens"
+    ]
+  },
+  {
+    "date": "2024-06-21",
+    "descriptions": [
+      "Thomson-East Coast Line: Tanjong Rhu - Bayshore one-day public preview free rides"
+    ]
+  },
+  {
+    "date": "2024-06-22",
+    "descriptions": [
+      "Thomson-East Coast Line: Tanjong Rhu - Bayshore public preview rides end"
     ]
   },
   {
@@ -228,9 +324,21 @@
     ]
   },
   {
+    "date": "2026-07-04",
+    "descriptions": [
+      "Circle Line: Marina Bay - Keppel one-day public preview free rides"
+    ]
+  },
+  {
+    "date": "2026-07-05",
+    "descriptions": [
+      "Circle Line: Marina Bay - Keppel public preview rides end"
+    ]
+  },
+  {
     "date": "2026-07-12",
     "descriptions": [
-      "Circle Line: Keppel - Prince Edward Road opens"
+      "Circle Line: Marina Bay - HarbourFront opens, closing the loop"
     ]
   }
 ]

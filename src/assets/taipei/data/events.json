@@ -1,160 +1,255 @@
 [
-  {
-    "date": "1996-03-28",
-    "descriptions": [
-      "Muzha Line: Zhongshan Junior High School - Taipei Zoo opens"
-    ]
-  },
-  {
-    "date": "1997-03-28",
-    "descriptions": [
-      "Tamsui Line: Zhongshan - Tamsui opens",
-      "Xinbeitou Branch Line: Xinbeitou - Beitou opens"
-    ]
-  },
-  {
-    "date": "1997-12-25",
-    "descriptions": [
-      "Tamsui Line: Taipei Main Station - Zhongshan opens"
-    ]
-  },
-  {
-    "date": "1998-12-24",
-    "descriptions": [
-      "Tamsui Line: Chiang Kai-shek Memorial Hall - Taipei Main Station opens",
-      "Xindian Line: Chiang Kai-shek Memorial Hall - Guting opens",
-      "Zhonghe Line: Nanshijiao - Guting opens"
-    ]
-  },
-  {
-    "date": "1999-11-11",
-    "descriptions": [
-      "Xindian Line: Guting - Xindian opens"
-    ]
-  },
-  {
-    "date": "1999-12-24",
-    "descriptions": [
-      "Nangang–Banqiao Line: Longshan Temple - Taipei City Hall opens"
-    ]
-  },
-  {
-    "date": "2000-08-31",
-    "descriptions": [
-      "Nangang–Banqiao Line: Xinpu - Longshan Temple opens",
-      "Xiaonanmen Line: Ximen - Chiang Kai-shek Memorial Hall opens"
-    ]
-  },
-  {
-    "date": "2000-12-30",
-    "descriptions": [
-      "Nangang–Banqiao Line: Taipei City Hall - Kunyang opens"
-    ]
-  },
-  {
-    "date": "2004-09-29",
-    "descriptions": [
-      "Xiaobitan Branch Line: Qizhang - Xiaobitan opens"
-    ]
-  },
-  {
-    "date": "2006-05-31",
-    "descriptions": [
-      "Bannan Line: Yongning - Xinpu opens",
-      "Nangang–Banqiao Line → Bannan Line"
-    ]
-  },
-  {
-    "date": "2007-07-04",
-    "descriptions": [
-      "Maokong Gondola: Taipei Zoo - Maokong opens",
-      "Taipei Zoo: out-of-station interchange opens"
-    ]
-  },
-  {
-    "date": "2008-12-25",
-    "descriptions": [
-      "Bannan Line: Kunyang - Nangang opens"
-    ]
-  },
-  {
-    "date": "2009-07-04",
-    "descriptions": [
-      "Muzha Line → Muzha–Neihu Line",
-      "Muzha–Neihu Line: Taipei Nangang Exhibition Center - Zhongshan Junior High School opens"
-    ]
-  },
-  {
-    "date": "2009-10-08",
-    "descriptions": [
-      "Muzha–Neihu Line → Wenhu Line"
-    ]
-  },
-  {
-    "date": "2010-11-03",
-    "descriptions": [
-      "Xinzhuang–Luzhou Line: Zhongxiao Xinsheng - Luzhou opens"
-    ]
-  },
-  {
-    "date": "2011-01-01",
-    "descriptions": [
-      "Xindian City Office → Xindian District Office"
-    ]
-  },
-  {
-    "date": "2011-02-27",
-    "descriptions": [
-      "Bannan Line: Nangang - Taipei Nangang Exhibition Center opens"
-    ]
-  },
-  {
-    "date": "2012-01-05",
-    "descriptions": [
-      "Xinzhuang–Luzhou Line: Taipei Bridge - Fu Jen University opens"
-    ]
-  },
-  {
-    "date": "2012-09-30",
-    "descriptions": [
-      "Zhonghe Line → Zhonghe–Xinlu Line",
-      "Zhonghe–Xinlu Line: Guting - Zhongxiao Xinsheng opens"
-    ]
-  },
-  {
-    "date": "2013-06-29",
-    "descriptions": [
-      "Zhonghe–Xinlu Line: Fu Jen University - Huilong opens"
-    ]
-  },
-  {
-    "date": "2013-11-24",
-    "descriptions": [
-      "Tamsui Line → Tamsui–Xinyi Line",
-      "Tamsui–Xinyi Line: Xiangshan - Chiang Kai-shek Memorial Hall opens"
-    ]
-  },
-  {
-    "date": "2014-11-15",
-    "descriptions": [
-      "Nanjing East Road → Nanjing Fuxing",
-      "Songshan–Xindian Line: Songshan - Ximen opens",
-      "Xiaonanmen Line merged into the Songshan–Xindian Line",
-      "Xindian Line → Songshan–Xindian Line"
-    ]
-  },
-  {
-    "date": "2015-07-06",
-    "descriptions": [
-      "Bannan Line: Dingpu - Yongning opens"
-    ]
-  },
-  {
-    "date": "2020-01-31",
-    "descriptions": [
-      "Banqiao: walking connection opens",
-      "Circular Line: Dapinglin - New Taipei Industrial Park opens",
-      "Xinpu: walking connection opens"
-    ]
-  }
+    {
+        "date": "1996-02-27",
+        "descriptions": [
+            "Muzha Line: Zhongshan Junior High School - Taipei Zoo free public trial rides begin"
+        ]
+    },
+    {
+        "date": "1996-03-28",
+        "descriptions": [
+            "Muzha Line: Zhongshan Junior High School - Taipei Zoo opens"
+        ]
+    },
+    {
+        "date": "1997-03-28",
+        "descriptions": [
+            "Tamsui Line: Zhongshan - Tamsui opens",
+            "Xinbeitou Branch Line: Xinbeitou - Beitou opens"
+        ]
+    },
+    {
+        "date": "1997-12-25",
+        "descriptions": [
+            "Tamsui Line: Taipei Main Station - Zhongshan opens"
+        ]
+    },
+    {
+        "date": "1998-12-24",
+        "descriptions": [
+            "Tamsui Line: Chiang Kai-shek Memorial Hall - Taipei Main Station opens",
+            "Xindian Line: Chiang Kai-shek Memorial Hall - Guting opens",
+            "Zhonghe Line: Nanshijiao - Guting opens"
+        ]
+    },
+    {
+        "date": "1999-11-11",
+        "descriptions": [
+            "Xindian Line: Guting - Xindian opens"
+        ]
+    },
+    {
+        "date": "1999-12-24",
+        "descriptions": [
+            "Nangang–Banqiao Line: Longshan Temple - Taipei City Hall opens"
+        ]
+    },
+    {
+        "date": "2000-08-31",
+        "descriptions": [
+            "Nangang–Banqiao Line: Xinpu - Longshan Temple opens",
+            "Xiaonanmen Line: Ximen - Chiang Kai-shek Memorial Hall opens"
+        ]
+    },
+    {
+        "date": "2000-12-30",
+        "descriptions": [
+            "Nangang–Banqiao Line: Taipei City Hall - Kunyang opens"
+        ]
+    },
+    {
+        "date": "2004-09-29",
+        "descriptions": [
+            "Xiaobitan Branch Line: Qizhang - Xiaobitan opens"
+        ]
+    },
+    {
+        "date": "2006-05-27",
+        "descriptions": [
+            "Nangang–Banqiao Line: Banqiao - Tucheng one-day free public trial rides, calling only at Banqiao and Tucheng"
+        ]
+    },
+    {
+        "date": "2006-05-28",
+        "descriptions": [
+            "Nangang–Banqiao Line: Banqiao - Tucheng free public trial rides end"
+        ]
+    },
+    {
+        "date": "2006-05-31",
+        "descriptions": [
+            "Bannan Line: Yongning - Xinpu opens",
+            "Nangang–Banqiao Line → Bannan Line"
+        ]
+    },
+    {
+        "date": "2007-07-04",
+        "descriptions": [
+            "Maokong Gondola: Taipei Zoo - Maokong opens",
+            "Taipei Zoo: out-of-station interchange opens"
+        ]
+    },
+    {
+        "date": "2008-12-25",
+        "descriptions": [
+            "Bannan Line: Kunyang - Nangang opens"
+        ]
+    },
+    {
+        "date": "2009-06-29",
+        "descriptions": [
+            "Muzha Line: Jiannan Road - Taipei Nangang Exhibition Center public preview rides begin"
+        ]
+    },
+    {
+        "date": "2009-07-02",
+        "descriptions": [
+            "Muzha Line: Jiannan Road - Taipei Nangang Exhibition Center public preview rides end"
+        ]
+    },
+    {
+        "date": "2009-07-04",
+        "descriptions": [
+            "Muzha Line → Muzha–Neihu Line",
+            "Muzha–Neihu Line: Taipei Nangang Exhibition Center - Zhongshan Junior High School opens"
+        ]
+    },
+    {
+        "date": "2009-10-08",
+        "descriptions": [
+            "Muzha–Neihu Line → Wenhu Line"
+        ]
+    },
+    {
+        "date": "2010-11-03",
+        "descriptions": [
+            "Xinzhuang–Luzhou Line: Zhongxiao Xinsheng - Luzhou opens"
+        ]
+    },
+    {
+        "date": "2011-01-01",
+        "descriptions": [
+            "Xindian City Office → Xindian District Office"
+        ]
+    },
+    {
+        "date": "2011-02-27",
+        "descriptions": [
+            "Bannan Line: Nangang - Taipei Nangang Exhibition Center opens"
+        ]
+    },
+    {
+        "date": "2012-01-05",
+        "descriptions": [
+            "Xinzhuang–Luzhou Line: Taipei Bridge - Fu Jen University opens"
+        ]
+    },
+    {
+        "date": "2012-09-30",
+        "descriptions": [
+            "Zhonghe Line → Zhonghe–Xinlu Line",
+            "Zhonghe–Xinlu Line: Guting - Zhongxiao Xinsheng opens"
+        ]
+    },
+    {
+        "date": "2013-06-29",
+        "descriptions": [
+            "Zhonghe–Xinlu Line: Fu Jen University - Huilong opens"
+        ]
+    },
+    {
+        "date": "2013-11-24",
+        "descriptions": [
+            "Tamsui Line → Tamsui–Xinyi Line",
+            "Tamsui–Xinyi Line: Xiangshan - Chiang Kai-shek Memorial Hall opens"
+        ]
+    },
+    {
+        "date": "2014-11-15",
+        "descriptions": [
+            "Nanjing East Road → Nanjing Fuxing",
+            "Songshan–Xindian Line: Songshan - Ximen opens",
+            "Xiaonanmen Line merged into the Songshan–Xindian Line",
+            "Xindian Line → Songshan–Xindian Line"
+        ]
+    },
+    {
+        "date": "2015-07-06",
+        "descriptions": [
+            "Bannan Line: Dingpu - Yongning opens"
+        ]
+    },
+    {
+        "date": "2017-02-16",
+        "descriptions": [
+            "Beimen: out-of-station interchange opens with Taoyuan Airport MRT Taipei Main Station",
+            "Sanchong: out-of-station interchange opens",
+            "Taipei Main Station: out-of-station interchange opens",
+            "Taoyuan Airport MRT: Taipei Main Station - Huanbei free public trial rides begin"
+        ]
+    },
+    {
+        "date": "2017-03-02",
+        "descriptions": [
+            "Taoyuan Airport MRT: Taipei Main Station - Huanbei opens"
+        ]
+    },
+    {
+        "date": "2018-12-24",
+        "descriptions": [
+            "Danhai LRT: Hongshulin - Kanding opens"
+        ]
+    },
+    {
+        "date": "2020-01-19",
+        "descriptions": [
+            "Banqiao: out-of-station interchange opens",
+            "Circular Line: Dapinglin - New Taipei Industrial Park free public trial rides begin",
+            "New Taipei Industrial Park: out-of-station interchange opens",
+            "Xinpu: out-of-station interchange opens"
+        ]
+    },
+    {
+        "date": "2020-01-31",
+        "descriptions": [
+            "Circular Line: Dapinglin - New Taipei Industrial Park opens"
+        ]
+    },
+    {
+        "date": "2020-11-15",
+        "descriptions": [
+            "Danhai LRT: Binhai Shalun - Tamsui Fisherman's Wharf opens"
+        ]
+    },
+    {
+        "date": "2023-02-10",
+        "descriptions": [
+            "Ankeng LRT: Shuangcheng - Shisizhang opens"
+        ]
+    },
+    {
+        "date": "2023-05-23",
+        "descriptions": [
+            "Circular Line: operation transfers from Taipei Metro to New Taipei Metro"
+        ]
+    },
+    {
+        "date": "2023-07-31",
+        "descriptions": [
+            "Taoyuan Airport MRT: Huanbei - Laojie River opens"
+        ]
+    },
+    {
+        "date": "2026-06-30",
+        "descriptions": [
+            "Dingpu: out-of-station interchange opens",
+            "Sanying Line: Dingpu - Yingtao Fude opens"
+        ]
+    },
+    {
+        "date": "2026-08-30",
+        "descriptions": [
+            "Tamsui–Xinyi Line: Xiangshan - Guangci/Fengtian Temple opens"
+        ]
+    }
 ]

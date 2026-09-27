@@ -38,29 +38,38 @@ src/assets/<key>/
 ```
 
 - Name logos after their operator or network, e.g. `shanghai-metro.svg`, `toei-subway.svg` or `mtr.svg`, rather than `metro.svg`.
-- `<key>` is a readable lowercase place name: `hongkong`, `shanghai`, `taipei`, `singapore`, `tokyo`, `shenzhen`, `hangzhou`, `guangfo`, `chengdu`, `beijing`, `nanjing` or `chongqing`. Use the same key for the folder, `systems` entry and URL (e.g. `/shanghai`); no separate key field.
+- `<key>` is a readable lowercase place name: `hongkong`, `shanghai`, `taipei`, `singapore`, `tokyo`, `shenzhen`, `hangzhou`, `guangfo`, `chengdu`, `beijing`, `nanjing`, `chongqing`, `seoul` or `newyork`. Use the same key for the folder, `systems` entry and URL (e.g. `/shanghai`); no separate key field.
 - Register the system in `src/systems.ts` by adding a `defineSystem({ ... })` entry to `systems`:
 
-| Field                        | Type / example                                        | Rule                                                                            |
-| ---------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `name`                       | `'Shanghai Metro'`                                    | System name without “History”; the map heading and browser title append it.     |
-| `localTitle`                 | `'上海地铁历史'`                                      | Full localized title, including “history”.                                      |
-| `description`                | one sentence                                          | Shown under the title.                                                          |
-| `map`                        | `import shanghaiMap from './assets/shanghai/map.svg'` | The SVG.                                                                        |
-| `logos`                      | `[shanghaiMetroLogo]`                                 | Imported header logos.                                                          |
-| `minDate` (derived)          | `Date`                                                | Automatically January 1 UTC of the first event's year; do not configure it.     |
-| `maxDate` (derived)          | `Date`                                                | Automatically today at midnight UTC when the app loads; do not configure it.    |
-| `lines`                      | `shanghaiLines.lines`                                 | The imported `lines.json` array.                                                |
-| `events`                     | `shanghaiEvents`                                      | The imported `events.json` array, sorted by date.                               |
-| `milestoneDates`             | `['1993-05-28', ...]`                                 | Dates from `events` to feature on the home page.                                |
-| `tooltipLogos(status, time)` | returns `{ src, alt }[]`                              | Which logos a station tooltip shows. `status` comes from the label prefix (§2). |
-| `article` (optional)         | `'/hongkong/article'`                                 | Only if an article route exists.                                                |
+| Field                | Type / example                                        | Rule                                                                                                        |
+| -------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `name`               | `'Shanghai Metro'`                                    | System name without “History”; the map heading and browser title append it.                                 |
+| `localTitle`         | `'上海地铁历史'`                                      | Full localized title, including “history”.                                                                  |
+| `description`        | one sentence                                          | Shown under the title.                                                                                      |
+| `map`                | `import shanghaiMap from './assets/shanghai/map.svg'` | The SVG.                                                                                                    |
+| `logos`              | `[shanghaiMetroLogo]`                                 | Imported header logos: the system's own brand (see below).                                                  |
+| `minDate` (derived)  | `Date`                                                | Automatically January 1 UTC of the first event's year; do not configure it.                                 |
+| `maxDate` (derived)  | `Date`                                                | Automatically today at midnight UTC when the app loads; do not configure it.                                |
+| `lines`              | `shanghaiLines.lines`                                 | The imported `lines.json` array.                                                                            |
+| `events`             | `shanghaiEvents`                                      | The imported `events.json` array, sorted by date.                                                           |
+| `milestoneDates`     | `['1993-05-28', ...]`                                 | Dates from `events` to feature on the home page.                                                            |
+| `operators`          | `{ metro: { src, alt }, … }`                          | Station tooltip logos by `data-logos` key (§5). The first is the default for markers without the attribute. |
+| `article` (optional) | `'/hongkong/article'`                                 | Only if an article route exists.                                                                            |
 
+- Header logos show the system's brand only, even where several companies operate its lines (Seoul
+  shows Seoul Metro, Taipei shows Taipei Metro). Add a second header logo only for a system that is
+  genuinely two networks presented as one (Tokyo Metro + Toei, Guangzhou + Foshan). Other operators
+  appear in station tooltips through `operators` (§5).
 - Home page links, `SystemKey` and the routes are derived from `systems`. Add the public URL to `public/sitemap.xml` too. The Hong Kong article is at `/hongkong/article`.
 - Optional `logoSize` sets the header logo width (automatic height) and a square image box for the home page and timeline thumb, in pixels. Artwork proportions are preserved. Defaults are 16 px wide in the header, 28 × 28 on the home page and 24 × 16 for the thumb. Tick/dot positions account for thumb width.
 - Optional `tooltipLogoSize` sets station tooltip logo height in pixels (default 16); width stays automatic.
 - `initialBounds: [width, height]` preserves the opening framing independently of the expanded SVG
   canvas. Optional `initialView: { center: [x, y], zoom }` uses the same unchanged map coordinates.
+
+Each system's scope, sources, logo provenance and documented exceptions are recorded in its section
+of [timeline-sources.md](timeline-sources.md), for example
+[New York's three provisional transfer dates](timeline-sources.md#newyork). They don't change
+these rules.
 
 ## 2. Label syntax
 
@@ -68,15 +77,14 @@ Every track, marker, connector and legend entry carries its whole history in one
 label is the `inkscape:label` attribute; in `lines.json` it is `"label"`.
 
 ```
-label  = [prefix] state { "," state }
-prefix = "^" | "!"                      (station markers only)
+label  = state { "," state }
 state  = name "=" date [ "-" date ]
 date   = YYYY "_" MM "_" DD            (zero-padded)
 name   = English name, spaces written as "_"
 ```
 
 Examples: `Line_1=1993_05_28`, `Jiyang_Road=2011_04_12-2011_05_07,Oriental_Sports_Center=2011_05_07-2013_08_31`,
-`^Hongqiao_Airport_Terminal_2=2024_12_27`, `!Xinzhuang=2025_01_05`.
+`Hongqiao_Airport_Terminal_2=2024_12_27`.
 
 Rules:
 
@@ -84,7 +92,8 @@ Rules:
   not its last day of service. A state with no `end` lasts to the present.
 - MUST: states are in chronological order and don't overlap. A rename is two states where the first
   one's `end` equals the second one's `start`. A gap between states means the element is hidden
-  during the gap. Use gaps only for real closures (§7).
+  during the gap. Use gaps only for real closures and for the days between a preview and the
+  opening when nobody could ride (§7).
 - MUST: a name MUST NOT contain `=`, `,`, whitespace or a literal underscore, and MUST NOT start with
   `_`. Hyphens, apostrophes, periods and `·` are fine (`Zhangjiang_High-Tech_Park`,
   `People's_Square`, `Shimen_No._1_Road`, `Site_of_the_First_CPC_National_Congress_·_Xintiandi`).
@@ -93,12 +102,7 @@ Rules:
   `(elevated)`, `*` or line numbers; use the element `id` for disambiguation.
 - Dates are local calendar dates as the operator announced them. They are parsed as UTC midnight.
   Don't shift them for time zones.
-- Prefixes (station markers only; MUST NOT appear on tracks, connectors or legend entries):
-  - none: the station belongs to the **primary** system only (e.g. Shanghai Metro, MTR);
-  - `^`: the **secondary** system only (e.g. Shanghai Suburban Railway, KCR);
-  - `!`: one station complex serving **both** systems.
-
-  A system with only one operator never uses prefixes. `tooltipLogos` maps these to logos.
+- Station operators are not part of the label; they go in `data-logos` (§5).
 
 ## 3. SVG document structure
 
@@ -106,7 +110,7 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-     viewBox="0 0 4600.74 2843.75" width="1600" height="989" version="1.1" style="background:#f6f6f3">
+     viewBox="-3937 -669 12175 7204" width="1600" height="989" version="1.1" style="background:#f6f6f3">
   <g id="zoom-layer" inkscape:label="zoom-layer">
     <g id="geography" pointer-events="none">            <!-- optional; water and outside land -->
       <path d="…" fill="#eceeef" />                                                    <!-- land beyond the operator's territory -->
@@ -114,15 +118,15 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
     </g>
     <g id="lines" fill="none" stroke-width="5" stroke-linecap="butt" stroke-linejoin="round"
        inkscape:groupmode="layer" inkscape:label="lines">
-      <path id="line-1--caobao-road--xujiahui--1993-05-28" d="M… L…" inkscape:label="Line_1=1993_05_28" stroke="#e3002b" />
+      <path id="line-1--caobao-road--xujiahui--1993-05-28" data-km="2.8" d="M… L…" inkscape:label="Line_1=1993_05_28" stroke="#e3002b" />
       …
     </g>
     <g id="stations" fill="#fff" stroke="#000" stroke-width="2"
        inkscape:groupmode="layer" inkscape:label="station_markers">
       <path id="walking-transfer-…" d="M… L…" fill="none" inkscape:label="…" />   <!-- connectors first -->
-      <circle id="station-…" cx="…" cy="…" r="6.325" inkscape:label="…" />
-      <rect id="station-…" x="-6.325" y="-12.325" width="12.650" height="24.650" rx="6.325"
-            transform="translate(2249.088,1238.967) rotate(-44.6594)" inkscape:label="…" />
+      <circle id="station-…" data-lines="…" cx="…" cy="…" r="6.325" inkscape:label="…" data-logos="…" />
+      <rect id="station-…" data-lines="…" x="-6.325" y="-12.325" width="12.650" height="24.650" rx="6.325"
+            transform="translate(2249.088,1238.967) rotate(-44.6594)" inkscape:label="…" data-logos="…" />
       …
     </g>
   </g>
@@ -141,7 +145,7 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   `<path>` (connector) elements, every one labelled. No nested `<g>`, no `<use>`, no `<text>`.
 - MUST: paint for markers and connectors lives on the `stations` group (`fill`, `stroke`, `stroke-width`),
   not on each element. The app scales markers on hover, so per-element sizes must stay as specified.
-- SHOULD: draw order is geography → lines → stations; inside `stations`, connectors first so markers sit
+- MUST: draw order is geography → lines → stations; inside `stations`, connectors first so markers sit
   on top of them.
 - MUST: geography uses one palette across systems: the operator's own land is the off-white page
   background `#f6f6f3` (`style="background:#f6f6f3"` on the root, no fill drawn; the app's `--color-paper`
@@ -152,7 +156,11 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   its land filled `#f6f6f3` on top, with the coastline on the land shapes instead.
 - MUST NOT: `<title>` or `<desc>` anywhere, because browsers show them as tooltips on top of the app's.
   Also no `<text>` labels (names come from labels and tooltips), no `<defs>`/`<use>`/`<symbol>`, no
-  `<image>`, no filters, masks or clip paths, no `scale()`/`matrix()` transforms.
+  `<image>`, no filters, masks or clip paths, no `scale()`/`matrix()` transforms. The one exception is
+  inside `geography`, which the app neither animates nor reads: preserved source artwork keeps its
+  nested transforms and is clipped to its original canvas by a `<defs>` clip path (§11), and a shape
+  drawn twice may be reused with `<use>` (New York's shared land and shoreline). Nothing in `lines` or
+  `stations` may use them.
 - Inkscape metadata (`sodipodi:namedview`, `<metadata>`) is harmless but unnecessary; new files SHOULD omit it.
 - `id`s MUST be unique. They SHOULD be descriptive:
   - tracks: `<line-slug>--<from-slug>--<to-slug>--<YYYY-MM-DD opening>`, e.g. `line-2--guanglan-road--longyang-road--2010-02-24`;
@@ -186,7 +194,7 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 - MUST: a terminus segment ends exactly at the terminus marker's centre. It must not stick out beyond it.
   `check_map.py` enforces it on butt-capped systems for every track end: inside a marker present at
   every moment of the track's life (markers move when a station is rebuilt), or on another track of
-  the same line (a branch junction, a loop closing on itself), or outside the drawn area, or on a line
+  the same line (a branch junction, a loop closing on itself), or outside the `viewBox`, or on a line
   the legend marks `simplified` (§9). MTR's round caps let a
   track overshoot its terminus marker on purpose; the cap makes the end look deliberate.
 - A segment that existed only for a period (e.g. an old alignment) gets its own path with an end
@@ -239,7 +247,7 @@ All sizes derive from the track width `W`:
 **Station (one line or one platform complex on one line): `<circle>`**
 
 ```xml
-<circle id="station-hengshan-road" cx="2270.123" cy="1215.456" r="6.325" inkscape:label="Hengshan_Road=1995_04_10" />
+<circle id="station-hengshan-road-7" data-lines="1=1995_04_10" cx="2290.083" cy="1184.699" r="6.325" inkscape:label="Hengshan_Road=1995_04_10" data-logos="metro" />
 ```
 
 - MUST: the centre sits on the track centreline (within 0.5 units).
@@ -249,8 +257,9 @@ All sizes derive from the track width `W`:
 **Interchange (lines share a paid area): `<rect>` capsule**
 
 ```xml
-<rect id="station-xujiahui" x="-6.325" y="-12.325" width="12.650" height="24.650" rx="6.325"
-      transform="translate(2249.088,1238.967) rotate(-44.6594)" inkscape:label="Xujiahui=2010_04_07-2013_08_31" />
+<rect id="station-xujiahui-4--2010-04-07" data-lines="1=2010_04_07-2013_08_31,9=2010_04_07-2013_08_31"
+      x="-6.325" y="-12.325" width="12.650" height="24.650" rx="6.325"
+      transform="translate(2249.088,1238.967) rotate(-44.6594)" inkscape:label="Xujiahui=2010_04_07-2013_08_31" data-logos="metro" />
 ```
 
 To build it, take `P` and `Q`, the two outermost points on the lines' centrelines that it must
@@ -273,12 +282,19 @@ transform = "translate(cx,cy) rotate(θ)"
 - SHOULD: keep capsules compact. A small shift along the serving tracks and a slight rotation may
   shorten the span without rerouting the lines. Preserve station order, cover every serving line,
   avoid unrelated tracks, and move any attached connector endpoints with the marker.
+- Where services share the same centreline, align the capsule with that line rather than leaving
+  a default vertical pill. Use simple horizontal/vertical/diagonal orientations when they cover
+  all served tracks; follow the local street/track grid where that is clearer (e.g. Manhattan).
+- Aim for a capsule no more than about three marker widths long. Longer physical complexes may
+  need exceptions: do not hide a served line, create overlaps, merge distinct stations or remove
+  historical transfer gaps just to meet this target. Local track spacing adjustments must move
+  related historical markers and connectors consistently, with geography unchanged.
 - Coordinates use 3 decimals and angles 4.
 
 **Connector (official out-of-station transfer): `<path>`**
 
 ```xml
-<path id="walking-transfer-xujiahui" d="M2253.854,1243.789 L2242.101,1250.357" fill="none" inkscape:label="Xujiahui=2009_12_31-2010_04_07" />
+<path id="walking-transfer-xujiahui" d="M2253.854,1243.789 L2244.438,1234.111" fill="none" inkscape:label="Xujiahui=2009_12_31-2010_04_07" />
 ```
 
 - MUST: a single straight segment `M x1,y1 L x2,y2` from the centre of one marker to the centre of the
@@ -292,7 +308,7 @@ Every `<circle>` and `<rect>` marker MUST carry `data-lines`: the lines that cal
 written like a label but with the legend entry's `id` (§9) in place of the name:
 
 ```xml
-<rect id="station-minquan-west-road-93" data-lines="r=1997_03_28,xinlu=2010_11_03-2012_09_30,o=2012_09_30" … />
+<rect id="station-minquan-west-road-92--2010-11-03" data-lines="r=2010_11_03,xinlu=2010_11_03-2012_09_30,o=2012_09_30" … />
 ```
 
 - MUST: every `id` exists in `lines.json`, every interval lies within the marker's own dates, and the
@@ -306,6 +322,49 @@ written like a label but with the legend entry's `id` (§9) in place of the name
   only its own lines (West Nanjing Road's three markers list one line each).
 - The tooltip shows the active entries under the legend's current names, and the legend highlight
   uses them to light the stations of the chosen lines.
+
+**Tooltip logos: `data-logos`**
+
+Station markers name their operators in `data-logos`, using the label syntax, except that a date
+on the marker's first or last day is left out: `op` covers the marker's whole lifetime, `op=-end`
+runs from its opening until `end` and `op=start` from `start` until it closes. The only dates left
+are handovers:
+
+```xml
+<rect inkscape:label="Asakusa=1960_12_04" data-logos="metro,toei" … />
+<circle inkscape:label="Lo_Wu=1910_10_01-1911_10_05,Lo_Wu=1949_10_14" data-logos="kcr=-2007_12_02,mtr=2007_12_02" … />
+<circle inkscape:label="Kkachiul=2012_10_27" data-logos="metro=-2022_01_01,incheon=2022_01_01" … />
+```
+
+Each key maps to an entry in the system's `operators` (§1). The tooltip shows the entries active
+that day, in attribute order.
+
+- A system with one operator omits the attribute; markers without it show the first operator.
+- MUST: in a system with more than one operator, every station marker (circle or rect) has
+  `data-logos`, including those of the first operator.
+- MUST: some entry is active on every day the marker is visible.
+- MUST: every date falls strictly between the marker's first day and its final end, so the marker's
+  own dates are never repeated. An operator that continues across a closure is one entry (Lo Wu),
+  and adjacent intervals for the same key are merged.
+- MUST: a handover is a map change. Every date on which a marker's logos change needs an
+  `events.json` entry that describes it (§10), and playback stops on it like any other event.
+  Handovers go in the data, not in code. Those recorded so far: KCR stations pass to MTR at the
+  2007-12-02 merger (described by that day's renames); Shenzhen Line 4's first section passes to MTR
+  on 2010-07-01; Seoul Line 7's Kkachiul – Bupyeong-gu Office passes to Incheon Transit on
+  2022-01-01; Taipei's Circular Line passes to New Taipei Metro on 2023-05-23. Lines that opened
+  under their current operator (Shenzhen Line 13, Taipei's Sanying Line) carry it from opening.
+- A key names an operator, not its corporate name at the time. A rename without a handover (Eidan
+  → Tokyo Metro in 2004) is not modelled: the current symbol is shown throughout. Dated operator
+  names would need a schema change.
+- `check_map.py` checks the syntax, the coverage, that no marker dates are repeated and that every
+  handover date has an event. The local `tests/station-logos.test.mjs` also checks that every key
+  exists in `operators` and that multi-operator markers have the attribute.
+
+Logos must be clean vector SVGs, mostly graphic, without embedded raster images or lettering-heavy
+artwork. If no suitable operator symbol is available, use the system's own logo (Seoul's GTX-A
+stations show Seoul Metro). Shanghai's Jinshan Railway and Airport Link use the suburban badge.
+Record each logo file's source and licence in the system's section of
+[timeline-sources.md](timeline-sources.md).
 
 **Placement rules (geometry)**
 
@@ -358,11 +417,11 @@ change over the station's life.
   system and operator: KCR before the 2007 merger, Shanghai's Maglev, the Jinshan Railway and the
   Airport Link. Draw them like this (MTR precedent: Kowloon Tong and Mei Foo before 2007):
   - one capsule when both systems' platforms are in **one station complex** under one name, linked
-    by internal passages, even though the fares are separate (`!` prefix if it is the secondary
-    system; Longyang Road and Pudong T1&2 for Line 2 + Maglev);
+    by internal passages, even though the fares are separate (Longyang Road and Pudong T1&2
+    for Line 2 + Maglev);
   - separate markers + connector when they are **separate stations** and the operator designates an
     out-of-station transfer (Airport Link at Hongqiao T2 and Pudong T1&2);
-  - one `!` capsule from the day a paid-area link opens (Jinghong Road from 2025-07-05), or from opening if
+  - one capsule from the day a paid-area link opens (Jinghong Road from 2025-07-05), or from opening if
     the transfer never leaves the paid area (Zhongchun Road, Line 9 ↔ Airport Link, from 2024-12-27).
 - A connector appearing or disappearing, or a connector turning into a capsule, is a map change and needs an
   `events.json` description (§10).
@@ -389,16 +448,58 @@ articles) is a worked example of what to look for:
 
 ## 7. Dates: what to record and when
 
-**Openings**: the first day the **public** could ride.
+**Openings**: a line, section or station is on the map exactly when the public could ride it,
+whatever the service was called and however limited its days, hours, stops or riders, and not on
+days when nobody could.
 
-- Counts: regular service, trial operation (试运营), public sightseeing/trial runs (观光试运行), soft openings.
-- Doesn't count: commissioning or test running (通车调试, 不载客试运行), ceremonial or VIP rides
-  (通车典礼), completion or tunnel breakthrough (贯通, 封顶), "structurally complete but not opened".
-  Examples: Shanghai Line 1 Xujiahui–Shanghai Railway Station opened **1995-04-10**, not on the
-  1994-12-12 commissioning date. The Maglev opened **2003-10-11**, not at the 2002-12-31
-  inauguration ride.
+- Counts: public previews, open days and open houses with rides, free trial rides, experience weeks
+  and voucher rides (试乘, 免费试乘, 体验周, including those that needed advance registration or a
+  free ticket handed out to the public), sightseeing service (观光运营, 观光试运行), trial, simulated
+  or initial operation (试运营, 试运行, 模拟运营, 初期运营), restricted-access service (tickets sold
+  only against a work-unit letter, or only to organised groups or event-ticket holders) and regular
+  service.
+- Doesn't count: test running without passengers (通车调试, 不载客试运行), ceremonies and rides for
+  VIPs, officials, the press or invited representatives only (通车典礼, a one-off ride for borough
+  chiefs or relocated residents), small recruited inspection or monitoring panels, open days where
+  stations can be visited but trains can't be ridden, completion or breakthrough (贯通, 封顶), and
+  "structurally complete but not opened".
+- **Record every notable event.** When a public preview came before the opening, `events.json` has
+  both: the preview (`… public preview rides begin`, `… one-day open-house free rides`) and the
+  opening (`… opens`), even when the opening changes nothing on the map because the preview already
+  drew the line. Other recorded status changes are kept the same way (restricted access → open to all
+  passengers, sightseeing → regular service). `opens` means regular service (including the 试运营 or
+  初期运营 that is regular service in mainland China); anything else names its kind (§10).
+- **Draw previews as they ran.** A preview that stopped before the opening ends on its first day
+  without rides, and the line reappears on the opening day; the end gets its own event
+  (`… rides end`). A one-day open house is therefore on the map for that day only. These gaps are
+  never collapsed, however short. Markers follow the same intervals: during the gap a station looks
+  as it did before the preview (a new capsule reverts to the older line's circle). A recurring
+  weekly pattern (weekend-only sightseeing) is continuous service.
+
+Examples:
+
+- The MTR's 1979-09-30 open day ran straight into regular service, so the line appears on
+  **1979-09-30** and **1979-10-01** is an `opens` event with no map change.
+- Singapore's Downtown Line held a one-day open house on **2013-12-07** and opened on
+  **2013-12-22**: it is drawn on 7 December, hidden from 8 to 21 December (an event on the 8th says
+  the open-house rides ended) and back from 22 December.
+- Huangpu Tram Line 2's Huangpu Library – Xiangxue Park preview ran from **2020-12-29** to
+  2021-01-03 and the line closed again, so that section is drawn from 2020-12-29 to 2021-01-04 and
+  again from its regular opening on 2025-06-20.
+- Beijing Line 1 appears on **1971-01-15** with restricted-access trial operation (tickets sold only
+  against work-unit letters); the start of sale to everyone on **1972-12-27** is its own event.
+- Shanghai Line 2 opened **1999-09-20** carrying organised visitor groups; regular service on
+  **2000-06-11** is its own event, and the 2000-04-19 rename of its eastern terminus is another.
+
+When the facts can't be established (for example, which stations an early sightseeing service
+called at, or the first day of a preview), don't guess: show only what the sources support, keep
+the date already recorded where it is disputed, and note the doubt in the system's source notes.
+
 - A station that opened after its line (infill, or skipped at opening) gets its own date. Stations
   that have never opened are absent, even if the track passes them (Longju Road).
+- A station opens when passengers could start or end a trip there. A stop where riders only stepped
+  onto the platform to look around and reboarded is not an opening (Chongqing Line 2's intermediate
+  stops from 2004-11-06; Nanjing's Sanshanjie from 2005-05-15).
 
 **Closures**: `end` = the first day without service.
 
@@ -406,12 +507,14 @@ articles) is a worked example of what to look for:
   service that last until a later project, e.g. the Expo Line closed 2010-11-02 and reopened as part of Line 13 on 2015-12-19.
 - **Temporary suspensions are omitted**: repairs, maintenance, accidents, incidents, weather,
   events, epidemics (COVID-19) and similar, after which service resumes at the same stations. The
-  line didn't vanish, so the map shows it as continuous.
+  line didn't vanish, so the map shows it as continuous. A preview that ended with the line closing
+  again is not a suspension (see Openings).
 - **Relocations / switchovers**: the old element ends on the day the new one opens. If the gap
   between them is under a month, collapse it (Zhangjiang High-Tech Park: elevated closed
   2010-02-14, underground opened 2010-02-24, so both change on 2010-02-24). Longer gaps where the
   service really was cut back are kept (Line 3 at Shanghai South Railway Station 2004-01-01 → 2005-10-15;
-  Dongfang Road closed 2005-10-22 → reopened as Century Avenue 2006-10-28).
+  Dongfang Road closed 2005-10-22 → reopened as Century Avenue 2006-10-28). The gap between a preview
+  and the opening is never collapsed (see Openings).
 
 **Renames**: the date the new name took effect.
 
@@ -425,10 +528,37 @@ rule changed (§6).
 
 ## 8. Scope: what goes on the map
 
+A system follows **its own official network map**, so that every city is judged by the same test. A
+line belongs to it if it passes either test, and is open today or is a closed line that belonged to
+the network (KCR's Sha Tau Kok branch, New York's demolished elevated lines):
+
+1. **On the official map.** The system's current official network map draws it as part of the
+   network: in the legend, with its stations, in a line colour (even a lighter tint). Seoul's
+   Metropolitan Subway map draws Korail's lines, AREX and GTX-A; Taipei Metro's map draws New Taipei
+   Metro's lines and the Taoyuan Airport MRT; the MTR map draws the High Speed Rail.
+2. **The operator's own.** The system's operator family or city runs or commissioned it, even where
+   the map leaves it out: trams, people movers and gondolas (Songjiang and Nanjing trams, Bishan
+   SkyShuttle, Ngong Ping 360, Toei's Toden Arakawa Line and Nippori–Toneri Liner) and outlying lines
+   (Nanjing S4). The family includes predecessors (KCR, Eidan, Oji Electric Tramway), subsidiaries,
+   joint ventures and contracted operators.
+
+Not included, even if drawn:
+
+- Lines the map shows only as connections: grey or outline lines, station icons, through-service
+  bands or lines footnoted as "transfer indication only" (JR and private railways on the Tokyo
+  subway map; Hangzhou's Hanghai Intercity and Shaoxing Line 1; Guangzhou's intercity railways).
+- Separate insets for a physically disconnected system (the Staten Island Railway on the MTA map).
+- Lines that have left the network: a line reclassified out of it, or whose transit service ended
+  and never resumed, ends on its last day of regular service (Incheon Airport Maglev, 2022-07-14).
+
+Any mode qualifies: metro, light metro, monorail, maglev, APM, tram, gondola. A system the app
+presents as two cities includes both official networks (Guangfo: Guangzhou and Foshan).
+
+Opening and closing dates follow §7.
+
 Include:
 
-- Every line of the primary system, and of the secondary system if the app shows one (KCR for MTR;
-  the Suburban Railway lines for Shanghai), with every station and every historical alignment.
+- Every line that passes the tests above, with every station and every historical alignment.
 - Temporary lines that carried the public (the Expo Line).
 - Trams and light rail belonging to the system, as **tracks only, without stop markers** (MTR Light Rail,
   Songjiang Tram). Their interchange stations keep the heavy-rail markers, and MUST include the
@@ -451,8 +581,8 @@ Include:
     passenger branches into depots.
   - Check every historical marker version covering that transfer period. Clip the membership to
     each marker's lifetime, just like any other `data-lines` entry (§5).
-- Other modes the operator's own map treats as part of the network (Shanghai Maglev,
-  MTR Ngong Ping 360, Taipei Maokong Gondola), with their passenger stations. For gondolas,
+- Other modes that pass the tests (Shanghai Maglev, MTR Ngong Ping 360, Taipei Maokong Gondola),
+  with their passenger stations. For gondolas,
   omit towers and non-passenger angle stations. Separate gondola and metro stations use
   separate markers and a walking connector (§6), as at Taipei Zoo.
 - Geography: land and water fills, and nothing else.
@@ -461,8 +591,7 @@ Exclude:
 
 - Planned, under-construction or never-opened lines and stations; depots, sidings, freight lines,
   connecting tracks.
-- National rail or other cities' systems that aren't part of the secondary system (e.g. Suzhou Metro
-  at Huaqiao).
+- Lines that fail the tests above (e.g. Suzhou Metro at Huaqiao, Beijing Suburban Railway, JR).
 - Text, station names, line bullets, legends, compasses, scale bars, logos, inset boxes, notes,
   fare zones and district boundaries drawn in the SVG.
 
@@ -481,7 +610,7 @@ Exclude:
 }
 ```
 
-- MUST: `lines` is an array of `{ "id", "label", "color" }`. Labels follow §2 without a prefix. `color`
+- MUST: `lines` is an array of `{ "id", "label", "color" }`. Labels follow §2. `color`
   is any CSS colour. Shanghai uses `rgb(r,g,b)`, and `#rrggbb` also works.
 - MUST: `id` is a short stable code of lowercase letters and digits (`erl`, `2`, `xinlu`), unique
   within the system. Station markers reference it in `data-lines` (§5). It never appears in labels.
@@ -511,23 +640,35 @@ Exclude:
 
 - MUST: an array of `{ "date": "YYYY-MM-DD", "descriptions": string[] }`, with dates unique and
   ascending, and at least one description each.
-- MUST: **one entry for every date on which the map changes, and no entry on any other date.**
+- MUST: **one entry for every date on which the map changes.** The only other dates allowed are
+  openings and starts of regular service after a preview already drew the line (§7): every
+  description on such a date says ` opens` or `regular service`.
   `check_map.py` enforces this. A map change is anything becoming visible or hidden, a rename, a
-  circle becoming a capsule, or a connector appearing or disappearing.
+  circle becoming a capsule, a connector appearing or disappearing, or a station's operators
+  changing (§5).
 - MUST: describe only what the map shows that day, using the names the map shows **that day**.
 - Descriptions within an entry are sorted naturally (so `Line 2` comes before `Line 10`). Use these templates:
 
-| Change                         | Template                                      |
-| ------------------------------ | --------------------------------------------- |
-| section opens / closes         | `<Line>: <A> - <B> opens` / `closes`          |
-| single station opens / closes  | `<Line>: <Station> opens` / `closes`          |
-| station or line rename         | `<Old> → <New>`                               |
-| paid-area interchange begins   | `<Station>: in-station interchange opens`     |
-| out-of-station transfer begins | `<Station>: out-of-station interchange opens` |
-| a line stops serving a station | `<Line>: stops serving <Station>`             |
+| Change                                          | Template                                                                     |
+| ----------------------------------------------- | ---------------------------------------------------------------------------- |
+| section opens / closes (regular service)        | `<Line>: <A> - <B> opens` / `closes`                                         |
+| first public rides are not regular service (§7) | `<Line>: <A> - <B> <kind> begins` (one day only: `<A> - <B> one-day <kind>`) |
+| a preview ends and the section closes (§7)      | `<Line>: <A> - <B> <kind> end`                                               |
+| regular service follows a preview (§7)          | `<Line>: <A> - <B> opens`, even if the map doesn't change                    |
+| another status change (§7)                      | `<Line>: <A> - <B> opens to all passengers` / `regular service begins`       |
+| single station opens / closes                   | `<Line>: <Station> opens` / `closes`                                         |
+| station or line rename                          | `<Old> → <New>`                                                              |
+| paid-area interchange begins                    | `<Station>: in-station interchange opens`                                    |
+| out-of-station transfer begins                  | `<Station>: out-of-station interchange opens`                                |
+| a line stops serving a station                  | `<Line>: stops serving <Station>`                                            |
+| operator handover (§5)                          | `<Line>: operation transfers from <A> to <B>`                                |
 
 - `<Line>` is the legend name that day (`Line 2`, `Pearl Line`, `Maglev`, `Songjiang Tram 2`).
   `<A> - <B>` uses a spaced hyphen.
+- `<kind>` names the service exactly (§7), for example `public preview rides`,
+  `free trial rides`, `free experience week`, `sightseeing service` or
+  `restricted service for work-unit ticket holders`. Use `rides begin` / `rides end` for plural
+  kinds. The opening that follows is its own entry (`opens`), not a clause in the preview's.
 - A short clarifier after a comma or in parentheses is allowed when the template alone would mislead:
   `Line 2: Longyang Road - Guanglan Road opens, with Zhangjiang High-Tech Park rebuilt underground`,
   `Yishan Road: in-station interchange opens between Line 3 and Line 9`,
@@ -600,9 +741,11 @@ and these four exceptions**, not as permission to rebuild the eight established 
   and administrative boundaries to divide land colours. Administrative areas can include sea.
   Use actual river polygons for border rivers, not an invented gap or a fixed-width buffer.
   Shade land outside each system's named administrative area consistently across both the original
-  canvas and expanded margins: Hong Kong SAR; Shanghai, Shenzhen, Hangzhou, Chengdu, Beijing,
-  Nanjing and Chongqing municipalities; Guangzhou + Foshan for Guangfo; Taipei + New Taipei +
-  Taoyuan for the combined Taipei map; Tokyo Metropolis; and Singapore. Cross-boundary tracks
+  canvas and expanded margins: Hong Kong SAR; Shanghai, Shenzhen, Hangzhou, Chengdu, Beijing and
+  Chongqing municipalities; Jiangsu province for Nanjing; Guangzhou + Foshan for Guangfo; Taipei + New Taipei +
+  Taoyuan for the combined Taipei map; Tokyo Metropolis; Singapore; New York City's five
+  boroughs (not the wider MTA service area); and Seoul Special City (not the wider metropolitan
+  subway service area). Cross-boundary tracks
   remain visible on outside-coloured land. Administrative boundaries change fill only, without
   a coastline-coloured outline. Colour the existing land shapes rather than replacing their coastlines;
   sea, rivers and lakes keep their water colour. Use solid fills and boundary overlays, clipping
@@ -612,6 +755,10 @@ and these four exceptions**, not as permission to rebuild the eight established 
   Where verified coastal wetlands/tidal flats lie inside the source coastline, distinguish them
   from opaque dry land with a subdued, unoutlined surface. Do not infer dry land from seawalls,
   low-tide imagery or a coarse coastal polygon alone; retain genuine reclaimed land.
+- Use comparable shoreline detail inside and outside the administrative boundary. Coarse county
+  polygons are not a substitute for physical coastlines. Dissolve adjoining land before outlining,
+  snap numerical seams to output precision before simplifying, and draw each physical shoreline
+  once. Tiny gaps between borough/county datasets must not become outlined strips of water.
 - Do not outline water-area polygons lying wholly in the sea: the sea layer already covers them.
   OSM can represent named marine areas with approximate circles whose edges are not shorelines
   (for example Rocky Harbour near Sai Kung). Check geography against the combined sea and inland
@@ -698,7 +845,7 @@ and these four exceptions**, not as permission to rebuild the eight established 
 3. For every interchange, find its classification history (§6): the operator's current list of
    out-of-station transfers, the "formerly out-of-station" list, and each station's transfer
    section. Separate-ticketing eras count as out-of-station.
-4. Apply the rules of §7, especially "first public day" and "omit suspensions".
+4. Apply the rules of §7, especially "on the map exactly when the public could ride it" and "omit suspensions".
 5. Edit labels, then run `python3 check_map.py <key>` (appendix) until it prints `OK`. Update
    `events.json` until the 1:1 check passes.
 6. Look at the result. Render every change date and the day before, zoomed on each interchange that
@@ -741,12 +888,14 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
 
 - [ ] Assets in `src/assets/<key>/`, entry in `systems.ts`, URL in `public/sitemap.xml`; Home links and date bounds are derived automatically.
 - [ ] `zoom-layer` › (`geography`) › `lines` › `stations`; only labelled path/circle/rect; paint on groups; no text/title/defs/use.
-- [ ] Every label matches §2. Names are the verbatim English names of that period, and prefixes appear on markers only.
+- [ ] Every label matches §2. Names are the verbatim English names of that period.
 - [ ] Sizes follow §5. Circles are on their tracks, capsules cover all their lines, and no marker sits on a line that doesn't stop there.
 - [ ] Interchanges follow the operator's dated classification (§6), with connectors for out-of-station periods.
-- [ ] Openings are first public days, suspensions are omitted, and switchover gaps under a month are collapsed (§7).
+- [ ] Lines are drawn exactly when the public could ride them, previews included (not test runs, ceremonies or station-only open days); a preview and the later opening are separate events, a preview that stopped is hidden until the opening (with a `… rides end` event), suspensions are omitted and only relocation gaps under a month are collapsed (§7).
 - [ ] Every track's name matches a legend entry at every moment (§9).
 - [ ] Every marker has `data-lines` with legend ids, inside its own dates (§5).
+- [ ] In a multi-operator system every marker has `data-logos`, and every handover has an event (§5).
+      Logos are clean SVGs, and their sources and licences are recorded in timeline-sources.md.
 - [ ] Every simplified line's designated heavy-rail interchanges list that line in `data-lines`,
       from the correct transfer dates; selecting the line shows those stations (§8).
 - [ ] Every track has `data-km`, and each line's present-day sum equals its published length (§4).
@@ -767,68 +916,21 @@ MTR predates this spec. Don't copy these patterns into new systems:
 - Light Rail is drawn as a simplified network: only its four heavy-rail interchanges are markers.
   Tracks are split by opening stage, without modelling individual service routes or stop renames.
 
-### MTR historical coverage and outstanding evidence
-
-- Sha Tau Kok is split at its public openings: Fanling–Shek Chung Au on 1911-12-21,
-  then Sha Tau Kok on 1912-04-01; both close on 1928-04-01. The opening notices are
-  transcribed in the [branch history](https://en.wikipedia.org/wiki/Sha_Tau_Kok_Branch).
-  [KCRC](https://www.kcrc.com/en/about-kcrc/history.html) gives the full route as 11.6 km.
-  The map includes Fanling, Hung Leng, Wo Hang, Shek Chung Au and Sha Tau Kok.
-  Lung Yeuk Tau's location/closure and the five February 1916 halts (Kwan Tei, Ma Mei Ha,
-  Loi Tung, Tai Long, San Tsuen) remain unresolved; do not invent exact days or positions.
-- Che Kung Miu is a separate historical halt, not the present Che Kung Temple station.
-  KCR's [1935 report](https://www.histsyn.com/2023/01/AR1935.html), paragraphs 59 and 102,
-  records its opening on November 16 near Bridge 12; the
-  [1936 report](https://www.histsyn.com/2023/01/AR1936.html), paragraph 41, records closure
-  on October 1. Historical geometry follows the existing map's approximate scale.
-- The original Kowloon terminus and Chatham Road approach are separate from East Tsim Sha Tsui's
-  2004 tunnel. The [1975 replacement](https://www.histsyn.com/2023/01/kcr1976.html) and
-  [1981 Beacon Hill Tunnel switchover](<https://en.wikipedia.org/wiki/Beacon_Hill_Tunnel_(Hong_Kong)>)
-  retain the modern track geometry. Short switchover gaps are collapsed under §7.
-- High Speed Rail's Hong Kong section opens on 2018-09-23, per
-  [MTR's 2018 report](https://www.mtr.com.hk/archive/corporate/en/investor/annual2018/E110.pdf).
-  Its 25.7 km value uses [MTR's business overview](https://www.mtr.com.hk/archive/corporate/en/publications/images/business_overview_e.pdf)
-  rather than the rounded 26 km project length. Its curve follows the
-  [published alignment](https://www.legco.gov.hk/yr16-17/english/panels/tp/tp_rdp/papers/tp_rdp20161209cb4-243-9-e.pdf)
-  through Shek Kong and Mai Po, continuing towards Futian and off the map's northern edge.
-  The Shenzhen continuation supplies geographic context from the Hong Kong opening date;
-  the kilometres and station count cover only the Hong Kong section. No boundary station is added.
-- This is **not yet a complete historical inventory**. KCRC records a Sheung Shui halt in 1913;
-  the map still starts at the dated 1930 station opening. KCR's
-  [1921 report](https://www.histsyn.com/2022/12/AR1921.html), paragraph 19, also records a
-  Ho Mun Tin halt without an exact opening day. Both need dated timetables and location evidence.
-  The old Hung Hom closure (June 13 versus September 15/16, 1921) and the precise 1996 renaming
-  date remain disputed; the existing dates are retained, not newly certified.
-- Light Rail tracks now distinguish the 1988-09-14 public preview, 1988-09-24 northern/estate
-  branches, 1991-11-03 southern extension, 1992-02-02 eastern/Sam Shing extensions,
-  1993-01-10 Tin Shui branch, 1995-03-26 Tin Shui Wai Terminus extension, and 2003-12-07
-  northern/eastern Tin Shui Wai extensions. Existing modern curves and stroke widths are retained.
-  The [contemporary opening notice](https://att.hkitalk.net/HKiTalk2/data/attachment/forum/202303/04/105705khyhdansbyz8h0gs.jpeg)
-  lists public preview routes 610/611/612 on September 14–16 and regular service from September 18.
-  The one-day interruption is collapsed under §7. Route 506's September 23 introduction uses
-  existing track; its individual stops are outside this map's Light Rail scope.
-  The [government's November 6, 1991 bulletin](https://www.histsyn.com/2022/12/daily-information-bulletin-1990s-1991_13.html)
-  says the southern extension opened the previous Sunday (November 3), consistent with the
-  November 4 newspaper cited by [Goodview Garden's history](https://zh.wikipedia.org/wiki/豐景園站).
-  This takes precedence over the November 17 date in several English station articles.
-  The [stop chronology](<https://en.wikipedia.org/wiki/Light_Rail_(MTR)#Stops>) identifies the 1992,
-  1993 and 1995 stages; [LegCo's commissioning report](https://www.legco.gov.hk/yr03-04/english/panels/tp/tp_rdp/papers/tp_rdp1219cb1-613-1e.pdf)
-  confirms December 7, 2003. Tin Shui's former terminus position is interpolated on the existing
-  curve; stop-scale turning loops and the 2002–03 grade-separation realignments remain simplified.
-  Light Rail kilometres remain approximate by stage: 36.2 km today, including 4.4 km of 2003
-  extensions, 3.2 km of earlier Tin Shui Wai track and 28.6 km in Tuen Mun/Yuen Long. The latter
-  includes the roughly 5 km of 1991–92 extensions, divided in proportion to drawn length.
-- Existing route kilometres are estimates: distinguish route length, construction length
-  and the operator's exclusion of duplicated sections before recalibrating individual paths.
+MTR's historical coverage and outstanding evidence (Sha Tau Kok, early KCR halts, Light Rail
+stages, High Speed Rail) are recorded in [its source notes](timeline-sources.md#hongkong).
 
 ## Appendix: `check_map.py`
 
 Save it anywhere and run it from the repository root: `python3 check_map.py shanghai`. It checks
-structure, labels, legend coverage, `data-lines`, `data-km`, the segment limit of §4 and that every
-track starts and ends inside a marker (or meets other track of its line, or runs off the drawn area,
-or belongs to a line marked `simplified`), and compares change dates with `events.json`. It
-also prints each line's present-day length to compare with the operator's figure. It doesn't check
-geometry otherwise; §11 step 6 covers that.
+structure (unique ids, connectors before markers, capsule transforms), labels, station identities,
+legend coverage, `data-lines`, `data-logos` intervals, `data-km` and the segment limit of §4. On
+butt-capped systems it checks that every track starts and ends inside a marker (or meets other
+active track of its line, or runs off the `viewBox`, or belongs to a line marked `simplified`). It
+compares change dates, including operator handovers, with `events.json` (an event date without a
+map change must record an opening or start of regular service, §10), and prints each line's
+present-day length to compare with the operator's figure. It doesn't check that `data-logos` keys
+exist in `operators` (the local logo test does), and it doesn't check geometry otherwise; §11 step 6
+covers that.
 
 ```python
 # python3 check_map.py <system-key>   (run from the repo root)
@@ -845,8 +947,10 @@ except FileNotFoundError:
 
 DATE = r'\d{4}_\d{2}_\d{2}'
 STATE = rf'[^=,_\s][^=,\s]*={DATE}(?:-{DATE})?'
-LABEL = re.compile(rf'^[!^]?{STATE}(?:,{STATE})*$')
+LABEL = re.compile(rf'^{STATE}(?:,{STATE})*$')
 LINES = re.compile(rf'^[a-z0-9]+={DATE}(?:-{DATE})?(?:,[a-z0-9]+={DATE}(?:-{DATE})?)*$')
+LOGO = rf'[a-z0-9]+(?:=(?:{DATE}(?:-{DATE})?|-{DATE}))?'
+LOGOS = re.compile(rf'^{LOGO}(?:,{LOGO})*$')
 errors = []
 ids = re.findall(r'\bid="([^"]+)"', svg)
 if len(ids) != len(set(ids)):
@@ -879,7 +983,7 @@ def seg_dist(p, a, b):  # distance from point p to segment ab
 
 def states(label):
     out = []
-    for part in label.lstrip('!^').split(','):
+    for part in label.split(','):
         name, interval = part.split('=')
         start, _, end = interval.partition('-')
         out.append((name, start.replace('_', '-'), end.replace('_', '-') if end else None))
@@ -923,8 +1027,6 @@ for tag, attrs in children('lines'):
     if tag != 'path' or not label:
         errors.append(f'lines layer: only labelled <path> allowed, found <{tag}>')
         continue
-    if label.group(1)[0] in '!^':
-        errors.append(f'track {label.group(1)!r}: prefixes belong on station markers only')
     st = check_label('track', label.group(1))
     record('track', st)
     d = re.search(r'\bd="([^"]*)"', attrs)
@@ -941,14 +1043,18 @@ for tag, attrs in children('lines'):
     else:
         track_km.append((st, float(km.group(1))))
     track_names += st
-markers = []  # (label, states, data-lines match)
+markers = []  # (label, states, data-lines match, data-logos match)
 identities = defaultdict(list)  # stable station id -> (element id, states)
 reach = []    # (label, states, x, y, deg, half, r): a marker's dates, centre, axis angle, half axis length and radius
+seen_marker = False
 for tag, attrs in children('stations'):
     label = re.search(r'inkscape:label="([^"]*)"', attrs)
     if tag not in ('circle', 'rect', 'path') or not label:
         errors.append(f'stations layer: only labelled <circle>/<rect>/<path> allowed, found <{tag}>')
         continue
+    if tag == 'path' and seen_marker:
+        errors.append(f'connector {label.group(1)!r} must precede station markers (§3)')
+    seen_marker |= tag in ('circle', 'rect')
     if tag == 'path' and 'fill="none"' not in attrs:
         errors.append(f'connector {label.group(1)!r} needs fill="none"')
     transform = re.search(r'transform="([^"]*)"', attrs)
@@ -965,7 +1071,8 @@ for tag, attrs in children('stations'):
             if version and (not st or version != st[0][1]):
                 errors.append(f'marker {marker_id.group(1)!r}: version must match first appearance (§3)')
             identities[identity].append((marker_id.group(1), st))
-        markers.append((label.group(1), st, re.search(r'data-lines="([^"]*)"', attrs)))
+        markers.append((label.group(1), st, re.search(r'data-lines="([^"]*)"', attrs),
+                        re.search(r'data-logos="([^"]*)"', attrs)))
         num = lambda name: float(re.search(rf'\b{name}="([^"]+)"', attrs).group(1))
         if tag == 'circle':
             reach.append((label.group(1), st, num('cx'), num('cy'), 0.0, 0.0, num('r')))
@@ -1000,26 +1107,29 @@ for label, st, pts in track_pts if caps and caps.group(1) == 'butt' else []:
     if names & simplified:
         continue
     born, gone = st[0][1], st[-1][2]
-    moments = [born] + sorted({d for m in reach for _, s_, e_ in m[1] for d in (s_, e_) if d and born < d and (gone is None or d < gone)})
+    moments = [born] + sorted({d for states_ in [m[1] for m in reach] + [s2 for _, s2, _ in track_pts] for _, s_, e_ in states_ for d in (s_, e_) if d and born < d and (gone is None or d < gone)})
     for which, p in (('starts', pts[0]), ('ends', pts[-1])):
         if not (vb[0] < p[0] < vb[0] + vb[2] and vb[1] < p[1] < vb[1] + vb[3]):
             continue
         own = pts[2:-1] if which == 'starts' else pts[:-2]   # its own path, minus the segments touching this end
-        others = [q for l, s2, q in track_pts if l != label and names & {n for n, _, _ in s2}]
-        if any(seg_dist(p, q[i], q[i + 1]) <= W for q in others + [own] for i in range(len(q) - 1)):
-            continue
         for t in moments:
+            active_names = {n for n, s_, e_ in st if s_ <= t and (e_ is None or t < e_)}
+            if not active_names:
+                continue
             present = [m for m in reach if any(s_ <= t and (e_ is None or t < e_) for _, s_, e_ in m[1])]
             name, gap = min(((m[0], marker_gap(p, m)) for m in present), key=lambda x: x[1], default=('nothing', float('inf')))
-            if gap > 1:
-                errors.append(f'track {label!r} {which} {gap:.0f} units outside the nearest marker ({name}) on {t} '
-                              'and not on another track of the line (§4)')
-                break
+            if gap <= 1:
+                continue
+            others = [q for l, s2, q in track_pts if l != label and any(
+                n in active_names and s_ <= t and (e_ is None or t < e_) for n, s_, e_ in s2)]
+            if any(seg_dist(p, q[i], q[i + 1]) <= min(1, W / 2) for q in others + [own] for i in range(len(q) - 1)):
+                continue
+            errors.append(f'track {label!r} {which} {gap:.0f} units outside the nearest marker ({name}) on {t} '
+                          'and not on another track of the line (§4)')
+            break
 
 legend_states, legend_ids = [], {}
 for entry in legend:
-    if entry['label'][0] in '!^':
-        errors.append(f'legend {entry["label"]!r}: no prefixes in lines.json')
     if not re.fullmatch(r'[a-z0-9]+', str(entry.get('id', ''))) or entry['id'] in legend_ids:
         errors.append(f'legend {entry["label"]!r}: needs a unique lowercase id (§9)')
     st = check_label('legend', entry['label'])
@@ -1045,7 +1155,7 @@ def spans(st):  # an element's states, with renames (end == next start) merged i
         else:
             out.append([s, e])
     return out
-for label, st, data_lines in markers:
+for label, st, data_lines, data_logos in markers:
     if not data_lines or not LINES.match(data_lines.group(1)):
         errors.append(f'marker {label!r}: missing or malformed data-lines (§5)')
         continue
@@ -1058,6 +1168,35 @@ for label, st, data_lines in markers:
         if not within(start, end, presence):
             errors.append(f'marker {label!r}: line {lid!r} {start}..{end or "now"} is outside the marker\'s own dates')
 
+    if data_logos:
+        if not LOGOS.fullmatch(data_logos.group(1)):
+            errors.append(f'marker {label!r}: malformed data-logos (§5)')
+            continue
+        first, last = st[0][1], st[-1][2]
+        inside = lambda d: first < d and (last is None or d < last)
+        entries, previous = [], {}
+        for part in data_logos.group(1).split(','):
+            logo, _, interval = part.partition('=')
+            start, _, end = interval.partition('-')   # a missing date is the marker's own first or last day
+            start, end = start.replace('_', '-') or None, end.replace('_', '-') or None
+            if not all(inside(d) for d in (start, end) if d):
+                errors.append(f'marker {label!r}: logo {logo!r} repeats or exceeds the marker dates; '
+                              'leave out a date on its first or last day (§5)')
+            if start and end and end <= start:
+                errors.append(f'marker {label!r}: logo {logo!r} ends before it starts')
+            if logo in previous and (previous[logo] is None or start is None or start <= previous[logo]):
+                errors.append(f'marker {label!r}: logo {logo!r} intervals overlap or need merging')
+            previous[logo] = end
+            entries.append((start, end))
+            for d in (start, end):   # an operator handover is a map change: it needs an event (§5, §7)
+                if d:
+                    log[d].add(f'operator {logo} {"starts" if d == start else "ends"} at {label.split("=")[0]}')
+        for t in sorted({s for _, s, _ in st} | {d for e in entries for d in e if d}):
+            if any(s <= t and (e is None or t < e) for _, s, e in st) and not any(
+                    (s is None or s <= t) and (e is None or t < e) for s, e in entries):
+                errors.append(f'marker {label!r}: no logo on {t} (§5)')
+                break
+
 if events is not None:
     dates = [e['date'] for e in events]
     if dates != sorted(set(dates)):
@@ -1067,8 +1206,13 @@ if events is not None:
             errors.append(f'events.json: bad entry {e}')
     for d in sorted(set(log) - set(dates)):
         errors.append(f'map changes on {d} but events.json has no entry: {sorted(log[d])}')
+    # a date without a map change may only record an opening or a start of regular service that
+    # follows a preview already on the map (§7): every description says " opens" or "regular service"
+    text = {e['date']: e['descriptions'] for e in events}
     for d in sorted(set(dates) - set(log)):
-        errors.append(f'events.json has {d} but nothing changes on the map that day')
+        if not all(' opens' in t or 'regular service' in t for t in text[d]):
+            errors.append(f'events.json has {d} but nothing changes on the map that day, '
+                          'and it records no opening or start of regular service (§7, §10)')
 
 if not errors:  # each line's length on the last change date, to compare with the operator's figure
     today = max(log)

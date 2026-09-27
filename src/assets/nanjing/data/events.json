@@ -2,20 +2,32 @@
     {
         "date": "2005-05-15",
         "descriptions": [
-            "Line 1: ticketed public sightseeing service opens from Xinjiekou to Xiaohang, stopping at Sanshanjie"
+            "Line 1: Xinjiekou - Xiaohang weekend sightseeing service begins, with no intermediate stations open"
+        ]
+    },
+    {
+        "date": "2005-08-01",
+        "descriptions": [
+            "Line 1: Xinjiekou - Xiaohang weekend sightseeing service ends"
         ]
     },
     {
         "date": "2005-08-12",
         "descriptions": [
-            "Line 1: Maigaoqiao - Xinjiekou opens",
-            "Line 1: all 13 stations between Maigaoqiao and Xiaohang open for regular boarding"
+            "Line 1: Andemen, Sanshanjie, Zhangfuyuan and Zhonghuamen open for simulated operation",
+            "Line 1: Maigaoqiao - Xiaohang daily fare-paying simulated operation begins"
         ]
     },
     {
         "date": "2005-08-26",
         "descriptions": [
-            "Line 1: Xiaohang - Olympic Stadium opens"
+            "Line 1: Xiaohang - Olympic Stadium simulated operation begins"
+        ]
+    },
+    {
+        "date": "2005-09-03",
+        "descriptions": [
+            "Line 1: Maigaoqiao - Olympic Stadium opens"
         ]
     },
     {
@@ -47,8 +59,14 @@
     {
         "date": "2014-08-01",
         "descriptions": [
-            "Hexi Tram: Olympic Stadium East - Qinxinlu opens for public sightseeing service",
+            "Hexi Tram: Olympic Stadium East - Qinxinlu free voucher sightseeing rides begin",
             "S8: Taishanxincun - Jinniuhu opens"
+        ]
+    },
+    {
+        "date": "2014-08-13",
+        "descriptions": [
+            "Hexi Tram: Olympic Stadium East - Qinxinlu opens"
         ]
     },
     {

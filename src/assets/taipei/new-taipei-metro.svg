@@ -1,0 +1,20 @@
+<svg viewBox="0 0 200 118.21" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <clipPath id="clipPath182">
+   <path transform="translate(-57.209 -983.27)" d="m57.728 980.02h336.56v57.624h-336.56z"/>
+  </clipPath>
+  <clipPath id="clipPath184">
+   <path transform="translate(-99.673 -983.27)" d="m57.728 980.02h336.56v57.624h-336.56z"/>
+  </clipPath>
+  <clipPath id="clipPath186">
+   <path transform="translate(-110.03 -983.27)" d="m57.728 980.02h336.56v57.624h-336.56z"/>
+  </clipPath>
+ </defs>
+ <g transform="translate(-189.36 427.43)">
+  <g transform="matrix(1.6305 0 0 1.6305 63.862 -519.5)" fill="#0082a3">
+   <path transform="matrix(1.3333 0 0 -1.3333 76.278 128.97)" d="m 0,0 v 0 l 16.662,38.321 c 3.856,8.867 14.169,16.053 23.034,16.053 L 23.034,16.053 C 19.178,7.188 8.865,0 0,0" clip-path="url(#clipPath182)"/>
+   <path transform="matrix(1.3333 0 0 -1.3333 132.9 128.97)" d="m0 0 16.662 38.321c3.856 8.867-0.207 16.053-9.073 16.053l-16.662-38.321c-3.856-8.865 0.208-16.053 9.073-16.053" clip-path="url(#clipPath184)"/>
+   <path transform="matrix(1.3333 0 0 -1.3333 146.71 128.97)" d="m 0,0 v 0 l 16.662,38.321 c 3.856,8.867 14.169,16.053 23.034,16.053 L 23.034,16.053 C 19.178,7.188 8.867,0 0,0" clip-path="url(#clipPath186)"/>
+  </g>
+ </g>
+</svg>

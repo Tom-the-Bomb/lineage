@@ -1,13 +1,7 @@
 import * as d3 from 'd3';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
-import {
-    Status,
-    type LineWrapper,
-    type RawTooltipData,
-    type StationWrapper,
-    type UpdateResult,
-} from '../schemas';
+import type { LineWrapper, RawTooltipData, StationWrapper, UpdateResult } from '../schemas';
 
 import { clamp, formatDate, isActive, parseLabelDates, playPause, relativeCenter } from '../utils';
 
@@ -44,6 +38,7 @@ import Theme from './Theme';
 import Tooltip, { TOOLTIP_OFFSET } from './Tooltip';
 
 const EVENT_DOT_SIZE = 4;
+const ZOOM_STEP = 1.3;
 
 function sameNetwork(a: UpdateResult, b: UpdateResult): boolean {
     return (
@@ -182,7 +177,7 @@ export default function Map({ system }: { system: SystemKey }) {
         [config.lines],
     );
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!svgDoc) {
             return;
         }
@@ -191,6 +186,7 @@ export default function Map({ system }: { system: SystemKey }) {
 
         const lines = svgDoc.querySelector('g#lines')!;
         const stations = svgDoc.querySelector('g#stations')!;
+        const [defaultOperator] = Object.keys(config.operators);
 
         linesRef.current = Array.from(lines.querySelectorAll('path')).map(el => {
             const length = el.getTotalLength();
@@ -216,20 +212,12 @@ export default function Map({ system }: { system: SystemKey }) {
             el.dataset.hidden = 'true';
 
             setupHoverEffect(el);
-            let label = el.getAttribute('inkscape:label')!;
-
-            const status = label.startsWith('^')
-                ? Status.SecondaryOnly
-                : label.startsWith('!')
-                  ? Status.Both
-                  : Status.PrimaryOnly;
-            label = label.replace(/^[!^]/, '');
 
             const station = {
                 el,
-                status,
-                states: parseLabelDates(label),
+                states: parseLabelDates(el.getAttribute('inkscape:label')!),
                 lines: el.dataset.lines ? parseLabelDates(el.dataset.lines) : [],
+                operators: parseLabelDates(el.dataset.logos ?? defaultOperator),
             };
 
             if (el.localName !== 'path') {
@@ -260,16 +248,9 @@ export default function Map({ system }: { system: SystemKey }) {
 
         setStationMarkers(stationsRef.current);
 
-        const eventDates = new Set<number>();
-        for (const { states } of [...legend, ...linesRef.current, ...stationsRef.current]) {
-            for (const { dateRange } of states) {
-                eventDates.add(dateRange.appear.getTime());
-                eventDates.add(dateRange.removed.getTime());
-            }
-        }
-        eventDatesRef.current = [...eventDates]
-            .filter(date => minDate.getTime() <= date && date <= maxDate.getTime())
-            .sort((a, b) => a - b);
+        eventDatesRef.current = config.events
+            .map(({ date }) => Date.parse(date))
+            .filter(date => minDate.getTime() <= date && date <= maxDate.getTime());
 
         const svgd3 = d3.select(svgDoc).select<SVGSVGElement>('svg');
         const zoomLayer = d3.select(svgDoc).select<SVGGElement>('#zoom-layer');
@@ -317,26 +298,20 @@ export default function Map({ system }: { system: SystemKey }) {
                 zoomLayer.attr('transform', event.transform.toString());
             });
 
-        svgEl.addEventListener(
-            'touchmove',
-            e => {
-                e.preventDefault();
-            },
-            { passive: false },
-        );
-
         let lastDistance = 0;
+
+        function pinchDistance({ touches }: TouchEvent) {
+            return Math.hypot(
+                touches[1].clientX - touches[0].clientX,
+                touches[1].clientY - touches[0].clientY,
+            );
+        }
 
         svgEl.addEventListener(
             'touchstart',
             e => {
                 if (e.touches.length === 2) {
-                    const touch1 = e.touches[0];
-                    const touch2 = e.touches[1];
-                    lastDistance = Math.hypot(
-                        touch2.clientX - touch1.clientX,
-                        touch2.clientY - touch1.clientY,
-                    );
+                    lastDistance = pinchDistance(e);
                 }
             },
             { passive: true },
@@ -345,20 +320,11 @@ export default function Map({ system }: { system: SystemKey }) {
         svgEl.addEventListener(
             'touchmove',
             e => {
-                if (e.touches.length === 2) {
-                    const touch1 = e.touches[0];
-                    const touch2 = e.touches[1];
-
-                    const distance = Math.hypot(
-                        touch2.clientX - touch1.clientX,
-                        touch2.clientY - touch1.clientY,
-                    );
-
-                    if (lastDistance > 0) {
-                        const scale = distance / lastDistance;
-                        svgD3Ref.current?.call(zoomRef.current!.scaleBy, scale);
-                        lastDistance = distance;
-                    }
+                e.preventDefault();
+                if (e.touches.length === 2 && lastDistance > 0) {
+                    const distance = pinchDistance(e);
+                    svgd3.call(zoom.scaleBy, distance / lastDistance);
+                    lastDistance = distance;
                 }
             },
             { passive: false },
@@ -389,12 +355,13 @@ export default function Map({ system }: { system: SystemKey }) {
         return () => svgDoc.removeEventListener('keydown', keyDownHandler);
     }, [
         svgDoc,
-        legend,
         keyDownHandler,
         minDate,
         maxDate,
         config.initialView,
         config.initialBounds,
+        config.operators,
+        config.events,
     ]);
 
     useEffect(() => {
@@ -412,14 +379,14 @@ export default function Map({ system }: { system: SystemKey }) {
         setNetwork(prev => (sameNetwork(prev, next) ? prev : next));
     }, [svgDoc, time, legend, highlight, settings.transitionMs]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const geography = svgDoc?.querySelector<SVGElement>('#geography');
         if (geography) {
             geography.style.display = settings.showGeography ? '' : 'none';
         }
     }, [svgDoc, settings.showGeography]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!svgDoc) {
             return;
         }
@@ -476,13 +443,18 @@ export default function Map({ system }: { system: SystemKey }) {
         return state ? [{ line, name: state.name, since: state.dateRange.appear }] : [];
     });
 
-    const activeLines = presentLines.filter(({ line }) => highlight.includes(line.id));
     const searchableStations = useMemo(
         () => createStationOptions(stationMarkers, legend, highlight),
         [stationMarkers, legend, highlight],
     );
     const timelineDuration = maxDate.getTime() - minDate.getTime();
     const timeProgress = (time - minDate.getTime()) / timelineDuration;
+
+    function zoomBy(factor: number) {
+        if (svgD3Ref.current && zoomRef.current) {
+            svgD3Ref.current.transition().duration(300).call(zoomRef.current.scaleBy, factor);
+        }
+    }
 
     function focusStation(option: StationOption) {
         const svgd3 = svgD3Ref.current;
@@ -521,6 +493,17 @@ export default function Map({ system }: { system: SystemKey }) {
                 } as React.CSSProperties
             }
         >
+            <div
+                role="status"
+                aria-hidden={!!svgDoc}
+                className={`bg-paper fixed inset-0 z-50 flex flex-col items-center justify-center
+                    gap-3 transition-opacity duration-300 motion-reduce:transition-none
+                    ${svgDoc ? 'pointer-events-none opacity-0' : ''}`}
+            >
+                <img src="/logo.svg" alt="" className="size-12" />
+                <span className="text-sm">{config.name}</span>
+                <span className="meta motion-safe:animate-pulse">Loading map…</span>
+            </div>
             <header
                 className={`pointer-events-none absolute top-4 left-4 z-10 flex
                     max-h-[calc(100dvh-17.5rem)] flex-col ${expanded ? '-translate-x-100' : ''}
@@ -547,7 +530,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     onSettings={patch => setSettings(current => ({ ...current, ...patch }))}
                 />
             </div>
-            <main className="h-dvh w-dvw touch-none">
+            <main className="h-dvh w-dvw touch-none" aria-busy={!svgDoc}>
                 <object
                     key={svgVersion}
                     ref={svgRef}
@@ -556,9 +539,16 @@ export default function Map({ system }: { system: SystemKey }) {
                     type="image/svg+xml"
                     aria-label={`Interactive ${config.name} History map, ${minDate.getUTCFullYear()}-${maxDate.getUTCFullYear()}`}
                     className="absolute top-0 left-0 h-full w-full touch-none"
+                    style={{ visibility: svgDoc ? 'visible' : 'hidden' }}
                 />
                 {svgDoc && (
-                    <Tooltip tooltip={tooltip} time={time} config={config} legend={legend} />
+                    <Tooltip
+                        tooltip={tooltip}
+                        stations={stationMarkers}
+                        time={time}
+                        config={config}
+                        legend={legend}
+                    />
                 )}
             </main>
             <div
@@ -567,14 +557,7 @@ export default function Map({ system }: { system: SystemKey }) {
             >
                 <button
                     type="button"
-                    onClick={() => {
-                        if (svgD3Ref.current && zoomRef.current) {
-                            svgD3Ref.current
-                                .transition()
-                                .duration(300)
-                                .call(zoomRef.current.scaleBy, 1.3);
-                        }
-                    }}
+                    onClick={() => zoomBy(ZOOM_STEP)}
                     className="zoom-btn"
                     aria-label="Zoom in"
                 >
@@ -582,14 +565,7 @@ export default function Map({ system }: { system: SystemKey }) {
                 </button>
                 <button
                     type="button"
-                    onClick={() => {
-                        if (svgD3Ref.current && zoomRef.current) {
-                            svgD3Ref.current
-                                .transition()
-                                .duration(300)
-                                .call(zoomRef.current.scaleBy, 1 / 1.3);
-                        }
-                    }}
+                    onClick={() => zoomBy(1 / ZOOM_STEP)}
                     className="zoom-btn"
                     aria-label="Zoom out"
                 >
@@ -662,7 +638,7 @@ export default function Map({ system }: { system: SystemKey }) {
                         </button>
                     );
                 })}
-                {activeLines.length > 0 && (
+                {presentLines.some(({ line }) => highlight.includes(line.id)) && (
                     <button
                         type="button"
                         onClick={() => setHighlight([])}
@@ -709,10 +685,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     />
                     <button
                         type="button"
-                        onClick={e => {
-                            e.preventDefault();
-                            setTime(prev => findNextEventDate(prev));
-                        }}
+                        onClick={() => setTime(prev => findNextEventDate(prev))}
                         aria-label="Next event"
                         className="group relative"
                     >

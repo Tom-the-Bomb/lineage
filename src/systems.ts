@@ -1,5 +1,6 @@
 import { utcDay, utcYear } from 'd3';
 
+import beijingMtrLogo from './assets/beijing/beijing-mtr.svg';
 import beijingLogo from './assets/beijing/beijing-subway.svg';
 import beijingEvents from './assets/beijing/data/events.json';
 import beijingLines from './assets/beijing/data/lines.json';
@@ -30,6 +31,20 @@ import nanjingEvents from './assets/nanjing/data/events.json';
 import nanjingLines from './assets/nanjing/data/lines.json';
 import nanjingMap from './assets/nanjing/map.svg';
 import nanjingLogo from './assets/nanjing/nanjing-metro.svg';
+import newyorkEvents from './assets/newyork/data/events.json';
+import newyorkLines from './assets/newyork/data/lines.json';
+import newyorkMap from './assets/newyork/map.svg';
+import newyorkLogo from './assets/newyork/mta.svg';
+import seoulArexLogo from './assets/seoul/arex.svg';
+import seoulEvents from './assets/seoul/data/events.json';
+import seoulLines from './assets/seoul/data/lines.json';
+import seoulGimpoLogo from './assets/seoul/gimpo.svg';
+import seoulIncheonLogo from './assets/seoul/incheon.svg';
+import seoulKorailLogo from './assets/seoul/korail.svg';
+import seoulMaglevLogo from './assets/seoul/maglev.svg';
+import seoulMap from './assets/seoul/map.svg';
+import seoulNeoTransLogo from './assets/seoul/neotrans.svg';
+import seoulLogo from './assets/seoul/seoul-metro.svg';
 import singaporeEvents from './assets/singapore/data/events.json';
 import singaporeLines from './assets/singapore/data/lines.json';
 import singaporeMap from './assets/singapore/map.svg';
@@ -37,6 +52,7 @@ import singaporeLogo from './assets/singapore/singapore-mrt.svg';
 import shanghaiEvents from './assets/shanghai/data/events.json';
 import shanghaiLines from './assets/shanghai/data/lines.json';
 import shanghaiMap from './assets/shanghai/map.svg';
+import shanghaiMaglevLogo from './assets/shanghai/shanghai-maglev.svg';
 import shanghaiMetroLogo from './assets/shanghai/shanghai-metro.svg';
 import shanghaiSuburbanLogo from './assets/shanghai/shanghai-suburban.svg';
 import shenzhenEvents from './assets/shenzhen/data/events.json';
@@ -46,15 +62,16 @@ import shenzhenLogo from './assets/shenzhen/shenzhen-metro.svg';
 import taipeiEvents from './assets/taipei/data/events.json';
 import taipeiLines from './assets/taipei/data/lines.json';
 import taipeiMap from './assets/taipei/map.svg';
+import newTaipeiMetroLogo from './assets/taipei/new-taipei-metro.svg';
 import taipeiLogo from './assets/taipei/taipei-metro.svg';
+import taoyuanMetroLogo from './assets/taipei/taoyuan-metro.svg';
 import tokyoEvents from './assets/tokyo/data/events.json';
 import tokyoLines from './assets/tokyo/data/lines.json';
 import tokyoMap from './assets/tokyo/map.svg';
 import tokyoMetroLogo from './assets/tokyo/tokyo-metro.svg';
 import tokyoToeiLogo from './assets/tokyo/toei-subway.svg';
-import { Status, type ChangelogEvent } from './schemas';
+import type { ChangelogEvent } from './schemas';
 
-const KCR_MERGER_DATE = Date.UTC(2007, 11, 2);
 const TODAY = utcDay(new Date());
 
 export interface SystemConfig {
@@ -71,7 +88,7 @@ export interface SystemConfig {
     events: ChangelogEvent[];
     milestoneDates: string[];
     article?: string;
-    tooltipLogos?: (status: Status, time: number) => { src: string; alt: string }[];
+    operators: Record<string, { src: string; alt: string }>;
     initialBounds: [number, number];
     initialView?: { center: [number, number]; zoom: number };
 }
@@ -96,14 +113,9 @@ export const systems = {
         events: hongkongEvents,
         milestoneDates: ['1910-10-01', '1979-10-01', '1985-05-31', '1998-07-06', '2022-05-15'],
         article: '/hongkong/article',
-        tooltipLogos(status, time) {
-            const merged = time >= KCR_MERGER_DATE;
-            return [
-                ...(!merged && status !== Status.PrimaryOnly ? [{ src: kcrLogo, alt: 'KCR' }] : []),
-                ...(merged || status !== Status.SecondaryOnly
-                    ? [{ src: hongkongLogo, alt: 'MTR' }]
-                    : []),
-            ];
+        operators: {
+            mtr: { src: hongkongLogo, alt: 'MTR' },
+            kcr: { src: kcrLogo, alt: 'KCR' },
         },
     }),
     shanghai: defineSystem({
@@ -117,15 +129,10 @@ export const systems = {
         events: shanghaiEvents,
         milestoneDates: ['1993-05-28', '1999-09-20', '2003-10-11', '2007-12-29', '2024-12-27'],
         initialView: { center: [2412, 1089], zoom: 1 },
-        tooltipLogos(status) {
-            return [
-                ...(status !== Status.SecondaryOnly
-                    ? [{ src: shanghaiMetroLogo, alt: 'Shanghai Metro' }]
-                    : []),
-                ...(status !== Status.PrimaryOnly
-                    ? [{ src: shanghaiSuburbanLogo, alt: 'Shanghai Suburban Railway' }]
-                    : []),
-            ];
+        operators: {
+            metro: { src: shanghaiMetroLogo, alt: 'Shanghai Metro' },
+            suburban: { src: shanghaiSuburbanLogo, alt: 'Shanghai Suburban Railway' },
+            maglev: { src: shanghaiMaglevLogo, alt: 'Shanghai Maglev' },
         },
     }),
     taipei: defineSystem({
@@ -139,8 +146,10 @@ export const systems = {
         events: taipeiEvents,
         milestoneDates: ['1996-03-28', '1997-03-28', '1999-12-24', '2014-11-15', '2020-01-31'],
         initialView: { center: [1528, 1907], zoom: 1 },
-        tooltipLogos() {
-            return [{ src: taipeiLogo, alt: 'Taipei Metro' }];
+        operators: {
+            metro: { src: taipeiLogo, alt: 'Taipei Metro' },
+            newtaipei: { src: newTaipeiMetroLogo, alt: 'New Taipei Metro' },
+            taoyuan: { src: taoyuanMetroLogo, alt: 'Taoyuan Metro' },
         },
     }),
     singapore: defineSystem({
@@ -154,8 +163,8 @@ export const systems = {
         events: singaporeEvents,
         milestoneDates: ['1987-11-07', '1996-02-10', '2003-06-20', '2013-12-22', '2020-01-31'],
         initialView: { center: [5831, 4383], zoom: 1 },
-        tooltipLogos() {
-            return [{ src: singaporeLogo, alt: 'MRT' }];
+        operators: {
+            mrt: { src: singaporeLogo, alt: 'MRT' },
         },
     }),
     tokyo: defineSystem({
@@ -176,15 +185,9 @@ export const systems = {
             '2008-06-14',
         ],
         initialView: { center: [1050, 850], zoom: 1 },
-        tooltipLogos(status) {
-            return [
-                ...(status !== Status.SecondaryOnly
-                    ? [{ src: tokyoMetroLogo, alt: 'Tokyo Metro' }]
-                    : []),
-                ...(status !== Status.PrimaryOnly
-                    ? [{ src: tokyoToeiLogo, alt: 'Toei Subway' }]
-                    : []),
-            ];
+        operators: {
+            metro: { src: tokyoMetroLogo, alt: 'Tokyo Metro' },
+            toei: { src: tokyoToeiLogo, alt: 'Toei' },
         },
     }),
     shenzhen: defineSystem({
@@ -198,8 +201,9 @@ export const systems = {
         events: shenzhenEvents,
         milestoneDates: ['2004-12-28', '2011-06-22', '2016-06-28', '2020-08-18', '2022-10-28'],
         initialView: { center: [1640, 1130], zoom: 1 },
-        tooltipLogos() {
-            return [{ src: shenzhenLogo, alt: 'Shenzhen Metro' }];
+        operators: {
+            metro: { src: shenzhenLogo, alt: 'Shenzhen Metro' },
+            mtr: { src: hongkongLogo, alt: 'MTR Shenzhen' },
         },
     }),
     hangzhou: defineSystem({
@@ -211,10 +215,10 @@ export const systems = {
         logos: [hangzhouLogo],
         lines: hangzhouLines.lines,
         events: hangzhouEvents,
-        milestoneDates: ['2012-11-18', '2014-11-18', '2019-06-24', '2020-12-30', '2022-09-22'],
+        milestoneDates: ['2012-11-24', '2014-11-24', '2019-06-24', '2020-12-30', '2022-09-22'],
         initialView: { center: [2270, 1140], zoom: 1 },
-        tooltipLogos() {
-            return [{ src: hangzhouLogo, alt: 'Hangzhou Metro' }];
+        operators: {
+            metro: { src: hangzhouLogo, alt: 'Hangzhou Metro' },
         },
     }),
     guangfo: defineSystem({
@@ -228,15 +232,9 @@ export const systems = {
         events: guangfoEvents,
         milestoneDates: ['1997-06-28', '2002-12-29', '2010-11-03', '2021-09-28', '2024-12-28'],
         initialView: { center: [1870, 2360], zoom: 1 },
-        tooltipLogos(status) {
-            return [
-                ...(status !== Status.SecondaryOnly
-                    ? [{ src: guangzhouLogo, alt: 'Guangzhou Metro' }]
-                    : []),
-                ...(status !== Status.PrimaryOnly
-                    ? [{ src: foshanLogo, alt: 'Foshan Metro' }]
-                    : []),
-            ];
+        operators: {
+            guangzhou: { src: guangzhouLogo, alt: 'Guangzhou Metro' },
+            foshan: { src: foshanLogo, alt: 'Foshan Metro' },
         },
     }),
     chengdu: defineSystem({
@@ -252,8 +250,8 @@ export const systems = {
         events: chengduEvents,
         milestoneDates: ['2010-09-27', '2017-12-06', '2020-12-18', '2023-11-28', '2025-12-16'],
         initialView: { center: [2924, 1200], zoom: 1 },
-        tooltipLogos() {
-            return [{ src: chengduLogo, alt: 'Chengdu Metro' }];
+        operators: {
+            metro: { src: chengduLogo, alt: 'Chengdu Metro' },
         },
     }),
     beijing: defineSystem({
@@ -267,8 +265,9 @@ export const systems = {
         events: beijingEvents,
         milestoneDates: ['1971-01-15', '1987-12-28', '2008-07-19', '2010-12-30', '2025-12-27'],
         initialView: { center: [2000, 2380], zoom: 1 },
-        tooltipLogos() {
-            return [{ src: beijingLogo, alt: 'Beijing Subway' }];
+        operators: {
+            subway: { src: beijingLogo, alt: 'Beijing Subway' },
+            mtr: { src: beijingMtrLogo, alt: 'Beijing MTR' },
         },
     }),
     nanjing: defineSystem({
@@ -282,8 +281,8 @@ export const systems = {
         events: nanjingEvents,
         milestoneDates: ['2005-05-15', '2010-05-28', '2014-07-01', '2017-12-06', '2026-04-22'],
         initialView: { center: [3000, 3400], zoom: 1.6 },
-        tooltipLogos() {
-            return [{ src: nanjingLogo, alt: 'Nanjing Metro' }];
+        operators: {
+            metro: { src: nanjingLogo, alt: 'Nanjing Metro' },
         },
     }),
     chongqing: defineSystem({
@@ -297,10 +296,46 @@ export const systems = {
         tooltipLogoSize: 12,
         lines: chongqingLines.lines,
         events: chongqingEvents,
-        milestoneDates: ['2004-11-06', '2011-09-29', '2018-12-28', '2024-12-26', '2026-02-10'],
+        milestoneDates: ['2004-11-06', '2011-09-29', '2018-12-28', '2025-01-02', '2026-02-10'],
         initialView: { center: [3290, 2460], zoom: 1.7 },
-        tooltipLogos() {
-            return [{ src: chongqingLogo, alt: 'Chongqing Rail Transit' }];
+        operators: {
+            rail: { src: chongqingLogo, alt: 'Chongqing Rail Transit' },
+        },
+    }),
+    seoul: defineSystem({
+        name: 'Seoul Metropolitan Subway',
+        localTitle: '수도권 전철 역사',
+        description: "Explore the growth of Seoul's rail network",
+        map: seoulMap,
+        initialBounds: [7500, 5500],
+        initialView: { center: [4300, 3200], zoom: 1.6 },
+        logos: [seoulLogo],
+        lines: seoulLines.lines,
+        events: seoulEvents,
+        milestoneDates: ['1974-08-15', '1984-05-22', '1999-10-06', '2014-12-27', '2024-12-28'],
+        operators: {
+            metro: { src: seoulLogo, alt: 'Seoul Metro' },
+            korail: { src: seoulKorailLogo, alt: 'Korail' },
+            incheon: { src: seoulIncheonLogo, alt: 'Incheon Transit Corporation' },
+            gimpo: { src: seoulGimpoLogo, alt: 'Gimpo Goldline' },
+            arex: { src: seoulArexLogo, alt: 'AREX' },
+            neotrans: { src: seoulNeoTransLogo, alt: 'NeoTrans' },
+            maglev: { src: seoulMaglevLogo, alt: 'Incheon Airport Maglev' },
+        },
+    }),
+    newyork: defineSystem({
+        name: 'New York City Subway',
+        localTitle: '纽约地铁历史',
+        description: "Explore the growth of New York's subway network",
+        map: newyorkMap,
+        initialBounds: [4600, 5100],
+        logos: [newyorkLogo],
+        lines: newyorkLines.lines,
+        events: newyorkEvents,
+        milestoneDates: ['1904-10-27', '1932-09-10', '1956-06-28', '2015-09-13', '2017-01-01'],
+        initialView: { center: [3410, 2310], zoom: 1.4 },
+        operators: {
+            mta: { src: newyorkLogo, alt: 'MTA' },
         },
     }),
 };

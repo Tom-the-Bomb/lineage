@@ -1,13 +1,8 @@
 import * as d3 from 'd3';
 
-import {
-    type LegendWrapper,
-    type LineWrapper,
-    type StationWrapper,
-    type UpdateResult,
-} from './schemas';
+import type { LegendWrapper, LineWrapper, StationWrapper, UpdateResult } from './schemas';
 
-import { clamp, findName, isActive, relativeCenter } from './utils';
+import { clamp, findName, isActive, relativeCenter } from './utils.ts';
 
 export const STEP_UNITS = {
     day: {

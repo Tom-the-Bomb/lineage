@@ -1,8 +1,32 @@
 [
     {
+        "date": "2010-09-10",
+        "descriptions": [
+            "Line 1: Shengxian Lake - Century City free public trial rides begin"
+        ]
+    },
+    {
+        "date": "2010-09-13",
+        "descriptions": [
+            "Line 1: Shengxian Lake - Century City free public trial rides end"
+        ]
+    },
+    {
         "date": "2010-09-27",
         "descriptions": [
             "Line 1: Shengxian Lake - Century City opens"
+        ]
+    },
+    {
+        "date": "2012-09-01",
+        "descriptions": [
+            "Line 2: Chadianzi Bus Terminal Station - Chengdu Institute of Public Administration free sightseeing rides begin"
+        ]
+    },
+    {
+        "date": "2012-09-04",
+        "descriptions": [
+            "Line 2: Chadianzi Bus Terminal Station - Chengdu Institute of Public Administration free sightseeing rides end"
         ]
     },
     {

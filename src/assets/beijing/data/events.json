@@ -2,25 +2,37 @@
     {
         "date": "1971-01-15",
         "descriptions": [
-            "Line 1: Lixin (now Gongzhufen) - Beijing Railway Station opens to public trial passengers"
+            "Line 1: Lixin (now Gongzhufen) - Beijing Railway Station restricted trial operation begins, with tickets sold only against work-unit letters"
         ]
     },
     {
         "date": "1971-08-15",
         "descriptions": [
-            "Line 1: Gongzhufen - Yuquan Lu opens"
+            "Line 1: Gongzhufen - Yuquan Lu restricted trial operation begins"
         ]
     },
     {
         "date": "1971-11-07",
         "descriptions": [
-            "Line 1: Yuquan Lu - Gucheng opens"
+            "Line 1: Yuquan Lu - Gucheng restricted trial operation begins"
+        ]
+    },
+    {
+        "date": "1972-12-27",
+        "descriptions": [
+            "Line 1: Gucheng - Beijing Railway Station opens to all passengers, as tickets go on sale without work-unit letters"
         ]
     },
     {
         "date": "1973-04-23",
         "descriptions": [
             "Line 1: Gucheng - Pingguoyuan opens"
+        ]
+    },
+    {
+        "date": "1981-09-15",
+        "descriptions": [
+            "Line 1: Pingguoyuan - Beijing Railway Station formally opens, after trial operation since 1971"
         ]
     },
     {
@@ -108,13 +120,14 @@
         "date": "2008-07-19",
         "descriptions": [
             "Airport Express: Dongzhimen - Terminal 3 / Terminal 2 opens",
-            "Line 8: Beitucheng - Forest Park South Gate opens",
+            "Line 8: Beitucheng - Forest Park South Gate restricted service for Olympic ticket and credential holders begins",
             "Line 10: Bagou - Jingsong opens"
         ]
     },
     {
         "date": "2008-10-09",
         "descriptions": [
+            "Line 8: Beitucheng - Forest Park South Gate opens to all passengers",
             "Line 8: Olympic Sports Center opens"
         ]
     },

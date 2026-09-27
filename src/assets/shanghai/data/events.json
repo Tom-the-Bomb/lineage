@@ -28,7 +28,7 @@
     "date": "1999-09-20",
     "descriptions": [
       "Line 2: People's Park opens as a separate station from Line 1's People's Square",
-      "Line 2: Zhongshan Park - Longyang Road opens"
+      "Line 2: Zhongshan Park - Longyang Road service for organised visitor groups begins"
     ]
   },
   {
@@ -41,6 +41,12 @@
     "date": "2000-04-19",
     "descriptions": [
       "Pudong Central Park → Century Park"
+    ]
+  },
+  {
+    "date": "2000-06-11",
+    "descriptions": [
+      "Line 2: Zhongshan Park - Longyang Road regular service begins"
     ]
   },
   {
@@ -78,9 +84,27 @@
     ]
   },
   {
+    "date": "2003-01-01",
+    "descriptions": [
+      "Maglev: Longyang Road - Pudong International Airport weekend and holiday sightseeing round trips begin, without alighting at the airport"
+    ]
+  },
+  {
+    "date": "2003-03-10",
+    "descriptions": [
+      "Maglev: Longyang Road - Pudong International Airport sightseeing round trips end"
+    ]
+  },
+  {
+    "date": "2003-09-20",
+    "descriptions": [
+      "Maglev: Longyang Road - Pudong International Airport weekend sightseeing round trips resume"
+    ]
+  },
+  {
     "date": "2003-10-11",
     "descriptions": [
-      "Maglev: Longyang Road - Pudong International Airport opens"
+      "Maglev: Pudong International Airport opens to boarding and alighting passengers"
     ]
   },
   {
@@ -88,6 +112,12 @@
     "descriptions": [
       "Line 5: Xinzhuang - Minhang Development Zone opens",
       "Xinzhuang: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "2003-12-29",
+    "descriptions": [
+      "Maglev: Longyang Road - Pudong International Airport regular service begins as daily trial operation"
     ]
   },
   {
@@ -140,6 +170,12 @@
     "descriptions": [
       "Line 4: Lancun Road - Damuqiao Road opens, sharing Line 3 between Baoshan Road and Hongqiao Road",
       "Yishan Road: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "2006-04-27",
+    "descriptions": [
+      "Maglev: Longyang Road - Pudong International Airport formally opens for commercial operation"
     ]
   },
   {
@@ -255,8 +291,14 @@
   {
     "date": "2010-04-20",
     "descriptions": [
-      "Expo Line: Madang Road - Shibo Avenue opens",
+      "Expo Line: Madang Road - Shibo Avenue service for Expo trial-day visitors begins",
       "Line 7: Houtan opens"
+    ]
+  },
+  {
+    "date": "2010-05-01",
+    "descriptions": [
+      "Expo Line: Madang Road - Shibo Avenue opens to all Expo visitors"
     ]
   },
   {
@@ -421,9 +463,21 @@
     ]
   },
   {
+    "date": "2018-12-20",
+    "descriptions": [
+      "Songjiang Tram 2: Canghua Road - Zhongchen Road free trial rides begin"
+    ]
+  },
+  {
+    "date": "2018-12-22",
+    "descriptions": [
+      "Songjiang Tram 2: Canghua Road - Zhongchen Road free trial rides end"
+    ]
+  },
+  {
     "date": "2018-12-26",
     "descriptions": [
-      "Songjiang Tram 2: Canghua Road - Zhongchen Road and Songjiang University Town branch open",
+      "Songjiang Tram 2: Canghua Road - Zhongchen Road opens, with the Songjiang University Town branch",
       "Songjiang University Town: interchange with Songjiang Tram 2 opens"
     ]
   },

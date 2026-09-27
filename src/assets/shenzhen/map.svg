@@ -70,431 +70,431 @@
       <path inkscape:label="Hubei=2025_12_28" id="walking-transfer-hubei-2-hubei-5--2025-12-28" d="M1848.702,1469.002 L1849.519,1453.765" fill="none"/>
       <path inkscape:label="Hongling_South=2025_12_28" id="walking-transfer-hongling-south-9-hongling-south-11--2025-12-28" d="M1748.311,1497.282 L1742.846,1512.038" fill="none"/>
       <path inkscape:label="Grand_Theater=2025_12_28" id="walking-transfer-grand-theater-hongling-south-9--2025-12-28" d="M1763.706,1486.23 L1748.311,1497.282" fill="none"/>
-      <circle id="station-luohu" inkscape:label="Luohu=2004_12_28" data-lines="1=2004_12_28" cx="1813.372" cy="1541.879" r="5.692"/>
-      <circle id="station-guomao" inkscape:label="Guomao=2004_12_28" data-lines="1=2004_12_28" cx="1817.612" cy="1492.708" r="5.692"/>
-      <circle id="station-laojie" inkscape:label="Laojie=2004_12_28-2011_06_28" data-lines="1=2004_12_28-2011_06_28" cx="1804.413" cy="1470.04" r="5.692"/>
-      <rect id="station-laojie--2011-06-28" inkscape:label="Laojie=2011_06_28" data-lines="1=2011_06_28,3=2011_06_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1804.443,1467.273) rotate(-99.529)"/>
-      <circle id="station-grand-theater" inkscape:label="Grand_Theater=2004_12_28-2011_06_28" data-lines="1=2004_12_28-2011_06_28" cx="1763.741" cy="1481.618" r="5.692"/>
-      <rect id="station-grand-theater--2011-06-28" inkscape:label="Grand_Theater=2011_06_28-2025_12_28" data-lines="1=2011_06_28-2025_12_28,2=2011_06_28-2025_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1763.706,1484.73) rotate(0.654)"/>
-      <rect id="station-grand-theater--2025-12-28" inkscape:label="Grand_Theater=2025_12_28" data-lines="1=2025_12_28,2=2025_12_28,5=2025_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1763.706,1486.23) rotate(0.267)"/>
-      <circle id="station-science-museum" inkscape:label="Science_Museum=2004_12_28-2020_08_18" data-lines="1=2004_12_28-2020_08_18" cx="1699.03" cy="1488.941" r="5.692"/>
-      <rect id="station-science-museum--2020-08-18" inkscape:label="Science_Museum=2020_08_18" data-lines="1=2020_08_18,6=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1702.313,1490.522) rotate(-64.285)"/>
-      <circle id="station-huaqiang-road" inkscape:label="Huaqiang_Road=2004_12_28" data-lines="1=2004_12_28" cx="1648.298" cy="1489.571" r="5.692"/>
-      <circle id="station-gangxia" inkscape:label="Gangxia=2004_12_28-2020_08_18" data-lines="1=2004_12_28-2020_08_18" cx="1565.063" cy="1520.082" r="5.692"/>
-      <rect id="station-gangxia--2020-08-18" inkscape:label="Gangxia=2020_08_18" data-lines="1=2020_08_18,10=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1564.983,1520.026) rotate(-235.493)"/>
-      <rect id="station-convention-and-exhibition-center" inkscape:label="Convention_and_Exhibition_Center=2004_12_28" data-lines="1=2004_12_28,4=2004_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1530.132,1520.127) rotate(31.896)"/>
-      <circle id="station-shopping-park" inkscape:label="Shopping_Park=2004_12_28-2011_06_28" data-lines="1=2004_12_28-2011_06_28" cx="1498.402" cy="1520.341" r="5.692"/>
-      <rect id="station-shopping-park--2011-06-28" inkscape:label="Shopping_Park=2011_06_28" data-lines="1=2011_06_28,3=2011_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1494.119,1523.093) rotate(57.283)"/>
-      <circle id="station-xiangmihu" inkscape:label="Xiangmihu=2004_12_28" data-lines="1=2004_12_28" cx="1419.47" cy="1495.239" r="5.692"/>
-      <circle id="station-chegongmiao" inkscape:label="Chegongmiao=2004_12_28-2016_06_28" data-lines="1=2004_12_28-2016_06_28" cx="1357.335" cy="1509.718" r="5.692"/>
-      <rect id="station-chegongmiao--2016-06-28" inkscape:label="Chegongmiao=2016_06_28-2016_10_28" data-lines="1=2016_06_28-2016_10_28,11=2016_06_28-2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1357.633,1511.466) rotate(-9.666)"/>
-      <rect id="station-chegongmiao--2016-10-28" inkscape:label="Chegongmiao=2016_10_28" data-lines="1=2016_10_28,7=2016_10_28,9=2016_10_28,11=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1364.255,1512.691) rotate(-77.795)"/>
-      <circle id="station-zhuzilin" inkscape:label="Zhuzilin=2004_12_28" data-lines="1=2004_12_28" cx="1297.649" cy="1527.602" r="5.692"/>
-      <circle id="station-qiaocheng-east" inkscape:label="Qiaocheng_East=2004_12_28" data-lines="1=2004_12_28" cx="1210.268" cy="1531.323" r="5.692"/>
-      <circle id="station-overseas-chinese-town" inkscape:label="Overseas_Chinese_Town=2004_12_28" data-lines="1=2004_12_28" cx="1153.616" cy="1526.51" r="5.692"/>
-      <circle id="station-window-of-the-world" inkscape:label="Window_of_the_World=2004_12_28-2010_12_28" data-lines="1=2004_12_28-2010_12_28" cx="1101.068" cy="1506.629" r="5.692"/>
-      <rect id="station-window-of-the-world--2010-12-28" inkscape:label="Window_of_the_World=2010_12_28" data-lines="1=2010_12_28,2=2010_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1100.81,1506.638) rotate(88.063)"/>
-      <circle id="station-baishizhou" inkscape:label="Baishizhou=2009_09_28" data-lines="1=2009_09_28" cx="1066.006" cy="1492.397" r="5.692"/>
-      <circle id="station-hi-tech-park" inkscape:label="Hi-Tech_Park=2009_09_28" data-lines="1=2009_09_28" cx="1000.599" cy="1489.593" r="5.692"/>
-      <circle id="station-shenzhen-university" inkscape:label="Shenzhen_University=2009_09_28-2024_12_28" data-lines="1=2009_09_28-2024_12_28" cx="950.436" cy="1501.132" r="5.692"/>
-      <rect id="station-shenzhen-university--2024-12-28" inkscape:label="Shenzhen_University=2024_12_28" data-lines="1=2024_12_28,13=2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(950.436,1503.382) rotate(0)"/>
-      <circle id="station-taoyuan" inkscape:label="Taoyuan=2011_06_15-2022_11_28" data-lines="1=2011_06_15-2022_11_28" cx="856.421" cy="1531.108" r="5.692"/>
-      <rect id="station-taoyuan--2022-11-28" inkscape:label="Taoyuan=2022_11_28" data-lines="1=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(856.418,1533.249) rotate(0.071)"/>
-      <circle id="station-daxin" inkscape:label="Daxin=2011_06_15" data-lines="1=2011_06_15" cx="808.539" cy="1531.121" r="5.692"/>
-      <circle id="station-liyumen" inkscape:label="Liyumen=2011_06_15" data-lines="1=2011_06_15" cx="750.929" cy="1531.183" r="5.692"/>
-      <circle id="station-qianhaiwan" inkscape:label="Qianhaiwan=2011_06_15-2011_06_22" data-lines="1=2011_06_15-2011_06_22" cx="725.184" cy="1505.492" r="5.692"/>
-      <rect id="station-qianhaiwan--2011-06-22" inkscape:label="Qianhaiwan=2011_06_22-2016_06_28" data-lines="1=2011_06_22-2016_06_28,5=2011_06_22-2016_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(723.293,1505.494) rotate(89.93)"/>
-      <rect id="station-qianhaiwan--2016-06-28" inkscape:label="Qianhaiwan=2016_06_28" data-lines="1=2016_06_28,5=2016_06_28,11=2016_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(721.422,1505.458) rotate(-269.19)"/>
-      <circle id="station-xin-an" inkscape:label="Xin'an=2011_06_15" data-lines="1=2011_06_15" cx="705.944" cy="1448.908" r="5.692"/>
-      <circle id="station-bao-an-center" inkscape:label="Bao'an_Center=2011_06_15-2011_06_22" data-lines="1=2011_06_15-2011_06_22" cx="669.62" cy="1411.271" r="5.692"/>
-      <rect id="station-bao-an-center--2011-06-22" inkscape:label="Bao'an_Center=2011_06_22" data-lines="1=2011_06_22,5=2011_06_22" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(669.562,1411.239) rotate(-240.81)"/>
-      <circle id="station-bao-an-stadium" inkscape:label="Bao'an_Stadium=2011_06_15" data-lines="1=2011_06_15" cx="640.824" cy="1381.906" r="5.692"/>
-      <circle id="station-pingzhou" inkscape:label="Pingzhou=2011_06_15" data-lines="1=2011_06_15" cx="587.32" cy="1335.285" r="5.692"/>
-      <circle id="station-xixiang" inkscape:label="Xixiang=2011_06_15" data-lines="1=2011_06_15" cx="545.559" cy="1297.973" r="5.692"/>
-      <circle id="station-gushu" inkscape:label="Gushu=2011_06_15" data-lines="1=2011_06_15" cx="470.497" cy="1164.167" r="5.692"/>
-      <circle id="station-hourui" inkscape:label="Hourui=2011_06_15" data-lines="1=2011_06_15" cx="412.621" cy="1013.639" r="5.692"/>
-      <circle id="station-airport-east" inkscape:label="Airport_East=2011_06_15-2022_11_28" data-lines="1=2011_06_15-2022_11_28" cx="350.059" cy="917.741" r="5.692"/>
-      <rect id="station-airport-east--2022-11-28" inkscape:label="Airport_East=2022_11_28" data-lines="1=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(348.297,918.487) rotate(67.069)"/>
-      <circle id="station-chiwan" inkscape:label="Chiwan=2010_12_28-2019_09_28" data-lines="2=2010_12_28-2019_09_28" cx="721.485" cy="1816.826" r="5.692"/>
-      <rect id="station-chiwan--2019-09-28" inkscape:label="Chiwan=2019_09_28" data-lines="2=2019_09_28,5=2019_09_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(720.128,1817.811) rotate(54.033)"/>
-      <circle id="station-shekou-port" inkscape:label="Shekou_Port=2010_12_28" data-lines="2=2010_12_28" cx="790.576" cy="1831.891" r="5.692"/>
-      <circle id="station-sea-world" inkscape:label="Sea_World=2010_12_28-2022_11_28" data-lines="2=2010_12_28-2022_11_28" cx="807.678" cy="1785.576" r="5.692"/>
-      <rect id="station-sea-world--2022-11-28" inkscape:label="Sea_World=2022_11_28" data-lines="2=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(805.229,1784.238) rotate(-241.352)"/>
-      <circle id="station-shuiwan" inkscape:label="Shuiwan=2010_12_28" data-lines="2=2010_12_28" cx="830.059" cy="1767.565" r="5.692"/>
-      <circle id="station-dongjiaotou" inkscape:label="Dongjiaotou=2010_12_28" data-lines="2=2010_12_28" cx="888.876" cy="1779.486" r="5.692"/>
-      <circle id="station-wanxia" inkscape:label="Wanxia=2010_12_28" data-lines="2=2010_12_28" cx="923.731" cy="1740.393" r="5.692"/>
-      <circle id="station-haiyue" inkscape:label="Haiyue=2010_12_28" data-lines="2=2010_12_28" cx="920.447" cy="1704.38" r="5.692"/>
-      <circle id="station-dengliang" inkscape:label="Dengliang=2010_12_28" data-lines="2=2010_12_28" cx="919.991" cy="1657.219" r="5.692"/>
-      <circle id="station-houhai" inkscape:label="Houhai=2010_12_28-2016_06_28" data-lines="2=2010_12_28-2016_06_28" cx="933.021" cy="1611.844" r="5.692"/>
-      <rect id="station-houhai--2016-06-28" inkscape:label="Houhai=2016_06_28-2024_12_28" data-lines="2=2016_06_28-2024_12_28,11=2016_06_28-2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(937.657,1608.473) rotate(-126.024)"/>
-      <rect id="station-houhai--2024-12-28" inkscape:label="Houhai=2024_12_28" data-lines="2=2024_12_28,11=2024_12_28,13=2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(937.862,1609.099) rotate(-142.307)"/>
-      <circle id="station-keyuan" inkscape:label="Keyuan=2010_12_28-2024_12_28" data-lines="2=2010_12_28-2024_12_28" cx="965.243" cy="1560.072" r="5.692"/>
-      <rect id="station-keyuan--2024-12-28" inkscape:label="Keyuan=2024_12_28" data-lines="2=2024_12_28,13=2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(965.243,1562.322) rotate(0)"/>
-      <circle id="station-hongshuwan" inkscape:label="Hongshuwan=2010_12_28" data-lines="2=2010_12_28" cx="1074.535" cy="1571.408" r="5.692"/>
-      <circle id="station-qiaocheng-north" inkscape:label="Qiaocheng_North=2011_06_28" data-lines="2=2011_06_28" cx="1173.46" cy="1468.144" r="5.692"/>
-      <circle id="station-shenkang" inkscape:label="Shenkang=2011_06_28" data-lines="2=2011_06_28" cx="1221.886" cy="1458.075" r="5.692"/>
-      <circle id="station-antuo-hill" inkscape:label="Antuo_Hill=2011_06_28-2016_10_28" data-lines="2=2011_06_28-2016_10_28" cx="1258.673" cy="1444.424" r="5.692"/>
-      <rect id="station-antuo-hill--2016-10-28" inkscape:label="Antuo_Hill=2016_10_28" data-lines="2=2016_10_28,7=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1258.753,1444.542) rotate(-34.254)"/>
-      <circle id="station-qiaoxiang" inkscape:label="Qiaoxiang=2011_06_28" data-lines="2=2011_06_28" cx="1299.41" cy="1439.507" r="5.692"/>
-      <circle id="station-xiangmi" inkscape:label="Xiangmi=2011_06_28" data-lines="2=2011_06_28" cx="1345.337" cy="1421.373" r="5.692"/>
-      <circle id="station-xiangmei-north" inkscape:label="Xiangmei_North=2011_06_28" data-lines="2=2011_06_28" cx="1390.252" cy="1416.538" r="5.692"/>
-      <circle id="station-jingtian" inkscape:label="Jingtian=2011_06_28-2016_10_28" data-lines="2=2011_06_28-2016_10_28" cx="1446.422" cy="1418.805" r="5.692"/>
-      <rect id="station-jingtian--2016-10-28" inkscape:label="Jingtian=2016_10_28" data-lines="2=2016_10_28,9=2016_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1444.395,1418.932) rotate(86.423)"/>
-      <circle id="station-lianhua-west" inkscape:label="Lianhua_West=2011_06_28" data-lines="2=2011_06_28" cx="1476.185" cy="1453.007" r="5.692"/>
-      <rect id="station-futian" inkscape:label="Futian=2011_06_28-2016_06_28" data-lines="2=2011_06_28-2016_06_28,3=2011_06_28-2016_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1491.169,1487.397) rotate(-234.945)"/>
-      <rect id="station-futian--2016-06-28" inkscape:label="Futian=2016_06_28" data-lines="2=2016_06_28,3=2016_06_28,11=2016_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1491.79,1488.945) rotate(-32.049)"/>
-      <circle id="station-civic-center" inkscape:label="Civic_Center=2004_12_28-2011_06_28" data-lines="4=2004_12_28-2011_06_28" cx="1529.578" cy="1482.9" r="5.692"/>
-      <rect id="station-civic-center--2011-06-28" inkscape:label="Civic_Center=2011_06_28" data-lines="2=2011_06_28,4=2011_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1532.069,1484.326) rotate(-260.464)"/>
-      <circle id="station-gangxia-north" inkscape:label="Gangxia_North=2011_06_28-2022_10_28" data-lines="2=2011_06_28-2022_10_28" cx="1573.793" cy="1487.464" r="5.692"/>
-      <rect id="station-gangxia-north--2022-10-28" inkscape:label="Gangxia_North=2022_10_28" data-lines="2=2022_10_28,10=2022_10_28,11=2022_10_28,14=2022_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1567.137,1491.842) rotate(42.709)"/>
-      <circle id="station-huaqiang-north" inkscape:label="Huaqiang_North=2011_06_28-2016_10_28" data-lines="2=2011_06_28-2016_10_28" cx="1653.081" cy="1468.252" r="5.692"/>
-      <rect id="station-huaqiang-north--2016-10-28" inkscape:label="Huaqiang_North=2016_10_28" data-lines="2=2016_10_28,7=2016_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1655.24,1470.641) rotate(-42.108)"/>
-      <circle id="station-yannan" inkscape:label="Yannan=2011_06_28" data-lines="2=2011_06_28" cx="1684.427" cy="1467.692" r="5.692"/>
-      <circle id="station-hubei-2" inkscape:label="Hubei=2011_06_28" data-lines="2=2011_06_28" cx="1848.702" cy="1469.002" r="5.692"/>
-      <circle id="station-huangbeiling" inkscape:label="Huangbeiling=2011_06_22-2011_06_28" data-lines="5=2011_06_22-2011_06_28" cx="1904.399" cy="1462.942" r="5.692"/>
-      <rect id="station-huangbeiling--2011-06-28" inkscape:label="Huangbeiling=2011_06_28" data-lines="2=2011_06_28,5=2011_06_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1903.722,1461.319) rotate(-22.643)"/>
-      <circle id="station-xinxiu" inkscape:label="Xinxiu=2011_06_28" data-lines="2=2011_06_28" cx="1967.236" cy="1449.003" r="5.692"/>
-      <circle id="station-liantang-checkpoint" inkscape:label="Liantang_Checkpoint=2020_10_28" data-lines="2=2020_10_28" cx="1998.28" cy="1422.377" r="5.692"/>
-      <circle id="station-xianhu-road" inkscape:label="Xianhu_Road=2020_10_28" data-lines="2=2020_10_28" cx="2052.398" cy="1363.208" r="5.692"/>
-      <circle id="station-liantang" inkscape:label="Liantang=2020_10_28" data-lines="2=2020_10_28,8=2020_10_28" cx="2090.938" cy="1362.712" r="5.692"/>
-      <circle id="station-futian-bonded-area" inkscape:label="Futian_Bonded_Area=2020_10_28" data-lines="3=2020_10_28" cx="1501.341" cy="1664.177" r="5.692"/>
-      <circle id="station-yitian" inkscape:label="Yitian=2011_06_28" data-lines="3=2011_06_28" cx="1480.66" cy="1620.553" r="5.692"/>
-      <circle id="station-shixia" inkscape:label="Shixia=2011_06_28-2016_10_28" data-lines="3=2011_06_28-2016_10_28" cx="1493.442" cy="1578.736" r="5.692"/>
-      <rect id="station-shixia--2016-10-28" inkscape:label="Shixia=2016_10_28" data-lines="3=2016_10_28,7=2016_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1493.383,1580.71) rotate(1.717)"/>
-      <circle id="station-children-s-palace" inkscape:label="Children's_Palace=2004_12_28-2011_06_28" data-lines="4=2004_12_28-2011_06_28" cx="1529.007" cy="1450.062" r="5.692"/>
-      <rect id="station-children-s-palace--2011-06-28" inkscape:label="Children's_Palace=2011_06_28" data-lines="3=2011_06_28,4=2011_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1527.078,1447.711) rotate(-39.372)"/>
-      <circle id="station-lianhuacun" inkscape:label="Lianhuacun=2011_06_28-2020_08_18" data-lines="3=2011_06_28-2020_08_18" cx="1564.29" cy="1445.833" r="5.692"/>
-      <rect id="station-lianhuacun--2020-08-18" inkscape:label="Lianhuacun=2020_08_18" data-lines="3=2020_08_18,10=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1564.176,1443.708) rotate(-183.075)"/>
-      <circle id="station-huaxin" inkscape:label="Huaxin=2011_06_28-2016_10_28" data-lines="3=2011_06_28-2016_10_28" cx="1656.797" cy="1442.448" r="5.692"/>
-      <rect id="station-huaxin--2016-10-28" inkscape:label="Huaxin=2016_10_28" data-lines="3=2016_10_28,7=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1656.613,1442.579) rotate(54.386)"/>
-      <circle id="station-tongxinling" inkscape:label="Tongxinling=2011_06_28-2020_08_18" data-lines="3=2011_06_28-2020_08_18" cx="1704.366" cy="1443.515" r="5.692"/>
-      <rect id="station-tongxinling--2020-08-18" inkscape:label="Tongxinling=2020_08_18" data-lines="3=2020_08_18,6=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1704.277,1443.449) rotate(-233.334)"/>
-      <circle id="station-hongling" inkscape:label="Hongling=2011_06_28-2016_10_28" data-lines="3=2011_06_28-2016_10_28" cx="1738.71" cy="1442.862" r="5.692"/>
-      <rect id="station-hongling--2016-10-28" inkscape:label="Hongling=2016_10_28" data-lines="3=2016_10_28,9=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1742.064,1445.266) rotate(-54.37)"/>
-      <circle id="station-shaibu" inkscape:label="Shaibu=2011_06_28" data-lines="3=2011_06_28" cx="1836.827" cy="1440.779" r="5.692"/>
-      <circle id="station-cuizhu" inkscape:label="Cuizhu=2011_06_28" data-lines="3=2011_06_28" cx="1871.844" cy="1405.453" r="5.692"/>
-      <circle id="station-tianbei" inkscape:label="Tianbei=2011_06_28-2016_10_28" data-lines="3=2011_06_28-2016_10_28" cx="1872.004" cy="1345.446" r="5.692"/>
-      <rect id="station-tianbei--2016-10-28" inkscape:label="Tianbei=2016_10_28" data-lines="3=2016_10_28,7=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1870.122,1345.989) rotate(73.901)"/>
-      <circle id="station-shuibei" inkscape:label="Shuibei=2011_06_28" data-lines="3=2011_06_28" cx="1846.411" cy="1308.265" r="5.692"/>
-      <circle id="station-caopu" inkscape:label="Caopu=2010_12_28" data-lines="3=2010_12_28" cx="1804.351" cy="1253.679" r="5.692"/>
-      <circle id="station-buji" inkscape:label="Buji=2010_12_28-2011_06_22" data-lines="3=2010_12_28-2011_06_22" cx="1829.663" cy="1161.258" r="5.692"/>
-      <rect id="station-buji--2011-06-22" inkscape:label="Buji=2011_06_22-2022_10_28" data-lines="3=2011_06_22-2022_10_28,5=2011_06_22-2022_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1827.947,1158.853) rotate(-215.511)"/>
-      <rect id="station-buji--2022-10-28" inkscape:label="Buji=2022_10_28" data-lines="3=2022_10_28,5=2022_10_28,14=2022_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1829.631,1160.606) rotate(-41.456)"/>
-      <circle id="station-mumianwan" inkscape:label="Mumianwan=2010_12_28" data-lines="3=2010_12_28" cx="1874.752" cy="1131.754" r="5.692"/>
-      <circle id="station-dafen" inkscape:label="Dafen=2010_12_28" data-lines="3=2010_12_28" cx="1913.735" cy="1093.629" r="5.692"/>
-      <circle id="station-danzhutou" inkscape:label="Danzhutou=2010_12_28" data-lines="3=2010_12_28" cx="1962.422" cy="1063.857" r="5.692"/>
-      <circle id="station-liuyue" inkscape:label="Liuyue=2010_12_28" data-lines="3=2010_12_28" cx="2123.367" cy="985.666" r="5.692"/>
-      <circle id="station-tangkeng" inkscape:label="Tangkeng=2010_12_28" data-lines="3=2010_12_28" cx="2183.798" cy="959.334" r="5.692"/>
-      <circle id="station-henggang" inkscape:label="Henggang=2010_12_28" data-lines="3=2010_12_28" cx="2264.397" cy="909.452" r="5.692"/>
-      <circle id="station-yonghu" inkscape:label="Yonghu=2010_12_28" data-lines="3=2010_12_28" cx="2309.264" cy="853.197" r="5.692"/>
-      <circle id="station-he-ao" inkscape:label="He'ao=2010_12_28" data-lines="3=2010_12_28" cx="2340.115" cy="777.323" r="5.692"/>
-      <circle id="station-universiade" inkscape:label="Universiade=2010_12_28-2022_10_28" data-lines="3=2010_12_28-2022_10_28" cx="2359.459" cy="709.719" r="5.692"/>
-      <rect id="station-universiade--2022-10-28" inkscape:label="Universiade=2022_10_28-2022_12_28" data-lines="3=2022_10_28-2022_12_28,14=2022_10_28-2022_12_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(2357.482,711.192) rotate(53.304)"/>
-      <rect id="station-universiade--2022-12-28" inkscape:label="Universiade=2022_12_28" data-lines="3=2022_12_28,14=2022_12_28,16=2022_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(2357.482,712.692) rotate(18.313)"/>
-      <circle id="station-ailian" inkscape:label="Ailian=2010_12_28" data-lines="3=2010_12_28" cx="2390.985" cy="645.509" r="5.692"/>
-      <circle id="station-jixiang" inkscape:label="Jixiang=2010_12_28" data-lines="3=2010_12_28" cx="2439.869" cy="581.151" r="5.692"/>
-      <circle id="station-longcheng-square" inkscape:label="Longcheng_Square=2010_12_28" data-lines="3=2010_12_28" cx="2491.173" cy="541.297" r="5.692"/>
-      <circle id="station-nanlian" inkscape:label="Nanlian=2010_12_28" data-lines="3=2010_12_28" cx="2545.624" cy="513.866" r="5.692"/>
-      <circle id="station-shuanglong" inkscape:label="Shuanglong=2010_12_28-2022_12_28" data-lines="3=2010_12_28-2022_12_28" cx="2603.951" cy="477.487" r="5.692"/>
-      <rect id="station-shuanglong--2022-12-28" inkscape:label="Shuanglong=2022_12_28" data-lines="3=2022_12_28,16=2022_12_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(2603.951,479.737) rotate(-0)"/>
-      <circle id="station-futian-checkpoint-4" inkscape:label="Huanggang=2007_06_28-2008_08_15,Futian_Checkpoint=2008_08_15" data-lines="4=2007_06_28" cx="1561.887" cy="1613.964" r="5.692"/>
-      <circle id="station-fumin" inkscape:label="Fumin=2004_12_28-2016_10_28" data-lines="4=2004_12_28-2016_10_28" cx="1549.115" cy="1582.547" r="5.692"/>
-      <rect id="station-fumin--2016-10-28" inkscape:label="Fumin=2016_10_28-2020_08_18" data-lines="4=2016_10_28-2020_08_18,7=2016_10_28-2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1552.202,1582.447) rotate(-91.849)"/>
-      <rect id="station-fumin--2020-08-18" inkscape:label="Fumin=2020_08_18" data-lines="4=2020_08_18,7=2020_08_18,10=2020_08_18" x="-5.692" y="-10.679" width="11.385" height="21.358" rx="5.692" transform="translate(1557.325,1581.482) rotate(-96.661)"/>
-      <circle id="station-lianhua-north" inkscape:label="Lianhua_North=2011_06_16" data-lines="4=2011_06_16" cx="1521.689" cy="1379.969" r="5.692"/>
-      <circle id="station-shangmeilin" inkscape:label="Shangmeilin=2011_06_16-2016_10_28" data-lines="4=2011_06_16-2016_10_28" cx="1522.311" cy="1329.533" r="5.692"/>
-      <rect id="station-shangmeilin--2016-10-28" inkscape:label="Shangmeilin=2016_10_28" data-lines="4=2016_10_28,9=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1523.882,1334.022) rotate(-19.291)"/>
-      <circle id="station-minle" inkscape:label="Minle=2011_06_16" data-lines="4=2011_06_16" cx="1468.694" cy="1201.026" r="5.692"/>
-      <circle id="station-baishilong" inkscape:label="Baishilong=2011_06_16" data-lines="4=2011_06_16" cx="1437.705" cy="1162.075" r="5.692"/>
-      <rect id="station-shenzhen-north" inkscape:label="Shenzhen_North=2011_06_22-2020_08_18" data-lines="4=2011_06_22-2020_08_18,5=2011_06_22-2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1380.567,1112.29) rotate(-133.75)"/>
-      <rect id="station-shenzhen-north--2020-08-18" inkscape:label="Shenzhen_North=2020_08_18" data-lines="4=2020_08_18,5=2020_08_18,6=2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1379.114,1113.609) rotate(47.384)"/>
-      <circle id="station-hongshan" inkscape:label="Hongshan=2011_06_16-2020_08_18" data-lines="4=2011_06_16-2020_08_18" cx="1343.999" cy="1051.725" r="5.692"/>
-      <rect id="station-hongshan--2020-08-18" inkscape:label="Hongshan=2020_08_18" data-lines="4=2020_08_18,6=2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1342.532,1052.669) rotate(57.232)"/>
-      <circle id="station-shangtang" inkscape:label="Shangtang=2011_06_16" data-lines="4=2011_06_16" cx="1292.109" cy="971.194" r="5.692"/>
-      <circle id="station-longsheng" inkscape:label="Longsheng=2011_06_16" data-lines="4=2011_06_16" cx="1288.46" cy="930.053" r="5.692"/>
-      <circle id="station-longhua" inkscape:label="Longhua=2011_06_16" data-lines="4=2011_06_16" cx="1339.143" cy="893.003" r="5.692"/>
-      <circle id="station-qinghu" inkscape:label="Qinghu=2011_06_16" data-lines="4=2011_06_16,tram=2017_10_28" cx="1408.784" cy="826.186" r="5.692"/>
-      <circle id="station-qinghu-north" inkscape:label="Qinghu_North=2020_10_28" data-lines="4=2020_10_28" cx="1428.498" cy="781.067" r="5.692"/>
-      <circle id="station-zhucun" inkscape:label="Zhucun=2020_10_28" data-lines="4=2020_10_28" cx="1427.247" cy="702.774" r="5.692"/>
-      <circle id="station-xikeng" inkscape:label="Xikeng=2020_10_28" data-lines="4=2020_10_28" cx="1432.868" cy="639.701" r="5.692"/>
-      <circle id="station-changhu" inkscape:label="Changhu=2020_10_28" data-lines="4=2020_10_28" cx="1448.668" cy="575.76" r="5.692"/>
-      <circle id="station-guanlan" inkscape:label="Guanlan=2020_10_28" data-lines="4=2020_10_28,tram=2020_10_28" cx="1500.769" cy="550.135" r="5.692"/>
-      <circle id="station-songyuanxia" inkscape:label="Songyuanxia=2020_10_28" data-lines="4=2020_10_28" cx="1550.818" cy="519.024" r="5.692"/>
-      <circle id="station-mission-hills" inkscape:label="Mission_Hills=2020_10_28" data-lines="4=2020_10_28" cx="1609.556" cy="515.662" r="5.692"/>
-      <circle id="station-niuhu" inkscape:label="Niuhu=2020_10_28" data-lines="4=2020_10_28" cx="1666.358" cy="502.993" r="5.692"/>
-      <circle id="station-liwan" inkscape:label="Liwan=2019_09_28" data-lines="5=2019_09_28" cx="700.035" cy="1715.039" r="5.692"/>
-      <circle id="station-railway-park" inkscape:label="Railway_Park=2019_09_28" data-lines="5=2019_09_28" cx="685.551" cy="1692.591" r="5.692"/>
-      <circle id="station-mawan" inkscape:label="Mawan=2019_09_28" data-lines="5=2019_09_28" cx="663.031" cy="1660.762" r="5.692"/>
-      <circle id="station-qianwan-park" inkscape:label="Qianwan_Park=2019_09_28" data-lines="5=2019_09_28" cx="682.46" cy="1618.68" r="5.692"/>
-      <circle id="station-qianwan" inkscape:label="Qianwan=2019_09_28-2019_12_08" data-lines="5=2019_09_28-2019_12_08" cx="711.701" cy="1588.337" r="5.692"/>
-      <rect id="station-qianwan--2019-12-08" inkscape:label="Qianwan=2019_12_08" data-lines="5=2019_12_08,9=2019_12_08" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(710.486,1587.157) rotate(-225.835)"/>
-      <circle id="station-guiwan" inkscape:label="Guiwan=2019_09_28" data-lines="5=2019_09_28" cx="722.321" cy="1531.14" r="5.692"/>
-      <circle id="station-linhai" inkscape:label="Linhai=2011_06_22" data-lines="5=2011_06_22" cx="680.067" cy="1466.244" r="5.692"/>
-      <circle id="station-baohua" inkscape:label="Baohua=2011_06_22" data-lines="5=2011_06_22" cx="659.944" cy="1438.1" r="5.692"/>
-      <circle id="station-fanshen" inkscape:label="Fanshen=2011_06_22" data-lines="5=2011_06_22" cx="699.365" cy="1383.856" r="5.692"/>
-      <circle id="station-lingzhi" inkscape:label="Lingzhi=2011_06_22-2022_11_28" data-lines="5=2011_06_22-2022_11_28" cx="753.204" cy="1334.249" r="5.692"/>
-      <rect id="station-lingzhi--2022-11-28" inkscape:label="Lingzhi=2022_11_28" data-lines="5=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(753.225,1334.175) rotate(-164.011)"/>
-      <circle id="station-honglang-north" inkscape:label="Honglang_North=2011_06_22" data-lines="5=2011_06_22" cx="786.131" cy="1303.843" r="5.692"/>
-      <circle id="station-xingdong" inkscape:label="Xingdong=2011_06_22" data-lines="5=2011_06_22" cx="827.576" cy="1265.484" r="5.692"/>
-      <circle id="station-liuxiandong" inkscape:label="Liuxiandong=2011_06_22-2025_12_28" data-lines="5=2011_06_22-2025_12_28" cx="951.184" cy="1273.057" r="5.692"/>
-      <rect id="station-liuxiandong--2025-12-28" inkscape:label="Liuxiandong=2025_12_28" data-lines="5=2025_12_28,13=2025_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(951.183,1275.307) rotate(0.002)"/>
-      <circle id="station-xili" inkscape:label="Xili=2011_06_22-2016_10_28" data-lines="5=2011_06_22-2016_10_28" cx="999.18" cy="1271.87" r="5.692"/>
-      <rect id="station-xili--2016-10-28" inkscape:label="Xili=2016_10_28" data-lines="5=2016_10_28,7=2016_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1001.235,1271.813) rotate(-91.588)"/>
-      <circle id="station-university-town" inkscape:label="University_Town=2011_06_22" data-lines="5=2011_06_22" cx="1057.766" cy="1263.376" r="5.692"/>
-      <circle id="station-tanglang" inkscape:label="Tanglang=2011_06_22" data-lines="5=2011_06_22" cx="1227.255" cy="1222.443" r="5.692"/>
-      <circle id="station-changlingpi" inkscape:label="Changlingpi=2011_06_22" data-lines="5=2011_06_22" cx="1280.141" cy="1172.749" r="5.692"/>
-      <circle id="station-minzhi" inkscape:label="Minzhi=2011_06_22" data-lines="5=2011_06_22" cx="1430.921" cy="1077.577" r="5.692"/>
-      <circle id="station-wuhe" inkscape:label="Wuhe=2011_06_22-2020_08_18" data-lines="5=2011_06_22-2020_08_18" cx="1528.423" cy="1026.797" r="5.692"/>
-      <rect id="station-wuhe--2020-08-18" inkscape:label="Wuhe=2020_08_18" data-lines="5=2020_08_18,10=2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1528.339,1026.851) rotate(57.251)"/>
-      <circle id="station-bantian" inkscape:label="Bantian=2011_06_22" data-lines="5=2011_06_22" cx="1577.7" cy="1022.46" r="5.692"/>
-      <circle id="station-yangmei" inkscape:label="Yangmei=2011_06_22" data-lines="5=2011_06_22" cx="1623.314" cy="1026.73" r="5.692"/>
-      <circle id="station-shangshuijing" inkscape:label="Shangshuijing=2011_06_22" data-lines="5=2011_06_22" cx="1749.449" cy="1052.1" r="5.692"/>
-      <circle id="station-xiashuijing" inkscape:label="Xiashuijing=2011_06_22" data-lines="5=2011_06_22" cx="1775.291" cy="1087.674" r="5.692"/>
-      <circle id="station-changlong" inkscape:label="Changlong=2011_06_22" data-lines="5=2011_06_22" cx="1790.692" cy="1126.463" r="5.692"/>
-      <circle id="station-baigelong" inkscape:label="Baigelong=2011_06_22" data-lines="5=2011_06_22" cx="1873.722" cy="1197.069" r="5.692"/>
-      <circle id="station-buxin" inkscape:label="Buxin=2011_06_22" data-lines="5=2011_06_22" cx="1911.788" cy="1272.635" r="5.692"/>
-      <circle id="station-tai-an" inkscape:label="Tai'an=2011_06_22-2016_10_28" data-lines="5=2011_06_22-2016_10_28" cx="1907.743" cy="1308.764" r="5.692"/>
-      <rect id="station-tai-an--2016-10-28" inkscape:label="Tai'an=2016_10_28" data-lines="5=2016_10_28,7=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1909.375,1309.235) rotate(-73.911)"/>
-      <circle id="station-yijing" inkscape:label="Yijing=2011_06_22" data-lines="5=2011_06_22" cx="1921.897" cy="1406.307" r="5.692"/>
-      <circle id="station-songgang" inkscape:label="Songgang=2016_06_28-2020_08_18" data-lines="11=2016_06_28-2020_08_18" cx="386.691" cy="242.973" r="5.692"/>
-      <rect id="station-songgang--2020-08-18" inkscape:label="Songgang=2020_08_18-2024_12_28" data-lines="6=2020_08_18-2024_12_28,11=2020_08_18-2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(386.401,243.155) rotate(-122.128)"/>
-      <rect id="station-songgang--2024-12-28" inkscape:label="Songgang=2024_12_28" data-lines="6=2024_12_28,11=2024_12_28,12=2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(386.401,244.655) rotate(3.55)"/>
-      <circle id="station-xitou" inkscape:label="Xitou=2020_08_18" data-lines="6=2020_08_18" cx="424.366" cy="230.666" r="5.692"/>
-      <circle id="station-songgang-park" inkscape:label="Songgang_Park=2020_08_18" data-lines="6=2020_08_18" cx="477.693" cy="213.11" r="5.692"/>
-      <circle id="station-shutianpu" inkscape:label="Shutianpu=2020_08_18" data-lines="6=2020_08_18" cx="574.597" cy="196.175" r="5.692"/>
-      <circle id="station-heshuikou" inkscape:label="Heshuikou=2020_08_18" data-lines="6=2020_08_18" cx="631.649" cy="189.039" r="5.692"/>
-      <circle id="station-gongming-square" inkscape:label="Gongming_Square=2020_08_18-2026_06_28" data-lines="6=2020_08_18-2026_06_28" cx="688.48" cy="213.914" r="5.692"/>
-      <rect id="station-gongming-square--2026-06-28" inkscape:label="Gongming_Square=2026_06_28" data-lines="6=2026_06_28,13=2026_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(688.48,216.164) rotate(-0)"/>
-      <circle id="station-honghuashan" inkscape:label="Honghuashan=2020_08_18" data-lines="6=2020_08_18" cx="765.317" cy="212.703" r="5.692"/>
-      <circle id="station-loucun" inkscape:label="Loucun=2020_08_18" data-lines="6=2020_08_18" cx="849.303" cy="222.717" r="5.692"/>
-      <circle id="station-science-park" inkscape:label="Science_Park=2020_08_18" data-lines="6=2020_08_18" cx="901.68" cy="214.161" r="5.692"/>
-      <circle id="station-guangming" inkscape:label="Guangming=2020_08_18-2022_11_28" data-lines="6=2020_08_18-2022_11_28" cx="956.44" cy="245.59" r="5.692"/>
-      <rect id="station-guangming--2022-11-28" inkscape:label="Guangming=2022_11_28" data-lines="6=2022_11_28,6b=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(957.976,245.553) rotate(-91.352)"/>
-      <circle id="station-guangming-street" inkscape:label="Guangming_Street=2020_08_18" data-lines="6=2020_08_18" cx="946.317" cy="296.246" r="5.692"/>
-      <circle id="station-fenghuang-town" inkscape:label="Fenghuang_Town=2020_08_18-2026_06_28" data-lines="6=2020_08_18-2026_06_28" cx="896.43" cy="375.774" r="5.692"/>
-      <rect id="station-fenghuang-town--2026-06-28" inkscape:label="Fenghuang_Town=2026_06_28" data-lines="6=2026_06_28,13=2026_06_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(896.43,378.024) rotate(0)"/>
-      <circle id="station-changzhen" inkscape:label="Changzhen=2020_08_18" data-lines="6=2020_08_18" cx="886.27" cy="489.539" r="5.692"/>
-      <circle id="station-shangwu" inkscape:label="Shangwu=2020_08_18-2025_12_28" data-lines="6=2020_08_18-2025_12_28" cx="924.205" cy="689.679" r="5.692"/>
-      <rect id="station-shangwu--2025-12-28" inkscape:label="Shangwu=2025_12_28" data-lines="6=2025_12_28,13=2025_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(924.205,691.929) rotate(-0)"/>
-      <circle id="station-guantian" inkscape:label="Guantian=2020_08_18" data-lines="6=2020_08_18" cx="969.925" cy="720.424" r="5.692"/>
-      <circle id="station-yangtai-mountain-east" inkscape:label="Yangtai_Mountain_East=2020_08_18" data-lines="6=2020_08_18" cx="1185.887" cy="804.092" r="5.692"/>
-      <circle id="station-yuanfen" inkscape:label="Yuanfen=2020_08_18" data-lines="6=2020_08_18" cx="1253.079" cy="865.491" r="5.692"/>
-      <circle id="station-shangfen" inkscape:label="Shangfen=2020_08_18" data-lines="6=2020_08_18" cx="1310.548" cy="951.767" r="5.692"/>
-      <circle id="station-meilinguan" inkscape:label="Meilinguan=2020_08_18" data-lines="6=2020_08_18" cx="1491.873" cy="1199.977" r="5.692"/>
-      <circle id="station-hanling" inkscape:label="Hanling=2020_08_18" data-lines="6=2020_08_18" cx="1568.057" cy="1307.7" r="5.692"/>
-      <circle id="station-yinhu" inkscape:label="Yinhu=2016_10_28-2020_08_18" data-lines="9=2016_10_28-2020_08_18" cx="1670.86" cy="1338.572" r="5.692"/>
-      <rect id="station-yinhu--2020-08-18" inkscape:label="Yinhu=2020_08_18" data-lines="6=2020_08_18,9=2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1670.965,1338.421) rotate(34.768)"/>
-      <circle id="station-bagualing" inkscape:label="Bagualing=2016_10_28-2020_08_18" data-lines="7=2016_10_28-2020_08_18" cx="1696.314" cy="1374.742" r="5.692"/>
-      <rect id="station-bagualing--2020-08-18" inkscape:label="Bagualing=2020_08_18" data-lines="6=2020_08_18,7=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1694.596,1377.616) rotate(-149.124)"/>
-      <circle id="station-sports-center" inkscape:label="Sports_Center=2020_08_18" data-lines="6=2020_08_18" cx="1702.214" cy="1412.918" r="5.692"/>
-      <circle id="station-suat" inkscape:label="SIAT=2022_11_28-2025_01_01,SUAT=2025_01_01" data-lines="6b=2022_11_28" cx="1074.583" cy="58.873" r="5.692"/>
-      <circle id="station-sun-yat-sen-university" inkscape:label="Sun_Yat-sen_University=2022_11_28" data-lines="6b=2022_11_28" cx="1002.655" cy="112.377" r="5.692"/>
-      <circle id="station-zhenmei" inkscape:label="Zhenmei=2022_11_28" data-lines="6b=2022_11_28" cx="977.968" cy="158.407" r="5.692"/>
-      <circle id="station-xili-lake" inkscape:label="Xili_Lake=2016_10_28" data-lines="7=2016_10_28" cx="1054.201" cy="1203.92" r="5.692"/>
-      <circle id="station-chaguang" inkscape:label="Chaguang=2016_10_28" data-lines="7=2016_10_28" cx="1002.563" cy="1307.83" r="5.692"/>
-      <circle id="station-zhuguang" inkscape:label="Zhuguang=2016_10_28" data-lines="7=2016_10_28" cx="1032.52" cy="1338.499" r="5.692"/>
-      <circle id="station-longjing" inkscape:label="Longjing=2016_10_28" data-lines="7=2016_10_28" cx="1103.573" cy="1360.013" r="5.692"/>
-      <circle id="station-taoyuancun" inkscape:label="Taoyuancun=2016_10_28" data-lines="7=2016_10_28" cx="1138.536" cy="1383.634" r="5.692"/>
-      <circle id="station-shenyun" inkscape:label="Shenyun=2016_10_28" data-lines="7=2016_10_28" cx="1196.587" cy="1403.259" r="5.692"/>
-      <circle id="station-nonglin" inkscape:label="Nonglin=2016_10_28" data-lines="7=2016_10_28" cx="1320.459" cy="1488.546" r="5.692"/>
-      <circle id="station-shangsha" inkscape:label="Shangsha=2016_10_28" data-lines="7=2016_10_28" cx="1404.431" cy="1574.619" r="5.692"/>
-      <circle id="station-shawei" inkscape:label="Shawei=2016_10_28" data-lines="7=2016_10_28" cx="1436.912" cy="1594.906" r="5.692"/>
-      <circle id="station-huanggangcun" inkscape:label="Huanggangcun=2016_10_28" data-lines="7=2016_10_28" cx="1520.7" cy="1582.74" r="5.692"/>
-      <circle id="station-huanggang-checkpoint" inkscape:label="Huanggang_Checkpoint=2016_10_28" data-lines="7=2016_10_28" cx="1596.307" cy="1591.239" r="5.692"/>
-      <circle id="station-chiwei" inkscape:label="Chiwei=2016_10_28" data-lines="7=2016_10_28" cx="1643.59" cy="1535.131" r="5.692"/>
-      <circle id="station-huaqiang-south" inkscape:label="Huaqiang_South=2016_10_28-2024_12_28" data-lines="7=2016_10_28-2024_12_28" cx="1658.308" cy="1506.917" r="5.692"/>
-      <rect id="station-huaqiang-south--2024-12-28" inkscape:label="Huaqiang_South=2024_12_28" data-lines="7=2024_12_28,11=2024_12_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1658.308,1509.167) rotate(-0)"/>
-      <circle id="station-huangmugang" inkscape:label="Huangmugang=2016_10_28-2022_10_28" data-lines="7=2016_10_28-2022_10_28" cx="1660.639" cy="1407.308" r="5.692"/>
-      <rect id="station-huangmugang--2022-10-28" inkscape:label="Huangmugang=2022_10_28" data-lines="7=2022_10_28,14=2022_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1658.43,1406.032) rotate(-239.998)"/>
-      <rect id="station-hongling-north" inkscape:label="Hongling_North=2016_10_28" data-lines="7=2016_10_28,9=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1746.163,1374.055) rotate(-190.244)"/>
-      <circle id="station-sungang" inkscape:label="Sungang=2016_10_28" data-lines="7=2016_10_28" cx="1776.939" cy="1367.56" r="5.692"/>
-      <circle id="station-honghu" inkscape:label="Honghu=2016_10_28" data-lines="7=2016_10_28" cx="1834.288" cy="1352.699" r="5.692"/>
-      <circle id="station-menghai" inkscape:label="Menghai=2019_12_08" data-lines="9=2019_12_08" cx="727.55" cy="1603.418" r="5.692"/>
-      <circle id="station-yihai" inkscape:label="Yihai=2019_12_08" data-lines="9=2019_12_08" cx="748.634" cy="1621.391" r="5.692"/>
-      <circle id="station-litchi-orchards" inkscape:label="Litchi_Orchards=2019_12_08" data-lines="9=2019_12_08" cx="799.611" cy="1641.595" r="5.692"/>
-      <circle id="station-nanyou-west" inkscape:label="Nanyou_West=2019_12_08" data-lines="9=2019_12_08" cx="824.135" cy="1655.273" r="5.692"/>
-      <circle id="station-nanyou" inkscape:label="Nanyou=2019_12_08-2022_11_28" data-lines="9=2019_12_08-2022_11_28" cx="862.228" cy="1648.029" r="5.692"/>
-      <rect id="station-nanyou--2022-11-28" inkscape:label="Nanyou=2022_11_28" data-lines="9=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(864.03,1648.668) rotate(-70.47)"/>
-      <circle id="station-nanshan-book-mall" inkscape:label="Nanshan_Book_Mall=2019_12_08" data-lines="9=2019_12_08" cx="876.495" cy="1601.115" r="5.692"/>
-      <circle id="station-shenzhen-university-south" inkscape:label="Shenzhen_University_South=2019_12_08" data-lines="9=2019_12_08" cx="912.689" cy="1564.833" r="5.692"/>
-      <circle id="station-yuehaimen" inkscape:label="Yuehaimen=2019_12_08-2024_12_28" data-lines="9=2019_12_08-2024_12_28" cx="959.697" cy="1529.098" r="5.692"/>
-      <rect id="station-yuehaimen--2024-12-28" inkscape:label="Yuehaimen=2024_12_28" data-lines="9=2024_12_28,13=2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(959.697,1531.348) rotate(-0)"/>
-      <circle id="station-hi-tech-south" inkscape:label="Hi-Tech_South=2019_12_08" data-lines="9=2019_12_08" cx="991.144" cy="1528.292" r="5.692"/>
-      <circle id="station-hongshuwan-south" inkscape:label="Hongshuwan_South=2016_06_28-2016_10_28" data-lines="11=2016_06_28-2016_10_28" cx="1086.79" cy="1585.014" r="5.692"/>
-      <rect id="station-hongshuwan-south--2016-10-28" inkscape:label="Hongshuwan_South=2016_10_28" data-lines="9=2016_10_28,11=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1086.835,1583.381) rotate(1.551)"/>
-      <circle id="station-shenwan" inkscape:label="Shenwan=2016_10_28" data-lines="9=2016_10_28" cx="1122.53" cy="1581.364" r="5.692"/>
-      <circle id="station-shenzhen-bay-park" inkscape:label="Shenzhen_Bay_Park=2016_10_28" data-lines="9=2016_10_28" cx="1192.269" cy="1590.371" r="5.692"/>
-      <circle id="station-xiasha" inkscape:label="Xiasha=2016_10_28" data-lines="9=2016_10_28" cx="1343.15" cy="1551.315" r="5.692"/>
-      <circle id="station-xiangmei" inkscape:label="Xiangmei=2016_10_28" data-lines="9=2016_10_28" cx="1423.082" cy="1461.275" r="5.692"/>
-      <circle id="station-meijing" inkscape:label="Meijing=2016_10_28" data-lines="9=2016_10_28" cx="1415.976" cy="1379.362" r="5.692"/>
-      <circle id="station-xiameilin" inkscape:label="Xiameilin=2016_10_28" data-lines="9=2016_10_28" cx="1436.029" cy="1352.577" r="5.692"/>
-      <circle id="station-meicun" inkscape:label="Meicun=2016_10_28" data-lines="9=2016_10_28" cx="1488.625" cy="1338.137" r="5.692"/>
-      <circle id="station-maling" inkscape:label="Maling=2016_10_28-2020_08_18" data-lines="9=2016_10_28-2020_08_18" cx="1563.8" cy="1338.583" r="5.692"/>
-      <rect id="station-maling--2020-08-18" inkscape:label="Maling=2020_08_18" data-lines="9=2020_08_18,10=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1560.592,1342.319) rotate(40.656)"/>
-      <circle id="station-nigang" inkscape:label="Nigang=2016_10_28" data-lines="9=2016_10_28" cx="1709.837" cy="1343.715" r="5.692"/>
-      <circle id="station-yuanling" inkscape:label="Yuanling=2016_10_28" data-lines="9=2016_10_28" cx="1746.006" cy="1406.944" r="5.692"/>
-      <circle id="station-hongling-south-9" inkscape:label="Hongling_South=2016_10_28" data-lines="9=2016_10_28" cx="1748.311" cy="1497.282" r="5.692"/>
-      <circle id="station-ludancun" inkscape:label="Ludancun=2016_10_28" data-lines="9=2016_10_28" cx="1766.969" cy="1515.425" r="5.692"/>
-      <circle id="station-renmin-south" inkscape:label="Renmin_South=2016_10_28" data-lines="9=2016_10_28" cx="1807.762" cy="1517.827" r="5.692"/>
-      <circle id="station-xiangxicun" inkscape:label="Xiangxicun=2016_10_28" data-lines="9=2016_10_28" cx="1849.48" cy="1492.728" r="5.692"/>
-      <circle id="station-wenjin" inkscape:label="Wenjin=2016_10_28" data-lines="9=2016_10_28" cx="1876.367" cy="1479.263" r="5.692"/>
-      <circle id="station-shuangyong-street" inkscape:label="Shuangyong_Street=2020_08_18" data-lines="10=2020_08_18" cx="1886.012" cy="640.225" r="5.692"/>
-      <circle id="station-pinghu" inkscape:label="Pinghu=2020_08_18" data-lines="10=2020_08_18" cx="1849.22" cy="668.283" r="5.692"/>
-      <circle id="station-hehua" inkscape:label="Hehua=2020_08_18" data-lines="10=2020_08_18" cx="1828.413" cy="709.742" r="5.692"/>
-      <circle id="station-huanancheng" inkscape:label="Huanancheng=2020_08_18" data-lines="10=2020_08_18" cx="1833.869" cy="760.395" r="5.692"/>
-      <circle id="station-mugu" inkscape:label="Mugu=2020_08_18" data-lines="10=2020_08_18" cx="1834.373" cy="791.97" r="5.692"/>
-      <circle id="station-shanglilang" inkscape:label="Shanglilang=2020_08_18" data-lines="10=2020_08_18" cx="1855.889" cy="881.073" r="5.692"/>
-      <circle id="station-liangmao-hill" inkscape:label="Liangmao_Hill=2020_08_18" data-lines="10=2020_08_18" cx="1814.13" cy="921.928" r="5.692"/>
-      <circle id="station-gankeng" inkscape:label="Gankeng=2020_08_18" data-lines="10=2020_08_18" cx="1753.134" cy="913.036" r="5.692"/>
-      <circle id="station-xuexiang" inkscape:label="Xuexiang=2020_08_18" data-lines="10=2020_08_18" cx="1617.18" cy="864.019" r="5.692"/>
-      <circle id="station-gangtou" inkscape:label="Gangtou=2020_08_18" data-lines="10=2020_08_18" cx="1581.677" cy="865.857" r="5.692"/>
-      <circle id="station-huawei" inkscape:label="Huawei=2020_08_18" data-lines="10=2020_08_18" cx="1560.508" cy="900.219" r="5.692"/>
-      <circle id="station-bei-er-road" inkscape:label="Bei'er_Road=2020_08_18" data-lines="10=2020_08_18" cx="1556.787" cy="945.96" r="5.692"/>
-      <circle id="station-bantian-north" inkscape:label="Bantian_North=2020_08_18" data-lines="10=2020_08_18" cx="1540.311" cy="983.778" r="5.692"/>
-      <circle id="station-guangyayuan" inkscape:label="Guangyayuan=2020_08_18" data-lines="10=2020_08_18" cx="1529.446" cy="1080.179" r="5.692"/>
-      <circle id="station-nankeng" inkscape:label="Nankeng=2020_08_18" data-lines="10=2020_08_18" cx="1528.14" cy="1112.885" r="5.692"/>
-      <circle id="station-yabao" inkscape:label="Yabao=2020_08_18" data-lines="10=2020_08_18" cx="1526.927" cy="1148.08" r="5.692"/>
-      <circle id="station-donggualing" inkscape:label="Donggualing=2020_08_18" data-lines="10=2020_08_18" cx="1562.807" cy="1379.973" r="5.692"/>
-      <circle id="station-futian-checkpoint-10" inkscape:label="Futian_Checkpoint=2020_08_18" data-lines="10=2020_08_18" cx="1560.145" cy="1627.564" r="5.692"/>
-      <circle id="station-bitou" inkscape:label="Bitou=2016_06_28" data-lines="11=2016_06_28" cx="336.901" cy="183.776" r="5.692"/>
-      <circle id="station-houting" inkscape:label="Houting=2016_06_28" data-lines="11=2016_06_28" cx="369.62" cy="348.947" r="5.692"/>
-      <circle id="station-shajing" inkscape:label="Shajing=2016_06_28" data-lines="11=2016_06_28" cx="357.57" cy="467.195" r="5.692"/>
-      <circle id="station-ma-anshan" inkscape:label="Ma'anshan=2016_06_28" data-lines="11=2016_06_28" cx="320.871" cy="540.315" r="5.692"/>
-      <circle id="station-tangwei" inkscape:label="Tangwei=2016_06_28" data-lines="11=2016_06_28" cx="325.545" cy="621.031" r="5.692"/>
-      <circle id="station-qiaotou" inkscape:label="Qiaotou=2016_06_28" data-lines="11=2016_06_28" cx="289.921" cy="697.736" r="5.692"/>
-      <circle id="station-fuyong" inkscape:label="Fuyong=2016_06_28-2022_11_28" data-lines="11=2016_06_28-2022_11_28" cx="267.46" cy="774.325" r="5.692"/>
-      <rect id="station-fuyong--2022-11-28" inkscape:label="Fuyong=2022_11_28" data-lines="11=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(271.078,769.059) rotate(-145.513)"/>
-      <circle id="station-airport-north" inkscape:label="Airport_North=2016_06_28-2021_12_28" data-lines="11=2016_06_28-2021_12_28" cx="227.717" cy="894.74" r="5.692"/>
-      <rect id="station-airport-north--2021-12-28" inkscape:label="Airport_North=2021_12_28" data-lines="11=2021_12_28,20=2021_12_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(229.289,893.795) rotate(-121.013)"/>
-      <circle id="station-airport" inkscape:label="Airport=2016_06_28" data-lines="11=2016_06_28" cx="306.081" cy="1042.13" r="5.692"/>
-      <circle id="station-bihaiwan" inkscape:label="Bihaiwan=2016_06_28" data-lines="11=2016_06_28" cx="516.97" cy="1302.619" r="5.692"/>
-      <circle id="station-bao-an" inkscape:label="Bao'an=2016_06_28" data-lines="11=2016_06_28" cx="635.83" cy="1411.263" r="5.692"/>
-      <circle id="station-nanshan" inkscape:label="Nanshan=2016_06_28-2022_11_28" data-lines="11=2016_06_28-2022_11_28" cx="849.915" cy="1574.901" r="5.692"/>
-      <rect id="station-nanshan--2022-11-28" inkscape:label="Nanshan=2022_11_28" data-lines="11=2022_11_28,12=2022_11_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(849.892,1575.068) rotate(7.805)"/>
-      <circle id="station-zuopaotai-east" inkscape:label="Zuopaotai_East=2022_11_28" data-lines="12=2022_11_28" cx="732.899" cy="1865.855" r="5.692"/>
-      <circle id="station-taiziwan" inkscape:label="Taiziwan=2022_11_28" data-lines="12=2022_11_28" cx="788.909" cy="1849.509" r="5.692"/>
-      <circle id="station-huaguoshan" inkscape:label="Huaguoshan=2022_11_28" data-lines="12=2022_11_28" cx="827.225" cy="1737.497" r="5.692"/>
-      <circle id="station-sihai" inkscape:label="Sihai=2022_11_28" data-lines="12=2022_11_28" cx="841.993" cy="1702.964" r="5.692"/>
-      <circle id="station-nanguang" inkscape:label="Nanguang=2022_11_28" data-lines="12=2022_11_28" cx="853.014" cy="1615.334" r="5.692"/>
-      <circle id="station-nantou-ancient-city" inkscape:label="Nantou_Ancient_City=2022_11_28" data-lines="12=2022_11_28" cx="853.142" cy="1495.568" r="5.692"/>
-      <circle id="station-zhongshan-park" inkscape:label="Zhongshan_Park=2022_11_28" data-lines="12=2022_11_28" cx="849.103" cy="1454.085" r="5.692"/>
-      <circle id="station-tongle-south" inkscape:label="Tongle_South=2022_11_28" data-lines="12=2022_11_28" cx="826.08" cy="1400.221" r="5.692"/>
-      <circle id="station-xin-an-park" inkscape:label="Xin'an_Park=2022_11_28" data-lines="12=2022_11_28" cx="785.994" cy="1369.977" r="5.692"/>
-      <circle id="station-shangchuan" inkscape:label="Shangchuan=2022_11_28" data-lines="12=2022_11_28" cx="713.948" cy="1291.652" r="5.692"/>
-      <circle id="station-liutang" inkscape:label="Liutang=2022_11_28" data-lines="12=2022_11_28" cx="679.877" cy="1254.704" r="5.692"/>
-      <circle id="station-bao-an-passenger-transport-terminal" inkscape:label="Bao'an_Passenger_Transport_Terminal=2022_11_28" data-lines="12=2022_11_28" cx="654.482" cy="1227.091" r="5.692"/>
-      <circle id="station-baotian-1st-road" inkscape:label="Baotian_1st_Road=2022_11_28" data-lines="12=2022_11_28" cx="627.473" cy="1197.79" r="5.692"/>
-      <circle id="station-pingluan-hill" inkscape:label="Pingluan_Hill=2022_11_28" data-lines="12=2022_11_28" cx="582.792" cy="1149.37" r="5.692"/>
-      <circle id="station-xixiang-taoyuan" inkscape:label="Xixiang_Taoyuan=2022_11_28" data-lines="12=2022_11_28" cx="545.087" cy="1108.528" r="5.692"/>
-      <circle id="station-zhongwu-south" inkscape:label="Zhongwu_South=2022_11_28" data-lines="12=2022_11_28" cx="528.958" cy="1065.716" r="5.692"/>
-      <circle id="station-huangtian" inkscape:label="Huangtian=2022_11_28" data-lines="12=2022_11_28" cx="464.766" cy="1005.551" r="5.692"/>
-      <circle id="station-xingwei" inkscape:label="Xingwei=2022_11_28" data-lines="12=2022_11_28" cx="409.101" cy="939.37" r="5.692"/>
-      <circle id="station-fuwei" inkscape:label="Fuwei=2022_11_28" data-lines="12=2022_11_28" cx="344.019" cy="864.451" r="5.692"/>
-      <circle id="station-huaide" inkscape:label="Huaide=2022_11_28" data-lines="12=2022_11_28" cx="331.37" cy="814.092" r="5.692"/>
-      <circle id="station-qiaotou-west" inkscape:label="Qiaotou_West=2022_11_28" data-lines="12=2022_11_28" cx="223.802" cy="724.758" r="5.692"/>
-      <circle id="station-fuhai-west" inkscape:label="Fuhai_West=2022_11_28" data-lines="12=2022_11_28" cx="184.096" cy="694.518" r="5.692"/>
-      <circle id="station-shenzhen-world" inkscape:label="Shenzhen_World=2021_12_28-2022_11_28" data-lines="20=2021_12_28-2022_11_28" cx="127.42" cy="655.703" r="5.692"/>
-      <rect id="station-shenzhen-world--2022-11-28" inkscape:label="Shenzhen_World=2022_11_28" data-lines="12=2022_11_28,20=2022_11_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(128.987,655.476) rotate(81.76)"/>
-      <circle id="station-shenzhen-world-north" inkscape:label="Shenzhen_World_North=2021_12_28-2022_11_28" data-lines="20=2021_12_28-2022_11_28" cx="119.923" cy="604.734" r="5.692"/>
-      <rect id="station-shenzhen-world-north--2022-11-28" inkscape:label="Shenzhen_World_North=2022_11_28" data-lines="12=2022_11_28,20=2022_11_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(121.516,604.547) rotate(83.294)"/>
-      <circle id="station-waterlands-resort-south" inkscape:label="Waterlands_Resort_South=2022_11_28" data-lines="12=2022_11_28" cx="110.155" cy="532.887" r="5.692"/>
-      <circle id="station-waterlands-resort-east" inkscape:label="Waterlands_Resort_East=2022_11_28" data-lines="12=2022_11_28" cx="145.019" cy="467.934" r="5.692"/>
-      <circle id="station-luohu-north" inkscape:label="Luohu_North=2022_10_28" data-lines="14=2022_10_28" cx="1789.196" cy="1270.97" r="5.692"/>
-      <circle id="station-shiyaling" inkscape:label="Shiyaling=2022_10_28" data-lines="14=2022_10_28" cx="1908.876" cy="1019.516" r="5.692"/>
-      <circle id="station-liuyue-north" inkscape:label="Liuyue_North=2022_10_28" data-lines="14=2022_10_28" cx="2098.526" cy="942.154" r="5.692"/>
-      <circle id="station-silian" inkscape:label="Silian=2022_10_28" data-lines="14=2022_10_28" cx="2191.449" cy="906.713" r="5.692"/>
-      <circle id="station-aobei" inkscape:label="Aobei=2022_10_28" data-lines="14=2022_10_28" cx="2287.292" cy="798.418" r="5.692"/>
-      <circle id="station-zhangbei" inkscape:label="Zhangbei=2022_10_28" data-lines="14=2022_10_28" cx="2468.535" cy="675.754" r="5.692"/>
-      <circle id="station-nanyue" inkscape:label="Nanyue=2022_10_28" data-lines="14=2022_10_28" cx="2605.318" cy="696.723" r="5.692"/>
-      <circle id="station-baolong" inkscape:label="Baolong=2022_10_28" data-lines="14=2022_10_28" cx="2704.748" cy="695.788" r="5.692"/>
-      <circle id="station-jinlong" inkscape:label="Jinlong=2022_10_28" data-lines="14=2022_10_28" cx="2900.125" cy="726.502" r="5.692"/>
-      <circle id="station-pingshanwei" inkscape:label="Pingshanwei=2022_10_28-2022_12_28" data-lines="14=2022_10_28-2022_12_28" cx="2930.641" cy="683.797" r="5.692"/>
-      <rect id="station-pingshanwei--2022-12-28" inkscape:label="Pingshanwei=2022_12_28" data-lines="14=2022_12_28,16=2022_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(2930.641,686.047) rotate(0)"/>
-      <circle id="station-pingshan-square" inkscape:label="Pingshan_Square=2022_10_28" data-lines="14=2022_10_28" cx="2955.438" cy="632.248" r="5.692"/>
-      <circle id="station-pingshan-center" inkscape:label="Pingshan_Center=2022_10_28" data-lines="14=2022_10_28,skyshuttle=2022_12_28" cx="2974.633" cy="584.6" r="5.692"/>
-      <circle id="station-kengzi" inkscape:label="Kengzi=2022_10_28" data-lines="14=2022_10_28" cx="3065.888" cy="390.059" r="5.692"/>
-      <circle id="station-shatian" inkscape:label="Shatian=2022_10_28" data-lines="14=2022_10_28" cx="3214.114" cy="331.881" r="5.692"/>
-      <circle id="station-convention-exhibition-city" inkscape:label="Convention_&amp;_Exhibition_City=2021_12_28" data-lines="20=2021_12_28" cx="86.766" cy="566.36" r="5.692"/>
-      <circle id="station-shenzhen-world-south" inkscape:label="Shenzhen_World_South=2021_12_28" data-lines="20=2021_12_28" cx="128.223" cy="718.516" r="5.692"/>
-      <circle id="station-wutong-mountain-south" inkscape:label="Wutong_Mountain_South=2020_10_28" data-lines="8=2020_10_28" cx="2134.918" cy="1394.974" r="5.692"/>
-      <circle id="station-shatoujiao" inkscape:label="Shatoujiao=2020_10_28" data-lines="8=2020_10_28" cx="2331.981" cy="1413.099" r="5.692"/>
-      <circle id="station-haishan" inkscape:label="Haishan=2020_10_28" data-lines="8=2020_10_28" cx="2405.551" cy="1407.828" r="5.692"/>
-      <circle id="station-yantian-port-west" inkscape:label="Yantian_Port_West=2020_10_28" data-lines="8=2020_10_28" cx="2451.486" cy="1371.482" r="5.692"/>
-      <circle id="station-shenwai-senior-campus" inkscape:label="Shenwai_Senior_Campus=2020_10_28" data-lines="8=2020_10_28" cx="2439.374" cy="1256.411" r="5.692"/>
-      <circle id="station-yantian-road" inkscape:label="Yantian_Road=2020_10_28" data-lines="8=2020_10_28" cx="2490.684" cy="1233.993" r="5.692"/>
-      <circle id="station-shenzhen-bay-checkpoint" inkscape:label="Shenzhen_Bay_Checkpoint=2024_12_28" data-lines="13=2024_12_28" cx="981.842" cy="1688.87" r="5.692"/>
-      <circle id="station-talent-park" inkscape:label="Talent_Park=2024_12_28" data-lines="13=2024_12_28" cx="946.927" cy="1641.354" r="5.692"/>
-      <circle id="station-hi-tech-central" inkscape:label="Hi-Tech_Central=2024_12_28" data-lines="13=2024_12_28" cx="957.563" cy="1452.973" r="5.692"/>
-      <circle id="station-hi-tech-north" inkscape:label="Hi-Tech_North=2025_12_28" data-lines="13=2025_12_28" cx="958.379" cy="1400.303" r="5.692"/>
-      <circle id="station-shigu" inkscape:label="Shigu=2025_12_28" data-lines="13=2025_12_28" cx="950.967" cy="1303.817" r="5.692"/>
-      <circle id="station-baiwang" inkscape:label="Baiwang=2025_12_28" data-lines="13=2025_12_28" cx="926.947" cy="1048.754" r="5.692"/>
-      <circle id="station-yingrenshi" inkscape:label="Yingrenshi=2025_12_28" data-lines="13=2025_12_28" cx="864.57" cy="931.59" r="5.692"/>
-      <circle id="station-luozu" inkscape:label="Luozu=2025_12_28" data-lines="13=2025_12_28" cx="900.104" cy="803.206" r="5.692"/>
-      <circle id="station-shiyan" inkscape:label="Shiyan=2025_12_28" data-lines="13=2025_12_28" cx="923.24" cy="737.774" r="5.692"/>
-      <circle id="station-hong-ao-park" inkscape:label="Hong'ao_Park=2026_06_28" data-lines="13=2026_06_28" cx="962.921" cy="504.737" r="5.692"/>
-      <circle id="station-guangmingcheng" inkscape:label="Guangmingcheng=2025_09_28-2026_06_28" data-lines="6b=2025_09_28-2026_06_28" cx="998.874" cy="459.916" r="5.692"/>
-      <rect id="station-guangmingcheng--2026-06-28" inkscape:label="Guangmingcheng=2026_06_28" data-lines="13=2026_06_28,6b=2026_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(998.874,457.666) rotate(-0)"/>
-      <circle id="station-deya-road" inkscape:label="Deya_Road=2026_06_28" data-lines="13=2026_06_28" cx="966.798" cy="423.581" r="5.692"/>
-      <circle id="station-yueliang-road" inkscape:label="Yueliang_Road=2026_06_28" data-lines="13=2026_06_28" cx="787.685" cy="381.194" r="5.692"/>
-      <circle id="station-jiangwei" inkscape:label="Jiangwei=2026_06_28" data-lines="13=2026_06_28" cx="761.896" cy="324.686" r="5.692"/>
-      <circle id="station-xinzhuang" inkscape:label="Xinzhuang=2026_06_28" data-lines="13=2026_06_28" cx="748.035" cy="275.944" r="5.692"/>
-      <circle id="station-shangcun" inkscape:label="Shangcun=2026_06_28" data-lines="13=2026_06_28" cx="705.161" cy="177.296" r="5.692"/>
-      <circle id="station-xiacun" inkscape:label="Xiacun=2026_06_28" data-lines="13=2026_06_28" cx="706.616" cy="129.886" r="5.692"/>
-      <circle id="station-lisonglang" inkscape:label="Lisonglang=2026_06_28" data-lines="13=2026_06_28" cx="705.920" cy="70.282" r="5.692"/>
-      <circle id="station-yuanshan-xikeng" inkscape:label="Yuanshan_Xikeng=2025_09_28" data-lines="16=2025_09_28" cx="2343.797" cy="1083.072" r="5.692"/>
-      <circle id="station-anliang" inkscape:label="Anliang=2025_09_28" data-lines="16=2025_09_28" cx="2317.939" cy="1020.41" r="5.692"/>
-      <circle id="station-fukeng" inkscape:label="Fukeng=2025_09_28" data-lines="16=2025_09_28" cx="2329.542" cy="977.665" r="5.692"/>
-      <circle id="station-dakang" inkscape:label="Dakang=2025_09_28" data-lines="16=2025_09_28" cx="2365.496" cy="958.859" r="5.692"/>
-      <circle id="station-yuanshan" inkscape:label="Yuanshan=2025_09_28" data-lines="16=2025_09_28" cx="2408.392" cy="924.926" r="5.692"/>
-      <circle id="station-da-an" inkscape:label="Da'an=2025_09_28" data-lines="16=2025_09_28" cx="2397.817" cy="874.456" r="5.692"/>
-      <circle id="station-jixi" inkscape:label="Jixi=2025_09_28" data-lines="16=2025_09_28" cx="2381.5" cy="844.82" r="5.692"/>
-      <circle id="station-jinyuan" inkscape:label="Jinyuan=2025_09_28" data-lines="16=2025_09_28" cx="2376.245" cy="776.484" r="5.692"/>
-      <circle id="station-universiade-center" inkscape:label="Universiade_Center=2022_12_28" data-lines="16=2022_12_28" cx="2321.611" cy="656.283" r="5.692"/>
-      <circle id="station-longcheng-park" inkscape:label="Longcheng_Park=2022_12_28" data-lines="16=2022_12_28" cx="2311.286" cy="608.563" r="5.692"/>
-      <circle id="station-huanggekeng" inkscape:label="Huanggekeng=2022_12_28" data-lines="16=2022_12_28" cx="2310.204" cy="529.034" r="5.692"/>
-      <circle id="station-yuyuan" inkscape:label="Yuyuan=2022_12_28" data-lines="16=2022_12_28" cx="2335.753" cy="480.443" r="5.692"/>
-      <circle id="station-huilongpu" inkscape:label="Huilongpu=2022_12_28" data-lines="16=2022_12_28" cx="2398.139" cy="475.734" r="5.692"/>
-      <circle id="station-shangjing" inkscape:label="Shangjing=2022_12_28" data-lines="16=2022_12_28" cx="2436.796" cy="474.745" r="5.692"/>
-      <circle id="station-shengping" inkscape:label="Shengping=2022_12_28" data-lines="16=2022_12_28" cx="2480.344" cy="462.783" r="5.692"/>
-      <circle id="station-longyuan" inkscape:label="Longyuan=2022_12_28" data-lines="16=2022_12_28" cx="2548.744" cy="465.724" r="5.692"/>
-      <circle id="station-xintangwei" inkscape:label="Xintangwei=2022_12_28" data-lines="16=2022_12_28" cx="2646.44" cy="494.88" r="5.692"/>
-      <circle id="station-longdong" inkscape:label="Longdong=2022_12_28" data-lines="16=2022_12_28" cx="2697.588" cy="516.105" r="5.692"/>
-      <circle id="station-baolong-tongle" inkscape:label="Baolong_Tongle=2022_12_28" data-lines="16=2022_12_28" cx="2776.361" cy="582.957" r="5.692"/>
-      <circle id="station-pingshan" inkscape:label="Pingshan=2022_12_28" data-lines="16=2022_12_28,skyshuttle=2022_12_28" cx="2852.067" cy="600.972" r="5.692"/>
-      <circle id="station-xinhe" inkscape:label="Xinhe=2022_12_28" data-lines="16=2022_12_28" cx="2890.82" cy="615.237" r="5.692"/>
-      <circle id="station-liuhe" inkscape:label="Liuhe=2022_12_28" data-lines="16=2022_12_28" cx="2902.237" cy="654.889" r="5.692"/>
-      <circle id="station-pinghuan" inkscape:label="Pinghuan=2022_12_28" data-lines="16=2022_12_28" cx="2945.965" cy="711.516" r="5.692"/>
-      <circle id="station-dongjiang-column-memorial-hall" inkscape:label="Dongjiang_Column_Memorial_Hall=2022_12_28" data-lines="16=2022_12_28,skyshuttle=2022_12_28" cx="2991.387" cy="707.728" r="5.692"/>
-      <circle id="station-shabo" inkscape:label="Shabo=2022_12_28" data-lines="16=2022_12_28" cx="3036.171" cy="705.85" r="5.692"/>
-      <circle id="station-yanzihu" inkscape:label="Yanzihu=2022_12_28" data-lines="16=2022_12_28" cx="3086.859" cy="695.373" r="5.692"/>
-      <circle id="station-shijing" inkscape:label="Shijing=2022_12_28" data-lines="16=2022_12_28" cx="3127.252" cy="676.861" r="5.692"/>
-      <circle id="station-technology-university" inkscape:label="Technology_University=2022_12_28" data-lines="16=2022_12_28" cx="3212.719" cy="642.032" r="5.692"/>
-      <circle id="station-tianxin" inkscape:label="Tianxin=2022_12_28" data-lines="16=2022_12_28" cx="3281.2" cy="667.092" r="5.692"/>
-      <circle id="station-liyuan" inkscape:label="Liyuan=2024_12_28" data-lines="3=2024_12_28" cx="2625.273" cy="446.951" r="5.692"/>
-      <circle id="station-xinsheng" inkscape:label="Xinsheng=2024_12_28" data-lines="3=2024_12_28" cx="2631.584" cy="374.483" r="5.692"/>
-      <circle id="station-pingxi" inkscape:label="Pingxi=2024_12_28" data-lines="3=2024_12_28" cx="2627.086" cy="293.507" r="5.692"/>
-      <circle id="station-low-carbon-city" inkscape:label="Low_Carbon_City=2024_12_28" data-lines="3=2024_12_28" cx="2664.765" cy="250.375" r="5.692"/>
-      <circle id="station-baishitang" inkscape:label="Baishitang=2024_12_28" data-lines="3=2024_12_28" cx="2728.919" cy="229.186" r="5.692"/>
-      <circle id="station-fuping" inkscape:label="Fuping=2024_12_28" data-lines="3=2024_12_28" cx="2768.824" cy="202.769" r="5.692"/>
-      <circle id="station-pingdi-liulian" inkscape:label="Pingdi_Liulian=2024_12_28" data-lines="3=2024_12_28" cx="2824.95" cy="165.907" r="5.692"/>
-      <circle id="station-biyan" inkscape:label="Biyan=2025_09_28" data-lines="6b=2025_09_28" cx="986.78" cy="316.09" r="5.692"/>
-      <circle id="station-hongqiao-park" inkscape:label="Hongqiao_Park=2025_09_28" data-lines="6b=2025_09_28" cx="982.154" cy="361.836" r="5.692"/>
-      <circle id="station-szu-lihu-campus" inkscape:label="SZU_Lihu_Campus=2024_12_28" data-lines="7=2024_12_28" cx="1170.645" cy="1206.648" r="5.692"/>
-      <circle id="station-peking-university" inkscape:label="Peking_University=2024_12_28" data-lines="7=2024_12_28" cx="1121.63" cy="1201.01" r="5.692"/>
-      <circle id="station-hong-anwei" inkscape:label="Hong'anwei=2023_12_27" data-lines="8=2023_12_27" cx="2573.645" cy="1230.910" r="5.692"/>
-      <circle id="station-yantianxu" inkscape:label="Yantianxu=2023_12_27" data-lines="8=2023_12_27" cx="2595.308" cy="1237.320" r="5.692"/>
-      <circle id="station-dameisha" inkscape:label="Dameisha=2023_12_27" data-lines="8=2023_12_27" cx="2754.352" cy="1200.659" r="5.692"/>
-      <circle id="station-xiaomeisha" inkscape:label="Xiaomeisha=2023_12_27" data-lines="8=2023_12_27" cx="2843.871" cy="1160.445" r="5.692"/>
-      <circle id="station-xichong" inkscape:label="Xichong=2025_12_28" data-lines="8=2025_12_28" cx="3011.859" cy="1105.675" r="5.692"/>
-      <circle id="station-fuxing" inkscape:label="Fuxing=2024_12_28" data-lines="11=2024_12_28" cx="1630.769" cy="1505.538" r="5.692"/>
-      <circle id="station-hongling-south-11" inkscape:label="Hongling_South=2025_12_28" data-lines="11=2025_12_28" cx="1742.846" cy="1512.038" r="5.692"/>
-      <circle id="station-haoxiang" inkscape:label="Haoxiang=2024_12_28" data-lines="12=2024_12_28" cx="188.094" cy="413.877" r="5.692"/>
-      <circle id="station-shahao" inkscape:label="Shahao=2024_12_28" data-lines="12=2024_12_28" cx="245.444" cy="418.937" r="5.692"/>
-      <circle id="station-shajing-ancient-market" inkscape:label="Shajing_Ancient_Market=2024_12_28" data-lines="12=2024_12_28" cx="279.019" cy="393.732" r="5.692"/>
-      <circle id="station-buchong" inkscape:label="Buchong=2024_12_28" data-lines="12=2024_12_28" cx="298.963" cy="319.512" r="5.692"/>
-      <circle id="station-langxia" inkscape:label="Langxia=2024_12_28" data-lines="12=2024_12_28" cx="326.685" cy="269.279" r="5.692"/>
-      <circle id="station-hubei-5" inkscape:label="Hubei=2025_12_28" data-lines="5=2025_12_28" cx="1849.519" cy="1453.765" r="5.692"/>
-      <circle id="station-dongmen" inkscape:label="Dongmen=2025_12_28" data-lines="5=2025_12_28" cx="1795.109" cy="1496.498" r="5.692"/>
+      <circle id="station-luohu" inkscape:label="Luohu=2004_12_28" data-logos="metro" data-lines="1=2004_12_28" cx="1813.372" cy="1541.879" r="5.692"/>
+      <circle id="station-guomao" inkscape:label="Guomao=2004_12_28" data-logos="metro" data-lines="1=2004_12_28" cx="1817.612" cy="1492.708" r="5.692"/>
+      <circle id="station-laojie" inkscape:label="Laojie=2004_12_28-2011_06_28" data-logos="metro" data-lines="1=2004_12_28-2011_06_28" cx="1804.413" cy="1470.04" r="5.692"/>
+      <rect id="station-laojie--2011-06-28" inkscape:label="Laojie=2011_06_28" data-logos="metro" data-lines="1=2011_06_28,3=2011_06_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1804.443,1467.273) rotate(-99.529)"/>
+      <circle id="station-grand-theater" inkscape:label="Grand_Theater=2004_12_28-2011_06_28" data-logos="metro" data-lines="1=2004_12_28-2011_06_28" cx="1763.741" cy="1481.618" r="5.692"/>
+      <rect id="station-grand-theater--2011-06-28" inkscape:label="Grand_Theater=2011_06_28-2025_12_28" data-logos="metro" data-lines="1=2011_06_28-2025_12_28,2=2011_06_28-2025_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1763.706,1484.73) rotate(0.654)"/>
+      <rect id="station-grand-theater--2025-12-28" inkscape:label="Grand_Theater=2025_12_28" data-logos="metro" data-lines="1=2025_12_28,2=2025_12_28,5=2025_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1763.706,1486.23) rotate(0.267)"/>
+      <circle id="station-science-museum" inkscape:label="Science_Museum=2004_12_28-2020_08_18" data-logos="metro" data-lines="1=2004_12_28-2020_08_18" cx="1699.03" cy="1488.941" r="5.692"/>
+      <rect id="station-science-museum--2020-08-18" inkscape:label="Science_Museum=2020_08_18" data-logos="metro" data-lines="1=2020_08_18,6=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1702.313,1490.522) rotate(-64.285)"/>
+      <circle id="station-huaqiang-road" inkscape:label="Huaqiang_Road=2004_12_28" data-logos="metro" data-lines="1=2004_12_28" cx="1648.298" cy="1489.571" r="5.692"/>
+      <circle id="station-gangxia" inkscape:label="Gangxia=2004_12_28-2020_08_18" data-logos="metro" data-lines="1=2004_12_28-2020_08_18" cx="1565.063" cy="1520.082" r="5.692"/>
+      <rect id="station-gangxia--2020-08-18" inkscape:label="Gangxia=2020_08_18" data-logos="metro" data-lines="1=2020_08_18,10=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1564.983,1520.026) rotate(-235.493)"/>
+      <rect id="station-convention-and-exhibition-center" inkscape:label="Convention_and_Exhibition_Center=2004_12_28" data-logos="metro,mtr=2010_07_01" data-lines="1=2004_12_28,4=2004_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1530.132,1520.127) rotate(31.896)"/>
+      <circle id="station-shopping-park" inkscape:label="Shopping_Park=2004_12_28-2011_06_28" data-logos="metro" data-lines="1=2004_12_28-2011_06_28" cx="1498.402" cy="1520.341" r="5.692"/>
+      <rect id="station-shopping-park--2011-06-28" inkscape:label="Shopping_Park=2011_06_28" data-logos="metro" data-lines="1=2011_06_28,3=2011_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1494.119,1523.093) rotate(57.283)"/>
+      <circle id="station-xiangmihu" inkscape:label="Xiangmihu=2004_12_28" data-logos="metro" data-lines="1=2004_12_28" cx="1419.47" cy="1495.239" r="5.692"/>
+      <circle id="station-chegongmiao" inkscape:label="Chegongmiao=2004_12_28-2016_06_28" data-logos="metro" data-lines="1=2004_12_28-2016_06_28" cx="1357.335" cy="1509.718" r="5.692"/>
+      <rect id="station-chegongmiao--2016-06-28" inkscape:label="Chegongmiao=2016_06_28-2016_10_28" data-logos="metro" data-lines="1=2016_06_28-2016_10_28,11=2016_06_28-2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1357.633,1511.466) rotate(-9.666)"/>
+      <rect id="station-chegongmiao--2016-10-28" inkscape:label="Chegongmiao=2016_10_28" data-logos="metro" data-lines="1=2016_10_28,7=2016_10_28,9=2016_10_28,11=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1364.255,1512.691) rotate(-77.795)"/>
+      <circle id="station-zhuzilin" inkscape:label="Zhuzilin=2004_12_28" data-logos="metro" data-lines="1=2004_12_28" cx="1297.649" cy="1527.602" r="5.692"/>
+      <circle id="station-qiaocheng-east" inkscape:label="Qiaocheng_East=2004_12_28" data-logos="metro" data-lines="1=2004_12_28" cx="1210.268" cy="1531.323" r="5.692"/>
+      <circle id="station-overseas-chinese-town" inkscape:label="Overseas_Chinese_Town=2004_12_28" data-logos="metro" data-lines="1=2004_12_28" cx="1153.616" cy="1526.51" r="5.692"/>
+      <circle id="station-window-of-the-world" inkscape:label="Window_of_the_World=2004_12_28-2010_12_28" data-logos="metro" data-lines="1=2004_12_28-2010_12_28" cx="1101.068" cy="1506.629" r="5.692"/>
+      <rect id="station-window-of-the-world--2010-12-28" inkscape:label="Window_of_the_World=2010_12_28" data-logos="metro" data-lines="1=2010_12_28,2=2010_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1100.81,1506.638) rotate(88.063)"/>
+      <circle id="station-baishizhou" inkscape:label="Baishizhou=2009_09_28" data-logos="metro" data-lines="1=2009_09_28" cx="1066.006" cy="1492.397" r="5.692"/>
+      <circle id="station-hi-tech-park" inkscape:label="Hi-Tech_Park=2009_09_28" data-logos="metro" data-lines="1=2009_09_28" cx="1000.599" cy="1489.593" r="5.692"/>
+      <circle id="station-shenzhen-university" inkscape:label="Shenzhen_University=2009_09_28-2024_12_28" data-logos="metro" data-lines="1=2009_09_28-2024_12_28" cx="950.436" cy="1501.132" r="5.692"/>
+      <rect id="station-shenzhen-university--2024-12-28" inkscape:label="Shenzhen_University=2024_12_28" data-logos="metro,mtr" data-lines="1=2024_12_28,13=2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(950.436,1503.382) rotate(0)"/>
+      <circle id="station-taoyuan" inkscape:label="Taoyuan=2011_06_15-2022_11_28" data-logos="metro" data-lines="1=2011_06_15-2022_11_28" cx="856.421" cy="1531.108" r="5.692"/>
+      <rect id="station-taoyuan--2022-11-28" inkscape:label="Taoyuan=2022_11_28" data-logos="metro" data-lines="1=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(856.418,1533.249) rotate(0.071)"/>
+      <circle id="station-daxin" inkscape:label="Daxin=2011_06_15" data-logos="metro" data-lines="1=2011_06_15" cx="808.539" cy="1531.121" r="5.692"/>
+      <circle id="station-liyumen" inkscape:label="Liyumen=2011_06_15" data-logos="metro" data-lines="1=2011_06_15" cx="750.929" cy="1531.183" r="5.692"/>
+      <circle id="station-qianhaiwan" inkscape:label="Qianhaiwan=2011_06_15-2011_06_22" data-logos="metro" data-lines="1=2011_06_15-2011_06_22" cx="725.184" cy="1505.492" r="5.692"/>
+      <rect id="station-qianhaiwan--2011-06-22" inkscape:label="Qianhaiwan=2011_06_22-2016_06_28" data-logos="metro" data-lines="1=2011_06_22-2016_06_28,5=2011_06_22-2016_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(723.293,1505.494) rotate(89.93)"/>
+      <rect id="station-qianhaiwan--2016-06-28" inkscape:label="Qianhaiwan=2016_06_28" data-logos="metro" data-lines="1=2016_06_28,5=2016_06_28,11=2016_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(721.422,1505.458) rotate(-269.19)"/>
+      <circle id="station-xin-an" inkscape:label="Xin'an=2011_06_15" data-logos="metro" data-lines="1=2011_06_15" cx="705.944" cy="1448.908" r="5.692"/>
+      <circle id="station-bao-an-center" inkscape:label="Bao'an_Center=2011_06_15-2011_06_22" data-logos="metro" data-lines="1=2011_06_15-2011_06_22" cx="669.62" cy="1411.271" r="5.692"/>
+      <rect id="station-bao-an-center--2011-06-22" inkscape:label="Bao'an_Center=2011_06_22" data-logos="metro" data-lines="1=2011_06_22,5=2011_06_22" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(669.562,1411.239) rotate(-240.81)"/>
+      <circle id="station-bao-an-stadium" inkscape:label="Bao'an_Stadium=2011_06_15" data-logos="metro" data-lines="1=2011_06_15" cx="640.824" cy="1381.906" r="5.692"/>
+      <circle id="station-pingzhou" inkscape:label="Pingzhou=2011_06_15" data-logos="metro" data-lines="1=2011_06_15" cx="587.32" cy="1335.285" r="5.692"/>
+      <circle id="station-xixiang" inkscape:label="Xixiang=2011_06_15" data-logos="metro" data-lines="1=2011_06_15" cx="545.559" cy="1297.973" r="5.692"/>
+      <circle id="station-gushu" inkscape:label="Gushu=2011_06_15" data-logos="metro" data-lines="1=2011_06_15" cx="470.497" cy="1164.167" r="5.692"/>
+      <circle id="station-hourui" inkscape:label="Hourui=2011_06_15" data-logos="metro" data-lines="1=2011_06_15" cx="412.621" cy="1013.639" r="5.692"/>
+      <circle id="station-airport-east" inkscape:label="Airport_East=2011_06_15-2022_11_28" data-logos="metro" data-lines="1=2011_06_15-2022_11_28" cx="350.059" cy="917.741" r="5.692"/>
+      <rect id="station-airport-east--2022-11-28" inkscape:label="Airport_East=2022_11_28" data-logos="metro" data-lines="1=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(348.297,918.487) rotate(67.069)"/>
+      <circle id="station-chiwan" inkscape:label="Chiwan=2010_12_28-2019_09_28" data-logos="metro" data-lines="2=2010_12_28-2019_09_28" cx="721.485" cy="1816.826" r="5.692"/>
+      <rect id="station-chiwan--2019-09-28" inkscape:label="Chiwan=2019_09_28" data-logos="metro" data-lines="2=2019_09_28,5=2019_09_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(720.128,1817.811) rotate(54.033)"/>
+      <circle id="station-shekou-port" inkscape:label="Shekou_Port=2010_12_28" data-logos="metro" data-lines="2=2010_12_28" cx="790.576" cy="1831.891" r="5.692"/>
+      <circle id="station-sea-world" inkscape:label="Sea_World=2010_12_28-2022_11_28" data-logos="metro" data-lines="2=2010_12_28-2022_11_28" cx="807.678" cy="1785.576" r="5.692"/>
+      <rect id="station-sea-world--2022-11-28" inkscape:label="Sea_World=2022_11_28" data-logos="metro" data-lines="2=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(805.229,1784.238) rotate(-241.352)"/>
+      <circle id="station-shuiwan" inkscape:label="Shuiwan=2010_12_28" data-logos="metro" data-lines="2=2010_12_28" cx="830.059" cy="1767.565" r="5.692"/>
+      <circle id="station-dongjiaotou" inkscape:label="Dongjiaotou=2010_12_28" data-logos="metro" data-lines="2=2010_12_28" cx="888.876" cy="1779.486" r="5.692"/>
+      <circle id="station-wanxia" inkscape:label="Wanxia=2010_12_28" data-logos="metro" data-lines="2=2010_12_28" cx="923.731" cy="1740.393" r="5.692"/>
+      <circle id="station-haiyue" inkscape:label="Haiyue=2010_12_28" data-logos="metro" data-lines="2=2010_12_28" cx="920.447" cy="1704.38" r="5.692"/>
+      <circle id="station-dengliang" inkscape:label="Dengliang=2010_12_28" data-logos="metro" data-lines="2=2010_12_28" cx="919.991" cy="1657.219" r="5.692"/>
+      <circle id="station-houhai" inkscape:label="Houhai=2010_12_28-2016_06_28" data-logos="metro" data-lines="2=2010_12_28-2016_06_28" cx="933.021" cy="1611.844" r="5.692"/>
+      <rect id="station-houhai--2016-06-28" inkscape:label="Houhai=2016_06_28-2024_12_28" data-logos="metro" data-lines="2=2016_06_28-2024_12_28,11=2016_06_28-2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(937.657,1608.473) rotate(-126.024)"/>
+      <rect id="station-houhai--2024-12-28" inkscape:label="Houhai=2024_12_28" data-logos="metro,mtr" data-lines="2=2024_12_28,11=2024_12_28,13=2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(937.862,1609.099) rotate(-142.307)"/>
+      <circle id="station-keyuan" inkscape:label="Keyuan=2010_12_28-2024_12_28" data-logos="metro" data-lines="2=2010_12_28-2024_12_28" cx="965.243" cy="1560.072" r="5.692"/>
+      <rect id="station-keyuan--2024-12-28" inkscape:label="Keyuan=2024_12_28" data-logos="metro,mtr" data-lines="2=2024_12_28,13=2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(965.243,1562.322) rotate(0)"/>
+      <circle id="station-hongshuwan" inkscape:label="Hongshuwan=2010_12_28" data-logos="metro" data-lines="2=2010_12_28" cx="1074.535" cy="1571.408" r="5.692"/>
+      <circle id="station-qiaocheng-north" inkscape:label="Qiaocheng_North=2011_06_28" data-logos="metro" data-lines="2=2011_06_28" cx="1173.46" cy="1468.144" r="5.692"/>
+      <circle id="station-shenkang" inkscape:label="Shenkang=2011_06_28" data-logos="metro" data-lines="2=2011_06_28" cx="1221.886" cy="1458.075" r="5.692"/>
+      <circle id="station-antuo-hill" inkscape:label="Antuo_Hill=2011_06_28-2016_10_28" data-logos="metro" data-lines="2=2011_06_28-2016_10_28" cx="1258.673" cy="1444.424" r="5.692"/>
+      <rect id="station-antuo-hill--2016-10-28" inkscape:label="Antuo_Hill=2016_10_28" data-logos="metro" data-lines="2=2016_10_28,7=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1258.753,1444.542) rotate(-34.254)"/>
+      <circle id="station-qiaoxiang" inkscape:label="Qiaoxiang=2011_06_28" data-logos="metro" data-lines="2=2011_06_28" cx="1299.41" cy="1439.507" r="5.692"/>
+      <circle id="station-xiangmi" inkscape:label="Xiangmi=2011_06_28" data-logos="metro" data-lines="2=2011_06_28" cx="1345.337" cy="1421.373" r="5.692"/>
+      <circle id="station-xiangmei-north" inkscape:label="Xiangmei_North=2011_06_28" data-logos="metro" data-lines="2=2011_06_28" cx="1390.252" cy="1416.538" r="5.692"/>
+      <circle id="station-jingtian" inkscape:label="Jingtian=2011_06_28-2016_10_28" data-logos="metro" data-lines="2=2011_06_28-2016_10_28" cx="1446.422" cy="1418.805" r="5.692"/>
+      <rect id="station-jingtian--2016-10-28" inkscape:label="Jingtian=2016_10_28" data-logos="metro" data-lines="2=2016_10_28,9=2016_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1444.395,1418.932) rotate(86.423)"/>
+      <circle id="station-lianhua-west" inkscape:label="Lianhua_West=2011_06_28" data-logos="metro" data-lines="2=2011_06_28" cx="1476.185" cy="1453.007" r="5.692"/>
+      <rect id="station-futian" inkscape:label="Futian=2011_06_28-2016_06_28" data-logos="metro" data-lines="2=2011_06_28-2016_06_28,3=2011_06_28-2016_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1491.169,1487.397) rotate(-234.945)"/>
+      <rect id="station-futian--2016-06-28" inkscape:label="Futian=2016_06_28" data-logos="metro" data-lines="2=2016_06_28,3=2016_06_28,11=2016_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1491.79,1488.945) rotate(-32.049)"/>
+      <circle id="station-civic-center" inkscape:label="Civic_Center=2004_12_28-2011_06_28" data-logos="metro=-2010_07_01,mtr=2010_07_01" data-lines="4=2004_12_28-2011_06_28" cx="1529.578" cy="1482.9" r="5.692"/>
+      <rect id="station-civic-center--2011-06-28" inkscape:label="Civic_Center=2011_06_28" data-logos="metro,mtr" data-lines="2=2011_06_28,4=2011_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1532.069,1484.326) rotate(-260.464)"/>
+      <circle id="station-gangxia-north" inkscape:label="Gangxia_North=2011_06_28-2022_10_28" data-logos="metro" data-lines="2=2011_06_28-2022_10_28" cx="1573.793" cy="1487.464" r="5.692"/>
+      <rect id="station-gangxia-north--2022-10-28" inkscape:label="Gangxia_North=2022_10_28" data-logos="metro" data-lines="2=2022_10_28,10=2022_10_28,11=2022_10_28,14=2022_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1567.137,1491.842) rotate(42.709)"/>
+      <circle id="station-huaqiang-north" inkscape:label="Huaqiang_North=2011_06_28-2016_10_28" data-logos="metro" data-lines="2=2011_06_28-2016_10_28" cx="1653.081" cy="1468.252" r="5.692"/>
+      <rect id="station-huaqiang-north--2016-10-28" inkscape:label="Huaqiang_North=2016_10_28" data-logos="metro" data-lines="2=2016_10_28,7=2016_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1655.24,1470.641) rotate(-42.108)"/>
+      <circle id="station-yannan" inkscape:label="Yannan=2011_06_28" data-logos="metro" data-lines="2=2011_06_28" cx="1684.427" cy="1467.692" r="5.692"/>
+      <circle id="station-hubei-2" inkscape:label="Hubei=2011_06_28" data-logos="metro" data-lines="2=2011_06_28" cx="1848.702" cy="1469.002" r="5.692"/>
+      <circle id="station-huangbeiling" inkscape:label="Huangbeiling=2011_06_22-2011_06_28" data-logos="metro" data-lines="5=2011_06_22-2011_06_28" cx="1904.399" cy="1462.942" r="5.692"/>
+      <rect id="station-huangbeiling--2011-06-28" inkscape:label="Huangbeiling=2011_06_28" data-logos="metro" data-lines="2=2011_06_28,5=2011_06_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1903.722,1461.319) rotate(-22.643)"/>
+      <circle id="station-xinxiu" inkscape:label="Xinxiu=2011_06_28" data-logos="metro" data-lines="2=2011_06_28" cx="1967.236" cy="1449.003" r="5.692"/>
+      <circle id="station-liantang-checkpoint" inkscape:label="Liantang_Checkpoint=2020_10_28" data-logos="metro" data-lines="2=2020_10_28" cx="1998.28" cy="1422.377" r="5.692"/>
+      <circle id="station-xianhu-road" inkscape:label="Xianhu_Road=2020_10_28" data-logos="metro" data-lines="2=2020_10_28" cx="2052.398" cy="1363.208" r="5.692"/>
+      <circle id="station-liantang" inkscape:label="Liantang=2020_10_28" data-logos="metro" data-lines="2=2020_10_28,8=2020_10_28" cx="2090.938" cy="1362.712" r="5.692"/>
+      <circle id="station-futian-bonded-area" inkscape:label="Futian_Bonded_Area=2020_10_28" data-logos="metro" data-lines="3=2020_10_28" cx="1501.341" cy="1664.177" r="5.692"/>
+      <circle id="station-yitian" inkscape:label="Yitian=2011_06_28" data-logos="metro" data-lines="3=2011_06_28" cx="1480.66" cy="1620.553" r="5.692"/>
+      <circle id="station-shixia" inkscape:label="Shixia=2011_06_28-2016_10_28" data-logos="metro" data-lines="3=2011_06_28-2016_10_28" cx="1493.442" cy="1578.736" r="5.692"/>
+      <rect id="station-shixia--2016-10-28" inkscape:label="Shixia=2016_10_28" data-logos="metro" data-lines="3=2016_10_28,7=2016_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1493.383,1580.71) rotate(1.717)"/>
+      <circle id="station-children-s-palace" inkscape:label="Children's_Palace=2004_12_28-2011_06_28" data-logos="metro=-2010_07_01,mtr=2010_07_01" data-lines="4=2004_12_28-2011_06_28" cx="1529.007" cy="1450.062" r="5.692"/>
+      <rect id="station-children-s-palace--2011-06-28" inkscape:label="Children's_Palace=2011_06_28" data-logos="metro,mtr" data-lines="3=2011_06_28,4=2011_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1527.078,1447.711) rotate(-39.372)"/>
+      <circle id="station-lianhuacun" inkscape:label="Lianhuacun=2011_06_28-2020_08_18" data-logos="metro" data-lines="3=2011_06_28-2020_08_18" cx="1564.29" cy="1445.833" r="5.692"/>
+      <rect id="station-lianhuacun--2020-08-18" inkscape:label="Lianhuacun=2020_08_18" data-logos="metro" data-lines="3=2020_08_18,10=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1564.176,1443.708) rotate(-183.075)"/>
+      <circle id="station-huaxin" inkscape:label="Huaxin=2011_06_28-2016_10_28" data-logos="metro" data-lines="3=2011_06_28-2016_10_28" cx="1656.797" cy="1442.448" r="5.692"/>
+      <rect id="station-huaxin--2016-10-28" inkscape:label="Huaxin=2016_10_28" data-logos="metro" data-lines="3=2016_10_28,7=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1656.613,1442.579) rotate(54.386)"/>
+      <circle id="station-tongxinling" inkscape:label="Tongxinling=2011_06_28-2020_08_18" data-logos="metro" data-lines="3=2011_06_28-2020_08_18" cx="1704.366" cy="1443.515" r="5.692"/>
+      <rect id="station-tongxinling--2020-08-18" inkscape:label="Tongxinling=2020_08_18" data-logos="metro" data-lines="3=2020_08_18,6=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1704.277,1443.449) rotate(-233.334)"/>
+      <circle id="station-hongling" inkscape:label="Hongling=2011_06_28-2016_10_28" data-logos="metro" data-lines="3=2011_06_28-2016_10_28" cx="1738.71" cy="1442.862" r="5.692"/>
+      <rect id="station-hongling--2016-10-28" inkscape:label="Hongling=2016_10_28" data-logos="metro" data-lines="3=2016_10_28,9=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1742.064,1445.266) rotate(-54.37)"/>
+      <circle id="station-shaibu" inkscape:label="Shaibu=2011_06_28" data-logos="metro" data-lines="3=2011_06_28" cx="1836.827" cy="1440.779" r="5.692"/>
+      <circle id="station-cuizhu" inkscape:label="Cuizhu=2011_06_28" data-logos="metro" data-lines="3=2011_06_28" cx="1871.844" cy="1405.453" r="5.692"/>
+      <circle id="station-tianbei" inkscape:label="Tianbei=2011_06_28-2016_10_28" data-logos="metro" data-lines="3=2011_06_28-2016_10_28" cx="1872.004" cy="1345.446" r="5.692"/>
+      <rect id="station-tianbei--2016-10-28" inkscape:label="Tianbei=2016_10_28" data-logos="metro" data-lines="3=2016_10_28,7=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1870.122,1345.989) rotate(73.901)"/>
+      <circle id="station-shuibei" inkscape:label="Shuibei=2011_06_28" data-logos="metro" data-lines="3=2011_06_28" cx="1846.411" cy="1308.265" r="5.692"/>
+      <circle id="station-caopu" inkscape:label="Caopu=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="1804.351" cy="1253.679" r="5.692"/>
+      <circle id="station-buji" inkscape:label="Buji=2010_12_28-2011_06_22" data-logos="metro" data-lines="3=2010_12_28-2011_06_22" cx="1829.663" cy="1161.258" r="5.692"/>
+      <rect id="station-buji--2011-06-22" inkscape:label="Buji=2011_06_22-2022_10_28" data-logos="metro" data-lines="3=2011_06_22-2022_10_28,5=2011_06_22-2022_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1827.947,1158.853) rotate(-215.511)"/>
+      <rect id="station-buji--2022-10-28" inkscape:label="Buji=2022_10_28" data-logos="metro" data-lines="3=2022_10_28,5=2022_10_28,14=2022_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1829.631,1160.606) rotate(-41.456)"/>
+      <circle id="station-mumianwan" inkscape:label="Mumianwan=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="1874.752" cy="1131.754" r="5.692"/>
+      <circle id="station-dafen" inkscape:label="Dafen=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="1913.735" cy="1093.629" r="5.692"/>
+      <circle id="station-danzhutou" inkscape:label="Danzhutou=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="1962.422" cy="1063.857" r="5.692"/>
+      <circle id="station-liuyue" inkscape:label="Liuyue=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="2123.367" cy="985.666" r="5.692"/>
+      <circle id="station-tangkeng" inkscape:label="Tangkeng=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="2183.798" cy="959.334" r="5.692"/>
+      <circle id="station-henggang" inkscape:label="Henggang=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="2264.397" cy="909.452" r="5.692"/>
+      <circle id="station-yonghu" inkscape:label="Yonghu=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="2309.264" cy="853.197" r="5.692"/>
+      <circle id="station-he-ao" inkscape:label="He'ao=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="2340.115" cy="777.323" r="5.692"/>
+      <circle id="station-universiade" inkscape:label="Universiade=2010_12_28-2022_10_28" data-logos="metro" data-lines="3=2010_12_28-2022_10_28" cx="2359.459" cy="709.719" r="5.692"/>
+      <rect id="station-universiade--2022-10-28" inkscape:label="Universiade=2022_10_28-2022_12_28" data-logos="metro" data-lines="3=2022_10_28-2022_12_28,14=2022_10_28-2022_12_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(2357.482,711.192) rotate(53.304)"/>
+      <rect id="station-universiade--2022-12-28" inkscape:label="Universiade=2022_12_28" data-logos="metro" data-lines="3=2022_12_28,14=2022_12_28,16=2022_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(2357.482,712.692) rotate(18.313)"/>
+      <circle id="station-ailian" inkscape:label="Ailian=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="2390.985" cy="645.509" r="5.692"/>
+      <circle id="station-jixiang" inkscape:label="Jixiang=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="2439.869" cy="581.151" r="5.692"/>
+      <circle id="station-longcheng-square" inkscape:label="Longcheng_Square=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="2491.173" cy="541.297" r="5.692"/>
+      <circle id="station-nanlian" inkscape:label="Nanlian=2010_12_28" data-logos="metro" data-lines="3=2010_12_28" cx="2545.624" cy="513.866" r="5.692"/>
+      <circle id="station-shuanglong" inkscape:label="Shuanglong=2010_12_28-2022_12_28" data-logos="metro" data-lines="3=2010_12_28-2022_12_28" cx="2603.951" cy="477.487" r="5.692"/>
+      <rect id="station-shuanglong--2022-12-28" inkscape:label="Shuanglong=2022_12_28" data-logos="metro" data-lines="3=2022_12_28,16=2022_12_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(2603.951,479.737) rotate(-0)"/>
+      <circle id="station-futian-checkpoint-4" inkscape:label="Huanggang=2007_06_28-2008_08_15,Futian_Checkpoint=2008_08_15" data-logos="metro=-2010_07_01,mtr=2010_07_01" data-lines="4=2007_06_28" cx="1561.887" cy="1613.964" r="5.692"/>
+      <circle id="station-fumin" inkscape:label="Fumin=2004_12_28-2016_10_28" data-logos="metro=-2010_07_01,mtr=2010_07_01" data-lines="4=2004_12_28-2016_10_28" cx="1549.115" cy="1582.547" r="5.692"/>
+      <rect id="station-fumin--2016-10-28" inkscape:label="Fumin=2016_10_28-2020_08_18" data-logos="metro,mtr" data-lines="4=2016_10_28-2020_08_18,7=2016_10_28-2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1552.202,1582.447) rotate(-91.849)"/>
+      <rect id="station-fumin--2020-08-18" inkscape:label="Fumin=2020_08_18" data-logos="metro,mtr" data-lines="4=2020_08_18,7=2020_08_18,10=2020_08_18" x="-5.692" y="-10.679" width="11.385" height="21.358" rx="5.692" transform="translate(1557.325,1581.482) rotate(-96.661)"/>
+      <circle id="station-lianhua-north" inkscape:label="Lianhua_North=2011_06_16" data-logos="mtr" data-lines="4=2011_06_16" cx="1521.689" cy="1379.969" r="5.692"/>
+      <circle id="station-shangmeilin" inkscape:label="Shangmeilin=2011_06_16-2016_10_28" data-logos="mtr" data-lines="4=2011_06_16-2016_10_28" cx="1522.311" cy="1329.533" r="5.692"/>
+      <rect id="station-shangmeilin--2016-10-28" inkscape:label="Shangmeilin=2016_10_28" data-logos="metro,mtr" data-lines="4=2016_10_28,9=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1523.882,1334.022) rotate(-19.291)"/>
+      <circle id="station-minle" inkscape:label="Minle=2011_06_16" data-logos="mtr" data-lines="4=2011_06_16" cx="1468.694" cy="1201.026" r="5.692"/>
+      <circle id="station-baishilong" inkscape:label="Baishilong=2011_06_16" data-logos="mtr" data-lines="4=2011_06_16" cx="1437.705" cy="1162.075" r="5.692"/>
+      <rect id="station-shenzhen-north" inkscape:label="Shenzhen_North=2011_06_22-2020_08_18" data-logos="metro,mtr" data-lines="4=2011_06_22-2020_08_18,5=2011_06_22-2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1380.567,1112.29) rotate(-133.75)"/>
+      <rect id="station-shenzhen-north--2020-08-18" inkscape:label="Shenzhen_North=2020_08_18" data-logos="metro,mtr" data-lines="4=2020_08_18,5=2020_08_18,6=2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1379.114,1113.609) rotate(47.384)"/>
+      <circle id="station-hongshan" inkscape:label="Hongshan=2011_06_16-2020_08_18" data-logos="mtr" data-lines="4=2011_06_16-2020_08_18" cx="1343.999" cy="1051.725" r="5.692"/>
+      <rect id="station-hongshan--2020-08-18" inkscape:label="Hongshan=2020_08_18" data-logos="metro,mtr" data-lines="4=2020_08_18,6=2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1342.532,1052.669) rotate(57.232)"/>
+      <circle id="station-shangtang" inkscape:label="Shangtang=2011_06_16" data-logos="mtr" data-lines="4=2011_06_16" cx="1292.109" cy="971.194" r="5.692"/>
+      <circle id="station-longsheng" inkscape:label="Longsheng=2011_06_16" data-logos="mtr" data-lines="4=2011_06_16" cx="1288.46" cy="930.053" r="5.692"/>
+      <circle id="station-longhua" inkscape:label="Longhua=2011_06_16" data-logos="mtr" data-lines="4=2011_06_16" cx="1339.143" cy="893.003" r="5.692"/>
+      <circle id="station-qinghu" inkscape:label="Qinghu=2011_06_16" data-logos="metro=2017_10_28,mtr" data-lines="4=2011_06_16,tram=2017_10_28" cx="1408.784" cy="826.186" r="5.692"/>
+      <circle id="station-qinghu-north" inkscape:label="Qinghu_North=2020_10_28" data-logos="mtr" data-lines="4=2020_10_28" cx="1428.498" cy="781.067" r="5.692"/>
+      <circle id="station-zhucun" inkscape:label="Zhucun=2020_10_28" data-logos="mtr" data-lines="4=2020_10_28" cx="1427.247" cy="702.774" r="5.692"/>
+      <circle id="station-xikeng" inkscape:label="Xikeng=2020_10_28" data-logos="mtr" data-lines="4=2020_10_28" cx="1432.868" cy="639.701" r="5.692"/>
+      <circle id="station-changhu" inkscape:label="Changhu=2020_10_28" data-logos="mtr" data-lines="4=2020_10_28" cx="1448.668" cy="575.76" r="5.692"/>
+      <circle id="station-guanlan" inkscape:label="Guanlan=2020_10_28" data-logos="metro,mtr" data-lines="4=2020_10_28,tram=2020_10_28" cx="1500.769" cy="550.135" r="5.692"/>
+      <circle id="station-songyuanxia" inkscape:label="Songyuanxia=2020_10_28" data-logos="mtr" data-lines="4=2020_10_28" cx="1550.818" cy="519.024" r="5.692"/>
+      <circle id="station-mission-hills" inkscape:label="Mission_Hills=2020_10_28" data-logos="mtr" data-lines="4=2020_10_28" cx="1609.556" cy="515.662" r="5.692"/>
+      <circle id="station-niuhu" inkscape:label="Niuhu=2020_10_28" data-logos="mtr" data-lines="4=2020_10_28" cx="1666.358" cy="502.993" r="5.692"/>
+      <circle id="station-liwan" inkscape:label="Liwan=2019_09_28" data-logos="metro" data-lines="5=2019_09_28" cx="700.035" cy="1715.039" r="5.692"/>
+      <circle id="station-railway-park" inkscape:label="Railway_Park=2019_09_28" data-logos="metro" data-lines="5=2019_09_28" cx="685.551" cy="1692.591" r="5.692"/>
+      <circle id="station-mawan" inkscape:label="Mawan=2019_09_28" data-logos="metro" data-lines="5=2019_09_28" cx="663.031" cy="1660.762" r="5.692"/>
+      <circle id="station-qianwan-park" inkscape:label="Qianwan_Park=2019_09_28" data-logos="metro" data-lines="5=2019_09_28" cx="682.46" cy="1618.68" r="5.692"/>
+      <circle id="station-qianwan" inkscape:label="Qianwan=2019_09_28-2019_12_08" data-logos="metro" data-lines="5=2019_09_28-2019_12_08" cx="711.701" cy="1588.337" r="5.692"/>
+      <rect id="station-qianwan--2019-12-08" inkscape:label="Qianwan=2019_12_08" data-logos="metro" data-lines="5=2019_12_08,9=2019_12_08" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(710.486,1587.157) rotate(-225.835)"/>
+      <circle id="station-guiwan" inkscape:label="Guiwan=2019_09_28" data-logos="metro" data-lines="5=2019_09_28" cx="722.321" cy="1531.14" r="5.692"/>
+      <circle id="station-linhai" inkscape:label="Linhai=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="680.067" cy="1466.244" r="5.692"/>
+      <circle id="station-baohua" inkscape:label="Baohua=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="659.944" cy="1438.1" r="5.692"/>
+      <circle id="station-fanshen" inkscape:label="Fanshen=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="699.365" cy="1383.856" r="5.692"/>
+      <circle id="station-lingzhi" inkscape:label="Lingzhi=2011_06_22-2022_11_28" data-logos="metro" data-lines="5=2011_06_22-2022_11_28" cx="753.204" cy="1334.249" r="5.692"/>
+      <rect id="station-lingzhi--2022-11-28" inkscape:label="Lingzhi=2022_11_28" data-logos="metro" data-lines="5=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(753.225,1334.175) rotate(-164.011)"/>
+      <circle id="station-honglang-north" inkscape:label="Honglang_North=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="786.131" cy="1303.843" r="5.692"/>
+      <circle id="station-xingdong" inkscape:label="Xingdong=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="827.576" cy="1265.484" r="5.692"/>
+      <circle id="station-liuxiandong" inkscape:label="Liuxiandong=2011_06_22-2025_12_28" data-logos="metro" data-lines="5=2011_06_22-2025_12_28" cx="951.184" cy="1273.057" r="5.692"/>
+      <rect id="station-liuxiandong--2025-12-28" inkscape:label="Liuxiandong=2025_12_28" data-logos="metro,mtr" data-lines="5=2025_12_28,13=2025_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(951.183,1275.307) rotate(0.002)"/>
+      <circle id="station-xili" inkscape:label="Xili=2011_06_22-2016_10_28" data-logos="metro" data-lines="5=2011_06_22-2016_10_28" cx="999.18" cy="1271.87" r="5.692"/>
+      <rect id="station-xili--2016-10-28" inkscape:label="Xili=2016_10_28" data-logos="metro" data-lines="5=2016_10_28,7=2016_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1001.235,1271.813) rotate(-91.588)"/>
+      <circle id="station-university-town" inkscape:label="University_Town=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1057.766" cy="1263.376" r="5.692"/>
+      <circle id="station-tanglang" inkscape:label="Tanglang=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1227.255" cy="1222.443" r="5.692"/>
+      <circle id="station-changlingpi" inkscape:label="Changlingpi=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1280.141" cy="1172.749" r="5.692"/>
+      <circle id="station-minzhi" inkscape:label="Minzhi=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1430.921" cy="1077.577" r="5.692"/>
+      <circle id="station-wuhe" inkscape:label="Wuhe=2011_06_22-2020_08_18" data-logos="metro" data-lines="5=2011_06_22-2020_08_18" cx="1528.423" cy="1026.797" r="5.692"/>
+      <rect id="station-wuhe--2020-08-18" inkscape:label="Wuhe=2020_08_18" data-logos="metro" data-lines="5=2020_08_18,10=2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1528.339,1026.851) rotate(57.251)"/>
+      <circle id="station-bantian" inkscape:label="Bantian=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1577.7" cy="1022.46" r="5.692"/>
+      <circle id="station-yangmei" inkscape:label="Yangmei=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1623.314" cy="1026.73" r="5.692"/>
+      <circle id="station-shangshuijing" inkscape:label="Shangshuijing=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1749.449" cy="1052.1" r="5.692"/>
+      <circle id="station-xiashuijing" inkscape:label="Xiashuijing=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1775.291" cy="1087.674" r="5.692"/>
+      <circle id="station-changlong" inkscape:label="Changlong=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1790.692" cy="1126.463" r="5.692"/>
+      <circle id="station-baigelong" inkscape:label="Baigelong=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1873.722" cy="1197.069" r="5.692"/>
+      <circle id="station-buxin" inkscape:label="Buxin=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1911.788" cy="1272.635" r="5.692"/>
+      <circle id="station-tai-an" inkscape:label="Tai'an=2011_06_22-2016_10_28" data-logos="metro" data-lines="5=2011_06_22-2016_10_28" cx="1907.743" cy="1308.764" r="5.692"/>
+      <rect id="station-tai-an--2016-10-28" inkscape:label="Tai'an=2016_10_28" data-logos="metro" data-lines="5=2016_10_28,7=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1909.375,1309.235) rotate(-73.911)"/>
+      <circle id="station-yijing" inkscape:label="Yijing=2011_06_22" data-logos="metro" data-lines="5=2011_06_22" cx="1921.897" cy="1406.307" r="5.692"/>
+      <circle id="station-songgang" inkscape:label="Songgang=2016_06_28-2020_08_18" data-logos="metro" data-lines="11=2016_06_28-2020_08_18" cx="386.691" cy="242.973" r="5.692"/>
+      <rect id="station-songgang--2020-08-18" inkscape:label="Songgang=2020_08_18-2024_12_28" data-logos="metro" data-lines="6=2020_08_18-2024_12_28,11=2020_08_18-2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(386.401,243.155) rotate(-122.128)"/>
+      <rect id="station-songgang--2024-12-28" inkscape:label="Songgang=2024_12_28" data-logos="metro" data-lines="6=2024_12_28,11=2024_12_28,12=2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(386.401,244.655) rotate(3.55)"/>
+      <circle id="station-xitou" inkscape:label="Xitou=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="424.366" cy="230.666" r="5.692"/>
+      <circle id="station-songgang-park" inkscape:label="Songgang_Park=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="477.693" cy="213.11" r="5.692"/>
+      <circle id="station-shutianpu" inkscape:label="Shutianpu=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="574.597" cy="196.175" r="5.692"/>
+      <circle id="station-heshuikou" inkscape:label="Heshuikou=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="631.649" cy="189.039" r="5.692"/>
+      <circle id="station-gongming-square" inkscape:label="Gongming_Square=2020_08_18-2026_06_28" data-logos="metro" data-lines="6=2020_08_18-2026_06_28" cx="688.48" cy="213.914" r="5.692"/>
+      <rect id="station-gongming-square--2026-06-28" inkscape:label="Gongming_Square=2026_06_28" data-logos="metro,mtr" data-lines="6=2026_06_28,13=2026_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(688.48,216.164) rotate(-0)"/>
+      <circle id="station-honghuashan" inkscape:label="Honghuashan=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="765.317" cy="212.703" r="5.692"/>
+      <circle id="station-loucun" inkscape:label="Loucun=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="849.303" cy="222.717" r="5.692"/>
+      <circle id="station-science-park" inkscape:label="Science_Park=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="901.68" cy="214.161" r="5.692"/>
+      <circle id="station-guangming" inkscape:label="Guangming=2020_08_18-2022_11_28" data-logos="metro" data-lines="6=2020_08_18-2022_11_28" cx="956.44" cy="245.59" r="5.692"/>
+      <rect id="station-guangming--2022-11-28" inkscape:label="Guangming=2022_11_28" data-logos="metro" data-lines="6=2022_11_28,6b=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(957.976,245.553) rotate(-91.352)"/>
+      <circle id="station-guangming-street" inkscape:label="Guangming_Street=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="946.317" cy="296.246" r="5.692"/>
+      <circle id="station-fenghuang-town" inkscape:label="Fenghuang_Town=2020_08_18-2026_06_28" data-logos="metro" data-lines="6=2020_08_18-2026_06_28" cx="896.43" cy="375.774" r="5.692"/>
+      <rect id="station-fenghuang-town--2026-06-28" inkscape:label="Fenghuang_Town=2026_06_28" data-logos="metro,mtr" data-lines="6=2026_06_28,13=2026_06_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(896.43,378.024) rotate(0)"/>
+      <circle id="station-changzhen" inkscape:label="Changzhen=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="886.27" cy="489.539" r="5.692"/>
+      <circle id="station-shangwu" inkscape:label="Shangwu=2020_08_18-2025_12_28" data-logos="metro" data-lines="6=2020_08_18-2025_12_28" cx="924.205" cy="689.679" r="5.692"/>
+      <rect id="station-shangwu--2025-12-28" inkscape:label="Shangwu=2025_12_28" data-logos="metro,mtr" data-lines="6=2025_12_28,13=2025_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(924.205,691.929) rotate(-0)"/>
+      <circle id="station-guantian" inkscape:label="Guantian=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="969.925" cy="720.424" r="5.692"/>
+      <circle id="station-yangtai-mountain-east" inkscape:label="Yangtai_Mountain_East=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="1185.887" cy="804.092" r="5.692"/>
+      <circle id="station-yuanfen" inkscape:label="Yuanfen=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="1253.079" cy="865.491" r="5.692"/>
+      <circle id="station-shangfen" inkscape:label="Shangfen=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="1310.548" cy="951.767" r="5.692"/>
+      <circle id="station-meilinguan" inkscape:label="Meilinguan=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="1491.873" cy="1199.977" r="5.692"/>
+      <circle id="station-hanling" inkscape:label="Hanling=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="1568.057" cy="1307.7" r="5.692"/>
+      <circle id="station-yinhu" inkscape:label="Yinhu=2016_10_28-2020_08_18" data-logos="metro" data-lines="9=2016_10_28-2020_08_18" cx="1670.86" cy="1338.572" r="5.692"/>
+      <rect id="station-yinhu--2020-08-18" inkscape:label="Yinhu=2020_08_18" data-logos="metro" data-lines="6=2020_08_18,9=2020_08_18" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1670.965,1338.421) rotate(-50.4639)"/>
+      <circle id="station-bagualing" inkscape:label="Bagualing=2016_10_28-2020_08_18" data-logos="metro" data-lines="7=2016_10_28-2020_08_18" cx="1696.314" cy="1374.742" r="5.692"/>
+      <rect id="station-bagualing--2020-08-18" inkscape:label="Bagualing=2020_08_18" data-logos="metro" data-lines="6=2020_08_18,7=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1694.596,1377.616) rotate(-149.124)"/>
+      <circle id="station-sports-center" inkscape:label="Sports_Center=2020_08_18" data-logos="metro" data-lines="6=2020_08_18" cx="1702.214" cy="1412.918" r="5.692"/>
+      <circle id="station-suat" inkscape:label="SIAT=2022_11_28-2025_01_01,SUAT=2025_01_01" data-logos="metro" data-lines="6b=2022_11_28" cx="1074.583" cy="58.873" r="5.692"/>
+      <circle id="station-sun-yat-sen-university" inkscape:label="Sun_Yat-sen_University=2022_11_28" data-logos="metro" data-lines="6b=2022_11_28" cx="1002.655" cy="112.377" r="5.692"/>
+      <circle id="station-zhenmei" inkscape:label="Zhenmei=2022_11_28" data-logos="metro" data-lines="6b=2022_11_28" cx="977.968" cy="158.407" r="5.692"/>
+      <circle id="station-xili-lake" inkscape:label="Xili_Lake=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1054.201" cy="1203.92" r="5.692"/>
+      <circle id="station-chaguang" inkscape:label="Chaguang=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1002.563" cy="1307.83" r="5.692"/>
+      <circle id="station-zhuguang" inkscape:label="Zhuguang=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1032.52" cy="1338.499" r="5.692"/>
+      <circle id="station-longjing" inkscape:label="Longjing=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1103.573" cy="1360.013" r="5.692"/>
+      <circle id="station-taoyuancun" inkscape:label="Taoyuancun=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1138.536" cy="1383.634" r="5.692"/>
+      <circle id="station-shenyun" inkscape:label="Shenyun=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1196.587" cy="1403.259" r="5.692"/>
+      <circle id="station-nonglin" inkscape:label="Nonglin=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1320.459" cy="1488.546" r="5.692"/>
+      <circle id="station-shangsha" inkscape:label="Shangsha=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1404.431" cy="1574.619" r="5.692"/>
+      <circle id="station-shawei" inkscape:label="Shawei=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1436.912" cy="1594.906" r="5.692"/>
+      <circle id="station-huanggangcun" inkscape:label="Huanggangcun=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1520.7" cy="1582.74" r="5.692"/>
+      <circle id="station-huanggang-checkpoint" inkscape:label="Huanggang_Checkpoint=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1596.307" cy="1591.239" r="5.692"/>
+      <circle id="station-chiwei" inkscape:label="Chiwei=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1643.59" cy="1535.131" r="5.692"/>
+      <circle id="station-huaqiang-south" inkscape:label="Huaqiang_South=2016_10_28-2024_12_28" data-logos="metro" data-lines="7=2016_10_28-2024_12_28" cx="1658.308" cy="1506.917" r="5.692"/>
+      <rect id="station-huaqiang-south--2024-12-28" inkscape:label="Huaqiang_South=2024_12_28" data-logos="metro" data-lines="7=2024_12_28,11=2024_12_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1658.308,1509.167) rotate(-0)"/>
+      <circle id="station-huangmugang" inkscape:label="Huangmugang=2016_10_28-2022_10_28" data-logos="metro" data-lines="7=2016_10_28-2022_10_28" cx="1660.639" cy="1407.308" r="5.692"/>
+      <rect id="station-huangmugang--2022-10-28" inkscape:label="Huangmugang=2022_10_28" data-logos="metro" data-lines="7=2022_10_28,14=2022_10_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1658.43,1406.032) rotate(-239.998)"/>
+      <rect id="station-hongling-north" inkscape:label="Hongling_North=2016_10_28" data-logos="metro" data-lines="7=2016_10_28,9=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1746.163,1374.055) rotate(-190.244)"/>
+      <circle id="station-sungang" inkscape:label="Sungang=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1776.939" cy="1367.56" r="5.692"/>
+      <circle id="station-honghu" inkscape:label="Honghu=2016_10_28" data-logos="metro" data-lines="7=2016_10_28" cx="1834.288" cy="1352.699" r="5.692"/>
+      <circle id="station-menghai" inkscape:label="Menghai=2019_12_08" data-logos="metro" data-lines="9=2019_12_08" cx="727.55" cy="1603.418" r="5.692"/>
+      <circle id="station-yihai" inkscape:label="Yihai=2019_12_08" data-logos="metro" data-lines="9=2019_12_08" cx="748.634" cy="1621.391" r="5.692"/>
+      <circle id="station-litchi-orchards" inkscape:label="Litchi_Orchards=2019_12_08" data-logos="metro" data-lines="9=2019_12_08" cx="799.611" cy="1641.595" r="5.692"/>
+      <circle id="station-nanyou-west" inkscape:label="Nanyou_West=2019_12_08" data-logos="metro" data-lines="9=2019_12_08" cx="824.135" cy="1655.273" r="5.692"/>
+      <circle id="station-nanyou" inkscape:label="Nanyou=2019_12_08-2022_11_28" data-logos="metro" data-lines="9=2019_12_08-2022_11_28" cx="862.228" cy="1648.029" r="5.692"/>
+      <rect id="station-nanyou--2022-11-28" inkscape:label="Nanyou=2022_11_28" data-logos="metro" data-lines="9=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(864.03,1648.668) rotate(-70.47)"/>
+      <circle id="station-nanshan-book-mall" inkscape:label="Nanshan_Book_Mall=2019_12_08" data-logos="metro" data-lines="9=2019_12_08" cx="876.495" cy="1601.115" r="5.692"/>
+      <circle id="station-shenzhen-university-south" inkscape:label="Shenzhen_University_South=2019_12_08" data-logos="metro" data-lines="9=2019_12_08" cx="912.689" cy="1564.833" r="5.692"/>
+      <circle id="station-yuehaimen" inkscape:label="Yuehaimen=2019_12_08-2024_12_28" data-logos="metro" data-lines="9=2019_12_08-2024_12_28" cx="959.697" cy="1529.098" r="5.692"/>
+      <rect id="station-yuehaimen--2024-12-28" inkscape:label="Yuehaimen=2024_12_28" data-logos="metro,mtr" data-lines="9=2024_12_28,13=2024_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(959.697,1531.348) rotate(-0)"/>
+      <circle id="station-hi-tech-south" inkscape:label="Hi-Tech_South=2019_12_08" data-logos="metro" data-lines="9=2019_12_08" cx="991.144" cy="1528.292" r="5.692"/>
+      <circle id="station-hongshuwan-south" inkscape:label="Hongshuwan_South=2016_06_28-2016_10_28" data-logos="metro" data-lines="11=2016_06_28-2016_10_28" cx="1086.79" cy="1585.014" r="5.692"/>
+      <rect id="station-hongshuwan-south--2016-10-28" inkscape:label="Hongshuwan_South=2016_10_28" data-logos="metro" data-lines="9=2016_10_28,11=2016_10_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(1086.835,1583.381) rotate(1.551)"/>
+      <circle id="station-shenwan" inkscape:label="Shenwan=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1122.53" cy="1581.364" r="5.692"/>
+      <circle id="station-shenzhen-bay-park" inkscape:label="Shenzhen_Bay_Park=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1192.269" cy="1590.371" r="5.692"/>
+      <circle id="station-xiasha" inkscape:label="Xiasha=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1343.15" cy="1551.315" r="5.692"/>
+      <circle id="station-xiangmei" inkscape:label="Xiangmei=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1423.082" cy="1461.275" r="5.692"/>
+      <circle id="station-meijing" inkscape:label="Meijing=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1415.976" cy="1379.362" r="5.692"/>
+      <circle id="station-xiameilin" inkscape:label="Xiameilin=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1436.029" cy="1352.577" r="5.692"/>
+      <circle id="station-meicun" inkscape:label="Meicun=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1488.625" cy="1338.137" r="5.692"/>
+      <circle id="station-maling" inkscape:label="Maling=2016_10_28-2020_08_18" data-logos="metro" data-lines="9=2016_10_28-2020_08_18" cx="1563.8" cy="1338.583" r="5.692"/>
+      <rect id="station-maling--2020-08-18" inkscape:label="Maling=2020_08_18" data-logos="metro" data-lines="9=2020_08_18,10=2020_08_18" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(1560.592,1342.319) rotate(40.656)"/>
+      <circle id="station-nigang" inkscape:label="Nigang=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1709.837" cy="1343.715" r="5.692"/>
+      <circle id="station-yuanling" inkscape:label="Yuanling=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1746.006" cy="1406.944" r="5.692"/>
+      <circle id="station-hongling-south-9" inkscape:label="Hongling_South=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1748.311" cy="1497.282" r="5.692"/>
+      <circle id="station-ludancun" inkscape:label="Ludancun=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1766.969" cy="1515.425" r="5.692"/>
+      <circle id="station-renmin-south" inkscape:label="Renmin_South=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1807.762" cy="1517.827" r="5.692"/>
+      <circle id="station-xiangxicun" inkscape:label="Xiangxicun=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1849.48" cy="1492.728" r="5.692"/>
+      <circle id="station-wenjin" inkscape:label="Wenjin=2016_10_28" data-logos="metro" data-lines="9=2016_10_28" cx="1876.367" cy="1479.263" r="5.692"/>
+      <circle id="station-shuangyong-street" inkscape:label="Shuangyong_Street=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1886.012" cy="640.225" r="5.692"/>
+      <circle id="station-pinghu" inkscape:label="Pinghu=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1849.22" cy="668.283" r="5.692"/>
+      <circle id="station-hehua" inkscape:label="Hehua=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1828.413" cy="709.742" r="5.692"/>
+      <circle id="station-huanancheng" inkscape:label="Huanancheng=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1833.869" cy="760.395" r="5.692"/>
+      <circle id="station-mugu" inkscape:label="Mugu=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1834.373" cy="791.97" r="5.692"/>
+      <circle id="station-shanglilang" inkscape:label="Shanglilang=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1855.889" cy="881.073" r="5.692"/>
+      <circle id="station-liangmao-hill" inkscape:label="Liangmao_Hill=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1814.13" cy="921.928" r="5.692"/>
+      <circle id="station-gankeng" inkscape:label="Gankeng=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1753.134" cy="913.036" r="5.692"/>
+      <circle id="station-xuexiang" inkscape:label="Xuexiang=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1617.18" cy="864.019" r="5.692"/>
+      <circle id="station-gangtou" inkscape:label="Gangtou=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1581.677" cy="865.857" r="5.692"/>
+      <circle id="station-huawei" inkscape:label="Huawei=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1560.508" cy="900.219" r="5.692"/>
+      <circle id="station-bei-er-road" inkscape:label="Bei'er_Road=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1556.787" cy="945.96" r="5.692"/>
+      <circle id="station-bantian-north" inkscape:label="Bantian_North=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1540.311" cy="983.778" r="5.692"/>
+      <circle id="station-guangyayuan" inkscape:label="Guangyayuan=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1529.446" cy="1080.179" r="5.692"/>
+      <circle id="station-nankeng" inkscape:label="Nankeng=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1528.14" cy="1112.885" r="5.692"/>
+      <circle id="station-yabao" inkscape:label="Yabao=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1526.927" cy="1148.08" r="5.692"/>
+      <circle id="station-donggualing" inkscape:label="Donggualing=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1562.807" cy="1379.973" r="5.692"/>
+      <circle id="station-futian-checkpoint-10" inkscape:label="Futian_Checkpoint=2020_08_18" data-logos="metro" data-lines="10=2020_08_18" cx="1560.145" cy="1627.564" r="5.692"/>
+      <circle id="station-bitou" inkscape:label="Bitou=2016_06_28" data-logos="metro" data-lines="11=2016_06_28" cx="336.901" cy="183.776" r="5.692"/>
+      <circle id="station-houting" inkscape:label="Houting=2016_06_28" data-logos="metro" data-lines="11=2016_06_28" cx="369.62" cy="348.947" r="5.692"/>
+      <circle id="station-shajing" inkscape:label="Shajing=2016_06_28" data-logos="metro" data-lines="11=2016_06_28" cx="357.57" cy="467.195" r="5.692"/>
+      <circle id="station-ma-anshan" inkscape:label="Ma'anshan=2016_06_28" data-logos="metro" data-lines="11=2016_06_28" cx="320.871" cy="540.315" r="5.692"/>
+      <circle id="station-tangwei" inkscape:label="Tangwei=2016_06_28" data-logos="metro" data-lines="11=2016_06_28" cx="325.545" cy="621.031" r="5.692"/>
+      <circle id="station-qiaotou" inkscape:label="Qiaotou=2016_06_28" data-logos="metro" data-lines="11=2016_06_28" cx="289.921" cy="697.736" r="5.692"/>
+      <circle id="station-fuyong" inkscape:label="Fuyong=2016_06_28-2022_11_28" data-logos="metro" data-lines="11=2016_06_28-2022_11_28" cx="267.46" cy="774.325" r="5.692"/>
+      <rect id="station-fuyong--2022-11-28" inkscape:label="Fuyong=2022_11_28" data-logos="metro" data-lines="11=2022_11_28,12=2022_11_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(271.078,769.059) rotate(-145.513)"/>
+      <circle id="station-airport-north" inkscape:label="Airport_North=2016_06_28-2021_12_28" data-logos="metro" data-lines="11=2016_06_28-2021_12_28" cx="227.717" cy="894.74" r="5.692"/>
+      <rect id="station-airport-north--2021-12-28" inkscape:label="Airport_North=2021_12_28" data-logos="metro" data-lines="11=2021_12_28,20=2021_12_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(229.289,893.795) rotate(-121.013)"/>
+      <circle id="station-airport" inkscape:label="Airport=2016_06_28" data-logos="metro" data-lines="11=2016_06_28" cx="306.081" cy="1042.13" r="5.692"/>
+      <circle id="station-bihaiwan" inkscape:label="Bihaiwan=2016_06_28" data-logos="metro" data-lines="11=2016_06_28" cx="516.97" cy="1302.619" r="5.692"/>
+      <circle id="station-bao-an" inkscape:label="Bao'an=2016_06_28" data-logos="metro" data-lines="11=2016_06_28" cx="635.83" cy="1411.263" r="5.692"/>
+      <circle id="station-nanshan" inkscape:label="Nanshan=2016_06_28-2022_11_28" data-logos="metro" data-lines="11=2016_06_28-2022_11_28" cx="849.915" cy="1574.901" r="5.692"/>
+      <rect id="station-nanshan--2022-11-28" inkscape:label="Nanshan=2022_11_28" data-logos="metro" data-lines="11=2022_11_28,12=2022_11_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(849.892,1575.068) rotate(7.805)"/>
+      <circle id="station-zuopaotai-east" inkscape:label="Zuopaotai_East=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="732.899" cy="1865.855" r="5.692"/>
+      <circle id="station-taiziwan" inkscape:label="Taiziwan=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="788.909" cy="1849.509" r="5.692"/>
+      <circle id="station-huaguoshan" inkscape:label="Huaguoshan=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="827.225" cy="1737.497" r="5.692"/>
+      <circle id="station-sihai" inkscape:label="Sihai=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="841.993" cy="1702.964" r="5.692"/>
+      <circle id="station-nanguang" inkscape:label="Nanguang=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="853.014" cy="1615.334" r="5.692"/>
+      <circle id="station-nantou-ancient-city" inkscape:label="Nantou_Ancient_City=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="853.142" cy="1495.568" r="5.692"/>
+      <circle id="station-zhongshan-park" inkscape:label="Zhongshan_Park=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="849.103" cy="1454.085" r="5.692"/>
+      <circle id="station-tongle-south" inkscape:label="Tongle_South=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="826.08" cy="1400.221" r="5.692"/>
+      <circle id="station-xin-an-park" inkscape:label="Xin'an_Park=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="785.994" cy="1369.977" r="5.692"/>
+      <circle id="station-shangchuan" inkscape:label="Shangchuan=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="713.948" cy="1291.652" r="5.692"/>
+      <circle id="station-liutang" inkscape:label="Liutang=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="679.877" cy="1254.704" r="5.692"/>
+      <circle id="station-bao-an-passenger-transport-terminal" inkscape:label="Bao'an_Passenger_Transport_Terminal=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="654.482" cy="1227.091" r="5.692"/>
+      <circle id="station-baotian-1st-road" inkscape:label="Baotian_1st_Road=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="627.473" cy="1197.79" r="5.692"/>
+      <circle id="station-pingluan-hill" inkscape:label="Pingluan_Hill=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="582.792" cy="1149.37" r="5.692"/>
+      <circle id="station-xixiang-taoyuan" inkscape:label="Xixiang_Taoyuan=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="545.087" cy="1108.528" r="5.692"/>
+      <circle id="station-zhongwu-south" inkscape:label="Zhongwu_South=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="528.958" cy="1065.716" r="5.692"/>
+      <circle id="station-huangtian" inkscape:label="Huangtian=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="464.766" cy="1005.551" r="5.692"/>
+      <circle id="station-xingwei" inkscape:label="Xingwei=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="409.101" cy="939.37" r="5.692"/>
+      <circle id="station-fuwei" inkscape:label="Fuwei=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="344.019" cy="864.451" r="5.692"/>
+      <circle id="station-huaide" inkscape:label="Huaide=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="331.37" cy="814.092" r="5.692"/>
+      <circle id="station-qiaotou-west" inkscape:label="Qiaotou_West=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="223.802" cy="724.758" r="5.692"/>
+      <circle id="station-fuhai-west" inkscape:label="Fuhai_West=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="184.096" cy="694.518" r="5.692"/>
+      <circle id="station-shenzhen-world" inkscape:label="Shenzhen_World=2021_12_28-2022_11_28" data-logos="metro" data-lines="20=2021_12_28-2022_11_28" cx="127.42" cy="655.703" r="5.692"/>
+      <rect id="station-shenzhen-world--2022-11-28" inkscape:label="Shenzhen_World=2022_11_28" data-logos="metro" data-lines="12=2022_11_28,20=2022_11_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(128.987,655.476) rotate(81.76)"/>
+      <circle id="station-shenzhen-world-north" inkscape:label="Shenzhen_World_North=2021_12_28-2022_11_28" data-logos="metro" data-lines="20=2021_12_28-2022_11_28" cx="119.923" cy="604.734" r="5.692"/>
+      <rect id="station-shenzhen-world-north--2022-11-28" inkscape:label="Shenzhen_World_North=2022_11_28" data-logos="metro" data-lines="12=2022_11_28,20=2022_11_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(121.516,604.547) rotate(83.294)"/>
+      <circle id="station-waterlands-resort-south" inkscape:label="Waterlands_Resort_South=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="110.155" cy="532.887" r="5.692"/>
+      <circle id="station-waterlands-resort-east" inkscape:label="Waterlands_Resort_East=2022_11_28" data-logos="metro" data-lines="12=2022_11_28" cx="145.019" cy="467.934" r="5.692"/>
+      <circle id="station-luohu-north" inkscape:label="Luohu_North=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="1789.196" cy="1270.97" r="5.692"/>
+      <circle id="station-shiyaling" inkscape:label="Shiyaling=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="1908.876" cy="1019.516" r="5.692"/>
+      <circle id="station-liuyue-north" inkscape:label="Liuyue_North=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="2098.526" cy="942.154" r="5.692"/>
+      <circle id="station-silian" inkscape:label="Silian=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="2191.449" cy="906.713" r="5.692"/>
+      <circle id="station-aobei" inkscape:label="Aobei=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="2287.292" cy="798.418" r="5.692"/>
+      <circle id="station-zhangbei" inkscape:label="Zhangbei=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="2468.535" cy="675.754" r="5.692"/>
+      <circle id="station-nanyue" inkscape:label="Nanyue=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="2605.318" cy="696.723" r="5.692"/>
+      <circle id="station-baolong" inkscape:label="Baolong=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="2704.748" cy="695.788" r="5.692"/>
+      <circle id="station-jinlong" inkscape:label="Jinlong=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="2900.125" cy="726.502" r="5.692"/>
+      <circle id="station-pingshanwei" inkscape:label="Pingshanwei=2022_10_28-2022_12_28" data-logos="metro" data-lines="14=2022_10_28-2022_12_28" cx="2930.641" cy="683.797" r="5.692"/>
+      <rect id="station-pingshanwei--2022-12-28" inkscape:label="Pingshanwei=2022_12_28" data-logos="metro" data-lines="14=2022_12_28,16=2022_12_28" x="-5.692" y="-7.492" width="11.385" height="14.985" rx="5.692" transform="translate(2930.641,686.047) rotate(0)"/>
+      <circle id="station-pingshan-square" inkscape:label="Pingshan_Square=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="2955.438" cy="632.248" r="5.692"/>
+      <circle id="station-pingshan-center" inkscape:label="Pingshan_Center=2022_10_28" data-logos="metro" data-lines="14=2022_10_28,skyshuttle=2022_12_28" cx="2974.633" cy="584.6" r="5.692"/>
+      <circle id="station-kengzi" inkscape:label="Kengzi=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="3065.888" cy="390.059" r="5.692"/>
+      <circle id="station-shatian" inkscape:label="Shatian=2022_10_28" data-logos="metro" data-lines="14=2022_10_28" cx="3214.114" cy="331.881" r="5.692"/>
+      <circle id="station-convention-exhibition-city" inkscape:label="Convention_&amp;_Exhibition_City=2021_12_28" data-logos="metro" data-lines="20=2021_12_28" cx="86.766" cy="566.36" r="5.692"/>
+      <circle id="station-shenzhen-world-south" inkscape:label="Shenzhen_World_South=2021_12_28" data-logos="metro" data-lines="20=2021_12_28" cx="128.223" cy="718.516" r="5.692"/>
+      <circle id="station-wutong-mountain-south" inkscape:label="Wutong_Mountain_South=2020_10_28" data-logos="metro" data-lines="8=2020_10_28" cx="2134.918" cy="1394.974" r="5.692"/>
+      <circle id="station-shatoujiao" inkscape:label="Shatoujiao=2020_10_28" data-logos="metro" data-lines="8=2020_10_28" cx="2331.981" cy="1413.099" r="5.692"/>
+      <circle id="station-haishan" inkscape:label="Haishan=2020_10_28" data-logos="metro" data-lines="8=2020_10_28" cx="2405.551" cy="1407.828" r="5.692"/>
+      <circle id="station-yantian-port-west" inkscape:label="Yantian_Port_West=2020_10_28" data-logos="metro" data-lines="8=2020_10_28" cx="2451.486" cy="1371.482" r="5.692"/>
+      <circle id="station-shenwai-senior-campus" inkscape:label="Shenwai_Senior_Campus=2020_10_28" data-logos="metro" data-lines="8=2020_10_28" cx="2439.374" cy="1256.411" r="5.692"/>
+      <circle id="station-yantian-road" inkscape:label="Yantian_Road=2020_10_28" data-logos="metro" data-lines="8=2020_10_28" cx="2490.684" cy="1233.993" r="5.692"/>
+      <circle id="station-shenzhen-bay-checkpoint" inkscape:label="Shenzhen_Bay_Checkpoint=2024_12_28" data-logos="mtr" data-lines="13=2024_12_28" cx="981.842" cy="1688.87" r="5.692"/>
+      <circle id="station-talent-park" inkscape:label="Talent_Park=2024_12_28" data-logos="mtr" data-lines="13=2024_12_28" cx="946.927" cy="1641.354" r="5.692"/>
+      <circle id="station-hi-tech-central" inkscape:label="Hi-Tech_Central=2024_12_28" data-logos="mtr" data-lines="13=2024_12_28" cx="957.563" cy="1452.973" r="5.692"/>
+      <circle id="station-hi-tech-north" inkscape:label="Hi-Tech_North=2025_12_28" data-logos="mtr" data-lines="13=2025_12_28" cx="958.379" cy="1400.303" r="5.692"/>
+      <circle id="station-shigu" inkscape:label="Shigu=2025_12_28" data-logos="mtr" data-lines="13=2025_12_28" cx="950.967" cy="1303.817" r="5.692"/>
+      <circle id="station-baiwang" inkscape:label="Baiwang=2025_12_28" data-logos="mtr" data-lines="13=2025_12_28" cx="926.947" cy="1048.754" r="5.692"/>
+      <circle id="station-yingrenshi" inkscape:label="Yingrenshi=2025_12_28" data-logos="mtr" data-lines="13=2025_12_28" cx="864.57" cy="931.59" r="5.692"/>
+      <circle id="station-luozu" inkscape:label="Luozu=2025_12_28" data-logos="mtr" data-lines="13=2025_12_28" cx="900.104" cy="803.206" r="5.692"/>
+      <circle id="station-shiyan" inkscape:label="Shiyan=2025_12_28" data-logos="mtr" data-lines="13=2025_12_28" cx="923.24" cy="737.774" r="5.692"/>
+      <circle id="station-hong-ao-park" inkscape:label="Hong'ao_Park=2026_06_28" data-logos="mtr" data-lines="13=2026_06_28" cx="962.921" cy="504.737" r="5.692"/>
+      <circle id="station-guangmingcheng" inkscape:label="Guangmingcheng=2025_09_28-2026_06_28" data-logos="metro" data-lines="6b=2025_09_28-2026_06_28" cx="998.874" cy="459.916" r="5.692"/>
+      <rect id="station-guangmingcheng--2026-06-28" inkscape:label="Guangmingcheng=2026_06_28" data-logos="metro,mtr" data-lines="13=2026_06_28,6b=2026_06_28" x="-5.692" y="-7.493" width="11.385" height="14.985" rx="5.692" transform="translate(998.874,457.666) rotate(-0)"/>
+      <circle id="station-deya-road" inkscape:label="Deya_Road=2026_06_28" data-logos="mtr" data-lines="13=2026_06_28" cx="966.798" cy="423.581" r="5.692"/>
+      <circle id="station-yueliang-road" inkscape:label="Yueliang_Road=2026_06_28" data-logos="mtr" data-lines="13=2026_06_28" cx="787.685" cy="381.194" r="5.692"/>
+      <circle id="station-jiangwei" inkscape:label="Jiangwei=2026_06_28" data-logos="mtr" data-lines="13=2026_06_28" cx="761.896" cy="324.686" r="5.692"/>
+      <circle id="station-xinzhuang" inkscape:label="Xinzhuang=2026_06_28" data-logos="mtr" data-lines="13=2026_06_28" cx="748.035" cy="275.944" r="5.692"/>
+      <circle id="station-shangcun" inkscape:label="Shangcun=2026_06_28" data-logos="mtr" data-lines="13=2026_06_28" cx="705.161" cy="177.296" r="5.692"/>
+      <circle id="station-xiacun" inkscape:label="Xiacun=2026_06_28" data-logos="mtr" data-lines="13=2026_06_28" cx="706.616" cy="129.886" r="5.692"/>
+      <circle id="station-lisonglang" inkscape:label="Lisonglang=2026_06_28" data-logos="mtr" data-lines="13=2026_06_28" cx="705.920" cy="70.282" r="5.692"/>
+      <circle id="station-yuanshan-xikeng" inkscape:label="Yuanshan_Xikeng=2025_09_28" data-logos="metro" data-lines="16=2025_09_28" cx="2343.797" cy="1083.072" r="5.692"/>
+      <circle id="station-anliang" inkscape:label="Anliang=2025_09_28" data-logos="metro" data-lines="16=2025_09_28" cx="2317.939" cy="1020.41" r="5.692"/>
+      <circle id="station-fukeng" inkscape:label="Fukeng=2025_09_28" data-logos="metro" data-lines="16=2025_09_28" cx="2329.542" cy="977.665" r="5.692"/>
+      <circle id="station-dakang" inkscape:label="Dakang=2025_09_28" data-logos="metro" data-lines="16=2025_09_28" cx="2365.496" cy="958.859" r="5.692"/>
+      <circle id="station-yuanshan" inkscape:label="Yuanshan=2025_09_28" data-logos="metro" data-lines="16=2025_09_28" cx="2408.392" cy="924.926" r="5.692"/>
+      <circle id="station-da-an" inkscape:label="Da'an=2025_09_28" data-logos="metro" data-lines="16=2025_09_28" cx="2397.817" cy="874.456" r="5.692"/>
+      <circle id="station-jixi" inkscape:label="Jixi=2025_09_28" data-logos="metro" data-lines="16=2025_09_28" cx="2381.5" cy="844.82" r="5.692"/>
+      <circle id="station-jinyuan" inkscape:label="Jinyuan=2025_09_28" data-logos="metro" data-lines="16=2025_09_28" cx="2376.245" cy="776.484" r="5.692"/>
+      <circle id="station-universiade-center" inkscape:label="Universiade_Center=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2321.611" cy="656.283" r="5.692"/>
+      <circle id="station-longcheng-park" inkscape:label="Longcheng_Park=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2311.286" cy="608.563" r="5.692"/>
+      <circle id="station-huanggekeng" inkscape:label="Huanggekeng=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2310.204" cy="529.034" r="5.692"/>
+      <circle id="station-yuyuan" inkscape:label="Yuyuan=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2335.753" cy="480.443" r="5.692"/>
+      <circle id="station-huilongpu" inkscape:label="Huilongpu=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2398.139" cy="475.734" r="5.692"/>
+      <circle id="station-shangjing" inkscape:label="Shangjing=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2436.796" cy="474.745" r="5.692"/>
+      <circle id="station-shengping" inkscape:label="Shengping=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2480.344" cy="462.783" r="5.692"/>
+      <circle id="station-longyuan" inkscape:label="Longyuan=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2548.744" cy="465.724" r="5.692"/>
+      <circle id="station-xintangwei" inkscape:label="Xintangwei=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2646.44" cy="494.88" r="5.692"/>
+      <circle id="station-longdong" inkscape:label="Longdong=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2697.588" cy="516.105" r="5.692"/>
+      <circle id="station-baolong-tongle" inkscape:label="Baolong_Tongle=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2776.361" cy="582.957" r="5.692"/>
+      <circle id="station-pingshan" inkscape:label="Pingshan=2022_12_28" data-logos="metro" data-lines="16=2022_12_28,skyshuttle=2022_12_28" cx="2852.067" cy="600.972" r="5.692"/>
+      <circle id="station-xinhe" inkscape:label="Xinhe=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2890.82" cy="615.237" r="5.692"/>
+      <circle id="station-liuhe" inkscape:label="Liuhe=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2902.237" cy="654.889" r="5.692"/>
+      <circle id="station-pinghuan" inkscape:label="Pinghuan=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="2945.965" cy="711.516" r="5.692"/>
+      <circle id="station-dongjiang-column-memorial-hall" inkscape:label="Dongjiang_Column_Memorial_Hall=2022_12_28" data-logos="metro" data-lines="16=2022_12_28,skyshuttle=2022_12_28" cx="2991.387" cy="707.728" r="5.692"/>
+      <circle id="station-shabo" inkscape:label="Shabo=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="3036.171" cy="705.85" r="5.692"/>
+      <circle id="station-yanzihu" inkscape:label="Yanzihu=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="3086.859" cy="695.373" r="5.692"/>
+      <circle id="station-shijing" inkscape:label="Shijing=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="3127.252" cy="676.861" r="5.692"/>
+      <circle id="station-technology-university" inkscape:label="Technology_University=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="3212.719" cy="642.032" r="5.692"/>
+      <circle id="station-tianxin" inkscape:label="Tianxin=2022_12_28" data-logos="metro" data-lines="16=2022_12_28" cx="3281.2" cy="667.092" r="5.692"/>
+      <circle id="station-liyuan" inkscape:label="Liyuan=2024_12_28" data-logos="metro" data-lines="3=2024_12_28" cx="2625.273" cy="446.951" r="5.692"/>
+      <circle id="station-xinsheng" inkscape:label="Xinsheng=2024_12_28" data-logos="metro" data-lines="3=2024_12_28" cx="2631.584" cy="374.483" r="5.692"/>
+      <circle id="station-pingxi" inkscape:label="Pingxi=2024_12_28" data-logos="metro" data-lines="3=2024_12_28" cx="2627.086" cy="293.507" r="5.692"/>
+      <circle id="station-low-carbon-city" inkscape:label="Low_Carbon_City=2024_12_28" data-logos="metro" data-lines="3=2024_12_28" cx="2664.765" cy="250.375" r="5.692"/>
+      <circle id="station-baishitang" inkscape:label="Baishitang=2024_12_28" data-logos="metro" data-lines="3=2024_12_28" cx="2728.919" cy="229.186" r="5.692"/>
+      <circle id="station-fuping" inkscape:label="Fuping=2024_12_28" data-logos="metro" data-lines="3=2024_12_28" cx="2768.824" cy="202.769" r="5.692"/>
+      <circle id="station-pingdi-liulian" inkscape:label="Pingdi_Liulian=2024_12_28" data-logos="metro" data-lines="3=2024_12_28" cx="2824.95" cy="165.907" r="5.692"/>
+      <circle id="station-biyan" inkscape:label="Biyan=2025_09_28" data-logos="metro" data-lines="6b=2025_09_28" cx="986.78" cy="316.09" r="5.692"/>
+      <circle id="station-hongqiao-park" inkscape:label="Hongqiao_Park=2025_09_28" data-logos="metro" data-lines="6b=2025_09_28" cx="982.154" cy="361.836" r="5.692"/>
+      <circle id="station-szu-lihu-campus" inkscape:label="SZU_Lihu_Campus=2024_12_28" data-logos="metro" data-lines="7=2024_12_28" cx="1170.645" cy="1206.648" r="5.692"/>
+      <circle id="station-peking-university" inkscape:label="Peking_University=2024_12_28" data-logos="metro" data-lines="7=2024_12_28" cx="1121.63" cy="1201.01" r="5.692"/>
+      <circle id="station-hong-anwei" inkscape:label="Hong'anwei=2023_12_27" data-logos="metro" data-lines="8=2023_12_27" cx="2573.645" cy="1230.910" r="5.692"/>
+      <circle id="station-yantianxu" inkscape:label="Yantianxu=2023_12_27" data-logos="metro" data-lines="8=2023_12_27" cx="2595.308" cy="1237.320" r="5.692"/>
+      <circle id="station-dameisha" inkscape:label="Dameisha=2023_12_27" data-logos="metro" data-lines="8=2023_12_27" cx="2754.352" cy="1200.659" r="5.692"/>
+      <circle id="station-xiaomeisha" inkscape:label="Xiaomeisha=2023_12_27" data-logos="metro" data-lines="8=2023_12_27" cx="2843.871" cy="1160.445" r="5.692"/>
+      <circle id="station-xichong" inkscape:label="Xichong=2025_12_28" data-logos="metro" data-lines="8=2025_12_28" cx="3011.859" cy="1105.675" r="5.692"/>
+      <circle id="station-fuxing" inkscape:label="Fuxing=2024_12_28" data-logos="metro" data-lines="11=2024_12_28" cx="1630.769" cy="1505.538" r="5.692"/>
+      <circle id="station-hongling-south-11" inkscape:label="Hongling_South=2025_12_28" data-logos="metro" data-lines="11=2025_12_28" cx="1742.846" cy="1512.038" r="5.692"/>
+      <circle id="station-haoxiang" inkscape:label="Haoxiang=2024_12_28" data-logos="metro" data-lines="12=2024_12_28" cx="188.094" cy="413.877" r="5.692"/>
+      <circle id="station-shahao" inkscape:label="Shahao=2024_12_28" data-logos="metro" data-lines="12=2024_12_28" cx="245.444" cy="418.937" r="5.692"/>
+      <circle id="station-shajing-ancient-market" inkscape:label="Shajing_Ancient_Market=2024_12_28" data-logos="metro" data-lines="12=2024_12_28" cx="279.019" cy="393.732" r="5.692"/>
+      <circle id="station-buchong" inkscape:label="Buchong=2024_12_28" data-logos="metro" data-lines="12=2024_12_28" cx="298.963" cy="319.512" r="5.692"/>
+      <circle id="station-langxia" inkscape:label="Langxia=2024_12_28" data-logos="metro" data-lines="12=2024_12_28" cx="326.685" cy="269.279" r="5.692"/>
+      <circle id="station-hubei-5" inkscape:label="Hubei=2025_12_28" data-logos="metro" data-lines="5=2025_12_28" cx="1849.519" cy="1453.765" r="5.692"/>
+      <circle id="station-dongmen" inkscape:label="Dongmen=2025_12_28" data-logos="metro" data-lines="5=2025_12_28" cx="1795.109" cy="1496.498" r="5.692"/>
     </g>
   </g>
 </svg>

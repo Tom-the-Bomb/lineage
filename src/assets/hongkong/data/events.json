@@ -103,6 +103,12 @@
     ]
   },
   {
+    "date": "1979-09-30",
+    "descriptions": [
+      "Modified Initial System: Shek Kip Mei - Kwun Tong open-day rides with $15 commemorative tickets"
+    ]
+  },
+  {
     "date": "1979-10-01",
     "descriptions": [
       "Modified Initial System: Shek Kip Mei - Kwun Tong opens"
@@ -223,7 +229,19 @@
   {
     "date": "1988-09-14",
     "descriptions": [
-      "KCR Light Rail: Tuen Mun - Yuen Long public preview opens; regular service begins on 18 September"
+      "KCR Light Rail: Tuen Mun - Yuen Long free public rides begin"
+    ]
+  },
+  {
+    "date": "1988-09-17",
+    "descriptions": [
+      "KCR Light Rail: Tuen Mun - Yuen Long free public rides end"
+    ]
+  },
+  {
+    "date": "1988-09-18",
+    "descriptions": [
+      "KCR Light Rail: Tuen Mun - Yuen Long opens"
     ]
   },
   {
@@ -325,7 +343,14 @@
   {
     "date": "2003-12-16",
     "descriptions": [
+      "KCR West Rail: Nam Cheong - Tuen Mun charity trial rides begin",
       "Tung Chung Line: Nam Cheong opens"
+    ]
+  },
+  {
+    "date": "2003-12-19",
+    "descriptions": [
+      "KCR West Rail: Nam Cheong - Tuen Mun charity trial rides end"
     ]
   },
   {
@@ -335,10 +360,34 @@
     ]
   },
   {
+    "date": "2004-10-17",
+    "descriptions": [
+      "KCR East Rail: Hung Hom - East Tsim Sha Tsui one-day public trial rides"
+    ]
+  },
+  {
+    "date": "2004-10-18",
+    "descriptions": [
+      "KCR East Rail: Hung Hom - East Tsim Sha Tsui public trial rides end"
+    ]
+  },
+  {
     "date": "2004-10-24",
     "descriptions": [
       "East Tsim Sha Tsui - Tsim Sha Tsui: out-of-station interchange opens",
       "KCR East Rail: Hung Hom - East Tsim Sha Tsui opens"
+    ]
+  },
+  {
+    "date": "2004-12-19",
+    "descriptions": [
+      "Ma On Shan Rail: Tai Wai - Wu Kai Sha one-day charity rides"
+    ]
+  },
+  {
+    "date": "2004-12-20",
+    "descriptions": [
+      "Ma On Shan Rail: Tai Wai - Wu Kai Sha charity rides end"
     ]
   },
   {

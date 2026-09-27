@@ -1,0 +1,144 @@
+{
+    "lines": [
+        {
+            "id": "1",
+            "label": "Line_1=1974_08_15",
+            "color": "#0052a4"
+        },
+        {
+            "id": "2",
+            "label": "Line_2=1980_10_31",
+            "color": "#00a84d"
+        },
+        {
+            "id": "3",
+            "label": "Line_3=1985_07_12",
+            "color": "#ef7c1c"
+        },
+        {
+            "id": "4",
+            "label": "Line_4=1985_04_20",
+            "color": "#00a5de"
+        },
+        {
+            "id": "5",
+            "label": "Line_5=1995_11_15",
+            "color": "#996cac"
+        },
+        {
+            "id": "6",
+            "label": "Line_6=2000_08_07",
+            "color": "#cd7c2f"
+        },
+        {
+            "id": "7",
+            "label": "Line_7=1996_10_11",
+            "color": "#747f00"
+        },
+        {
+            "id": "8",
+            "label": "Line_8=1996_11_23",
+            "color": "#e6186c"
+        },
+        {
+            "id": "9",
+            "label": "Line_9=2009_07_24",
+            "color": "#bdb092"
+        },
+        {
+            "id": "incheon1",
+            "label": "Incheon_Line_1=1999_10_06",
+            "color": "#7ca8d5"
+        },
+        {
+            "id": "incheon2",
+            "label": "Incheon_Line_2=2016_07_30",
+            "color": "#ed8b00"
+        },
+        {
+            "id": "gyeongui",
+            "label": "Gyeongui_Line=2009_07_01-2014_12_27,Gyeongui–Jungang_Line=2014_12_27",
+            "color": "#77c4a3"
+        },
+        {
+            "id": "jungang",
+            "label": "Yongsan–Deokso_Line=2005_12_16-2007_12_27,Jungang_Line=2007_12_27-2014_12_27",
+            "color": "#77c4a3"
+        },
+        {
+            "id": "bundang",
+            "label": "Bundang_Line=1994_09_01-2020_09_12,Suin–Bundang_Line=2020_09_12",
+            "color": "#f5a200"
+        },
+        {
+            "id": "suin",
+            "label": "Suin_Line=2012_06_30-2020_09_12",
+            "color": "#f5a200"
+        },
+        {
+            "id": "gyeongchun",
+            "label": "Gyeongchun_Line=2010_12_21",
+            "color": "#0c8e72"
+        },
+        {
+            "id": "gyeonggang",
+            "label": "Gyeonggang_Line=2016_09_24",
+            "color": "#003da5"
+        },
+        {
+            "id": "arex",
+            "label": "AREX=2007_03_23",
+            "color": "#0090d2"
+        },
+        {
+            "id": "shinbundang",
+            "label": "Shinbundang_Line=2011_10_28",
+            "color": "#d4003b"
+        },
+        {
+            "id": "seohae",
+            "label": "Seohae_Line=2018_06_16",
+            "color": "#8fc31f"
+        },
+        {
+            "id": "ui",
+            "label": "Ui–Sinseol_Line=2017_09_02",
+            "color": "#b7c452",
+            "simplified": true
+        },
+        {
+            "id": "sillim",
+            "label": "Sillim_Line=2022_05_28",
+            "color": "#6789ca",
+            "simplified": true
+        },
+        {
+            "id": "gimpo",
+            "label": "Gimpo_Goldline=2019_09_28",
+            "color": "#ad8605",
+            "simplified": true
+        },
+        {
+            "id": "everline",
+            "label": "EverLine=2013_04_26",
+            "color": "#6fb245",
+            "simplified": true
+        },
+        {
+            "id": "u",
+            "label": "U_Line=2012_06_29",
+            "color": "#fda600",
+            "simplified": true
+        },
+        {
+            "id": "maglev",
+            "label": "Incheon_Airport_Maglev=2016_02_03-2022_07_14",
+            "color": "#ffcd12"
+        },
+        {
+            "id": "gtxa",
+            "label": "GTX-A=2024_03_30",
+            "color": "#9a6292"
+        }
+    ]
+}

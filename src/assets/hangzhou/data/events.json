@@ -2,9 +2,22 @@
   {
     "date": "2012-11-18",
     "descriptions": [
-      "Line 1: Xianghu - Wenze Road opens",
+      "Line 1: Coach Center - Linping public preview rides begin",
+      "Line 1: Xianghu - Wenze Road public preview rides begin, bypassing East Railway Station"
+    ]
+  },
+  {
+    "date": "2012-11-22",
+    "descriptions": [
+      "Line 1: Coach Center - Linping public preview rides end",
+      "Line 1: Xianghu - Wenze Road public preview rides end"
+    ]
+  },
+  {
+    "date": "2012-11-24",
+    "descriptions": [
       "Line 1: Coach Center - Linping opens",
-      "Public preview rides begin; regular service follows on 24 November. East Railway Station remains closed"
+      "Line 1: Xianghu - Wenze Road opens, initially bypassing East Railway Station"
     ]
   },
   {
@@ -16,8 +29,19 @@
   {
     "date": "2014-11-18",
     "descriptions": [
-      "Line 2: Chaoyang - Qianjiang Road opens",
-      "Public preview rides begin; regular service follows on 24 November. Qianjiang Century City remains closed"
+      "Line 2: Chaoyang - Qianjiang Road public preview rides begin, bypassing Qianjiang Century City"
+    ]
+  },
+  {
+    "date": "2014-11-23",
+    "descriptions": [
+      "Line 2: Chaoyang - Qianjiang Road public preview rides end"
+    ]
+  },
+  {
+    "date": "2014-11-24",
+    "descriptions": [
+      "Line 2: Chaoyang - Qianjiang Road opens, initially bypassing Qianjiang Century City"
     ]
   },
   {
