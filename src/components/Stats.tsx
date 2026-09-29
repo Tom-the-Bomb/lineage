@@ -3,7 +3,7 @@ import chevronDown from '../assets/chevron-down.svg';
 import Figure from './Figure';
 import useScrollOverflow from '../hooks/useScrollOverflow';
 
-export interface LineBar {
+interface LineBar {
     id: string;
     name: string;
     color: string;

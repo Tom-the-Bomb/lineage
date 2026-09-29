@@ -89,7 +89,6 @@ export interface SystemConfig {
     lines: { id: string; label: string; color: string }[];
     events: ChangelogEvent[];
     milestoneDates: string[];
-    article?: string;
     operators: Record<string, { src: string; alt: string }>;
     initialBounds: [number, number];
     initialView?: { center: [number, number]; zoom: number };
@@ -114,7 +113,6 @@ export const systems = {
         lines: hongkongLines.lines,
         events: hongkongEvents,
         milestoneDates: ['1910-10-01', '1979-10-01', '1985-05-31', '1998-07-06', '2022-05-15'],
-        article: '/hongkong/article',
         operators: {
             mtr: { src: hongkongLogo, alt: 'MTR' },
             kcr: { src: kcrLogo, alt: 'KCR' },

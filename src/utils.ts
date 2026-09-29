@@ -21,8 +21,8 @@ export function playPause(
     });
 }
 
-export function formatDate(date: Date, end: number = 10): string {
-    return date.toISOString().slice(0, end).replace(/-/g, '/');
+export function formatDate(date: Date): string {
+    return date.toISOString().slice(0, 10).replace(/-/g, '/');
 }
 
 export function clamp(value: number, min: number, max: number): number {

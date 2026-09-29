@@ -182,7 +182,6 @@ export default function Map({ system }: { system: SystemKey }) {
         () =>
             config.lines.map(line => ({
                 id: line.id,
-                label: line.label,
                 color: line.color,
                 states: parseLabelDates(line.label),
             })),
@@ -445,7 +444,6 @@ export default function Map({ system }: { system: SystemKey }) {
     });
 
     const series = useMemo(() => {
-        // eventDates is sorted and unique (check_map.py) and none precedes minDate.
         const dates =
             eventDates[0] === minDate.getTime() ? eventDates : [minDate.getTime(), ...eventDates];
         return lengthSeries(tracks, legend, highlight, dates);
@@ -553,7 +551,7 @@ export default function Map({ system }: { system: SystemKey }) {
                         stations={stationMarkers}
                         time={time}
                         config={config}
-                        legend={legend}
+                        presentLines={presentLines}
                     />
                 )}
             </main>
@@ -609,7 +607,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     return (
                         <button
                             type="button"
-                            key={line.label}
+                            key={line.id}
                             onClick={() =>
                                 setHighlight(
                                     selected
