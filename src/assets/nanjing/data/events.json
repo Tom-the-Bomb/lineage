@@ -8,8 +8,7 @@
     {
         "date": "2005-08-12",
         "descriptions": [
-            "Line 1: Andemen, Sanshanjie, Zhangfuyuan and Zhonghuamen open for simulated operation",
-            "Line 1: Maigaoqiao - Xiaohang daily fare-paying simulated operation begins"
+            "Line 1: Maigaoqiao - Xiaohang daily simulated operation begins, now calling at Andemen, Sanshanjie, Zhangfuyuan and Zhonghuamen"
         ]
     },
     {
@@ -27,7 +26,7 @@
     {
         "date": "2010-05-28",
         "descriptions": [
-            "Line 1: Andemen - CPU opens, initially skipping Nanjing South Railway Station",
+            "Line 1: Andemen - CPU opens, initially bypassing Nanjing South Railway Station",
             "Line 2: Youfangqiao - Jingtianlu opens"
         ]
     },
@@ -40,7 +39,7 @@
     {
         "date": "2014-06-01",
         "descriptions": [
-            "Line 1: Andemen - Olympic Stadium is withdrawn for conversion to Line 10"
+            "Line 1: Andemen - Olympic Stadium closes, for conversion to Line 10"
         ]
     },
     {
@@ -66,7 +65,7 @@
     {
         "date": "2015-04-01",
         "descriptions": [
-            "Line 3: Linchang - Mozhoudonglu opens, initially skipping Shangyuanmen"
+            "Line 3: Linchang - Mozhoudonglu opens, initially bypassing Shangyuanmen"
         ]
     },
     {
@@ -109,7 +108,7 @@
     {
         "date": "2021-05-07",
         "descriptions": [
-            "Hexi Tram: the southern section beyond Baoshuangjie is withdrawn for reconstruction"
+            "Hexi Tram: Baoshuangjie - Yuzui closes, for reconstruction"
         ]
     },
     {
@@ -154,7 +153,8 @@
     {
         "date": "2024-09-15",
         "descriptions": [
-            "Hexi Tram: the rebuilt southern section reopens and interchange with Line 2 opens at Yuzui"
+            "Hexi Tram: Baoshuangjie - Yuzui opens, rebuilt",
+            "Yuzui: interchange with Hexi Tram opens"
         ]
     },
     {

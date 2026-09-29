@@ -2,14 +2,15 @@
     {
         "date": "1974-08-15",
         "descriptions": [
-            "Line 1: Seongbuk - Incheon opens",
-            "Line 1: Guro - Suwon opens"
+            "Line 1: Guro - Suwon opens",
+            "Line 1: Seongbuk - Incheon opens"
         ]
     },
     {
         "date": "1978-12-09",
         "descriptions": [
-            "Line 1: Yongsan - Hoegi opens"
+            "Cheongnyangni: out-of-station interchange opens",
+            "Line 1: Yongsan - Cheongnyangni opens, with trains continuing to Seongbuk"
         ]
     },
     {
@@ -27,22 +28,21 @@
     {
         "date": "1980-04-01",
         "descriptions": [
-            "Line 1: Hoegi opens",
-            "Line 1: Seobinggo opens",
-            "Line 1: Hannam opens"
+            "Line 1: Hannam opens",
+            "Line 1: Hoegi opens"
         ]
     },
     {
         "date": "1980-07-10",
         "descriptions": [
-            "Line 1: Seongsu → Eungbong"
+            "Seongsu → Eungbong"
         ]
     },
     {
         "date": "1980-10-31",
         "descriptions": [
-            "Line 2: Sports Complex - Seongsu opens",
-            "Line 2: Sinseol-dong - Seongsu opens"
+            "Line 2: Sinseol-dong - Seongsu opens",
+            "Line 2: Sports Complex - Seongsu opens"
         ]
     },
     {
@@ -72,15 +72,15 @@
     {
         "date": "1984-01-01",
         "descriptions": [
-            "Line 1: Yuljeon → Seongdae-ap"
+            "Yuljeon → Seongdae-ap"
         ]
     },
     {
         "date": "1984-05-22",
         "descriptions": [
-            "Line 2: City Hall - Seoul National University opens",
-            "Line 2: Euljiro 1-ga - City Hall opens",
-            "Line 1: Sindorim opens"
+            "Line 1: Sindorim opens",
+            "Line 2: City Hall - Seoul National University opens, completing the loop",
+            "Line 2: Euljiro 1-ga - City Hall opens"
         ]
     },
     {
@@ -98,13 +98,13 @@
     {
         "date": "1985-01-24",
         "descriptions": [
-            "Line 1: Seoul Station Entrance → Seoul"
+            "Seoul Station Entrance → Seoul"
         ]
     },
     {
         "date": "1985-03-01",
         "descriptions": [
-            "Line 2: Hwayang → Konkuk University"
+            "Hwayang → Konkuk University"
         ]
     },
     {
@@ -130,18 +130,17 @@
     {
         "date": "1985-10-18",
         "descriptions": [
+            "Line 1: Oksu opens",
             "Line 3: Dongnimmun - Yangjae opens",
-            "Line 4: Samseongyo - Sadang opens",
-            "Line 1: Oksu opens"
+            "Line 4: Samseongyo - Sadang opens"
         ]
     },
     {
         "date": "1985-10-24",
         "descriptions": [
-            "Line 2: Seoul Stadium → Dongdaemun Stadium",
-            "Line 4: Seoul Stadium → Dongdaemun Stadium",
-            "Line 4: Samseongyo → Hansung University",
-            "Line 4: Isu → Chongsin University"
+            "Isu → Chongsin University",
+            "Samseongyo → Hansung University",
+            "Seoul Stadium → Dongdaemun Stadium"
         ]
     },
     {
@@ -153,7 +152,7 @@
     {
         "date": "1987-05-01",
         "descriptions": [
-            "Line 3: Central Government Complex → Gyeongbokgung"
+            "Central Government Complex → Gyeongbokgung"
         ]
     },
     {
@@ -184,7 +183,7 @@
     {
         "date": "1990-04-01",
         "descriptions": [
-            "Line 3: Freight Terminal → Nambu Bus Terminal"
+            "Freight Terminal → Nambu Bus Terminal"
         ]
     },
     {
@@ -202,7 +201,7 @@
     {
         "date": "1992-03-20",
         "descriptions": [
-            "Line 2: Giji → Yongdap"
+            "Giji → Yongdap"
         ]
     },
     {
@@ -244,15 +243,16 @@
     {
         "date": "1994-04-01",
         "descriptions": [
-            "Line 4: Sadang - Indeogwon opens",
-            "Line 4: through running begins over the Gwacheon and Ansan lines, formerly the Line 1 branch"
+            "Line 1: Indeogwon - Geumjeong transfers to Line 4",
+            "Line 4: Geumjeong - Ansan opens, sharing the track with Line 1",
+            "Line 4: Sadang - Indeogwon opens"
         ]
     },
     {
         "date": "1994-07-11",
         "descriptions": [
-            "Line 1: Ganseok opens",
-            "Line 1: Dowon opens"
+            "Line 1: Dowon opens",
+            "Line 1: Ganseok opens"
         ]
     },
     {
@@ -264,7 +264,7 @@
     {
         "date": "1994-12-01",
         "descriptions": [
-            "Line 1: Seongdae-ap → Sungkyunkwan University"
+            "Seongdae-ap → Sungkyunkwan University"
         ]
     },
     {
@@ -282,7 +282,7 @@
     {
         "date": "1996-01-01",
         "descriptions": [
-            "Line 1: Hwigyeong → Hankuk University of Foreign Studies"
+            "Hwigyeong → Hankuk University of Foreign Studies"
         ]
     },
     {
@@ -331,14 +331,14 @@
     {
         "date": "1996-11-23",
         "descriptions": [
-            "Line 8: Jamsil - Moran opens",
-            "Bundang Line: Bokjeong opens"
+            "Bundang Line: Bokjeong opens",
+            "Line 8: Jamsil - Moran opens"
         ]
     },
     {
         "date": "1996-12-16",
         "descriptions": [
-            "Line 4: Beolmal → Pyeongchon"
+            "Beolmal → Pyeongchon"
         ]
     },
     {
@@ -350,7 +350,7 @@
     {
         "date": "1997-03-26",
         "descriptions": [
-            "Line 5: Gwanghuimun → Cheonggu"
+            "Gwanghuimun → Cheonggu"
         ]
     },
     {
@@ -362,21 +362,21 @@
     {
         "date": "1998-01-07",
         "descriptions": [
-            "Line 1: Singil opens",
-            "Line 1: Doksan opens"
+            "Line 1: Doksan opens",
+            "Line 1: Singil opens"
         ]
     },
     {
         "date": "1998-05-15",
         "descriptions": [
-            "Line 4: Government Complex 2 → Government Complex Gwacheon"
+            "Government Complex 2 → Government Complex Gwacheon"
         ]
     },
     {
         "date": "1998-10-01",
         "descriptions": [
-            "Line 8: Namhansanseong → Sanseong",
-            "Line 8: Dandae → Namhansanseong"
+            "Dandae → Namhansanseong",
+            "Namhansanseong → Sanseong"
         ]
     },
     {
@@ -400,7 +400,7 @@
     {
         "date": "2000-01-01",
         "descriptions": [
-            "Line 4: Seoul Racecourse → Seoul Racecourse Park"
+            "Seoul Racecourse → Seoul Racecourse Park"
         ]
     },
     {
@@ -418,9 +418,8 @@
     {
         "date": "2000-08-01",
         "descriptions": [
-            "Line 7: Konkuk University - Sinpung opens",
-            "Line 4: Chongsin University → Isu",
-            "Line 7: Chongsin University → Isu"
+            "Chongsin University → Isu",
+            "Line 7: Konkuk University - Sinpung opens"
         ]
     },
     {
@@ -438,16 +437,15 @@
     {
         "date": "2001-02-01",
         "descriptions": [
-            "Line 4: Isu → Chongsin University (Isu)",
-            "Line 7: Isu → Chongsin University (Isu)"
+            "Isu → Chongsin University (Isu)"
         ]
     },
     {
         "date": "2001-03-09",
         "descriptions": [
-            "Line 6: Itaewon opens",
-            "Line 6: Hangangjin opens",
             "Line 6: Beotigogae opens",
+            "Line 6: Hangangjin opens",
+            "Line 6: Itaewon opens",
             "Line 6: Yaksu opens"
         ]
     },
@@ -460,15 +458,15 @@
     {
         "date": "2002-09-25",
         "descriptions": [
-            "Bundang Line: Chorim → Sunae",
-            "Bundang Line: Baekgung → Jeongja"
+            "Baekgung → Jeongja",
+            "Chorim → Sunae"
         ]
     },
     {
         "date": "2003-04-30",
         "descriptions": [
-            "Line 1: Suwon - Byeongjeom opens",
-            "Line 1: residual Ansan branch service ends; Line 4 remains"
+            "Line 1: Geumjeong - Ansan closes, leaving the section to Line 4",
+            "Line 1: Suwon - Byeongjeom opens"
         ]
     },
     {
@@ -492,13 +490,13 @@
     {
         "date": "2004-03-29",
         "descriptions": [
-            "Line 7: Gwangmyeong → Gwangmyeongsageori"
+            "Gwangmyeong → Gwangmyeongsageori"
         ]
     },
     {
         "date": "2004-06-25",
         "descriptions": [
-            "Line 1: Bugok → Uiwang"
+            "Bugok → Uiwang"
         ]
     },
     {
@@ -510,13 +508,13 @@
     {
         "date": "2004-10-01",
         "descriptions": [
-            "Line 2: Guro Industrial Complex → Guro Digital Complex"
+            "Guro Industrial Complex → Guro Digital Complex"
         ]
     },
     {
         "date": "2004-11-26",
         "descriptions": [
-            "Bundang Line: Ori - Bojeong surface terminal opens; Jukjeon opens later"
+            "Bundang Line: Ori - Bojeong surface terminal opens, initially bypassing Jukjeon"
         ]
     },
     {
@@ -528,8 +526,7 @@
     {
         "date": "2005-07-01",
         "descriptions": [
-            "Line 1: Garibong → Gasan Digital Complex",
-            "Line 7: Garibong → Gasan Digital Complex"
+            "Garibong → Gasan Digital Complex"
         ]
     },
     {
@@ -541,8 +538,8 @@
     {
         "date": "2005-12-16",
         "descriptions": [
-            "Yongsan–Deokso Line: Hoegi - Deokso opens",
-            "Yongsan–Deokso Line: the Yongsan - Hoegi branch separates from Line 1"
+            "Line 1: Yongsan - Hoegi transfers to Yongsan–Deokso Line",
+            "Yongsan–Deokso Line: Hoegi - Deokso opens"
         ]
     },
     {
@@ -554,23 +551,23 @@
     {
         "date": "2005-12-27",
         "descriptions": [
-            "Line 1: Sema opens",
-            "Line 1: Osan College opens"
+            "Line 1: Osan College opens",
+            "Line 1: Sema opens"
         ]
     },
     {
         "date": "2006-06-30",
         "descriptions": [
-            "Line 1: Jinwi opens",
-            "Line 1: Jije opens"
+            "Line 1: Jije opens",
+            "Line 1: Jinwi opens"
         ]
     },
     {
         "date": "2006-12-15",
         "descriptions": [
-            "Line 1: Soyosan - Ganeung opens",
             "Line 1: Siheung - Gwangmyeong opens",
-            "Line 1: Uijeongbu Bukbu → Ganeung"
+            "Line 1: Soyosan - Ganeung opens",
+            "Uijeongbu Bukbu → Ganeung"
         ]
     },
     {
@@ -601,8 +598,8 @@
     {
         "date": "2007-12-28",
         "descriptions": [
-            "Line 1: Deokgye opens",
-            "Line 1: Junae → Yangju"
+            "Junae → Yangju",
+            "Line 1: Deokgye opens"
         ]
     },
     {
@@ -621,13 +618,13 @@
         "date": "2008-12-29",
         "descriptions": [
             "Jungang Line: Paldang - Guksu opens",
-            "Line 1: Siheung → Geumcheon-gu Office"
+            "Siheung → Geumcheon-gu Office"
         ]
     },
     {
         "date": "2009-05-28",
         "descriptions": [
-            "Line 6: Susaek → Digital Media City"
+            "Susaek → Digital Media City"
         ]
     },
     {
@@ -639,22 +636,22 @@
     {
         "date": "2009-07-01",
         "descriptions": [
+            "Gyeongui Line: Gajwa - Seoul opens",
             "Gyeongui Line: Munsan - Digital Media City opens",
-            "Gyeongui Line: Gajwa - Seoul opens"
+            "Seoul: out-of-station interchange opens between Gyeongui Line and Lines 1 and 4"
         ]
     },
     {
         "date": "2009-07-24",
         "descriptions": [
-            "Line 9: Gaehwa - Sinnonhyeon opens"
+            "Line 9: Gaehwa - Sinnonhyeon opens",
+            "Noryangjin: out-of-station interchange opens"
         ]
     },
     {
         "date": "2009-10-29",
         "descriptions": [
-            "Line 2: Dongdaemun Stadium → Dongdaemun History & Culture Park",
-            "Line 4: Dongdaemun Stadium → Dongdaemun History & Culture Park",
-            "Line 5: Dongdaemun Stadium → Dongdaemun History & Culture Park"
+            "Dongdaemun Stadium → Dongdaemun History & Culture Park"
         ]
     },
     {
@@ -685,28 +682,28 @@
     {
         "date": "2010-05-27",
         "descriptions": [
-            "Line 2: Seongnae → Jamsillaru"
+            "Seongnae → Jamsillaru"
         ]
     },
     {
         "date": "2010-08-20",
         "descriptions": [
-            "Line 1: Cheongnyangni internal transfer passage opens",
-            "Jungang Line: Cheongnyangni internal transfer passage opens"
+            "Cheongnyangni: in-station interchange opens"
         ]
     },
     {
         "date": "2010-12-21",
         "descriptions": [
             "Gyeongchun Line: Sangbong - Chuncheon opens",
-            "Jungang Line: Sangbong opens",
-            "Jungang Line: Obin opens"
+            "Jungang Line: Obin opens",
+            "Jungang Line: Sangbong opens"
         ]
     },
     {
         "date": "2010-12-29",
         "descriptions": [
-            "AREX: Seoul - Gimpo International Airport opens"
+            "AREX: Seoul - Gimpo International Airport opens",
+            "Seoul: out-of-station interchange opens between AREX and Lines 1 and 4"
         ]
     },
     {
@@ -724,9 +721,9 @@
     {
         "date": "2011-12-28",
         "descriptions": [
+            "Bundang Line: Bojeong relocates from the surface terminal to a new underground station",
             "Bundang Line: Jukjeon - Giheung opens",
-            "Bundang Line: Kyungwon University → Gachon University",
-            "Bundang Line: Bojeong moves from the surface terminal into the new underground station"
+            "Kyungwon University → Gachon University"
         ]
     },
     {
@@ -738,8 +735,8 @@
     {
         "date": "2012-06-30",
         "descriptions": [
-            "Suin Line: Oido - Songdo opens",
-            "Line 4: Gongdan → Choji"
+            "Gongdan → Choji",
+            "Suin Line: Oido - Songdo opens"
         ]
     },
     {
@@ -769,14 +766,14 @@
     {
         "date": "2012-12-15",
         "descriptions": [
-            "Gyeongui Line: Digital Media City - Gongdeok opens",
-            "Gyeongchun Line: Byeollae opens"
+            "Gyeongchun Line: Byeollae opens",
+            "Gyeongui Line: Digital Media City - Gongdeok opens"
         ]
     },
     {
         "date": "2013-02-25",
         "descriptions": [
-            "Line 1: Seongbuk → Kwangwoon University"
+            "Seongbuk → Kwangwoon University"
         ]
     },
     {
@@ -801,7 +798,7 @@
     {
         "date": "2013-12-26",
         "descriptions": [
-            "Line 4: Miasamgeori → Miasageori"
+            "Miasamgeori → Miasageori"
         ]
     },
     {
@@ -813,7 +810,7 @@
     {
         "date": "2014-03-17",
         "descriptions": [
-            "Gyeongui Line: Sogang → Sogang University"
+            "Sogang → Sogang University"
         ]
     },
     {
@@ -837,27 +834,25 @@
     {
         "date": "2014-12-27",
         "descriptions": [
+            "Gyeongui Line → Gyeongui–Jungang Line",
             "Gyeongui–Jungang Line: Gongdeok - Yongsan opens",
+            "Jungang Line → Gyeongui–Jungang Line",
             "Line 3: Wonheung opens",
-            "Suin Line: Darwol opens",
-            "Gyeongui–Jungang Line: Gyeongui and Jungang lines merge"
+            "Suin Line: Darwol opens"
         ]
     },
     {
         "date": "2015-03-28",
         "descriptions": [
             "Line 9: Sinnonhyeon - Sports Complex opens",
-            "Line 1: Seoul internal transfer passage opens",
-            "Line 4: Seoul internal transfer passage opens",
-            "AREX: Seoul internal transfer passage opens"
+            "Seoul: in-station interchange opens between AREX and Lines 1 and 4"
         ]
     },
     {
         "date": "2015-10-31",
         "descriptions": [
             "Gyeongui–Jungang Line: Yadang opens",
-            "Line 1: Noryangjin internal transfer passage opens",
-            "Line 9: Noryangjin internal transfer passage opens"
+            "Noryangjin: in-station interchange opens"
         ]
     },
     {
@@ -911,7 +906,7 @@
     {
         "date": "2016-12-15",
         "descriptions": [
-            "Line 2: Sincheon → Jamsilsaenae"
+            "Sincheon → Jamsilsaenae"
         ]
     },
     {
@@ -923,7 +918,7 @@
     {
         "date": "2017-06-20",
         "descriptions": [
-            "Incheon Airport Maglev: International Business Center → Paradise City"
+            "International Business Center → Paradise City"
         ]
     },
     {
@@ -936,8 +931,7 @@
         "date": "2018-01-13",
         "descriptions": [
             "AREX: Incheon Airport Terminal 1 - Incheon Airport Terminal 2 opens",
-            "AREX: Incheon International Airport → Incheon Airport Terminal 1",
-            "Incheon Airport Maglev: Incheon International Airport → Incheon Airport Terminal 1"
+            "Incheon International Airport → Incheon Airport Terminal 1"
         ]
     },
     {
@@ -997,16 +991,17 @@
     {
         "date": "2020-09-12",
         "descriptions": [
-            "Suin–Bundang Line: Suwon - Gosaek opens",
+            "Bundang Line → Suin–Bundang Line",
+            "Suin Line → Suin–Bundang Line",
             "Suin–Bundang Line: Gosaek - Oido opens",
-            "Suin–Bundang Line: Bundang and Suin lines merge"
+            "Suin–Bundang Line: Suwon - Gosaek opens"
         ]
     },
     {
         "date": "2020-11-24",
         "descriptions": [
-            "Line 1: Jije → Pyeongtaek Jije",
-            "Seohae Line: Wongok → Siu"
+            "Jije → Pyeongtaek Jije",
+            "Wongok → Siu"
         ]
     },
     {
@@ -1018,8 +1013,8 @@
     {
         "date": "2021-03-27",
         "descriptions": [
-            "Line 5: Hanam Pungsan - Hanam Geomdansan opens",
-            "Line 5: Gangil opens"
+            "Line 5: Gangil opens",
+            "Line 5: Hanam Pungsan - Hanam Geomdansan opens"
         ]
     },
     {
@@ -1031,8 +1026,8 @@
     {
         "date": "2021-10-30",
         "descriptions": [
-            "U Line: Tapseok - Depot Temporary Platform opens",
-            "Line 1: Tangjeong opens"
+            "Line 1: Tangjeong opens",
+            "U Line: Tapseok - Depot Temporary Platform opens"
         ]
     },
     {
@@ -1093,7 +1088,7 @@
     {
         "date": "2023-11-21",
         "descriptions": [
-            "Gyeongui–Jungang Line: Hwajeon → Korea Aerospace University"
+            "Hwajeon → Korea Aerospace University"
         ]
     },
     {
@@ -1105,7 +1100,7 @@
     {
         "date": "2024-02-29",
         "descriptions": [
-            "Line 7: Ttukseom Resort → Jayang"
+            "Ttukseom Resort → Jayang"
         ]
     },
     {
@@ -1130,7 +1125,7 @@
     {
         "date": "2024-10-31",
         "descriptions": [
-            "Line 4: Danggogae → Buramsan"
+            "Danggogae → Buramsan"
         ]
     },
     {
@@ -1148,7 +1143,7 @@
     {
         "date": "2026-07-01",
         "descriptions": [
-            "Incheon Line 2: Seo-gu Office → Seohae-gu Office"
+            "Seo-gu Office → Seohae-gu Office"
         ]
     }
 ]

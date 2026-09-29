@@ -32,7 +32,7 @@
   {
     "date": "1928-04-01",
     "descriptions": [
-      "Sha Tau Kok Branch closes permanently"
+      "Sha Tau Kok Branch: Fanling - Sha Tau Kok closes"
     ]
   },
   {
@@ -105,7 +105,7 @@
   {
     "date": "1979-09-30",
     "descriptions": [
-      "Modified Initial System: Shek Kip Mei - Kwun Tong open-day rides with $15 commemorative tickets"
+      "Modified Initial System: Shek Kip Mei - Kwun Tong one-day open-day rides"
     ]
   },
   {
@@ -405,11 +405,11 @@
   {
     "date": "2007-12-02",
     "descriptions": [
+      "East Rail Line: Mong Kok → Mong Kok East",
       "KCR East Rail → East Rail Line",
       "KCR Light Rail → Light Rail",
       "KCR West Rail → West Rail Line",
-      "Ma On Shan Rail → Ma On Shan Line",
-      "Mong Kok → Mong Kok East"
+      "Ma On Shan Rail → Ma On Shan Line"
     ]
   },
   {
@@ -452,7 +452,9 @@
   {
     "date": "2018-09-23",
     "descriptions": [
-      "High Speed Rail: Hong Kong section and Hong Kong West Kowloon open, with walking connections to Kowloon and Austin"
+      "High Speed Rail: Hong Kong section and Hong Kong West Kowloon open",
+      "Hong Kong West Kowloon - Austin: out-of-station interchange opens",
+      "Hong Kong West Kowloon - Kowloon: out-of-station interchange opens"
     ]
   },
   {

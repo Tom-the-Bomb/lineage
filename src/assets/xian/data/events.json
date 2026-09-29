@@ -38,7 +38,7 @@
     {
         "date": "2018-12-26",
         "descriptions": [
-            "Beikezhan: out-of-station interchange opens",
+            "Beikezhan - Beikezhan (Beiguangchang): out-of-station interchange opens",
             "Line 4: Beikezhan (Beiguangchang) - Hangtianxincheng opens"
         ]
     },
@@ -79,13 +79,12 @@
         "descriptions": [
             "Airport Intercity → Line 14",
             "Beikezhan: in-station interchange opens",
-            "Line 14: Beikezhan (Beiguangchang) - Heshao opens"
+            "Line 14: Beikezhan - Heshao opens"
         ]
     },
     {
         "date": "2022-09-20",
         "descriptions": [
-            "Beikezhan (Beiguangchang) → Xi'an Beizhan",
             "Beikezhan → Xi'an Beizhan"
         ]
     },

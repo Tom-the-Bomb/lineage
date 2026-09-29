@@ -163,7 +163,7 @@
   {
     "date": "2006-04-27",
     "descriptions": [
-      "Maglev: Longyang Road - Pudong International Airport formally opens for commercial operation"
+      "Maglev: Longyang Road - Pudong International Airport opens"
     ]
   },
   {
@@ -175,7 +175,7 @@
   {
     "date": "2006-10-28",
     "descriptions": [
-      "Dongfang Road → Century Avenue",
+      "Line 2: Century Avenue opens (formerly Dongfang Road)",
       "Line 4: Century Avenue opens",
       "Middle Henan Road → East Nanjing Road",
       "Shimen No. 1 Road → West Nanjing Road"
@@ -198,7 +198,7 @@
     "descriptions": [
       "Hongkou Football Stadium: out-of-station interchange opens",
       "Line 1: Gongfu Xincun - Fujin Road opens",
-      "Line 4: Lancun Road - Damuqiao Road opens",
+      "Line 4: Lancun Road - Damuqiao Road opens, completing the loop",
       "Line 6: Gangcheng Road - South Lingyan Road opens",
       "Line 8: Shiguang Road - Yaohua Road opens",
       "Line 9: Songjiang Xincheng - Guilin Road opens"
@@ -424,8 +424,8 @@
       "Line 11: Luoshan Road - Kangxin Highway opens",
       "Line 12: Qixin Road - Qufu Road opens",
       "Line 13: Changshou Road - Shibo Avenue opens, reusing the Expo Line section",
+      "Line 13: World Expo Museum opens (formerly Lupu Bridge)",
       "Longhua: out-of-station interchange opens",
-      "Lupu Bridge → World Expo Museum",
       "South Shaanxi Road: in-station interchange opens",
       "West Nanjing Road: out-of-station interchange opens"
     ]
@@ -475,10 +475,10 @@
   {
     "date": "2019-08-10",
     "descriptions": [
+      "Songjiang Sports Center: interchange with Songjiang Trams 1 and 2 opens",
       "Songjiang Tram 1: Canghua Road - Xinmiaosan Road opens",
-      "Songjiang Tram 2: Zhongchen Road - Jinxi Road opens, continuing over Tram 1's shared tracks to Sanxin North Road to complete the loop",
       "Songjiang Tram 2: stops serving Canghua Road",
-      "Songjiang Sports Center: interchange with Songjiang Trams 1 and 2 opens"
+      "Songjiang Tram 2: Zhongchen Road - Jinxi Road opens, completing the loop over Tram 1's shared tracks to Sanxin North Road"
     ]
   },
   {
@@ -534,8 +534,8 @@
     "descriptions": [
       "Dongchang Road → South Pudong Road",
       "East Xujing → National Exhibition and Convention Center",
+      "Line 4: Pudian Road → Xiangcheng Road",
       "National Exhibition and Convention Center: out-of-station interchange opens",
-      "Pudian Road → Xiangcheng Road",
       "Pudong International Airport → Pudong Airport Terminal 1 and 2",
       "Songjiang South Railway Station → Shanghai Songjiang Railway Station",
       "South Pudong Road: out-of-station interchange opens",

@@ -1,13 +1,13 @@
 <div align="center">
     <img src="public/logo.svg" width="64" height="64" alt="Lineage logo" />
-    <h1 align="center">Lineage</h1>
+    <h1 align="center"><a href="https://lineage.tomthebomb.dev/">Lineage</a></h1>
+    <sup align="center">A comprehensive overview of the history of several of the world's best metro systems.</sup>
 </div>
+<br/>
 
-A comprehensive overview of the history of several of the world's best metro systems.
-
-[Explore Lineage](https://lineage.tomthebomb.dev/) · Transit through time.
-
-Powered by [`D3.js`](https://d3js.org/) for animating SVG map elements, `React` with `TS`, `Tailwind`, and `Vite`.
+<div align="center">Powered by <a href="https://d3js.org/"><code>D3.js</code></a> for animating SVG map elements,
+    <code>React</code> with <code>TS</code>, <code>Tailwind</code>, and <code>Vite</code>
+</div>
 
 ## Coverage
 
@@ -24,7 +24,6 @@ Powered by [`D3.js`](https://d3js.org/) for animating SVG map elements, `React` 
 - [Nanjing Metro](https://www.njmetro.com.cn/), including the suburban lines and Hexi / Qilin trams as tracks only
 - [Chongqing Rail Transit](https://www.cqmetro.cn/), including Jiangtiao and Bitong suburban railways, plus Bishan SkyShuttle as tracks only
 - [Xi'an Metro](https://www.xianrail.com/), including its Xianyang sections, the Xihu Line and Line 14's Airport Intercity predecessor
-- [New York City Subway](https://www.mta.info/), including historical elevated lines.
 - [Seoul Metropolitan Subway](https://www.seoulmetro.co.kr/en/): Seoul Lines 1-9, Incheon Lines 1-2, Korail's metropolitan lines, AREX, Shinbundang, Seohae and GTX-A, plus 5 LRT lines as tracks only.
 
 ## Asset Sources
@@ -48,8 +47,6 @@ Maps are sourced from below and heavily modified according to `docs/map-data-spe
 _All above maps have been expanded using [OpenStreetMap](https://www.openstreetmap.org/)_
 
 - Beijing, Nanjing, Chongqing, Xi'an, Seoul are drawn from scratch with OpenStreetMap
-
-- New York is drawn from [MTA station data & GTFS](https://www.mta.info/developers), historical station locations, [NYC shoreline and hydrography](https://opendata.cityofnewyork.us/), and surrounding shorelines and water from OpenStreetMap
 
 ### Legacy
 

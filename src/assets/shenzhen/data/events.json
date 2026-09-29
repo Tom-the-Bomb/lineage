@@ -15,7 +15,8 @@
   {
     "date": "2008-04-23",
     "descriptions": [
-      "Line 1 → Luobao Line; Line 4 → Longhua Line"
+      "Line 1 → Luobao Line",
+      "Line 4 → Longhua Line"
     ]
   },
   {
@@ -39,8 +40,8 @@
   {
     "date": "2010-12-28",
     "descriptions": [
-      "Shekou Line: Chiwan - Window of the World opens",
-      "Longgang Line: Caopu - Shuanglong opens"
+      "Longgang Line: Caopu - Shuanglong opens",
+      "Shekou Line: Chiwan - Window of the World opens"
     ]
   },
   {
@@ -65,21 +66,29 @@
   {
     "date": "2011-06-28",
     "descriptions": [
-      "Shekou Line: Window of the World - Xinxiu opens",
-      "Longgang Line: Caopu - Yitian opens"
+      "Longgang Line: Caopu - Yitian opens",
+      "Shekou Line: Window of the World - Xinxiu opens"
     ]
   },
   {
     "date": "2013-10-23",
     "descriptions": [
-      "Lines 1–5 restore numbered names alongside Luobao, Shekou, Longgang, Longhua and Huanzhong"
+      "Huanzhong Line → Line 5 (Huanzhong Line)",
+      "Longgang Line → Line 3 (Longgang Line)",
+      "Longhua Line → Line 4 (Longhua Line)",
+      "Luobao Line → Line 1 (Luobao Line)",
+      "Shekou Line → Line 2 (Shekou Line)"
     ]
   },
   {
     "date": "2016-06-28",
     "descriptions": [
-      "Line 11: Futian - Bitou opens",
-      "Number-only line names appear on the expanded network map; older name signs are replaced gradually"
+      "Line 1 (Luobao Line) → Line 1",
+      "Line 2 (Shekou Line) → Line 2",
+      "Line 3 (Longgang Line) → Line 3",
+      "Line 4 (Longhua Line) → Line 4",
+      "Line 5 (Huanzhong Line) → Line 5",
+      "Line 11: Futian - Bitou opens"
     ]
   },
   {
@@ -92,7 +101,8 @@
   {
     "date": "2017-10-28",
     "descriptions": [
-      "Longhua Tram opens: Qinghu - Xinlan and Dahe - Xiawei (tracks shown without individual stops)",
+      "Longhua Tram: Dahe - Xiawei opens",
+      "Longhua Tram: Qinghu - Xinlan opens",
       "Qinghu: interchange with Longhua Tram opens"
     ]
   },
@@ -111,19 +121,19 @@
   {
     "date": "2020-08-18",
     "descriptions": [
+      "Futian Checkpoint: out-of-station interchange opens",
       "Line 6: Science Museum - Songgang opens",
-      "Line 10: Futian Checkpoint - Shuangyong Street opens",
-      "Futian Checkpoint: Lines 4 and 10 connect by an out-of-station transfer"
+      "Line 10: Futian Checkpoint - Shuangyong Street opens"
     ]
   },
   {
     "date": "2020-10-28",
     "descriptions": [
+      "Guanlan: interchange with Longhua Tram at Xinlan opens",
       "Line 2: Xinxiu - Liantang opens",
       "Line 3: Yitian - Futian Bonded Area opens",
       "Line 4: Qinghu - Niuhu opens",
-      "Line 8: Liantang - Yantian Road opens",
-      "Guanlan: interchange with Longhua Tram at Xinlan opens"
+      "Line 8: Liantang - Yantian Road opens"
     ]
   },
   {
@@ -135,9 +145,9 @@
   {
     "date": "2022-10-28",
     "descriptions": [
+      "Line 10: Gangxia North opens, joining Lines 2, 11 and 14",
       "Line 11: Futian - Gangxia North opens",
-      "Line 14: Gangxia North - Shatian opens",
-      "Line 10: Gangxia North opens, joining Lines 2, 11 and 14"
+      "Line 14: Gangxia North - Shatian opens"
     ]
   },
   {
@@ -150,11 +160,11 @@
   {
     "date": "2022-12-28",
     "descriptions": [
+      "Dongjiang Column Memorial Hall: interchange with Pingshan Skyshuttle at Longbei opens (out of station)",
       "Line 16: Universiade - Tianxin opens",
-      "Pingshan Skyshuttle opens: Pingshan High-speed Railway Station - BYD North (tracks shown without individual stops)",
-      "Pingshan: interchange with Pingshan Skyshuttle opens",
-      "Pingshan Center: out-of-station interchange with Pingshan Skyshuttle opens",
-      "Dongjiang Column Memorial Hall: out-of-station interchange with Pingshan Skyshuttle's Longbei stop opens"
+      "Pingshan Center: interchange with Pingshan Skyshuttle opens (out of station)",
+      "Pingshan Skyshuttle: Pingshan High-speed Railway Station - BYD North opens",
+      "Pingshan: interchange with Pingshan Skyshuttle opens"
     ]
   },
   {
@@ -176,7 +186,7 @@
   {
     "date": "2025-01-01",
     "descriptions": [
-      "SIAT → SUAT (January 2025; exact day unverified)"
+      "SIAT → SUAT"
     ]
   },
   {
@@ -189,13 +199,13 @@
   {
     "date": "2025-12-28",
     "descriptions": [
+      "Grand Theater - Hongling South: out-of-station interchange opens",
+      "Hongling South: out-of-station interchange opens between Lines 9 and 11",
+      "Hubei: out-of-station interchange opens between Lines 2 and 5",
       "Line 5: Huangbeiling - Grand Theater opens",
       "Line 8: Xiaomeisha - Xichong opens",
       "Line 11: Huaqiang South - Hongling South opens",
-      "Line 13: Hi-Tech Central - Shangwu opens",
-      "Hubei: out-of-station interchange opens between Lines 2 and 5",
-      "Hongling South: out-of-station interchange opens between Lines 9 and 11",
-      "Grand Theater - Hongling South: out-of-station passage opens (December 2025; exact day unverified)"
+      "Line 13: Hi-Tech Central - Shangwu opens"
     ]
   },
   {

@@ -2,7 +2,7 @@
     {
         "date": "1971-01-15",
         "descriptions": [
-            "Line 1: Lixin (now Gongzhufen) - Beijing Railway Station restricted trial operation begins, with tickets sold only against work-unit letters"
+            "Line 1: Lixin (now Gongzhufen) - Beijing Railway Station restricted trial operation for work-unit ticket holders begins"
         ]
     },
     {
@@ -20,7 +20,7 @@
     {
         "date": "1972-12-27",
         "descriptions": [
-            "Line 1: Gucheng - Beijing Railway Station opens to all passengers, as tickets go on sale without work-unit letters"
+            "Line 1: Gucheng - Beijing Railway Station opens to all passengers"
         ]
     },
     {
@@ -32,7 +32,7 @@
     {
         "date": "1981-09-15",
         "descriptions": [
-            "Line 1: Pingguoyuan - Beijing Railway Station formally opens, after trial operation since 1971"
+            "Line 1: Pingguoyuan - Beijing Railway Station opens, after trial operation since 1971"
         ]
     },
     {
@@ -44,9 +44,11 @@
     {
         "date": "1987-12-28",
         "descriptions": [
-            "Line 1: Nanlishi Lu - Changchun Jie alignment withdrawn; Changchun Jie - Beijing Railway Station becomes part of the Loop Line",
+            "Line 1: Changchun Jie - Beijing Railway Station transfers to Loop Line",
+            "Line 1: Nanlishi Lu - Changchun Jie closes",
             "Line 1: Nanlishi Lu - Fuxingmen opens",
-            "Loop Line: Fuxingmen - Changchun Jie and Beijing Railway Station - Jianguomen open, completing the loop",
+            "Loop Line: Beijing Railway Station - Jianguomen opens, completing the loop",
+            "Loop Line: Fuxingmen - Changchun Jie opens",
             "Second Phase → Loop Line"
         ]
     },
@@ -85,7 +87,7 @@
     {
         "date": "2003-01-28",
         "descriptions": [
-            "Dongzhimen: separate-fare interchange opens between Line 2 and Line 13",
+            "Dongzhimen: out-of-station interchange opens between Line 2 and Line 13",
             "Line 13: Huoying - Dongzhimen opens"
         ]
     },
@@ -105,9 +107,9 @@
     {
         "date": "2007-10-07",
         "descriptions": [
-            "Dongzhimen: in-station interchange opens with unified metro fares",
+            "Dongzhimen: in-station interchange opens",
             "Line 5: Songjiazhuang - Tiantongyuan Bei opens",
-            "Sihui and Sihui Dong: in-station interchange opens with unified metro fares"
+            "Sihui and Sihui Dong: in-station interchange opens"
         ]
     },
     {
@@ -140,7 +142,7 @@
     {
         "date": "2010-12-25",
         "descriptions": [
-            "Line 13: Xi'erqi moves to its new station north of the original platforms"
+            "Line 13: Xi'erqi relocates north of the original platforms"
         ]
     },
     {
@@ -256,7 +258,7 @@
     {
         "date": "2019-02-17",
         "descriptions": [
-            "Line 13: Shangdi - Xi'erqi rerouted through the future Qinghe station site"
+            "Line 13: Shangdi - Xi'erqi relocates to a new alignment"
         ]
     },
     {
@@ -303,7 +305,10 @@
     {
         "date": "2021-08-29",
         "descriptions": [
-            "Line 1 and Batong Line → Line 1 / Batong; the old Line 1 platforms at Sihui Dong and Batong platforms at Sihui close"
+            "Batong Line → Line 1 / Batong",
+            "Line 1 → Line 1 / Batong",
+            "Sihui Dong: the old Line 1 platforms close",
+            "Sihui: the Batong Line platforms close"
         ]
     },
     {

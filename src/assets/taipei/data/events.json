@@ -135,6 +135,7 @@
     {
         "date": "2012-09-30",
         "descriptions": [
+            "Xinzhuang–Luzhou Line → Zhonghe–Xinlu Line",
             "Zhonghe Line → Zhonghe–Xinlu Line",
             "Zhonghe–Xinlu Line: Guting - Zhongxiao Xinsheng opens"
         ]
@@ -157,7 +158,7 @@
         "descriptions": [
             "Nanjing East Road → Nanjing Fuxing",
             "Songshan–Xindian Line: Songshan - Ximen opens",
-            "Xiaonanmen Line merged into the Songshan–Xindian Line",
+            "Xiaonanmen Line → Songshan–Xindian Line",
             "Xindian Line → Songshan–Xindian Line"
         ]
     },
@@ -170,7 +171,7 @@
     {
         "date": "2017-02-16",
         "descriptions": [
-            "Beimen: out-of-station interchange opens with Taoyuan Airport MRT Taipei Main Station",
+            "Beimen - Taipei Main Station: out-of-station interchange opens",
             "Sanchong: out-of-station interchange opens",
             "Taipei Main Station: out-of-station interchange opens",
             "Taoyuan Airport MRT: Taipei Main Station - Huanbei free public trial rides begin"
@@ -194,7 +195,7 @@
             "Banqiao: out-of-station interchange opens",
             "Circular Line: Dapinglin - New Taipei Industrial Park free public trial rides begin",
             "New Taipei Industrial Park: out-of-station interchange opens",
-            "Xinpu: out-of-station interchange opens"
+            "Xinpu - Xinpu Minsheng: out-of-station interchange opens"
         ]
     },
     {

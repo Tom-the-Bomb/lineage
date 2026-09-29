@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import type { LegendWrapper, RawTooltipData, StationWrapper } from '../schemas';
 import { stationIdentity } from '../stationSearch';
 import type { SystemConfig } from '../systems';
-import { clamp, findName, formatDate, isActive } from '../utils';
+import { clamp, findName, formatDate, isActive, servesLine } from '../utils';
 
 interface TooltipProps {
     tooltip: RawTooltipData | null;
@@ -68,9 +68,7 @@ export default function Tooltip({
     });
 
     const lines = legend.flatMap(entry => {
-        const calling = tooltip.station.lines.some(
-            ({ name: id, dateRange }) => id === entry.id && isActive(dateRange, time),
-        );
+        const calling = servesLine(tooltip.station.lines, entry.id, time);
         const lineName = calling && findName(entry.states, time);
         return lineName ? [{ id: entry.id, name: lineName, color: entry.color }] : [];
     });

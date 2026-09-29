@@ -20,8 +20,7 @@
   {
     "date": "2002-12-29",
     "descriptions": [
-      "Line 2: San Yuan Li - Jiang Nan Xi opens",
-      "Line 2 continues from Jiang Nan Xi to Xiao Gang over its original eastward alignment"
+      "Line 2: San Yuan Li - Xiao Gang opens"
     ]
   },
   {
@@ -41,13 +40,52 @@
   {
     "date": "2006-05-01",
     "descriptions": [
-      "Bei Ting and Nan Ting → Da Xue Cheng Bei and Da Xue Cheng Nan (May 2006; exact day unverified)"
+      "Bei Ting → Da Xue Cheng Bei",
+      "Nan Ting → Da Xue Cheng Nan"
     ]
   },
   {
     "date": "2006-11-01",
     "descriptions": [
-      "English station names replace the original syllable-spaced Pinyin, including Chen Jia Ci → Chen Clan Academy and Zhong Da → Sun Yat-sen University (November 2006 rollout; exact day unverified)"
+      "Chang Shou Lu → Changshou Lu",
+      "Chen Jia Ci → Chen Clan Academy",
+      "Chi Gang Ta → Chigang Pagoda",
+      "Chi Gang → Chigang",
+      "Da Xue Cheng Bei → Higher Education Mega Center North",
+      "Da Xue Cheng Nan → Higher Education Mega Center South",
+      "Dong Shan Kou → Dongshankou",
+      "Fang Cun → Fangcun",
+      "Gong Yuan Qian → Gongyuanqian",
+      "Guan Zhou → Guanzhou",
+      "Guang Zhou Dong Zhan → Guangzhou East Railway Station",
+      "Guang Zhou Huo Che Zhan → Guangzhou Railway Station",
+      "Hai Zhu Guang Chang → Haizhu Square",
+      "Hua Di Wan → Huadiwan",
+      "Huang Sha → Huangsha",
+      "Ji Nian Tang → Sun Yat-sen Memorial Hall",
+      "Jiang Nan Xi → Jiangnanxi",
+      "Ke Cun → Kecun",
+      "Keng Kou → Kengkou",
+      "Lie Shi Ling Yuan → Martyrs' Park",
+      "Lin He Xi → Linhexi",
+      "Lu Jiang → Lujiang",
+      "Mo Die Sha → Modiesha",
+      "Nong Jiang Suo → Peasant Movement Institute",
+      "Pa Zhou → Pazhou",
+      "San Yuan Li → Sanyuanli",
+      "Shi Er Gong → The 2nd Workers' Cultural Palace",
+      "Ti Yu Xi Lu → Tiyu Xilu",
+      "Ti Yu Zhong Xin → Tianhe Sports Center",
+      "Wan Sheng Wei → Wanshengwei",
+      "Xi Lang → Xilang",
+      "Xi Men Kou → Ximenkou",
+      "Xiao Gang → Xiaogang",
+      "Xin Gang Dong → Xingangdong",
+      "Xin Zao → Xinzao",
+      "Yang Ji → Yangji",
+      "Yue Xiu Gong Yuan → Yuexiu Park",
+      "Zhong Da → Sun Yat-sen University",
+      "Zhu Jiang Xin Cheng → Zhujiang New Town"
     ]
   },
   {
@@ -74,11 +112,12 @@
   {
     "date": "2010-09-25",
     "descriptions": [
-      "Line 2: Sanyuanli - Jiahewanggang opens",
       "Line 2: Jiangnanxi - Guangzhou South Railway Station opens",
+      "Line 2: Jiangnanxi - Xiaogang closes",
+      "Line 2: Sanyuanli - Jiahewanggang opens",
+      "Line 2: Xiaogang - Wanshengwei transfers to Line 8",
       "Line 4: Chebeinan - Huangcun opens",
-      "Line 8: Changgang - Xiaogang opens",
-      "Line 2 splits: Xiaogang - Wanshengwei becomes Line 8; the old Jiangnanxi - Xiaogang curve is retired and both lines serve Changgang"
+      "Line 8: Changgang - Xiaogang opens"
     ]
   },
   {
@@ -104,14 +143,14 @@
     "date": "2010-11-08",
     "descriptions": [
       "APM: Linhexi - Guangzhou Opera House opens",
-      "APM opens with a separate fare system; Linhexi requires exit and re-entry"
+      "Linhexi: out-of-station interchange opens"
     ]
   },
   {
     "date": "2010-11-28",
     "descriptions": [
-      "APM: Guangzhou Opera House - Chigang Pagoda opens",
-      "APM reaches Chigang Pagoda with an out-of-paid-area transfer to Line 3; Haixinsha remains closed"
+      "APM: Guangzhou Opera House - Chigang Pagoda opens, initially bypassing Haixinsha",
+      "Chigang Pagoda: out-of-station interchange opens"
     ]
   },
   {
@@ -123,8 +162,8 @@
   {
     "date": "2013-12-28",
     "descriptions": [
-      "Line 6: Xunfenggang - Changban opens",
-      "Chigang Pagoda → Canton Tower on Line 3 and APM"
+      "Chigang Pagoda → Canton Tower",
+      "Line 6: Xunfenggang - Changban opens"
     ]
   },
   {
@@ -154,9 +193,9 @@
   {
     "date": "2016-12-28",
     "descriptions": [
+      "Guangfo Line: Kuiqi Lu - Xincheng Dong opens",
       "Line 6: Changban - Xiangxue opens",
-      "Line 7: Guangzhou South Railway Station - Higher Education Mega Center South opens",
-      "Guangfo Line: Kuiqi Lu - Xincheng Dong opens"
+      "Line 7: Guangzhou South Railway Station - Higher Education Mega Center South opens"
     ]
   },
   {
@@ -180,8 +219,8 @@
   {
     "date": "2018-04-26",
     "descriptions": [
-      "Line 3: Airport South (Terminal 1) - Airport North (Terminal 2) opens",
-      "Airport South → Airport South (Terminal 1) as Terminal 2 gains Airport North"
+      "Airport South → Airport South (Terminal 1)",
+      "Line 3: Airport South (Terminal 1) - Airport North (Terminal 2) opens"
     ]
   },
   {
@@ -193,9 +232,9 @@
   {
     "date": "2018-12-28",
     "descriptions": [
+      "Guangfo Line: Yangang - Lijiao opens",
       "Line 14: Jiahewanggang - Dongfeng opens",
-      "Line 21: Zhenlongxi - Zengcheng Square opens",
-      "Guangfo Line: Yangang - Lijiao opens"
+      "Line 21: Zhenlongxi - Zengcheng Square opens"
     ]
   },
   {
@@ -214,7 +253,7 @@
   {
     "date": "2020-07-01",
     "descriptions": [
-      "Huangpu Tram Line 1 opens Changping - Xinfeng Lu"
+      "Huangpu Tram Line 1: Changping - Xinfeng Lu opens"
     ]
   },
   {
@@ -226,7 +265,7 @@
   {
     "date": "2020-12-28",
     "descriptions": [
-      "Huangpu Tram Line 1 extends from Changping to Xiangxue, adding metro connections at Shuixi and Xiangxue"
+      "Huangpu Tram Line 1: Xiangxue - Changping opens"
     ]
   },
   {
@@ -238,8 +277,8 @@
   {
     "date": "2021-09-01",
     "descriptions": [
-      "Haizhu Tram → Haizhu Tram Line 1 (September 2021 map update; exact day unverified)",
-      "Qiandenghu Lake → Qiandeng Lake (September 2021 map update; exact day unverified)"
+      "Haizhu Tram → Haizhu Tram Line 1",
+      "Qiandenghu Lake → Qiandeng Lake"
     ]
   },
   {
@@ -251,7 +290,8 @@
   {
     "date": "2021-12-28",
     "descriptions": [
-      "Foshan Line 2: Nanzhuang - Guangzhou South Railway Station opens"
+      "Foshan Line 2: Nanzhuang - Guangzhou South Railway Station opens",
+      "Guangzhou South Railway Station: out-of-station interchange opens"
     ]
   },
   {
@@ -281,14 +321,14 @@
   {
     "date": "2022-12-28",
     "descriptions": [
-      "Line 8: Xicun opens",
-      "Foshan Line 3: Shunde College Railway Station - Zhen'an opens"
+      "Foshan Line 3: Shunde College Railway Station - Zhen'an opens",
+      "Line 8: Xicun opens"
     ]
   },
   {
     "date": "2023-08-22",
     "descriptions": [
-      "A passage links Tiyu Xilu and APM Tianhenan through Parc Central; fares remain separate"
+      "Tiyu Xilu - Tianhenan: out-of-station interchange opens"
     ]
   },
   {
@@ -301,20 +341,20 @@
   {
     "date": "2024-01-21",
     "descriptions": [
-      "Guangzhou South Railway Station: the paid-area passage links Foshan Line 2 with Guangzhou Lines 2, 7 and 22"
+      "Guangzhou South Railway Station: in-station interchange opens with Foshan Line 2"
     ]
   },
   {
     "date": "2024-08-23",
     "descriptions": [
-      "Foshan Line 3: Zhen'an - Zhongshan Park opens",
-      "Foshan Line 3: Lianhe - Foshan University opens"
+      "Foshan Line 3: Lianhe - Foshan University opens",
+      "Foshan Line 3: Zhen'an - Zhongshan Park opens"
     ]
   },
   {
     "date": "2024-10-02",
     "descriptions": [
-      "Line 21 withdraws from Yuancun - Tianhe Park so the section can be converted for Line 11; Tianhe Park becomes the terminus"
+      "Line 21: Yuancun - Tianhe Park closes, for conversion to Line 11"
     ]
   },
   {
@@ -326,15 +366,16 @@
   {
     "date": "2024-11-12",
     "descriptions": [
-      "Haizhu Tram permanently removes its old Canton Tower terminus; service is cut back to Liede Bridge South during relocation"
+      "Haizhu Tram Line 1: Canton Tower - Liede Bridge South closes"
     ]
   },
   {
     "date": "2024-12-28",
     "descriptions": [
+      "Jiangtai Lu → Jiangtai Road",
       "Line 6: Shahe opens",
-      "Line 11: the ring opens, including the former Line 21 section; its Guangzhou East Railway Station and Guangzhou Railway Station platforms remain unopened",
-      "Pazhou: transferring between Lines 8 and 11 requires leaving and re-entering the paid area; Jiangtai Lu → Jiangtai Road"
+      "Line 11: Tianhe Park - Tianhe Park opens, as a complete loop bypassing Guangzhou East Railway Station and Guangzhou Railway Station",
+      "Pazhou: out-of-station interchange opens"
     ]
   },
   {
@@ -346,17 +387,17 @@
   {
     "date": "2025-06-29",
     "descriptions": [
-      "Line 10: Xilang - Yangji East opens",
+      "Dongxiaonan → Dongxiao South",
+      "Line 10: Xilang - Yangji East opens, initially bypassing Sun Yat-sen University South Gate",
+      "Line 12: Ersha Island - Higher Education Mega Center South opens, initially bypassing Chigang",
       "Line 12: Xunfenggang - Guangzhou Gymnasium opens",
-      "Line 12: Ersha Island - Higher Education Mega Center South opens",
-      "Wuyangcun uses an out-of-station transfer between Lines 5 and 10; Dongxiaonan → Dongxiao South",
-      "Line 12 opens as two separate sections; its Chigang platforms and Line 10’s Sun Yat-sen University South Gate remain unopened"
+      "Wuyangcun: out-of-station interchange opens"
     ]
   },
   {
     "date": "2025-07-01",
     "descriptions": [
-      "Haizhu Tram reopens to its relocated Canton Tower terminus, at the former Canton Tower East stop; the old westernmost track remains removed"
+      "Haizhu Tram Line 1: Canton Tower - Liede Bridge South opens, with Canton Tower relocated to the former Canton Tower East stop"
     ]
   },
   {
@@ -383,8 +424,7 @@
   {
     "date": "2026-06-18",
     "descriptions": [
-      "Foshan Line 3: Zhongshan Park - Lianhe opens",
-      "Foshan Line 3: the northern and southern sections join; Dunhou station opens, while trains initially bypass Foshan Railway Station"
+      "Foshan Line 3: Zhongshan Park - Lianhe opens, initially bypassing Foshan Railway Station"
     ]
   },
   {

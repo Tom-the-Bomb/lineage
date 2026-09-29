@@ -61,7 +61,7 @@
     {
         "date": "2011-07-28",
         "descriptions": [
-            "Line 1: Jiaochangkou - Shapingba opens; Gaomiaocun, Majiayan open later"
+            "Line 1: Jiaochangkou - Shapingba opens, initially bypassing Gaomiaocun and Majiayan"
         ]
     },
     {
@@ -73,7 +73,7 @@
     {
         "date": "2011-09-29",
         "descriptions": [
-            "Line 3: Lianglukou - Yuanyang opens; Hongqihegou, Zhengjiayuanzi, Longtousi, Tongjiayuanzi open later"
+            "Line 3: Lianglukou - Yuanyang opens, initially bypassing Hongqihegou, Zhengjiayuanzi, Longtousi and Tongjiayuanzi"
         ]
     },
     {
@@ -91,8 +91,8 @@
     {
         "date": "2011-12-30",
         "descriptions": [
-            "Line 3: Lianglukou - Ertang opens; Gongmao, Tongyuanju open later",
             "Line 3: Changfulu - Jiangbei Airport opens",
+            "Line 3: Lianglukou - Ertang opens, initially bypassing Gongmao and Tongyuanju",
             "Line 3: Tongjiayuanzi opens"
         ]
     },
@@ -111,25 +111,25 @@
     {
         "date": "2012-09-28",
         "descriptions": [
-            "Line 6: Wulidian - Kangzhuang opens; Ranjiaba opens later"
+            "Line 6: Wulidian - Kangzhuang opens, initially bypassing Ranjiaba"
         ]
     },
     {
         "date": "2012-12-20",
         "descriptions": [
-            "Line 1: Shapingba - Daxuecheng opens; Shijingpo, Weidianyuan open later"
+            "Line 1: Shapingba - Daxuecheng opens, initially bypassing Shijingpo and Weidianyuan"
         ]
     },
     {
         "date": "2012-12-26",
         "descriptions": [
-            "Line 6: Kangzhuang - Lijia opens; Jiuquhe opens later"
+            "Line 6: Kangzhuang - Lijia opens, initially bypassing Jiuquhe"
         ]
     },
     {
         "date": "2012-12-28",
         "descriptions": [
-            "Line 3: Ertang - Yudong opens; Jinzhu, Huaxi, Chalukou open later",
+            "Line 3: Ertang - Yudong opens, initially bypassing Jinzhu, Huaxi and Chalukou",
             "Line 3: Gongmao opens",
             "Line 3: Tongyuanju opens"
         ]
@@ -143,9 +143,9 @@
     {
         "date": "2013-01-31",
         "descriptions": [
-            "Line 3: Jinzhu opens",
+            "Line 3: Chalukou opens",
             "Line 3: Huaxi opens",
-            "Line 3: Chalukou opens"
+            "Line 3: Jinzhu opens"
         ]
     },
     {
@@ -163,7 +163,7 @@
     {
         "date": "2013-05-15",
         "descriptions": [
-            "International Expo Line: Lijia - Yuelai opens; Pingchang, Huangmaoping, Gaoyikou open later"
+            "International Expo Line: Lijia - Yuelai opens, initially bypassing Pingchang, Huangmaoping and Gaoyikou"
         ]
     },
     {
@@ -175,7 +175,7 @@
     {
         "date": "2013-12-31",
         "descriptions": [
-            "Line 6: Lijia - Beibei opens; Caojiawan, Xiangjiagang, Tiansheng open later"
+            "Line 6: Lijia - Beibei opens, initially bypassing Caojiawan, Xiangjiagang and Tiansheng"
         ]
     },
     {
@@ -195,23 +195,23 @@
     {
         "date": "2014-12-30",
         "descriptions": [
-            "Line 2: Xinshancun - Yudong opens",
             "Line 1: Daxuecheng - Jiandingpo opens",
-            "Line 6: Wulidian - Chayuan opens; Jiangbeicheng opens later"
+            "Line 2: Xinshancun - Yudong opens",
+            "Line 6: Wulidian - Chayuan opens, initially bypassing Jiangbeicheng"
         ]
     },
     {
         "date": "2015-02-28",
         "descriptions": [
-            "International Expo Line: Pingchang opens",
-            "International Expo Line: Huangmaoping opens"
+            "International Expo Line: Huangmaoping opens",
+            "International Expo Line: Pingchang opens"
         ]
     },
     {
         "date": "2015-10-26",
         "descriptions": [
-            "Line 6: Caojiawan opens",
-            "International Expo Line: Gaoyikou opens"
+            "International Expo Line: Gaoyikou opens",
+            "Line 6: Caojiawan opens"
         ]
     },
     {
@@ -223,7 +223,7 @@
     {
         "date": "2016-04-07",
         "descriptions": [
-            "Line 3: Chongqing North renamed Chongqing North Station South Square"
+            "Chongqing North → Chongqing North Station South Square"
         ]
     },
     {
@@ -235,20 +235,20 @@
     {
         "date": "2017-12-25",
         "descriptions": [
-            "Line 3: Jiangbei Airport renamed Terminal 2 of Jiangbei Airport"
+            "Jiangbei Airport → Terminal 2 of Jiangbei Airport"
         ]
     },
     {
         "date": "2017-12-28",
         "descriptions": [
             "Line 5: The EXPO Garden Center - Dalongshan opens",
-            "Line 10: Liyuchi - Wangjiazhuang opens; Chongqing North Station South Square opens later"
+            "Line 10: Liyuchi - Wangjiazhuang opens, initially bypassing Chongqing North Station South Square"
         ]
     },
     {
         "date": "2018-01-12",
         "descriptions": [
-            "International Expo Line: Pingchang renamed Happy Valley"
+            "Pingchang → Happy Valley"
         ]
     },
     {
@@ -260,11 +260,10 @@
     {
         "date": "2018-12-28",
         "descriptions": [
-            "Line 4: Chongqing North Station North Square - Tangjiatuo opens; Gangcheng opens later",
-            "Loop Line: Chongqing Library - Haixialu opens; Tianxingqiao, Nanqiaosi, Min'an Ave., Danzishi, Renji, Shanghao, Luojiaba open later",
+            "Line 4: Chongqing North Station North Square - Tangjiatuo opens, initially bypassing Gangcheng",
             "Line 10: Chongqing North Station South Square opens",
-            "Line 1: Shapingba gains an out-of-station interchange with Loop Line",
-            "Loop Line: Shapingba gains an out-of-station interchange with Line 1"
+            "Loop Line: Chongqing Library - Haixialu opens, initially bypassing Tianxingqiao, Nanqiaosi, Min'an Ave., Danzishi, Renji, Shanghao and Luojiaba",
+            "Shapingba: out-of-station interchange opens"
         ]
     },
     {
@@ -284,10 +283,10 @@
     {
         "date": "2019-12-01",
         "descriptions": [
-            "Line 3: Ertang renamed Chongqing Jiaotong University",
-            "Line 3: Wugongli renamed Chongqing Technology and Business University",
-            "Line 6: Tiansheng renamed Southwest University",
-            "Loop Line: Shazhengjie renamed Chongqing University"
+            "Ertang → Chongqing Jiaotong University",
+            "Shazhengjie → Chongqing University",
+            "Tiansheng → Southwest University",
+            "Wugongli → Chongqing Technology and Business University"
         ]
     },
     {
@@ -301,29 +300,28 @@
         "descriptions": [
             "Line 1: Jiandingpo - Bishan opens",
             "Loop Line: Haixialu - Erlang opens",
-            "Line 2: Xiejiawan gains an out-of-station interchange with Loop Line",
-            "Loop Line: Xiejiawan gains an out-of-station interchange with Line 2"
+            "Xiejiawan: out-of-station interchange opens"
         ]
     },
     {
         "date": "2020-12-31",
         "descriptions": [
-            "Line 1: Xiaoshizi - Chaotianmen opens",
-            "International Expo Line: Yuelai - Shaheba opens"
+            "International Expo Line: Yuelai - Shaheba opens",
+            "Line 1: Xiaoshizi - Chaotianmen opens"
         ]
     },
     {
         "date": "2021-01-20",
         "descriptions": [
             "Line 5: Shiqiaopu - Tiaodeng opens",
-            "Loop Line: Erlang - Chongqing Library opens"
+            "Loop Line: Erlang - Chongqing Library opens, completing the loop"
         ]
     },
     {
         "date": "2021-02-04",
         "descriptions": [
-            "Loop Line: Tianxingqiao opens",
-            "Loop Line: Renji opens"
+            "Loop Line: Renji opens",
+            "Loop Line: Tianxingqiao opens"
         ]
     },
     {
@@ -341,11 +339,9 @@
     {
         "date": "2022-01-25",
         "descriptions": [
-            "Line 9: Gaotanyan - Xingke Ave. opens; Baoshenghu opens later",
-            "Line 1: Shapingba gains an out-of-station interchange with Line 9",
-            "Line 9: Shapingba gains an out-of-station interchange with Line 1",
-            "Line 3: Guanyinqiao gains an out-of-station interchange with Line 9",
-            "Line 9: Guanyinqiao gains an out-of-station interchange with Line 3"
+            "Guanyinqiao: out-of-station interchange opens",
+            "Line 9: Gaotanyan - Xingke Ave. opens, initially bypassing Baoshenghu",
+            "Shapingba: out-of-station interchange opens between Line 1 and Line 9"
         ]
     },
     {
@@ -369,9 +365,7 @@
     {
         "date": "2022-09-30",
         "descriptions": [
-            "Line 1: Shapingba gains a paid-area interchange with Line 9 and Loop Line",
-            "Line 9: Shapingba gains a paid-area interchange with Line 1 and Loop Line",
-            "Loop Line: Shapingba gains a paid-area interchange with Line 1 and Line 9"
+            "Shapingba: in-station interchange opens between Line 1, Line 9 and Loop Line"
         ]
     },
     {
@@ -384,14 +378,13 @@
     {
         "date": "2023-02-27",
         "descriptions": [
-            "Line 5: The EXPO Garden Center - Yuegangbeilu opens; Yuhegou opens later"
+            "Line 5: The EXPO Garden Center - Yuegangbeilu opens, initially bypassing Yuhegou"
         ]
     },
     {
         "date": "2023-06-17",
         "descriptions": [
-            "Line 2: Xiejiawan gains a paid-area interchange with Loop Line",
-            "Loop Line: Xiejiawan gains a paid-area interchange with Line 2"
+            "Xiejiawan: in-station interchange opens"
         ]
     },
     {
@@ -406,16 +399,14 @@
         "descriptions": [
             "Line 5: Dashiba - Shiqiaopu opens",
             "Line 10: Houbao - Lanhualu opens",
-            "Line 1: Xietaizi gains an out-of-station interchange with Line 5",
-            "Line 5: Xietaizi gains an out-of-station interchange with Line 1"
+            "Xietaizi: out-of-station interchange opens"
         ]
     },
     {
         "date": "2023-12-28",
         "descriptions": [
-            "Line 18: Fuhualu - Tiaodengnan opens; Xietaizi opens later",
-            "Line 2: Yangjiaping gains an out-of-station interchange with Line 18",
-            "Line 18: Yangjiaping gains an out-of-station interchange with Line 2"
+            "Line 18: Fuhualu - Tiaodengnan opens, initially bypassing Xietaizi",
+            "Yangjiaping: out-of-station interchange opens"
         ]
     },
     {
@@ -436,8 +427,7 @@
         "date": "2025-06-26",
         "descriptions": [
             "Line 18: Xietaizi opens",
-            "Line 1: Xietaizi gains an out-of-station interchange with Line 18",
-            "Line 18: Xietaizi gains an out-of-station interchange with Line 1"
+            "Xietaizi: out-of-station interchange opens between Line 1 and Line 18"
         ]
     },
     {
@@ -456,8 +446,7 @@
         "date": "2026-02-10",
         "descriptions": [
             "Line 4: Min'an Ave. - Shimahelijiao opens",
-            "Loop Line: Yudaishan gains an out-of-station interchange with Line 4",
-            "Line 4: Yudaishan gains an out-of-station interchange with Loop Line"
+            "Yudaishan: out-of-station interchange opens"
         ]
     }
 ]

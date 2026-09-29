@@ -31,10 +31,6 @@ import nanjingEvents from './assets/nanjing/data/events.json';
 import nanjingLines from './assets/nanjing/data/lines.json';
 import nanjingMap from './assets/nanjing/map.svg';
 import nanjingLogo from './assets/nanjing/nanjing-metro.svg';
-import newyorkEvents from './assets/newyork/data/events.json';
-import newyorkLines from './assets/newyork/data/lines.json';
-import newyorkMap from './assets/newyork/map.svg';
-import newyorkLogo from './assets/newyork/mta.svg';
 import seoulArexLogo from './assets/seoul/arex.svg';
 import seoulEvents from './assets/seoul/data/events.json';
 import seoulLines from './assets/seoul/data/lines.json';
@@ -344,21 +340,6 @@ export const systems = {
             arex: { src: seoulArexLogo, alt: 'AREX' },
             neotrans: { src: seoulNeoTransLogo, alt: 'NeoTrans' },
             maglev: { src: seoulMaglevLogo, alt: 'Incheon Airport Maglev' },
-        },
-    }),
-    newyork: defineSystem({
-        name: 'New York City Subway',
-        localTitle: '纽约地铁历史',
-        description: "Explore the growth of New York's subway network",
-        map: newyorkMap,
-        initialBounds: [4600, 5100],
-        logos: [newyorkLogo],
-        lines: newyorkLines.lines,
-        events: newyorkEvents,
-        milestoneDates: ['1904-10-27', '1932-09-10', '1956-06-28', '2015-09-13', '2017-01-01'],
-        initialView: { center: [3410, 2310], zoom: 1.4 },
-        operators: {
-            mta: { src: newyorkLogo, alt: 'MTA' },
         },
     }),
 };

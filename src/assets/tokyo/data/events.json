@@ -57,8 +57,7 @@
   {
     "date": "1931-11-21",
     "descriptions": [
-      "Tokyo Underground Railway: Manseibashi - Kanda opens",
-      "Tokyo Underground Railway: Manseibashi closes"
+      "Tokyo Underground Railway: Kanda opens, replacing the temporary Manseibashi terminus"
     ]
   },
   {
@@ -114,13 +113,14 @@
     "descriptions": [
       "Aoyama-rokuchome → Jingumae",
       "Aoyama-yonchome → Gaiemmae",
-      "Tokyo Rapid Railway: Shimbashi moves to the Tokyo Underground Railway station"
+      "Tokyo Rapid Railway: Shimbashi relocates to the Tokyo Underground Railway station"
     ]
   },
   {
     "date": "1941-09-01",
     "descriptions": [
-      "Tokyo Underground Railway and Tokyo Rapid Railway → Eidan Subway"
+      "Tokyo Rapid Railway → Eidan Subway",
+      "Tokyo Underground Railway → Eidan Subway"
     ]
   },
   {
@@ -466,7 +466,7 @@
       "Awajicho - Ogawamachi: out-of-station interchange opens",
       "Awajicho - Shin-ochanomizu: out-of-station interchange opens",
       "Kudanshita: out-of-station interchange opens",
-      "Ochanomizu - Shin-ochanomizu: designated interchange replaced by Awajicho - Shin-ochanomizu",
+      "Ochanomizu - Shin-ochanomizu: out-of-station interchange closes",
       "Shin-ochanomizu - Ogawamachi: out-of-station interchange opens",
       "Shinjuku Line: Shinjuku - Iwamotocho opens"
     ]
@@ -699,7 +699,7 @@
   {
     "date": "2020-03-14",
     "descriptions": [
-      "Kudanshita: Tozai Line joins the in-station interchange"
+      "Kudanshita: in-station interchange opens with the Tozai Line"
     ]
   },
   {

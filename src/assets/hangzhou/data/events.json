@@ -58,8 +58,7 @@
   {
     "date": "2017-07-03",
     "descriptions": [
-      "Line 2: Qianjiang Road - Gucui Road opens",
-      "Xianing Bridge remains closed"
+      "Line 2: Qianjiang Road - Gucui Road opens, initially bypassing Xianing Bridge"
     ]
   },
   {
@@ -71,8 +70,7 @@
   {
     "date": "2018-01-09",
     "descriptions": [
-      "Line 4: Jinjiang - Puyan opens",
-      "Lianzhuang remains closed"
+      "Line 4: Jinjiang - Puyan opens, initially bypassing Lianzhuang"
     ]
   },
   {
@@ -90,16 +88,15 @@
   {
     "date": "2019-10-01",
     "descriptions": [
-      "Yuhang Hi-Railway Station → Yuhang Railway Station (October 2019; exact day unverified)"
+      "Yuhang Hi-Railway Station → Yuhang Railway Station"
     ]
   },
   {
     "date": "2020-04-23",
     "descriptions": [
       "Line 5: Liangmu Road - Jinxing opens",
-      "Line 5: Shanxian - Guniangqiao opens",
-      "Line 16: Lvting Road - Jiuzhou Street opens",
-      "Line 5 initially bypasses Baoshan Bridge and South Railway Station"
+      "Line 5: Shanxian - Guniangqiao opens, initially bypassing Baoshan Bridge and South Railway Station",
+      "Line 16: Lvting Road - Jiuzhou Street opens"
     ]
   },
   {
@@ -113,10 +110,9 @@
     "date": "2020-12-30",
     "descriptions": [
       "Line 1: Xiashajiangbin - Xiaoshan International Airport opens",
-      "Line 6: West Guihua Road - Qianjiang Century City opens",
+      "Line 6: West Guihua Road - Qianjiang Century City opens, initially bypassing Zhipu Road",
       "Line 6: Xiangshan Campus China Academy of Art - Shuangpu opens",
-      "Line 7: Olympic Sports Center - Jiangdong'er Road opens",
-      "Line 6 initially bypasses Zhipu Road"
+      "Line 7: Olympic Sports Center - Jiangdong'er Road opens"
     ]
   },
   {
@@ -140,7 +136,7 @@
   {
     "date": "2021-07-10",
     "descriptions": [
-      "The Coach Center - Linping branch transfers from Line 1 to Line 9"
+      "Line 1: Coach Center - Linping transfers to Line 9"
     ]
   },
   {
@@ -153,9 +149,8 @@
   {
     "date": "2021-11-06",
     "descriptions": [
-      "Line 6: Qianjiang Century City - Goujulong opens",
-      "East Railway Station (East Square): Line 6 connects to Lines 1 and 4 by an out-of-station transfer",
-      "Asian Games Village and Fengbei remain closed"
+      "East Railway Station - East Railway Station (East Square): out-of-station interchange opens between Lines 1 and 4 and Line 6",
+      "Line 6: Qianjiang Century City - Goujulong opens, initially bypassing Asian Games Village and Fengbei"
     ]
   },
   {
@@ -169,18 +164,16 @@
     "date": "2022-02-21",
     "descriptions": [
       "Line 3: Chaowang Road - Xingqiao opens",
-      "Line 4: Pengbu - Chihua Street opens",
-      "Line 10: Cuibai Road - Yisheng Road opens",
-      "Line 4 initially bypasses Ducheng Ecopark"
+      "Line 4: Pengbu - Chihua Street opens, initially bypassing Ducheng Ecopark",
+      "Line 10: Cuibai Road - Yisheng Road opens"
     ]
   },
   {
     "date": "2022-04-01",
     "descriptions": [
-      "Line 7: Citizen Center - Wushan Square opens",
-      "Line 9: Coach Center - Guanyintang opens",
       "Line 5: Baoshan Bridge opens",
-      "Moyetang on Line 7 and Wubao and Liubao on Line 9 remain closed"
+      "Line 7: Citizen Center - Wushan Square opens, initially bypassing Moyetang",
+      "Line 9: Coach Center - Guanyintang opens, initially bypassing Wubao and Liubao"
     ]
   },
   {
@@ -192,9 +185,8 @@
   {
     "date": "2022-06-10",
     "descriptions": [
-      "Line 3: Chaowang Road - West Wenyi Road opens",
-      "Line 3: South Xixi Wetland - Shima opens",
-      "Line 3 initially bypasses Wulinmen and Chuangming Road"
+      "Line 3: Chaowang Road - West Wenyi Road opens, initially bypassing Wulinmen",
+      "Line 3: South Xixi Wetland - Shima opens"
     ]
   },
   {
@@ -213,23 +205,21 @@
     "date": "2022-09-22",
     "descriptions": [
       "Line 3: West Wenyi Road - Wushanqiancun opens",
-      "Line 10: Xueyuan Road - Huanglong Sports Center opens",
-      "Line 19: West Railway Station - Yongsheng Road opens",
-      "East Railway Station and East Square retain separate paid areas; eligible cards and mobile tickets gain a 30-minute out-of-station transfer with continuous fares",
-      "Tangjiacun on Line 3 and Wensan Road on Lines 10 and 19 remain closed; Line 19 also bypasses Jingchang Road, Wulian and Yicheng Road and terminates at West Railway Station, short of unopened Tiaoxi"
+      "Line 10: Xueyuan Road - Huanglong Sports Center opens, initially bypassing Wensan Road",
+      "Line 19: West Railway Station - Yongsheng Road opens, initially bypassing Jingchang Road, Wensan Road, Wulian and Yicheng Road"
     ]
   },
   {
     "date": "2022-11-01",
     "descriptions": [
-      "Shentangqiao: the paid-area passage opens between Lines 2 and 19"
+      "Shentangqiao: in-station interchange opens"
     ]
   },
   {
     "date": "2022-12-14",
     "descriptions": [
-      "Line 9: Wubao opens",
-      "Line 9: Liubao opens"
+      "Line 9: Liubao opens",
+      "Line 9: Wubao opens"
     ]
   },
   {

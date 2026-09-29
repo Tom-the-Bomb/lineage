@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 
 import type { LegendWrapper, LineWrapper, StationWrapper, UpdateResult } from './schemas';
 
-import { clamp, findName, isActive, relativeCenter } from './utils.ts';
+import { clamp, findName, highlightedNames, relativeCenter, servesLine } from './utils.ts';
 
 export const STEP_UNITS = {
     day: {
@@ -182,12 +182,7 @@ export function update(
 ): UpdateResult {
     const entries = new Map(legend.map(entry => [findName(entry.states, dateNum), entry]));
 
-    const lit = new Set(
-        legend
-            .filter(({ id }) => highlight.includes(id))
-            .map(({ states }) => findName(states, dateNum))
-            .filter(name => name !== null),
-    );
+    const lit = highlightedNames(legend, highlight, dateNum);
 
     const dimOpacity = String(Number(pageToken('--dim-opacity')));
 
@@ -243,12 +238,7 @@ export function update(
 
     for (const { el, states, lines } of stations) {
         if (findName(states, dateNum) !== null) {
-            const dimmed =
-                lit.size > 0 &&
-                !lines.some(
-                    ({ name: id, dateRange }) =>
-                        highlight.includes(id) && isActive(dateRange, dateNum),
-                );
+            const dimmed = lit.size > 0 && !highlight.some(id => servesLine(lines, id, dateNum));
             if (!dimmed && lines.length > 0) {
                 stationCount++;
             }

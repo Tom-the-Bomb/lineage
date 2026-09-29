@@ -65,7 +65,8 @@
   {
     "date": "1999-11-06",
     "descriptions": [
-      "Bukit Panjang LRT: Choa Chu Kang - Bukit Panjang and the Bukit Panjang loop open"
+      "Bukit Panjang LRT: Bukit Panjang - Bukit Panjang opens, as a complete loop",
+      "Bukit Panjang LRT: Choa Chu Kang - Bukit Panjang opens"
     ]
   },
   {
@@ -156,7 +157,7 @@
   {
     "date": "2012-01-14",
     "descriptions": [
-      "Circle Line: Marina Bay - Bayfront opens"
+      "Circle Line: Promenade - Marina Bay opens"
     ]
   },
   {
@@ -284,7 +285,7 @@
   {
     "date": "2026-07-12",
     "descriptions": [
-      "Circle Line: Marina Bay - HarbourFront opens, closing the loop"
+      "Circle Line: Marina Bay - HarbourFront opens, completing the loop"
     ]
   }
 ]

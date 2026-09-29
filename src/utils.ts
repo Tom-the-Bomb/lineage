@@ -1,4 +1,4 @@
-import type { DateInterval, State } from './schemas';
+import type { DateInterval, LegendWrapper, State } from './schemas';
 
 // Min and max date objects Javascript can handle:
 // April 20, 271821 BC and September 13, 275760
@@ -56,6 +56,30 @@ export function isActive({ appear, removed }: DateInterval, time: number): boole
     return appear.getTime() <= time && time < removed.getTime();
 }
 
+export function findActive<T extends { dateRange: DateInterval }>(
+    items: T[],
+    time: number,
+): T | undefined {
+    return items.find(({ dateRange }) => isActive(dateRange, time));
+}
+
 export function findName(states: State[], time: number): string | null {
-    return states.find(({ dateRange }) => isActive(dateRange, time))?.name || null;
+    return findActive(states, time)?.name ?? null;
+}
+
+export function servesLine(lines: State[], id: string, time: number): boolean {
+    return lines.some(({ name, dateRange }) => name === id && isActive(dateRange, time));
+}
+
+export function highlightedNames(
+    legend: LegendWrapper[],
+    highlight: string[],
+    time: number,
+): Set<string> {
+    return new Set(
+        legend
+            .filter(({ id }) => highlight.includes(id))
+            .map(({ states }) => findName(states, time))
+            .filter(name => name !== null),
+    );
 }

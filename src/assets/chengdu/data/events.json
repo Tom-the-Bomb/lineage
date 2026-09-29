@@ -176,7 +176,7 @@
     {
         "date": "2023-09-22",
         "descriptions": [
-            "Jinxing - Jiujiang North transfers from Line 17 to Line 19"
+            "Line 17: Jinxing - Jiujiang North transfers to Line 19"
         ]
     },
     {
@@ -185,7 +185,7 @@
             "Line 18: Tianfu Station opens (transfer only, no exits)",
             "Line 19: Jiujiang North - Tianfu Station opens",
             "Line 19: Tianfu Station - Tianfu International Airport North opens",
-            "Terminal 2 of Shuangliu International Airport: out-of-station interchange opens with East of Terminal 2 of Shuangliu International Airport"
+            "Terminal 2 of Shuangliu International Airport - East of Terminal 2 of Shuangliu International Airport: out-of-station interchange opens"
         ]
     },
     {
@@ -226,7 +226,7 @@
         "descriptions": [
             "Line 13: Long'an - Wayaotan opens",
             "Line 30: Longquanyi Railway Station South - East of Terminal 2 of Shuangliu International Airport opens",
-            "Terminal 2 of Shuangliu International Airport: out-of-station interchange extends to Line 30"
+            "Terminal 2 of Shuangliu International Airport - East of Terminal 2 of Shuangliu International Airport: out-of-station interchange extends to Line 30"
         ]
     },
     {

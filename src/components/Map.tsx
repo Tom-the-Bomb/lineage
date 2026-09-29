@@ -3,7 +3,14 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 
 import type { LineWrapper, RawTooltipData, StationWrapper, UpdateResult } from '../schemas';
 
-import { clamp, formatDate, isActive, parseLabelDates, playPause, relativeCenter } from '../utils';
+import {
+    clamp,
+    findActive,
+    parseLabelDates,
+    playPause,
+    relativeCenter,
+    servesLine,
+} from '../utils';
 
 import {
     applyMapTheme,
@@ -24,6 +31,7 @@ import pause from '../assets/pause.svg';
 import play from '../assets/play.svg';
 import plus from '../assets/plus.svg';
 import shrink from '../assets/shrink.svg';
+import { lengthSeries } from '../lengthSeries';
 import { createStationOptions, type StationOption } from '../stationSearch';
 import { systems, type SystemConfig, type SystemKey } from '../systems';
 import { BigTooltip } from './BigTooltip';
@@ -35,9 +43,9 @@ import Info from './Info';
 import Search from './Search';
 import Stats from './Stats';
 import Theme from './Theme';
+import TimelineSlider from './TimelineSlider';
 import Tooltip, { TOOLTIP_OFFSET } from './Tooltip';
 
-const EVENT_DOT_SIZE = 4;
 const ZOOM_STEP = 1.3;
 
 function sameNetwork(a: UpdateResult, b: UpdateResult): boolean {
@@ -62,7 +70,6 @@ export default function Map({ system }: { system: SystemKey }) {
     const svgRef = useRef<HTMLObjectElement | null>(null);
     const linesRef = useRef<LineWrapper[]>([]);
     const stationsRef = useRef<StationWrapper[]>([]);
-    const eventDatesRef = useRef<number[]>([]);
     const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
     const svgD3Ref = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined> | null>(null);
 
@@ -77,9 +84,18 @@ export default function Map({ system }: { system: SystemKey }) {
     const [expanded, setExpanded] = useState<boolean>(false);
     const [settings, setSettings] = useState<MapSettings>(DEFAULT_SETTINGS);
     const [stationMarkers, setStationMarkers] = useState<StationWrapper[]>([]);
+    const [tracks, setTracks] = useState<LineWrapper[]>([]);
     const [sliderTrackWidth, setSliderTrackWidth] = useState<number | null>(null);
 
     const timeRef = useRef(time);
+
+    const eventDates = useMemo(
+        () =>
+            config.events
+                .map(({ date }) => Date.parse(date))
+                .filter(date => minDate.getTime() <= date && date <= maxDate.getTime()),
+        [config.events, minDate, maxDate],
+    );
 
     const sliderRef = useCallback(
         (slider: HTMLInputElement | null) => {
@@ -95,19 +111,15 @@ export default function Map({ system }: { system: SystemKey }) {
     }, [time]);
 
     const findPreviousEventDate = useCallback(
-        (currentTime: number): number => {
-            const eventDates = eventDatesRef.current;
-            return eventDates.findLast(date => date < currentTime) ?? minDate.getTime();
-        },
-        [minDate],
+        (currentTime: number): number =>
+            eventDates.findLast(date => date < currentTime) ?? minDate.getTime(),
+        [eventDates, minDate],
     );
 
     const findNextEventDate = useCallback(
-        (currentTime: number): number => {
-            const eventDates = eventDatesRef.current;
-            return eventDates.find(date => date > currentTime) ?? maxDate.getTime();
-        },
-        [maxDate],
+        (currentTime: number): number =>
+            eventDates.find(date => date > currentTime) ?? maxDate.getTime(),
+        [eventDates, maxDate],
     );
 
     const keyDownHandler = useCallback(
@@ -247,10 +259,7 @@ export default function Map({ system }: { system: SystemKey }) {
         });
 
         setStationMarkers(stationsRef.current);
-
-        eventDatesRef.current = config.events
-            .map(({ date }) => Date.parse(date))
-            .filter(date => minDate.getTime() <= date && date <= maxDate.getTime());
+        setTracks(linesRef.current);
 
         const svgd3 = d3.select(svgDoc).select<SVGSVGElement>('svg');
         const zoomLayer = d3.select(svgDoc).select<SVGGElement>('#zoom-layer');
@@ -353,16 +362,7 @@ export default function Map({ system }: { system: SystemKey }) {
         svgEl.style.height = '100%';
 
         return () => svgDoc.removeEventListener('keydown', keyDownHandler);
-    }, [
-        svgDoc,
-        keyDownHandler,
-        minDate,
-        maxDate,
-        config.initialView,
-        config.initialBounds,
-        config.operators,
-        config.events,
-    ]);
+    }, [svgDoc, keyDownHandler, config.initialView, config.initialBounds, config.operators]);
 
     useEffect(() => {
         if (!svgDoc) {
@@ -414,7 +414,7 @@ export default function Map({ system }: { system: SystemKey }) {
             return;
         }
 
-        const delay = eventDatesRef.current.includes(time) ? settings.pauseMs : settings.tickMs;
+        const delay = eventDates.includes(time) ? settings.pauseMs : settings.tickMs;
         const { interval } = STEP_UNITS[settings.step.unit];
 
         const timer = d3.interval(() => {
@@ -431,6 +431,7 @@ export default function Map({ system }: { system: SystemKey }) {
         playing,
         time,
         svgDoc,
+        eventDates,
         maxDate,
         findNextEventDate,
         settings.pauseMs,
@@ -439,16 +440,21 @@ export default function Map({ system }: { system: SystemKey }) {
     ]);
 
     const presentLines = legend.flatMap(line => {
-        const state = line.states.find(({ dateRange }) => isActive(dateRange, time));
+        const state = findActive(line.states, time);
         return state ? [{ line, name: state.name, since: state.dateRange.appear }] : [];
     });
+
+    const series = useMemo(() => {
+        // eventDates is sorted and unique (check_map.py) and none precedes minDate.
+        const dates =
+            eventDates[0] === minDate.getTime() ? eventDates : [minDate.getTime(), ...eventDates];
+        return lengthSeries(tracks, legend, highlight, dates);
+    }, [tracks, legend, highlight, eventDates, minDate]);
 
     const searchableStations = useMemo(
         () => createStationOptions(stationMarkers, legend, highlight),
         [stationMarkers, legend, highlight],
     );
-    const timelineDuration = maxDate.getTime() - minDate.getTime();
-    const timeProgress = (time - minDate.getTime()) / timelineDuration;
 
     function zoomBy(factor: number) {
         if (svgD3Ref.current && zoomRef.current) {
@@ -463,7 +469,7 @@ export default function Map({ system }: { system: SystemKey }) {
             return;
         }
 
-        const current = option.matches.find(({ dateRange }) => isActive(dateRange, time));
+        const current = findActive(option.matches, time);
         const { station, dateRange } = current ?? option.matches[0];
         if (!current) {
             setTime(dateRange.appear.getTime());
@@ -627,10 +633,7 @@ export default function Map({ system }: { system: SystemKey }) {
                                     stats={{
                                         km: network.lineKm[line.id] ?? 0,
                                         stations: stationMarkers.filter(station =>
-                                            station.lines.some(
-                                                ({ name: id, dateRange }) =>
-                                                    id === line.id && isActive(dateRange, time),
-                                            ),
+                                            servesLine(station.lines, line.id, time),
                                         ).length,
                                     }}
                                 />
@@ -693,84 +696,20 @@ export default function Map({ system }: { system: SystemKey }) {
                         <ControlTooltip>Next event</ControlTooltip>
                     </button>
                 </div>
-                <div
-                    className="group pointer-events-auto relative flex h-12 w-full items-center
-                        px-4"
-                >
-                    <div
-                        className="pointer-events-none absolute
-                            inset-x-[calc(1rem+var(--slider-thumb-width)/2)]"
-                        onKeyDown={e => e.stopPropagation()}
-                    >
-                        {config.events
-                            .map(event => Date.parse(event.date))
-                            .filter(date => minDate.getTime() <= date && date <= maxDate.getTime())
-                            .map(date => {
-                                const progress = (date - minDate.getTime()) / timelineDuration;
-                                const blockedByThumb =
-                                    date === time ||
-                                    (sliderTrackWidth !== null &&
-                                        Math.abs(progress - timeProgress) * sliderTrackWidth <=
-                                            (thumbWidth + EVENT_DOT_SIZE) / 2);
-                                return (
-                                    <div
-                                        key={date}
-                                        className="absolute top-1/2"
-                                        style={{ left: `${progress * 100}%` }}
-                                    >
-                                        <button
-                                            type="button"
-                                            aria-label={`Jump to ${formatDate(new Date(date))}`}
-                                            disabled={blockedByThumb}
-                                            onClick={() => setTime(date)}
-                                            className="peer pointer-events-auto absolute z-20 h-3
-                                                w-1.5 -translate-1/2 cursor-pointer
-                                                disabled:pointer-events-none"
-                                        />
-                                        <span
-                                            aria-hidden="true"
-                                            className={`${date === time ? 'bg-accent' : 'bg-rule-strong peer-hover:bg-accent'}
-                                            absolute z-1 size-1 -translate-1/2 rounded-full
-                                            opacity-0 transition-opacity duration-150
-                                            group-hover:opacity-100`}
-                                        />
-                                    </div>
-                                );
-                            })}
-                    </div>
-                    <input
-                        key={svgVersion}
-                        ref={sliderRef}
-                        id="date-slider"
-                        type="range"
-                        aria-label="Timeline"
-                        min={minDate.getTime()}
-                        max={maxDate.getTime()}
-                        value={time}
-                        onChange={e => setTime(Number(e.target.value))}
-                        className="absolute top-1/2 right-4 left-4 z-10 -translate-y-1/2
-                            cursor-pointer"
-                    />
-                    <div
-                        className="pointer-events-none absolute
-                            inset-x-[calc(1rem+var(--slider-thumb-width)/2)] top-1/2 h-full
-                            -translate-y-1/2"
-                    >
-                        {ticks.map(date => (
-                            <div
-                                key={date.getTime()}
-                                className="absolute top-1/2 flex -translate-1/2 flex-col
-                                    items-center"
-                                style={{
-                                    left: `${((date.getTime() - minDate.getTime()) / timelineDuration) * 100}%`,
-                                }}
-                            >
-                                <div className="bg-rule-strong mt-6 h-2 w-px"></div>
-                                <span className="meta mt-1">{date.getUTCFullYear()}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                <TimelineSlider
+                    series={series}
+                    eventDates={eventDates}
+                    ticks={ticks}
+                    minTime={minDate.getTime()}
+                    maxTime={maxDate.getTime()}
+                    time={time}
+                    onTimeChange={setTime}
+                    highlighted={highlight.length > 0}
+                    thumbWidth={thumbWidth}
+                    sliderTrackWidth={sliderTrackWidth}
+                    sliderRef={sliderRef}
+                    svgVersion={svgVersion}
+                />
             </footer>
         </div>
     );
