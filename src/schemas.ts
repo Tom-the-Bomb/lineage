@@ -13,7 +13,6 @@ export interface LineWrapper {
     el: SVGPathElement;
     states: State[];
     length: number;
-    dashArray: string;
     km: number;
 }
 

@@ -201,17 +201,16 @@ export default function Map({ system }: { system: SystemKey }) {
 
         linesRef.current = Array.from(lines.querySelectorAll('path')).map(el => {
             const length = el.getTotalLength();
-            const dashArray = svgDoc.defaultView!.getComputedStyle(el).strokeDasharray;
+            const width = parseFloat(svgDoc.defaultView!.getComputedStyle(el).strokeWidth);
 
             el.style.strokeDashoffset = String(length);
-            el.style.strokeDasharray = String(length);
+            el.style.strokeDasharray = `${length} ${length + width}`;
             el.dataset.hidden = 'true';
 
             return {
                 el,
                 states: parseLabelDates(el.getAttribute('inkscape:label')!),
                 length,
-                dashArray,
                 km: parseFloat(el.dataset.km!),
             };
         });

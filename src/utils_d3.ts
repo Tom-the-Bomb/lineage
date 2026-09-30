@@ -189,7 +189,7 @@ export function update(
     let km = 0;
     const lineKm: Record<string, number> = {};
 
-    for (const { el, states, length, dashArray, km: trackKm } of lines) {
+    for (const { el, states, length, km: trackKm } of lines) {
         const name = findName(states, dateNum);
 
         if (name !== null) {
@@ -208,13 +208,7 @@ export function update(
             if (el.dataset.hidden !== 'false') {
                 el.dataset.hidden = 'false';
 
-                const selection = d3.select(el);
-
-                if (dashArray !== 'none') {
-                    selection.style('stroke-dasharray', dashArray);
-                }
-
-                selection
+                d3.select(el)
                     .interrupt('shrink')
                     .transition('grow')
                     .duration(transitionMs)
@@ -229,8 +223,7 @@ export function update(
                 .transition('shrink')
                 .duration(transitionMs)
                 .ease(EASE)
-                .style('stroke-dashoffset', String(length))
-                .style('stroke-dasharray', String(length));
+                .style('stroke-dashoffset', String(length));
         }
     }
 

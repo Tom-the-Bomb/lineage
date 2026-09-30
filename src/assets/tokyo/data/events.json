@@ -193,6 +193,7 @@
   {
     "date": "1960-12-04",
     "descriptions": [
+      "Asakusa: out-of-station interchange opens",
       "Toei Line 1: Oshiage - Asakusabashi opens"
     ]
   },
@@ -252,6 +253,7 @@
   {
     "date": "1963-12-12",
     "descriptions": [
+      "Shimbashi: out-of-station interchange opens with Toei Line 1",
       "Toei Line 1: Higashi-ginza - Shimbashi opens"
     ]
   },
@@ -373,7 +375,9 @@
   {
     "date": "1972-06-30",
     "descriptions": [
+      "Hibiya: out-of-station interchange opens",
       "Korakuen - Kasuga: out-of-station interchange opens",
+      "Otemachi: out-of-station interchange opens with Toei Line 6",
       "Toei Line 6: Sugamo - Hibiya opens"
     ]
   },
@@ -465,10 +469,12 @@
     "descriptions": [
       "Awajicho - Ogawamachi: out-of-station interchange opens",
       "Awajicho - Shin-ochanomizu: out-of-station interchange opens",
+      "Ichigaya: out-of-station interchange opens",
       "Kudanshita: out-of-station interchange opens",
       "Ochanomizu - Shin-ochanomizu: out-of-station interchange closes",
       "Shin-ochanomizu - Ogawamachi: out-of-station interchange opens",
-      "Shinjuku Line: Shinjuku - Iwamotocho opens"
+      "Shinjuku Line: Shinjuku - Iwamotocho opens",
+      "Shinjuku-sanchome: out-of-station interchange opens"
     ]
   },
   {
@@ -523,7 +529,7 @@
     "date": "1989-01-26",
     "descriptions": [
       "Hanzomon Line: Hanzomon - Mitsukoshimae opens",
-      "Kudanshita: out-of-station interchange opens",
+      "Kudanshita: out-of-station interchange opens with the Hanzomon Line",
       "Mitsukoshimae: out-of-station interchange opens"
     ]
   },
@@ -562,7 +568,8 @@
   {
     "date": "1996-03-26",
     "descriptions": [
-      "Iidabashi: out-of-station interchange opens",
+      "Ichigaya: out-of-station interchange opens with the Namboku Line",
+      "Iidabashi: out-of-station interchange opens with the Namboku Line",
       "Namboku Line: Yotsuya - Komagome opens"
     ]
   },
@@ -583,6 +590,7 @@
   {
     "date": "1997-12-19",
     "descriptions": [
+      "Nakano-sakaue: out-of-station interchange opens",
       "Toei Line 12: Nerima - Shinjuku opens"
     ]
   },
@@ -609,8 +617,9 @@
   {
     "date": "2000-12-12",
     "descriptions": [
+      "Azabu-juban: out-of-station interchange opens",
       "Hongo-sanchome: out-of-station interchange opens",
-      "Iidabashi: out-of-station interchange opens",
+      "Iidabashi: out-of-station interchange opens with the Oedo Line",
       "Kuramae: out-of-station interchange opens",
       "Naka-okachimachi - Ueno-okachimachi: out-of-station interchange opens",
       "Oedo Line: Kokuritsu-kyogijo - Tochomae opens",
@@ -653,7 +662,8 @@
       "Fukutoshin Line: Wakoshi - Kotake-mukaihara opens",
       "Ikebukuro: in-station interchange opens between Marunouchi Line and Fukutoshin Line",
       "New Line Ikebukuro → Ikebukuro",
-      "Shibuya: out-of-station interchange opens",
+      "Shibuya: out-of-station interchange opens with the Fukutoshin Line",
+      "Shinjuku-sanchome: out-of-station interchange opens with the Fukutoshin Line",
       "Yurakucho New Line → Fukutoshin Line"
     ]
   },

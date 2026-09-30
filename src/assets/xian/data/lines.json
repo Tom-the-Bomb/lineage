@@ -3,42 +3,42 @@
         {
             "id": "1",
             "label": "Line_1=2013_09_09",
-            "color": "#016CB2"
+            "color": "#016cb2"
         },
         {
             "id": "2",
             "label": "Line_2=2011_09_08",
-            "color": "#E3313D"
+            "color": "#e3313d"
         },
         {
             "id": "3",
             "label": "Line_3=2016_11_08",
-            "color": "#C50083"
+            "color": "#c50083"
         },
         {
             "id": "4",
             "label": "Line_4=2018_12_26",
-            "color": "#0DA193"
+            "color": "#0da193"
         },
         {
             "id": "5",
             "label": "Line_5=2020_12_28",
-            "color": "#9BB513"
+            "color": "#9bb513"
         },
         {
             "id": "6",
             "label": "Line_6=2020_12_28",
-            "color": "#6256A0"
+            "color": "#6256a0"
         },
         {
             "id": "8",
             "label": "Line_8=2024_12_26",
-            "color": "#E0A91B"
+            "color": "#e0a91b"
         },
         {
             "id": "9",
             "label": "Line_9=2020_12_28",
-            "color": "#F69601"
+            "color": "#f69601"
         },
         {
             "id": "10",
@@ -48,22 +48,22 @@
         {
             "id": "14",
             "label": "Airport_Intercity=2019_09_23-2021_06_29,Line_14=2021_06_29",
-            "color": "#009FC5"
+            "color": "#009fc5"
         },
         {
             "id": "15",
             "label": "Line_15=2025_12_29",
-            "color": "#D66082"
+            "color": "#d66082"
         },
         {
             "id": "16",
             "label": "Line_16=2023_06_27",
-            "color": "#E66E4B"
+            "color": "#e66e4b"
         },
         {
             "id": "xihu",
             "label": "Xihu_Line=2022_11_01",
-            "color": "#954C81"
+            "color": "#954c81"
         }
     ]
 }
