@@ -90,6 +90,7 @@ export default function Map({ system }: { system: SystemKey }) {
     const [sliderTrackWidth, setSliderTrackWidth] = useState<number | null>(null);
 
     const timeRef = useRef(time);
+    const shownTimeRef = useRef<number>(undefined);
 
     const eventDates = useMemo(
         () =>
@@ -381,6 +382,8 @@ export default function Map({ system }: { system: SystemKey }) {
         if (!svgDoc) {
             return;
         }
+        const since = shownTimeRef.current;
+        shownTimeRef.current = time;
         const next = update(
             time,
             linesRef.current,
@@ -388,6 +391,7 @@ export default function Map({ system }: { system: SystemKey }) {
             legend,
             settings.transitionMs,
             highlight,
+            since,
         );
         setNetwork(prev => (sameNetwork(prev, next) ? prev : next));
     }, [svgDoc, time, legend, highlight, settings.transitionMs]);

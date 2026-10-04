@@ -472,7 +472,14 @@ Markers follow the metro line maps on Wikimedia Commons (README): a station is a
 grey border; an interchange draws a dot on each line's real platform (one circle or pill only where
 lines share track or stack at a full crossing), joined by hollow bridges along the walkways
 passengers take, all inside one continuous border. Everything below is static in the SVG; the app only recolours
-markers for dark mode, thins them on zoom and animates hover.
+markers for dark mode, thins them on zoom and animates hover. Whenever the date changes it also
+cues what doesn't otherwise show: a station that is renamed or changes operator pings once (a flat
+disc that grows from the marker's edge to three times its size and fades, in its line's colour, or
+rim grey for an interchange), and a renamed track glows once in its new colour. It compares the new
+date with the one shown before and, when the new date is itself a change (an event picked from the
+changelog, the timeline or the arrows), with the moment before it, so an event is cued from either
+side. Anything still fading in or growing is cued once it has fully appeared; anything that only
+appears with the change is not cued.
 
 All sizes derive from the track width `W`:
 

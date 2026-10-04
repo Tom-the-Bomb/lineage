@@ -2,6 +2,7 @@ import { utcParse } from 'd3';
 import { useState } from 'react';
 
 import { formatDate } from '../utils';
+import ControlTooltip from './ControlTooltip';
 
 interface DatePickerProps {
     time: number;
@@ -36,6 +37,7 @@ export default function DatePicker({ time, minDate, maxDate, onChange }: DatePic
             >
                 {formatDate(new Date(time))}
             </button>
+            {!open && <ControlTooltip>Set date</ControlTooltip>}
             {open && (
                 <form
                     role="dialog"

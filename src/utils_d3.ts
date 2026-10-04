@@ -2,7 +2,15 @@ import * as d3 from 'd3';
 
 import type { LegendWrapper, LineWrapper, StationWrapper, UpdateResult } from './schemas';
 
-import { clamp, findName, highlightedNames, relativeCenter, servesLine } from './utils.ts';
+import {
+    clamp,
+    findActive,
+    findName,
+    highlightedNames,
+    isActive,
+    relativeCenter,
+    servesLine,
+} from './utils.ts';
 
 export const STEP_UNITS = {
     day: {
@@ -235,6 +243,59 @@ function setDimmed(el: SVGElement, dimmed: boolean, fade: boolean, dimOpacity: s
     }
 }
 
+const CUE_MS = 900;
+const PING_REACH = 2;
+const PING_OPACITY = 0.4;
+const HALO_WIDTH = 3;
+const HALO_OPACITY = 0.3;
+
+let halos: Element | null = null;
+
+function cueTrack(el: SVGElement, color: string): void {
+    if (!halos) {
+        halos = el.ownerDocument.createElementNS(el.namespaceURI, 'g');
+        el.parentElement!.prepend(halos);
+        d3.select(halos)
+            .style('opacity', '0')
+            .transition()
+            .duration(CUE_MS)
+            .styleTween('opacity', () => t => String(HALO_OPACITY * Math.sin(Math.PI * t)))
+            .remove();
+        queueMicrotask(() => (halos = null));
+    }
+    const width = parseFloat(el.ownerDocument.defaultView!.getComputedStyle(el).strokeWidth);
+    const halo = el.cloneNode() as SVGElement;
+    halo.removeAttribute('id');
+    halos.append(halo);
+
+    d3.select(halo)
+        .style('stroke', color)
+        .style('stroke-width', `${width * HALO_WIDTH}px`)
+        .style('stroke-linecap', 'round');
+}
+
+function cueStation(el: SVGElement, lineColor: string): void {
+    const box = (el as SVGGraphicsElement).getBBox();
+    const interchange = el.localName === 'g';
+    const outline = interchange ? el.firstElementChild! : el;
+    const stroke = parseFloat(el.ownerDocument.defaultView!.getComputedStyle(outline).strokeWidth);
+    const r = (Math.max(box.width, box.height) + stroke) / 2;
+
+    d3.select(el.parentNode as SVGElement)
+        .insert<SVGElement>('circle', () => el)
+        .attr('cx', box.x + box.width / 2)
+        .attr('cy', box.y + box.height / 2)
+        .attr('fill', interchange ? pageToken('--map-marker-rim') : lineColor)
+        .attr('stroke', 'none')
+        .attr('pointer-events', 'none')
+        .transition()
+        .duration(CUE_MS)
+        .ease(d3.easeLinear)
+        .attrTween('r', () => t => String(r * (1 + PING_REACH * EASE(t))))
+        .styleTween('opacity', () => t => String(PING_OPACITY * (1 - t)))
+        .remove();
+}
+
 export function update(
     dateNum: number,
     lines: LineWrapper[],
@@ -242,7 +303,9 @@ export function update(
     legend: LegendWrapper[],
     transitionMs: number,
     highlight: string[] = [],
+    since = dateNum,
 ): UpdateResult {
+    const before = since === dateNum ? [] : [since, dateNum - 1];
     const entries = new Map(legend.map(entry => [findName(entry.states, dateNum), entry]));
 
     const lit = highlightedNames(legend, highlight, dateNum);
@@ -266,7 +329,19 @@ export function update(
             }
             if (entry) {
                 lineKm[entry.id] = (lineKm[entry.id] ?? 0) + trackKm;
-                el.style.stroke = dimmed ? desaturate(entry.color) : entry.color;
+                const color = dimmed ? desaturate(entry.color) : entry.color;
+                el.style.stroke = color;
+                if (
+                    [line, ...line.partners].some(other =>
+                        before.some(t => (findName(other.states, t) ?? name) !== name),
+                    )
+                ) {
+                    if (el.style.strokeDasharray === 'none') {
+                        cueTrack(el, color);
+                    } else {
+                        el.dataset.cue = color;
+                    }
+                }
             }
             setDimmed(el, dimmed, el.dataset.hidden === 'false', dimOpacity);
 
@@ -283,10 +358,15 @@ export function update(
                     .on('end', () => {
                         el.dataset.dash ??= el.style.strokeDasharray;
                         el.style.strokeDasharray = 'none';
+                        if (el.dataset.cue) {
+                            cueTrack(el, el.dataset.cue);
+                            delete el.dataset.cue;
+                        }
                     });
             }
         } else if (el.dataset.hidden !== 'true') {
             el.dataset.hidden = 'true';
+            delete el.dataset.cue;
 
             if (el.dataset.dash) {
                 el.style.strokeDasharray = el.dataset.dash;
@@ -301,9 +381,32 @@ export function update(
     }
 
     let stationCount = 0;
+    const lineColors = new Map(legend.map(({ id, color }) => [id, color]));
 
-    for (const { el, states, lines } of stations) {
-        if (findName(states, dateNum) !== null) {
+    for (const { el, states, lines, operators } of stations) {
+        const name = findName(states, dateNum);
+        if (name !== null) {
+            if (
+                el.localName !== 'path' &&
+                before.some(t => {
+                    const then = findName(states, t);
+                    return (
+                        then !== null &&
+                        (then !== name ||
+                            operators.some(
+                                ({ dateRange }) =>
+                                    isActive(dateRange, t) !== isActive(dateRange, dateNum),
+                            ))
+                    );
+                })
+            ) {
+                const color = lineColors.get(findActive(lines, dateNum)!.name)!;
+                if (el.style.opacity === '1') {
+                    cueStation(el, color);
+                } else {
+                    el.dataset.cue = color;
+                }
+            }
             const dimmed = lit.size > 0 && !highlight.some(id => servesLine(lines, id, dateNum));
             if (!dimmed && lines.length > 0) {
                 stationCount++;
@@ -319,12 +422,19 @@ export function update(
                     .transition('appear')
                     .duration(transitionMs)
                     .ease(EASE)
-                    .style('opacity', '1');
+                    .style('opacity', '1')
+                    .on('end', () => {
+                        if (el.dataset.cue) {
+                            cueStation(el, el.dataset.cue);
+                            delete el.dataset.cue;
+                        }
+                    });
             }
         } else {
             el.style.pointerEvents = 'none';
             if (el.dataset.hidden !== 'true') {
                 el.dataset.hidden = 'true';
+                delete el.dataset.cue;
 
                 d3.select(el)
                     .interrupt('appear')

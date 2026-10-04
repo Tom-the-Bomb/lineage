@@ -69,7 +69,7 @@ data/events.json   changelog text for each date
 ### Label Format
 
 - Lines, stations and legend entries store their history as comma-separated `name=start-end` states
-- `start`, `end` are `YYYY_MM_DDD` and optional (non-existent => start/end of time respectively)
+- `start`, `end` are `YYYY_MM_DD` and optional (non-existent => start/end of time respectively)
 - An `_` in `name` is a space when displayed
 
 #### Examples
@@ -91,7 +91,9 @@ data-logos="kcr=-2007_12_02,mtr=2007_12_02"
 </svg>
 ```
 
-A `<path>` per stretch of track that has it's own **states** (dates)
+### Line (track)
+
+A `<path>` per stretch of track that has its own **states** (dates)
 
 ```xml
 <path
@@ -104,7 +106,7 @@ A `<path>` per stretch of track that has it's own **states** (dates)
 />
 ```
 
-- Lines IDs follow the format: `<line>--<from>--<to>--<YYYY-MM-DD>`
+- Line IDs follow the format: `<line>--<from>--<to>--<YYYY-MM-DD>`
 - `inkscape:label`: the line's names over time, its color comes from `lines.json`
 - `stroke`: fallback color for editors (not read by the app).
 - `data-km`: published route length used for metrics
