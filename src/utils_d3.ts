@@ -133,7 +133,62 @@ export function applyMapTheme(svgDoc: Document): void {
     if (stations) {
         stations.style.fill = pageToken('--map-marker');
         stations.style.stroke = pageToken('--map-marker-rim');
+        for (const connector of stations.querySelectorAll<SVGElement>(':scope > path')) {
+            connector.style.stroke = pageToken('--map-walk');
+        }
+        for (const layer of stations.querySelectorAll<SVGElement>('g [stroke="#fff"]')) {
+            layer.style.stroke = pageToken('--map-marker');
+        }
     }
+}
+
+const STATION_THINNING = 0.4;
+
+export function setupZoomThinning(svgDoc: Document): (z: number) => void {
+    const stations = svgDoc.getElementById('stations')!;
+    const size = (value: string | null) => `calc(var(--station-size) * ${value}px)`;
+    stations.style.setProperty('--station-size', '1');
+    stations.style.strokeWidth = size(stations.getAttribute('stroke-width'));
+
+    for (const el of stations.querySelectorAll<SVGElement>(':scope > g [stroke-width]')) {
+        el.style.strokeWidth = size(el.getAttribute('stroke-width'));
+    }
+
+    for (const el of stations.querySelectorAll<SVGCircleElement>(':scope > circle')) {
+        el.style.setProperty(
+            'r',
+            `calc(var(--station-size) * var(--h, 1) * ${el.getAttribute('r')}px)`,
+        );
+    }
+
+    let current = '1';
+    return z => {
+        const next = String(Math.round(Math.min(1, z ** -STATION_THINNING) * 100) / 100);
+        if (next !== current) {
+            stations.style.setProperty('--station-size', (current = next));
+        }
+    };
+}
+
+const HAIRLINE_STEP = 1.02;
+
+export function setupHairlines(svgDoc: Document): (k: number) => void {
+    const geography = svgDoc.getElementById('geography')!;
+    const view = svgDoc.defaultView!;
+    for (const el of geography.querySelectorAll<SVGElement>(
+        '[vector-effect="non-scaling-stroke"]',
+    )) {
+        el.style.strokeWidth = `calc(var(--hairline) * ${view.getComputedStyle(el).strokeWidth})`;
+        el.removeAttribute('vector-effect');
+    }
+
+    let current = '';
+    return k => {
+        const next = String(HAIRLINE_STEP ** Math.round(Math.log(1 / k) / Math.log(HAIRLINE_STEP)));
+        if (next !== current) {
+            geography.style.setProperty('--hairline', (current = next));
+        }
+    };
 }
 
 const DIM_SATURATION = 0.2;
@@ -160,16 +215,24 @@ function desaturate(color: string): string {
 
 function setDimmed(el: SVGElement, dimmed: boolean, fade: boolean, dimOpacity: string): void {
     const opacity = dimmed ? dimOpacity : '';
+    const drawing = el.localName === 'g' ? (el.lastElementChild as SVGElement) : null;
+    const target = drawing ?? el;
 
-    if (el.style.strokeOpacity === opacity) {
+    if ((drawing ? target.style.opacity : target.style.strokeOpacity) === opacity) {
         return;
     }
 
-    el.style.transition = fade ? DIM_TRANSITION : '';
+    target.style.transition = fade ? (drawing ? 'opacity 0.2s' : DIM_TRANSITION) : '';
     if (fade) {
-        el.addEventListener('transitionend', () => (el.style.transition = ''), { once: true });
+        target.addEventListener('transitionend', () => (target.style.transition = ''), {
+            once: true,
+        });
     }
-    el.style.strokeOpacity = el.style.fillOpacity = opacity;
+    if (drawing) {
+        drawing.style.opacity = opacity;
+    } else {
+        el.style.strokeOpacity = el.style.fillOpacity = opacity;
+    }
 }
 
 export function update(
@@ -188,8 +251,10 @@ export function update(
 
     let km = 0;
     const lineKm: Record<string, number> = {};
+    const shown = new Set(lines.filter(line => line.el.dataset.hidden === 'false'));
 
-    for (const { el, states, length, km: trackKm } of lines) {
+    for (const line of lines) {
+        const { el, states, length, km: trackKm } = line;
         const name = findName(states, dateNum);
 
         if (name !== null) {
@@ -208,16 +273,24 @@ export function update(
             if (el.dataset.hidden !== 'false') {
                 el.dataset.hidden = 'false';
 
+                const handoff = line.partners.some(partner => shown.has(partner));
                 d3.select(el)
                     .interrupt('shrink')
                     .transition('grow')
-                    .duration(transitionMs)
+                    .duration(handoff ? 0 : transitionMs)
                     .ease(EASE)
-                    .style('stroke-dashoffset', '0');
+                    .style('stroke-dashoffset', '0')
+                    .on('end', () => {
+                        el.dataset.dash ??= el.style.strokeDasharray;
+                        el.style.strokeDasharray = 'none';
+                    });
             }
         } else if (el.dataset.hidden !== 'true') {
             el.dataset.hidden = 'true';
 
+            if (el.dataset.dash) {
+                el.style.strokeDasharray = el.dataset.dash;
+            }
             d3.select(el)
                 .interrupt('grow')
                 .transition('shrink')
@@ -265,68 +338,60 @@ export function update(
     return { stationCount, km, lineKm };
 }
 
-function hoverMouseEnter(
-    rect: Element,
-    currentX: number,
-    currentY: number,
-    width: number,
-    height: number,
-    rx: number,
-    scaleFactor: number,
-): void {
-    d3.select(rect)
-        .transition('hoverEffect')
-        .duration(300)
-        .attr('x', String(currentX - (width * scaleFactor - width) / 2))
-        .attr('y', String(currentY - (height * scaleFactor - height) / 2))
-        .attr('width', String(width * scaleFactor))
-        .attr('height', String(height * scaleFactor))
-        .attr('rx', String(rx * scaleFactor));
+const HOVER_SCALE = 5 / 3;
+
+function hoverTween(el: Element, draw: (h: number) => void): (target: number) => void {
+    let h = 1;
+    return target => {
+        const from = h;
+        d3.select(el)
+            .transition('hoverEffect')
+            .duration(300)
+            .tween('hover', () => t => draw((h = from + (target - from) * t)));
+    };
 }
 
-function hoverMouseLeave(
-    rect: Element,
-    currentX: number,
-    currentY: number,
-    width: number,
-    height: number,
-    rx: number,
-): void {
-    d3.select(rect)
-        .transition('hoverEffect')
-        .duration(300)
-        .attr('x', String(currentX))
-        .attr('y', String(currentY))
-        .attr('width', String(width))
-        .attr('height', String(height))
-        .attr('rx', String(rx));
+function setupInterchange(el: SVGElement): (h: number) => void {
+    const doc = el.ownerDocument;
+    const drawing = doc.createElementNS('http://www.w3.org/2000/svg', 'g');
+    drawing.style.pointerEvents = 'none';
+
+    for (const layer of Array.from(el.children)) {
+        if (!layer.hasAttribute('stroke')) {
+            const hit = layer.cloneNode() as SVGElement;
+            hit.style.stroke = 'transparent';
+            el.append(hit);
+        }
+        drawing.append(layer);
+    }
+    el.append(drawing);
+
+    const box = (el as SVGGraphicsElement).getBBox();
+    const [cx, cy] = [box.x + box.width / 2, box.y + box.height / 2];
+    const radius = parseFloat(drawing.firstElementChild!.getAttribute('stroke-width')!) / 2;
+    const size = Math.max(box.width, box.height) + 2 * radius;
+    const scale = 1 + (HOVER_SCALE - 1) * Math.min(1, (3 * radius) / size);
+
+    return h => {
+        const k = 1 + ((scale - 1) * (h - 1)) / (HOVER_SCALE - 1);
+        drawing.setAttribute(
+            'transform',
+            `translate(${cx},${cy}) scale(${k}) translate(${-cx},${-cy})`,
+        );
+    };
 }
 
 export function setupHoverEffect(el: SVGElement): void {
-    const SCALE_FACTOR = 5 / 3;
+    let animate: (target: number) => void;
 
     if (el.localName === 'circle') {
-        const r = parseFloat(el.getAttribute('r')!);
-
-        d3.select(el)
-            .on('mouseenter', () => {
-                d3.select(el)
-                    .transition('hoverEffect')
-                    .duration(300)
-                    .attr('r', String(r * SCALE_FACTOR));
-            })
-            .on('mouseleave', () => {
-                d3.select(el).transition('hoverEffect').duration(300).attr('r', String(r));
-            });
-    } else if (el.localName === 'rect') {
-        const x = parseFloat(el.getAttribute('x') || '0');
-        const y = parseFloat(el.getAttribute('y') || '0');
-        const width = parseFloat(el.getAttribute('width') || '0');
-        const height = parseFloat(el.getAttribute('height') || '0');
-        const rx = parseFloat(el.getAttribute('rx') || '0');
-
-        d3.select(el)
-            .on('mouseenter', () => hoverMouseEnter(el, x, y, width, height, rx, SCALE_FACTOR))
-            .on('mouseleave', () => hoverMouseLeave(el, x, y, width, height, rx));
+        animate = hoverTween(el, h => el.style.setProperty('--h', String(h)));
+    } else if (el.localName === 'g') {
+        animate = hoverTween(el, setupInterchange(el));
+    } else {
+        return;
     }
+    d3.select(el)
+        .on('mouseenter', () => animate(HOVER_SCALE))
+        .on('mouseleave', () => animate(1));
 }

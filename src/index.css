@@ -251,7 +251,8 @@
     --map-water: #dde6ed;
     --map-coast: #c0cfd9;
     --map-marker: #ffffff;
-    --map-marker-rim: #000000;
+    --map-marker-rim: #5b6067;
+    --map-walk: #8f959c;
     --dim-opacity: 0.25;
 
     --range-thumb: 12px;
@@ -279,7 +280,8 @@
     --map-water: #0e1116;
     --map-coast: #3a4048;
     --map-marker: #f1f1ee;
-    --map-marker-rim: #0e1116;
+    --map-marker-rim: #7c8188;
+    --map-walk: #8e959e;
     --dim-opacity: 0.45;
 }
 

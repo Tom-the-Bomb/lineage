@@ -15,7 +15,9 @@ import {
 import {
     applyMapTheme,
     DEFAULT_SETTINGS,
+    setupHairlines,
     setupHoverEffect,
+    setupZoomThinning,
     STEP_UNITS,
     update,
     zoomToElement,
@@ -199,6 +201,9 @@ export default function Map({ system }: { system: SystemKey }) {
         const stations = svgDoc.querySelector('g#stations')!;
         const [defaultOperator] = Object.keys(config.operators);
 
+        const thin = setupZoomThinning(svgDoc);
+        const hairlines = setupHairlines(svgDoc);
+
         linesRef.current = Array.from(lines.querySelectorAll('path')).map(el => {
             const length = el.getTotalLength();
             const width = parseFloat(svgDoc.defaultView!.getComputedStyle(el).strokeWidth);
@@ -212,12 +217,20 @@ export default function Map({ system }: { system: SystemKey }) {
                 states: parseLabelDates(el.getAttribute('inkscape:label')!),
                 length,
                 km: parseFloat(el.dataset.km!),
+                partners: [],
             };
         });
 
-        stationsRef.current = Array.from(
-            stations.querySelectorAll<SVGElement>('path, circle, rect'),
-        ).map(el => {
+        const tracksById = new globalThis.Map(linesRef.current.map(line => [line.el.id, line]));
+        for (const line of linesRef.current) {
+            for (const id of line.el.dataset.takesOver?.split(' ') ?? []) {
+                const from = tracksById.get(id)!;
+                from.partners.push(line);
+                line.partners.push(from);
+            }
+        }
+
+        stationsRef.current = (Array.from(stations.children) as SVGElement[]).map(el => {
             el.style.opacity = '0';
             el.dataset.hidden = 'true';
 
@@ -303,6 +316,8 @@ export default function Map({ system }: { system: SystemKey }) {
             ])
             .on('zoom', (event: d3.D3ZoomEvent<SVGSVGElement, unknown>) => {
                 zoomLayer.attr('transform', event.transform.toString());
+                thin(event.transform.k / initialScale);
+                hairlines(event.transform.k);
             });
 
         let lastDistance = 0;

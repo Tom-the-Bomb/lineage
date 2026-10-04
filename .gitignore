@@ -21,4 +21,4 @@ dist-ssr
 *.sln
 *.sw?
 
-tests/
+tests/backups

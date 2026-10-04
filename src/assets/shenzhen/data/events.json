@@ -7,6 +7,12 @@
     ]
   },
   {
+    "date": "2007-06-20",
+    "descriptions": [
+      "Line 4: Fumin - Huanggang trial operation begins"
+    ]
+  },
+  {
     "date": "2007-06-28",
     "descriptions": [
       "Line 4: Fumin - Huanggang opens"
@@ -60,7 +66,7 @@
     "date": "2011-06-22",
     "descriptions": [
       "Huanzhong Line: Qianhaiwan - Huangbeiling opens",
-      "Longhua Line: Shenzhen North opens, with a transfer to the new Huanzhong Line"
+      "Longhua Line: Shenzhen North Station opens, with a transfer to the new Huanzhong Line"
     ]
   },
   {
@@ -71,7 +77,7 @@
     ]
   },
   {
-    "date": "2013-10-23",
+    "date": "2013-10-18",
     "descriptions": [
       "Huanzhong Line → Line 5 (Huanzhong Line)",
       "Longgang Line → Line 3 (Longgang Line)",
@@ -153,7 +159,7 @@
   {
     "date": "2022-11-28",
     "descriptions": [
-      "Line 6 Branch: Guangming - SIAT opens",
+      "Branch Line 6: Guangming - SIAT opens",
       "Line 12: Zuopaotai East - Waterlands Resort East opens"
     ]
   },
@@ -164,7 +170,7 @@
       "Line 16: Universiade - Tianxin opens",
       "Pingshan Center: interchange with Pingshan Skyshuttle opens (out of station)",
       "Pingshan Skyshuttle: Pingshan High-speed Railway Station - BYD North opens",
-      "Pingshan: interchange with Pingshan Skyshuttle opens"
+      "Pingshan: interchange with Pingshan Skyshuttle opens (out of station)"
     ]
   },
   {
@@ -192,20 +198,19 @@
   {
     "date": "2025-09-28",
     "descriptions": [
-      "Line 6 Branch: Guangming - Guangmingcheng opens",
+      "Branch Line 6: Guangming - Guangmingcheng opens",
       "Line 16: Universiade - Yuanshan Xikeng opens"
     ]
   },
   {
     "date": "2025-12-28",
     "descriptions": [
-      "Grand Theater - Hongling South: out-of-station interchange opens",
       "Hongling South: out-of-station interchange opens between Lines 9 and 11",
       "Hubei: out-of-station interchange opens between Lines 2 and 5",
       "Line 5: Huangbeiling - Grand Theater opens",
       "Line 8: Xiaomeisha - Xichong opens",
       "Line 11: Huaqiang South - Hongling South opens",
-      "Line 13: Hi-Tech Central - Shangwu opens, with Xili Railway Station unopened"
+      "Line 13: Hi-Tech Central - Shangwu opens, with Xili High Speed Railway Station unopened"
     ]
   },
   {

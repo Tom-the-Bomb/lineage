@@ -1,0 +1,8 @@
+line-length = 120
+target-version = "py312"
+
+[format]
+quote-style = "single"
+
+[lint]
+select = ["E", "F", "W", "B", "UP", "SIM", "I", "C4", "PL", "RUF"]

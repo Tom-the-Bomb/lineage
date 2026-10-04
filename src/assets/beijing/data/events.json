@@ -124,7 +124,7 @@
     "date": "2008-07-19",
     "descriptions": [
       "Airport Express: Dongzhimen - Terminal 3 / Terminal 2 opens",
-      "Line 8: Beitucheng - Forest Park South Gate restricted service for Olympic ticket and credential holders begins",
+      "Line 8: Beitucheng - Forest Park South Gate restricted service for Olympic ticket and credential holders begins, initially bypassing Olympic Sports Center",
       "Line 10: Bagou - Jingsong opens"
     ]
   },
@@ -153,7 +153,7 @@
       "Changping Line: Xi'erqi - Nanshao opens",
       "Daxing Line: Gongyi Xiqiao - Tiangong Yuan opens",
       "Fangshan Line: Dabaotai - Suzhuang opens",
-      "Line 15: Wangjing Xi - Houshayu opens",
+      "Line 15: Wangjing Xi - Houshayu opens, initially bypassing Wangjing Dong",
       "Yizhuang Line: Songjiazhuang - Ciqu opens"
     ]
   },
@@ -162,7 +162,7 @@
     "descriptions": [
       "Fangshan Line: Dabaotai - Guogongzhuang opens",
       "Line 8: Forest Park South Gate - Huilongguan Dongdajie opens",
-      "Line 9: Guogongzhuang - Beijing West Railway Station opens",
+      "Line 9: Guogongzhuang - Beijing West Railway Station opens, initially bypassing Fengtai Dongdajie",
       "Line 15: Houshayu - Fengbo opens"
     ]
   },
@@ -175,19 +175,19 @@
   {
     "date": "2012-12-30",
     "descriptions": [
-      "Line 6: Haidian Wuluju - Caofang opens",
-      "Line 8: Beitucheng - Gulou Dajie opens",
-      "Line 9: Beijing West Railway Station - National Library opens",
+      "Line 6: Haidian Wuluju - Caofang opens, initially bypassing Erligou",
+      "Line 8: Beitucheng - Gulou Dajie opens, initially bypassing Andeli Beijie",
+      "Line 9: Beijing West Railway Station - National Library opens, initially bypassing Military Museum",
       "Line 10: Bagou - Xiju opens",
-      "Line 10: Jingsong - Capital University of Economics and Business opens"
+      "Line 10: Jingsong - Capital University of Economics and Business opens, initially bypassing Jiaomen Dong"
     ]
   },
   {
     "date": "2013-05-05",
     "descriptions": [
-      "Line 10: Capital University of Economics and Business - Xiju opens",
+      "Line 10: Capital University of Economics and Business - Xiju opens, completing the loop",
       "Line 10: Jiaomen Dong opens",
-      "Line 14: Zhangguozhuang - Xiju opens"
+      "Line 14: Zhangguozhuang - Xiju opens, initially bypassing Qilizhuang"
     ]
   },
   {
@@ -212,10 +212,10 @@
   {
     "date": "2014-12-28",
     "descriptions": [
-      "Line 6: Caofang - Lucheng opens",
-      "Line 7: Beijing West Railway Station - Jiaohua Chang opens",
-      "Line 14: Jintai Lu - Shan'gezhuang opens",
-      "Line 15: Wangjing Xi - Qinghua Donglu Xikou opens"
+      "Line 6: Caofang - Lucheng opens, initially bypassing Beiyunhe Dong and Tongyun Men",
+      "Line 7: Beijing West Railway Station - Jiaohua Chang opens, initially bypassing Shuangjing and Fatou",
+      "Line 14: Jintai Lu - Shan'gezhuang opens, initially bypassing Chaoyang Park, with Gaojiayuan unopened",
+      "Line 15: Wangjing Xi - Qinghua Donglu Xikou opens, initially bypassing Datunludong"
     ]
   },
   {
@@ -223,7 +223,7 @@
     "descriptions": [
       "Changping Line: Nanshao - Changping Xishankou opens",
       "Line 8: Andeli Beijie opens",
-      "Line 14: Beijing South Railway Station - Jintai Lu opens",
+      "Line 14: Beijing South Railway Station - Jintai Lu opens, initially bypassing Pingle Yuan, with Taoranqiao and Hongmiao unopened",
       "Line 15: Datunludong opens"
     ]
   },
@@ -232,7 +232,7 @@
     "descriptions": [
       "Line 14: Chaoyang Park opens",
       "Line 15: Wangjing Dong opens",
-      "Line 16: Bei'anhe - Xi Yuan opens"
+      "Line 16: Bei'anhe - Xi Yuan opens, initially bypassing Nongda Nanlu"
     ]
   },
   {
@@ -250,17 +250,17 @@
     "date": "2018-12-30",
     "descriptions": [
       "Line 6: Beiyunhe Dong opens",
-      "Line 6: Haidian Wuluju - Jin'anqiao opens",
+      "Line 6: Haidian Wuluju - Jin'anqiao opens, initially bypassing Pingguoyuan",
       "Line 7: Fatou opens",
       "Line 8: Nanluogu Xiang - National Art Museum opens",
-      "Line 8: Zhushikou - Yinghai opens",
+      "Line 8: Zhushikou - Yinghai opens, initially bypassing Dahong Men",
       "Yizhuang Line: Ciqu - Yizhuang Railway Station opens"
     ]
   },
   {
     "date": "2019-02-17",
     "descriptions": [
-      "Line 13: Shangdi - Xi'erqi relocates to a new alignment"
+      "Line 13: Shangdi - Xi'erqi relocates to a new alignment, initially bypassing Qinghe Railway Station"
     ]
   },
   {
@@ -299,7 +299,7 @@
     "date": "2020-12-31",
     "descriptions": [
       "Fangshan Line: Guogongzhuang - Dongguantou Nan opens",
-      "Line 16: Xi Yuan - Ganjia Kou opens",
+      "Line 16: Xi Yuan - Ganjia Kou opens, initially bypassing Suzhou Jie and Erligou",
       "Yizhuang T1: Quzhuang - Dinghaiyuan opens"
     ]
   },
@@ -330,7 +330,7 @@
       "Line 14: Xiju - Beijing South Railway Station opens",
       "Line 16: Ganjia Kou - Yuyuantan Park East Gate opens",
       "Line 17: Shilihe - Jiahuihu opens",
-      "Line 19: Mudanyuan - Xingong opens",
+      "Line 19: Mudanyuan - Xingong opens, initially bypassing Beitaipingzhuang, Ping'anli, Taipingqiao and Jingfengmen",
       "S1: Jin'anqiao - Pingguoyuan opens"
     ]
   },
@@ -346,14 +346,14 @@
   {
     "date": "2022-12-31",
     "descriptions": [
-      "Line 16: Yuyuantan Park East Gate - Yushuzhuang opens",
+      "Line 16: Yuyuantan Park East Gate - Yushuzhuang opens, initially bypassing Lize Shangwuqu",
       "Muxidi: out-of-station interchange opens"
     ]
   },
   {
     "date": "2023-02-04",
     "descriptions": [
-      "Changping Line: Qinghe Railway Station - Xitucheng opens"
+      "Changping Line: Qinghe Railway Station - Xitucheng opens, initially bypassing Zhufangbei"
     ]
   },
   {
@@ -369,7 +369,7 @@
       "Line 11: Jin'anqiao - Moshikou opens",
       "Line 16: Suzhou Jie opens",
       "Line 16: Yushuzhuang - Wanpingcheng opens",
-      "Line 17: Future Science City North - Workers' Stadium opens"
+      "Line 17: Future Science City North - Workers' Stadium opens, initially bypassing Wangjing Xi"
     ]
   },
   {
@@ -404,7 +404,7 @@
     "date": "2025-12-27",
     "descriptions": [
       "Line 6: Lucheng - Luyang opens",
-      "Line 17: Workers' Stadium - Shilihe opens",
+      "Line 17: Workers' Stadium - Shilihe opens, with Guangqumen Wai unopened",
       "Line 18: Malianwa - Tiantongyuandong opens"
     ]
   },

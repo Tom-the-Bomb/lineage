@@ -99,7 +99,12 @@ Rules:
   `People's_Square`, `Shimen_No._1_Road`, `Site_of_the_First_CPC_National_Congress_·_Xintiandi`).
 - MUST: the name is shown **verbatim** (underscores become spaces). Write it exactly as the operator's
   English name at that time: capitalisation, punctuation and word order. Don't add suffixes such as
-  `(elevated)`, `*` or line numbers; use the element `id` for disambiguation.
+  `(elevated)`, `*` or line numbers; use the element `id` for disambiguation. The operator's own map
+  decides the form, including its short forms (Shenzhen's `OCT`), "Station" where it keeps it
+  (`Shenzhen_North_Station`), its apostrophes and its `&` (`Convention_&amp;_Exhibition_Center` in
+  the SVG). Line names follow its legend too. Where the English names changed network-wide on a day
+  nobody recorded (Shenzhen's pinyin names before 2010–11), show the current form throughout and say
+  so in the source notes; don't invent a date.
 - Dates are local calendar dates as the operator announced them. They are parsed as UTC midnight.
   Don't shift them for time zones.
 - Station operators are not part of the label; they go in `data-logos` (§5).
@@ -121,12 +126,16 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
       <path id="line-1--caobao-road--xujiahui--1993-05-28" data-km="2.8" d="M… L…" inkscape:label="Line_1=1993_05_28" stroke="#e3002b" />
       …
     </g>
-    <g id="stations" fill="#fff" stroke="#000" stroke-width="2"
+    <g id="stations" fill="#fff" stroke="#5b6067" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.535"
        inkscape:groupmode="layer" inkscape:label="station_markers">
-      <path id="walking-transfer-…" d="M… L…" fill="none" inkscape:label="…" />   <!-- connectors first -->
-      <circle id="station-…" data-lines="…" cx="…" cy="…" r="6.325" inkscape:label="…" data-logos="…" />
-      <rect id="station-…" data-lines="…" x="-6.325" y="-12.325" width="12.650" height="24.650" rx="6.325"
-            transform="translate(2249.088,1238.967) rotate(-44.6594)" inkscape:label="…" data-logos="…" />
+      <path id="walking-transfer-…" inkscape:label="…" fill="none" stroke="#8f959c" stroke-width="1.000" d="M… L…" />   <!-- connectors first -->
+      <circle id="station-…" inkscape:label="…" data-lines="…" data-logos="…" cx="…" cy="…" r="6.383" />
+      <g id="station-…" inkscape:label="…" data-lines="…" data-logos="…" data-platforms="…" fill="none">   <!-- interchange -->
+        <path class="dots" d="M… L…" stroke-width="15.300" />
+        <path class="bridges" d="M… L…" stroke-width="8.255" />
+        <path class="dots" d="M… L…" stroke="#fff" stroke-width="10.230" />
+        <path class="bridges" d="M… L…" stroke="#fff" stroke-width="3.185" />
+      </g>
       …
     </g>
   </g>
@@ -143,10 +152,12 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 - MUST: `<g id="zoom-layer">` wraps everything. Zoom and pan transform this group.
 - MUST: `<g id="lines">` contains **only** `<path>` elements, and every one has a label. The app animates
   every child and reads every label, so an unlabelled element breaks it.
-- MUST: `<g id="stations">` contains **only** `<circle>` (station), `<rect>` (interchange capsule) and
-  `<path>` (connector) elements, every one labelled. No nested `<g>`, no `<use>`, no `<text>`.
-- MUST: paint for markers and connectors lives on the `stations` group (`fill`, `stroke`, `stroke-width`),
-  not on each element. The app scales markers on hover, so per-element sizes must stay as specified.
+- MUST: `<g id="stations">` contains **only** `<circle>` (station), `<g>` (interchange, holding only
+  its layer paths, §5) and `<path id="walking-transfer…">` (connector) elements, every one labelled.
+  No other nesting, no `<use>`, no `<text>`.
+- MUST: marker paint lives on the `stations` group (`fill`, `stroke`, round caps and joins, the border
+  `stroke-width`), not on each marker; an interchange's layers carry only their widths (and white),
+  connectors their own thinner grey stroke (§5).
 - MUST: draw order is geography → lines → stations; inside `stations`, connectors first so markers sit
   on top of them.
 - MUST: geography uses one palette across systems: the operator's own land is the off-white page
@@ -154,16 +165,44 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   token is the same value), water is `#dde6ed`, and land beyond the operator's territory is `#eceeef`
   (Shanghai's neighbouring provinces, Shenzhen). Water shapes carry a one-pixel coastline,
   `stroke="#c0cfd9" stroke-width="1" vector-effect="non-scaling-stroke"`, which stays hairline at every
-  zoom. A source that only outlines the land (MTR) gets a full-`viewBox` water path first (no stroke) and
+  zoom. Keep the attribute in the file: at load the app replaces it with a width set from the zoom
+  (`calc(var(--hairline) * w)` on each element, `--hairline` = 1/zoom in 2% steps), which Safari
+  repaints more cheaply. It reads each element's computed width in map units, so a hairline MUST NOT
+  sit under a transform inside `geography` (bake any transform into the path data). A path in
+  `<defs>` drawn through `<use>` carries the attribute itself, since it is not inherited through `<use>`.
+  A source that only outlines the land (MTR) gets a full-`viewBox` water path first (no stroke) and
   its land filled `#f6f6f3` on top, with the coastline on the land shapes instead.
 - MUST NOT: `<title>` or `<desc>` anywhere, because browsers show them as tooltips on top of the app's.
   Also no `<text>` labels (names come from labels and tooltips), no `<defs>`/`<use>`/`<symbol>`, no
   `<image>`, no filters, masks or clip paths, no `scale()`/`matrix()` transforms. The one exception is
-  inside `geography`, which the app neither animates nor reads: preserved source artwork keeps its
-  nested transforms and is clipped to its original canvas by a `<defs>` clip path (§11), and a shape
+  inside `geography`, which the app does not animate: preserved source artwork is clipped to its original canvas by a `<defs>` clip path (§11), and a shape
   drawn twice may be reused with `<use>` (Shanghai's and Singapore's land fills, Seoul's outside land
   and shoreline). Nothing in `lines` or
   `stations` may use them.
+- SHOULD: split every large geography path (a few thousand points or more) into spatial tiles of plain
+  paths. Browsers repaint the map a tile at a time and walk every path whose bounds overlap the tile, so
+  a path spanning much of the canvas is re-walked for every tile a zoom, pan or growing track repaints:
+  Seoul's single 63,000-segment shoreline made Safari zoom at about nine frames a second, and in
+  WebKit the long OpenStreetMap water and land paths made up nearly all of every map's paint time.
+  Since 2026-10-03 every map's straight-segment geography paths of 2,000 points or more are tiled in
+  place (a quadtree of at most 1,500 vertices per tile), cutting WebKit's paint time per frame by
+  30–80% (Nanjing 42 to 7 ms at a quarter-canvas view, Guangzhou 71 to 37, Beijing 26 to 7):
+  - the element becomes a `<g>` with its `id` and paint; fill pieces carry `stroke="none"`, outline
+    pieces `fill="none"` and the element's `vector-effect` (it is not inherited);
+  - fill: each ring is clipped to the tile on its own (Sutherland–Hodgman), which keeps its direction,
+    so its winding inside the tile, and so the fill under either fill rule, is unchanged; tiles with
+    no vertices are kept, since they may lie wholly inside a ring; opaque fill pieces overlap their
+    neighbours by 1.5 units so no anti-aliasing seam shows;
+  - outline: the rings, closed ones with their closing segment, are cut at the tile edges, with round
+    caps closing the cuts;
+  - no `<use>` and no clip paths: Safari pays for each on every tile it paints;
+  - path data is relative on the source's own decimal grid (absolute points rounded first, so the
+    deltas never drift), which made every file smaller once compressed.
+
+  Curved paths, paths under a transform, and anything in `<defs>` stay as drawn. Compare the result
+  with the untiled drawing in Chromium at full zoom-out, a phone-width viewport and close up: only
+  anti-aliasing should differ.
+
 - Inkscape metadata (`sodipodi:namedview`, `<metadata>`) is harmless but unnecessary; new files SHOULD omit it.
 - `id`s MUST be unique. They SHOULD be descriptive:
   - tracks: `<line-slug>--<from-slug>--<to-slug>--<YYYY-MM-DD opening>`, e.g. `line-2--guanglan-road--longyang-road--2010-02-24`;
@@ -180,7 +219,7 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 - Replacement markers for one station MUST share a stem and MUST NOT overlap in time. Separate
   stations MUST have different stems, including namesakes and out-of-station transfers (§6).
   West Nanjing Road's Line 2, 12 and 13 stations therefore have three identities; the Line 2
-  marker's replacement keeps the Line 2 identity. When separate stations become one capsule,
+  marker's replacement keeps the Line 2 identity. When separate stations become one interchange marker,
   continue the earliest station's identity and retire the other separate identities. Their
   historical search results remain available. Search groups by identity **and historical name**,
   showing the first date that identity used the name, without shortening or rewriting labels.
@@ -189,12 +228,19 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 
 - A track is one `<path>` per **line segment with its own dates**: split a line wherever a stretch
   opens, closes, is rerouted or changes name on a different date from its neighbours. Each segment
-  runs station-centre to station-centre along the drawn route.
+  runs station-centre to station-centre along the drawn route. On every date a line's visible
+  tracks form connected runs between its stations: two open pieces with a gap between them are an
+  error (Seoul's Gyeongui Line lacked Digital Media City – Gajwa from 2009 to 2012 because its 2012
+  track began at Digital Media City instead of at the branch point, Gajwa).
 - MUST: a track has fewer than 256 straight segments (`L` commands). WebKit restarts the dash
   pattern every 256 line segments, so a longer polyline draws in as several pieces at once in Safari.
   Simplify dense polylines by dropping vertices (Douglas–Peucker at ~0.05 `W`, endpoints kept);
   Bézier curves don't count.
-- MUST: a terminus segment ends exactly at the terminus marker's centre. It must not stick out beyond it,
+- MUST: a terminus segment ends exactly at its terminus platform: the circle's centre, or that
+  platform's point in the interchange's `data-platforms` (§5), which is normally its own line's (Taipei's
+  Xiaonanmen Line started on the Songshan–Xindian platform it shared at Ximen). Ending anywhere else
+  inside an interchange marker is not enough (Seoul's 2011–2022 Shinbundang terminus at Gangnam
+  reached 9.2 units past its own platform, onto Line 2's). It must not stick out beyond the marker,
   and neither may a round cap (Caps, below), which reaches half the stroke width past the end.
   `check_map.py` checks every track end, allowing the drawn tip up to 1 unit of slack: inside a marker present at
   every moment of the track's life (markers move when a station is rebuilt), or on another track of
@@ -204,19 +250,10 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   another network while no station stood at the end: the track still ends where the terminus
   station stands in other periods, and no stub is drawn on to the border, which could not show
   where the trains really went (the KCR at Lo Wu from 1911 to 1949, when trains ran through to
-  Canton and Lo Wu had no station).
+  Canton and Lo Wu had no station). That the end lies on its own platform point is checked by eye
+  (§11 step 6).
 - A segment that existed only for a period (e.g. an old alignment) gets its own path with an end
   date. Its replacement is a separate path that starts on the day the old one ends.
-- Shared track (two lines running through the same stations) SHOULD be drawn as parallel offset
-  paths, one per line, 3.5–5 units apart at Shanghai scale. Where one line has stations the other
-  passes without stopping, widen to `2 W` there so its circles clear the other track (§5). MTR's
-  Airport Express touches the Tung Chung line (`0.95 W`) where they share one pair of tracks on
-  Lantau and the Tsing Ma Bridge, widens to `2 W` round Sunny Bay (it runs through the station's
-  centre tracks) and crosses to the other side there, and keeps `2 W` from Tsing Yi to Hong Kong.
-- SHOULD: use smooth, tangent-continuous Bézier bends rather than chains of angular corners.
-  Round bends locally, keeping the route close to its source geography (normally within one track
-  width `W`). Preserve station alignment, historical segment endpoints, branch junctions and spacing
-  between parallel routes; check the resulting curves at historical dates as well as the present.
 - Width: every metro track uses the width `W` set on the `lines` group (Shanghai `W = 5`). Trams,
   light rail and gondolas use a thinner per-path `stroke-width` of `0.4 W`: Shanghai trams use 2,
   and MTR Light Rail and Ngong Ping 360 use 0.6.
@@ -230,7 +267,19 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   marked `data-continues`) the checker gives such a track that much less slack. Joins are `round`. The app hides a track with a single dash as long as the track slid off its
   start (`stroke-dashoffset: L`) and draws it in by sliding the offset back to 0. The gap after the
   dash is one stroke width longer than the track (`stroke-dasharray: L L+W`), so the next dash never
-  reaches the far end, where a round cap would draw a dot.
+  reaches the far end, where a round cap would draw a dot. Once a track has drawn in, the app drops the
+  pattern (`stroke-dasharray: none`) and restores it before the track retracts: Safari re-dashes a
+  dashed track along its whole length on every repaint.
+- One growth per event: the stretch an event opens is one track, oriented to grow from the end that
+  touches the network already open (else from the line's first station), so it draws in as one
+  front; branches are one track each. Its subpath is continuous (pieces joined, not separate
+  `M` commands), since each subpath would grow on its own. Where parts of that stretch later change
+  differently (a section closes, is renamed or rebuilt), the track ends that day and the parts that
+  carry on continue as their own tracks, each with `data-takes-over="<id>"` naming the track it
+  replaces. Such a track lies exactly on the one it replaces (within 0.01 units), comes after it in
+  the layer, and starts the day that one ends; when that one was shown just before, the app draws
+  the new track in place instead of regrowing it, while the old one still retracts underneath (so a
+  section that closes still visibly retracts). Cut as few pieces as the dates need.
 - Colour: the app colours each track from the legend entry whose name matches the track's name at
   that moment (§9). Also put the same colour on the path as `stroke="#rrggbb"`. It's the fallback
   and it makes the file readable in an editor.
@@ -240,7 +289,10 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   (`data-km="4.7"`). A line's length at any date is the sum over its tracks visible then, so the
   values of a line's tracks visible at `maxDate` MUST add up to the operator's published route
   length for that line. A branch with its own legend entry counts separately, and a track's value
-  never changes when the line is renamed.
+  never changes when the line is renamed, nor when its geometry is redrawn (removing a jog, moving
+  it onto its real course or setting a side-by-side offset changes the drawn length, not the
+  published one; Nanjing's realignments changed drawn lengths by under 0.5%). Fixing a gap in the
+  segmentation can move kilometres between tracks, which is intended.
   - Use the published length of a section where the operator gave one (opening notices, line pages).
   - Otherwise derive it from the drawn length, scaled so the line's present-day total matches the
     published figure. Today's figure is then exact and historical figures are within a few percent,
@@ -255,91 +307,353 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
 - Path data: any valid `d` works because the app uses `getTotalLength()`. Shanghai uses absolute
   `M x,y L x,y …` with 3 decimals.
 
+The geometry rules below follow from the station markers (§5): a dot stands at its line's real
+platform, so nothing about a marker bends, widens or shortens a track any more.
+
+**Course: a track follows its own railway**
+
+- SHOULD: a track lies on its line's real course: the centreline of the line's own railway (the
+  midpoint of its two running tracks, from its own OpenStreetMap route-relation ways, never merely
+  the nearest railway), placed through the map's frame (§11). Keep it within about 0.5 W of that
+  centreline (Shanghai 2.5 units, about 60 m) and redraw any stretch further off. Where the two bores
+  split round an obstacle, the centreline is their average (Xi'an's Line 6 under the west moat), not
+  a zigzag of nearest points.
+- MUST NOT: bend a track toward a dot, round a marker, to clear a marker or to space two dots, nor jog
+  it to pass through a measured platform point: the platform point is projected onto the track,
+  never the other way round (§5). Tokyo's Chiyoda Line at Otemachi and Nanjing's twenty station jogs
+  of about 1 W were such errors.
+- The only departures from the real course are: the side-by-side convention below; rounding a real
+  corner (a vertex of OSM's polyline) into a curve, normally within W; a simplified line adjusted to
+  meet a heavy-rail marker (§8); and any other departure the system's source notes document with a
+  reason (Hong Kong's Airport Express pair, below; Singapore's smooth artwork offsets of about 1 W;
+  three OSM corners Shenzhen could not follow without a kink, up to 1.3 W).
+- Smooth OSM vertex noise over a few units (a Gaussian along the arc of about 3 units moves a 300 m
+  radius curve by under 0.1 W) and fit tangent-continuous Béziers. A tolerance-driven smoothing
+  spline is the wrong tool: it oscillates and leaves 0.5–1-unit S-jogs. Where a track must lie
+  exactly beside another, keep Bézier chords short (about 4 units at Shanghai scale): a long chord
+  bulges enough to open a hairline gap.
+- A historical track in the same tunnel or on the same formation as a later one uses the later
+  track's geometry exactly (Hong Kong's 1979–82 Modified Initial System on the Kwun Tong and Tsuen
+  Wan courses).
+
+**Side by side**
+
+- Lines that share a corridor are drawn side by side, **touching exactly**: centres
+  `(w1 + w2) / 2` apart, which is `W` for two metro lines and `0.7 W` for a `0.4 W` tram beside a
+  metro line (Nanjing 3.5 units, Tokyo 2.1), to within 0.05 units over the whole shared stretch.
+  Measure the true nearest distance, not the distance along one line's normal, which undershoots on
+  bends. Draw them touching where their real centrelines are less than about 1.5 W apart; where they
+  are farther apart, each follows its own course and the gap between them is a clear one. Nothing in
+  between: a stroke gap between 0 and about 0.5 W reads as a hairline background sliver, and any
+  overlap as one line partly hiding the other.
+- MUST NOT: widen a corridor so that a station clears the other line. A dot sits at its real
+  platform even where another line runs beside or over it (§5, Placement), and the tooltip says which
+  lines stop. The former rule of widening to `2 W` where one line has stations the other passes is
+  withdrawn.
+- Where the pair sits: each line may lie anywhere from the corridor's real centre to `W` out on its
+  own side. Either centre the pair on the mean of their real centrelines, or keep one line on its
+  real course (the one that already follows OSM, usually the earlier or through line) and offset the
+  other, whichever avoids a needless S-bend in a line that runs on alone (Beijing's Line 8 ending
+  beside the through line at Zhuxinzhuang).
+- Order: each line runs on its real side and crosses where the real lines cross (three Guangzhou
+  corridors had been drawn mirror-image). Where one line's two tracks lie outside the other's, as at
+  many cross-platform stations (Hangzhou's West Railway Station, Chongqing's Shangwanlu), the
+  corridor centre is the mean of all four tracks and each line goes on the side it leaves the
+  corridor to, so its exit needs no extra crossing; a real crossing is kept.
+- Platform points on a moved line move with it, perpendicular to the track, keeping their position
+  along it (§5). A track never jogs back to its real platform (Seoul's Shinbundang had a 28° jog into
+  the Bundang track at Jeongja).
+- Shared track (two lines on the same rails: Shanghai's Lines 3/4, Tokyo's Yurakucho/Fukutoshin and
+  Namboku/Mita) is drawn as parallel offsets 0.7–1 W apart (Shanghai 3.5–5 units), never more than
+  `W`, and its stations as one pill across the offset (§5).
+- Two tracks of one colour (a line and its own branch or predecessor) may overlap by about 0.2
+  units instead of touching: abutting strokes of one colour show an anti-aliasing seam, an overlap
+  does not (Beijing's Line 1 and Batong Line between Sihui and Sihui Dong).
+- A map may keep a different standard spacing where its source notes say why. Hong Kong keeps
+  `2 W` (a gap of one track width) for the Tseung Kwan O Line beside the Island Line north of North
+  Point, where the real tracks are about that far apart, and for its Airport Express convention: the
+  Airport Express touches the Tung Chung line (`0.95 W`) where they share one pair of tracks on
+  Lantau and the Tsing Ma Bridge, runs `2 W` from it round Sunny Bay (it uses the station's centre
+  tracks) and crosses to the other side there, and keeps `2 W` from Tsing Yi to Hong Kong, which
+  leaves the Tung Chung line up to 1.6 W off its course. Two older spacings were brought to this
+  rule on 2026-10-03: Shanghai's Lines 11/16 round Xiuyan Road (widened to `2 W`; their viaducts
+  are about 1 unit apart) and Taipei's Danhai LRT north of Hongshulin (about 4 units from the
+  Tamsui–Xinyi Line; the real tracks are 2–4 units apart) now touch.
+
+**Crossings, joins and partings**
+
+- Lines that cross are drawn crossing where the real tracks cross, once, without weaving. No
+  side-by-side offset applies within about 2–3 W of a real crossing: pushing two crossing lines
+  apart makes elbows. A real crossing at a shallow angle is drawn as it is, even though it shows a
+  short overlap (Chengdu's Lines 1 and 18 on Tianfu Avenue, Singapore's Circle and Thomson–East
+  Coast lines north of Caldecott); the no-overlap rule is for near-parallel running only.
+- A line that changes sides of a corridor partner where the real tracks are stacked crosses at a
+  clear angle (about 20° or more) on a short transition, then touches. A long shallow slide under the
+  partner reads as a partial overlap (Hong Kong's Tuen Ma line north of Hung Hom, Chengdu's Line 5 at
+  Xibei Bridge).
+- A line joins or leaves a corridor in one smooth curve, tangent-continuous at both ends, at the
+  angle of its real departure. Make the touching stretch an exact offset of one line, but only where
+  the two are already nearly parallel (an offset across the neighbour's tight bend leaves a corner on
+  its inside), and beyond each end carry the end displacement as a translation that fades out
+  smoothly over about 2–7 W, with the longer lead-in where the offset moves the line to the inside
+  of a bend. Do not blend between two targets (the real course and the offset): where the real
+  course crosses the partner first, that makes a dip and a bump (Chengdu's Line 4 at Chengdu
+  University of TCM). Where the real tracks part very slowly, keep the lines touching while the real
+  separation stays within a small tolerance of `W`, then let the gap open along the real curves.
+- Lines that meet in one marker shape (shared track, a full stacked crossing, or platforms under
+  0.4 R apart, §5) converge within about `R` of the platform, so the overlap hides under the marker
+  (Nanjing's Jinmalu). A line that ends cross-platform beside another ends on its own offset course at
+  its own stop, without curving back onto the other line (Nanjing's S9 at Xiangyulunan).
+- Not slivers: the short wedge where a line crosses another and then runs touching it, and the
+  narrowing gap where two lines on their real courses converge on neighbouring stations (Shenzhen's
+  Sea World). The slivers to fix are long near-parallel runs with a small, roughly constant gap,
+  and partial overlaps where one line hides part of another.
+- Checking: for every date, pool each line's visible tracks (so its own joints don't count) and
+  sample every pair of lines. Where two run within about 20° of parallel for more than about 3 units,
+  the stroke gap (centre distance − `(w1 + w2) / 2`) is 0 (within 0.05) or a clear gap (at least about
+  0.5 W, or the map's documented spacing), and an overlap deeper than about 0.15 units is a crossing,
+  shared track, a one-colour pair or a convergence under a marker. Judge what remains in the app at
+  maximum zoom (§11): a residue below about a pixel there (Chengdu 0.3 units, Singapore 1 unit) is
+  invisible and may be left, with a note in the source notes.
+
+**Joints, curves and ends**
+
+- Consecutive pieces of one line share their end point exactly and are tangent-continuous: no turn
+  above about 0.5° at a joint (a few degrees hide under a dot; Seoul's dated joints turn up to 4°).
+  A joint that no marker covers shows even a 4° corner. Where a redrawn piece meets an unchanged
+  one, bend the redrawn piece onto the other's tangent over at least 3 W; where an end has partners
+  at different dates, today's partner sets the tangent.
+- Inside a path, aim for no vertex turning by more than about 1° (Hangzhou, Chengdu, Chongqing,
+  Guangzhou and Tokyo meet that; Taipei holds 3°), unless the real track has that corner (Ngong Ping
+  360's angle stations, a tram's street corners, a junction or reversal under a marker such as
+  Beijing's Capital Airport Express at Terminal 2). Earlier passes allowed up to 12°; the 3–12°
+  vertices they left (about 140 in Seoul, most on its main-line routes; five in Shenzhen, one in
+  Nanjing and three on Shanghai's Line 3 at Shilong Road and Shanghai South) were rounded on
+  2026-10-03, moving no line more than 0.2 units and keeping station points on the track. Six are
+  left in Seoul, all under station dots: Line 1 at Geumjeong (10°, at the dot's edge) and
+  Byeongjeom (3°), junctions where a branch shares the approach, and four within a unit of an
+  interchange platform that rounding would move (Yeongdeungpo-gu Office, Gangnam-gu Office, Daerim,
+  Bupyeong-gu Office).
+- Leftover tiny pieces cause most kinks: a segment of a few hundredths of a unit, or a Bézier handle
+  under about 0.4 units, has no reliable direction once rounded to 3 decimals and turns a joint into
+  a 1–3° corner. Merge such a leftover into its neighbour (or make sure the joint stays tangent),
+  and never leave a zero-length segment. After trimming an end, check for a hook (a first or last
+  segment under 1 unit, or one whose tangent is more than 60° off its chord).
+- Rounding OSM's polyline corners gives radii of a few units, which is fine; but a straight piece
+  meeting a tight curve can read as a corner at full zoom even with matching tangents (Hong Kong's
+  1975 Hung Hom approach). A turn of more than about 15° within 2 units outside a marker is worth a
+  look.
+- A terminus ends on its platform (above) and moves with it only by trimming the track or extending
+  it straight along its real alignment, never by bending the last stretch sideways. Tail and siding
+  tracks beyond the platform are not drawn, although OSM route relations often include them.
+- Where a station is the joint of two pieces of its line, the joint is that line's platform point at
+  the station that was the terminus. Moving the platform moves the joint along the combined
+  geometry (split the joined path at the new point), so both pieces stay exact.
+- A `data-takes-over` continuation and its parent are edited together, so their shared geometry stays
+  identical; where smoothing would break that, the handover wins (Tokyo kept a 1.3° corner on its
+  1939 piece).
+- A faint line can appear across a track where two butt-capped paths meet, even with exact,
+  tangent-continuous geometry (rsvg shows it at some joints, Chromium at others). It is a renderer
+  artefact: don't overlap pieces to hide it, and don't split a track mid-run where one path would do.
+
+**After a geometry edit**
+
+Moving a track moves everything on it. Re-project each platform point from its real platform (not
+from the old dot) onto the new track (§5), and move with it every track end and joint at that
+point, the ends of bridges and pills, earlier circles of the same platform, connector ends and any
+one-circle crossing (recompute the drawn crossing and check that both platforms are still within
+`R` of it). Re-impose identical geometry on `data-takes-over` partners. Then re-run the composition
+rules (§5 rule 3 can merge or split a pair), the side-by-side and joint checks above, and
+`check_map.py`. `data-km` does not change.
+
 ## 5. Station markers and connectors
+
+Markers follow the metro line maps on Wikimedia Commons (README): a station is a white dot with a
+grey border; an interchange draws a dot on each line's real platform (one circle or pill only where
+lines share track or stack at a full crossing), joined by hollow bridges along the walkways
+passengers take, all inside one continuous border. Everything below is static in the SVG; the app only recolours
+markers for dark mode, thins them on zoom and animates hover.
 
 All sizes derive from the track width `W`:
 
-| Quantity                                  | Formula                       | Shanghai (`W = 5`) | MTR (`W = 1.5`) |
-| ----------------------------------------- | ----------------------------- | ------------------ | --------------- |
-| marker radius `r`                         | `1.265 W`                     | `6.325`            | `1.897`         |
-| outline (`stations` group `stroke-width`) | `0.4 W`                       | `2`                | `0.6`           |
-| capsule width                             | `2r`                          | `12.650`           | `3.795`         |
-| connector stroke                          | the outline width (inherited) | `2`                | `0.6`           |
+| Quantity                                     | Formula   | Tokyo (`W = 3`) | Shanghai (`W = 5`) |
+| -------------------------------------------- | --------- | --------------- | ------------------ |
+| dot outer radius `R`                         | `1.53 W`  | `4.590`         | `7.650`            |
+| border `B` (`stations` group `stroke-width`) | `0.507 W` | `1.521`         | `2.535`            |
+| circle `r` (to the border's centre)          | `R − B/2` | `3.829`         | `6.383`            |
+| bridge outer width `T`                       | `1.651 W` | `4.953`         | `8.255`            |
+| connector stroke                             | `0.2 W`   | `0.600`         | `1.000`            |
 
-**Station (one line or one platform complex on one line): `<circle>`**
+Paint: the `stations` group carries `fill="#fff" stroke="#5b6067" stroke-linecap="round"
+stroke-linejoin="round" stroke-width="B"`; circles carry none. Connectors carry their own
+`stroke="#8f959c" stroke-width="0.2 W"`. In dark mode the app swaps these colours (and the interchange
+layers' white) for its `--map-marker`, `--map-marker-rim` and `--map-walk` tokens.
+
+Zooming in past the opening view by `z`, the app draws station markers `z^-0.4` as thick in map
+units (tracks and walking connectors keep their width), so dots shrink around their platforms
+and the bridges between them, and the connectors between separate stations, show. On hover a circle
+grows (radius × 5/3); an interchange scales about its centre as a whole, by as much for a compact
+one and less for a long one, while an unscaled invisible copy stays the hit area.
+
+**Station (one line, or one platform complex on one line): `<circle>`**
 
 ```xml
-<circle id="station-hengshan-road-7" data-lines="1=1995_04_10" cx="2290.083" cy="1184.699" r="6.325" inkscape:label="Hengshan_Road=1995_04_10" data-logos="metro" />
+<circle id="station-hengshan-road-7" inkscape:label="Hengshan_Road=1995_04_10" data-lines="1=1995_04_10" cx="2290.083" cy="1184.699" r="6.383" />
 ```
 
-- MUST: the centre sits on the track centreline (within 0.5 units).
+- MUST: the centre sits on the centreline of every line in its `data-lines` (within 0.5 units, which
+  `check_map.py` checks; aim for 0.01, the tolerance the tests set for platform points), at the real
+  platform centre (below). A simplified line (§8) need only pass under the circle.
 - A station that becomes an interchange is **two elements**: the circle's label ends on the day the
-  capsule's label starts. The name stays the same.
+  interchange marker's label starts. The name stays the same. Normally, unless the platform itself moved
+  (a rebuilt station) or the earlier circle is staggered as half of an out-of-station pair (below), it
+  sits on its line's platform point in the later marker (on the drawn crossing where that marker is
+  one crossing circle), so the station doesn't jump when the marker changes.
 
-**Interchange (lines share a paid area): `<rect>` capsule**
+**Interchange (lines share a paid area): `<g>` of dots and bridges, with `data-platforms`**
 
 ```xml
-<rect id="station-xujiahui-4--2010-04-07" data-lines="1=2010_04_07-2013_08_31,9=2010_04_07-2013_08_31"
-      x="-6.325" y="-12.325" width="12.650" height="24.650" rx="6.325"
-      transform="translate(2249.088,1238.967) rotate(-44.6594)" inkscape:label="Xujiahui=2010_04_07-2013_08_31" data-logos="metro" />
+<g id="station-aoyama-itchome-g--2000-12-12" inkscape:label="Aoyama-itchome=2000_12_12" data-lines="e=2000_12_12,g=2000_12_12,z=2000_12_12"
+   data-logos="metro,toei" data-platforms="e:782.970,983.345 g:785.159,990.350 z:784.245,987.654" fill="none">
+  <path class="dots" d="M782.970,983.345 L782.970,983.345 M784.242,987.655 L785.162,990.349" stroke-width="9.180" />
+  <path class="bridges" d="M782.970,983.345 L784.245,987.654" stroke-width="4.953" />
+  <path class="dots" d="M782.970,983.345 L782.970,983.345 M784.242,987.655 L785.162,990.349" stroke="#fff" stroke-width="6.138" />
+  <path class="bridges" d="M782.970,983.345 L784.245,987.654" stroke="#fff" stroke-width="1.911" />
+</g>
 ```
 
-To build it, take `P` and `Q`, the two outermost points on the lines' centrelines that it must
-cover (each line's station point):
+The marker is two geometries, each drawn twice with round caps and joins, grey then white: the
+grey layers' union under the white layers reads as one shape with one border of width `B`.
 
-```
-span   = |PQ|
-height = span + 2r
-x = -r,  y = -height / 2,  width = 2r,  rx = r   (no ry)
-transform = "translate(cx,cy) rotate(θ)"
-  (cx, cy) = midpoint of P and Q
-  θ = degrees(atan2(-(Qx - Px), Qy - Py))   // rotates the rect's local +y axis onto P→Q
-```
+- `class="dots"`: one shape per group of platforms: a dot `M x,y L x,y` (a zero-length stroke,
+  round-capped), a pill `M a L b`, or a blob of such segments sharing their ends; grey
+  `stroke-width="2R"`, white `2(R − B)`. A pill runs through its platforms, so when a platform moves
+  its pill follows it.
+- `class="bridges"` (only when there are any): one polyline per bridge, `M p L … L q`, from one
+  dot's centre along the walkway to another's; grey `stroke-width="T"`, white `T − 2B`.
+- MUST: grey dots, [grey bridges], white dots, [white bridges], the white `d` equal to the grey,
+  absolute coordinates to 3 decimals; the `<g>` carries `fill="none"` and nothing else of paint.
 
-- MUST: `transform` is exactly `translate(x,y) rotate(deg)` and nothing else.
-- MUST: every line serving the interchange passes under the capsule: its centreline is within
-  `r - W/2` of the segment `PQ`. If a line would be missed, lengthen `PQ` (or reposition it) until
-  it isn't.
-- If `span` would be 0, it's one line: use a circle.
-- SHOULD: keep capsules compact. A small shift along the serving tracks and a slight rotation may
-  shorten the span without rerouting the lines. Preserve station order, cover every serving line,
-  avoid unrelated tracks, and move any attached connector endpoints with the marker.
-- Where services share the same centreline, align the capsule with that line rather than leaving
-  a default vertical pill. Use simple horizontal/vertical/diagonal orientations when they cover
-  all served tracks; follow the local street/track grid where that is clearer (e.g. central Beijing).
-- Aim for a capsule no more than about three marker widths long. Longer physical complexes may
-  need exceptions: do not hide a served line, create overlaps, merge distinct stations or remove
-  historical transfer gaps just to meet this target. Local track spacing adjustments must move
-  related historical markers and connectors consistently, with geography unchanged.
-- Coordinates use 3 decimals and angles 4.
+`data-platforms` lists one `<line-id>:x,y` per line in `data-lines`: that line's platform, on its
+own drawn centreline. Take the real platform (OpenStreetMap `railway=platform` or
+`public_transport=platform`, or the station plan), find its centre along the track, and project it
+onto the drawn track. Circles are placed the same way.
+
+- **The platform centre.** Use the platform way(s) beside the line's own track (search a couple of
+  hundred metres along the line, not only next to the stop node) and take the midpoint of their
+  extent along the track. A `public_transport=stop_position` node marks where the front of a train
+  stops, often at one end of the platform: one stop alone put Beijing's Line 8 dots, 131 Seoul
+  circles and 57 Guangzhou circles 3–13 units off. Use stops only where no platform is mapped, and
+  then the midpoint of the two directions' stops when they are no more than a train length apart.
+  At a main-line station take only the platforms the metro uses (OSM `subway=yes`). Watch for stale
+  tags (Hangzhou's Pinglan Road stops still carried `proposed:railway=station`, 7 units from the
+  platform). Record which source each station used.
+- **How close.** A platform point lies within about 50 m (half a platform; Shanghai 2 units) along
+  its track of the real platform centre, as placed through the map's frame (§11). Fit noise is
+  about 0.5–1 unit, so when auditing, move a point only where two independent estimates agree, for
+  example a local fit that leaves the station out and its chainage between its neighbours along
+  the OSM route. A fit that includes the station itself pulls the estimate back to the drawn dot and
+  hides errors of several units.
+- **Offset tracks.** On a line drawn beside another (§4, Side by side), the platform point is the
+  real platform centre projected onto the offset track: it moves perpendicular to the track by the
+  offset (up to about `W/2` plus half the real separation) and keeps its position along it. Where
+  two touching lines share a cross-platform island, project the same island centre onto each
+  track, so the two points are exactly `W` apart (0.65 R): two overlapping dots under rule 2.
+
+The shape is then built from the platforms:
+
+1. **The reference line map decides where it has one.** For Shanghai, Tokyo, Shenzhen, Hangzhou,
+   Guangzhou and Chengdu, the README's Wikimedia line map fixes each station's composition: lines it
+   draws as one dot or pill are one shape, and lines it draws as separate dots (even touching or
+   overlapping) are separate dots. The platform positions still come from OpenStreetMap. Lines and
+   stations newer than the reference, and the other maps (Hong Kong's route map draws every
+   interchange as one capsule, and Taipei follows this spec), use rule 2.
+2. **Otherwise one shape only for shared track or a full stacked crossing.** Lines are one shape only
+   where (a) they run on the same tracks through the station (Shanghai's Lines 3/4, Tokyo's
+   Yurakucho/Fukutoshin), drawn as one pill across their offset, or (b) their platforms cross each
+   other in plan, one directly over the other: one circle on the drawn crossing when both platforms
+   are within `R` of it, else a short pill through the real platforms. Every other interchange is
+   separate dots at the real platforms joined by a bridge, overlapping where they are close. That
+   includes cross-platform pairs on their own tracks, side-by-side platforms, T and L layouts where
+   one platform's end meets the other, and passages. Where the sources can't settle the layout, the
+   platforms are separate dots joined by a bridge: one shape claims shared track or a crossing, which
+   is not known (rule 3 may still join them). Seoul's Sinsa was a pill 1.44 R long down the
+   Shinbundang track for that reason until 2026-10-03; its two platforms are about 175 m apart, now
+   two dots and a bridge. A drawn crossing moves when either track is corrected, so re-check that
+   both platforms are still within `R` of it.
+   - A single shape never runs along a line between platforms that lie apart along it. A pill is
+     either across lines drawn side by side (shared track, a cross-platform pair) or a short pill
+     through a crossing; one whose axis follows a track for more than about `R` is two platforms
+     strung out (Sinsa; Oido's shared-track pill, where Line 4's point sat 9 units past its real
+     platform). This also limits rule 1: where a reference map's one pill joins platforms that lie
+     apart along the street, draw separate dots and a bridge (Tokyo's Jimbocho, whose Shinjuku
+     platform on B1 and Hanzomon platform on B3 lie end to end, about 375 m from end to end, joined
+     through the gate level).
+3. **Shapes closer than `0.4 R` are one shape, on every map.** After rules 1 and 2, separate shapes
+   whose nearest points (dot centres, pill axes) are less than `0.4 R` apart still read as one
+   lump even fully zoomed in (stations at their smallest), which looks like a drawing error, so
+   they become one shape through the same real platform points: nothing moves, and the bridge
+   between them goes. This overrides the reference map's separate dots too (Shanghai's Zhongshan
+   Park, Madang Road). Shapes `0.4 R` or more apart read as two overlapping dots and stay separate,
+   however much they overlap (Tokyo's Monzen-nakacho at 0.46 R): that "peanut" is the intended
+   look. Measure the drawn shapes to 0.01 R (0.40 R stays separate: Chongqing's Zengjiayan) and
+   re-run the test after every geometry edit, since moving a track moves its platforms: Shanghai's
+   Middle Longhua Road went from 0.38 R to 0.56 R and is two dots again, while Guangzhou's Guicheng
+   and Ruyifang merged. `check_map.py` checks it.
+4. **Accuracy first, then the nicest drawing.** Every dot sits at its line's real platform centre
+   and every bridge follows the real walkway. Make the drawing as nice as possible only through
+   choices that move nothing (composition, bridge smoothing within the walkway). Separate dots
+   whose real platforms nearly overlap are drawn overlapping: that is where they are. Never move a
+   dot along or off its platform, shorten or extend a line, or straighten a bridge whose real
+   walkway bends, to space or arrange a marker. (The spacing of separate stations under Placement
+   below still moves some circles; it is a documented open exception.)
+5. **Bridges.** Join the shapes as the walkways do: a polyline from one platform through the
+   real passage (OpenStreetMap footways and corridors, station plans) to the other, one per pair of
+   shapes (the shortest), also between touching dots, so it shows when zoomed in. Follow the
+   reference line maps' composition (which platforms are joined, and where the passage runs, with its
+   bends). Draw it straight when the walkway strays less than `W` from the straight line; leave out
+   folds sharper than 120°. A bend near a dot is hidden under it at full size and shows when zoomed
+   in. Bridges MUST NOT overlap each other or pass over another dot of the marker.
+
+- MUST: every platform lies on its own line's centreline and inside the marker (`check_map.py`
+  allows 0.5 units; `tests/interchanges.test.mjs` requires 0.01, so re-project after any track edit,
+  §4).
+- MUST: when the lines served change during a marker's life (a line arrives or leaves), the marker
+  is one element per period, because its shape changes. Each element keeps the stem of the `id` and
+  takes the period's start as its `--<YYYY-MM-DD>` suffix (§3); its label, `data-lines` and
+  `data-logos` are clipped to the period. Periods with the same shape (a line renamed onto the same
+  platform) stay one element.
+- Platforms stay at their real positions, apart from the crossing point above and the sideways
+  move onto an offset track. Don't move a platform, or a track, to tidy the shape; a long complex
+  draws a long bridge.
 
 **Connector (official out-of-station transfer, or an in-station link between differently named stations, §6): `<path>`**
 
 ```xml
-<path id="walking-transfer-xujiahui" d="M2253.854,1243.789 L2244.438,1234.111" fill="none" inkscape:label="Xujiahui=2009_12_31-2010_04_07" />
+<path id="walking-transfer-xujiahui" stroke="#8f959c" stroke-width="1.000" d="M2253.854,1243.789 L2244.438,1234.111" fill="none" inkscape:label="Xujiahui=2009_12_31-2010_04_07" />
 ```
 
-- MUST: a single straight segment `M x1,y1 L x2,y2` from the centre of one marker to the centre of the
-  other. MUST have `fill="none"`, and inherits its stroke from the group.
+- MUST: a single straight segment `M x1,y1 L x2,y2` from the centre of one marker (or one of its
+  platforms) to the centre of the other. MUST have `fill="none"` and the connector stroke.
 - Its label has the station name (or both names joined with `_-_`, e.g. `East_Tsim_Sha_Tsui_-_Tsim_Sha_Tsui`, read as "A - B" like the events) and
   exactly the period the transfer existed. Connectors don't get tooltips.
 
 **Lines served: `data-lines`**
 
-Every `<circle>` and `<rect>` marker MUST carry `data-lines`: the lines that call at that marker,
+Every station marker (`<circle>` or interchange `<g>`) MUST carry `data-lines`: the lines that call at that marker,
 written like a label but with the legend entry's `id` (§9) in place of the name:
 
 ```xml
-<rect id="station-minquan-west-road-92--2010-11-03" data-lines="r=2010_11_03,xinlu=2010_11_03-2012_09_30,o=2012_09_30" … />
+<g id="station-minquan-west-road-92--2010-11-03" data-lines="r=2010_11_03,xinlu=2010_11_03-2012_09_30,o=2012_09_30" … />
 ```
 
 - MUST: every `id` exists in `lines.json`, every interval lies within the marker's own dates, and the
   legend entry is active for the whole interval.
 - `start` is the day that line began calling at the station, so a line that arrived later carries a
-  later date. A line that stopped calling gets an `end`. A line that joins a station's capsule from a
+  later date. A line that stopped calling gets an `end`. A line that joins a station's interchange marker from a
   separate marker (§6) starts on the day of that change.
 - Each marker lists only what applies while it is on the map: a station's circle form lists the line
-  it had, and the capsule that replaces it lists its lines from the day the capsule appears. Separate
+  it had, and the interchange marker that replaces it lists its lines from the day it appears. Separate
   markers are separate stations even when they share a name, so each marker of a connector pair lists
   only its own lines (West Nanjing Road's three markers list one line each).
 - The tooltip shows the active entries under the legend's current names, and the legend highlight
@@ -353,7 +667,7 @@ runs from its opening until `end` and `op=start` from `start` until it closes. T
 are handovers:
 
 ```xml
-<rect inkscape:label="Ningyocho=1962_09_30" data-logos="metro,toei" … />
+<g inkscape:label="Ningyocho=1962_09_30" data-logos="metro,toei" … >
 <circle inkscape:label="Lo_Wu=1910_10_01-1911_10_05,Lo_Wu=1949_10_14" data-logos="kcr=-2007_12_02,mtr=2007_12_02" … />
 <circle inkscape:label="Kkachiul=2012_10_27" data-logos="metro=-2022_01_01,incheon=2022_01_01" … />
 ```
@@ -362,7 +676,7 @@ Each key maps to an entry in the system's `operators` (§1). The tooltip shows t
 that day, in attribute order.
 
 - A system with one operator omits the attribute; markers without it show the first operator.
-- MUST: in a system with more than one operator, every station marker (circle or rect) has
+- MUST: in a system with more than one operator, every station marker (circle or interchange) has
   `data-logos`, including those of the first operator.
 - MUST: some entry is active on every day the marker is visible.
 - MUST: every date falls strictly between the marker's first day and its final end, so the marker's
@@ -392,30 +706,69 @@ Record each logo file's source and licence in the system's section of
 **Placement rules (geometry)**
 
 - MUST: place each marker at its real position (accuracy wins over clearance). Keep it clear of the
-  track of a line that doesn't stop there, at least `r + outline/2 + W/2` from that line's centreline
+  track of a line that doesn't stop there, at least `R + W/2` from that line's centreline
   (Shanghai: ≥ 10 units; 11–13 is comfortable), only by choosing among equally accurate positions:
-  never move a marker or a track away from its real position for clearance. Where the real platform
-  sits on or beside a passing line, the marker stays there; the tooltip lists the lines that stop
-  (Guangzhou's Huacheng Dadao beside Line 5, Chongqing's Nanping on Line 10).
-- Out-of-station pairs (§6) SHOULD have centres 2.1 r–3.8 r apart. MTR's East Tsim Sha Tsui ↔ Tsim Sha Tsui is
-  4.25 r, a little over because both circles sit on their real platforms (accuracy first). At Shanghai scale 13.5 units makes the circles just touch, which is used where the two
-  tracks meet at the station; the connector is then hidden, which is fine.
-- Where the two lines **cross** at the station: put each circle on its own line, 11–15 units from
-  the crossing, so neither sits on the other line (Hongkou Football Stadium 2007–2012, Longhua 2015–2018).
-- Where they run **parallel**: stagger the circles along the corridor so they read as two
-  (Hongqiao Airport Terminal 2 2010–2017).
-- Where a new line runs straight **through** an existing station marker, put the new line's station point
-  about one marker width (`2r`) along the new line, so the capsule has an orientation; leave the older line's
-  point where it was (Chengdu's Xinnanmen, Dongpo Road).
-- Where one line **ends** at the other: the circles touch. If the ending track exists only for the
-  out-of-station period, trim it so it ends at its own circle (Pearl Line at Shanghai South Railway
-  Station 2000–2004).
-- Two stations with **no** official transfer: two circles, no connector, clearly apart (≥ 2.5 r)
-  so they don't read as linked (People's Square / People's Park 1999–2000).
-- When an interchange changes type on date `D`, end the old elements' labels at `D` and start the new
-  ones at `D`. Keep marker positions stable across the change where the drawing allows.
+  never move a marker or a track away from its real position for clearance, in either direction.
+  Where the real platform sits on or beside a passing line, the marker stays there and the tooltip
+  lists the lines that stop (Guangzhou's Huacheng Dadao beside Line 5, Chongqing's Nanping on Line
+  10, Shenzhen's Renmin South over Line 1, Tokyo's Nijubashimae beside the Mita Line); likewise a
+  track keeps its real course past another line's circle (Guangzhou's Line 10 past the Line 5
+  Wuyangcun station). A marker or track moved for clearance in an earlier pass goes back to its real
+  position (Chengdu's Financial City North, Beijing's Xinjie Kou, Taipei's Airport MRT past Beimen).
 - Shanghai's Middle Huaihai Road (Line 13) sits in a gap between Lines 1 and 14 that is narrower than
   that clearance; it stays at its real position.
+- When an interchange changes type on date `D`, end the old elements' labels at `D` and start the new
+  ones at `D`. Keep marker positions stable across the change where the drawing allows.
+
+**Separate stations close together.** These rules space the circles of nearby stations that are
+not one interchange marker, so that they read as two stations. They are the one place where the
+maps still move a circle off its real platform; see the open decisions at the end of this list.
+
+- Out-of-station pairs (§6) SHOULD have centres `2R`–`3.2R` apart. At `2R` the circles just touch,
+  which is used where the two tracks meet at the station; the connector is then hidden, which is
+  fine. The spacing applies only to pairs whose real platforms would put the circles less than
+  `2R` apart (overlapping, so the pair reads as one interchange): each circle slides along its own
+  track until the pair is `2R`–`3.2R` apart. Pairs that stand further apart are real platforms like
+  any other (MTR's East Tsim Sha Tsui ↔ Tsim Sha Tsui at `3.6R`; Shanghai's National Exhibition
+  and Convention Center, South Pudong Road and Jinghong Road). A staggered circle keeps its offset
+  from its platform centre, not its old coordinates, when its track is edited, and the track end
+  moves with it.
+  - Where the two lines **cross** at the station: put each circle on its own line, 11–15 units at
+    Shanghai scale (1.4–2 R) from the drawn crossing, measured along the track, so neither sits on
+    the other line (Hongkou Football Stadium 2007–2012, Longhua 2015–2018; Nanjing's Zhushanlu 13.6
+    and 11.2 units). This applies only while the pair is out of station: before the second line
+    opens, the first line's circle stands at its real platform, and a new circle element starts on
+    the day the pair does (Beijing's Dazhong Si from 2024).
+  - Where they run **parallel**: stagger the circles along the corridor so they read as two
+    (Hongqiao Airport Terminal 2 2010–2017; Seoul's Noryangjin 2009–2015, each about 95 m from its
+    platform).
+  - Where one line **ends** at the other: the circles touch. Keep the terminating line's circle at its
+    real terminus and stagger the through line's circle (Beijing's Sihui / Sihui Dong 2003–2007);
+    staggering the terminus instead needs a stub past it or an extra track piece. If the ending track
+    exists only for the out-of-station period, trim it so it ends at its own circle (Pearl Line at
+    Shanghai South Railway Station 2000–2004).
+- Two stations with **no** official transfer: two circles, no connector, clearly apart (a visible
+  gap, ≥ `2.1R`) so they don't read as linked (People's Square / People's Park 1999–2000). Where the
+  real platforms are closer, the circle slides along its own track until it is `2.1R` from the other
+  (Xi'an's Mutasixi, 10 units (210 m) north of its platform, where the pair would be 1.4 R apart;
+  Chongqing's Fotuguan, 6.3 units, beside Eling).
+- **Open decisions (documented exceptions).** Rule 4 says a dot never moves along or off its
+  platform; the two spacing rules above still move circles. The maps keep the status quo until this
+  is decided, and they apply it differently:
+  - Out-of-station staggers. Most maps slide circles as far as the spacing needs, up to about
+    14 units: Shenzhen's Futian Checkpoint (9.5) and Hongling South (13), Guangzhou's Linhexi and
+    Canton Tower (10–12), Pazhou and Wuyangcun, Chengdu's Terminal 2 of Shuangliu International
+    Airport (about 14), Tokyo's Ueno-hirokoji, Awajicho and Shibuya (up to 7.7); Singapore's Newton
+    moved toward its platforms until the circles just touch at `2R`, each about 0.95 W off its
+    platform. Others keep each circle within its platform and accept pairs closer than `2R`:
+    Chongqing slides a circle at most half its platform's length (Yangjiaping 1.56 R, Xietaizi),
+    Xi'an's Epanggongnan stands on its platforms at 1.9 R, and twelve Shanghai pairs (out of station
+    or with no transfer) touch slightly at their real platforms. The alternative is real positions everywhere, with the connector
+    hidden under touching or overlapping circles.
+  - No-transfer spacing moves Xi'an's Mutasixi and Chongqing's Fotuguan, while Chengdu's Shiyang and
+    Shiyangdong (no transfer, about 250 m apart) overlap at their real platforms. The alternative is
+    real positions everywhere, with the missing bridge and connector and the tooltips saying that
+    there is no transfer.
 
 ## 6. Interchanges: which marker to draw
 
@@ -424,34 +777,43 @@ change over the station's life.
 
 | On the ground (per the operator)                                                                                                                                          | Draw                                     | Examples                                                                                                                                |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| One station: passengers change lines **without passing a fare gate** (paid-area / in-station transfer)                                                                    | one **capsule**                          | Mong Kok; People's Square from 2000-08-10; Loushanguan Road from 2024-12-31                                                             |
+| One station: passengers change lines **without passing a fare gate** (paid-area / in-station transfer)                                                                    | one **interchange marker**               | Mong Kok; People's Square from 2000-08-10; Loushanguan Road from 2024-12-31                                                             |
 | Separate stations the operator **designates as a transfer**, but passengers must exit and re-enter (out-of-station / "virtual" transfer), with or without fare continuity | one **circle per station + a connector** | East Tsim Sha Tsui ↔ Tsim Sha Tsui; Shanghai Railway Station (Line 1 ↔ Lines 3/4) since 2008-06-01; West Nanjing Road (Lines 2, 12, 13) |
 | Nearby stations with **no** designated transfer (different names, or not listed by the operator)                                                                          | circles, **nothing between**             | People's Square (Line 1) / People's Park (Line 2) 1999-09-20 → 2000-08-10                                                               |
 
+- Inside an interchange marker, platforms are joined by bridges (§5), which stand for in-station
+  walkways. A connector stands for a walk outside the station, or between differently named stations.
 - The test is the operator's own classification: its list of out-of-station transfer stations, its
   station pages and signage, and dated announcements such as "passage opens on …". Physical distance
   doesn't count, and neither does how the official diagram happens to draw it.
 - An operator app or station API that lists each station's transfer lines is a good test, and archived
   copies date it. Two nearby stations that list only their own lines have no designated transfer
-  (Chengdu's Jincheng Plaza / Jincheng Plaza East).
+  (Chengdu's Jincheng Plaza / Jincheng Plaza East). Operator network maps that mark exit-and-transfer
+  links (出闸换乘, "non-paid area transfer") are good dated evidence too. An unpaid street passage
+  between differently named stations is not a designated transfer unless the operator lists it
+  (Shenzhen's Grand Theater – Hongling South and Dongmen – Laojie have no connector).
+- A connector starts on the day the operator designates the transfer (its transfer list, or the start
+  of through ticketing), which need not be the day both stations first exist: Tokyo's Korakuen –
+  Kasuga dates from Eidan's list of 2000-12-12, not from 1972. Where that day can't be found, use the
+  later opening and note the doubt (Tokyo's Asakusa).
 - Separate fare systems count as out-of-station **within the primary system**. Shanghai Lines 3 and 5
   used separate tickets from Lines 1/2 until the network-wide one-ticket system on 2005-12-25, so
   Zhongshan Park, Xinzhuang and Shanghai South Railway Station are drawn as connectors until then.
 - **Cross-system** interchanges are between the primary system and something with its own fare
   system and operator: KCR before the 2007 merger, Shanghai's Maglev, the Jinshan Railway and the
   Airport Link. Draw them like this (MTR precedent: Kowloon Tong and Mei Foo before 2007):
-  - one capsule when both systems' platforms are in **one station complex** under one name, linked
+  - one interchange marker when both systems' platforms are in **one station complex** under one name, linked
     by internal passages, even though the fares are separate (Longyang Road and Pudong T1&2
     for Line 2 + Maglev);
   - separate markers + connector when they are **separate stations** and the operator designates an
     out-of-station transfer (Airport Link at Hongqiao T2 and Pudong T1&2);
-  - one capsule from the day a paid-area link opens (Jinghong Road from 2025-07-05), or from opening if
+  - one interchange marker from the day a paid-area link opens (Jinghong Road from 2025-07-05), or from opening if
     the transfer never leaves the paid area (Zhongchun Road, Line 9 ↔ Airport Link, from 2024-12-27).
 - Two stations with **different names** linked inside the fare gates keep their own markers, joined by
-  a connector, not one capsule: each keeps its name and real position, and one capsule would merge
+  a connector, not one interchange marker: each keeps its name and real position, and one marker would merge
   distinct stations (§5). The event says `<A> - <B>: in-station interchange opens` (Tokyo's
   Akasaka-mitsuke – Nagatacho from 1979-09-21, Kokkai-gijidomae – Tameike-sanno from 1997-09-30).
-- A connector appearing or disappearing, or a connector turning into a capsule, is a map change and needs an
+- A connector appearing or disappearing, or a connector turning into an interchange marker, is a map change and needs an
   `events.json` description (§10).
 
 Shanghai's dated classification history (from the operator's list, via the zh Wikipedia 上海地铁 and station
@@ -501,7 +863,7 @@ drawn before that day, and it stays through any pause between a preview and the 
 - **The map only grows into an opening.** A line, section or station appears once, on the first day
   the public could ride it, and stays: the days between a preview (open house, trial rides,
   sightseeing service) and the opening are **not** drawn as a closure, however long the pause, and
-  get no `… rides end` event. Markers follow the same rule (a new capsule stays a capsule). The
+  get no `… rides end` event. Markers follow the same rule (a new interchange marker stays one). The
   playback should read as construction finishing and the line opening, never as a line being
   demolished and rebuilt. Only when a preview was followed by more than a year without service
   (the section was effectively unfinished) is the preview left off the map entirely; the line then
@@ -596,7 +958,7 @@ Include:
   simplified line's id in `data-lines` from the day the interchange becomes available. This is what
   makes those stations appear in the line's tooltips, highlighting, search and station count.
   Keep the heavy-rail marker's name, identity and shape; don't add a duplicate tram stop or turn it
-  into a capsule solely for a simplified service. This is an exception to the full interchange
+  into an interchange marker solely for a simplified service. This is an exception to the full interchange
   drawing rules in §6, following MTR Light Rail and Singapore LRT.
   - Start at the later of the two services' openings, or the actual transfer opening if later.
     Qinghu gains Longhua Tram on 2017-10-28; Guanlan gains it when Line 4 reaches it on 2020-10-28.
@@ -605,11 +967,18 @@ Include:
     Confirm the operator's transfer list; a nearby track or station alone isn't enough.
   - Membership alone does not draw the connection. Include passenger branches (Songjiang University
     Town) and shared routes in both line colours (Songjiang Trams 1/2 through Sports Center).
-    For simplified services, locally adjust the track to meet the existing heavy-rail marker,
-    including designated walking transfers (Pingshan Center; Longbei at Dongjiang Column Memorial
-    Hall). Keep the dated membership; do not add a separate light-rail marker or walking connector.
-    This is a schematic simplification, not a claim of an in-station transfer. Do not extend
-    passenger branches into depots.
+    Where a simplified line's real course does not already pass under the heavy-rail marker (within
+    about `R` of its centre), adjust it locally, with a smooth taper, to meet the marker, including
+    designated walking transfers (Pingshan Center; Longbei at Dongjiang Column Memorial Hall). Where
+    it does, leave it on its real course (Seoul's U Line at Hoeryong and Sillim Line at Daebang and
+    Boramae pass 5–11 units from the circle centres, inside the dots). Keep the dated membership; do
+    not add a separate light-rail marker or walking connector. This is a schematic simplification,
+    not a claim of an in-station transfer. Do not extend passenger branches into depots.
+  - Elsewhere a simplified line follows §4 like any track: beside a metro line in one corridor it
+    touches it (centres `(W + 0.4 W) / 2` apart) instead of running on top of it (Shenzhen's
+    Skyshuttle leaving Pingshan, Nanjing's Hexi tram beside Line 2 and S3), and a street tram that
+    crosses above a metro line at a shallow angle is drawn crossing at its real position (Chengdu
+    Tram Line 2 over Lines 2 and 6).
   - Check every historical marker version covering that transfer period. Clip the membership to
     each marker's lifetime, just like any other `data-lines` entry (§5).
 - Other modes that pass the tests (Shanghai Maglev, MTR Ngong Ping 360, Taipei Maokong Gondola),
@@ -625,7 +994,10 @@ Exclude:
 - Lines that fail the tests above (e.g. Suzhou Metro at Huaqiao, Beijing Suburban Railway, JR).
 - Small lines with no track connection, shared station or walking transfer to the rest of the network,
   which would appear only as an isolated fragment (Foshan's Gaoming Tram, Tokyo's Ueno Zoo Monorail).
-  Record the exclusion in the system's source notes.
+  Record the exclusion in the system's source notes. The same applies to a period: a section of an
+  included line that ran for a while detached from the network is drawn from the day it joins it,
+  and that day's event says it had run on its own since its opening (Tokyo's Oji Electric Tramway
+  Oji-yanagita – Akabane, open from 1926, drawn from 1932-12-01).
 - Text, station names, line bullets, legends, compasses, scale bars, logos, inset boxes, notes,
   fare zones and district boundaries drawn in the SVG.
 
@@ -678,7 +1050,7 @@ Exclude:
   openings and starts of regular service after a preview already drew the line (§7): every
   description on such a date says ` opens` or `regular service`.
   `check_map.py` enforces this. A map change is anything becoming visible or hidden, a rename, a
-  circle becoming a capsule, a connector appearing or disappearing, or a station's operators
+  circle becoming an interchange marker, a connector appearing or disappearing, or a station's operators
   changing (§5).
 - MUST: describe only what the map shows that day, using the names the map shows **that day**.
 - Descriptions within an entry are sorted naturally (so `Line 2` comes before `Line 10`). Use these templates:
@@ -712,12 +1084,12 @@ Exclude:
   has not opened); `…, completing the loop`
   for the section that closes a loop, and `<Line>: <A> - <A> opens, as a complete loop` for a line that
   opens as one; `(formerly <Old>)` for a station that reopens under a new name after a gap.
-- A capsule that appears or grows because a new line opens there is covered by the line-opening
+- An interchange marker that appears or grows because a new line opens there is covered by the line-opening
   description. So is a station gaining a simplified line (§8); a separate
   `<Station>: interchange with <Line> opens` may name it, with `(out of station)` for a walk-out
   transfer (no connector is drawn for a simplified line). A connector always gets its own interchange line (`out-of-station interchange opens`,
   or `<A> - <B>: in-station interchange opens` for §6's differently named pairs), even on a
-  line-opening day, and so does every connector-to-capsule change.
+  line-opening day, and so does every connector-to-interchange change.
 - Never include: suspensions (§7), fares and ticketing (unless the rule changes an interchange's
   type, in which case describe the interchange, not the fare), planning or approval news,
   construction milestones, ridership records, timetable or service-pattern changes, rolling stock,
@@ -739,14 +1111,16 @@ Exclude:
 
 When sources disagree, prefer the one that cites a dated primary source. Note the decision and the
 losing claim in the commit message. For example, Line 3 opened 2000-12-26 (zh line article) and not
-2000-12-27 (en timeline).
+2000-12-27 (en timeline). An event date comes from the event, never from a citation's access date:
+Shenzhen's line-name change had been dated 2013-10-23, the day an English Wikipedia editor accessed
+the source, while the Weibo post it cites is from 2013-10-18. Weibo and Twitter post ids encode
+their timestamp, which dates a post even when the page won't load.
 
 For added geography, verify station coordinates and the route between them against mapped track
 alignments or operator engineering maps. Match coordinate systems before placing them on the SVG:
 OpenStreetMap uses WGS84; mainland Chinese maps commonly use GCJ-02. Check the conversion against
 several existing stations across the area, then inspect riverbanks, islands and road corridors.
-Smooth the verified alignment; do not invent it by joining station centres. Keep any small offsets
-needed for readable interchanges local.
+Smooth the verified alignment; do not invent it by joining station centres.
 
 When the source artwork is itself geographic, fit an affine transform from projected coordinates to the
 SVG on the line termini, then add a smooth local correction interpolated from every matched station
@@ -757,12 +1131,52 @@ For a map drawn from scratch, project railway geometry, station coordinates and 
 one metric projection. Historical OSM snapshots can recover retired alignments; check their actual
 service dates independently, since an OSM edit timestamp is not an opening or closure date.
 
+**One frame.** Each map has one transform from geographic coordinates to the SVG, recorded in its
+source notes, and tracks, platforms and geography are placed and checked through it: the exact
+projection for a map drawn from scratch (Beijing, Nanjing, Xi'an, Chongqing, Seoul), otherwise the
+recorded fit. Where the artwork's geography is accurate, fit it first and use that fit for
+stations and tracks too (Singapore: ICP of the OSM coastline onto the artwork's coastline strokes,
+median 0.19 units). A fit to the drawn stations absorbs the drawing's own errors (it hid Singapore's
+Tuas Link, drawn 10.9 W past its platform), so use one only for a schematic source, leaving out the
+station being checked; the geography is then moved into that frame (Taipei, Background geography
+below). Don't place or judge anything through a fresh global refit: it can differ by
+about 1 W at the edges (Shanghai's Jinshanwei, 5.5 units), which then shows up as false offsets or
+shifts whole branches.
+
+**OpenStreetMap pitfalls.**
+
+- Lines that opened recently are often still tagged `railway=construction` (Guangzhou Line 22's 2025
+  extension): load a route's members whatever their tag.
+- Route relations include tail and siding tracks past a terminus (Chongqing's Line 2 past
+  Jiaochangkou, Singapore's Tuas depot tracks). They are not drawn, and must not steer a corridor
+  offset or a terminus.
+- Overpass `out tags geom` returns relations without their members; multipolygon water needs
+  `out geom`.
+- Layers can disagree (Tianjin's Haihe banks and its centreline differ by up to about 1 km): check
+  imagery before realigning a drawn feature to one of them.
+
+**Inspect at the app's scale.** The app's maximum zoom is 4 × the opening view, which is about
+0.25 CSS px per unit on Singapore, 0.6–0.9 on Chongqing and Chengdu, 1.3 on Shanghai and 1.6 on
+Shenzhen, so one gap is invisible on one map and a hairline on another. Judge slivers, corners and
+seams in the app (Chromium and WebKit) at maximum zoom, and in static renders only with markers
+thinned as there (`z^-0.4`, about 0.57 of full size); a render at many pixels per unit exaggerates
+sub-pixel noise. Quote sizes in units and `W`.
+
 ### Background geography
+
+The background is accurate to OpenStreetMap in the same frame as the network, includes the same
+kinds of feature across the whole canvas, and has no broken or clipped rivers, specks or open seams.
 
 **Preservation comes first.** Keep the original geography inside the original bounds of Hong Kong,
 Shanghai, Shenzhen, Hangzhou, Guangfo, Taipei, Singapore and Tokyo. The baseline is the artwork
 before the canvas/geography expansion (commit `c4fe500`), not an intermediate regenerated version.
-Do not replace, simplify or remove those original paths. Correct administrative land shading is
+Do not replace, simplify or remove those original paths for appearance. Correct them only against
+mapped geometry, in these ways: paint the correction above the artwork as real geography
+with its own outline (Singapore's `coast-fixes`, Taipei's `water-fixes`); remove an artwork shape
+that has no mapped counterpart (Taipei's five pieces of water with no mapped water, 2026-10-03); and,
+where the artwork and the network sit in different frames, move the whole geography layer with one
+smooth displacement field into the network's frame (Taipei, 2026-10-03: artwork, earlier fixes,
+extension and clip outline moved together, so every seam was kept). Correct administrative land shading is
 required for every system and is an explicit exception to preserving paint colours. Modest, source-backed additions
 are allowed, especially in sparse areas. Preserve existing water and coastline shapes at joins,
 but paint added waterways above land and administrative shading so neither can hide their course.
@@ -770,7 +1184,9 @@ Extend geography outside the old bounds and preserve the enlarged zoom-out canva
 join adjustment must be narrowly scoped and documented. Beijing, Chengdu, Chongqing and Nanjing
 are exceptions: their newly created geography may be reworked. Reduce the first three's small-feature
 clutter; give Nanjing useful river/lake context. The normalization rules below apply to **new geography
-and these four exceptions**, not as permission to rebuild the eight established maps.
+and these four exceptions**, not as permission to rebuild the eight established maps, except that
+the inclusion rules apply inside the preserved artwork too, as additions above it (Shenzhen's
+Yantian and Qinglinjing reservoirs, larger than lakes the artwork draws).
 
 - Preserve accurate source artwork. Correct a coastline or border against mapped geometry, not by
   drawing a more plausible-looking outline. Government geographic data or OpenStreetMap extracts
@@ -779,6 +1195,16 @@ and these four exceptions**, not as permission to rebuild the eight established 
 - Fit geographic coordinates to the SVG using several well-distributed, verified control points.
   Check the fit locally around islands, riverbanks and coastal stations; one global fit can leave
   local errors in a schematic source map. Do not move stations or tracks to hide those errors.
+- Geography and network share one frame (One frame, above). Measure that against the network, not
+  against the artwork: where each line crosses each river, as a fraction of the way between its two
+  stations, real against drawn; track-to-bank clearance along riverside stretches; and
+  station-to-water distance. Art-to-OSM residuals can look small while the rivers sit several units
+  off the network (Taipei's crossings were up to 10 units off). Taipei's correction was a
+  moving-least-squares similarity fit on the station controls (Gaussian, about 650 m), tapered to zero
+  away from the network; a translation-only field and a nearest-stations affine field were worse.
+  Fit an addition to the adjoining drawn water before joining it (Guangfo's Tanjiang needed a
+  (−1, +7) shift). Where a station dot sits on a drawn shore because the fits differ locally (Hong
+  Kong's AsiaWorld-Expo, about 1 unit), report it; move neither the dot nor the shore to hide it.
 - Coastlines and administrative boundaries serve different purposes: use coastlines for land/water
   and administrative boundaries to divide land colours. Administrative areas can include sea.
   Use actual river polygons for border rivers, not an invented gap or a fixed-width buffer.
@@ -815,6 +1241,17 @@ and these four exceptions**, not as permission to rebuild the eight established 
   using OSM coastline direction to identify land, account for SVG's downward-pointing y-axis.
   Simplify with topology preserved and a tolerance appropriate to the map's scale; keep real angular
   quays and reclamation edges. Recheck for self-intersections after rounding coordinates.
+- Reclamation newer than the artwork is land, painted above the artwork rather than left as sea
+  (Singapore's Tuas Port, Changi East, Pulau Tekong, Forest City): take OSM land minus OSM inland
+  water inside the artwork's water, drop coastline-offset slivers, grow the patch about 2.5 units into
+  the old land, fill it in the land colour of its side of the border, cover the old shoreline under
+  it with a non-scaling stroke in that colour (about 3 px: at the overview a 1 px stroke is wider
+  than the overlap), and stroke the new shoreline as coastline. Don't let narrow or missing OSM river
+  polygons erase rivers the artwork draws.
+- Fix an error in the outline itself; never paint a shape over it. Chongqing had a separate fill
+  over a slit in the Yangtze and a land-coloured rectangle over a spike, both now fixed in the
+  outline. Over preserved artwork the correction is real geography (above); the only cover is the
+  seam stroke below.
 - For a geography-only edit, keep tracks, markers, connectors, labels and their coordinates unchanged.
   For an explicit canvas expansion, change the root `viewBox` and preserve the original framing in
   `initialBounds`; do not translate or rescale railway paths. Extend mapped geometry past all four
@@ -822,7 +1259,14 @@ and these four exceptions**, not as permission to rebuild the eight established 
   territory with guessed land/water.
   Where the clipped original artwork leaves an anti-aliased seam along its old edge, cover it with a
   thin non-scaling stroke in the fill colour on each side (sea, outside land or own land), stopping
-  short of every shoreline or bank stroke that crosses the edge (Singapore).
+  short of every shoreline or bank stroke that crosses the edge (Singapore, Tokyo, Hong Kong).
+  Where the expanded geography meets the clipped artwork, banks continue without a step: reshape
+  the expanded water over 12–25 units outside the clip edge so it starts from the artwork's banks,
+  tangent-continuous (Guangfo's `seam-joins`), and give a land patch the colour of the land beside
+  it (the administrative edge often follows the old bank). The land backing matches the clip
+  exactly. Seams depend on the renderer: check them in the app in Chromium and WebKit at several
+  zooms (a step of 3 grey levels along a one-pixel row shows on a hi-DPI screen), and follow a river
+  that crosses the edge obliquely along its bank rather than comparing fixed points either side.
   Check the final painted result on both sides of old canvas edges and administrative borders.
   A continuous source path can still be hidden by a land backing or a later land shape. Trace
   depicted rivers through name changes and confluences; expose only the missing continuation,
@@ -867,6 +1311,27 @@ and these four exceptions**, not as permission to rebuild the eight established 
 - Use mapped banks wherever available. A thin mapped centreline symbol is acceptable only for
   missing-bank stretches; do not buffer the entire river over existing banks and change their width.
   Document symbolic stretches separately from measured banks. Do not invent border rivers.
+- Inclusion is consistent across the canvas, inside the preserved artwork as well as outside it.
+  Check what the rendered map shows, not what the data holds: Hong Kong's Tai Lam Chung Reservoir
+  was in the inland-water layer but hidden under the original land fills. A river of a width class
+  the map draws elsewhere is drawn too (Chongqing's Qijiang, 124 m, beside the drawn Yulin, 103 m).
+- No river stops abruptly. Draw a principal river along its whole mapped course, whatever the
+  `waterway` tag (`stream` reaches included), through unnamed connecting ways and upstream name
+  changes, to its source, a confluence, the sea or the canvas edge; stop only where the mapped course
+  stops or at a real covered channel. A gap below a dam usually means channel polygons were dropped
+  (Chengdu's Fu River). A piece that can't be joined to the rest along a mapped course reads as a
+  broken river: drop it and record that (Xi'an's upper Zao, Chengdu's Qiuxi). Check also where the
+  artwork's own water ends: Shanghai's 竖潦泾 stopped in a flat cut 240 units inside the canvas.
+  Useful tests: sample every named OSM river centreline against a 1-unit raster of the drawn water
+  and list rivers with an undrawn run between two drawn ones (Hangzhou's broken canals); compare how
+  much of each named river is drawn (Chongqing's Fu, 74 %); list water polygons that end more than
+  about 10 units wide inside the canvas, away from other water (Guangfo's Tanjiang).
+- No specks or cracks. The islet threshold (about 4 overview pixels²) covers islands inside rivers
+  and lakes too: under the 1 px bank stroke a sub-unit hole draws as a grey speck at every zoom
+  (Xi'an dropped 126). Holes thinner than about 0.35 units (2 × area / perimeter), slivers under
+  about 0.8 units wide and spikes sharper than a few degrees are simplification artefacts, unless
+  they are real piers, dams or mapped tails (Tokyo's piers and Nanjing's needle-tipped lake tails
+  stay); trim them with a local morphological opening rather than a global one.
 - Compare retained lakes and principal banks against the projected source polygons, not just the
   finished map's appearance. Check missing area, holes, shoreline displacement and continuity at
   clipped edges. Compare duplicate relations across adjacent extracts and verify that the extracts
@@ -893,11 +1358,14 @@ and these four exceptions**, not as permission to rebuild the eight established 
    out-of-station transfers, the "formerly out-of-station" list, and each station's transfer
    section. Separate-ticketing eras count as out-of-station.
 4. Apply the rules of §7, especially "appears on the first day the public could ride it" and "omit suspensions".
-5. Edit labels, then run `python3 check_map.py <key>` (appendix) until it prints `OK`. Update
+5. Edit labels, then run `npm run check-map <key>` until it prints `OK`. Update
    `events.json` until the 1:1 check passes.
 6. Look at the result. Render every change date and the day before, zoomed on each interchange that
-   changed. Confirm that every marker sits on its track, that no marker sits on a line that doesn't
-   stop there, that capsules cover all their lines, and that out-of-station pairs read as two stations.
+   changed. Confirm that every marker sits on its track at its real platform (beside or over a line
+   that doesn't stop there, if that is where the platform is), that every platform sits on its own
+   line inside its marker, that every terminus ends on its own platform, and that out-of-station
+   pairs read as two stations. Check the tracks against §4 (course, side by side, joints) at the
+   app's maximum zoom.
 7. Where the timeline article gives cumulative station counts, spot-check the number of visible
    station markers on a few dates.
 8. Run `npm run lint` and `npm run build`, then open `/<key>` and scrub the slider across the whole range.
@@ -909,34 +1377,37 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
 
 1. **Delete** all `<text>`/`<tspan>`, `<title>`, `<desc>`, legends, compasses, logos, notes, insets,
    `<image>`, filters, masks, clip paths, hidden layers, and style rules nothing uses.
-2. **Inline** `<defs>`/`<use>`/`<symbol>`: every station marker becomes its own `<circle>` or `<rect>`
-   per §5. Station symbols drawn as `<path>`, `<ellipse>` or `<polygon>` become circles or capsules.
-3. **Bake transforms**: no `scale()`/`matrix()`, and no transforms on groups inside `lines` or `stations`.
-   Only a capsule's own `translate() rotate()` remains.
+2. **Inline** `<defs>`/`<use>`/`<symbol>`: every station marker becomes its own `<circle>` or interchange `<g>`
+   per §5. Station symbols drawn as `<path>`, `<ellipse>` or `<polygon>` become circles or interchange markers.
+3. **Bake transforms**: no transforms at all inside `lines` or `stations`.
 4. **Flatten** into the three layers of §3 (`geography`, `lines`, `stations`) inside `zoom-layer`.
    Move all paint to the layer groups as §3 shows.
-5. **Split tracks** at every date boundary (§4). Make termini end at marker centres, and draw shared
-   corridors as parallel offsets.
+5. **Split tracks** at every date boundary (§4). Bring each track onto its real course, make termini
+   end on their platforms, and draw shared corridors as touching parallels (§4).
    If you traced centrelines from filled outlines, look for zig-zags. Railway-style lines drawn with an
    offset box at each station leave a jog at every station, like the Jinshan Railway did. Delete the jog
    vertices: two opposite turns over a short segment, within a few units of the straight line. Then
-   re-snap the stations. Simplify every track to fewer than 256 straight segments (§4).
+   re-project the stations. Simplify every track to fewer than 256 straight segments (§4).
    Design artwork often draws lines as **outlined strokes**: a closed filled outline whose two sides are
    offsets of the original centreline, joined by round caps (two quarter arcs of radius `W/2`). Recover the
    centreline exactly instead of tracing it: split the outline at the two caps, take the midpoint between
    each point of one side and its nearest point on the other, and check every centre point lies `W/2` from
    the outline (Chengdu). A shared corridor drawn as two half-width stripes becomes full-width parallels
    (§4); fade the separation out where the two lines cross, because the push direction flips there.
-6. **Resize markers** to the formulas in §5 for the chosen `W`, and snap every circle centre onto its track.
+6. **Rebuild markers** per §5 for the chosen `W`: put every circle at its real platform centre on its
+   track, and build each interchange from its real platforms. The source's own marker positions and
+   capsules are not evidence of where a platform is.
 7. **Label everything** per §2 and §7, then build `lines.json` and `events.json`.
 8. Round coordinates to 3 decimals, and check that every `id` is unique.
 
 ## 13. Checklist
 
 - [ ] Assets in `src/assets/<key>/` (including `preview.svg`), entry in `systems.ts`, URL in `public/sitemap.xml`; Home links and date bounds are derived automatically.
-- [ ] `zoom-layer` › (`geography`) › `lines` › `stations`; only labelled path/circle/rect; paint on groups; no text/title/defs/use.
+- [ ] `zoom-layer` › (`geography`) › `lines` › `stations`; only labelled paths, circles and interchange groups; marker paint on the group; no text/title/defs/use outside `geography`.
 - [ ] Every label matches §2. Names are the verbatim English names of that period.
-- [ ] Sizes follow §5. Circles are on their tracks, capsules cover all their lines, and markers sit at their real positions (clearance from lines that don't stop there only where it costs no accuracy).
+- [ ] Sizes follow §5. Circles and platforms are on their tracks at their real platform centres (within about 50 m), every platform is inside its marker, and markers sit at their real positions (clearance from lines that don't stop there only where it costs no accuracy; the separate-station spacing of §5 is the documented exception).
+- [ ] Interchange shapes follow §5 rules 1–3, re-run after the last geometry edit: no two shapes of one marker closer than 0.4 R.
+- [ ] Tracks follow §4: on their real course; lines sharing a corridor touch exactly (or keep a documented spacing), with no hairline gaps or partial overlaps; crossings where the real lines cross; joints exact and tangent-continuous; no tiny leftover segments; every terminus ends on its own platform, with no stubs; `data-takes-over` pieces lie exactly on their parents.
 - [ ] Interchanges follow the operator's dated classification (§6), with connectors for out-of-station periods and for differently named stations linked in-station.
 - [ ] Lines are drawn from the first day the public could ride them, previews included (not test runs, ceremonies or station-only open days); a preview and the later opening are separate events, the line stays on the map from the preview (no gap, no `… rides end` event; a preview followed by over a year without service is left off), suspensions are omitted and only relocation gaps under a month are collapsed (§7).
 - [ ] Every track's name matches a legend entry at every moment (§9).
@@ -948,7 +1419,8 @@ Source maps (Wikipedia SVGs, operator PDFs) need converting to this contract:
 - [ ] Every track has `data-km`, and each line's present-day sum equals its published length (§4).
 - [ ] Caps follow §4: the `lines` layer is `butt`; `stroke-linecap="round"` only on tracks of `simplified` lines and tracks with `data-continues`.
 - [ ] `events.json` has one entry per change date and none otherwise, using the §10 templates.
-- [ ] `check_map.py` prints `OK`. The rendered checks (§11 step 6) look right. `npm run lint` and `npm run build` pass.
+- [ ] Geography follows §11: in the network's frame, the same kinds of feature across the canvas, no river that stops abruptly, no specks, seams joined, checked in the app.
+- [ ] `npm run check-map <key>` prints `OK`. The rendered checks (§11 step 6) look right. `npm test`, `npm run lint` and `npm run build` pass.
 - [ ] New sources and system-specific methods or limitations are recorded in
       [timeline-sources.md](timeline-sources.md). Reusable techniques and lessons from the work are
       added to the relevant section of this spec (or an existing applicable skill), so future systems
@@ -965,352 +1437,19 @@ stages, High Speed Rail) are recorded in [its source notes](timeline-sources.md#
 
 ## Appendix: `check_map.py`
 
-Save it anywhere and run it from the repository root: `python3 check_map.py shanghai`. It checks
-structure (unique ids, connectors before markers, capsule transforms), labels, station identities,
+The checker is [`tests/check_map.py`](../tests/check_map.py); run it from the repository root:
+`npm run check-map shanghai` (or `python3 tests/check_map.py shanghai`). It checks
+structure (unique ids, connectors before markers, the interchange layers of §5), labels, station identities,
 legend coverage, `data-lines`, `data-logos` intervals, `data-km` and the segment limit of §4. It
 checks the caps rule of §4 (a butt `lines` layer; a round cap on a track exactly when one of its ends
-may lie away from a marker) and that every track starts and ends inside a marker (or meets other
+may lie away from a marker) and that every track starts and ends inside a marker, as drawn fully zoomed in (or meets other
 active track of its line, or runs off the `viewBox`, or belongs to a line marked `simplified`, or
 is marked `data-continues`). It
 compares change dates, including operator handovers, with `events.json` (an event date without a
 map change must record an opening or start of regular service, §10), and prints each line's
 present-day length to compare with the operator's figure. It doesn't check that `data-logos` keys
-exist in `operators` (the local logo test does), and it doesn't check geometry otherwise; §11 step 6
-covers that.
-
-```python
-# python3 check_map.py <system-key>   (run from the repo root)
-import json, math, re, sys
-from collections import defaultdict
-
-key = sys.argv[1]
-svg = open(f'src/assets/{key}/map.svg', encoding='utf-8').read()
-legend = json.load(open(f'src/assets/{key}/data/lines.json', encoding='utf-8'))['lines']
-try:
-    events = json.load(open(f'src/assets/{key}/data/events.json', encoding='utf-8'))
-except FileNotFoundError:
-    events = None
-
-DATE = r'\d{4}_\d{2}_\d{2}'
-STATE = rf'[^=,_\s][^=,\s]*={DATE}(?:-{DATE})?'
-LABEL = re.compile(rf'^{STATE}(?:,{STATE})*$')
-LINES = re.compile(rf'^[a-z0-9]+={DATE}(?:-{DATE})?(?:,[a-z0-9]+={DATE}(?:-{DATE})?)*$')
-LOGO = rf'[a-z0-9]+(?:=(?:{DATE}(?:-{DATE})?|-{DATE}))?'
-LOGOS = re.compile(rf'^{LOGO}(?:,{LOGO})*$')
-errors = []
-ids = re.findall(r'\bid="([^"]+)"', svg)
-if len(ids) != len(set(ids)):
-    errors.append('SVG ids must be unique (§3)')
-
-def vertices(d, curves=False):  # every vertex of a path's d, absolute; a curve contributes its end point
-    # (with curves=True, also 7 points along each Bézier; an arc contributes only its end point)
-    toks = re.findall(r'[MmLlHhVvCcSsQqTtAaZz]|-?\d*\.?\d+(?:e-?\d+)?', d)
-    args = {'M': 2, 'L': 2, 'T': 2, 'H': 1, 'V': 1, 'C': 6, 'S': 4, 'Q': 4, 'A': 7, 'Z': 0}
-    out, cur, start, cmd, i, ctrl, last = [], [0.0, 0.0], None, None, 0, None, ''
-    while i < len(toks):
-        if toks[i].isalpha():
-            cmd = toks[i]; i += 1
-            if cmd in 'Zz' and start:
-                cur = list(start); out.append(tuple(cur)); last = 'Z'
-            continue
-        n = args[cmd.upper()]; v = [float(t) for t in toks[i:i + n]]; i += n
-        rel = cmd.islower(); c = cmd.upper()
-        pt = lambda k: (cur[0] + v[k], cur[1] + v[k + 1]) if rel else (v[k], v[k + 1])
-        here = tuple(cur)
-        mirror = (2 * cur[0] - ctrl[0], 2 * cur[1] - ctrl[1]) if ctrl else here
-        ps = {'C': lambda: [here, pt(0), pt(2), pt(4)],
-              'S': lambda: [here, mirror if last in ('C', 'S') else here, pt(0), pt(2)],
-              'Q': lambda: [here, pt(0), pt(2)],
-              'T': lambda: [here, mirror if last in ('Q', 'T') else here, pt(0)]}.get(c, lambda: None)()
-        if ps and curves:
-            m = len(ps) - 1
-            for k in range(1, 8):
-                t = k / 8
-                out.append(tuple(sum(math.comb(m, j) * (1 - t) ** (m - j) * t ** j * ps[j][a] for j in range(m + 1)) for a in (0, 1)))
-        ctrl, last = (ps[-2] if ps else None), c
-        if c == 'H': cur = [cur[0] + v[0] if rel else v[0], cur[1]]
-        elif c == 'V': cur = [cur[0], cur[1] + v[0] if rel else v[0]]
-        else: cur = [cur[0] + v[-2], cur[1] + v[-1]] if rel else [v[-2], v[-1]]
-        out.append(tuple(cur))
-        if c == 'M': start = list(cur); cmd = 'l' if rel else 'L'
-    return out
-
-def seg_dist(p, a, b):  # distance from point p to segment ab
-    (x, y), (x1, y1), (x2, y2) = p, a, b
-    dx, dy = x2 - x1, y2 - y1
-    t = max(0.0, min(1.0, ((x - x1) * dx + (y - y1) * dy) / (dx * dx + dy * dy or 1)))
-    return ((x1 + t * dx - x) ** 2 + (y1 + t * dy - y) ** 2) ** 0.5
-
-def states(label):
-    out = []
-    for part in label.split(','):
-        name, interval = part.split('=')
-        start, _, end = interval.partition('-')
-        out.append((name, start.replace('_', '-'), end.replace('_', '-') if end else None))
-    return out
-
-def children(layer_id):
-    body = re.search(rf'<g\b[^>]*\bid="{layer_id}"[^>]*>([\s\S]*?)</g>', svg)
-    if not body:
-        errors.append(f'missing <g id="{layer_id}">')
-        return []
-    return re.findall(r'<(\w+)\b([\s\S]*?)/?>', body.group(1))
-
-def check_label(where, label):
-    if not LABEL.match(label):
-        errors.append(f'{where}: bad label {label!r}')
-        return []
-    st = states(label)
-    for i, (_, start, end) in enumerate(st):
-        if end is not None and end <= start:
-            errors.append(f'{where}: state ends before it starts in {label!r}')
-        if i + 1 < len(st) and (end is None or end > st[i + 1][1]):
-            errors.append(f'{where}: states overlap or are out of order in {label!r}')
-    return st
-
-log = defaultdict(set)  # date -> what changes on the map that day
-def record(kind, st):
-    for i, (name, start, end) in enumerate(st):
-        prev_end = st[i - 1][2] if i else None
-        log[start].add(f'{kind} {name}' if prev_end != start else f'{kind} renamed {st[i - 1][0]} -> {name}')
-        if end and (i + 1 == len(st) or st[i + 1][1] != end):
-            log[end].add(f'{kind} {name} ends')
-
-if not re.search(r'<g\b[^>]*\bid="zoom-layer"', svg):
-    errors.append('missing <g id="zoom-layer">')
-track_names = []  # (name, start, end)
-track_km = []     # (states, km)
-track_pts = []    # (label, states, vertices)
-track_widths = [] # per-path stroke widths, the fallback for W
-track_caps = []   # track_pts index -> (its own stroke-linecap or None, its own stroke-width or None)
-open_ends = {}    # track_pts index -> ends marked data-continues (the railway runs on past the border)
-for tag, attrs in children('lines'):
-    label = re.search(r'inkscape:label="([^"]*)"', attrs)
-    if tag != 'path' or not label:
-        errors.append(f'lines layer: only labelled <path> allowed, found <{tag}>')
-        continue
-    st = check_label('track', label.group(1))
-    record('track', st)
-    d = re.search(r'\bd="([^"]*)"', attrs)
-    if d:
-        track_pts.append((label.group(1), st, vertices(d.group(1), curves=True)))
-        own_cap = re.search(r'stroke-linecap="(\w+)"', attrs)
-        own_width = re.search(r'stroke-width="([\d.]+)"', attrs)
-        track_caps.append((own_cap and own_cap.group(1), own_width and float(own_width.group(1))))
-        cont = re.search(r'data-continues="([^"]*)"', attrs)
-        if cont:
-            open_ends[len(track_pts) - 1] = cont.group(1).split()
-    width = re.search(r'stroke-width[:="]+\s*([\d.]+)', attrs)
-    if width:
-        track_widths.append(float(width.group(1)))
-    if d and len(re.findall(r'[Ll]', d.group(1))) >= 256:
-        errors.append(f'track {label.group(1)!r} has 256+ straight segments: Safari draws it in pieces (§4)')
-    if 'stroke-dasharray' in attrs:
-        errors.append(f'track {label.group(1)!r} is dashed: the app draws tracks in with the dash pattern (§4)')
-    km = re.search(r'data-km="([^"]*)"', attrs)
-    if not km or not re.fullmatch(r'\d+\.\d', km.group(1)) or float(km.group(1)) <= 0:
-        errors.append(f'track {label.group(1)!r}: missing or malformed data-km (§4)')
-    else:
-        track_km.append((st, float(km.group(1))))
-    track_names += st
-markers = []  # (label, states, data-lines match, data-logos match)
-identities = defaultdict(list)  # stable station id -> (element id, states)
-reach = []    # (label, states, x, y, deg, half, r): a marker's dates, centre, axis angle, half axis length and radius
-seen_marker = False
-for tag, attrs in children('stations'):
-    label = re.search(r'inkscape:label="([^"]*)"', attrs)
-    if tag not in ('circle', 'rect', 'path') or not label:
-        errors.append(f'stations layer: only labelled <circle>/<rect>/<path> allowed, found <{tag}>')
-        continue
-    if tag == 'path' and seen_marker:
-        errors.append(f'connector {label.group(1)!r} must precede station markers (§3)')
-    seen_marker |= tag in ('circle', 'rect')
-    if tag == 'path' and 'fill="none"' not in attrs:
-        errors.append(f'connector {label.group(1)!r} needs fill="none"')
-    transform = re.search(r'transform="([^"]*)"', attrs)
-    if tag == 'rect' and not (transform and re.fullmatch(r'translate\([-\d.]+,[-\d.]+\) rotate\([-\d.]+\)', transform.group(1))):
-        errors.append(f'capsule {label.group(1)!r}: transform must be exactly "translate(x,y) rotate(deg)"')
-    st = check_label(tag, label.group(1))
-    record({'circle': 'station', 'rect': 'interchange', 'path': 'connector'}[tag], st)
-    if tag != 'path':
-        marker_id = re.search(r'\bid="([^"]+)"', attrs)
-        if not marker_id:
-            errors.append(f'marker {label.group(1)!r}: missing search identity id (§3)')
-        else:
-            identity, _, version = marker_id.group(1).partition('--')
-            if version and (not st or version != st[0][1]):
-                errors.append(f'marker {marker_id.group(1)!r}: version must match first appearance (§3)')
-            identities[identity].append((marker_id.group(1), st))
-        markers.append((label.group(1), st, re.search(r'data-lines="([^"]*)"', attrs),
-                        re.search(r'data-logos="([^"]*)"', attrs)))
-        num = lambda name: float(re.search(rf'\b{name}="([^"]+)"', attrs).group(1))
-        if tag == 'circle':
-            reach.append((label.group(1), st, num('cx'), num('cy'), 0.0, 0.0, num('r')))
-        elif transform:
-            x, y, deg = map(float, re.match(r'translate\(([-\d.]+),([-\d.]+)\) rotate\(([-\d.]+)\)', transform.group(1)).groups())
-            w, h = num('width'), num('height')   # a capsule: a segment of length h - w along its axis, thickened by w / 2
-            reach.append((label.group(1), st, x, y, deg, (h - w) / 2, w / 2))
-for identity, versions in identities.items():
-    for i, (aid, a) in enumerate(versions):
-        for bid, b in versions[:i]:
-            if any(s < (e2 or '9999') and s2 < (e or '9999') for _, s, e in a for _, s2, e2 in b):
-                errors.append(f'station identity {identity!r}: {aid} and {bid} overlap; separate stations need separate ids (§3)')
-
-# every track starts and ends inside a station marker present at every moment of the track's life
-# (markers move when a station is rebuilt), except where it meets other track of the same line away
-# from any station (a branch junction, a loop closing on itself), runs off the drawn area, or belongs
-# to a line the legend marks "simplified" (drawn without most of its stops), or is marked data-continues
-# (it runs on into another network at a border). Caps (§4): the lines layer is butt; a track has its own round
-# cap exactly when an end may lie away from a marker (a simplified line, or data-continues). A round cap reaches
-# half the stroke width past the end, so it gets that much less slack: the drawn tip may lie at most 1 unit
-# outside the marker either way (§4, §9)
-def marker_gap(p, m):  # how far p lies outside marker m (negative inside)
-    _, _, x, y, deg, half, r = m
-    a = math.radians(deg); dx, dy = p[0] - x, p[1] - y
-    along = max(-half, min(half, -dx * math.sin(a) + dy * math.cos(a)))   # nearest point on the capsule's axis
-    ax, ay = x - along * math.sin(a), y + along * math.cos(a)
-    return math.hypot(p[0] - ax, p[1] - ay) - r
-W = float((re.search(r'<g\b[^>]*\bid="lines"[^>]*stroke-width[:="]+\s*([\d.]+)', svg)
-           or [None, max(track_widths, key=track_widths.count) if track_widths else 1])[1])
-caps = re.search(r'<g\b[^>]*\bid="lines"[^>]*stroke-linecap[:="]+\s*(\w+)', svg)
-cap = caps.group(1) if caps else 'butt'   # the SVG default
-if cap != 'butt':
-    errors.append(f'lines layer: stroke-linecap must be butt, not {cap} (§4)')
-vb = [float(v) for v in re.search(r'viewBox="([^"]*)"', svg).group(1).split()]
-simplified = {n for entry in legend if entry.get('simplified') for n, _, _ in states(entry['label'])}
-for k, (label, st, pts) in enumerate(track_pts):
-    names = {n for n, _, _ in st}
-    own_cap, own_width = track_caps[k]
-    free_end = bool(names & simplified) or k in open_ends
-    if (own_cap or cap) != ('round' if free_end else 'butt'):
-        errors.append(f'track {label!r}: stroke-linecap must be {"round" if free_end else "butt"}; round only where an end '
-                      'may lie away from a marker (simplified line or data-continues) (§4)')
-    if names & simplified:
-        continue
-    slack = 1 - (own_width or W) / 2 if (own_cap or cap) == 'round' else 1
-    born, gone = st[0][1], st[-1][2]
-    moments = [born] + sorted({d for states_ in [m[1] for m in reach] + [s2 for _, s2, _ in track_pts] for _, s_, e_ in states_ for d in (s_, e_) if d and born < d and (gone is None or d < gone)})
-    for which, p in (('starts', pts[0]), ('ends', pts[-1])):
-        if which[:-1] in open_ends.get(k, ()):
-            continue
-        if not (vb[0] < p[0] < vb[0] + vb[2] and vb[1] < p[1] < vb[1] + vb[3]):
-            continue
-        own, run = (pts if which == 'starts' else pts[::-1]), 0.0   # its own path, minus the 2 W + 1 nearest this end
-        for i in range(1, len(own)):
-            run += math.dist(own[i - 1], own[i])
-            if run > 2 * W + 1:
-                own = own[i:]
-                break
-        else:
-            own = []
-        for t in moments:
-            active_names = {n for n, s_, e_ in st if s_ <= t and (e_ is None or t < e_)}
-            if not active_names:
-                continue
-            present = [m for m in reach if any(s_ <= t and (e_ is None or t < e_) for _, s_, e_ in m[1])]
-            name, gap = min(((m[0], marker_gap(p, m)) for m in present), key=lambda x: x[1], default=('nothing', float('inf')))
-            if gap <= slack:
-                continue
-            others = [q for l, s2, q in track_pts if l != label and any(
-                n in active_names and s_ <= t and (e_ is None or t < e_) for n, s_, e_ in s2)]
-            if any(seg_dist(p, q[i], q[i + 1]) <= min(1, W / 2) for q in others + [own] for i in range(len(q) - 1)):
-                continue
-            errors.append(f'track {label!r} {which} {gap:.0f} units outside the nearest marker ({name}) on {t} '
-                          'and not on another track of the line (§4)')
-            break
-
-legend_states, legend_ids = [], {}
-for entry in legend:
-    if not re.fullmatch(r'[a-z0-9]+', str(entry.get('id', ''))) or entry['id'] in legend_ids:
-        errors.append(f'legend {entry["label"]!r}: needs a unique lowercase id (§9)')
-    st = check_label('legend', entry['label'])
-    record('legend', st)
-    legend_states += st
-    legend_ids[entry['id']] = st
-# a track is coloured and highlighted by the legend entry whose name matches its name at that moment
-boundaries = sorted({d for _, s, e in legend_states for d in (s, e) if d})
-for name, start, end in track_names:
-    moments = [start] + [d for d in boundaries if start < d and (end is None or d < end)]
-    uncovered = [t for t in moments if not any(n == name and s <= t and (e is None or t < e) for n, s, e in legend_states)]
-    if uncovered:
-        errors.append(f'track {name!r} ({start}..{end or "now"}) has no legend entry of that name from {uncovered[0]}: '
-                      'it gets no colour and never highlights (§9)')
-# every marker lists the lines that call there, within its own dates, with the legend entry active throughout
-def within(start, end, spans):
-    return any(s <= start and (e is None or (end is not None and end <= e)) for s, e in spans)
-def spans(st):  # an element's states, with renames (end == next start) merged into one span
-    out = []
-    for _, s, e in st:
-        if out and out[-1][1] == s:
-            out[-1][1] = e
-        else:
-            out.append([s, e])
-    return out
-for label, st, data_lines, data_logos in markers:
-    if not data_lines or not LINES.match(data_lines.group(1)):
-        errors.append(f'marker {label!r}: missing or malformed data-lines (§5)')
-        continue
-    presence = spans(st)
-    for lid, start, end in states(data_lines.group(1)):
-        if lid not in legend_ids:
-            errors.append(f'marker {label!r}: data-lines id {lid!r} is not in lines.json')
-        elif not within(start, end, spans(legend_ids[lid])):
-            errors.append(f'marker {label!r}: line {lid!r} is not on the legend for all of {start}..{end or "now"}')
-        if not within(start, end, presence):
-            errors.append(f'marker {label!r}: line {lid!r} {start}..{end or "now"} is outside the marker\'s own dates')
-
-    if data_logos:
-        if not LOGOS.fullmatch(data_logos.group(1)):
-            errors.append(f'marker {label!r}: malformed data-logos (§5)')
-            continue
-        first, last = st[0][1], st[-1][2]
-        inside = lambda d: first < d and (last is None or d < last)
-        entries, previous = [], {}
-        for part in data_logos.group(1).split(','):
-            logo, _, interval = part.partition('=')
-            start, _, end = interval.partition('-')   # a missing date is the marker's own first or last day
-            start, end = start.replace('_', '-') or None, end.replace('_', '-') or None
-            if not all(inside(d) for d in (start, end) if d):
-                errors.append(f'marker {label!r}: logo {logo!r} repeats or exceeds the marker dates; '
-                              'leave out a date on its first or last day (§5)')
-            if start and end and end <= start:
-                errors.append(f'marker {label!r}: logo {logo!r} ends before it starts')
-            if logo in previous and (previous[logo] is None or start is None or start <= previous[logo]):
-                errors.append(f'marker {label!r}: logo {logo!r} intervals overlap or need merging')
-            previous[logo] = end
-            entries.append((start, end))
-            for d in (start, end):   # an operator handover is a map change: it needs an event (§5, §7)
-                if d:
-                    log[d].add(f'operator {logo} {"starts" if d == start else "ends"} at {label.split("=")[0]}')
-        for t in sorted({s for _, s, _ in st} | {d for e in entries for d in e if d}):
-            if any(s <= t and (e is None or t < e) for _, s, e in st) and not any(
-                    (s is None or s <= t) and (e is None or t < e) for s, e in entries):
-                errors.append(f'marker {label!r}: no logo on {t} (§5)')
-                break
-
-if events is not None:
-    dates = [e['date'] for e in events]
-    if dates != sorted(set(dates)):
-        errors.append('events.json: dates must be unique and ascending')
-    for e in events:
-        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', e['date']) or not e['descriptions']:
-            errors.append(f'events.json: bad entry {e}')
-    for d in sorted(set(log) - set(dates)):
-        errors.append(f'map changes on {d} but events.json has no entry: {sorted(log[d])}')
-    # a date without a map change may only record an opening or a start of regular service that
-    # follows a preview already on the map (§7): every description says " opens" or "regular service"
-    text = {e['date']: e['descriptions'] for e in events}
-    for d in sorted(set(dates) - set(log)):
-        if not all(' opens' in t or 'regular service' in t for t in text[d]):
-            errors.append(f'events.json has {d} but nothing changes on the map that day, '
-                          'and it records no opening or start of regular service (§7, §10)')
-
-if not errors:  # each line's length on the last change date, to compare with the operator's figure
-    today = max(log)
-    for name, start, end in legend_states:
-        if start <= today and (end is None or today < end):
-            total = sum(km for st, km in track_km if any(n == name and s <= today and (e is None or today < e) for n, s, e in st))
-            print(f'  {name}: {total:.1f} km')
-print('\n'.join(errors) or f'{key}: OK ({len(log)} change dates)')
-sys.exit(1 if errors else 0)
-```
+exist in `operators` (the local logo test does). Of the marker geometry it checks that every circle
+lies on each non-simplified line it serves, that every interchange's platforms match its `data-lines`
+and lie on their own lines inside the marker, and that no two shapes of an interchange are closer
+than 0.4 R (§5 rule 3). §11 step 6 covers the rest: real platform positions, termini on their own
+platforms, and the track rules of §4.

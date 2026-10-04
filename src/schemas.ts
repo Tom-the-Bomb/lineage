@@ -14,6 +14,7 @@ export interface LineWrapper {
     states: State[];
     length: number;
     km: number;
+    partners: LineWrapper[];
 }
 
 export interface ChangelogEvent {

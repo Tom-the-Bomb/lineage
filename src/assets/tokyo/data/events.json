@@ -67,6 +67,12 @@
     ]
   },
   {
+    "date": "1932-12-01",
+    "descriptions": [
+      "Oji Electric Tramway: Oji-ekimae - Oji-yanagita opens, linking the Oji-yanagita - Akabane line (detached since 1926–1927) to the network"
+    ]
+  },
+  {
     "date": "1932-12-24",
     "descriptions": [
       "Tokyo Underground Railway: Mitsukoshimae - Kyobashi opens"
@@ -376,7 +382,6 @@
     "date": "1972-06-30",
     "descriptions": [
       "Hibiya: out-of-station interchange opens",
-      "Korakuen - Kasuga: out-of-station interchange opens",
       "Otemachi: out-of-station interchange opens with Toei Line 6",
       "Toei Line 6: Sugamo - Hibiya opens"
     ]
@@ -387,6 +392,12 @@
       "Chiyoda Line: Kasumigaseki - Yoyogi-koen opens",
       "Jingumae → Omote-sando",
       "Omote-sando: out-of-station interchange opens"
+    ]
+  },
+  {
+    "date": "1972-11-12",
+    "descriptions": [
+      "Toden: Oji-ekimae - Akabane closes"
     ]
   },
   {
@@ -620,6 +631,7 @@
       "Azabu-juban: out-of-station interchange opens",
       "Hongo-sanchome: out-of-station interchange opens",
       "Iidabashi: out-of-station interchange opens with the Oedo Line",
+      "Korakuen - Kasuga: out-of-station interchange opens",
       "Kuramae: out-of-station interchange opens",
       "Naka-okachimachi - Ueno-okachimachi: out-of-station interchange opens",
       "Oedo Line: Kokuritsu-kyogijo - Tochomae opens",

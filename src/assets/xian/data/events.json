@@ -39,13 +39,13 @@
         "date": "2018-12-26",
         "descriptions": [
             "Beikezhan - Beikezhan (Beiguangchang): out-of-station interchange opens",
-            "Line 4: Beikezhan (Beiguangchang) - Hangtianxincheng opens"
+            "Line 4: Beikezhan (Beiguangchang) - Hangtianxincheng opens, initially bypassing Xi'an Zhan"
         ]
     },
     {
         "date": "2019-09-23",
         "descriptions": [
-            "Airport Intercity: Airport W.(T1/T2/T3) - Beikezhan (Beiguangchang) free public trial rides begin"
+            "Airport Intercity: Airport W.(T1/T2/T3) - Beikezhan (Beiguangchang) free public trial rides begin, initially bypassing Airport(T5)"
         ]
     },
     {
@@ -57,7 +57,7 @@
     {
         "date": "2019-09-29",
         "descriptions": [
-            "Airport Intercity: Airport W.(T1/T2/T3) - Beikezhan (Beiguangchang) opens"
+            "Airport Intercity: Airport W.(T1/T2/T3) - Beikezhan (Beiguangchang) opens, initially bypassing Airport(T5)"
         ]
     },
     {

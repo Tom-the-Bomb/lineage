@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "tsc -b --noEmit && eslint .",
+    "lint": "tsc -b --noEmit && eslint . && uvx ruff check && uvx ruff format --check && uvx pyright tests",
     "lint:fix": "eslint --fix . && prettier --write .",
     "preview": "vite preview",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "test": "node --test tests/*.test.mjs",
+    "check-map": "python3 tests/check_map.py",
     "prepare": "husky"
   },
   "dependencies": {
@@ -50,6 +52,10 @@
     ],
     "*.{js,json,css,html,md}": [
       "prettier --write --ignore-unknown"
+    ],
+    "*.py": [
+      "uvx ruff check --fix",
+      "uvx ruff format"
     ]
   }
 }
