@@ -50,33 +50,29 @@ _All above maps have been expanded using [OpenStreetMap](https://www.openstreetm
 
 ## Map Format
 
-A quick guide to the map files. The full rules are in [`docs/map-data-spec.md`](docs/map-data-spec.md).
-Check a map with `npm run check-map <key>` ([`tests/check_map.py`](tests/check_map.py)); `npm test` runs it
-for every system along with the other tests.
+Quick guide to how data is represented, the full rules are in [`docs/map-data-spec.md`](docs/map-data-spec.md).
+
+- Verify a map's structure with `npm run check-map <key>`
+- Run `npm test` for more extensive coverage
 
 ### Files
 
-Each system lives in `src/assets/<key>/` (e.g. `shanghai`):
+A system is at: `src/assets/<key>/`
 
 ```
 map.svg            the map
-preview.svg        home-page thumbnail (generate via `node tests/regen-previews.mjs <key>`)
-data/lines.json    legend: each line's names over time and its color
-data/events.json   timeline text: what changes on each date (used for changelog)
+preview.svg        home-page thumbnail (Run `node tests/regen-previews.mjs <key>`)
+data/lines.json    legend: line names over time and colors
+data/events.json   changelog text for each date
 ```
 
 ### Label Format
 
-Every line, station, and legend entry carries its whole history in a label:
+- Lines, stations and legend entries store their history as comma-separated `name=start-end` states
+- `start`, `end` are `YYYY_MM_DDD` and optional (non-existent => start/end of time respectively)
+- An `_` in `name` is a space when displayed
 
-comma-separated `[name]=[start]-[end]` **states**,
-dates as `YYYY_MM_DD` and `_` in place of spaces.
-
-A state indicates the element is visible from `[start, end)`
-
-`start`, `end` are both optional (non-existent => start/end of time respectively)
-
-#### Example
+#### Examples
 
 ```
 inkscape:label="Pearl_Line=2000_12_26-2002_08_08,Line_3=2002_08_08"
@@ -87,17 +83,15 @@ data-logos="kcr=-2007_12_02,mtr=2007_12_02"
 
 ```xml
 <svg viewBox="...">
-  <g id="zoom-layer">          <!-- zoom and pan move this group -->
-    <g id="geography">...</g>    <!-- background: land, water, coastlines -->
+  <g id="zoom-layer">            <!-- zoom and pan move this group -->
+    <g id="geography">...</g>    <!-- land, water, coastlines -->
     <g id="lines">...</g>        <!-- tracks -->
-    <g id="stations">...</g>     <!-- walking connectors first, then station markers -->
+    <g id="stations">...</g>     <!-- walking connectors, then station markers -->
   </g>
 </svg>
 ```
 
-### Line (track)
-
-One `<path>` per stretch of track with its own dates:
+A `<path>` per stretch of track that has it's own **states** (dates)
 
 ```xml
 <path
@@ -110,18 +104,19 @@ One `<path>` per stretch of track with its own dates:
 />
 ```
 
-- `inkscape:label`: the line's name(s) over time; the color comes from the matching `lines.json` entry.
-- `stroke`: (not read by the app) a fallback color for viewing the file in an editor.
-- `data-km`: published route length, summed for the stats.
-- `data-takes-over="<id>"`: this track replaces part of another on the day it ends, so it appears in
-  place instead of growing again.
-- `data-continues="start|end"`: (checker only) Marks an end that runs on past the border with no station
-  (Lo Wu, 1911–1949), so `check_map.py` doesn't require a station there.
-- Tracks grow in from the start of `d`, so draw them in the direction the line opened.
+- Lines IDs follow the format: `<line>--<from>--<to>--<YYYY-MM-DD>`
+- `inkscape:label`: the line's names over time, its color comes from `lines.json`
+- `stroke`: fallback color for editors (not read by the app).
+- `data-km`: published route length used for metrics
+- `data-takes-over="<id>"`: replaces part of that track on the day it ends, so it appears instantaneously instead
+  of growing again.
+- `data-continues="start|end"`: An end that runs on past the border with no station (Lo Wu,
+  1911–1949) (checker only).
+- Tracks grow from the start of `d`, so draw them in the direction the line opened.
 
 ### Station
 
-A non-interchange station is a `<circle>`
+A single-line station is a `<circle>`:
 
 ```xml
 <circle
@@ -133,7 +128,7 @@ A non-interchange station is a `<circle>`
 />
 ```
 
-An interchange is a `<g>`: a dot on each line's real platform, joined by bridges along the walkways
+An interchange is a `<g>` (1 per station + `data-lines` state) with a dot on each line's platform, joined by bridges along the walkways:
 
 ```xml
 <g
@@ -151,34 +146,31 @@ An interchange is a `<g>`: a dot on each line's real platform, joined by bridges
 </g>
 ```
 
-- `data-lines`: which lines go through there, and when (same date syntax as [Label Format](#label-format)).
-- `data-platforms`: (checker and tooling only). Each line's platform point on its own track, as the app draws
-  the marker from its paths.
-- `data-logos`: operator logos shown in the tooltip (keys from the system's `operators`), in [Label Format](#label-format).
-- `class="dots"` / `class="bridges"`: (checker only). The app draws the paths as they are.
-- A new `<g>` (id suffix `--YYYY-MM-DD`, date not read except to keep SVG IDs unique)
-  starts whenever the lines served change.
+- Station IDs follow the format: `station-<name>[-<suffix>][--<YYYY-MM-DD>]`
+  - `suffix` is to ensure unique IDs that are separate search entries (i.e. out of station interchanges)
+  - `--<YYYY-MM-DD>` is to ensure unique IDs due to an SVG requirement, but the ID before `--` is used for determining search entries
+- `data-lines`: ([label format](#label-format)) the lines serving the station
+- `data-logos`: ([label format](#label-format)) operator logos for the tooltip
+- `data-platforms`: Each line's platform point on its own track (checker/tooling only)
+- `class="dots|bridges"`: (checker only)
 
-  search groups the
-  versions as a singular station (search entry) by the ID before `--`.
-
-- Walking transfers between separate stations are thin `<path id="walking-transfer-...">` lines.
+Walking transfers between separate stations are thin `<path id="walking-transfer-...">` lines
 
 ### Geography
 
-the app never animates or reads it (static), except to recolor it for dark mode.
+A static background: the app only recolors it for dark mode and sets coastline widths
 
-- One palette on every map: own land is the page background `#f6f6f3`, water `#dde6ed`, other land
+- Consistent palette: the city's land is the page background `#f6f6f3`, water `#dde6ed`, foreign land
   `#eceeef`, coastlines `#c0cfd9`.
-- Coastlines have `vector-effect="non-scaling-stroke"` so they stay one pixel wide at every zoom, and the app
-  replaces it for a manual, zoom-driven width at load, as a Safari performance improvement (cheaper repaint).
+- Coastlines carry `vector-effect="non-scaling-stroke"` to stay one pixel wide but the app swaps it for a
+  zoom-driven width at load (a Safari specific performance optimization)
 - Large paths are split into tiles (a `<g>` of plain pieces) so browsers only redraw what is on screen.
 
-### Legacy
+## Legacy
 
 - Revamp of the old website [MTR History](https://9808f789.mtr-history.pages.dev) @ [Git snapshot](https://github.com/Tom-the-Bomb/lineage/tree/9aa3e65174eb16cc44d46a3dbc72e0189e1e393d)
 
-### AI
+## AI
 
 - Primarily handwritten code, LLMs were used for automating the map (SVG) setup and data compilation in these directories and associated testing:
   - `docs/*`
