@@ -3,7 +3,10 @@ import type { SystemConfig } from '../systems';
 
 export default function HeaderCard({ config }: { config: SystemConfig }) {
     return (
-        <div className="panel flex max-w-xs flex-col gap-1.5 px-4 py-3">
+        <div
+            className="panel flex max-w-xs flex-col gap-1.5 px-4 py-3
+                max-md:max-w-[calc(100dvw-10.5rem)]"
+        >
             <div className="text-2xs flex items-center gap-2 font-mono tracking-wide">
                 {config.logos.map(logo => (
                     <img
@@ -14,10 +17,10 @@ export default function HeaderCard({ config }: { config: SystemConfig }) {
                         style={{ width: config.logoSize }}
                     />
                 ))}
-                <span className="text-ink-faint">system:</span>
+                <span className="text-ink-faint max-md:hidden">system:</span>
                 <h1 className="text-ink font-medium">{config.name}</h1>
             </div>
-            <h2 className="flex items-baseline gap-2 leading-none">
+            <h2 className="flex items-baseline gap-2 leading-none max-md:hidden">
                 <span className="text-ink-faint font-mono text-sm">//</span>
                 <span
                     className="font-zh text-ink text-xl font-medium tracking-[0.12em]"
@@ -26,7 +29,7 @@ export default function HeaderCard({ config }: { config: SystemConfig }) {
                     {config.localTitle}
                 </span>
             </h2>
-            <p className="text-ink-muted text-xs">{config.description}</p>
+            <p className="text-ink-muted text-xs max-md:hidden">{config.description}</p>
             <div className="meta flex items-center gap-3 pt-1">
                 <span>
                     {config.minDate.getUTCFullYear()} → {config.maxDate.getUTCFullYear()}

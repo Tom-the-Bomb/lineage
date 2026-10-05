@@ -100,7 +100,8 @@ export default function Search({ stations, onSelect }: SearchProps) {
                         setQuery(e.target.value);
                         setActive(0);
                     }}
-                    className="bg-transparent text-sm transition-opacity duration-300 outline-none"
+                    className="bg-transparent text-sm transition-opacity duration-300 outline-none
+                        pointer-coarse:text-base"
                 />
             </label>
             {showResults && (

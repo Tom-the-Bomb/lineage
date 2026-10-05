@@ -335,8 +335,9 @@
 
     .pill {
         @apply border-rule bg-surface/85 text-3xs text-ink-muted hover:border-rule-strong
-            hover:text-ink md:text-2xs pointer-events-auto relative flex cursor-pointer items-center
-            gap-1.5 rounded-full border px-2 py-0.5 transition-colors;
+            hover:text-ink md:text-2xs pointer-events-auto relative flex shrink-0 cursor-pointer
+            items-center gap-1.5 rounded-full border px-2 py-0.5 whitespace-nowrap
+            transition-colors;
     }
 
     .pill[aria-pressed='true'] {
@@ -414,7 +415,7 @@
     }
 
     .slide-out-settings {
-        @apply transition-transform duration-500 ease-in-out;
+        @apply transition-[translate,visibility] duration-500 ease-in-out;
     }
 }
 

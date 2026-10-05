@@ -3,9 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#f6f6f3" />
         <script>
             if (localStorage.getItem('metroHistoryDarkMode') === 'true') {
                 document.documentElement.classList.add('dark');
+                document.querySelector('meta[name="theme-color"]').content = '#121315';
             }
         </script>
 
@@ -20,7 +22,6 @@
         />
         <meta name="author" content="Tom-the-Bomb" />
         <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#2563eb" />
 
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />

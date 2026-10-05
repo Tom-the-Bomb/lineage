@@ -506,7 +506,7 @@ export default function Map({ system }: { system: SystemKey }) {
 
     return (
         <div
-            className="flex h-dvh w-dvw touch-none items-center justify-center"
+            className="group/map flex h-dvh w-dvw touch-none items-center justify-center"
             style={
                 {
                     '--slider-thumb': `url("${config.logos[0]}")`,
@@ -518,7 +518,7 @@ export default function Map({ system }: { system: SystemKey }) {
             <div
                 role="status"
                 aria-hidden={!!svgDoc}
-                className={`bg-paper fixed inset-0 z-50 flex flex-col items-center justify-center
+                className={`bg-paper absolute inset-0 z-50 flex flex-col items-center justify-center
                     gap-3 transition-opacity duration-300 motion-reduce:transition-none
                     ${svgDoc ? 'pointer-events-none opacity-0' : ''}`}
             >
@@ -528,8 +528,9 @@ export default function Map({ system }: { system: SystemKey }) {
             </div>
             <header
                 className={`pointer-events-none absolute top-4 left-4 z-10 flex
-                    max-h-[calc(100dvh-17.5rem)] flex-col ${expanded ? '-translate-x-100' : ''}
-                    slide-out-settings`}
+                    max-h-[calc(100dvh-17.5rem)] flex-col
+                    max-md:group-has-[.station-search:is(:hover,:focus-within)]/map:invisible
+                    ${expanded ? '-translate-x-100' : ''} slide-out-settings`}
             >
                 <HeaderCard config={config} />
                 <Stats
@@ -575,12 +576,12 @@ export default function Map({ system }: { system: SystemKey }) {
             </main>
             <div
                 className={`pointer-events-auto absolute bottom-31 left-4 flex flex-col gap-2
-                    ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
+                    max-md:bottom-29.5 ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
             >
                 <button
                     type="button"
                     onClick={() => zoomBy(ZOOM_STEP)}
-                    className="zoom-btn"
+                    className="zoom-btn pointer-coarse:hidden"
                     aria-label="Zoom in"
                 >
                     <img src={plus} alt="Zoom in" className="icon h-6 w-6" />
@@ -588,7 +589,7 @@ export default function Map({ system }: { system: SystemKey }) {
                 <button
                     type="button"
                     onClick={() => zoomBy(1 / ZOOM_STEP)}
-                    className="zoom-btn"
+                    className="zoom-btn pointer-coarse:hidden"
                     aria-label="Zoom out"
                 >
                     <img src={minus} alt="Zoom out" className="icon h-6 w-6" />
@@ -615,8 +616,11 @@ export default function Map({ system }: { system: SystemKey }) {
                 legend={legend}
             />
             <div
-                className={`pointer-events-none absolute bottom-29 flex w-2/3 flex-wrap items-center
-                    justify-center gap-1.5 lg:w-1/2 ${expanded ? 'translate-y-25.5' : ''}
+                className={`scroll-hidden pointer-events-none absolute bottom-29 flex w-2/3
+                    flex-wrap items-center justify-center-safe gap-1.5 max-md:pointer-events-auto
+                    max-md:inset-x-18 max-md:bottom-28 max-md:h-12 max-md:w-auto max-md:flex-nowrap
+                    max-md:overflow-x-auto max-md:mask-x-from-[calc(100%-1.5rem)] max-md:px-6
+                    lg:w-1/2 ${expanded ? 'translate-y-25.5 max-md:right-4' : ''}
                     slide-out-settings`}
             >
                 {presentLines.map(({ line, name, since }) => {
@@ -671,7 +675,7 @@ export default function Map({ system }: { system: SystemKey }) {
             <footer
                 className={`bg-surface/85 border-rule pointer-events-none absolute bottom-0 left-0
                     flex w-dvw flex-col items-center justify-center gap-2 border-t p-4 pt-2
-                    ${expanded ? 'translate-y-25.5' : ''} slide-out-settings`}
+                    ${expanded ? 'invisible translate-y-25.5' : ''} slide-out-settings`}
             >
                 <button
                     type="button"
@@ -691,7 +695,7 @@ export default function Map({ system }: { system: SystemKey }) {
                         type="button"
                         onClick={() => setTime(prev => findPreviousEventDate(prev))}
                         aria-label="Previous event"
-                        className="group relative"
+                        className="group relative pointer-coarse:-m-3 pointer-coarse:p-3"
                     >
                         <img src={chevronLeft} alt="<" className="icon-btn" />
                         <ControlTooltip>Previous event</ControlTooltip>
@@ -706,7 +710,7 @@ export default function Map({ system }: { system: SystemKey }) {
                         type="button"
                         onClick={() => setTime(prev => findNextEventDate(prev))}
                         aria-label="Next event"
-                        className="group relative"
+                        className="group relative pointer-coarse:-m-3 pointer-coarse:p-3"
                     >
                         <img src={chevronRight} alt=">" className="icon-btn" />
                         <ControlTooltip>Next event</ControlTooltip>

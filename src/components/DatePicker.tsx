@@ -73,7 +73,8 @@ export default function DatePicker({ time, minDate, maxDate, onChange }: DatePic
                         autoFocus
                         onFocus={e => e.currentTarget.select()}
                         onInput={e => e.currentTarget.setCustomValidity('')}
-                        className="border-rule w-32 border-b bg-transparent pb-1 font-mono text-sm"
+                        className="border-rule w-32 border-b bg-transparent pb-1 font-mono text-sm
+                            pointer-coarse:text-base"
                     />
                     <span className="meta mt-1 block">Enter to apply</span>
                     <span

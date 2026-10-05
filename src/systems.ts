@@ -109,6 +109,7 @@ export const systems = {
         description: "Explore the growth of Hong Kong's rail network",
         map: hongkongMap,
         initialBounds: [1038, 950],
+        initialView: { center: [745, 667], zoom: 1 },
         logos: [hongkongLogo],
         lines: hongkongLines.lines,
         events: hongkongEvents,

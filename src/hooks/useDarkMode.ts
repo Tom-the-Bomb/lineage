@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const KEY = 'metroHistoryDarkMode';
 
@@ -7,11 +7,12 @@ export default function useDarkMode(): [boolean, () => void] {
         () => localStorage.getItem(KEY) === 'true',
     );
 
-    useEffect(() => {
-        document.documentElement.classList.toggle('dark', isDarkMode);
-    }, [isDarkMode]);
-
     const toggle = () => {
+        const root = document.documentElement;
+        root.classList.toggle('dark', !isDarkMode);
+        document
+            .querySelector('meta[name="theme-color"]')!
+            .setAttribute('content', getComputedStyle(root).getPropertyValue('--color-paper'));
         localStorage.setItem(KEY, String(!isDarkMode));
         setIsDarkMode(!isDarkMode);
     };
