@@ -7,6 +7,7 @@ export interface LegendWrapper {
     id: string;
     color: string;
     states: State[];
+    operators: State[];
 }
 
 export interface LineWrapper {

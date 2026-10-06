@@ -8,6 +8,9 @@ const EVENT_DOT_SIZE = 4;
 interface Hover {
     time: number;
     x: number;
+    along: number;
+    track: number;
+    onInput: boolean;
 }
 
 interface TimelineSliderProps {
@@ -55,6 +58,10 @@ export default function TimelineSlider({
     const fraction = (t: number) => (t - minTime) / timelineDuration;
     const timeProgress = fraction(time);
     const hoverPoint = hover === null ? undefined : lengthAt(series, hover.time);
+    const thumbHovered =
+        hover !== null &&
+        hover.onInput &&
+        Math.abs(hover.along - timeProgress * hover.track) <= thumbWidth / 2;
 
     return (
         <div
@@ -65,15 +72,21 @@ export default function TimelineSlider({
                         ? e.target.dataset.eventDate
                         : undefined;
                 setHoveredDot(dot ? Number(dot) : null);
-                if (e.pointerType !== 'mouse' || sliderTrackWidth === null || !inputRef.current) {
+                if (e.pointerType !== 'mouse' || !inputRef.current) {
                     return;
                 }
                 const box = e.currentTarget.getBoundingClientRect();
-                const start = inputRef.current.getBoundingClientRect().left + thumbWidth / 2;
-                const at = clamp((e.clientX - start) / sliderTrackWidth, 0, 1);
+                const { left, width } = inputRef.current.getBoundingClientRect();
+                const start = left + thumbWidth / 2;
+                const track = width - thumbWidth;
+                const along = e.clientX - start;
+                const at = clamp(along / track, 0, 1);
                 setHover({
                     time: minTime + at * timelineDuration,
-                    x: start - box.left + at * sliderTrackWidth,
+                    x: start - box.left + at * track,
+                    along,
+                    track,
+                    onInput: e.target === inputRef.current,
                 });
             }}
             onPointerLeave={() => {
@@ -152,6 +165,7 @@ export default function TimelineSlider({
                 max={maxTime}
                 value={time}
                 onChange={e => onTimeChange(Number(e.target.value))}
+                data-thumb-hover={thumbHovered || undefined}
                 className="absolute top-1/2 right-4 left-4 z-10 -translate-y-1/2 cursor-pointer"
             />
             <div

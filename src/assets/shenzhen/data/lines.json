@@ -18,7 +18,8 @@
     {
       "id": "4",
       "label": "Line_4=2004_12_28-2008_04_23,Longhua_Line=2008_04_23-2013_10_18,Line_4_(Longhua_Line)=2013_10_18-2016_06_28,Line_4=2016_06_28",
-      "color": "#dc241f"
+      "color": "#dc241f",
+      "operators": "metro=-2010_07_01,mtr=2010_07_01"
     },
     {
       "id": "5",
@@ -68,7 +69,8 @@
     {
       "id": "13",
       "label": "Line_13=2024_12_28",
-      "color": "#de7c00"
+      "color": "#de7c00",
+      "operators": "mtr"
     },
     {
       "id": "14",

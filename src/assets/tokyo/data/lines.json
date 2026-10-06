@@ -58,34 +58,40 @@
     {
       "id": "a",
       "label": "Toei_Line_1=1960_12_04-1978_07_01,Asakusa_Line=1978_07_01",
-      "color": "#ec6d65"
+      "color": "#ec6d65",
+      "operators": "toei"
     },
     {
       "id": "i",
       "label": "Toei_Line_6=1968_12_27-1978_07_01,Mita_Line=1978_07_01",
-      "color": "#006ab7"
+      "color": "#006ab7",
+      "operators": "toei"
     },
     {
       "id": "s",
       "label": "Shinjuku_Line=1978_12_21",
-      "color": "#b0c124"
+      "color": "#b0c124",
+      "operators": "toei"
     },
     {
       "id": "e",
       "label": "Toei_Line_12=1991_12_10-2000_04_20,Oedo_Line=2000_04_20",
-      "color": "#da006e"
+      "color": "#da006e",
+      "operators": "toei"
     },
     {
       "id": "sa",
       "simplified": true,
       "label": "Oji_Electric_Tramway=1911_08_20-1942_02_01,Tokyo_City_Tram=1942_02_01-1943_07_01,Toden=1943_07_01-1974_10_01,Arakawa_Line=1974_10_01-2017_04_28,Tokyo_Sakura_Tram=2017_04_28",
-      "color": "#ee86a7"
+      "color": "#ee86a7",
+      "operators": "toei"
     },
     {
       "id": "nt",
       "simplified": true,
       "label": "Nippori-Toneri_Liner=2008_03_30",
-      "color": "#d53a77"
+      "color": "#d53a77",
+      "operators": "toei"
     }
   ]
 }

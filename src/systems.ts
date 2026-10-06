@@ -86,7 +86,7 @@ export interface SystemConfig {
     tooltipLogoSize?: number;
     minDate: Date;
     maxDate: Date;
-    lines: { id: string; label: string; color: string }[];
+    lines: { id: string; label: string; color: string; operators?: string }[];
     events: ChangelogEvent[];
     milestoneDates: string[];
     operators: Record<string, { src: string; alt: string }>;

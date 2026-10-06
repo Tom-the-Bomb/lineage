@@ -44,6 +44,7 @@ import ControlTooltip from './ControlTooltip';
 import DatePicker from './DatePicker';
 import HeaderCard from './HeaderCard';
 import Info from './Info';
+import OperatorLogos from './OperatorLogos';
 import Search from './Search';
 import Stats from './Stats';
 import Theme from './Theme';
@@ -194,14 +195,16 @@ export default function Map({ system }: { system: SystemKey }) {
         return () => document.removeEventListener('keydown', keyDownHandler);
     }, [keyDownHandler]);
 
+    const [defaultOperator] = Object.keys(config.operators);
     const legend = useMemo(
         () =>
             config.lines.map(line => ({
                 id: line.id,
                 color: line.color,
                 states: parseLabelDates(line.label),
+                operators: parseLabelDates(line.operators ?? defaultOperator),
             })),
-        [config.lines],
+        [config.lines, defaultOperator],
     );
 
     useLayoutEffect(() => {
@@ -213,7 +216,6 @@ export default function Map({ system }: { system: SystemKey }) {
 
         const lines = svgDoc.querySelector('g#lines')!;
         const stations = svgDoc.querySelector('g#stations')!;
-        const [defaultOperator] = Object.keys(config.operators);
 
         const thin = setupZoomThinning(svgDoc);
         const hairlines = setupHairlines(svgDoc);
@@ -369,14 +371,7 @@ export default function Map({ system }: { system: SystemKey }) {
         svgEl.style.height = '100%';
 
         return () => svgDoc.removeEventListener('keydown', keyDownHandler);
-    }, [
-        svgDoc,
-        keyDownHandler,
-        config.initialView,
-        config.initialBounds,
-        config.operators,
-        legend,
-    ]);
+    }, [svgDoc, keyDownHandler, config.initialView, config.initialBounds, defaultOperator, legend]);
 
     useEffect(() => {
         if (!svgDoc) {
@@ -660,7 +655,14 @@ export default function Map({ system }: { system: SystemKey }) {
                                             servesLine(station.lines, line.id, time),
                                         ).length,
                                     }}
-                                />
+                                >
+                                    <OperatorLogos
+                                        operators={line.operators}
+                                        time={time}
+                                        config={config}
+                                        small
+                                    />
+                                </BigTooltip>
                             )}
                         </button>
                     );

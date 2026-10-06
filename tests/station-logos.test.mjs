@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { isActive, parseLabelDates } from '../src/utils.ts';
-import { markers, read, systems } from './helpers.mjs';
+import { legendLines, markers, read, systems } from './helpers.mjs';
 
 const START_OF_TIME = -8.64e15;
 const END_OF_TIME = 8.64e15;
@@ -31,6 +31,37 @@ test('a logo entry without a start date is valid until its end', () => {
     assert.ok(!isActive(dateRange, Date.parse('2007-12-02')));
 });
 
+function assertLogos(id, label, logos, operators) {
+    const states = parseLabelDates(label);
+    const entries = parseLabelDates(logos);
+    for (const { name } of entries)
+        assert.ok(operators.has(name), `${id}: unknown operator ${name}`);
+
+    // the first and last days are implied: write `op`, `op=-end` or `op=start`
+    const first = states[0].dateRange.appear.getTime();
+    const last = states.at(-1).dateRange.removed.getTime();
+    for (const { name, dateRange } of entries) {
+        const [appear, removed] = [dateRange.appear.getTime(), dateRange.removed.getTime()];
+        assert.ok(
+            appear === START_OF_TIME || appear > first,
+            `${id}: ${name} repeats the opening date`,
+        );
+        assert.ok(
+            removed === END_OF_TIME || removed < last,
+            `${id}: ${name} repeats the closing date`,
+        );
+    }
+
+    for (const t of bounds([...states, ...entries])) {
+        if (states.some(({ dateRange }) => isActive(dateRange, t))) {
+            assert.ok(
+                entries.some(({ dateRange }) => isActive(dateRange, t)),
+                `${id}: no logo on ${new Date(t).toISOString().slice(0, 10)}`,
+            );
+        }
+    }
+}
+
 for (const system of systems) {
     test(`${system}: station logos name known operators, cover every open day and repeat no marker dates`, () => {
         const operators = new Set(operatorKeys(system));
@@ -43,34 +74,14 @@ for (const system of systems) {
                 );
                 continue;
             }
-            const states = parseLabelDates(label);
-            const entries = parseLabelDates(logos);
-            for (const { name } of entries)
-                assert.ok(operators.has(name), `${id}: unknown operator ${name}`);
+            assertLogos(id, label, logos, operators);
+        }
+    });
 
-            // the marker's own first and last days are implied: write `op`, `op=-end` or `op=start`
-            const first = states[0].dateRange.appear.getTime();
-            const last = states.at(-1).dateRange.removed.getTime();
-            for (const { name, dateRange } of entries) {
-                const [appear, removed] = [dateRange.appear.getTime(), dateRange.removed.getTime()];
-                assert.ok(
-                    appear === START_OF_TIME || appear > first,
-                    `${id}: ${name} repeats the opening date`,
-                );
-                assert.ok(
-                    removed === END_OF_TIME || removed < last,
-                    `${id}: ${name} repeats the closing date`,
-                );
-            }
-
-            for (const t of bounds([...states, ...entries])) {
-                if (states.some(({ dateRange }) => isActive(dateRange, t))) {
-                    assert.ok(
-                        entries.some(({ dateRange }) => isActive(dateRange, t)),
-                        `${id}: no logo on ${new Date(t).toISOString().slice(0, 10)}`,
-                    );
-                }
-            }
+    test(`${system}: line logos name known operators, cover every open day and repeat no line dates`, () => {
+        const operators = new Set(operatorKeys(system));
+        for (const line of legendLines(system).filter(line => line.operators !== undefined)) {
+            assertLogos(line.id, line.label, line.operators, operators);
         }
     });
 }

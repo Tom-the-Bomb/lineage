@@ -38,7 +38,8 @@
         {
             "id": "9",
             "label": "Line_9=2020_12_28",
-            "color": "#f69601"
+            "color": "#f69601",
+            "operators": "xazt"
         },
         {
             "id": "10",
@@ -48,7 +49,8 @@
         {
             "id": "14",
             "label": "Airport_Intercity=2019_09_23-2021_06_29,Line_14=2021_06_29",
-            "color": "#009fc5"
+            "color": "#009fc5",
+            "operators": "intercity=-2021_01_01,metro=2021_01_01"
         },
         {
             "id": "15",

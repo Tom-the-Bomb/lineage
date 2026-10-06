@@ -1,16 +1,24 @@
+import type { ReactNode } from 'react';
 import { type LineStats } from '../schemas';
 import { formatDate } from '../utils';
 import Figure from './Figure';
 
-export function BigTooltip({ stats, since }: { stats: LineStats; since: Date }) {
+interface BigTooltipProps {
+    stats: LineStats;
+    since: Date;
+    children: ReactNode;
+}
+
+export function BigTooltip({ stats, since, children }: BigTooltipProps) {
     return (
         <div
             role="tooltip"
             className="tooltip bottom-full left-1/2 mb-3 flex -translate-x-1/2 flex-col gap-1 px-4
                 pt-2.5 pb-3 text-left pointer-coarse:hidden"
         >
-            <div className="meta flex items-center justify-between text-[8px]">
+            <div className="meta flex items-center justify-between gap-2 text-[8px]">
                 <span>SINCE</span>
+                <span className="flex gap-1">{children}</span>
                 <span>{formatDate(since)}</span>
             </div>
             <div className="flex gap-6">

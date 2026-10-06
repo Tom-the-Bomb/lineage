@@ -18,7 +18,8 @@
         {
             "id": "4",
             "label": "Line_4=2009_09_28",
-            "color": "#008c95"
+            "color": "#008c95",
+            "operators": "mtr"
         },
         {
             "id": "5",
@@ -68,7 +69,8 @@
         {
             "id": "14",
             "label": "Line_14=2013_05_05",
-            "color": "#ca9a8e"
+            "color": "#ca9a8e",
+            "operators": "mtr"
         },
         {
             "id": "15",
@@ -78,12 +80,14 @@
         {
             "id": "16",
             "label": "Line_16=2016_12_31",
-            "color": "#6ba539"
+            "color": "#6ba539",
+            "operators": "mtr"
         },
         {
             "id": "17",
             "label": "Line_17=2021_12_31",
-            "color": "#00b2a9"
+            "color": "#00b2a9",
+            "operators": "mtr"
         },
         {
             "id": "18",
@@ -93,7 +97,8 @@
         {
             "id": "19",
             "label": "Line_19=2021_12_31",
-            "color": "#d3a8c7"
+            "color": "#d3a8c7",
+            "operators": "mtr"
         },
         {
             "id": "bt",
@@ -118,7 +123,8 @@
         {
             "id": "dx",
             "label": "Daxing_Line=2010_12_30",
-            "color": "#008c95"
+            "color": "#008c95",
+            "operators": "mtr"
         },
         {
             "id": "fb",

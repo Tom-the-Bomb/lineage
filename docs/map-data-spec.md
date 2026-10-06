@@ -54,7 +54,7 @@ src/assets/<key>/
 | `lines`              | `shanghaiLines.lines`                                 | The imported `lines.json` array.                                                                            |
 | `events`             | `shanghaiEvents`                                      | The imported `events.json` array, sorted by date.                                                           |
 | `milestoneDates`     | `['1993-05-28', ...]`                                 | Dates from `events` to feature on the home page.                                                            |
-| `operators`          | `{ metro: { src, alt }, … }`                          | Station tooltip logos by `data-logos` key (§5). The first is the default for markers without the attribute. |
+| `operators`          | `{ metro: { src, alt }, … }`                          | Tooltip logos by `data-logos` key (§5) and line `operators` key (§9). The first is the default where unset. |
 | `article` (optional) | `'/hongkong/article'`                                 | Only if an article route exists.                                                                            |
 
 - Header logos show the system's brand only, even where several companies operate its lines (Seoul
@@ -1029,10 +1029,15 @@ Exclude:
 }
 ```
 
-- MUST: `lines` is an array of `{ "id", "label", "color" }`. Labels follow §2. `color`
-  is any CSS colour. Shanghai uses `rgb(r,g,b)`, and `#rrggbb` also works.
+- MUST: `lines` is an array of `{ "id", "label", "color" }`, optionally with `"operators"`. Labels
+  follow §2. `color` is any CSS colour. Shanghai uses `rgb(r,g,b)`, and `#rrggbb` also works.
 - MUST: `id` is a short stable code of lowercase letters and digits (`erl`, `2`, `xinlu`), unique
   within the system. Station markers reference it in `data-lines` (§5). It never appears in labels.
+- `"operators"` names the operators of a line run by anyone but the system's first operator, in the
+  `data-logos` syntax and under the same rules (§5), clipped to the line's own dates
+  (`"kcr=-2007_12_02,mtr=2007_12_02"`). The line's hover card shows the entries active that day; a
+  line without the field shows the first operator. Match the line's stations: a handover is the same
+  date on both, and so is already an event.
 - `"simplified": true` marks a line drawn without most of its stops (MTR Light Rail, Shanghai's
   Songjiang trams). Its tracks are exempt from the track-end rule of §4. The app ignores the field.
 - MUST: at every moment, each visible track's name equals the name of a legend state active at that

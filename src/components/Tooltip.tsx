@@ -4,7 +4,8 @@ import { flushSync } from 'react-dom';
 import type { LegendWrapper, RawTooltipData, StationWrapper } from '../schemas';
 import { stationIdentity } from '../stationSearch';
 import type { SystemConfig } from '../systems';
-import { clamp, findActive, formatDate, isActive, servesLine } from '../utils';
+import { clamp, findActive, formatDate, servesLine } from '../utils';
+import OperatorLogos from './OperatorLogos';
 
 interface TooltipProps {
     tooltip: RawTooltipData | null;
@@ -119,11 +120,6 @@ export default function Tooltip({
         return null;
     }
 
-    const logos = tooltip.station.operators.flatMap(({ name, dateRange }) => {
-        const logo = config.operators[name];
-        return logo && isActive(dateRange, time) ? [logo] : [];
-    });
-
     const lines = presentLines
         .filter(({ line }) => servesLine(tooltip.station.lines, line.id, time))
         .map(({ line, name }) => ({ id: line.id, name, color: line.color }));
@@ -140,15 +136,7 @@ export default function Tooltip({
             style={{ left: x, top: y }}
         >
             <div className="flex items-center gap-2">
-                {logos.map(logo => (
-                    <img
-                        key={logo.alt}
-                        src={logo.src}
-                        alt={logo.alt}
-                        className="h-4"
-                        style={{ height: config.tooltipLogoSize }}
-                    />
-                ))}
+                <OperatorLogos operators={tooltip.station.operators} time={time} config={config} />
                 <span className="flex items-baseline gap-2">
                     {state.name}
                     <span className="meta ml-auto text-[9px]">

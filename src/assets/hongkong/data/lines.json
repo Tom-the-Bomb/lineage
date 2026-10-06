@@ -3,12 +3,14 @@
         {
             "id": "erl",
             "label": "KCR_British_Section=1910_10_01-1996_02_01,KCR_East_Rail=1996_02_01-2007_12_02,East_Rail_Line=2007_12_02",
-            "color": "rgb(83,183,232)"
+            "color": "rgb(83,183,232)",
+            "operators": "kcr=-2007_12_02,mtr=2007_12_02"
         },
         {
             "id": "stk",
             "label": "Sha_Tau_Kok_Branch=1911_12_21-1928_04_01",
-            "color": "rgb(139,111,71)"
+            "color": "rgb(139,111,71)",
+            "operators": "kcr"
         },
         {
             "id": "ktl",
@@ -29,7 +31,8 @@
             "id": "lr",
             "label": "KCR_Light_Rail=1988_09_14-2007_12_02,Light_Rail=2007_12_02",
             "color": "rgb(211,168,9)",
-            "simplified": true
+            "simplified": true,
+            "operators": "kcr=-2007_12_02,mtr=2007_12_02"
         },
         {
             "id": "tcl",
@@ -49,12 +52,14 @@
         {
             "id": "wrl",
             "label": "KCR_West_Rail=2003_12_16-2007_12_02,West_Rail_Line=2007_12_02-2021_06_27",
-            "color": "rgb(163,35,143)"
+            "color": "rgb(163,35,143)",
+            "operators": "kcr=-2007_12_02,mtr=2007_12_02"
         },
         {
             "id": "tml",
             "label": "Ma_On_Shan_Rail=2004_12_19-2007_12_02,Ma_On_Shan_Line=2007_12_02-2020_02_14,Tuen_Ma_Line_Phase_1=2020_02_14-2021_06_27,Tuen_Ma_Line=2021_06_27",
-            "color": "rgb(146,48,17)"
+            "color": "rgb(146,48,17)",
+            "operators": "kcr=-2007_12_02,mtr=2007_12_02"
         },
         {
             "id": "drl",

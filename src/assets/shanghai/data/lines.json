@@ -98,17 +98,20 @@
         {
             "id": "maglev",
             "label": "Maglev=2003_01_01",
-            "color": "rgb(0,139,154)"
+            "color": "rgb(0,139,154)",
+            "operators": "maglev"
         },
         {
             "id": "jinshan",
             "label": "Jinshan_Railway=2012_09_28",
-            "color": "rgb(102,102,102)"
+            "color": "rgb(102,102,102)",
+            "operators": "suburban"
         },
         {
             "id": "airportlink",
             "label": "Airport_Link_Line=2024_12_27",
-            "color": "rgb(61,104,138)"
+            "color": "rgb(61,104,138)",
+            "operators": "suburban"
         },
         {
             "id": "tram1",

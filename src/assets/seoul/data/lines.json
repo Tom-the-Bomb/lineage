@@ -3,7 +3,8 @@
         {
             "id": "1",
             "label": "Line_1=1974_08_15",
-            "color": "#0052a4"
+            "color": "#0052a4",
+            "operators": "korail,metro"
         },
         {
             "id": "2",
@@ -13,12 +14,14 @@
         {
             "id": "3",
             "label": "Line_3=1985_07_12",
-            "color": "#ef7c1c"
+            "color": "#ef7c1c",
+            "operators": "metro,korail=1996_01_30"
         },
         {
             "id": "4",
             "label": "Line_4=1985_04_20",
-            "color": "#00a5de"
+            "color": "#00a5de",
+            "operators": "metro,korail=1994_04_01"
         },
         {
             "id": "5",
@@ -33,7 +36,8 @@
         {
             "id": "7",
             "label": "Line_7=1996_10_11",
-            "color": "#747f00"
+            "color": "#747f00",
+            "operators": "metro,incheon=2021_05_22"
         },
         {
             "id": "8",
@@ -48,57 +52,68 @@
         {
             "id": "incheon1",
             "label": "Incheon_Line_1=1999_10_06",
-            "color": "#7ca8d5"
+            "color": "#7ca8d5",
+            "operators": "incheon"
         },
         {
             "id": "incheon2",
             "label": "Incheon_Line_2=2016_07_30",
-            "color": "#ed8b00"
+            "color": "#ed8b00",
+            "operators": "incheon"
         },
         {
             "id": "gyeongui",
             "label": "Gyeongui_Line=2009_07_01-2014_12_27,Gyeongui–Jungang_Line=2014_12_27",
-            "color": "#77c4a3"
+            "color": "#77c4a3",
+            "operators": "korail"
         },
         {
             "id": "jungang",
             "label": "Yongsan–Deokso_Line=2005_12_16-2007_12_27,Jungang_Line=2007_12_27-2014_12_27",
-            "color": "#77c4a3"
+            "color": "#77c4a3",
+            "operators": "korail"
         },
         {
             "id": "bundang",
             "label": "Bundang_Line=1994_09_01-2020_09_12,Suin–Bundang_Line=2020_09_12",
-            "color": "#f5a200"
+            "color": "#f5a200",
+            "operators": "korail"
         },
         {
             "id": "suin",
             "label": "Suin_Line=2012_06_30-2020_09_12",
-            "color": "#f5a200"
+            "color": "#f5a200",
+            "operators": "korail"
         },
         {
             "id": "gyeongchun",
             "label": "Gyeongchun_Line=2010_12_21",
-            "color": "#0c8e72"
+            "color": "#0c8e72",
+            "operators": "korail"
         },
         {
             "id": "gyeonggang",
             "label": "Gyeonggang_Line=2016_09_24",
-            "color": "#003da5"
+            "color": "#003da5",
+            "operators": "korail"
         },
         {
             "id": "arex",
             "label": "AREX=2007_03_23",
-            "color": "#0090d2"
+            "color": "#0090d2",
+            "operators": "arex"
         },
         {
             "id": "shinbundang",
             "label": "Shinbundang_Line=2011_10_28",
-            "color": "#d4003b"
+            "color": "#d4003b",
+            "operators": "neotrans"
         },
         {
             "id": "seohae",
             "label": "Seohae_Line=2018_06_16",
-            "color": "#8fc31f"
+            "color": "#8fc31f",
+            "operators": "korail"
         },
         {
             "id": "ui",
@@ -116,7 +131,8 @@
             "id": "gimpo",
             "label": "Gimpo_Goldline=2019_09_28",
             "color": "#ad8605",
-            "simplified": true
+            "simplified": true,
+            "operators": "gimpo"
         },
         {
             "id": "everline",
@@ -133,7 +149,8 @@
         {
             "id": "maglev",
             "label": "Incheon_Airport_Maglev=2016_02_03-2022_07_14",
-            "color": "#ffcd12"
+            "color": "#ffcd12",
+            "operators": "maglev"
         },
         {
             "id": "gtxa",

@@ -48,29 +48,34 @@
         {
             "id": "y",
             "label": "Circular_Line=2020_01_19",
-            "color": "rgb(240,217,67)"
+            "color": "rgb(240,217,67)",
+            "operators": "metro=-2023_05_23,newtaipei=2023_05_23"
         },
         {
             "id": "a",
             "label": "Taoyuan_Airport_MRT=2017_02_16",
-            "color": "rgb(130,70,175)"
+            "color": "rgb(130,70,175)",
+            "operators": "taoyuan"
         },
         {
             "id": "lb",
             "label": "Sanying_Line=2026_06_30",
-            "color": "rgb(72,182,210)"
+            "color": "rgb(72,182,210)",
+            "operators": "newtaipei"
         },
         {
             "id": "v",
             "label": "Danhai_LRT=2018_12_24",
             "color": "rgb(220,82,77)",
-            "simplified": true
+            "simplified": true,
+            "operators": "newtaipei"
         },
         {
             "id": "k",
             "label": "Ankeng_LRT=2023_02_10",
             "color": "rgb(155,143,94)",
-            "simplified": true
+            "simplified": true,
+            "operators": "newtaipei"
         },
         {
             "id": "maokong",

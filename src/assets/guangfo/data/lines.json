@@ -116,18 +116,21 @@
     {
       "id": "f2",
       "label": "Foshan_Line_2=2021_12_28",
-      "color": "#c10230"
+      "color": "#c10230",
+      "operators": "foshan"
     },
     {
       "id": "f3",
       "label": "Foshan_Line_3=2022_12_28",
-      "color": "#002f87"
+      "color": "#002f87",
+      "operators": "foshan"
     },
     {
       "id": "nh",
       "label": "Nanhai_Tram_Line_1=2021_08_18",
       "color": "#5eb3e4",
-      "simplified": true
+      "simplified": true,
+      "operators": "foshan"
     }
   ]
 }

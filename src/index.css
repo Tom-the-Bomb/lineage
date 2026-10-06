@@ -438,7 +438,7 @@
     transition: transform 0.2s ease-in-out;
 }
 
-#date-slider::-webkit-slider-thumb:hover {
+#date-slider[data-thumb-hover]::-webkit-slider-thumb {
     transform: scale(1.4);
 }
 

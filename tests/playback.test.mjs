@@ -113,7 +113,7 @@ for (const system of systems) {
         const labels = [
             ...[...svg.matchAll(/inkscape:label="([^"]*=[^"]*)"/g)].map(([, label]) => label),
             ...[...svg.matchAll(/data-logos="([^"]*=[^"]*)"/g)].map(([, logos]) => logos),
-            ...legendLines(system).map(line => line.label),
+            ...legendLines(system).flatMap(line => [line.label, line.operators ?? '']),
         ];
         const history = readJson(`src/assets/${system}/data/events.json`);
         const start = date(`${history[0].date.slice(0, 4)}-01-01`);
