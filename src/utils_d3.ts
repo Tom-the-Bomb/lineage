@@ -1,6 +1,15 @@
 import * as d3 from 'd3';
 
 import type { LegendWrapper, LineWrapper, StationWrapper, UpdateResult } from './schemas';
+import {
+    drawsWhole,
+    intersect,
+    localSpans,
+    overlaps,
+    planFronts,
+    union,
+    type Spans,
+} from './tracks.ts';
 
 import {
     clamp,
@@ -296,6 +305,30 @@ function cueStation(el: SVGElement, lineColor: string): void {
         .remove();
 }
 
+const moves = new WeakMap<
+    LineWrapper,
+    { at: (time: number) => Spans; end: number; active: boolean; depth: number }
+>();
+const PACED_MOVES = 8;
+
+function spansNow(line: LineWrapper, now: number): Spans {
+    return moves.get(line)?.at(now) ?? [];
+}
+
+function drawTrack(line: LineWrapper, spans: Spans): void {
+    const { el, length } = line;
+    const dashes = localSpans(line, spans);
+    const whole = drawsWhole(line, spans);
+    el.style.visibility = dashes.length > 0 ? '' : 'hidden';
+    el.style.strokeDasharray =
+        whole || dashes.length === 0
+            ? 'none'
+            : dashes
+                  .flatMap(([a, b], i) => [b - a, (dashes[i + 1]?.[0] ?? b + 2 * length) - b])
+                  .join(' ');
+    el.style.strokeDashoffset = whole || dashes.length === 0 ? '' : String(-dashes[0][0]);
+}
+
 export function update(
     dateNum: number,
     lines: LineWrapper[],
@@ -314,11 +347,14 @@ export function update(
 
     let km = 0;
     const lineKm: Record<string, number> = {};
-    const shown = new Set(lines.filter(line => line.el.dataset.hidden === 'false'));
-
+    const active = (line: LineWrapper) => findName(line.states, dateNum) !== null;
+    const changed = lines.filter(line => (line.el.dataset.hidden === 'false') !== active(line));
     for (const line of lines) {
-        const { el, states, length, km: trackKm } = line;
+        const { el, states, km: trackKm } = line;
         const name = findName(states, dateNum);
+        if (before.length > 0) {
+            delete el.dataset.cue;
+        }
 
         if (name !== null) {
             const dimmed = lit.size > 0 && !lit.has(name);
@@ -332,8 +368,10 @@ export function update(
                 const color = dimmed ? desaturate(entry.color) : entry.color;
                 el.style.stroke = color;
                 if (
-                    [line, ...line.partners].some(other =>
-                        before.some(t => (findName(other.states, t) ?? name) !== name),
+                    line.family.tracks.some(
+                        other =>
+                            overlaps(line, other) &&
+                            before.some(t => (findName(other.states, t) ?? name) !== name),
                     )
                 ) {
                     if (el.style.strokeDasharray === 'none') {
@@ -344,40 +382,46 @@ export function update(
                 }
             }
             setDimmed(el, dimmed, el.dataset.hidden === 'false', dimOpacity);
-
-            if (el.dataset.hidden !== 'false') {
-                el.dataset.hidden = 'false';
-
-                const handoff = line.partners.some(partner => shown.has(partner));
-                d3.select(el)
-                    .interrupt('shrink')
-                    .transition('grow')
-                    .duration(handoff ? 0 : transitionMs)
-                    .ease(EASE)
-                    .style('stroke-dashoffset', '0')
-                    .on('end', () => {
-                        el.dataset.dash ??= el.style.strokeDasharray;
-                        el.style.strokeDasharray = 'none';
-                        if (el.dataset.cue) {
-                            cueTrack(el, el.dataset.cue);
-                            delete el.dataset.cue;
-                        }
-                    });
-            }
-        } else if (el.dataset.hidden !== 'true') {
-            el.dataset.hidden = 'true';
-            delete el.dataset.cue;
-
-            if (el.dataset.dash) {
-                el.style.strokeDasharray = el.dataset.dash;
-            }
-            d3.select(el)
-                .interrupt('grow')
-                .transition('shrink')
-                .duration(transitionMs)
-                .ease(EASE)
-                .style('stroke-dashoffset', String(length));
         }
+        el.dataset.hidden = String(name === null);
+    }
+
+    const now = d3.now();
+    const fronts = planFronts(changed, line => spansNow(line, now), active);
+    for (const [line, spansAt] of fronts) {
+        const growing = active(line);
+        const planned = (time: number) =>
+            spansAt(EASE(transitionMs > 0 ? Math.min(1, (time - now) / transitionMs) : 1));
+        const earlier = moves.get(line);
+        const paced =
+            earlier &&
+            earlier.active === growing &&
+            earlier.end > now &&
+            earlier.depth < PACED_MOVES;
+        const at = paced
+            ? (time: number) =>
+                  growing
+                      ? union([...planned(time), ...earlier.at(time)])
+                      : intersect(planned(time), earlier.at(time))
+            : planned;
+        moves.set(line, {
+            at,
+            end: now + transitionMs,
+            active: growing,
+            depth: paced ? earlier.depth + 1 : 0,
+        });
+        drawTrack(line, at(now));
+        d3.select(line.el)
+            .interrupt('front')
+            .transition('front')
+            .duration(transitionMs)
+            .tween('front', () => () => drawTrack(line, at(d3.now())))
+            .on('end', () => {
+                if (line.el.dataset.cue) {
+                    cueTrack(line.el, line.el.dataset.cue);
+                    delete line.el.dataset.cue;
+                }
+            });
     }
 
     let stationCount = 0;
@@ -385,6 +429,9 @@ export function update(
 
     for (const { el, states, lines, operators } of stations) {
         const name = findName(states, dateNum);
+        if (before.length > 0) {
+            delete el.dataset.cue;
+        }
         if (name !== null) {
             if (
                 el.localName !== 'path' &&
@@ -434,7 +481,6 @@ export function update(
             el.style.pointerEvents = 'none';
             if (el.dataset.hidden !== 'true') {
                 el.dataset.hidden = 'true';
-                delete el.dataset.cue;
 
                 d3.select(el)
                     .interrupt('appear')

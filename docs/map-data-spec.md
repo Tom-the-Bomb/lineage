@@ -258,28 +258,34 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   light rail and gondolas use a thinner per-path `stroke-width` of `0.4 W`: Shanghai trams use 2,
   and MTR Light Rail and Ngong Ping 360 use 0.6.
 - Caps: MUST: the `lines` group sets `stroke-linecap="butt"`: every track has flat heads, so a
-  terminus ends cleanly at its marker's centre and a retracting track shrinks to nothing instead of
-  leaving a dot behind. A track gets `stroke-linecap="round"` on its own path **if and only if** one of
-  its ends may lie away from a station marker: it belongs to a line the legend marks `simplified`
-  (Light Rail, trams, people-movers, drawn without terminus markers), or it marks an end with
-  `data-continues` (the KCR at Lo Wu, 1911–1949). Those ends get a rounded tip instead of a flat cut.
-  A round cap reaches half the stroke width past the end, so at the ends it does check (those not
-  marked `data-continues`) the checker gives such a track that much less slack. Joins are `round`. The app hides a track with a single dash as long as the track slid off its
-  start (`stroke-dashoffset: L`) and draws it in by sliding the offset back to 0. The gap after the
-  dash is one stroke width longer than the track (`stroke-dasharray: L L+W`), so the next dash never
-  reaches the far end, where a round cap would draw a dot. Once a track has drawn in, the app drops the
-  pattern (`stroke-dasharray: none`) and restores it before the track retracts: Safari re-dashes a
-  dashed track along its whole length on every repaint.
-- One growth per event: the stretch an event opens is one track, oriented to grow from the end that
-  touches the network already open (else from the line's first station), so it draws in as one
-  front; branches are one track each. Its subpath is continuous (pieces joined, not separate
-  `M` commands), since each subpath would grow on its own. Where parts of that stretch later change
-  differently (a section closes, is renamed or rebuilt), the track ends that day and the parts that
-  carry on continue as their own tracks, each with `data-takes-over="<id>"` naming the track it
-  replaces. Such a track lies exactly on the one it replaces (within 0.01 units), comes after it in
-  the layer, and starts the day that one ends; when that one was shown just before, the app draws
-  the new track in place instead of regrowing it, while the old one still retracts underneath (so a
-  section that closes still visibly retracts). Cut as few pieces as the dates need.
+  terminus ends cleanly at its marker's centre and a retracting track shrinks to nothing instead
+  of leaving a dot behind. A track gets `stroke-linecap="round"` on its own path **if and only
+  if** one of its ends may lie away from a station marker: it belongs to a line the legend marks
+  `simplified` (Light Rail, trams, people-movers, drawn without terminus markers), or it marks an
+  end with `data-continues` (the KCR at Lo Wu, 1911–1949). Those ends get a rounded tip instead of
+  a flat cut. A round cap reaches half the stroke width past the end, so at the ends it does check
+  (those not marked `data-continues`) the checker gives such a track that much less slack. Joins
+  are `round`. While a track moves, the app draws the parts of it that show with a dash pattern,
+  one dash per part, the last gap longer than the track so the pattern never repeats. A hidden
+  track gets `visibility: hidden`, and a fully drawn one drops the pattern
+  (`stroke-dasharray: none`): Safari re-dashes a dashed track along its whole length on every
+  repaint.
+- One growth per event: the stretch an event opens is one track, oriented to grow from the end
+  that touches the network already open (else from the line's first station), so it draws in as
+  one front; branches are one track each. Its subpath is continuous (pieces joined, not separate
+  `M` commands), since each subpath would grow on its own. On a date change the app moves from
+  what is drawn to what should be: stretches that close retract toward the part of their line that
+  stays, and new ones grow out from it, measured along the line across track ends and branches, so
+  a run of tracks moves as one front. Every change takes the transition time, easing out. Where
+  nothing of a line stays, its earliest track grows first, from its start, and the rest grows on
+  from it (or retracts first, in reverse), which is why that end matters. Where parts of that
+  stretch later change differently (a section closes, is renamed or rebuilt), the track ends that
+  day and the parts that carry on continue as their own tracks, each with `data-takes-over="<id>"`
+  naming the track it replaces. Such a track lies exactly on the one it replaces (within 0.01
+  units), comes after it in the layer, and starts the day that one ends. The geometry they share
+  only changes track, so it never animates, in either direction; what the old track had beyond it
+  closes and retracts toward it, or grows back out from it going back. Cut as few pieces as the
+  dates need.
 - Colour: the app colours each track from the legend entry whose name matches the track's name at
   that moment (§9). Also put the same colour on the path as `stroke="#rrggbb"`. It's the fallback
   and it makes the file readable in an editor.
@@ -478,8 +484,8 @@ disc that grows from the marker's edge to three times its size and fades, in its
 rim grey for an interchange), and a renamed track glows once in its new colour. It compares the new
 date with the one shown before and, when the new date is itself a change (an event picked from the
 changelog, the timeline or the arrows), with the moment before it, so an event is cued from either
-side. Anything still fading in or growing is cued once it has fully appeared; anything that only
-appears with the change is not cued.
+side. Anything still fading in or growing is cued once it has fully appeared, unless the date has
+moved on by then; anything that only appears with the change is not cued.
 
 All sizes derive from the track width `W`:
 

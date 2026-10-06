@@ -110,11 +110,12 @@ A `<path>` per stretch of track that has its own **states** (dates)
 - `inkscape:label`: the line's names over time, its color comes from `lines.json`
 - `stroke`: fallback color for editors (not read by the app).
 - `data-km`: published route length used for metrics
-- `data-takes-over="<id>"`: replaces part of that track on the day it ends, so it appears instantaneously instead
-  of growing again.
+- `data-takes-over="<id>"`: replaces part of that track on the day it ends, so the geometry they share doesn't
+  animate.
 - `data-continues="start|end"`: An end that runs on past the border with no station (Lo Wu,
   1911–1949) (checker only).
-- Tracks grow from the start of `d`, so draw them in the direction the line opened.
+- Changes grow out from (and retract toward) the part of their line that stays; a line with nothing staying grows
+  from the start of its earliest track's `d`, so draw tracks in the direction the line opened.
 
 ### Station
 

@@ -14,7 +14,14 @@ export interface LineWrapper {
     states: State[];
     length: number;
     km: number;
-    partners: LineWrapper[];
+    family: TrackFamily;
+    span: [number, number];
+}
+
+export interface TrackFamily {
+    tracks: LineWrapper[];
+    joins: { at: number; family: TrackFamily; to: number }[];
+    cuts: number[];
 }
 
 export interface ChangelogEvent {

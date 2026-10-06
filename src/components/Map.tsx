@@ -36,6 +36,7 @@ import shrink from '../assets/shrink.svg';
 import { lengthSeries } from '../lengthSeries';
 import { createStationOptions, type StationOption } from '../stationSearch';
 import { systems, type SystemConfig, type SystemKey } from '../systems';
+import { linkTracks } from '../tracks';
 import { BigTooltip } from './BigTooltip';
 import Changelog from './Changelog';
 import ControlTooltip from './ControlTooltip';
@@ -205,30 +206,18 @@ export default function Map({ system }: { system: SystemKey }) {
         const thin = setupZoomThinning(svgDoc);
         const hairlines = setupHairlines(svgDoc);
 
-        linesRef.current = Array.from(lines.querySelectorAll('path')).map(el => {
-            const length = el.getTotalLength();
-            const width = parseFloat(svgDoc.defaultView!.getComputedStyle(el).strokeWidth);
-
-            el.style.strokeDashoffset = String(length);
-            el.style.strokeDasharray = `${length} ${length + width}`;
-            el.dataset.hidden = 'true';
-
-            return {
+        linesRef.current = linkTracks(
+            Array.from(lines.querySelectorAll('path')).map(el => ({
                 el,
                 states: parseLabelDates(el.getAttribute('inkscape:label')!),
-                length,
+                length: el.getTotalLength(),
                 km: parseFloat(el.dataset.km!),
-                partners: [],
-            };
-        });
-
-        const tracksById = new globalThis.Map(linesRef.current.map(line => [line.el.id, line]));
-        for (const line of linesRef.current) {
-            for (const id of line.el.dataset.takesOver?.split(' ') ?? []) {
-                const from = tracksById.get(id)!;
-                from.partners.push(line);
-                line.partners.push(from);
-            }
+            })),
+            legend,
+        );
+        for (const { el } of linesRef.current) {
+            el.style.visibility = 'hidden';
+            el.dataset.hidden = 'true';
         }
 
         stationsRef.current = (Array.from(stations.children) as SVGElement[]).map(el => {
@@ -376,7 +365,14 @@ export default function Map({ system }: { system: SystemKey }) {
         svgEl.style.height = '100%';
 
         return () => svgDoc.removeEventListener('keydown', keyDownHandler);
-    }, [svgDoc, keyDownHandler, config.initialView, config.initialBounds, config.operators]);
+    }, [
+        svgDoc,
+        keyDownHandler,
+        config.initialView,
+        config.initialBounds,
+        config.operators,
+        legend,
+    ]);
 
     useEffect(() => {
         if (!svgDoc) {
