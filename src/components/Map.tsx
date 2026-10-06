@@ -576,6 +576,7 @@ export default function Map({ system }: { system: SystemKey }) {
                         time={time}
                         config={config}
                         presentLines={presentLines}
+                        zoom={zoomRef}
                     />
                 )}
             </main>

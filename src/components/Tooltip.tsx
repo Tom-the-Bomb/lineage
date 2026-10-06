@@ -1,4 +1,6 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import type { ZoomBehavior } from 'd3';
+import { useEffect, useLayoutEffect, useReducer, useRef, useState, type RefObject } from 'react';
+import { flushSync } from 'react-dom';
 import type { LegendWrapper, RawTooltipData, StationWrapper } from '../schemas';
 import { stationIdentity } from '../stationSearch';
 import type { SystemConfig } from '../systems';
@@ -10,6 +12,7 @@ interface TooltipProps {
     time: number;
     config: SystemConfig;
     presentLines: { line: LegendWrapper; name: string }[];
+    zoom: RefObject<ZoomBehavior<SVGSVGElement, unknown> | null>;
 }
 
 export const TOOLTIP_OFFSET = 10;
@@ -86,9 +89,23 @@ export default function Tooltip({
     time,
     config,
     presentLines,
+    zoom,
 }: TooltipProps): React.JSX.Element | null {
     const ref = useRef<HTMLDivElement>(null);
     const [size, setSize] = useState({ width: 0, height: 0 });
+    const [, follow] = useReducer((frame: number) => frame + 1, 0);
+    const shown = tooltip !== null;
+
+    useEffect(() => {
+        const behavior = zoom.current;
+        if (!shown || !behavior) {
+            return;
+        }
+        behavior.on('zoom.tooltip', () => flushSync(follow));
+        return () => {
+            behavior.on('zoom.tooltip', null);
+        };
+    }, [shown, zoom]);
 
     useLayoutEffect(() => {
         if (ref.current) {
