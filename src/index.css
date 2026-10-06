@@ -315,8 +315,11 @@
     .station-search {
         @apply [--search-width:calc(100dvw-7.5rem)] sm:[--search-width:18rem];
 
+        .search-field {
+            @apply gap-0;
+        }
         input {
-            @apply w-0 opacity-0;
+            @apply w-0 flex-1 opacity-0;
         }
 
         &:is(:hover, :focus-within) {
@@ -324,7 +327,7 @@
                 @apply w-(--search-width) gap-2;
             }
             input {
-                @apply flex-1 opacity-100;
+                @apply opacity-100;
             }
         }
     }

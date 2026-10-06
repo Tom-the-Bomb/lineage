@@ -78,8 +78,8 @@ export default function Search({ stations, onSelect }: SearchProps) {
             }}
         >
             <label
-                className="search-field zoom-btn overflow-hidden rounded-full px-2
-                    transition-[width,gap] duration-300 ease-in-out"
+                className="search-field zoom-btn justify-start overflow-hidden rounded-full px-2.25
+                    transition-[width,gap,background-color,border-color] duration-300 ease-in-out"
             >
                 <img src={searchIcon} alt="" className="icon h-4 w-4 shrink-0 cursor-pointer" />
                 <input
