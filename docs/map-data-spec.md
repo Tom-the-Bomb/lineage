@@ -277,8 +277,8 @@ Shanghai's `map.svg`, in outline. Anything not shown here doesn't belong in the 
   what is drawn to what should be: stretches that close retract toward the part of their line that
   stays, and new ones grow out from it, measured along the line across track ends and branches, so
   a run of tracks moves as one front. Every change takes the transition time, easing out. Where
-  nothing of a line stays, its earliest track grows first, from its start, and the rest grows on
-  from it (or retracts first, in reverse), which is why that end matters. Where parts of that
+  nothing of a line stays, it grows out from the start of its earliest track (or retracts toward
+  it, in reverse), which is why that end matters. Where parts of that
   stretch later change differently (a section closes, is renamed or rebuilt), the track ends that
   day and the parts that carry on continue as their own tracks, each with `data-takes-over="<id>"`
   naming the track it replaces. Such a track lies exactly on the one it replaces (within 0.01
@@ -475,17 +475,17 @@ rules (§5 rule 3 can merge or split a pair), the side-by-side and joint checks 
 ## 5. Station markers and connectors
 
 Markers follow the metro line maps on Wikimedia Commons (README): a station is a white dot with a
-grey border; an interchange draws a dot on each line's real platform (one circle or pill only where
-lines share track or stack at a full crossing), joined by hollow bridges along the walkways
-passengers take, all inside one continuous border. Everything below is static in the SVG; the app only recolours
-markers for dark mode, thins them on zoom and animates hover. Whenever the date changes it also
-cues what doesn't otherwise show: a station that is renamed or changes operator pings once (a flat
-disc that grows from the marker's edge to three times its size and fades, in its line's colour, or
-rim grey for an interchange), and a renamed track glows once in its new colour. It compares the new
-date with the one shown before and, when the new date is itself a change (an event picked from the
-changelog, the timeline or the arrows), with the moment before it, so an event is cued from either
-side. Anything still fading in or growing is cued once it has fully appeared, unless the date has
-moved on by then; anything that only appears with the change is not cued.
+grey border; an interchange draws a dot on each line's real platform (one circle or pill only
+where lines share track or stack at a full crossing), joined by hollow bridges along the walkways
+passengers take, all inside one continuous border. Everything below is static in the SVG; the app
+only recolours markers for dark mode, thins them on zoom and animates hover. While the timeline
+plays or steps between events (‹ › or ← →), it also cues what doesn't otherwise show: a station
+that is renamed or changes operator pings once (a flat disc that grows from the marker's edge to
+three times its size and fades, in its line's colour, or rim grey for an interchange), and a
+renamed track glows once in its new colour. It compares the new date with the one shown before and
+with the moment before it, so an event is cued from either side. Dragging the slider or picking a
+date cues nothing. Anything still fading in or growing is cued once it has fully appeared, unless
+the date has moved on by then; anything that only appears with the change is not cued.
 
 All sizes derive from the track width `W`:
 

@@ -183,8 +183,6 @@ interface Node {
     x: number;
     distance: number;
     links: { node: Node; length: number }[];
-    lead: number;
-    along?: number;
 }
 
 interface Edge {
@@ -202,9 +200,7 @@ function measure(
     const nodes = new Map<TrackFamily, Map<number, Node>>();
     const node = (family: TrackFamily, x: number) => {
         const byX = nodes.get(family) ?? nodes.set(family, new Map()).get(family)!;
-        return (
-            byX.get(x) ?? byX.set(x, { family, x, distance: Infinity, links: [], lead: 0 }).get(x)!
-        );
+        return byX.get(x) ?? byX.set(x, { family, x, distance: Infinity, links: [] }).get(x)!;
     };
     const link = (from: Node, to: Node, length: number) => {
         from.links.push({ node: to, length });
@@ -248,49 +244,26 @@ function measure(
             undefined,
         );
     const settle = () => {
-        const reached: Node[] = [];
         for (let next = closest(); next; next = closest()) {
             settled.add(next);
-            reached.push(next);
             for (const { node: other, length } of next.links) {
                 other.distance = Math.min(other.distance, next.distance + length);
             }
         }
-        return reached;
     };
+    const opened = (n: Node) =>
+        Math.min(
+            ...n.family.tracks
+                .filter(track => track.span[0] === n.x)
+                .map(track => track.states[0].dateRange.appear.getTime()),
+        );
     settle();
     for (let rest = unsettled(); rest.length > 0; rest = unsettled()) {
-        const first = rest
-            .flatMap(n => n.family.tracks.filter(track => track.span[0] === n.x))
-            .reduce<LineWrapper | undefined>(
-                (earliest, track) =>
-                    !earliest ||
-                    track.states[0].dateRange.appear < earliest.states[0].dateRange.appear
-                        ? track
-                        : earliest,
-                undefined,
-            );
-        const [lo, hi] = first ? ordered(first.span) : [rest[0].x, rest[0].x];
-        const anchor = rest.filter(
-            n =>
-                n.family === (first?.family ?? rest[0].family) &&
-                lo - EPSILON <= n.x &&
-                n.x <= hi + EPSILON,
-        );
-        for (const n of anchor) {
-            n.along = Math.abs(n.x - (first?.span[0] ?? n.x));
-            n.distance = 0;
-        }
-        const lead = Math.max(...anchor.map(n => n.along!));
-        for (const n of settle()) {
-            n.lead = lead;
-        }
+        rest.reduce((first, n) => (opened(n) < opened(first) ? n : first)).distance = 0;
+        settle();
     }
 
-    const ends = ([from, to]: [Node, Node]): [number, number] =>
-        from.along !== undefined && to.along !== undefined
-            ? [from.along, to.along]
-            : [from.lead + from.distance, to.lead + to.distance];
+    const ends = ([from, to]: [Node, Node]): [number, number] => [from.distance, to.distance];
     const part = new Map<Node, Node[]>();
     for (const n of all) {
         if (!part.has(n)) {

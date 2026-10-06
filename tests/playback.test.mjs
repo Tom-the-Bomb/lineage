@@ -29,7 +29,7 @@ assert.ok(effect, 'Map must keep its interval playback effect');
 
 const runEffect = new Function(
     'd3',
-    'setTime',
+    'stepTo',
     'setPlaying',
     'eventDates',
     'maxDate',

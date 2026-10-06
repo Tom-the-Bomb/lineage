@@ -92,6 +92,7 @@ export default function Map({ system }: { system: SystemKey }) {
 
     const timeRef = useRef(time);
     const shownTimeRef = useRef<number>(undefined);
+    const cuedTimeRef = useRef<number>(undefined);
 
     const eventDates = useMemo(
         () =>
@@ -126,6 +127,11 @@ export default function Map({ system }: { system: SystemKey }) {
         [eventDates, maxDate],
     );
 
+    const stepTo = useCallback((next: number) => {
+        cuedTimeRef.current = next;
+        setTime(next);
+    }, []);
+
     const keyDownHandler = useCallback(
         (e: KeyboardEvent) => {
             if (e.target instanceof HTMLInputElement && e.target.id !== 'date-slider') {
@@ -136,13 +142,13 @@ export default function Map({ system }: { system: SystemKey }) {
                 playPause(setPlaying, timeRef.current, setTime, minDate, maxDate);
             } else if (e.code === 'ArrowLeft') {
                 e.preventDefault();
-                setTime(prev => findPreviousEventDate(prev));
+                stepTo(findPreviousEventDate(timeRef.current));
             } else if (e.code === 'ArrowRight') {
                 e.preventDefault();
-                setTime(prev => findNextEventDate(prev));
+                stepTo(findNextEventDate(timeRef.current));
             }
         },
-        [minDate, maxDate, findPreviousEventDate, findNextEventDate],
+        [minDate, maxDate, findPreviousEventDate, findNextEventDate, stepTo],
     );
 
     const ticks = useMemo(() => {
@@ -388,6 +394,7 @@ export default function Map({ system }: { system: SystemKey }) {
             settings.transitionMs,
             highlight,
             since,
+            cuedTimeRef.current === time,
         );
         setNetwork(prev => (sameNetwork(prev, next) ? prev : next));
     }, [svgDoc, time, legend, highlight, settings.transitionMs]);
@@ -437,7 +444,7 @@ export default function Map({ system }: { system: SystemKey }) {
             if (nextMs >= maxDate.getTime()) {
                 setPlaying(false);
             }
-            setTime(Math.min(nextMs, maxDate.getTime()));
+            stepTo(Math.min(nextMs, maxDate.getTime()));
         }, delay);
         return () => timer.stop();
     }, [
@@ -447,6 +454,7 @@ export default function Map({ system }: { system: SystemKey }) {
         eventDates,
         maxDate,
         findNextEventDate,
+        stepTo,
         settings.pauseMs,
         settings.tickMs,
         settings.step,
@@ -689,7 +697,7 @@ export default function Map({ system }: { system: SystemKey }) {
                 <div className="flex items-center gap-3 *:pointer-events-auto">
                     <button
                         type="button"
-                        onClick={() => setTime(prev => findPreviousEventDate(prev))}
+                        onClick={() => stepTo(findPreviousEventDate(time))}
                         aria-label="Previous event"
                         className="group relative pointer-coarse:-m-3 pointer-coarse:p-3"
                     >
@@ -704,7 +712,7 @@ export default function Map({ system }: { system: SystemKey }) {
                     />
                     <button
                         type="button"
-                        onClick={() => setTime(prev => findNextEventDate(prev))}
+                        onClick={() => stepTo(findNextEventDate(time))}
                         aria-label="Next event"
                         className="group relative pointer-coarse:-m-3 pointer-coarse:p-3"
                     >

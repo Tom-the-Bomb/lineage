@@ -307,7 +307,7 @@ function cueStation(el: SVGElement, lineColor: string): void {
 
 const moves = new WeakMap<
     LineWrapper,
-    { at: (time: number) => Spans; end: number; active: boolean; depth: number }
+    { at: (time: number) => Spans; start: number; active: boolean; depth: number }
 >();
 const PACED_MOVES = 8;
 
@@ -337,8 +337,9 @@ export function update(
     transitionMs: number,
     highlight: string[] = [],
     since = dateNum,
+    cue = false,
 ): UpdateResult {
-    const before = since === dateNum ? [] : [since, dateNum - 1];
+    const before = cue && since !== dateNum ? [since, dateNum - 1] : [];
     const entries = new Map(legend.map(entry => [findName(entry.states, dateNum), entry]));
 
     const lit = highlightedNames(legend, highlight, dateNum);
@@ -352,7 +353,7 @@ export function update(
     for (const line of lines) {
         const { el, states, km: trackKm } = line;
         const name = findName(states, dateNum);
-        if (before.length > 0) {
+        if (since !== dateNum) {
             delete el.dataset.cue;
         }
 
@@ -390,23 +391,26 @@ export function update(
     const fronts = planFronts(changed, line => spansNow(line, now), active);
     for (const [line, spansAt] of fronts) {
         const growing = active(line);
-        const planned = (time: number) =>
-            spansAt(EASE(transitionMs > 0 ? Math.min(1, (time - now) / transitionMs) : 1));
+        const progress = (time: number) =>
+            EASE(transitionMs > 0 ? Math.min(1, (time - now) / transitionMs) : 1);
+        const planned = (time: number) => spansAt(progress(time));
         const earlier = moves.get(line);
-        const paced =
-            earlier &&
-            earlier.active === growing &&
-            earlier.end > now &&
-            earlier.depth < PACED_MOVES;
+        const paced = earlier && earlier.start + transitionMs > now && earlier.depth < PACED_MOVES;
         const at = paced
-            ? (time: number) =>
-                  growing
-                      ? union([...planned(time), ...earlier.at(time)])
-                      : intersect(planned(time), earlier.at(time))
+            ? (time: number) => {
+                  const was = earlier.at(
+                      earlier.active === growing
+                          ? time
+                          : now - (now - earlier.start) * progress(time),
+                  );
+                  return growing
+                      ? union([...planned(time), ...was])
+                      : intersect(planned(time), was);
+              }
             : planned;
         moves.set(line, {
             at,
-            end: now + transitionMs,
+            start: now,
             active: growing,
             depth: paced ? earlier.depth + 1 : 0,
         });
@@ -429,7 +433,7 @@ export function update(
 
     for (const { el, states, lines, operators } of stations) {
         const name = findName(states, dateNum);
-        if (before.length > 0) {
+        if (since !== dateNum) {
             delete el.dataset.cue;
         }
         if (name !== null) {

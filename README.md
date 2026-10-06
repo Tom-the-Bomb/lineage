@@ -175,7 +175,7 @@ A static background: the app only recolors it for dark mode and sets coastline w
 
 ## AI
 
-- Primarily handwritten code, LLMs were used for automating the map (SVG) setup and data compilation in these directories and associated testing:
+- LLMs primarily used for automating the map (SVG) setup and data compilation in these directories and associated testing:
   - `docs/*`
   - `src/assets/[system]/*`
   - `tests/`
