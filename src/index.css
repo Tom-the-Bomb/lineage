@@ -418,7 +418,7 @@
     }
 
     .slide-out-settings {
-        @apply transition-[translate,visibility] duration-500 ease-in-out;
+        @apply transition-transform duration-500 ease-in-out;
     }
 }
 

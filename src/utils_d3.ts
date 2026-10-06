@@ -286,7 +286,7 @@ function cueTrack(el: SVGElement, color: string): void {
 function cueStation(el: SVGElement, lineColor: string): void {
     const box = (el as SVGGraphicsElement).getBBox();
     const interchange = el.localName === 'g';
-    const outline = interchange ? el.firstElementChild! : el;
+    const outline = interchange ? el.firstElementChild!.firstElementChild! : el;
     const stroke = parseFloat(el.ownerDocument.defaultView!.getComputedStyle(outline).strokeWidth);
     const r = (Math.max(box.width, box.height) + stroke) / 2;
 
@@ -464,7 +464,6 @@ export function update(
             }
             setDimmed(el, dimmed, el.dataset.hidden === 'false', dimOpacity);
 
-            el.style.pointerEvents = '';
             if (el.dataset.hidden !== 'false') {
                 el.dataset.hidden = 'false';
 
@@ -482,7 +481,6 @@ export function update(
                     });
             }
         } else {
-            el.style.pointerEvents = 'none';
             if (el.dataset.hidden !== 'true') {
                 el.dataset.hidden = 'true';
 
@@ -514,16 +512,7 @@ function hoverTween(el: Element, draw: (h: number) => void): (target: number) =>
 function setupInterchange(el: SVGElement): (h: number) => void {
     const doc = el.ownerDocument;
     const drawing = doc.createElementNS('http://www.w3.org/2000/svg', 'g');
-    drawing.style.pointerEvents = 'none';
-
-    for (const layer of Array.from(el.children)) {
-        if (!layer.hasAttribute('stroke')) {
-            const hit = layer.cloneNode() as SVGElement;
-            hit.style.stroke = 'transparent';
-            el.append(hit);
-        }
-        drawing.append(layer);
-    }
+    drawing.append(...el.children);
     el.append(drawing);
 
     const box = (el as SVGGraphicsElement).getBBox();
@@ -541,7 +530,7 @@ function setupInterchange(el: SVGElement): (h: number) => void {
     };
 }
 
-export function setupHoverEffect(el: SVGElement): void {
+export function setupHoverEffect(el: SVGElement): ((hovered: boolean) => void) | undefined {
     let animate: (target: number) => void;
 
     if (el.localName === 'circle') {
@@ -551,7 +540,30 @@ export function setupHoverEffect(el: SVGElement): void {
     } else {
         return;
     }
-    d3.select(el)
-        .on('mouseenter', () => animate(HOVER_SCALE))
-        .on('mouseleave', () => animate(1));
+    return hovered => animate(hovered ? HOVER_SCALE : 1);
+}
+
+const HOVER_REACH = 8;
+
+export function nearestStation(
+    stations: Iterable<StationWrapper>,
+    x: number,
+    y: number,
+): StationWrapper | undefined {
+    let nearest: StationWrapper | undefined;
+    let reach = HOVER_REACH;
+    for (const station of stations) {
+        if (station.el.dataset.hidden === 'false') {
+            const { left, top, right, bottom } = station.el.getBoundingClientRect();
+            const distance = Math.hypot(
+                Math.max(left - x, 0, x - right),
+                Math.max(top - y, 0, y - bottom),
+            );
+            if (distance <= reach) {
+                nearest = station;
+                reach = distance;
+            }
+        }
+    }
+    return nearest;
 }

@@ -50,6 +50,7 @@ export interface StationWrapper {
     states: State[];
     lines: State[];
     operators: State[];
+    hover?: (hovered: boolean) => void;
 }
 
 export interface RawTooltipData {

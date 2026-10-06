@@ -15,6 +15,7 @@ import {
 import {
     applyMapTheme,
     DEFAULT_SETTINGS,
+    nearestStation,
     setupHairlines,
     setupHoverEffect,
     setupZoomThinning,
@@ -167,10 +168,15 @@ export default function Map({ system }: { system: SystemKey }) {
 
     useEffect(() => {
         let timer: number;
+        let width = window.innerWidth;
 
         const reloadMap = () => {
             clearTimeout(timer);
             timer = setTimeout(() => {
+                if (window.innerWidth === width) {
+                    return;
+                }
+                width = window.innerWidth;
                 setTooltip(null);
                 setSvgDoc(null);
                 setSvgVersion(version => version + 1);
@@ -230,40 +236,32 @@ export default function Map({ system }: { system: SystemKey }) {
             el.style.opacity = '0';
             el.dataset.hidden = 'true';
 
-            setupHoverEffect(el);
-
-            const station = {
+            return {
                 el,
                 states: parseLabelDates(el.getAttribute('inkscape:label')!),
                 lines: el.dataset.lines ? parseLabelDates(el.dataset.lines) : [],
                 operators: parseLabelDates(el.dataset.logos ?? defaultOperator),
+                hover: setupHoverEffect(el),
             };
-
-            if (el.localName !== 'path') {
-                el.addEventListener('mouseenter', e => {
-                    const rect = svgRef.current!.getBoundingClientRect();
-                    setTooltip({
-                        x: e.clientX - rect.left,
-                        y: e.clientY - rect.top,
-                        station,
-                    });
-                });
-                el.addEventListener('mousemove', e => {
-                    const rect = svgRef.current!.getBoundingClientRect();
-                    setTooltip(prev =>
-                        prev
-                            ? {
-                                  ...prev,
-                                  x: e.clientX - rect.left,
-                                  y: e.clientY - rect.top,
-                              }
-                            : null,
-                    );
-                });
-                el.addEventListener('mouseleave', () => setTooltip(null));
-            }
-            return station;
         });
+
+        const hoverable = stationsRef.current.filter(station => station.hover);
+        let hovered: StationWrapper | undefined;
+        const hoverAt = (x: number, y: number) => {
+            const station = nearestStation(hoverable, x, y);
+            const rect = svgRef.current!.getBoundingClientRect();
+            const tooltip = station ? { x: x - rect.left, y: y - rect.top, station } : null;
+            if (station !== hovered) {
+                hovered?.hover!(false);
+                station?.hover!(true);
+                hovered = station;
+                setTooltip(tooltip);
+            } else if (tooltip) {
+                setTooltip(prev => prev && tooltip);
+            }
+        };
+        svgDoc.addEventListener('mousemove', e => hoverAt(e.clientX, e.clientY));
+        svgDoc.documentElement.addEventListener('mouseleave', () => hoverAt(Infinity, Infinity));
 
         setStationMarkers(stationsRef.current);
         setTracks(linesRef.current);
@@ -681,7 +679,8 @@ export default function Map({ system }: { system: SystemKey }) {
             <footer
                 className={`bg-surface/85 border-rule pointer-events-none absolute bottom-0 left-0
                     flex w-dvw flex-col items-center justify-center gap-2 border-t p-4 pt-2
-                    ${expanded ? 'invisible translate-y-25.5' : ''} slide-out-settings`}
+                    ${expanded ? 'invisible translate-y-25.5' : ''} slide-out-settings
+                    transition-[translate,visibility]`}
             >
                 <button
                     type="button"
