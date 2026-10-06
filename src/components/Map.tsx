@@ -510,7 +510,8 @@ export default function Map({ system }: { system: SystemKey }) {
 
     return (
         <div
-            className="group/map flex h-dvh w-dvw touch-none items-center justify-center"
+            className="group/map relative flex h-dvh w-dvw touch-none items-center justify-center
+                overflow-clip"
             style={
                 {
                     '--slider-thumb': `url("${config.logos[0]}")`,

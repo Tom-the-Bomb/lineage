@@ -37,6 +37,49 @@ function since(
     return new Date(appear);
 }
 
+interface Size {
+    width: number;
+    height: number;
+}
+
+function beside(tooltip: RawTooltipData, size: Size) {
+    const left = tooltip.x + TOOLTIP_OFFSET + size.width > window.innerWidth;
+    const x = clamp(
+        left ? tooltip.x - TOOLTIP_OFFSET - size.width : tooltip.x + TOOLTIP_OFFSET,
+        0,
+        window.innerWidth - size.width,
+    );
+    const y = clamp(
+        tooltip.y + TOOLTIP_OFFSET - size.height / 2,
+        0,
+        window.innerHeight - size.height,
+    );
+    return {
+        x,
+        y,
+        arrow: {
+            className: `-translate-y-1/2
+                ${left ? '-right-1 border-t border-r' : '-left-1 border-b border-l'}`,
+            style: { top: clamp(tooltip.y + TOOLTIP_OFFSET - y, 8, size.height - 8) },
+        },
+    };
+}
+
+function above(marker: DOMRect, size: Size) {
+    const center = marker.left + marker.width / 2;
+    const below = marker.top - TOOLTIP_OFFSET - size.height < 0;
+    const x = clamp(center - size.width / 2, 0, window.innerWidth - size.width);
+    return {
+        x,
+        y: below ? marker.bottom + TOOLTIP_OFFSET : marker.top - TOOLTIP_OFFSET - size.height,
+        arrow: {
+            className: `-translate-x-1/2
+                ${below ? '-top-1 border-t border-l' : '-bottom-1 border-r border-b'}`,
+            style: { left: clamp(center - x, 8, size.width - 8) },
+        },
+    };
+}
+
 export default function Tooltip({
     tooltip,
     stations,
@@ -68,17 +111,9 @@ export default function Tooltip({
         .filter(({ line }) => servesLine(tooltip.station.lines, line.id, time))
         .map(({ line, name }) => ({ id: line.id, name, color: line.color }));
 
-    const left = tooltip.x + TOOLTIP_OFFSET + size.width > window.innerWidth;
-    const x = clamp(
-        left ? tooltip.x - TOOLTIP_OFFSET - size.width : tooltip.x + TOOLTIP_OFFSET,
-        0,
-        window.innerWidth - size.width,
-    );
-    const y = clamp(
-        tooltip.y + TOOLTIP_OFFSET - size.height / 2,
-        0,
-        window.innerHeight - size.height,
-    );
+    const { x, y, arrow } = window.matchMedia('(min-width: 768px)').matches
+        ? beside(tooltip, size)
+        : above(tooltip.station.el.getBoundingClientRect(), size);
 
     return (
         <div
@@ -117,11 +152,7 @@ export default function Tooltip({
                     ))}
                 </div>
             )}
-            <div
-                className={`tooltip-arrow -translate-y-1/2
-                    ${left ? '-right-1 border-t border-r' : '-left-1 border-b border-l'}`}
-                style={{ top: clamp(tooltip.y + TOOLTIP_OFFSET - y, 8, size.height - 8) }}
-            ></div>
+            <div className={`tooltip-arrow ${arrow.className}`} style={arrow.style}></div>
         </div>
     );
 }
