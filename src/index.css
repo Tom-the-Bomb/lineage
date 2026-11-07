@@ -129,6 +129,13 @@
     }
 }
 
+@media (max-width: 767px) {
+    .home-atlas::before,
+    .home-network-link::after {
+        display: none;
+    }
+}
+
 @media (min-width: 768px) {
     .home-atlas {
         --map-height: 360px;
