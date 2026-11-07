@@ -5,8 +5,8 @@
 </div>
 <br/>
 
-<div align="center">Built with <code>React</code>, <code>TS</code>, <code>Tailwind</code> and <code>Vite</code>.
-    <a href="https://d3js.org/"><code>D3.js</code></a> animates the SVG maps.
+<div align="center"><a href="https://d3js.org/"><code>D3.js</code></a> for SVG map animation,
+    <code>React</code> with <code>TS</code>, <code>Tailwind</code> and <code>Vite</code>
 </div>
 
 ## Coverage
@@ -30,7 +30,7 @@ Trams, light rail, the Nippori-Toneri Liner and the Pingshan and Bishan SkyShutt
 
 ## Map sources
 
-These maps started from a Wikimedia Commons SVG, except Singapore's from mrt.sg. I extended them with [OpenStreetMap](https://www.openstreetmap.org/) and reworked them to follow [`docs/map-data-spec.md`](docs/map-data-spec.md).
+Sourced from Wikimedia Commons (Singapore from mrt.sg), extended with [OpenStreetMap](https://www.openstreetmap.org/) and reworked to follow [`docs/map-data-spec.md`](docs/map-data-spec.md).
 
 [Hong Kong](https://commons.wikimedia.org/wiki/File:Hong_Kong_Railway_Route_Map_en.svg),
 [Shanghai](https://commons.wikimedia.org/wiki/File:Shanghai_Metro_Linemap.svg),
@@ -127,4 +127,4 @@ A revamp of [MTR History](https://9808f789.mtr-history.pages.dev) ([last snapsho
 
 ## AI
 
-I mostly used LLMs to automate the map setup, data compilation and tests in `docs/`, `src/assets/<key>/` and `tests/`.
+LLMs mostly used for automating the map setup, data compilation and tests in `docs/`, `src/assets/<key>/` and `tests/`.
